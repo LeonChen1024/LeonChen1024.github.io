@@ -164,12 +164,12 @@ ga('send', 'pageview');
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                2
-                <span>posts</span>
+                1
+                <span>post</span>
             </div>
             <div class="article-info-block">
-                1
-                <span>tag</span>
+                3
+                <span>tags</span>
             </div>
         </div>
         
@@ -184,6 +184,12 @@ ga('send', 'pageview');
                         </a>
                     </td>
                     
+                    <td>
+                        <a href="/en" target="_blank" title="english" class=tooltip>
+                            <i class="fa fa-english"></i>
+                        </a>
+                    </td>
+                    
                 </tr>
             </table>
         </div>
@@ -193,15 +199,25 @@ ga('send', 'pageview');
 
             
             <section id="main">
-    <article id="post-Android-Error-And-Solution-md" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Android-Error-And-Solution" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
+        
+            
+	
+		<a href="/2018/01/10/Android-Error-And-Solution/" itemprop="url">
+            <img src="/2018/01/10/Android-Error-And-Solution/error.jpeg" class="article-banner" />
+        </a>
+	
+
+
+
         
         
             <header class="article-header">
                 
     
         <h1 itemprop="name">
-            <a class="article-title" href="/2018/01/10/Android-Error-And-Solution-md/">Android-Error-And-Solution.md</a>
+            <a class="article-title" href="/2018/01/10/Android-Error-And-Solution/">Android 相关错误及解决办法</a>
         </h1>
     
 
@@ -210,7 +226,7 @@ ga('send', 'pageview');
                         
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2018/01/10/Android-Error-And-Solution-md/">
+        <a href="/2018/01/10/Android-Error-And-Solution/">
             <time datetime="2018-01-10T14:15:10.000Z" itemprop="datePublished">2018-01-10</time>
         </a>
     </div>
@@ -219,13 +235,13 @@ ga('send', 'pageview');
                         
     <div class="article-category">
     	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/Android/">Android</a>
+        <a class="article-category-link" href="/categories/Chinese/">Chinese</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/Chinese/Android/">Android</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/Chinese/Android/Error/">Error</a>
     </div>
 
                         
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/Android/">Android</a>
+        <a class="tag-link" href="/tags/Android/">Android</a>, <a class="tag-link" href="/tags/Chinese/">Chinese</a>, <a class="tag-link" href="/tags/Error/">Error</a>
     </div>
 
                     </div>
@@ -236,7 +252,12 @@ ga('send', 'pageview');
         <div class="article-entry" itemprop="articleBody">
         
             
-            
+            <h3 id="问题-Unable-to-instantiate-activity-ComponentInfo-com-xxxx-xxxx-com-xxxx-xxxx-LoginActivity"><a href="#问题-Unable-to-instantiate-activity-ComponentInfo-com-xxxx-xxxx-com-xxxx-xxxx-LoginActivity" class="headerlink" title="问题 : Unable to instantiate activity ComponentInfo{com.xxxx.xxxx/com.xxxx.xxxx.LoginActivity}"></a>问题 : Unable to instantiate activity ComponentInfo{com.xxxx.xxxx/com.xxxx.xxxx.LoginActivity}</h3><p>java.lang.RuntimeException: Unable to instantiate activity ComponentInfo{com.xxxx.xxxx/com.xxxx.xxxx.LoginActivity}:</p>
+<p>java.lang.ClassNotFoundException: Didn’t find class “com.xxxx.xxxx.LoginActivity”<br> on path: /data/app/com.xxxx.xxxx-1.</p>
+<p><strong>解决方法</strong> : 原因AndroidManifest.xml文件出错。将问题Activity的name具体到某个包下即可运行。android:name=”.LogoActivity”改为android:name=”.ac.LogoActivity”.</p>
+<!-- ![](error.jpeg?raw=true) -->
+<!-- <img src="/2018/01/10/Android-Error-And-Solution/error.jpeg" title="[sss]"> –&gt;
+-->
         
         </div>
         <footer class="article-footer">
@@ -246,140 +267,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://yoursite.com/2018/01/10/Android-Error-And-Solution-md/" data-id="cjc95s5it0000fmfy2o2zlgic" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2013/07/13/hello-world/">Hello World</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2013/07/13/hello-world/">
-            <time datetime="2013-07-13T12:46:25.000Z" itemprop="datePublished">2013-07-13</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/example/">example</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/example/files/">files</a>
-    </div>
-
-                        
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://yoursite.com/2013/07/13/hello-world/" data-id="cjc95s5iy0001fmfy39aqunmp" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2018/01/10/Android-Error-And-Solution/" data-id="cjemudejx0001nafy393t8u0e" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -468,38 +356,19 @@ ga('send', 'pageview');
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2018/01/10/Android-Error-And-Solution-md/" class="thumbnail">
+                            <a href="/2018/01/10/Android-Error-And-Solution/" class="thumbnail">
     
     
-        <span class="thumbnail-image thumbnail-none"></span>
+        <span style="background-image:url(/2018/01/10/Android-Error-And-Solution/errorThum.jpg)" alt="Android 相关错误及解决办法" class="thumbnail-image"></span>
     
 </a>
 
                         </div>
                         
                         <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Android/">Android</a></p>
-                            <p class="item-title"><a href="/2018/01/10/Android-Error-And-Solution-md/" class="title">Android-Error-And-Solution.md</a></p>
+                            <p class="item-category"><a class="article-category-link" href="/categories/Chinese/">Chinese</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/Chinese/Android/">Android</a></p>
+                            <p class="item-title"><a href="/2018/01/10/Android-Error-And-Solution/" class="title">Android 相关错误及解决办法</a></p>
                             <p class="item-date"><time datetime="2018-01-10T14:15:10.000Z" itemprop="datePublished">2018-01-10</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2013/07/13/hello-world/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/example/">example</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/example/files/">files</a></p>
-                            <p class="item-title"><a href="/2013/07/13/hello-world/" class="title">Hello World</a></p>
-                            <p class="item-date"><time datetime="2013-07-13T12:46:25.000Z" itemprop="datePublished">2013-07-13</time></p>
                         </div>
                     </li>
                 
@@ -512,7 +381,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">categories</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/example/">example</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/example/files/">files</a><span class="category-list-count">1</span></li></ul></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/">Chinese</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/">Android</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/Error/">Error</a><span class="category-list-count">1</span></li></ul></li></ul></li></ul>
         </div>
     </div>
 
@@ -521,7 +390,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">archives</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">July 2013</a><span class="archive-list-count">1</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -530,7 +399,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">tags</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chinese/">Chinese</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Error/">Error</a><span class="tag-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -539,7 +408,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">tag cloud</h3>
         <div class="widget tagcloud">
-            <a href="/tags/Android/" style="font-size: 10px;">Android</a>
+            <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Chinese/" style="font-size: 10px;">Chinese</a> <a href="/tags/Error/" style="font-size: 10px;">Error</a>
         </div>
     </div>
 
