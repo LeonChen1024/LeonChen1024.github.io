@@ -202,7 +202,7 @@ ga('send', 'pageview');
     <article id="post-APP-Version-Control" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
-            
+        
 	
 		<a href="/2018/04/13/APP-Version-Control/" itemprop="url">
             <img src="/2018/04/13/APP-Version-Control/VersionControl.jpg" class="article-banner" />
@@ -213,17 +213,17 @@ ga('send', 'pageview');
 
         
         
-            <header class="article-header">
-                
+        <header class="article-header">
+            
     
         <h1 itemprop="name">
             <a class="article-title" href="/2018/04/13/APP-Version-Control/">APP 版本控制</a>
         </h1>
     
 
+            
+            <div class="article-meta">
                 
-                    <div class="article-meta">
-                        
     <div class="article-date">
         <i class="fa fa-calendar"></i>
         <a href="/2018/04/13/APP-Version-Control/">
@@ -232,61 +232,88 @@ ga('send', 'pageview');
     </div>
 
 
-                        
+                
     <div class="article-category">
     	<i class="fa fa-folder"></i>
         <a class="article-category-link" href="/categories/Chinese/">Chinese</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/Chinese/Android/">Android</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/Chinese/Android/版本管理/">版本管理</a>
     </div>
 
-                        
+                
     <div class="article-tag">
         <i class="fa fa-tag"></i>
         <a class="tag-link" href="/tags/Android/">Android</a>, <a class="tag-link" href="/tags/Chinese/">Chinese</a>, <a class="tag-link" href="/tags/版本管理/">版本管理</a>
     </div>
 
-                    </div>
-                
-            </header>
+            </div>
+            
+        </header>
         
         
         <div class="article-entry" itemprop="articleBody">
-        
-        
             
-                
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                
-                    
-                    <p><p>版本管理是app的一个重要部分，他主要的用途有：</p>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <p><p>版本管理是app的一个重要部分，他主要的用途有：</p>
 <ul>
 <li>让用户了解当前的版本信息，了解升级或者降级信息等</li>
 <li>不同的版本可能提供的服务和功能有所差别，版本信息可以给我们一个标志来识别当前版本可提供的服务和功能。</li>
 </ul>
 <p>
                 
+                
+                
             
-        
-        
-            </div>   
-            <div class="article-more-link">
-                <a href="/2018/04/13/APP-Version-Control/#more">Read More</a>
-            </div>
-        
+    </div>
+    <div class="article-more-link">
+        <a href="/2018/04/13/APP-Version-Control/#more">Read More</a>
+    </div>
+    
+        <!--<div class="article-entry" itemprop="articleBody">-->
+            <!---->
+            <!---->
+            <!--<p>版本管理是app的一个重要部分，他主要的用途有：</p>
+<ul>
+<li>让用户了解当前的版本信息，了解升级或者降级信息等</li>
+<li>不同的版本可能提供的服务和功能有所差别，版本信息可以给我们一个标志来识别当前版本可提供的服务和功能。</li>
+</ul>
+<h2 id="设置版本信息"><a href="#设置版本信息" class="headerlink" title="设置版本信息"></a>设置版本信息</h2><p>官方推荐是在Gradle中进行版本设置，因为Gradle中设置的版本信息会在构建的时候合并到manifest文件中，并会替换掉manifest中有关版本信息的设置。并且在Gradle中进行设置的话还可以根据应用不同的Flavor进行不同的设置。</p>
+<p>版本控制主要有这么两个属性：</p>
+<p>-versionCode ： 整数，是内部版本号，仅用于判断一个版本是否比另一个版本新，用户并不会看到。通常是跟随着发布版本增加该code。</p>
+<p>-versionName : 字符串，用户能看到的版本号。</p>
+<p>通常我们将这些设置放在gradle下的android {} 块内部使用defaultConfig {} 包裹它。要注意，如果你在productFlavors中定义了这些属性，他们会覆盖defaultConfig中的值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">android &#123;</div><div class="line">  ...</div><div class="line">  defaultConfig &#123;</div><div class="line">    ...</div><div class="line">    versionCode 1</div><div class="line">    versionName &quot;1.0.0&quot;</div><div class="line">  &#125;</div><div class="line">  productFlavors &#123;</div><div class="line">    a &#123;</div><div class="line">      ...</div><div class="line">      versionName &quot;1.0.0&quot;</div><div class="line">    &#125;</div><div class="line">    b &#123;</div><div class="line">      ...</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在android中使用 PackageManager 的 getPackageInfo(java.lang.String, int) 方法可以获取版本信息。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">getVersion</span><span class="params">(Context context)</span><span class="comment">//获取版本号</span></span></div><div class="line"><span class="function">	</span>&#123;</div><div class="line">		<span class="keyword">try</span> &#123;</div><div class="line">			PackageInfo pi=context.getPackageManager().getPackageInfo(context.getPackageName(), <span class="number">0</span>);</div><div class="line">			<span class="keyword">return</span> pi.versionName;</div><div class="line">		&#125; <span class="keyword">catch</span> (NameNotFoundException e) &#123;</div><div class="line">			<span class="comment">// TODO Auto-generated catch block</span></div><div class="line">			e.printStackTrace();</div><div class="line">			<span class="keyword">return</span> context.getString(R.string.version_unknown);</div><div class="line">		&#125;</div><div class="line">	&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">getVersionCode</span><span class="params">(Context context)</span><span class="comment">//获取版本号(内部识别号)</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">  <span class="keyword">try</span> &#123;</div><div class="line">    PackageInfo pi=context.getPackageManager().getPackageInfo(context.getPackageName(), <span class="number">0</span>);</div><div class="line">    <span class="keyword">return</span> pi.versionCode;</div><div class="line">  &#125; <span class="keyword">catch</span> (NameNotFoundException e) &#123;</div><div class="line">    <span class="comment">// TODO Auto-generated catch block</span></div><div class="line">    e.printStackTrace();</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>如果使用 Instant Run，Android Studio 会自动将 versionCode 设置为 MAXINT，将 versionName 设置为 INSTANTRUN。</p>
+<h2 id="统一配置"><a href="#统一配置" class="headerlink" title="统一配置"></a>统一配置</h2><p>顺便说一下一个可以统一所有的配置在一个地方的方法，这样可以便于我们管理版本。<br>首先在主工程的build.gradle里增加一个配置区</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">ext &#123;</div><div class="line">    // Sdk and tools</div><div class="line">    minSdkVersion = 17</div><div class="line">    targetSdkVersion = 21</div><div class="line">    compileSdkVersion = 23</div><div class="line">    buildToolsVersion = &quot;23.0.3&quot;</div><div class="line"></div><div class="line">    // App dependencies</div><div class="line">    supportLibraryVersion = &apos;23.3.0&apos;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>然后在module的build.gradle里使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">targetSdkVersion rootProject.ext.targetSdkVersion</div><div class="line"></div><div class="line">compile &quot;com.android.support:appcompat-v7:$rootProject.supportLibraryVersion&quot;</div></pre></td></tr></table></figure></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * 判断当前应用是否是debug状态</span></div><div class="line"><span class="comment"> */</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">isApkInDebug</span><span class="params">(Context context)</span> </span>&#123;</div><div class="line">    <span class="keyword">try</span> &#123;</div><div class="line">        ApplicationInfo info = context.getApplicationInfo();</div><div class="line">        <span class="keyword">return</span> (info.flags &amp; ApplicationInfo.FLAG_DEBUGGABLE) != <span class="number">0</span>;</div><div class="line">    &#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment">*检测其他应用是否处于debug模式。</span></div><div class="line"><span class="comment">*/</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">isApkDebugable</span><span class="params">(Context context,String packageName)</span> </span>&#123;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            PackageInfo pkginfo = context.getPackageManager().getPackageInfo(</div><div class="line">                    packageName, <span class="number">1</span>);</div><div class="line">            <span class="keyword">if</span> (pkginfo != <span class="keyword">null</span> ) &#123;</div><div class="line">                ApplicationInfo info= pkginfo.applicationInfo;</div><div class="line">                <span class="keyword">return</span> (info.flags&amp;ApplicationInfo.FLAG_DEBUGGABLE)!=<span class="number">0</span>;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line"></div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://developer.android.com/studio/publish/versioning.html" target="_blank" rel="external">https://developer.android.com/studio/publish/versioning.html</a></p>
+-->
+            <!---->
+        <!--</div>-->
         <footer class="article-footer">
             <div class="share-container">
 
@@ -294,7 +321,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://yoursite.com/2018/04/13/APP-Version-Control/" data-id="cjfz2hq1900005tbjwudg0l5k" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2018/04/13/APP-Version-Control/" data-id="cjg7bdaff0000tibj0tn0kumk" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -371,10 +398,13 @@ ga('send', 'pageview');
 
 
 
+
+
+
     <article id="post-Android-Error-And-Solution" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
-            
+        
 	
 		<a href="/2018/01/10/Android-Error-And-Solution/" itemprop="url">
             <img src="/2018/01/10/Android-Error-And-Solution/error.jpg" class="article-banner" />
@@ -385,17 +415,17 @@ ga('send', 'pageview');
 
         
         
-            <header class="article-header">
-                
+        <header class="article-header">
+            
     
         <h1 itemprop="name">
             <a class="article-title" href="/2018/01/10/Android-Error-And-Solution/">Android 相关错误及解决办法</a>
         </h1>
     
 
+            
+            <div class="article-meta">
                 
-                    <div class="article-meta">
-                        
     <div class="article-date">
         <i class="fa fa-calendar"></i>
         <a href="/2018/01/10/Android-Error-And-Solution/">
@@ -404,61 +434,72 @@ ga('send', 'pageview');
     </div>
 
 
-                        
+                
     <div class="article-category">
     	<i class="fa fa-folder"></i>
         <a class="article-category-link" href="/categories/Chinese/">Chinese</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/Chinese/Android/">Android</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/Chinese/Android/Error/">Error</a>
     </div>
 
-                        
+                
     <div class="article-tag">
         <i class="fa fa-tag"></i>
         <a class="tag-link" href="/tags/Android/">Android</a>, <a class="tag-link" href="/tags/Chinese/">Chinese</a>, <a class="tag-link" href="/tags/Error/">Error</a>
     </div>
 
-                    </div>
-                
-            </header>
+            </div>
+            
+        </header>
         
         
         <div class="article-entry" itemprop="articleBody">
-        
-        
             
-                
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                
-                    
-                    <p><h3 id="问题-Unable-to-instantiate-activity-ComponentInfo-com-xxxx-xxxx-com-xxxx-xxxx-LoginActivity"><a href="#问题-Unable-to-instantiate-activity-ComponentInfo-com-xxxx-xxxx-com-xxxx-xxxx-LoginActivity" class="headerlink" title="问题 : Unable to instantiate activity ComponentInfo{com.xxxx.xxxx/com.xxxx.xxxx.LoginActivity}"></a>问题 : Unable to instantiate activity ComponentInfo{com.xxxx.xxxx/com.xxxx.xxxx.LoginActivity}</h3><p>java.lang.RuntimeException: Unable to instantiate activity ComponentInfo{com.xxxx.xxxx/com.xxxx.xxxx.LoginActivity}:</p>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <p><h3 id="问题-Unable-to-instantiate-activity-ComponentInfo-com-xxxx-xxxx-com-xxxx-xxxx-LoginActivity"><a href="#问题-Unable-to-instantiate-activity-ComponentInfo-com-xxxx-xxxx-com-xxxx-xxxx-LoginActivity" class="headerlink" title="问题 : Unable to instantiate activity ComponentInfo{com.xxxx.xxxx/com.xxxx.xxxx.LoginActivity}"></a>问题 : Unable to instantiate activity ComponentInfo{com.xxxx.xxxx/com.xxxx.xxxx.LoginActivity}</h3><p>java.lang.RuntimeException: Unable to instantiate activity ComponentInfo{com.xxxx.xxxx/com.xxxx.xxxx.LoginActivity}:</p>
 <p>java.lang.ClassNotFoundException: Didn’t find class “com.xxxx.xxxx.LoginActivity”<br> on path: /data/app/com.xxxx.xxxx-1.</p>
 <p><strong>解决方法</strong> : 原因AndroidManifest.xml文件出错。将问题Activity的name具体到某个包下即可运行。android:name=”.LogoActivity”改为android:name=”.ac.LogoActivity”.</p>
 <!-- ![](error.jpeg?raw=true) -->
 <!--  –&gt;
 <p>
                 
+                
+                
             
-        
-        
-            </div>   
-            <div class="article-more-link">
-                <a href="/2018/01/10/Android-Error-And-Solution/#more">Read More</a>
-            </div>
-        
+    </div>
+    <div class="article-more-link">
+        <a href="/2018/01/10/Android-Error-And-Solution/#more">Read More</a>
+    </div>
+    
+        <!--<div class="article-entry" itemprop="articleBody">-->
+            <!---->
+            <!---->
+            <!--<h3 id="问题-Unable-to-instantiate-activity-ComponentInfo-com-xxxx-xxxx-com-xxxx-xxxx-LoginActivity"><a href="#问题-Unable-to-instantiate-activity-ComponentInfo-com-xxxx-xxxx-com-xxxx-xxxx-LoginActivity" class="headerlink" title="问题 : Unable to instantiate activity ComponentInfo{com.xxxx.xxxx/com.xxxx.xxxx.LoginActivity}"></a>问题 : Unable to instantiate activity ComponentInfo{com.xxxx.xxxx/com.xxxx.xxxx.LoginActivity}</h3><p>java.lang.RuntimeException: Unable to instantiate activity ComponentInfo{com.xxxx.xxxx/com.xxxx.xxxx.LoginActivity}:</p>
+<p>java.lang.ClassNotFoundException: Didn’t find class “com.xxxx.xxxx.LoginActivity”<br> on path: /data/app/com.xxxx.xxxx-1.</p>
+<p><strong>解决方法</strong> : 原因AndroidManifest.xml文件出错。将问题Activity的name具体到某个包下即可运行。android:name=”.LogoActivity”改为android:name=”.ac.LogoActivity”.</p>
+<!-- ![](error.jpeg?raw=true) -->
+<!--  –&gt;
+-->-->
+            <!---->
+        <!--</div>-->
         <footer class="article-footer">
             <div class="share-container">
 
@@ -466,7 +507,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://yoursite.com/2018/01/10/Android-Error-And-Solution/" data-id="cjfz2hq1h00025tbjy2ooo7qw" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2018/01/10/Android-Error-And-Solution/" data-id="cjg7bdafn0002tibjvavql5ah" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -539,6 +580,9 @@ ga('send', 'pageview');
     </div>
     
 </article>
+
+
+
 
 
 
