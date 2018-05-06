@@ -3,14 +3,21 @@
 <head>
     <meta charset="utf-8">
     
-    <title>LeonChen&#39;s Blog</title>
+    <title>Byte 常用转换 | LeonChen&#39;s Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta property="og:type" content="website">
-<meta property="og:title" content="LeonChen&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/index.html">
+    <meta name="description" content="思路:以 int 作为例子, 首先要知道他们的换算公式。 1 int = 4 byte ，1 byte = 8 bit , 一个 bit 是一位二进制。i 和 0xFF 取与得到最低位的 1byte 数据，然后将 i 右移8位再与 0xFF 取与得到第二低位的 1byte数据，以此类推。 1234567891011121314151617181920212223242526272829303132">
+<meta name="keywords" content="Chinese,Java,Data Structure">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Byte 常用转换">
+<meta property="og:url" content="http://yoursite.com/2016/03/09/Byte-Common-transition/index.html">
 <meta property="og:site_name" content="LeonChen&#39;s Blog">
+<meta property="og:description" content="思路:以 int 作为例子, 首先要知道他们的换算公式。 1 int = 4 byte ，1 byte = 8 bit , 一个 bit 是一位二进制。i 和 0xFF 取与得到最低位的 1byte 数据，然后将 i 右移8位再与 0xFF 取与得到第二低位的 1byte数据，以此类推。 1234567891011121314151617181920212223242526272829303132">
+<meta property="og:image" content="http://yoursite.com/2016/03/09/Byte-Common-transition/ByteThumb.jpg">
+<meta property="og:updated_time" content="2018-05-06T09:25:27.771Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LeonChen&#39;s Blog">
+<meta name="twitter:title" content="Byte 常用转换">
+<meta name="twitter:description" content="思路:以 int 作为例子, 首先要知道他们的换算公式。 1 int = 4 byte ，1 byte = 8 bit , 一个 bit 是一位二进制。i 和 0xFF 取与得到最低位的 1byte 数据，然后将 i 右移8位再与 0xFF 取与得到第二低位的 1byte数据，以此类推。 1234567891011121314151617181920212223242526272829303132">
+<meta name="twitter:image" content="http://yoursite.com/2016/03/09/Byte-Common-transition/ByteThumb.jpg">
     
 
     
@@ -198,15 +205,12 @@ ga('send', 'pageview');
 </aside>
 
             
-            <section id="main">
-    <article id="post-APP-Version-Control" class="article article-type-post" itemscope itemprop="blogPost">
+            <section id="main"><article id="post-Byte-Common-transition" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
         
 	
-		<a href="/2018/04/13/APP-Version-Control/" itemprop="url">
-            <img src="/2018/04/13/APP-Version-Control/VersionControl.jpg" class="article-banner" />
-        </a>
+		<img src="/2016/03/09/Byte-Common-transition/Byte.jpg" class="article-banner" />
 	
 
 
@@ -216,396 +220,8 @@ ga('send', 'pageview');
         <header class="article-header">
             
     
-        <h1 itemprop="name">
-            <a class="article-title" href="/2018/04/13/APP-Version-Control/">APP 版本控制</a>
-        </h1>
-    
-
-            
-            <div class="article-meta">
-                
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2018/04/13/APP-Version-Control/">
-            <time datetime="2018-04-12T16:00:00.000Z" itemprop="datePublished">2018-04-13</time>
-        </a>
-    </div>
-
-
-                
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/Chinese/">Chinese</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/Chinese/Android/">Android</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/Chinese/Android/版本管理/">版本管理</a>
-    </div>
-
-                
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/Android/">Android</a>, <a class="tag-link" href="/tags/Chinese/">Chinese</a>, <a class="tag-link" href="/tags/版本管理/">版本管理</a>
-    </div>
-
-            </div>
-            
-        </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            <p><p>版本管理是app的一个重要部分，他主要的用途有：</p>
-<ul>
-<li>让用户了解当前的版本信息，了解升级或者降级信息等</li>
-<li>不同的版本可能提供的服务和功能有所差别，版本信息可以给我们一个标志来识别当前版本可提供的服务和功能。</li>
-</ul>
-<p>
-                
-                
-                
-            
-    </div>
-    <div class="article-more-link">
-        <a href="/2018/04/13/APP-Version-Control/#more">Read More</a>
-    </div>
-    
-        <!--<div class="article-entry" itemprop="articleBody">-->
-            <!---->
-            <!---->
-            <!--<p>版本管理是app的一个重要部分，他主要的用途有：</p>
-<ul>
-<li>让用户了解当前的版本信息，了解升级或者降级信息等</li>
-<li>不同的版本可能提供的服务和功能有所差别，版本信息可以给我们一个标志来识别当前版本可提供的服务和功能。</li>
-</ul>
-<h2 id="设置版本信息"><a href="#设置版本信息" class="headerlink" title="设置版本信息"></a>设置版本信息</h2><p>官方推荐是在Gradle中进行版本设置，因为Gradle中设置的版本信息会在构建的时候合并到manifest文件中，并会替换掉manifest中有关版本信息的设置。并且在Gradle中进行设置的话还可以根据应用不同的Flavor进行不同的设置。</p>
-<p>版本控制主要有这么两个属性：</p>
-<p>-versionCode ： 整数，是内部版本号，仅用于判断一个版本是否比另一个版本新，用户并不会看到。通常是跟随着发布版本增加该code。</p>
-<p>-versionName : 字符串，用户能看到的版本号。</p>
-<p>通常我们将这些设置放在gradle下的android {} 块内部使用defaultConfig {} 包裹它。要注意，如果你在productFlavors中定义了这些属性，他们会覆盖defaultConfig中的值。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">android &#123;</div><div class="line">  ...</div><div class="line">  defaultConfig &#123;</div><div class="line">    ...</div><div class="line">    versionCode 1</div><div class="line">    versionName &quot;1.0.0&quot;</div><div class="line">  &#125;</div><div class="line">  productFlavors &#123;</div><div class="line">    a &#123;</div><div class="line">      ...</div><div class="line">      versionName &quot;1.0.0&quot;</div><div class="line">    &#125;</div><div class="line">    b &#123;</div><div class="line">      ...</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>在android中使用 PackageManager 的 getPackageInfo(java.lang.String, int) 方法可以获取版本信息。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">getVersion</span><span class="params">(Context context)</span><span class="comment">//获取版本号</span></span></div><div class="line"><span class="function">	</span>&#123;</div><div class="line">		<span class="keyword">try</span> &#123;</div><div class="line">			PackageInfo pi=context.getPackageManager().getPackageInfo(context.getPackageName(), <span class="number">0</span>);</div><div class="line">			<span class="keyword">return</span> pi.versionName;</div><div class="line">		&#125; <span class="keyword">catch</span> (NameNotFoundException e) &#123;</div><div class="line">			<span class="comment">// TODO Auto-generated catch block</span></div><div class="line">			e.printStackTrace();</div><div class="line">			<span class="keyword">return</span> context.getString(R.string.version_unknown);</div><div class="line">		&#125;</div><div class="line">	&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">getVersionCode</span><span class="params">(Context context)</span><span class="comment">//获取版本号(内部识别号)</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">  <span class="keyword">try</span> &#123;</div><div class="line">    PackageInfo pi=context.getPackageManager().getPackageInfo(context.getPackageName(), <span class="number">0</span>);</div><div class="line">    <span class="keyword">return</span> pi.versionCode;</div><div class="line">  &#125; <span class="keyword">catch</span> (NameNotFoundException e) &#123;</div><div class="line">    <span class="comment">// TODO Auto-generated catch block</span></div><div class="line">    e.printStackTrace();</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>如果使用 Instant Run，Android Studio 会自动将 versionCode 设置为 MAXINT，将 versionName 设置为 INSTANTRUN。</p>
-<h2 id="统一配置"><a href="#统一配置" class="headerlink" title="统一配置"></a>统一配置</h2><p>顺便说一下一个可以统一所有的配置在一个地方的方法，这样可以便于我们管理版本。<br>首先在主工程的build.gradle里增加一个配置区</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">ext &#123;</div><div class="line">    // Sdk and tools</div><div class="line">    minSdkVersion = 17</div><div class="line">    targetSdkVersion = 21</div><div class="line">    compileSdkVersion = 23</div><div class="line">    buildToolsVersion = &quot;23.0.3&quot;</div><div class="line"></div><div class="line">    // App dependencies</div><div class="line">    supportLibraryVersion = &apos;23.3.0&apos;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>然后在module的build.gradle里使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">targetSdkVersion rootProject.ext.targetSdkVersion</div><div class="line"></div><div class="line">compile &quot;com.android.support:appcompat-v7:$rootProject.supportLibraryVersion&quot;</div></pre></td></tr></table></figure></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * 判断当前应用是否是debug状态</span></div><div class="line"><span class="comment"> */</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">isApkInDebug</span><span class="params">(Context context)</span> </span>&#123;</div><div class="line">    <span class="keyword">try</span> &#123;</div><div class="line">        ApplicationInfo info = context.getApplicationInfo();</div><div class="line">        <span class="keyword">return</span> (info.flags &amp; ApplicationInfo.FLAG_DEBUGGABLE) != <span class="number">0</span>;</div><div class="line">    &#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment">*检测其他应用是否处于debug模式。</span></div><div class="line"><span class="comment">*/</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">isApkDebugable</span><span class="params">(Context context,String packageName)</span> </span>&#123;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            PackageInfo pkginfo = context.getPackageManager().getPackageInfo(</div><div class="line">                    packageName, <span class="number">1</span>);</div><div class="line">            <span class="keyword">if</span> (pkginfo != <span class="keyword">null</span> ) &#123;</div><div class="line">                ApplicationInfo info= pkginfo.applicationInfo;</div><div class="line">                <span class="keyword">return</span> (info.flags&amp;ApplicationInfo.FLAG_DEBUGGABLE)!=<span class="number">0</span>;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line"></div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://developer.android.com/studio/publish/versioning.html" target="_blank" rel="external">https://developer.android.com/studio/publish/versioning.html</a></p>
--->
-            <!---->
-        <!--</div>-->
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://yoursite.com/2018/04/13/APP-Version-Control/" data-id="cjgum6cfl0000cygjqrsy2dzt" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-
-
-
-
-    <article id="post-Android-Error-And-Solution" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-	
-		<a href="/2018/01/10/Android-Error-And-Solution/" itemprop="url">
-            <img src="/2018/01/10/Android-Error-And-Solution/error.jpg" class="article-banner" />
-        </a>
-	
-
-
-
-        
-        
-        <header class="article-header">
-            
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2018/01/10/Android-Error-And-Solution/">Android 相关错误及解决办法</a>
-        </h1>
-    
-
-            
-            <div class="article-meta">
-                
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2018/01/10/Android-Error-And-Solution/">
-            <time datetime="2018-01-10T14:15:10.000Z" itemprop="datePublished">2018-01-10</time>
-        </a>
-    </div>
-
-
-                
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/Chinese/">Chinese</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/Chinese/Android/">Android</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/Chinese/Android/Error/">Error</a>
-    </div>
-
-                
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/Android/">Android</a>, <a class="tag-link" href="/tags/Chinese/">Chinese</a>, <a class="tag-link" href="/tags/Error/">Error</a>
-    </div>
-
-            </div>
-            
-        </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            <p><h3 id="问题-Unable-to-instantiate-activity-ComponentInfo-com-xxxx-xxxx-com-xxxx-xxxx-LoginActivity"><a href="#问题-Unable-to-instantiate-activity-ComponentInfo-com-xxxx-xxxx-com-xxxx-xxxx-LoginActivity" class="headerlink" title="问题 : Unable to instantiate activity ComponentInfo{com.xxxx.xxxx/com.xxxx.xxxx.LoginActivity}"></a>问题 : Unable to instantiate activity ComponentInfo{com.xxxx.xxxx/com.xxxx.xxxx.LoginActivity}</h3><p>java.lang.RuntimeException: Unable to instantiate activity ComponentInfo{com.xxxx.xxxx/com.xxxx.xxxx.LoginActivity}:</p>
-<p>java.lang.ClassNotFoundException: Didn’t find class “com.xxxx.xxxx.LoginActivity”<br> on path: /data/app/com.xxxx.xxxx-1.</p>
-<p><strong>解决方法</strong> : 原因AndroidManifest.xml文件出错。将问题Activity的name具体到某个包下即可运行。android:name=”.LogoActivity”改为android:name=”.ac.LogoActivity”.</p>
-<!-- ![](error.jpeg?raw=true) -->
-<!--  –&gt;
-<p>
-                
-                
-                
-            
-    </div>
-    <div class="article-more-link">
-        <a href="/2018/01/10/Android-Error-And-Solution/#more">Read More</a>
-    </div>
-    
-        <!--<div class="article-entry" itemprop="articleBody">-->
-            <!---->
-            <!---->
-            <!--<h3 id="问题-Unable-to-instantiate-activity-ComponentInfo-com-xxxx-xxxx-com-xxxx-xxxx-LoginActivity"><a href="#问题-Unable-to-instantiate-activity-ComponentInfo-com-xxxx-xxxx-com-xxxx-xxxx-LoginActivity" class="headerlink" title="问题 : Unable to instantiate activity ComponentInfo{com.xxxx.xxxx/com.xxxx.xxxx.LoginActivity}"></a>问题 : Unable to instantiate activity ComponentInfo{com.xxxx.xxxx/com.xxxx.xxxx.LoginActivity}</h3><p>java.lang.RuntimeException: Unable to instantiate activity ComponentInfo{com.xxxx.xxxx/com.xxxx.xxxx.LoginActivity}:</p>
-<p>java.lang.ClassNotFoundException: Didn’t find class “com.xxxx.xxxx.LoginActivity”<br> on path: /data/app/com.xxxx.xxxx-1.</p>
-<p><strong>解决方法</strong> : 原因AndroidManifest.xml文件出错。将问题Activity的name具体到某个包下即可运行。android:name=”.LogoActivity”改为android:name=”.ac.LogoActivity”.</p>
-<!-- ![](error.jpeg?raw=true) -->
-<!--  –&gt;
--->-->
-            <!---->
-        <!--</div>-->
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://yoursite.com/2018/01/10/Android-Error-And-Solution/" data-id="cjgum6cfr0002cygjtmjkycfy" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-
-
-
-
-    <article id="post-Byte-Common-transition" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-	
-		<a href="/2016/03/09/Byte-Common-transition/" itemprop="url">
-            <img src="/2016/03/09/Byte-Common-transition/Byte.jpg" class="article-banner" />
-        </a>
-	
-
-
-
-        
-        
-        <header class="article-header">
-            
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2016/03/09/Byte-Common-transition/">Byte 常用转换</a>
+        <h1 class="article-title" itemprop="name">
+            Byte 常用转换
         </h1>
     
 
@@ -640,20 +256,8 @@ ga('send', 'pageview');
         <div class="article-entry" itemprop="articleBody">
             
             
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
                 
-                
+            
             
             <p><strong>思路:</strong><br>以 int 作为例子, 首先要知道他们的换算公式。 1 int = 4 byte ，1 byte = 8 bit , 一个 bit 是一位二进制。i 和 0xFF 取与得到最低位的 1byte 数据，然后将 i 右移8位再与 0xFF 取与得到第二低位的 1byte数据，以此类推。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment">    * 将int转换为四个字节的byte数组，高位在前，低位在后</span></div><div class="line"><span class="comment">    *</span></div><div class="line"><span class="comment">    * <span class="doctag">@param</span> i 要转换的int参数</span></div><div class="line"><span class="comment">    *            </span></div><div class="line"><span class="comment">    * <span class="doctag">@return</span> 四个字节的byte数组</span></div><div class="line"><span class="comment">    */</span></div><div class="line">   <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">byte</span>[] intToHlBytes4(<span class="keyword">int</span> i)</div><div class="line">   &#123;</div><div class="line">       <span class="keyword">byte</span>[] result = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">4</span>];</div><div class="line">       result[<span class="number">3</span>] = (<span class="keyword">byte</span>) (i &amp; <span class="number">0xFF</span>);</div><div class="line">       result[<span class="number">2</span>] = (<span class="keyword">byte</span>) ((i &gt;&gt; <span class="number">8</span>) &amp; <span class="number">0xFF</span>);</div><div class="line">       result[<span class="number">1</span>] = (<span class="keyword">byte</span>) ((i &gt;&gt; <span class="number">16</span>) &amp; <span class="number">0xFF</span>);</div><div class="line">       result[<span class="number">0</span>] = (<span class="keyword">byte</span>) ((i &gt;&gt; <span class="number">24</span>) &amp; <span class="number">0xFF</span>);</div><div class="line">       <span class="keyword">return</span> result;</div><div class="line">   &#125;</div><div class="line"></div><div class="line">   <span class="comment">/**</span></div><div class="line"><span class="comment">    * 将int转换为四个字节的byte数组，低位在前，高位在后</span></div><div class="line"><span class="comment">    *</span></div><div class="line"><span class="comment">    * <span class="doctag">@param</span> i 要转换的int参数</span></div><div class="line"><span class="comment">    *            </span></div><div class="line"><span class="comment">    * <span class="doctag">@return</span> 四个字节的byte数组</span></div><div class="line"><span class="comment">    */</span></div><div class="line">   <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">byte</span>[] intTolhBytes4(<span class="keyword">int</span> i)</div><div class="line">   &#123;</div><div class="line">       <span class="keyword">byte</span>[] result = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">4</span>];</div><div class="line">       result[<span class="number">0</span>] = (<span class="keyword">byte</span>) (i &amp; <span class="number">0xFF</span>);</div><div class="line">       result[<span class="number">1</span>] = (<span class="keyword">byte</span>) ((i &gt;&gt; <span class="number">8</span>) &amp; <span class="number">0xFF</span>);</div><div class="line">       result[<span class="number">2</span>] = (<span class="keyword">byte</span>) ((i &gt;&gt; <span class="number">16</span>) &amp; <span class="number">0xFF</span>);</div><div class="line">       result[<span class="number">3</span>] = (<span class="keyword">byte</span>) ((i &gt;&gt; <span class="number">24</span>) &amp; <span class="number">0xFF</span>);</div><div class="line">       <span class="keyword">return</span> result;</div><div class="line">   &#125;</div><div class="line"></div><div class="line">   <span class="comment">/**</span></div><div class="line"><span class="comment">    * 从byte数组的指定位置向后取出4位转为int数值，低位在前，高位在后</span></div><div class="line"><span class="comment">    *</span></div><div class="line"><span class="comment">    * <span class="doctag">@param</span> bs 原始数组</span></div><div class="line"><span class="comment">    *            </span></div><div class="line"><span class="comment">    * <span class="doctag">@param</span> startSet 开始位</span></div><div class="line"><span class="comment">    *            </span></div><div class="line"><span class="comment">    * <span class="doctag">@return</span></span></div><div class="line"><span class="comment">    */</span></div><div class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">hlBytesToInt</span><span class="params">(<span class="keyword">byte</span>[] bs, <span class="keyword">int</span> startSet)</span></span></div><div class="line"><span class="function">   </span>&#123;</div><div class="line">       <span class="keyword">int</span> result;</div><div class="line"></div><div class="line">       result = (<span class="keyword">int</span>) ((bs[startSet] &amp; <span class="number">0xFF</span>) | ((bs[startSet + <span class="number">1</span>] &amp; <span class="number">0xFF</span>) &lt;&lt; <span class="number">8</span>) | ((bs[startSet + <span class="number">2</span>] &amp; <span class="number">0xFF</span>) &lt;&lt; <span class="number">16</span>)</div><div class="line">               | ((bs[startSet + <span class="number">3</span>] &amp; <span class="number">0xFF</span>) &lt;&lt; <span class="number">24</span>));</div><div class="line">       <span class="keyword">return</span> result;</div><div class="line">   &#125;</div><div class="line"></div><div class="line">   <span class="comment">/**</span></div><div class="line"><span class="comment">    * 从byte数组的指定位置向后取出4位转为int数值，高位在前，低位在后</span></div><div class="line"><span class="comment">    *</span></div><div class="line"><span class="comment">    * <span class="doctag">@param</span> bs 原始数组</span></div><div class="line"><span class="comment">    *            </span></div><div class="line"><span class="comment">    * <span class="doctag">@param</span> startSet 开始位</span></div><div class="line"><span class="comment">    *            </span></div><div class="line"><span class="comment">    * <span class="doctag">@return</span></span></div><div class="line"><span class="comment">    */</span></div><div class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">bytesToInt2</span><span class="params">(<span class="keyword">byte</span>[] bs, <span class="keyword">int</span> startSet)</span></span></div><div class="line"><span class="function">   </span>&#123;</div><div class="line">       <span class="keyword">int</span> result;</div><div class="line">       result = (<span class="keyword">int</span>) (((bs[startSet] &amp; <span class="number">0xFF</span>) &lt;&lt; <span class="number">24</span>) | ((bs[startSet + <span class="number">1</span>] &amp; <span class="number">0xFF</span>) &lt;&lt; <span class="number">16</span>)</div><div class="line">               | ((bs[startSet + <span class="number">2</span>] &amp; <span class="number">0xFF</span>) &lt;&lt; <span class="number">8</span>) | (bs[startSet + <span class="number">3</span>] &amp; <span class="number">0xFF</span>));</div><div class="line">       <span class="keyword">return</span> result;</div><div class="line">   &#125;</div><div class="line"></div><div class="line"></div><div class="line">   <span class="comment">/**</span></div><div class="line"><span class="comment">    * long型转换为8字节的byte数组 高位在前低位在后</span></div><div class="line"><span class="comment">    *</span></div><div class="line"><span class="comment">    * <span class="doctag">@param</span> l long数据</span></div><div class="line"><span class="comment">    *            </span></div><div class="line"><span class="comment">    * <span class="doctag">@return</span></span></div><div class="line"><span class="comment">    */</span></div><div class="line">   <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">byte</span>[] longToHlBytes8(<span class="keyword">long</span> l)</div><div class="line">   &#123;</div><div class="line">       <span class="keyword">byte</span>[] result = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">8</span>];</div><div class="line">       <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">8</span>; i++)</div><div class="line">       &#123;</div><div class="line">           <span class="keyword">int</span> startSet = (result.length - <span class="number">1</span> - i) * <span class="number">8</span>;</div><div class="line">           result[i] = (<span class="keyword">byte</span>) ((l &gt;&gt;&gt; startSet) &amp; <span class="number">0xFF</span>);</div><div class="line">       &#125;</div><div class="line">       <span class="keyword">return</span> result;</div><div class="line">   &#125;</div><div class="line"></div><div class="line">   <span class="comment">/**</span></div><div class="line"><span class="comment">    * short整数转换为2字节的byte数组 高位在前低位在后</span></div><div class="line"><span class="comment">    *</span></div><div class="line"><span class="comment">    * <span class="doctag">@param</span> s short整数</span></div><div class="line"><span class="comment">    *            </span></div><div class="line"><span class="comment">    * <span class="doctag">@return</span></span></div><div class="line"><span class="comment">    */</span></div><div class="line">   <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">byte</span>[] unsignedShortToByte2(<span class="keyword">int</span> s)</div><div class="line">   &#123;</div><div class="line">       <span class="keyword">byte</span>[] result = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">2</span>];</div><div class="line">       result[<span class="number">0</span>] = (<span class="keyword">byte</span>) (s &gt;&gt; <span class="number">8</span> &amp; <span class="number">0xFF</span>);</div><div class="line">       result[<span class="number">1</span>] = (<span class="keyword">byte</span>) (s &amp; <span class="number">0xFF</span>);</div><div class="line">       <span class="keyword">return</span> result;</div><div class="line">   &#125;</div><div class="line"></div><div class="line">   <span class="comment">/**</span></div><div class="line"><span class="comment">    * byte数组转换为无符号short整数</span></div><div class="line"><span class="comment">    *</span></div><div class="line"><span class="comment">    * <span class="doctag">@param</span> bs byte数组</span></div><div class="line"><span class="comment">    *            </span></div><div class="line"><span class="comment">    * <span class="doctag">@return</span></span></div><div class="line"><span class="comment">    */</span></div><div class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">byte2ToUnsignedShort</span><span class="params">(<span class="keyword">byte</span>[] bs)</span></span></div><div class="line"><span class="function">   </span>&#123;</div><div class="line">       <span class="keyword">return</span> byte2ToUnsignedShort(bs, <span class="number">0</span>);</div><div class="line">   &#125;</div><div class="line"></div><div class="line">   <span class="comment">/**</span></div><div class="line"><span class="comment">    * byte数组转换为无符号short整数</span></div><div class="line"><span class="comment">    *</span></div><div class="line"><span class="comment">    * <span class="doctag">@param</span> bs byte数组</span></div><div class="line"><span class="comment">    *            </span></div><div class="line"><span class="comment">    * <span class="doctag">@param</span> startSer 开始位置</span></div><div class="line"><span class="comment">    *            </span></div><div class="line"><span class="comment">    * <span class="doctag">@return</span></span></div><div class="line"><span class="comment">    */</span></div><div class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">byte2ToUnsignedShort</span><span class="params">(<span class="keyword">byte</span>[] bs, <span class="keyword">int</span> startSer)</span></span></div><div class="line"><span class="function">   </span>&#123;</div><div class="line">       <span class="keyword">int</span> high = bs[startSer];</div><div class="line">       <span class="keyword">int</span> low = bs[startSer + <span class="number">1</span>];</div><div class="line">       <span class="keyword">return</span> (high &lt;&lt; <span class="number">8</span> &amp; <span class="number">0xFF00</span>) | (low &amp; <span class="number">0xFF</span>);</div><div class="line">   &#125;</div><div class="line"></div><div class="line">   <span class="comment">/**</span></div><div class="line"><span class="comment">    * byte数组转换为int整数</span></div><div class="line"><span class="comment">    *</span></div><div class="line"><span class="comment">    * <span class="doctag">@param</span> bs byte数组</span></div><div class="line"><span class="comment">    *            </span></div><div class="line"><span class="comment">    * <span class="doctag">@param</span> startSet 开始位置</span></div><div class="line"><span class="comment">    *            </span></div><div class="line"><span class="comment">    * <span class="doctag">@return</span> int整数</span></div><div class="line"><span class="comment">    */</span></div><div class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">byte4ToInt</span><span class="params">(<span class="keyword">byte</span>[] bs, <span class="keyword">int</span> startSet)</span></span></div><div class="line"><span class="function">   </span>&#123;</div><div class="line">       <span class="keyword">int</span> b0 = bs[startSet] &amp; <span class="number">0xFF</span>;</div><div class="line">       <span class="keyword">int</span> b1 = bs[startSet + <span class="number">1</span>] &amp; <span class="number">0xFF</span>;</div><div class="line">       <span class="keyword">int</span> b2 = bs[startSet + <span class="number">2</span>] &amp; <span class="number">0xFF</span>;</div><div class="line">       <span class="keyword">int</span> b3 = bs[startSet + <span class="number">3</span>] &amp; <span class="number">0xFF</span>;</div><div class="line">       <span class="keyword">return</span> (b0 &lt;&lt; <span class="number">24</span>) | (b1 &lt;&lt; <span class="number">16</span>) | (b2 &lt;&lt; <span class="number">8</span>) | b3;</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
@@ -747,8 +351,28 @@ ga('send', 'pageview');
         </footer>
     </div>
     
+    
+<nav id="article-nav">
+    
+        <a href="/2018/01/10/Android-Error-And-Solution/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Más nuevo</strong>
+            <div class="article-nav-title">
+                
+                    Android 相关错误及解决办法
+                
+            </div>
+        </a>
+    
+    
+</nav>
+
+
+    
 </article>
 
+
+
+    
 
 
 
