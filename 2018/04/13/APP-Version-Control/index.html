@@ -5,18 +5,18 @@
     
     <title>APP 版本控制 | LeonChen&#39;s Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="版本管理是app的一个重要部分，他主要的用途有：  让用户了解当前的版本信息，了解升级或者降级信息等 不同的版本可能提供的服务和功能有所差别，版本信息可以给我们一个标志来识别当前版本可提供的服务和功能。  设置版本信息官方推荐是在Gradle中进行版本设置，因为Gradle中设置的版本信息会在构建的时候合并到manifest文件中，并会替换掉manifest中有关版本信息的设置。并且在Gradle">
+    <meta name="description" content="版本管理是app的一个重要部分，他主要的用途有：  让用户了解当前的版本信息，了解升级或者降级信息等 不同的版本可能提供的服务和功能有所差别，版本信息可以给我们一个标志来识别当前版本可提供的服务和功能。  目录 设置版本信息 统一配置 Reference  设置版本信息官方推荐是在Gradle中进行版本设置，因为Gradle中设置的版本信息会在构建的时候合并到manifest文件中，并会替换掉ma">
 <meta name="keywords" content="Chinese,Android,版本管理">
 <meta property="og:type" content="article">
 <meta property="og:title" content="APP 版本控制">
 <meta property="og:url" content="http://yoursite.com/2018/04/13/APP-Version-Control/index.html">
 <meta property="og:site_name" content="LeonChen&#39;s Blog">
-<meta property="og:description" content="版本管理是app的一个重要部分，他主要的用途有：  让用户了解当前的版本信息，了解升级或者降级信息等 不同的版本可能提供的服务和功能有所差别，版本信息可以给我们一个标志来识别当前版本可提供的服务和功能。  设置版本信息官方推荐是在Gradle中进行版本设置，因为Gradle中设置的版本信息会在构建的时候合并到manifest文件中，并会替换掉manifest中有关版本信息的设置。并且在Gradle">
+<meta property="og:description" content="版本管理是app的一个重要部分，他主要的用途有：  让用户了解当前的版本信息，了解升级或者降级信息等 不同的版本可能提供的服务和功能有所差别，版本信息可以给我们一个标志来识别当前版本可提供的服务和功能。  目录 设置版本信息 统一配置 Reference  设置版本信息官方推荐是在Gradle中进行版本设置，因为Gradle中设置的版本信息会在构建的时候合并到manifest文件中，并会替换掉ma">
 <meta property="og:image" content="http://yoursite.com/2018/04/13/APP-Version-Control/VersionControlThumb.jpg">
-<meta property="og:updated_time" content="2018-04-14T07:53:59.801Z">
+<meta property="og:updated_time" content="2018-05-18T13:47:24.034Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="APP 版本控制">
-<meta name="twitter:description" content="版本管理是app的一个重要部分，他主要的用途有：  让用户了解当前的版本信息，了解升级或者降级信息等 不同的版本可能提供的服务和功能有所差别，版本信息可以给我们一个标志来识别当前版本可提供的服务和功能。  设置版本信息官方推荐是在Gradle中进行版本设置，因为Gradle中设置的版本信息会在构建的时候合并到manifest文件中，并会替换掉manifest中有关版本信息的设置。并且在Gradle">
+<meta name="twitter:description" content="版本管理是app的一个重要部分，他主要的用途有：  让用户了解当前的版本信息，了解升级或者降级信息等 不同的版本可能提供的服务和功能有所差别，版本信息可以给我们一个标志来识别当前版本可提供的服务和功能。  目录 设置版本信息 统一配置 Reference  设置版本信息官方推荐是在Gradle中进行版本设置，因为Gradle中设置的版本信息会在构建的时候合并到manifest文件中，并会替换掉ma">
 <meta name="twitter:image" content="http://yoursite.com/2018/04/13/APP-Version-Control/VersionControlThumb.jpg">
     
 
@@ -94,7 +94,7 @@ ga('send', 'pageview');
             <div id="search-form-wrap">
 
     <form class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <input type="text" class="ins-search-input search-form-input" placeholder="Buscar" />
         <button type="submit" class="search-form-submit"></button>
     </form>
     <div class="ins-search">
@@ -113,10 +113,10 @@ ga('send', 'pageview');
 (function (window) {
     var INSIGHT_CONFIG = {
         TRANSLATION: {
-            POSTS: 'Posts',
+            POSTS: 'Entradas',
             PAGES: 'Pages',
-            CATEGORIES: 'Categories',
-            TAGS: 'Tags',
+            CATEGORIES: 'Categorias',
+            TAGS: 'Etiquetas',
             UNTITLED: '(Untitled)',
         },
         ROOT_URL: '/',
@@ -147,7 +147,7 @@ ga('send', 'pageview');
                 <td>
                     
     <div class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <input type="text" class="ins-search-input search-form-input" placeholder="Buscar" />
     </div>
 
                 </td>
@@ -167,16 +167,16 @@ ga('send', 'pageview');
             <h2 id="name">Leon Chen</h2>
             <h3 id="title">Android Developer</h3>
             <span id="location"><i class="fa fa-map-marker"></i>XiaMen, China</span>
-            <a id="follow" target="_blank" href="https://github.com/LeonChen1024">FOLLOW</a>
+            <a id="follow" target="_blank" href="https://github.com/LeonChen1024">SEGUIR</a>
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                3
-                <span>posts</span>
+                6
+                <span>Entradas</span>
             </div>
             <div class="article-info-block">
-                6
-                <span>tags</span>
+                9
+                <span>Etiquetas</span>
             </div>
         </div>
         
@@ -264,6 +264,11 @@ ga('send', 'pageview');
 <li>让用户了解当前的版本信息，了解升级或者降级信息等</li>
 <li>不同的版本可能提供的服务和功能有所差别，版本信息可以给我们一个标志来识别当前版本可提供的服务和功能。</li>
 </ul>
+<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ul>
+<li><a href="#设置版本信息">设置版本信息</a></li>
+<li><a href="#统一配置">统一配置</a></li>
+<li><a href="#reference">Reference</a></li>
+</ul>
 <h2 id="设置版本信息"><a href="#设置版本信息" class="headerlink" title="设置版本信息"></a>设置版本信息</h2><p>官方推荐是在Gradle中进行版本设置，因为Gradle中设置的版本信息会在构建的时候合并到manifest文件中，并会替换掉manifest中有关版本信息的设置。并且在Gradle中进行设置的话还可以根据应用不同的Flavor进行不同的设置。</p>
 <p>版本控制主要有这么两个属性：</p>
 <p>-versionCode ： 整数，是内部版本号，仅用于判断一个版本是否比另一个版本新，用户并不会看到。通常是跟随着发布版本增加该code。</p>
@@ -291,6 +296,11 @@ ga('send', 'pageview');
 <li>让用户了解当前的版本信息，了解升级或者降级信息等</li>
 <li>不同的版本可能提供的服务和功能有所差别，版本信息可以给我们一个标志来识别当前版本可提供的服务和功能。</li>
 </ul>
+<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ul>
+<li><a href="#设置版本信息">设置版本信息</a></li>
+<li><a href="#统一配置">统一配置</a></li>
+<li><a href="#reference">Reference</a></li>
+</ul>
 <h2 id="设置版本信息"><a href="#设置版本信息" class="headerlink" title="设置版本信息"></a>设置版本信息</h2><p>官方推荐是在Gradle中进行版本设置，因为Gradle中设置的版本信息会在构建的时候合并到manifest文件中，并会替换掉manifest中有关版本信息的设置。并且在Gradle中进行设置的话还可以根据应用不同的Flavor进行不同的设置。</p>
 <p>版本控制主要有这么两个属性：</p>
 <p>-versionCode ： 整数，是内部版本号，仅用于判断一个版本是否比另一个版本新，用户并不会看到。通常是跟随着发布版本增加该code。</p>
@@ -317,7 +327,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://yoursite.com/2018/04/13/APP-Version-Control/" data-id="cjgunrmd30000xzgjgwstvlvh" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2018/04/13/APP-Version-Control/" data-id="cjgxp99yg00006agjgntaxkyo" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -394,7 +404,7 @@ ga('send', 'pageview');
     
     
         <a href="/2018/01/10/Android-Error-And-Solution/" id="article-nav-older" class="article-nav-link-wrap">
-            <strong class="article-nav-caption">Older</strong>
+            <strong class="article-nav-caption">Más viejo</strong>
             <div class="article-nav-title">Android 相关错误及解决办法</div>
         </a>
     
@@ -419,7 +429,7 @@ ga('send', 'pageview');
    
         
     <div class="widget-wrap">
-        <h3 class="widget-title">recent</h3>
+        <h3 class="widget-title">Recientes</h3>
         <div class="widget">
             <ul id="recent-post" class="">
                 
@@ -464,19 +474,57 @@ ga('send', 'pageview');
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2016/03/09/Byte-Common-transition/" class="thumbnail">
+                            <a href="/2016/08/20/Android-6.0-Change-2/" class="thumbnail">
     
     
-        <span style="background-image:url(/2016/03/09/Byte-Common-transition/ByteThumb.jpg)" alt="Byte 常用转换" class="thumbnail-image"></span>
+        <span style="background-image:url(/2016/08/20/Android-6.0-Change-2/picThumb.jpg)" alt="Android 6.0的变化 （下）" class="thumbnail-image"></span>
     
 </a>
 
                         </div>
                         
                         <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Chinese/">Chinese</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/Chinese/Java/">Java</a></p>
-                            <p class="item-title"><a href="/2016/03/09/Byte-Common-transition/" class="title">Byte 常用转换</a></p>
-                            <p class="item-date"><time datetime="2016-03-08T16:00:00.000Z" itemprop="datePublished">2016-03-09</time></p>
+                            <p class="item-category"><a class="article-category-link" href="/categories/Chinese/">Chinese</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/Chinese/Android/">Android</a></p>
+                            <p class="item-title"><a href="/2016/08/20/Android-6.0-Change-2/" class="title">Android 6.0的变化 （下）</a></p>
+                            <p class="item-date"><time datetime="2016-08-20T15:31:40.000Z" itemprop="datePublished">2016-08-20</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/08/20/Android-6.0-Change-1/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/2016/08/20/Android-6.0-Change-1/picThumb.jpg)" alt="Android 6.0的变化 （上）" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Chinese/">Chinese</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/Chinese/Android/">Android</a></p>
+                            <p class="item-title"><a href="/2016/08/20/Android-6.0-Change-1/" class="title">Android 6.0的变化 （上）</a></p>
+                            <p class="item-date"><time datetime="2016-08-20T12:21:44.000Z" itemprop="datePublished">2016-08-20</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/03/17/Android-declare-styleable-Attribute/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/2016/03/17/Android-declare-styleable-Attribute/picThumb.jpg)" alt="Android declare-styleable自定义属性" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Chinese/">Chinese</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/Chinese/Android/">Android</a></p>
+                            <p class="item-title"><a href="/2016/03/17/Android-declare-styleable-Attribute/" class="title">Android declare-styleable自定义属性</a></p>
+                            <p class="item-date"><time datetime="2016-03-17T07:24:26.000Z" itemprop="datePublished">2016-03-17</time></p>
                         </div>
                     </li>
                 
@@ -487,43 +535,43 @@ ga('send', 'pageview');
     
         
     <div class="widget-wrap">
-        <h3 class="widget-title">categories</h3>
+        <h3 class="widget-title">Categorias</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/">Chinese</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/">Android</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/Error/">Error</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/版本管理/">版本管理</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Java/">Java</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Java/Data-Structure/">Data Structure</a><span class="category-list-count">1</span></li></ul></li></ul></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/">Chinese</a><span class="category-list-count">6</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/">Android</a><span class="category-list-count">5</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/Error/">Error</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/UI/">UI</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/UI/Custom-View/">Custom View</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/版本差异/">版本差异</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/版本管理/">版本管理</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Java/">Java</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Java/Data-Structure/">Data Structure</a><span class="category-list-count">1</span></li></ul></li></ul></li></ul>
         </div>
     </div>
 
     
         
     <div class="widget-wrap">
-        <h3 class="widget-title">archives</h3>
+        <h3 class="widget-title">Archivos</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">1</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">2</span></li></ul>
         </div>
     </div>
 
     
         
     <div class="widget-wrap">
-        <h3 class="widget-title">tags</h3>
+        <h3 class="widget-title">Etiquetas</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chinese/">Chinese</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Structure/">Data Structure</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Error/">Error</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/版本管理/">版本管理</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chinese/">Chinese</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Custom-View/">Custom View</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Structure/">Data Structure</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Error/">Error</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UI/">UI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/版本差异/">版本差异</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/版本管理/">版本管理</a><span class="tag-list-count">1</span></li></ul>
         </div>
     </div>
 
     
         
     <div class="widget-wrap">
-        <h3 class="widget-title">tag cloud</h3>
+        <h3 class="widget-title">Nube de etiquetas</h3>
         <div class="widget tagcloud">
-            <a href="/tags/Android/" style="font-size: 15px;">Android</a> <a href="/tags/Chinese/" style="font-size: 20px;">Chinese</a> <a href="/tags/Data-Structure/" style="font-size: 10px;">Data Structure</a> <a href="/tags/Error/" style="font-size: 10px;">Error</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/版本管理/" style="font-size: 10px;">版本管理</a>
+            <a href="/tags/Android/" style="font-size: 16.67px;">Android</a> <a href="/tags/Chinese/" style="font-size: 20px;">Chinese</a> <a href="/tags/Custom-View/" style="font-size: 10px;">Custom View</a> <a href="/tags/Data-Structure/" style="font-size: 10px;">Data Structure</a> <a href="/tags/Error/" style="font-size: 10px;">Error</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/UI/" style="font-size: 10px;">UI</a> <a href="/tags/版本差异/" style="font-size: 13.33px;">版本差异</a> <a href="/tags/版本管理/" style="font-size: 10px;">版本管理</a>
         </div>
     </div>
 
     
         
     <div class="widget-wrap widget-list">
-        <h3 class="widget-title">links</h3>
+        <h3 class="widget-title">Links</h3>
         <div class="widget">
             <ul>
                 
