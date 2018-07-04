@@ -5,21 +5,21 @@
     
     <title>LeetCode 1 Two Sum [Chinese ver] | LeonChen&#39;s Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="[Chinese ver]1 Two Sum[TOC]   Question 方法一：暴力循环 方法二：两次循环的 hash table 方法三：一次循环的 hash table   Question两数求和 。给定一个整数的数组，返回两个数字的索引使得这两个数字加起来成为一个指定的目标值。你可以假设每个输入都至少有一个解决方案，并且你不能使用相同的元素两次。 Example:123Given n">
+    <meta name="description" content="[Chinese ver]1 Two SumQuestion两数求和 。给定一个整数的数组，返回两个数字的索引使得这两个数字加起来成为一个指定的目标值。你可以假设每个输入都至少有一个解决方案，并且你不能使用相同的元素两次。">
 <meta name="keywords" content="Chinese,Algorithm,LeetCode">
 <meta property="og:type" content="article">
 <meta property="og:title" content="LeetCode 1 Two Sum [Chinese ver]">
 <meta property="og:url" content="http://yoursite.com/2017/02/17/1-Two-Sum/Record[Chinese ver]/index.html">
 <meta property="og:site_name" content="LeonChen&#39;s Blog">
-<meta property="og:description" content="[Chinese ver]1 Two Sum[TOC]   Question 方法一：暴力循环 方法二：两次循环的 hash table 方法三：一次循环的 hash table   Question两数求和 。给定一个整数的数组，返回两个数字的索引使得这两个数字加起来成为一个指定的目标值。你可以假设每个输入都至少有一个解决方案，并且你不能使用相同的元素两次。 Example:123Given n">
+<meta property="og:description" content="[Chinese ver]1 Two SumQuestion两数求和 。给定一个整数的数组，返回两个数字的索引使得这两个数字加起来成为一个指定的目标值。你可以假设每个输入都至少有一个解决方案，并且你不能使用相同的元素两次。">
 <meta property="og:image" content="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/1%20Two%20Sum/Images/WrongResult.png?raw=true">
 <meta property="og:image" content="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/1%20Two%20Sum/Images/BruteForceResult.png?raw=true">
 <meta property="og:image" content="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/1%20Two%20Sum/Images/Twopassresult.png?raw=true">
 <meta property="og:image" content="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/1%20Two%20Sum/Images/One-pass_result.png?raw=true">
-<meta property="og:updated_time" content="2018-07-03T23:54:48.531Z">
+<meta property="og:updated_time" content="2018-07-04T13:51:35.951Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LeetCode 1 Two Sum [Chinese ver]">
-<meta name="twitter:description" content="[Chinese ver]1 Two Sum[TOC]   Question 方法一：暴力循环 方法二：两次循环的 hash table 方法三：一次循环的 hash table   Question两数求和 。给定一个整数的数组，返回两个数字的索引使得这两个数字加起来成为一个指定的目标值。你可以假设每个输入都至少有一个解决方案，并且你不能使用相同的元素两次。 Example:123Given n">
+<meta name="twitter:description" content="[Chinese ver]1 Two SumQuestion两数求和 。给定一个整数的数组，返回两个数字的索引使得这两个数字加起来成为一个指定的目标值。你可以假设每个输入都至少有一个解决方案，并且你不能使用相同的元素两次。">
 <meta name="twitter:image" content="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/1%20Two%20Sum/Images/WrongResult.png?raw=true">
     
 
@@ -252,18 +252,15 @@ ga('send', 'pageview');
             
             
                 
+            <div id="toc" class="toc-article">
+                <strong class="toc-title">Catalogue</strong>
+                <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">[Chinese ver]1 Two Sum</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.1.</span> <span class="toc-text">Question</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.2.</span> <span class="toc-text">方法一：暴力循环</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.3.</span> <span class="toc-text">方法二：两次循环的 hash table</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.4.</span> <span class="toc-text">方法三：一次循环的 hash table</span></a></li></ol></li></ol>
+            </div>
             
             
-            <h1><span id="chinese-ver1-two-sum">[Chinese ver]1 Two Sum</span></h1><p>[TOC]</p>
-<!-- toc -->
-<ul>
-<li><a href="#question">Question</a></li>
-<li><a href="#方法一暴力循环">方法一：暴力循环</a></li>
-<li><a href="#方法二两次循环的-hash-table">方法二：两次循环的 hash table</a></li>
-<li><a href="#方法三一次循环的-hash-table">方法三：一次循环的 hash table</a></li>
-</ul>
-<!-- tocstop -->
-<h2><span id="question">Question</span></h2><p>两数求和 。给定一个整数的数组，返回两个数字的索引使得这两个数字加起来成为一个指定的目标值。<br>你可以假设每个输入都至少有一个解决方案，并且你不能使用相同的元素两次。</p>
+            
+            <h1><span id="chinese-ver1-two-sum">[Chinese ver]1 Two Sum</span></h1><h2><span id="question">Question</span></h2><p>两数求和 。给定一个整数的数组，返回两个数字的索引使得这两个数字加起来成为一个指定的目标值。<br>你可以假设每个输入都至少有一个解决方案，并且你不能使用相同的元素两次。</p>
+<a id="more"></a>
 <p><strong>Example:</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Given nums = [2, 7, 11, 15], target = 9,</div><div class="line">Because nums[0] + nums[1] = 2 + 7 = 9,</div><div class="line">return [0, 1].</div></pre></td></tr></table></figure></p>
 <p>首先是一次错误的尝试<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] twoSum(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target) &#123;</div><div class="line">        <span class="keyword">int</span>[] testNums = <span class="keyword">new</span> <span class="keyword">int</span>[nums.length];</div><div class="line">        <span class="keyword">int</span> j = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;nums.length;i++)&#123;</div><div class="line">            <span class="keyword">if</span>(nums[i]&lt;target)&#123;</div><div class="line">                testNums[j] = nums[i];</div><div class="line">                j=j+<span class="number">1</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> l=<span class="number">0</span>;l&lt;j;l++)&#123;</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> k=l+<span class="number">1</span>;k&lt;j;k++)&#123;</div><div class="line">                <span class="keyword">if</span>(testNums[l]+testNums[k]==target)&#123;</div><div class="line">                    <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;l,k&#125;;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">      <span class="keyword">return</span> <span class="keyword">null</span>; </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/1%20Two%20Sum/Images/WrongResult.png?raw=true" alt="出错啦！！"></p>
@@ -287,16 +284,13 @@ ga('send', 'pageview');
         <!--<div class="article-entry" itemprop="articleBody">-->
             <!---->
             <!---->
-            <!--<h1><span id="chinese-ver1-two-sum">[Chinese ver]1 Two Sum</span></h1><p>[TOC]</p>
-<!-- toc -->
-<ul>
-<li><a href="#question">Question</a></li>
-<li><a href="#方法一暴力循环">方法一：暴力循环</a></li>
-<li><a href="#方法二两次循环的-hash-table">方法二：两次循环的 hash table</a></li>
-<li><a href="#方法三一次循环的-hash-table">方法三：一次循环的 hash table</a></li>
-</ul>
-<!-- tocstop -->
-<h2><span id="question">Question</span></h2><p>两数求和 。给定一个整数的数组，返回两个数字的索引使得这两个数字加起来成为一个指定的目标值。<br>你可以假设每个输入都至少有一个解决方案，并且你不能使用相同的元素两次。</p>
+            <!--<div id="toc" class="toc-article">-->
+                <!--<strong class="toc-title">Catalogue</strong>-->
+                <!--<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">[Chinese ver]1 Two Sum</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.1.</span> <span class="toc-text">Question</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.2.</span> <span class="toc-text">方法一：暴力循环</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.3.</span> <span class="toc-text">方法二：两次循环的 hash table</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.4.</span> <span class="toc-text">方法三：一次循环的 hash table</span></a></li></ol></li></ol>-->
+            <!--</div>-->
+            <!---->
+            <!--<h1><span id="chinese-ver1-two-sum">[Chinese ver]1 Two Sum</span></h1><h2><span id="question">Question</span></h2><p>两数求和 。给定一个整数的数组，返回两个数字的索引使得这两个数字加起来成为一个指定的目标值。<br>你可以假设每个输入都至少有一个解决方案，并且你不能使用相同的元素两次。</p>
+<a id="more"></a>
 <p><strong>Example:</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Given nums = [2, 7, 11, 15], target = 9,</div><div class="line">Because nums[0] + nums[1] = 2 + 7 = 9,</div><div class="line">return [0, 1].</div></pre></td></tr></table></figure></p>
 <p>首先是一次错误的尝试<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] twoSum(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target) &#123;</div><div class="line">        <span class="keyword">int</span>[] testNums = <span class="keyword">new</span> <span class="keyword">int</span>[nums.length];</div><div class="line">        <span class="keyword">int</span> j = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;nums.length;i++)&#123;</div><div class="line">            <span class="keyword">if</span>(nums[i]&lt;target)&#123;</div><div class="line">                testNums[j] = nums[i];</div><div class="line">                j=j+<span class="number">1</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> l=<span class="number">0</span>;l&lt;j;l++)&#123;</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> k=l+<span class="number">1</span>;k&lt;j;k++)&#123;</div><div class="line">                <span class="keyword">if</span>(testNums[l]+testNums[k]==target)&#123;</div><div class="line">                    <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;l,k&#125;;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">      <span class="keyword">return</span> <span class="keyword">null</span>; </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/1%20Two%20Sum/Images/WrongResult.png?raw=true" alt="出错啦！！"></p>
@@ -324,7 +318,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/02/17/1-Two-Sum/Record[Chinese ver]/" data-id="cjj6cvmwv0028bjgj8rca202u" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/02/17/1-Two-Sum/Record[Chinese ver]/" data-id="cjj76nz1s0029jygjerwbbrjz" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -399,19 +393,19 @@ ga('send', 'pageview');
     
 <nav id="article-nav">
     
-        <a href="/2018/01/10/Android-Error-And-Solution/" id="article-nav-newer" class="article-nav-link-wrap">
+        <a href="/2017/02/17/1-Two-Sum/Record[English ver]/" id="article-nav-newer" class="article-nav-link-wrap">
             <strong class="article-nav-caption">Newer</strong>
             <div class="article-nav-title">
                 
-                    Android 相关错误及解决办法
+                    LeetCode 1 Two Sum [English ver]
                 
             </div>
         </a>
     
     
-        <a href="/2017/02/17/1-Two-Sum/Record[English ver]/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2016/08/20/Android-6.0-Change-2/" id="article-nav-older" class="article-nav-link-wrap">
             <strong class="article-nav-caption">Older</strong>
-            <div class="article-nav-title">LeetCode 1 Two Sum [English ver]</div>
+            <div class="article-nav-title">Android 6.0的变化 （下）</div>
         </a>
     
 </nav>
@@ -480,25 +474,6 @@ ga('send', 'pageview');
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2017/02/17/1-Two-Sum/Record[Chinese ver]/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Chinese/">Chinese</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/Chinese/Algorithm/">Algorithm</a></p>
-                            <p class="item-title"><a href="/2017/02/17/1-Two-Sum/Record[Chinese ver]/" class="title">LeetCode 1 Two Sum [Chinese ver]</a></p>
-                            <p class="item-date"><time datetime="2017-02-16T16:00:00.000Z" itemprop="datePublished">2017-02-17</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
                             <a href="/2017/02/17/1-Two-Sum/Record[English ver]/" class="thumbnail">
     
     
@@ -511,6 +486,25 @@ ga('send', 'pageview');
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/English/">English</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/English/Algorithm/">Algorithm</a></p>
                             <p class="item-title"><a href="/2017/02/17/1-Two-Sum/Record[English ver]/" class="title">LeetCode 1 Two Sum [English ver]</a></p>
+                            <p class="item-date"><time datetime="2017-02-16T16:00:00.000Z" itemprop="datePublished">2017-02-17</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/02/17/1-Two-Sum/Record[Chinese ver]/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Chinese/">Chinese</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/Chinese/Algorithm/">Algorithm</a></p>
+                            <p class="item-title"><a href="/2017/02/17/1-Two-Sum/Record[Chinese ver]/" class="title">LeetCode 1 Two Sum [Chinese ver]</a></p>
                             <p class="item-date"><time datetime="2017-02-16T16:00:00.000Z" itemprop="datePublished">2017-02-17</time></p>
                         </div>
                     </li>

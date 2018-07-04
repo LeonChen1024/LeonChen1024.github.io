@@ -5,21 +5,21 @@
     
     <title>LeetCode 1 Two Sum [English ver] | LeonChen&#39;s Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="[English ver]1 Two Sum[TOC] QuestionTwo SumGiven an array of integers, return indices of the two numbers such that they add up to a specific target.You may assume that each input would have exactly on">
-<meta name="keywords" content="Algorithm,LeetCode,English">
+    <meta name="description" content="[English ver]1 Two SumQuestionTwo SumGiven an array of integers, return indices of the two numbers such that they add up to a specific target.You may assume that each input would have exactly one solu">
+<meta name="keywords" content="English,Algorithm,LeetCode">
 <meta property="og:type" content="article">
 <meta property="og:title" content="LeetCode 1 Two Sum [English ver]">
 <meta property="og:url" content="http://yoursite.com/2017/02/17/1-Two-Sum/Record[English ver]/index.html">
 <meta property="og:site_name" content="LeonChen&#39;s Blog">
-<meta property="og:description" content="[English ver]1 Two Sum[TOC] QuestionTwo SumGiven an array of integers, return indices of the two numbers such that they add up to a specific target.You may assume that each input would have exactly on">
+<meta property="og:description" content="[English ver]1 Two SumQuestionTwo SumGiven an array of integers, return indices of the two numbers such that they add up to a specific target.You may assume that each input would have exactly one solu">
 <meta property="og:image" content="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/1%20Two%20Sum/Images/WrongResult.png?raw=true">
 <meta property="og:image" content="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/1%20Two%20Sum/Images/BruteForceResult.png?raw=true">
 <meta property="og:image" content="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/1%20Two%20Sum/Images/Twopassresult.png?raw=true">
 <meta property="og:image" content="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/1%20Two%20Sum/Images/One-pass_result.png?raw=true">
-<meta property="og:updated_time" content="2018-07-03T23:46:55.963Z">
+<meta property="og:updated_time" content="2018-07-04T13:51:02.609Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LeetCode 1 Two Sum [English ver]">
-<meta name="twitter:description" content="[English ver]1 Two Sum[TOC] QuestionTwo SumGiven an array of integers, return indices of the two numbers such that they add up to a specific target.You may assume that each input would have exactly on">
+<meta name="twitter:description" content="[English ver]1 Two SumQuestionTwo SumGiven an array of integers, return indices of the two numbers such that they add up to a specific target.You may assume that each input would have exactly one solu">
 <meta name="twitter:image" content="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/1%20Two%20Sum/Images/WrongResult.png?raw=true">
     
 
@@ -252,11 +252,17 @@ ga('send', 'pageview');
             
             
                 
+            <div id="toc" class="toc-article">
+                <strong class="toc-title">Catalogue</strong>
+                <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">[English ver]1 Two Sum</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.1.</span> <span class="toc-text">Question</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.2.</span> <span class="toc-text">Approach 1：Brute Force</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.3.</span> <span class="toc-text">Approach 2 Two-pass Hash Table</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.4.</span> <span class="toc-text">Approach 3 One-pass Hash Table</span></a></li></ol></li></ol>
+            </div>
             
             
-            <h1><span id="english-ver1-two-sum">[English ver]1 Two Sum</span></h1><p>[TOC]</p>
-<h2><span id="question">Question</span></h2><p>Two SumGiven an array of integers, return <strong>indices</strong> of the two numbers such that they add up to a specific target.<br>You may assume that each input would have <strong><em>exactly</em></strong> one solution, and you may not use the <em>same</em> element twice.</p>
-<p><strong>Example:</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Given nums = [2, 7, 11, 15], target = 9,</div><div class="line">Because nums[0] + nums[1] = 2 + 7 = 9,</div><div class="line">return [0, 1].</div></pre></td></tr></table></figure></p>
+            
+            <h1><span id="english-ver1-two-sum">[English ver]1 Two Sum</span></h1><h2><span id="question">Question</span></h2><p>Two SumGiven an array of integers, return <strong>indices</strong> of the two numbers such that they add up to a specific target.<br>You may assume that each input would have <strong><em>exactly</em></strong> one solution, and you may not use the <em>same</em> element twice.</p>
+<a id="more"></a>
+<p><strong>Example:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Given nums = [2, 7, 11, 15], target = 9,</div><div class="line">Because nums[0] + nums[1] = 2 + 7 = 9,</div><div class="line">return [0, 1].</div></pre></td></tr></table></figure>
 <p>First time, i got a wrong try.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public int[] twoSum(int[] nums, int target) &#123;</div><div class="line">        int[] testNums = new int[nums.length];</div><div class="line">        int j = 0;</div><div class="line">        for (int i=0;i&lt;nums.length;i++)&#123;</div><div class="line">            if(nums[i]&lt;target)&#123;</div><div class="line">                testNums[j] = nums[i];</div><div class="line">                j=j+1;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        for(int l=0;l&lt;j;l++)&#123;</div><div class="line">            for(int k=l+1;k&lt;j;k++)&#123;</div><div class="line">                if(testNums[l]+testNums[k]==target)&#123;</div><div class="line">                    return new int[]&#123;l,k&#125;;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">      return null; </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/1%20Two%20Sum/Images/WrongResult.png?raw=true" alt="wrong！！"></p>
 <p>I did not understand the meaning of problem , the last we get by this solution are the index of the array which we created , rather than the requirements of the index of he gave , fainted. . . Later  i had found a more serious problem. . The problem did not say there can not be negative number ! . . . It is not necessary to determine whether the value of the array is bigger than the target number. . .</p>
@@ -281,9 +287,15 @@ ga('send', 'pageview');
         <!--<div class="article-entry" itemprop="articleBody">-->
             <!---->
             <!---->
-            <!--<h1><span id="english-ver1-two-sum">[English ver]1 Two Sum</span></h1><p>[TOC]</p>
-<h2><span id="question">Question</span></h2><p>Two SumGiven an array of integers, return <strong>indices</strong> of the two numbers such that they add up to a specific target.<br>You may assume that each input would have <strong><em>exactly</em></strong> one solution, and you may not use the <em>same</em> element twice.</p>
-<p><strong>Example:</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Given nums = [2, 7, 11, 15], target = 9,</div><div class="line">Because nums[0] + nums[1] = 2 + 7 = 9,</div><div class="line">return [0, 1].</div></pre></td></tr></table></figure></p>
+            <!--<div id="toc" class="toc-article">-->
+                <!--<strong class="toc-title">Catalogue</strong>-->
+                <!--<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">[English ver]1 Two Sum</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.1.</span> <span class="toc-text">Question</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.2.</span> <span class="toc-text">Approach 1：Brute Force</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.3.</span> <span class="toc-text">Approach 2 Two-pass Hash Table</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.4.</span> <span class="toc-text">Approach 3 One-pass Hash Table</span></a></li></ol></li></ol>-->
+            <!--</div>-->
+            <!---->
+            <!--<h1><span id="english-ver1-two-sum">[English ver]1 Two Sum</span></h1><h2><span id="question">Question</span></h2><p>Two SumGiven an array of integers, return <strong>indices</strong> of the two numbers such that they add up to a specific target.<br>You may assume that each input would have <strong><em>exactly</em></strong> one solution, and you may not use the <em>same</em> element twice.</p>
+<a id="more"></a>
+<p><strong>Example:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Given nums = [2, 7, 11, 15], target = 9,</div><div class="line">Because nums[0] + nums[1] = 2 + 7 = 9,</div><div class="line">return [0, 1].</div></pre></td></tr></table></figure>
 <p>First time, i got a wrong try.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public int[] twoSum(int[] nums, int target) &#123;</div><div class="line">        int[] testNums = new int[nums.length];</div><div class="line">        int j = 0;</div><div class="line">        for (int i=0;i&lt;nums.length;i++)&#123;</div><div class="line">            if(nums[i]&lt;target)&#123;</div><div class="line">                testNums[j] = nums[i];</div><div class="line">                j=j+1;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        for(int l=0;l&lt;j;l++)&#123;</div><div class="line">            for(int k=l+1;k&lt;j;k++)&#123;</div><div class="line">                if(testNums[l]+testNums[k]==target)&#123;</div><div class="line">                    return new int[]&#123;l,k&#125;;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">      return null; </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/1%20Two%20Sum/Images/WrongResult.png?raw=true" alt="wrong！！"></p>
 <p>I did not understand the meaning of problem , the last we get by this solution are the index of the array which we created , rather than the requirements of the index of he gave , fainted. . . Later  i had found a more serious problem. . The problem did not say there can not be negative number ! . . . It is not necessary to determine whether the value of the array is bigger than the target number. . .</p>
@@ -312,7 +324,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/02/17/1-Two-Sum/Record[English ver]/" data-id="cjj6cvmww0029bjgj3ladhbhd" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/02/17/1-Two-Sum/Record[English ver]/" data-id="cjj76nz1r0028jygjgj8yfy3v" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -387,19 +399,19 @@ ga('send', 'pageview');
     
 <nav id="article-nav">
     
-        <a href="/2017/02/17/1-Two-Sum/Record[Chinese ver]/" id="article-nav-newer" class="article-nav-link-wrap">
+        <a href="/2018/01/10/Android-Error-And-Solution/" id="article-nav-newer" class="article-nav-link-wrap">
             <strong class="article-nav-caption">Newer</strong>
             <div class="article-nav-title">
                 
-                    LeetCode 1 Two Sum [Chinese ver]
+                    Android 相关错误及解决办法
                 
             </div>
         </a>
     
     
-        <a href="/2016/08/20/Android-6.0-Change-2/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2017/02/17/1-Two-Sum/Record[Chinese ver]/" id="article-nav-older" class="article-nav-link-wrap">
             <strong class="article-nav-caption">Older</strong>
-            <div class="article-nav-title">Android 6.0的变化 （下）</div>
+            <div class="article-nav-title">LeetCode 1 Two Sum [Chinese ver]</div>
         </a>
     
 </nav>
@@ -468,25 +480,6 @@ ga('send', 'pageview');
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2017/02/17/1-Two-Sum/Record[Chinese ver]/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Chinese/">Chinese</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/Chinese/Algorithm/">Algorithm</a></p>
-                            <p class="item-title"><a href="/2017/02/17/1-Two-Sum/Record[Chinese ver]/" class="title">LeetCode 1 Two Sum [Chinese ver]</a></p>
-                            <p class="item-date"><time datetime="2017-02-16T16:00:00.000Z" itemprop="datePublished">2017-02-17</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
                             <a href="/2017/02/17/1-Two-Sum/Record[English ver]/" class="thumbnail">
     
     
@@ -499,6 +492,25 @@ ga('send', 'pageview');
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/English/">English</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/English/Algorithm/">Algorithm</a></p>
                             <p class="item-title"><a href="/2017/02/17/1-Two-Sum/Record[English ver]/" class="title">LeetCode 1 Two Sum [English ver]</a></p>
+                            <p class="item-date"><time datetime="2017-02-16T16:00:00.000Z" itemprop="datePublished">2017-02-17</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/02/17/1-Two-Sum/Record[Chinese ver]/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Chinese/">Chinese</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/Chinese/Algorithm/">Algorithm</a></p>
+                            <p class="item-title"><a href="/2017/02/17/1-Two-Sum/Record[Chinese ver]/" class="title">LeetCode 1 Two Sum [Chinese ver]</a></p>
                             <p class="item-date"><time datetime="2017-02-16T16:00:00.000Z" itemprop="datePublished">2017-02-17</time></p>
                         </div>
                     </li>

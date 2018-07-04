@@ -322,7 +322,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://yoursite.com/2018/04/13/APP-Version-Control/" data-id="cjj6cvmty0000bjgjlyhrtl7t" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2018/04/13/APP-Version-Control/" data-id="cjj76nyyp0000jygjj0hhsv4v" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -506,201 +506,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://yoursite.com/2018/01/10/Android-Error-And-Solution/" data-id="cjj6cvmui0007bjgjov9t3b70" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-
-
-
-
-    <article id="post-1-Two-Sum/Record[Chinese ver]" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-        <header class="article-header">
-            
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2017/02/17/1-Two-Sum/Record[Chinese ver]/">LeetCode 1 Two Sum [Chinese ver]</a>
-        </h1>
-    
-
-            
-            <div class="article-meta">
-                
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2017/02/17/1-Two-Sum/Record[Chinese ver]/">
-            <time datetime="2017-02-16T16:00:00.000Z" itemprop="datePublished">2017-02-17</time>
-        </a>
-    </div>
-
-
-                
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/Chinese/">Chinese</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/Chinese/Algorithm/">Algorithm</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/Chinese/Algorithm/LeetCode/">LeetCode</a>
-    </div>
-
-                
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/Algorithm/">Algorithm</a>, <a class="tag-link" href="/tags/Chinese/">Chinese</a>, <a class="tag-link" href="/tags/LeetCode/">LeetCode</a>
-    </div>
-
-            </div>
-            
-        </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            <p><h1><span id="chinese-ver1-two-sum">[Chinese ver]1 Two Sum</span></h1><p>[TOC]</p>
-<!-- toc -->
-<ul>
-<li><a href="#question">Question</a></li>
-<p>
-                
-                
-                
-            
-    </div>
-    <div class="article-more-link">
-        <a href="/2017/02/17/1-Two-Sum/Record[Chinese ver]/#more">Read More</a>
-    </div>
-    
-        <!--<div class="article-entry" itemprop="articleBody">-->
-            <!---->
-            <!---->
-            <!--<h1><span id="chinese-ver1-two-sum">[Chinese ver]1 Two Sum</span></h1><p>[TOC]</p>
-<!-- toc -->
-<ul>
-<li><a href="#question">Question</a></li>
-<li><a href="#方法一暴力循环">方法一：暴力循环</a></li>
-<li><a href="#方法二两次循环的-hash-table">方法二：两次循环的 hash table</a></li>
-<li><a href="#方法三一次循环的-hash-table">方法三：一次循环的 hash table</a></li>
-</ul>
-<!-- tocstop -->
-<h2><span id="question">Question</span></h2><p>两数求和 。给定一个整数的数组，返回两个数字的索引使得这两个数字加起来成为一个指定的目标值。<br>你可以假设每个输入都至少有一个解决方案，并且你不能使用相同的元素两次。</p>
-<p><strong>Example:</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Given nums = [2, 7, 11, 15], target = 9,</div><div class="line">Because nums[0] + nums[1] = 2 + 7 = 9,</div><div class="line">return [0, 1].</div></pre></td></tr></table></figure></p>
-<p>首先是一次错误的尝试<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] twoSum(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target) &#123;</div><div class="line">        <span class="keyword">int</span>[] testNums = <span class="keyword">new</span> <span class="keyword">int</span>[nums.length];</div><div class="line">        <span class="keyword">int</span> j = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;nums.length;i++)&#123;</div><div class="line">            <span class="keyword">if</span>(nums[i]&lt;target)&#123;</div><div class="line">                testNums[j] = nums[i];</div><div class="line">                j=j+<span class="number">1</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> l=<span class="number">0</span>;l&lt;j;l++)&#123;</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> k=l+<span class="number">1</span>;k&lt;j;k++)&#123;</div><div class="line">                <span class="keyword">if</span>(testNums[l]+testNums[k]==target)&#123;</div><div class="line">                    <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;l,k&#125;;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">      <span class="keyword">return</span> <span class="keyword">null</span>; </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/1%20Two%20Sum/Images/WrongResult.png?raw=true" alt="出错啦！！"></p>
-<p>没理解好题意，这种解法最后得到的是我们自定义数组的序号，而不是题目要求的序号，晕倒。。。后来发现一个更严重的问题。。他没有说过不能有负数！！！！也就不需要判断数组里的值是否大于和。。。</p>
-<p>然后重新构思一下，先来个基本的解法</p>
-<h2><span id="方法一暴力循环">方法一：暴力循环</span></h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] twoSum(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target) &#123;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;nums.length;i++)&#123;</div><div class="line">           <span class="keyword">for</span>(<span class="keyword">int</span> k=i+<span class="number">1</span>;k&lt;nums.length;k++)&#123;</div><div class="line">                <span class="keyword">if</span>(nums[i]+nums[k]==target)&#123;</div><div class="line">                    <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;i,k&#125;;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"No two sum solution"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>至于结果嘛，最简单的自然也高效不到哪里。<br><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/1%20Two%20Sum/Images/BruteForceResult.png?raw=true" alt="效率"></p>
-<p><strong>分析</strong><br>这个方法的原理很简单，就是将每一个值与其他的值循环遍历，看是否有符合条件的情况发生。稍微要注意的是   for(int k=i+1;k&lt;nums.length;k++) 这里k=i+1是为了避免前面循环过的情况再次循环一遍。<br>时间复杂度 ： O(n^2) 。n个元素都要循环遍历数组内其余的元素，所以是n^2。<br>空间复杂度 ： O(1) .</p>
-<h2><span id="方法二两次循环的-hash-table">方法二：两次循环的 hash table</span></h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">   <span class="keyword">public</span> <span class="keyword">int</span>[] twoSum(<span class="keyword">int</span>[] numbers, <span class="keyword">int</span> target) &#123;</div><div class="line">    Map&lt;Integer, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;Integer, Integer&gt;();</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; numbers.length; i++) &#123;</div><div class="line">        map.put(numbers[i],i);</div><div class="line">    &#125;</div><div class="line">   <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; numbers.length; i++) &#123;</div><div class="line">       <span class="keyword">int</span> requestNum = target - numbers[i];</div><div class="line">        <span class="keyword">if</span> (map.containsKey(requestNum)&amp;&amp;map.get(requestNum)!=i) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;i,map.get(requestNum)&#125;;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"No two sum solution"</span>);</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>可以看到效率有了很大的提升。</p>
-<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/1%20Two%20Sum/Images/Twopassresult.png?raw=true" alt="效率"></p>
-<p><strong>分析</strong><br>这个方法的原理其实就是使用hash table 来将时间成本来替换空间成本，将一次复杂度为O(n)的循环变为接近O(1)的查找，为什么是接近呢，因为如果hash table发生大量的碰撞，就会导致复杂度向O(n)靠近。我们将数组里每一个元素的值作为key存入hash table，而将其序列号作为对应的value存入hash table，然后遍历数组查找是否有对应的值在hash table 的key中，有则取出该key对应的value。<br>时间复杂度 ： O(n)<br>空间复杂度 ： O(n)</p>
-<h2><span id="方法三一次循环的-hash-table">方法三：一次循环的 hash table</span></h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">   <span class="keyword">public</span> <span class="keyword">int</span>[] twoSum(<span class="keyword">int</span>[] numbers, <span class="keyword">int</span> target) &#123;</div><div class="line">    Map&lt;Integer, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;Integer, Integer&gt;();</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; numbers.length; i++) &#123;</div><div class="line">       <span class="keyword">int</span> requestNum = target - numbers[i];</div><div class="line">        <span class="keyword">if</span> (map.containsKey(requestNum)) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;map.get(requestNum),i&#125;;</div><div class="line">        &#125;</div><div class="line">        map.put(numbers[i],i);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"No two sum solution"</span>);</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>效率稍微提高了一些。。但是有些不能接受啊。怎么还只是在中间的位置。。。然后试了几次，大概在40%到50%徘徊，前面那些是用什么算的。。。为何那么快。理论上来说至少需要循环比对结果一次，也就是需要O(n)的复杂度。</p>
-<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/1%20Two%20Sum/Images/One-pass_result.png?raw=true" alt="效率"></p>
-<p><strong>分析</strong><br>这个方法的原理其实就是方法二的一个改善，因为我们不需要将全部的数组都放入hash table ，我们最终的目的是为了得到两个相加等于目标数的值的序号即可，所以我们在将数组里的值放入hash table 的时候就进行比对，一旦得到所需要的值立即结束循环。<br>时间复杂度 ： O(n)<br>空间复杂度 ： O(n)</p>
-<p>如果你有更好的办法或者对我这里的描述有其他看法，请联系我。谢谢</p>
--->
-            <!---->
-        <!--</div>-->
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://yoursite.com/2017/02/17/1-Two-Sum/Record[Chinese ver]/" data-id="cjj6cvmwv0028bjgj8rca202u" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2018/01/10/Android-Error-And-Solution/" data-id="cjj76nyzd0008jygjccl3n97v" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -825,28 +631,8 @@ ga('send', 'pageview');
             
             
             
+            <p><h1 id="English-ver-1-Two-Sum"><a href="#English-ver-1-Two-Sum" class="headerlink" title="[English ver]1 Two Sum"></a>[English ver]1 Two Sum</h1><h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p>Two SumGiven an array of integers, return <strong>indices</strong> of the two numbers such that they add up to a specific target.<br>You may assume that each input would have <strong><em>exactly</em></strong> one solution, and you may not use the <em>same</em> element twice.</p></p>
             
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            <p><h1><span id="english-ver1-two-sum">[English ver]1 Two Sum</span></h1><p>[TOC]</p>
-<h2><span id="question">Question</span></h2><p>Two SumGiven an array of integers, return <strong>indices</strong> of the two numbers such that they add up to a specific target.<br>You may assume that each input would have <strong><em>exactly</em></strong> one solution, and you may not use the <em>same</em> element twice.</p>
-<p><strong>Example:</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Given nums = [2, 7, 11, 15], target = 9,</div><div class="line">Because nums[0] + nums[1] = 2 + 7 = 9,</div><div class="line">return [0, 1].</div></pre></td></tr></table></figure></p>
-<p>First time, i got a wrong try.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public int[] twoSum(int[] nums, int target) &#123;</div><div class="line">        int[] testNums = new int[nums.length];</div><div class="line">        int j = 0;</div><div class="line">        for (int i=0;i&lt;nums.length;i++)&#123;</div><div class="line">            if(nums[i]&lt;target)&#123;</div><div class="line">                testNums[j] = nums[i];</div><div class="line">                j=j+1;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        for(int l=0;l&lt;j;l++)&#123;</div><div class="line">            for(int k=l+1;k&lt;j;k++)&#123;</div><div class="line">                if(testNums[l]+testNums[k]==target)&#123;</div><div class="line">                    return new int[]&#123;l,k&#125;;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">      return null; </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>
-                
-                
                 
             
     </div>
@@ -856,29 +642,10 @@ ga('send', 'pageview');
     
         <!--<div class="article-entry" itemprop="articleBody">-->
             <!---->
-            <!---->
-            <!--<h1><span id="english-ver1-two-sum">[English ver]1 Two Sum</span></h1><p>[TOC]</p>
-<h2><span id="question">Question</span></h2><p>Two SumGiven an array of integers, return <strong>indices</strong> of the two numbers such that they add up to a specific target.<br>You may assume that each input would have <strong><em>exactly</em></strong> one solution, and you may not use the <em>same</em> element twice.</p>
-<p><strong>Example:</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Given nums = [2, 7, 11, 15], target = 9,</div><div class="line">Because nums[0] + nums[1] = 2 + 7 = 9,</div><div class="line">return [0, 1].</div></pre></td></tr></table></figure></p>
-<p>First time, i got a wrong try.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public int[] twoSum(int[] nums, int target) &#123;</div><div class="line">        int[] testNums = new int[nums.length];</div><div class="line">        int j = 0;</div><div class="line">        for (int i=0;i&lt;nums.length;i++)&#123;</div><div class="line">            if(nums[i]&lt;target)&#123;</div><div class="line">                testNums[j] = nums[i];</div><div class="line">                j=j+1;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        for(int l=0;l&lt;j;l++)&#123;</div><div class="line">            for(int k=l+1;k&lt;j;k++)&#123;</div><div class="line">                if(testNums[l]+testNums[k]==target)&#123;</div><div class="line">                    return new int[]&#123;l,k&#125;;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">      return null; </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/1%20Two%20Sum/Images/WrongResult.png?raw=true" alt="wrong！！"></p>
-<p>I did not understand the meaning of problem , the last we get by this solution are the index of the array which we created , rather than the requirements of the index of he gave , fainted. . . Later  i had found a more serious problem. . The problem did not say there can not be negative number ! . . . It is not necessary to determine whether the value of the array is bigger than the target number. . .</p>
-<p>And then i re-think about it, the first solution is a basic way.</p>
-<h2><span id="approach-1brute-force">Approach 1：Brute Force</span></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public int[] twoSum(int[] nums, int target) &#123;</div><div class="line">        for (int i=0;i&lt;nums.length;i++)&#123;</div><div class="line">           for(int k=i+1;k&lt;nums.length;k++)&#123;</div><div class="line">                if(nums[i]+nums[k]==target)&#123;</div><div class="line">                    return new int[]&#123;i,k&#125;;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        throw new IllegalArgumentException(&quot;No two sum solution&quot;);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>for the results,uh Well, the simplest solution often means the less efficient way.</p>
-<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/1%20Two%20Sum/Images/BruteForceResult.png?raw=true" alt="efficiency "></p>
-<p><strong>Analysis</strong><br>The principle of this method is very simple, Loop through each element x and find if there is another value that plus x and then equals to target . you have to attention to “K = i + 1” of “for(int k=i+1;k&lt;nums.length;k++)” is in order to  avoid the previous looped of the situation looped again.</p>
-<p>Time complexity: O (n ^ 2). For each element, we try to find its complement by looping through the rest of array which takes O(n). so it is n ^ 2.<br>Space complexity: O (1).</p>
-<h2><span id="approach-2-two-pass-hash-table">Approach 2 Two-pass Hash Table</span></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">   public int[] twoSum(int[] numbers, int target) &#123;</div><div class="line">    Map&lt;Integer, Integer&gt; map = new HashMap&lt;Integer, Integer&gt;();</div><div class="line">    for (int i = 0; i &lt; numbers.length; i++) &#123;</div><div class="line">        map.put(numbers[i],i);</div><div class="line">    &#125;</div><div class="line">   for (int i = 0; i &lt; numbers.length; i++) &#123;</div><div class="line">       int requestNum = target - numbers[i];</div><div class="line">        if (map.containsKey(requestNum)&amp;&amp;map.get(requestNum)!=i) &#123;</div><div class="line">            return new int[]&#123;i,map.get(requestNum)&#125;;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    throw new IllegalArgumentException(&quot;No two sum solution&quot;);</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>You can see the efficiency has been greatly improved.</p>
-<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/1%20Two%20Sum/Images/Twopassresult.png?raw=true" alt="efficiency "></p>
-<p><strong>Analysis</strong><br>The principle of this method is to use the hash table to replace the time cost of space costs, a complexity of O(n) change into near O(1) , why should i use “near”, because if the hash table has a lot Of collision occurredthe, it will lead to complexity to near O(n) . We use the value of each element in the array as a key into the hash table, and its index number as the key’s value into the hash table, and then traverse the array to find whether there is a corresponding value in the hash table key, if we find that, get the key’s value .<br>Time complexity: O (n)<br>Space complexity: O (n)</p>
-<h2><span id="approach-3-one-pass-hash-table">Approach 3 One-pass Hash Table</span></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">   public int[] twoSum(int[] numbers, int target) &#123;</div><div class="line">    Map&lt;Integer, Integer&gt; map = new HashMap&lt;Integer, Integer&gt;();</div><div class="line">    for (int i = 0; i &lt; numbers.length; i++) &#123;</div><div class="line">       int requestNum = target - numbers[i];</div><div class="line">        if (map.containsKey(requestNum)) &#123;</div><div class="line">            return new int[]&#123;map.get(requestNum),i&#125;;</div><div class="line">        &#125;</div><div class="line">        map.put(numbers[i],i);</div><div class="line">    &#125;</div><div class="line">    throw new IllegalArgumentException(&quot;No two sum solution&quot;);</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>The efficiency is slightly improved.  But i can’t accept that how is it just in the middle efficiency of the whole approach. . . And then i tried several times, it is always in the about 40% to 50% position, these methods in front of this solution’s position how can they work?. . . Why so fast? Theoretically, it is necessary to loop the results at least once, that is, the complexity of O (n) is required.</p>
-<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/1%20Two%20Sum/Images/One-pass_result.png?raw=true" alt="efficiency"></p>
-<p><strong>Analysis</strong><br>The principle of this method actually is an improvement of the method two, because we do not need to put all the arrays into the hash table, what we need is to get the sum of two number which equals to the number of the target number , so we check if current element’s complement already exists in the table when we put the array’s element into the hash table , once we find the required value we stop the loop.<br>Time complexity: O (n)<br>Space complexity: O (n)</p>
-<p>If you have a better method or have other opinions on the description of me here, please contact me. Thank you.</p>
--->
+            <!--<p><h1 id="English-ver-1-Two-Sum"><a href="#English-ver-1-Two-Sum" class="headerlink" title="[English ver]1 Two Sum"></a>[English ver]1 Two Sum</h1><h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p>Two SumGiven an array of integers, return <strong>indices</strong> of the two numbers such that they add up to a specific target.<br>You may assume that each input would have <strong><em>exactly</em></strong> one solution, and you may not use the <em>same</em> element twice.</p></p>-->
+            <!--<p class="article-more-link">-->
+                <!--<a href="/2017/02/17/1-Two-Sum/Record[English ver]/#more">Read More</a>-->
+            <!--</p>-->
             <!---->
         <!--</div>-->
         <footer class="article-footer">
@@ -888,7 +655,156 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/02/17/1-Two-Sum/Record[English ver]/" data-id="cjj6cvmww0029bjgj3ladhbhd" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/02/17/1-Two-Sum/Record[English ver]/" data-id="cjj76nz1r0028jygjgj8yfy3v" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+
+
+
+
+    <article id="post-1-Two-Sum/Record[Chinese ver]" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+        <header class="article-header">
+            
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2017/02/17/1-Two-Sum/Record[Chinese ver]/">LeetCode 1 Two Sum [Chinese ver]</a>
+        </h1>
+    
+
+            
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/02/17/1-Two-Sum/Record[Chinese ver]/">
+            <time datetime="2017-02-16T16:00:00.000Z" itemprop="datePublished">2017-02-17</time>
+        </a>
+    </div>
+
+
+                
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Chinese/">Chinese</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/Chinese/Algorithm/">Algorithm</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/Chinese/Algorithm/LeetCode/">LeetCode</a>
+    </div>
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Algorithm/">Algorithm</a>, <a class="tag-link" href="/tags/Chinese/">Chinese</a>, <a class="tag-link" href="/tags/LeetCode/">LeetCode</a>
+    </div>
+
+            </div>
+            
+        </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+            
+            
+            
+            <p><h1 id="Chinese-ver-1-Two-Sum"><a href="#Chinese-ver-1-Two-Sum" class="headerlink" title="[Chinese ver]1 Two Sum"></a>[Chinese ver]1 Two Sum</h1><h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p>两数求和 。给定一个整数的数组，返回两个数字的索引使得这两个数字加起来成为一个指定的目标值。<br>你可以假设每个输入都至少有一个解决方案，并且你不能使用相同的元素两次。</p></p>
+            
+                
+            
+    </div>
+    <div class="article-more-link">
+        <a href="/2017/02/17/1-Two-Sum/Record[Chinese ver]/#more">Read More</a>
+    </div>
+    
+        <!--<div class="article-entry" itemprop="articleBody">-->
+            <!---->
+            <!--<p><h1 id="Chinese-ver-1-Two-Sum"><a href="#Chinese-ver-1-Two-Sum" class="headerlink" title="[Chinese ver]1 Two Sum"></a>[Chinese ver]1 Two Sum</h1><h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p>两数求和 。给定一个整数的数组，返回两个数字的索引使得这两个数字加起来成为一个指定的目标值。<br>你可以假设每个输入都至少有一个解决方案，并且你不能使用相同的元素两次。</p></p>-->
+            <!--<p class="article-more-link">-->
+                <!--<a href="/2017/02/17/1-Two-Sum/Record[Chinese ver]/#more">Read More</a>-->
+            <!--</p>-->
+            <!---->
+        <!--</div>-->
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://yoursite.com/2017/02/17/1-Two-Sum/Record[Chinese ver]/" data-id="cjj76nz1s0029jygjerwbbrjz" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1114,7 +1030,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://yoursite.com/2016/08/20/Android-6.0-Change-2/" data-id="cjj6cvmuf0005bjgj52bif0y7" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2016/08/20/Android-6.0-Change-2/" data-id="cjj76nyz70005jygjefycxx97" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1329,7 +1245,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://yoursite.com/2016/08/20/Android-6.0-Change-1/" data-id="cjj6cvmu50002bjgjlt9mbntx" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2016/08/20/Android-6.0-Change-1/" data-id="cjj76nyyx0002jygj00rygmpx" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1517,7 +1433,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://yoursite.com/2016/03/17/Android-declare-styleable-Attribute/" data-id="cjj6cvmun0008bjgjf3f7gvuj" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2016/03/17/Android-declare-styleable-Attribute/" data-id="cjj76nyzn000ajygjsir2fb3e" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1676,7 +1592,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://yoursite.com/2016/03/09/Byte-Common-transition/" data-id="cjj6cvmux000bbjgjv2o1hfrs" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2016/03/09/Byte-Common-transition/" data-id="cjj76nz02000djygjw0qyx8ad" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1807,25 +1723,6 @@ ga('send', 'pageview');
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2017/02/17/1-Two-Sum/Record[Chinese ver]/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Chinese/">Chinese</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/Chinese/Algorithm/">Algorithm</a></p>
-                            <p class="item-title"><a href="/2017/02/17/1-Two-Sum/Record[Chinese ver]/" class="title">LeetCode 1 Two Sum [Chinese ver]</a></p>
-                            <p class="item-date"><time datetime="2017-02-16T16:00:00.000Z" itemprop="datePublished">2017-02-17</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
                             <a href="/2017/02/17/1-Two-Sum/Record[English ver]/" class="thumbnail">
     
     
@@ -1838,6 +1735,25 @@ ga('send', 'pageview');
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/English/">English</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/English/Algorithm/">Algorithm</a></p>
                             <p class="item-title"><a href="/2017/02/17/1-Two-Sum/Record[English ver]/" class="title">LeetCode 1 Two Sum [English ver]</a></p>
+                            <p class="item-date"><time datetime="2017-02-16T16:00:00.000Z" itemprop="datePublished">2017-02-17</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/02/17/1-Two-Sum/Record[Chinese ver]/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Chinese/">Chinese</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/Chinese/Algorithm/">Algorithm</a></p>
+                            <p class="item-title"><a href="/2017/02/17/1-Two-Sum/Record[Chinese ver]/" class="title">LeetCode 1 Two Sum [Chinese ver]</a></p>
                             <p class="item-date"><time datetime="2017-02-16T16:00:00.000Z" itemprop="datePublished">2017-02-17</time></p>
                         </div>
                     </li>
