@@ -87,7 +87,7 @@ ga('send', 'pageview');
             <div id="search-form-wrap">
 
     <form class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder="Buscar" />
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
         <button type="submit" class="search-form-submit"></button>
     </form>
     <div class="ins-search">
@@ -106,10 +106,10 @@ ga('send', 'pageview');
 (function (window) {
     var INSIGHT_CONFIG = {
         TRANSLATION: {
-            POSTS: 'Entradas',
+            POSTS: 'Posts',
             PAGES: 'Pages',
-            CATEGORIES: 'Categorias',
-            TAGS: 'Etiquetas',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
             UNTITLED: '(Untitled)',
         },
         ROOT_URL: '/',
@@ -140,7 +140,7 @@ ga('send', 'pageview');
                 <td>
                     
     <div class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder="Buscar" />
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
     </div>
 
                 </td>
@@ -160,16 +160,16 @@ ga('send', 'pageview');
             <h2 id="name">Leon Chen</h2>
             <h3 id="title">Android Developer</h3>
             <span id="location"><i class="fa fa-map-marker"></i>XiaMen, China</span>
-            <a id="follow" target="_blank" href="https://github.com/LeonChen1024">SEGUIR</a>
+            <a id="follow" target="_blank" href="https://github.com/LeonChen1024">FOLLOW</a>
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                6
-                <span>Entradas</span>
+                8
+                <span>posts</span>
             </div>
             <div class="article-info-block">
-                9
-                <span>Etiquetas</span>
+                12
+                <span>tags</span>
             </div>
         </div>
         
@@ -291,12 +291,12 @@ ga('send', 'pageview');
 <li>让用户了解当前的版本信息，了解升级或者降级信息等</li>
 <li>不同的版本可能提供的服务和功能有所差别，版本信息可以给我们一个标志来识别当前版本可提供的服务和功能。</li>
 </ul>
-<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ul>
+<h2><span id="目录">目录</span></h2><ul>
 <li><a href="#设置版本信息">设置版本信息</a></li>
 <li><a href="#统一配置">统一配置</a></li>
 <li><a href="#reference">Reference</a></li>
 </ul>
-<h2 id="设置版本信息"><a href="#设置版本信息" class="headerlink" title="设置版本信息"></a>设置版本信息</h2><p>官方推荐是在Gradle中进行版本设置，因为Gradle中设置的版本信息会在构建的时候合并到manifest文件中，并会替换掉manifest中有关版本信息的设置。并且在Gradle中进行设置的话还可以根据应用不同的Flavor进行不同的设置。</p>
+<h2><span id="设置版本信息">设置版本信息</span></h2><p>官方推荐是在Gradle中进行版本设置，因为Gradle中设置的版本信息会在构建的时候合并到manifest文件中，并会替换掉manifest中有关版本信息的设置。并且在Gradle中进行设置的话还可以根据应用不同的Flavor进行不同的设置。</p>
 <p>版本控制主要有这么两个属性：</p>
 <p>-versionCode ： 整数，是内部版本号，仅用于判断一个版本是否比另一个版本新，用户并不会看到。通常是跟随着发布版本增加该code。</p>
 <p>-versionName : 字符串，用户能看到的版本号。</p>
@@ -306,12 +306,12 @@ ga('send', 'pageview');
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">getVersion</span><span class="params">(Context context)</span><span class="comment">//获取版本号</span></span></div><div class="line"><span class="function">	</span>&#123;</div><div class="line">		<span class="keyword">try</span> &#123;</div><div class="line">			PackageInfo pi=context.getPackageManager().getPackageInfo(context.getPackageName(), <span class="number">0</span>);</div><div class="line">			<span class="keyword">return</span> pi.versionName;</div><div class="line">		&#125; <span class="keyword">catch</span> (NameNotFoundException e) &#123;</div><div class="line">			<span class="comment">// TODO Auto-generated catch block</span></div><div class="line">			e.printStackTrace();</div><div class="line">			<span class="keyword">return</span> context.getString(R.string.version_unknown);</div><div class="line">		&#125;</div><div class="line">	&#125;</div></pre></td></tr></table></figure>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">getVersionCode</span><span class="params">(Context context)</span><span class="comment">//获取版本号(内部识别号)</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">  <span class="keyword">try</span> &#123;</div><div class="line">    PackageInfo pi=context.getPackageManager().getPackageInfo(context.getPackageName(), <span class="number">0</span>);</div><div class="line">    <span class="keyword">return</span> pi.versionCode;</div><div class="line">  &#125; <span class="keyword">catch</span> (NameNotFoundException e) &#123;</div><div class="line">    <span class="comment">// TODO Auto-generated catch block</span></div><div class="line">    e.printStackTrace();</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>如果使用 Instant Run，Android Studio 会自动将 versionCode 设置为 MAXINT，将 versionName 设置为 INSTANTRUN。</p>
-<h2 id="统一配置"><a href="#统一配置" class="headerlink" title="统一配置"></a>统一配置</h2><p>顺便说一下一个可以统一所有的配置在一个地方的方法，这样可以便于我们管理版本。<br>首先在主工程的build.gradle里增加一个配置区</p>
+<h2><span id="统一配置">统一配置</span></h2><p>顺便说一下一个可以统一所有的配置在一个地方的方法，这样可以便于我们管理版本。<br>首先在主工程的build.gradle里增加一个配置区</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">ext &#123;</div><div class="line">    // Sdk and tools</div><div class="line">    minSdkVersion = 17</div><div class="line">    targetSdkVersion = 21</div><div class="line">    compileSdkVersion = 23</div><div class="line">    buildToolsVersion = &quot;23.0.3&quot;</div><div class="line"></div><div class="line">    // App dependencies</div><div class="line">    supportLibraryVersion = &apos;23.3.0&apos;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>然后在module的build.gradle里使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">targetSdkVersion rootProject.ext.targetSdkVersion</div><div class="line"></div><div class="line">compile &quot;com.android.support:appcompat-v7:$rootProject.supportLibraryVersion&quot;</div></pre></td></tr></table></figure></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * 判断当前应用是否是debug状态</span></div><div class="line"><span class="comment"> */</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">isApkInDebug</span><span class="params">(Context context)</span> </span>&#123;</div><div class="line">    <span class="keyword">try</span> &#123;</div><div class="line">        ApplicationInfo info = context.getApplicationInfo();</div><div class="line">        <span class="keyword">return</span> (info.flags &amp; ApplicationInfo.FLAG_DEBUGGABLE) != <span class="number">0</span>;</div><div class="line">    &#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment">*检测其他应用是否处于debug模式。</span></div><div class="line"><span class="comment">*/</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">isApkDebugable</span><span class="params">(Context context,String packageName)</span> </span>&#123;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            PackageInfo pkginfo = context.getPackageManager().getPackageInfo(</div><div class="line">                    packageName, <span class="number">1</span>);</div><div class="line">            <span class="keyword">if</span> (pkginfo != <span class="keyword">null</span> ) &#123;</div><div class="line">                ApplicationInfo info= pkginfo.applicationInfo;</div><div class="line">                <span class="keyword">return</span> (info.flags&amp;ApplicationInfo.FLAG_DEBUGGABLE)!=<span class="number">0</span>;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line"></div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://developer.android.com/studio/publish/versioning.html" target="_blank" rel="external">https://developer.android.com/studio/publish/versioning.html</a></p>
+<h2><span id="reference">Reference</span></h2><p><a href="https://developer.android.com/studio/publish/versioning.html" target="_blank" rel="external">https://developer.android.com/studio/publish/versioning.html</a></p>
 -->
             <!---->
         <!--</div>-->
@@ -322,7 +322,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://yoursite.com/2018/04/13/APP-Version-Control/" data-id="cjgxp99yg00006agjgntaxkyo" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+    <a data-url="http://yoursite.com/2018/04/13/APP-Version-Control/" data-id="cjj6cvmty0000bjgjlyhrtl7t" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -472,7 +472,7 @@ ga('send', 'pageview');
             
             
             
-            <p><h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ul>
+            <p><h2><span id="目录">目录</span></h2><ul>
 <li><a href="#目录">目录</a></li>
 <li><a href="#问题-unable-to-instantiate-activity-componentinfocomxxxxxxxxcomxxxxxxxxloginactivity">问题 : Unable to instantiate activity ComponentInfo{com.xxxx.xxxx/com.xxxx.xxxx.LoginActivity}</a></li>
 </ul>
@@ -489,11 +489,11 @@ ga('send', 'pageview');
         <!--<div class="article-entry" itemprop="articleBody">-->
             <!---->
             <!---->
-            <!--<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ul>
+            <!--<h2><span id="目录">目录</span></h2><ul>
 <li><a href="#目录">目录</a></li>
 <li><a href="#问题-unable-to-instantiate-activity-componentinfocomxxxxxxxxcomxxxxxxxxloginactivity">问题 : Unable to instantiate activity ComponentInfo{com.xxxx.xxxx/com.xxxx.xxxx.LoginActivity}</a></li>
 </ul>
-<h2 id="问题-Unable-to-instantiate-activity-ComponentInfo-com-xxxx-xxxx-com-xxxx-xxxx-LoginActivity"><a href="#问题-Unable-to-instantiate-activity-ComponentInfo-com-xxxx-xxxx-com-xxxx-xxxx-LoginActivity" class="headerlink" title="问题 : Unable to instantiate activity ComponentInfo{com.xxxx.xxxx/com.xxxx.xxxx.LoginActivity}"></a>问题 : Unable to instantiate activity ComponentInfo{com.xxxx.xxxx/com.xxxx.xxxx.LoginActivity}</h2><p>java.lang.RuntimeException: Unable to instantiate activity ComponentInfo{com.xxxx.xxxx/com.xxxx.xxxx.LoginActivity}:</p>
+<h2><span id="问题-unable-to-instantiate-activity-componentinfocomxxxxxxxxcomxxxxxxxxloginactivity">问题 : Unable to instantiate activity ComponentInfo{com.xxxx.xxxx/com.xxxx.xxxx.LoginActivity}</span></h2><p>java.lang.RuntimeException: Unable to instantiate activity ComponentInfo{com.xxxx.xxxx/com.xxxx.xxxx.LoginActivity}:</p>
 <p>java.lang.ClassNotFoundException: Didn’t find class “com.xxxx.xxxx.LoginActivity”<br> on path: /data/app/com.xxxx.xxxx-1.</p>
 <p><strong>解决方法</strong> : 原因AndroidManifest.xml文件出错。将问题Activity的name具体到某个包下即可运行。android:name=”.LogoActivity”改为android:name=”.ac.LogoActivity”.</p>
 -->
@@ -506,7 +506,389 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://yoursite.com/2018/01/10/Android-Error-And-Solution/" data-id="cjgxp99ys00056agjc5o5qcmd" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+    <a data-url="http://yoursite.com/2018/01/10/Android-Error-And-Solution/" data-id="cjj6cvmui0007bjgjov9t3b70" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+
+
+
+
+    <article id="post-1-Two-Sum/Record[Chinese ver]" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+        <header class="article-header">
+            
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2017/02/17/1-Two-Sum/Record[Chinese ver]/">LeetCode 1 Two Sum [Chinese ver]</a>
+        </h1>
+    
+
+            
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/02/17/1-Two-Sum/Record[Chinese ver]/">
+            <time datetime="2017-02-16T16:00:00.000Z" itemprop="datePublished">2017-02-17</time>
+        </a>
+    </div>
+
+
+                
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Chinese/">Chinese</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/Chinese/Algorithm/">Algorithm</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/Chinese/Algorithm/LeetCode/">LeetCode</a>
+    </div>
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Algorithm/">Algorithm</a>, <a class="tag-link" href="/tags/Chinese/">Chinese</a>, <a class="tag-link" href="/tags/LeetCode/">LeetCode</a>
+    </div>
+
+            </div>
+            
+        </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <p><h1><span id="chinese-ver1-two-sum">[Chinese ver]1 Two Sum</span></h1><p>[TOC]</p>
+<!-- toc -->
+<ul>
+<li><a href="#question">Question</a></li>
+<p>
+                
+                
+                
+            
+    </div>
+    <div class="article-more-link">
+        <a href="/2017/02/17/1-Two-Sum/Record[Chinese ver]/#more">Read More</a>
+    </div>
+    
+        <!--<div class="article-entry" itemprop="articleBody">-->
+            <!---->
+            <!---->
+            <!--<h1><span id="chinese-ver1-two-sum">[Chinese ver]1 Two Sum</span></h1><p>[TOC]</p>
+<!-- toc -->
+<ul>
+<li><a href="#question">Question</a></li>
+<li><a href="#方法一暴力循环">方法一：暴力循环</a></li>
+<li><a href="#方法二两次循环的-hash-table">方法二：两次循环的 hash table</a></li>
+<li><a href="#方法三一次循环的-hash-table">方法三：一次循环的 hash table</a></li>
+</ul>
+<!-- tocstop -->
+<h2><span id="question">Question</span></h2><p>两数求和 。给定一个整数的数组，返回两个数字的索引使得这两个数字加起来成为一个指定的目标值。<br>你可以假设每个输入都至少有一个解决方案，并且你不能使用相同的元素两次。</p>
+<p><strong>Example:</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Given nums = [2, 7, 11, 15], target = 9,</div><div class="line">Because nums[0] + nums[1] = 2 + 7 = 9,</div><div class="line">return [0, 1].</div></pre></td></tr></table></figure></p>
+<p>首先是一次错误的尝试<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] twoSum(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target) &#123;</div><div class="line">        <span class="keyword">int</span>[] testNums = <span class="keyword">new</span> <span class="keyword">int</span>[nums.length];</div><div class="line">        <span class="keyword">int</span> j = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;nums.length;i++)&#123;</div><div class="line">            <span class="keyword">if</span>(nums[i]&lt;target)&#123;</div><div class="line">                testNums[j] = nums[i];</div><div class="line">                j=j+<span class="number">1</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> l=<span class="number">0</span>;l&lt;j;l++)&#123;</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> k=l+<span class="number">1</span>;k&lt;j;k++)&#123;</div><div class="line">                <span class="keyword">if</span>(testNums[l]+testNums[k]==target)&#123;</div><div class="line">                    <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;l,k&#125;;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">      <span class="keyword">return</span> <span class="keyword">null</span>; </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/1%20Two%20Sum/Images/WrongResult.png?raw=true" alt="出错啦！！"></p>
+<p>没理解好题意，这种解法最后得到的是我们自定义数组的序号，而不是题目要求的序号，晕倒。。。后来发现一个更严重的问题。。他没有说过不能有负数！！！！也就不需要判断数组里的值是否大于和。。。</p>
+<p>然后重新构思一下，先来个基本的解法</p>
+<h2><span id="方法一暴力循环">方法一：暴力循环</span></h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] twoSum(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target) &#123;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;nums.length;i++)&#123;</div><div class="line">           <span class="keyword">for</span>(<span class="keyword">int</span> k=i+<span class="number">1</span>;k&lt;nums.length;k++)&#123;</div><div class="line">                <span class="keyword">if</span>(nums[i]+nums[k]==target)&#123;</div><div class="line">                    <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;i,k&#125;;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"No two sum solution"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>至于结果嘛，最简单的自然也高效不到哪里。<br><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/1%20Two%20Sum/Images/BruteForceResult.png?raw=true" alt="效率"></p>
+<p><strong>分析</strong><br>这个方法的原理很简单，就是将每一个值与其他的值循环遍历，看是否有符合条件的情况发生。稍微要注意的是   for(int k=i+1;k&lt;nums.length;k++) 这里k=i+1是为了避免前面循环过的情况再次循环一遍。<br>时间复杂度 ： O(n^2) 。n个元素都要循环遍历数组内其余的元素，所以是n^2。<br>空间复杂度 ： O(1) .</p>
+<h2><span id="方法二两次循环的-hash-table">方法二：两次循环的 hash table</span></h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">   <span class="keyword">public</span> <span class="keyword">int</span>[] twoSum(<span class="keyword">int</span>[] numbers, <span class="keyword">int</span> target) &#123;</div><div class="line">    Map&lt;Integer, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;Integer, Integer&gt;();</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; numbers.length; i++) &#123;</div><div class="line">        map.put(numbers[i],i);</div><div class="line">    &#125;</div><div class="line">   <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; numbers.length; i++) &#123;</div><div class="line">       <span class="keyword">int</span> requestNum = target - numbers[i];</div><div class="line">        <span class="keyword">if</span> (map.containsKey(requestNum)&amp;&amp;map.get(requestNum)!=i) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;i,map.get(requestNum)&#125;;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"No two sum solution"</span>);</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>可以看到效率有了很大的提升。</p>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/1%20Two%20Sum/Images/Twopassresult.png?raw=true" alt="效率"></p>
+<p><strong>分析</strong><br>这个方法的原理其实就是使用hash table 来将时间成本来替换空间成本，将一次复杂度为O(n)的循环变为接近O(1)的查找，为什么是接近呢，因为如果hash table发生大量的碰撞，就会导致复杂度向O(n)靠近。我们将数组里每一个元素的值作为key存入hash table，而将其序列号作为对应的value存入hash table，然后遍历数组查找是否有对应的值在hash table 的key中，有则取出该key对应的value。<br>时间复杂度 ： O(n)<br>空间复杂度 ： O(n)</p>
+<h2><span id="方法三一次循环的-hash-table">方法三：一次循环的 hash table</span></h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">   <span class="keyword">public</span> <span class="keyword">int</span>[] twoSum(<span class="keyword">int</span>[] numbers, <span class="keyword">int</span> target) &#123;</div><div class="line">    Map&lt;Integer, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;Integer, Integer&gt;();</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; numbers.length; i++) &#123;</div><div class="line">       <span class="keyword">int</span> requestNum = target - numbers[i];</div><div class="line">        <span class="keyword">if</span> (map.containsKey(requestNum)) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;map.get(requestNum),i&#125;;</div><div class="line">        &#125;</div><div class="line">        map.put(numbers[i],i);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"No two sum solution"</span>);</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>效率稍微提高了一些。。但是有些不能接受啊。怎么还只是在中间的位置。。。然后试了几次，大概在40%到50%徘徊，前面那些是用什么算的。。。为何那么快。理论上来说至少需要循环比对结果一次，也就是需要O(n)的复杂度。</p>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/1%20Two%20Sum/Images/One-pass_result.png?raw=true" alt="效率"></p>
+<p><strong>分析</strong><br>这个方法的原理其实就是方法二的一个改善，因为我们不需要将全部的数组都放入hash table ，我们最终的目的是为了得到两个相加等于目标数的值的序号即可，所以我们在将数组里的值放入hash table 的时候就进行比对，一旦得到所需要的值立即结束循环。<br>时间复杂度 ： O(n)<br>空间复杂度 ： O(n)</p>
+<p>如果你有更好的办法或者对我这里的描述有其他看法，请联系我。谢谢</p>
+-->
+            <!---->
+        <!--</div>-->
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://yoursite.com/2017/02/17/1-Two-Sum/Record[Chinese ver]/" data-id="cjj6cvmwv0028bjgj8rca202u" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+
+
+
+
+    <article id="post-1-Two-Sum/Record[English ver]" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+        <header class="article-header">
+            
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2017/02/17/1-Two-Sum/Record[English ver]/">LeetCode 1 Two Sum [English ver]</a>
+        </h1>
+    
+
+            
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/02/17/1-Two-Sum/Record[English ver]/">
+            <time datetime="2017-02-16T16:00:00.000Z" itemprop="datePublished">2017-02-17</time>
+        </a>
+    </div>
+
+
+                
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/English/">English</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/English/Algorithm/">Algorithm</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/English/Algorithm/LeetCode/">LeetCode</a>
+    </div>
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Algorithm/">Algorithm</a>, <a class="tag-link" href="/tags/English/">English</a>, <a class="tag-link" href="/tags/LeetCode/">LeetCode</a>
+    </div>
+
+            </div>
+            
+        </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <p><h1><span id="english-ver1-two-sum">[English ver]1 Two Sum</span></h1><p>[TOC]</p>
+<h2><span id="question">Question</span></h2><p>Two SumGiven an array of integers, return <strong>indices</strong> of the two numbers such that they add up to a specific target.<br>You may assume that each input would have <strong><em>exactly</em></strong> one solution, and you may not use the <em>same</em> element twice.</p>
+<p><strong>Example:</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Given nums = [2, 7, 11, 15], target = 9,</div><div class="line">Because nums[0] + nums[1] = 2 + 7 = 9,</div><div class="line">return [0, 1].</div></pre></td></tr></table></figure></p>
+<p>First time, i got a wrong try.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public int[] twoSum(int[] nums, int target) &#123;</div><div class="line">        int[] testNums = new int[nums.length];</div><div class="line">        int j = 0;</div><div class="line">        for (int i=0;i&lt;nums.length;i++)&#123;</div><div class="line">            if(nums[i]&lt;target)&#123;</div><div class="line">                testNums[j] = nums[i];</div><div class="line">                j=j+1;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        for(int l=0;l&lt;j;l++)&#123;</div><div class="line">            for(int k=l+1;k&lt;j;k++)&#123;</div><div class="line">                if(testNums[l]+testNums[k]==target)&#123;</div><div class="line">                    return new int[]&#123;l,k&#125;;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">      return null; </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>
+                
+                
+                
+            
+    </div>
+    <div class="article-more-link">
+        <a href="/2017/02/17/1-Two-Sum/Record[English ver]/#more">Read More</a>
+    </div>
+    
+        <!--<div class="article-entry" itemprop="articleBody">-->
+            <!---->
+            <!---->
+            <!--<h1><span id="english-ver1-two-sum">[English ver]1 Two Sum</span></h1><p>[TOC]</p>
+<h2><span id="question">Question</span></h2><p>Two SumGiven an array of integers, return <strong>indices</strong> of the two numbers such that they add up to a specific target.<br>You may assume that each input would have <strong><em>exactly</em></strong> one solution, and you may not use the <em>same</em> element twice.</p>
+<p><strong>Example:</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Given nums = [2, 7, 11, 15], target = 9,</div><div class="line">Because nums[0] + nums[1] = 2 + 7 = 9,</div><div class="line">return [0, 1].</div></pre></td></tr></table></figure></p>
+<p>First time, i got a wrong try.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public int[] twoSum(int[] nums, int target) &#123;</div><div class="line">        int[] testNums = new int[nums.length];</div><div class="line">        int j = 0;</div><div class="line">        for (int i=0;i&lt;nums.length;i++)&#123;</div><div class="line">            if(nums[i]&lt;target)&#123;</div><div class="line">                testNums[j] = nums[i];</div><div class="line">                j=j+1;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        for(int l=0;l&lt;j;l++)&#123;</div><div class="line">            for(int k=l+1;k&lt;j;k++)&#123;</div><div class="line">                if(testNums[l]+testNums[k]==target)&#123;</div><div class="line">                    return new int[]&#123;l,k&#125;;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">      return null; </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/1%20Two%20Sum/Images/WrongResult.png?raw=true" alt="wrong！！"></p>
+<p>I did not understand the meaning of problem , the last we get by this solution are the index of the array which we created , rather than the requirements of the index of he gave , fainted. . . Later  i had found a more serious problem. . The problem did not say there can not be negative number ! . . . It is not necessary to determine whether the value of the array is bigger than the target number. . .</p>
+<p>And then i re-think about it, the first solution is a basic way.</p>
+<h2><span id="approach-1brute-force">Approach 1：Brute Force</span></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">    public int[] twoSum(int[] nums, int target) &#123;</div><div class="line">        for (int i=0;i&lt;nums.length;i++)&#123;</div><div class="line">           for(int k=i+1;k&lt;nums.length;k++)&#123;</div><div class="line">                if(nums[i]+nums[k]==target)&#123;</div><div class="line">                    return new int[]&#123;i,k&#125;;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        throw new IllegalArgumentException(&quot;No two sum solution&quot;);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>for the results,uh Well, the simplest solution often means the less efficient way.</p>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/1%20Two%20Sum/Images/BruteForceResult.png?raw=true" alt="efficiency "></p>
+<p><strong>Analysis</strong><br>The principle of this method is very simple, Loop through each element x and find if there is another value that plus x and then equals to target . you have to attention to “K = i + 1” of “for(int k=i+1;k&lt;nums.length;k++)” is in order to  avoid the previous looped of the situation looped again.</p>
+<p>Time complexity: O (n ^ 2). For each element, we try to find its complement by looping through the rest of array which takes O(n). so it is n ^ 2.<br>Space complexity: O (1).</p>
+<h2><span id="approach-2-two-pass-hash-table">Approach 2 Two-pass Hash Table</span></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">   public int[] twoSum(int[] numbers, int target) &#123;</div><div class="line">    Map&lt;Integer, Integer&gt; map = new HashMap&lt;Integer, Integer&gt;();</div><div class="line">    for (int i = 0; i &lt; numbers.length; i++) &#123;</div><div class="line">        map.put(numbers[i],i);</div><div class="line">    &#125;</div><div class="line">   for (int i = 0; i &lt; numbers.length; i++) &#123;</div><div class="line">       int requestNum = target - numbers[i];</div><div class="line">        if (map.containsKey(requestNum)&amp;&amp;map.get(requestNum)!=i) &#123;</div><div class="line">            return new int[]&#123;i,map.get(requestNum)&#125;;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    throw new IllegalArgumentException(&quot;No two sum solution&quot;);</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>You can see the efficiency has been greatly improved.</p>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/1%20Two%20Sum/Images/Twopassresult.png?raw=true" alt="efficiency "></p>
+<p><strong>Analysis</strong><br>The principle of this method is to use the hash table to replace the time cost of space costs, a complexity of O(n) change into near O(1) , why should i use “near”, because if the hash table has a lot Of collision occurredthe, it will lead to complexity to near O(n) . We use the value of each element in the array as a key into the hash table, and its index number as the key’s value into the hash table, and then traverse the array to find whether there is a corresponding value in the hash table key, if we find that, get the key’s value .<br>Time complexity: O (n)<br>Space complexity: O (n)</p>
+<h2><span id="approach-3-one-pass-hash-table">Approach 3 One-pass Hash Table</span></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">public class Solution &#123;</div><div class="line">   public int[] twoSum(int[] numbers, int target) &#123;</div><div class="line">    Map&lt;Integer, Integer&gt; map = new HashMap&lt;Integer, Integer&gt;();</div><div class="line">    for (int i = 0; i &lt; numbers.length; i++) &#123;</div><div class="line">       int requestNum = target - numbers[i];</div><div class="line">        if (map.containsKey(requestNum)) &#123;</div><div class="line">            return new int[]&#123;map.get(requestNum),i&#125;;</div><div class="line">        &#125;</div><div class="line">        map.put(numbers[i],i);</div><div class="line">    &#125;</div><div class="line">    throw new IllegalArgumentException(&quot;No two sum solution&quot;);</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>The efficiency is slightly improved.  But i can’t accept that how is it just in the middle efficiency of the whole approach. . . And then i tried several times, it is always in the about 40% to 50% position, these methods in front of this solution’s position how can they work?. . . Why so fast? Theoretically, it is necessary to loop the results at least once, that is, the complexity of O (n) is required.</p>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/1%20Two%20Sum/Images/One-pass_result.png?raw=true" alt="efficiency"></p>
+<p><strong>Analysis</strong><br>The principle of this method actually is an improvement of the method two, because we do not need to put all the arrays into the hash table, what we need is to get the sum of two number which equals to the number of the target number , so we check if current element’s complement already exists in the table when we put the array’s element into the hash table , once we find the required value we stop the loop.<br>Time complexity: O (n)<br>Space complexity: O (n)</p>
+<p>If you have a better method or have other opinions on the description of me here, please contact me. Thank you.</p>
+-->
+            <!---->
+        <!--</div>-->
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://yoursite.com/2017/02/17/1-Two-Sum/Record[English ver]/" data-id="cjj6cvmww0029bjgj3ladhbhd" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -656,7 +1038,7 @@ ga('send', 'pageview');
             
             
             
-            <p><h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ul>
+            <p><h2><span id="目录">目录</span></h2><ul>
 <li><a href="#目录">目录</a></li>
 <li><a href="#浏览器书签变化">浏览器书签变化</a></li>
 <li><a href="#android密钥库变化">Android密钥库变化</a></li>
@@ -673,7 +1055,7 @@ ga('send', 'pageview');
         <!--<div class="article-entry" itemprop="articleBody">-->
             <!---->
             <!---->
-            <!--<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ul>
+            <!--<h2><span id="目录">目录</span></h2><ul>
 <li><a href="#目录">目录</a></li>
 <li><a href="#浏览器书签变化">浏览器书签变化</a></li>
 <li><a href="#android密钥库变化">Android密钥库变化</a></li>
@@ -687,28 +1069,28 @@ ga('send', 'pageview');
 <li><a href="#其他api的变化">其他API的变化：</a></li>
 <li><a href="#全局设置的变化">全局设置的变化：</a></li>
 </ul>
-<h2 id="浏览器书签变化"><a href="#浏览器书签变化" class="headerlink" title="浏览器书签变化"></a>浏览器书签变化</h2><p>这个版本移除了对全局书签的支持。android.provider.Browser.getAllBookmarks()and android.provider.Browser.saveBookmark() 方法现在被移除了。同样的，READ_HISTORY_BOOKMARKS and WRITE_HISTORY_BOOKMARKS 权限也被移除了。如果你的APP目标版本是Android 6.0 (API level 23) 或者更高，不要使用全局书签或使用全局书签的权限，相对应的，你的APP应该使用内部的书签。</p>
-<h2 id="Android密钥库变化"><a href="#Android密钥库变化" class="headerlink" title="Android密钥库变化"></a>Android密钥库变化</h2><p>在这个版本， Android Keystore provider 不在支持DSA.ECDSA仍然被支持。<br>当安全锁屏被禁用或复位时（例如，被用户或设备管理器操作时），那些没加密的密钥将不再被删除，在这些时候那些加密的密钥将被删除。</p>
-<h2 id="wifi和网络工作的变化"><a href="#wifi和网络工作的变化" class="headerlink" title="wifi和网络工作的变化"></a>wifi和网络工作的变化</h2><p>这个版本介绍了一下几个有关于Wi-Fi 和网络工作的API的行为变化。</p>
+<h2><span id="浏览器书签变化">浏览器书签变化</span></h2><p>这个版本移除了对全局书签的支持。android.provider.Browser.getAllBookmarks()and android.provider.Browser.saveBookmark() 方法现在被移除了。同样的，READ_HISTORY_BOOKMARKS and WRITE_HISTORY_BOOKMARKS 权限也被移除了。如果你的APP目标版本是Android 6.0 (API level 23) 或者更高，不要使用全局书签或使用全局书签的权限，相对应的，你的APP应该使用内部的书签。</p>
+<h2><span id="android密钥库变化">Android密钥库变化</span></h2><p>在这个版本， Android Keystore provider 不在支持DSA.ECDSA仍然被支持。<br>当安全锁屏被禁用或复位时（例如，被用户或设备管理器操作时），那些没加密的密钥将不再被删除，在这些时候那些加密的密钥将被删除。</p>
+<h2><span id="wifi和网络工作的变化">wifi和网络工作的变化</span></h2><p>这个版本介绍了一下几个有关于Wi-Fi 和网络工作的API的行为变化。</p>
 <p>你的APP现在可以改变 WifiConfiguration 对象的状态仅当是你创建了这些对象时。你将不被允许去修改或者删除WifiConfiguration 对象当他是被用户或者别的APP创建的。</p>
 <p>在之前，如果一个APP使用 enableNetwork() 方法并设置disableAllOthers=true 来强制设备连接某个指定的WiFi网络，设备将会拒绝连接其他的网络比如蜂窝数据。在这个版本，设备不在拒绝连接其他的网络。如果你的APP的targetSdkVersion 是20或者更低，他将被固定在所选的WiFi网络。如果你的APP的targetSdkVersion 是21或者更高，使用多网络API（例如 openConnection(), bindSocket(),和新的bindProcessToNetwork() 方法）来确保网络通信是使用被选择的网络。</p>
-<h2 id="照相服务改变"><a href="#照相服务改变" class="headerlink" title="照相服务改变"></a>照相服务改变</h2><p>在这个版本中，接收摄像头服务和共享资源的模式已经从原来的“先到先服务”的模式转变为先服务高优先级的进程，服务的行为改变包括：</p>
+<h2><span id="照相服务改变">照相服务改变</span></h2><p>在这个版本中，接收摄像头服务和共享资源的模式已经从原来的“先到先服务”的模式转变为先服务高优先级的进程，服务的行为改变包括：</p>
 <p>获取相机子系统的资源，包括打开和配置相机设备，是基于APP进程的“优先级”来进行授予的。用户可见的或者在最前的activity的APP进程通常给予较高的优先级，来使的相机资源的分配和使用更加的可靠。</p>
 <p>一个低优先级的APP的正在使用相机的用户可能会被“驱逐”当一个高优先级的APP尝试使用相机时。在被弃用的Camera API中，这将导致被驱逐的用户将会调用 onError() 方法，而在Camera2 API中，这将导致被驱逐的用户调用 onDisconnected() 方法。</p>
 <p>当设备拥有合适的照相机硬件时，不同的APP进程可以独立的打开和使用照相机设备。然而，多进程使用的情况下，当同时请求导致对任意的相机设备的性能和能力的降低，现在的相机服务对此进行检测并且禁止改行为。这样的改变可能导致低优先级的用户被“驱逐”即使没有其他的APP明确的尝试访问相同的相机设备。</p>
 <p>改变当前的用户会导致之前的用户中的APP的活动的相机用户被驱逐。访问相机应用将被限制于用户配置文件属于当前设备用户者。在实践中，这就比如说是一个“游客”账户，当用户切换了一个不同的账号时将无法离开正在运行的相机子系统的进程。</p>
-<h2 id="运行时"><a href="#运行时" class="headerlink" title="运行时"></a>运行时</h2><p>ART运行时可以正确的实现访问 newInstance()方法的规则。这种改变解决了以前版本中Dalvik 检查访问规则错误的问题。如果你的APP调用了 newInstance()方法并且你想要重写访问检查，应该调用 setAccessible()并将传入参数设为true。如果你的APP使用了v7 appcompat library 或者 v7 recyclerview library 包，你必须在你的APP里更新这些相应的包到最新版。此外，确保你的xml中引用的自定义类已经更新来保证他们的类构造器可用。</p>
+<h2><span id="运行时">运行时</span></h2><p>ART运行时可以正确的实现访问 newInstance()方法的规则。这种改变解决了以前版本中Dalvik 检查访问规则错误的问题。如果你的APP调用了 newInstance()方法并且你想要重写访问检查，应该调用 setAccessible()并将传入参数设为true。如果你的APP使用了v7 appcompat library 或者 v7 recyclerview library 包，你必须在你的APP里更新这些相应的包到最新版。此外，确保你的xml中引用的自定义类已经更新来保证他们的类构造器可用。</p>
 <p>这个版本更新了动态连接器的行为。动态链接器现在可以识别库的soname和他的路径的不同（公共bug6670），并且实现了通过soname来进行查找的功能。在加载的时候那些先前工作在坏的 DT_NEEDED 的项目（在创建机器文件系统时使用绝对路径）可能会失败。</p>
 <p>现在已经支持方法dlopen(3) RTLD_LOCAL模式，需要注意的是RTLD_LOCAL是默认值，当你没有明确使用其他参数时将不会影响到默认值。（除非你的APP明确的使用了 RTLD_GLOBAL）。在使用RTLD_LOCAL的情况下，比较晚使用dlopen(3）进行库加载的标识符将不可用。</p>
 <p>在Android之前的版本里，如果你要求系统加载一个文本重定位的共享库文件，系统会显示警告但是仍然会允许加载该库。从这个版本开始，如果你的APP的目标sdk是23或者更高系统将会拒绝该库。为了帮助你检测到库文件的加载失败，你的APP应该打印有关日志来记录dlopen()失败，包括记录问题的描述以及dlerror返回。为了学习更多的有关文本重定位的内容可见这个指导。</p>
-<h2 id="APK验证"><a href="#APK验证" class="headerlink" title="APK验证"></a>APK验证</h2><p>现在平台执行严格的apk验证。一个在manifest中声明了某文件但是在apk中却没有出现该文件的apk被认为是损坏的。一个apk中的任何内容被修改后必须重新签名。</p>
-<h2 id="USB连接"><a href="#USB连接" class="headerlink" title="USB连接"></a>USB连接</h2><p>设备通过USB端口进行连接现在默认设置为仅充电模式。为了通过USB连接方式访问设备及其内容，用户必须明确的授予这种交互的权限。如果你的应用支持通过USB端口进行交互，请考虑到该交互必须显示的启用。</p>
-<h2 id="企业级Android的变化"><a href="#企业级Android的变化" class="headerlink" title="企业级Android的变化"></a>企业级Android的变化</h2><p>在这个版本包括了以下企业级Android的行为变化。</p>
+<h2><span id="apk验证">APK验证</span></h2><p>现在平台执行严格的apk验证。一个在manifest中声明了某文件但是在apk中却没有出现该文件的apk被认为是损坏的。一个apk中的任何内容被修改后必须重新签名。</p>
+<h2><span id="usb连接">USB连接</span></h2><p>设备通过USB端口进行连接现在默认设置为仅充电模式。为了通过USB连接方式访问设备及其内容，用户必须明确的授予这种交互的权限。如果你的应用支持通过USB端口进行交互，请考虑到该交互必须显示的启用。</p>
+<h2><span id="企业级android的变化">企业级Android的变化</span></h2><p>在这个版本包括了以下企业级Android的行为变化。</p>
 <p>个人环境中的企业通讯录。当用户查看过去的通话记录时，google拨号器将会显示企业通讯录。设置setCrossProfileCallerIdDisabled() 为true来使得在google拨号器里隐藏企业联系人记录。当通过蓝牙分享时工作通讯录将会和个人通讯录一起显示，除非你 setBluetoothContactSharingDisabled() 为false。在默认情况下，它是设置为true的。</p>
 <p>WiFi配置清除：通过Profile Owner来添加Wi-Fi配置（例如，调用addNetwork()方法）在它对应的企业配置文件被移除后删除。</p>
 <p>WiFi配置锁定：如果WIFI_DEVICE_OWNER_CONFIGS_LOCKDOWN 不为0时，任何由活动设备拥有者创建的WiFi配置文件将不可以被用户进行修改和删除。用户仍然可以创建和修改他们自己的WiFi配置。活动设备所有者拥有修改和删除包括那些不是由他们创建的WiFi配置的特权。</p>
 <p>通过google账号来下载企业策略控制器：当一个管理环境之外的需要管理的google账号要求通过设备策略控制器app添加到设备时，新增账号流程将会提示用户安装合适的WPC。这一行为同样支持通过设置-账号和初始化设备时添加账号。</p>
-<h2 id="DevicePolicyManager-api的变化："><a href="#DevicePolicyManager-api的变化：" class="headerlink" title="DevicePolicyManager api的变化："></a>DevicePolicyManager api的变化：</h2><p>调用 setCameraDisabled()方法只会影响当前调用相机的用户。从管理文件中调用的话并不影响正在主用户上运行的使用相机的APP。</p>
+<h2><span id="devicepolicymanager-api的变化">DevicePolicyManager api的变化：</span></h2><p>调用 setCameraDisabled()方法只会影响当前调用相机的用户。从管理文件中调用的话并不影响正在主用户上运行的使用相机的APP。</p>
 <p>此外，现在配置拥有者可以和设备拥有者一样使用setKeyguardDisabledFeatures() 方法。</p>
 <p>配置拥有者可以设置以下锁屏设置：<br>KEYGUARD_DISABLE_TRUST_AGENTS 和 KEYGUARD_DISABLE_FINGERPRINT可以影响配置文件的父用户。<br>KEYGUARD_DISABLE_UNREDACTED_NOTIFICATIONS,会影响APP在管理文件中产生的通知。</p>
 <p>DevicePolicyManager.createAndInitializeUser() 和DevicePolicyManager.createUser()方法被弃用。</p>
@@ -719,8 +1101,8 @@ ga('send', 'pageview');
 <p>你现在可以使用EXTRA_PROVISIONING_ADMIN_EXTRAS_BUNDLE在NFC触碰时将管理设备的数据传输给设备拥有者的APP。</p>
 <p>企业Android api 优化了M的运行时权限，包括工作文件，协助层，以及其他等等。新的 DevicePolicyManager 权限API不影响Android M 之前的APP版本。  </p>
 <p>当用户从初始化设置流程中通过ACTION_PROVISION_MANAGED_PROFILE 或 ACTION_PROVISION_MANAGED_DEVICE intent退出同步部分，系统现在会返回一个RESULT_CANCELED返回值。</p>
-<h2 id="其他API的变化："><a href="#其他API的变化：" class="headerlink" title="其他API的变化："></a>其他API的变化：</h2><p>数据流量统计:android.app.usage.NetworkUsageStats 类被重命名为 NetworkStats.</p>
-<h2 id="全局设置的变化："><a href="#全局设置的变化：" class="headerlink" title="全局设置的变化："></a>全局设置的变化：</h2><p>以下属性将不能再通过 setGlobalSettings()来设置：<br>BLUETOOTH_ON<br>DEVELOPMENT_SETTINGS_ENABLED<br>MODE_RINGER<br>NETWORK_PREFERENCE<br>WIFI_ON</p>
+<h2><span id="其他api的变化">其他API的变化：</span></h2><p>数据流量统计:android.app.usage.NetworkUsageStats 类被重命名为 NetworkStats.</p>
+<h2><span id="全局设置的变化">全局设置的变化：</span></h2><p>以下属性将不能再通过 setGlobalSettings()来设置：<br>BLUETOOTH_ON<br>DEVELOPMENT_SETTINGS_ENABLED<br>MODE_RINGER<br>NETWORK_PREFERENCE<br>WIFI_ON</p>
 <p>以下全局设置现在可以使用setGlobalSettings()来设置：<br>WIFI_DEVICE_OWNER_CONFIGS_LOCKDOWN</p>
 -->
             <!---->
@@ -732,7 +1114,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://yoursite.com/2016/08/20/Android-6.0-Change-2/" data-id="cjgxp99yq00036agj2c0j4arp" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+    <a data-url="http://yoursite.com/2016/08/20/Android-6.0-Change-2/" data-id="cjj6cvmuf0005bjgj52bif0y7" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -884,7 +1266,7 @@ ga('send', 'pageview');
             
             <p><p>随着一系列新的特性以及功能， Android 6.0 (API level 23)包含了很多的系统变化以及API行为的变化。本文着重介绍了一些你应该理解的和占用APP中重要部分的变化。</p>
 <p>如果你之前已经在Android平台发布过APP，要知道这些平台上的变化将会影响你的APP。</p>
-<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ul>
+<h2><span id="目录">目录</span></h2><ul>
 <li><a href="#目录">目录</a></li>
 <p>
                 
@@ -901,7 +1283,7 @@ ga('send', 'pageview');
             <!---->
             <!--<p>随着一系列新的特性以及功能， Android 6.0 (API level 23)包含了很多的系统变化以及API行为的变化。本文着重介绍了一些你应该理解的和占用APP中重要部分的变化。</p>
 <p>如果你之前已经在Android平台发布过APP，要知道这些平台上的变化将会影响你的APP。</p>
-<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ul>
+<h2><span id="目录">目录</span></h2><ul>
 <li><a href="#目录">目录</a></li>
 <li><a href="#运行时权限">运行时权限</a></li>
 <li><a href="#休眠和应用待机模式">休眠和应用待机模式</a></li>
@@ -912,25 +1294,25 @@ ga('send', 'pageview');
 <li><a href="#audiomanager-改变">AudioManager 改变</a></li>
 <li><a href="#文本选择">文本选择</a></li>
 </ul>
-<h2 id="运行时权限"><a href="#运行时权限" class="headerlink" title="运行时权限"></a>运行时权限</h2><p>这个版本引入了一个新的权限模型，使得用户现在可以在运行时直接管理APP权限。这个模型改善了用户对权限管理的可见度和管理程度，并简化了APP开发者对安装和自动升级的流程。用户可以对已安装的APP的权限分别进行授权和取消。</p>
+<h2><span id="运行时权限">运行时权限</span></h2><p>这个版本引入了一个新的权限模型，使得用户现在可以在运行时直接管理APP权限。这个模型改善了用户对权限管理的可见度和管理程度，并简化了APP开发者对安装和自动升级的流程。用户可以对已安装的APP的权限分别进行授权和取消。</p>
 <p>当你的APP的目标版本在Android 6.0 (API level 23)或者更高的时候， 请确保在运行时检查并申请权限。要确定你的APP是否被授予了某权限，可以通过调用新的checkSelfPermission()方法。为了去申请一个权限，可以通过调用 requestPermissions() 新方法。即使你的APP目标版本不是 Android 6.0 (API level 23)，你也应该在新的权限模型下进行测试。</p>
 <p>想要了解更多的在你的APP里支持新的权限模型的细节，可见 Working with System Permissions。获得更多的评估对你的APP的影响的提示，可见Permissions Best Practices。</p>
 <p>危险权限和普通权限见下链接<br><a href="http://blog.csdn.net/chenlinfeng772885775/article/details/53508204" target="_blank" rel="external">点击打开链接</a></p>
-<h2 id="休眠和应用待机模式"><a href="#休眠和应用待机模式" class="headerlink" title="休眠和应用待机模式"></a>休眠和应用待机模式</h2><p>这个版本将为空闲的设备和APP引入新的节能方式。这些新功能将会影响所有的APP，所以请确保你的APP在新的模式下进行测试。</p>
+<h2><span id="休眠和应用待机模式">休眠和应用待机模式</span></h2><p>这个版本将为空闲的设备和APP引入新的节能方式。这些新功能将会影响所有的APP，所以请确保你的APP在新的模式下进行测试。</p>
 <p>休眠：如果用户拔出一个设备并将其屏幕关闭闲置一段时间，设备将会进入休眠模式，尝试使系统进入睡眠状态。在这个模式下，设备周期性的恢复短暂时间的正常操作使得APP可以进行同步，使得系统可以进行一些待执行的操作。</p>
 <p>APP待机：APP待机允许系统判定一个APP是处于待机状态当这个APP没有被用户显式的使用。系统在用户一段时间内并没有触摸这个APP时做出这个决定。如果设备没有连接充电器，系统将会禁止访问网络并暂停APP的同步以及相应的工作当他被认为是闲置的时候。</p>
 <p>学习更多的有关节能方面的改变，详见Optimizing for Doze and App Standby。</p>
-<h2 id="移除Apache的-HTTP-Client"><a href="#移除Apache的-HTTP-Client" class="headerlink" title="移除Apache的 HTTP Client"></a>移除Apache的 HTTP Client</h2><p>Android 6.0 的版本移除了对 Apache HTTP client的支持.如果你的APP正在使用这个client并且目标版本在Android 2.3 (API level 9)或者更高，请使用HttpURLConnection类来替代。这个API是更加高效的，因为他采用了透明压缩和响应缓存来减少网络使用，减少电能消耗。如果仍然想继续使用Apache HTTP APIs，你必须一开始就在你的build.gradle文件里定义以下编译时依赖。</p>
+<h2><span id="移除apache的-http-client">移除Apache的 HTTP Client</span></h2><p>Android 6.0 的版本移除了对 Apache HTTP client的支持.如果你的APP正在使用这个client并且目标版本在Android 2.3 (API level 9)或者更高，请使用HttpURLConnection类来替代。这个API是更加高效的，因为他采用了透明压缩和响应缓存来减少网络使用，减少电能消耗。如果仍然想继续使用Apache HTTP APIs，你必须一开始就在你的build.gradle文件里定义以下编译时依赖。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">android &#123;</div><div class="line">    useLibrary &apos;org.apache.http.legacy&apos;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="BoringSSL"><a href="#BoringSSL" class="headerlink" title="BoringSSL"></a>BoringSSL</h2><p>Android正在将OpenSSL替换为BoringSSL库。如果你的APP使用的是 Android NDK，请不要使用那些不属于NDK API里的库，比如：libcrypto.so 和 libssl.so.这些库不是公开的API,他们的修改和禁用也不会通过文件和设备通知开发者。另外，这样可能还会暴露你APP的安全漏洞。取而代之的是你需要修改你的native代码，通过JNI来调用Java cryptography APIs或者静态连接到你选择的加密库。</p>
-<h2 id="获取硬件标识符"><a href="#获取硬件标识符" class="headerlink" title="获取硬件标识符"></a>获取硬件标识符</h2><p>从这个版本开始，为了给用户提供更好点数据保护，Android删除了通过编程方式从Wi-Fi 和 Bluetooth APIs来获得硬件本地标识符的方法。现在 WifiInfo.getMacAddress() 和 BluetoothAdapter.getAddress()方法将始终返回一个常量值02:00:00:00:00:00。</p>
+<h2><span id="boringssl">BoringSSL</span></h2><p>Android正在将OpenSSL替换为BoringSSL库。如果你的APP使用的是 Android NDK，请不要使用那些不属于NDK API里的库，比如：libcrypto.so 和 libssl.so.这些库不是公开的API,他们的修改和禁用也不会通过文件和设备通知开发者。另外，这样可能还会暴露你APP的安全漏洞。取而代之的是你需要修改你的native代码，通过JNI来调用Java cryptography APIs或者静态连接到你选择的加密库。</p>
+<h2><span id="获取硬件标识符">获取硬件标识符</span></h2><p>从这个版本开始，为了给用户提供更好点数据保护，Android删除了通过编程方式从Wi-Fi 和 Bluetooth APIs来获得硬件本地标识符的方法。现在 WifiInfo.getMacAddress() 和 BluetoothAdapter.getAddress()方法将始终返回一个常量值02:00:00:00:00:00。</p>
 <p>为了通过蓝牙或WiFi扫描获取附近的设备的硬件标识符，你的APP必须拥有ACCESS_FINE_LOCATION 或 ACCESS_COARSE_LOCATION权限。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">WifiManager.getScanResults()</div><div class="line">BluetoothDevice.ACTION_FOUND</div><div class="line">BluetoothLeScanner.startScan()</div></pre></td></tr></table></figure>
 <p>注意：当一个运行Android 6.0 (API level 23)的设备启动WiFi或者蓝牙扫描时，这个操作对外部设备是可见的，并会被初始化一个随机的mac地址。</p>
-<h2 id="通知"><a href="#通知" class="headerlink" title="通知"></a>通知</h2><p>这个版本删除了 Notification.setLatestEventInfo()方法。使用Notification.Builder来取代它进行构造通知。为了反复更新一个通知，可以重用 Notification.Builder 实例，调用 build() 方法来更新通知实例。</p>
+<h2><span id="通知">通知</span></h2><p>这个版本删除了 Notification.setLatestEventInfo()方法。使用Notification.Builder来取代它进行构造通知。为了反复更新一个通知，可以重用 Notification.Builder 实例，调用 build() 方法来更新通知实例。</p>
 <p>adb shell dumpsys notification命令不在打印你的通知文本。使用adb shell dumpsys notification –noredact命令来取代它打印你的通知对象文本。</p>
-<h2 id="AudioManager-改变"><a href="#AudioManager-改变" class="headerlink" title="AudioManager 改变"></a>AudioManager 改变</h2><p>不再支持通过 AudioManager类来对某个音频流进行精确的调音或者静音设置。 setStreamSolo()方法已经被弃用了，你应该使用  requestAudioFocus() 方法来替代它。同样的setStreamMute()方法也被弃用了，调用 adjustStreamVolume() 方法来替代它，传入的参数变为ADJUST_MUTE 或 ADJUST_UNMUTE 。</p>
-<h2 id="文本选择"><a href="#文本选择" class="headerlink" title="文本选择"></a>文本选择</h2><p>当用户在你的APP上选择文本时，你现在可以在浮动工具栏里显示一些文本选择动作比如剪切，复制，和粘贴。和用户的交互界面类似于上下文动作菜单，就像为单独的视图配置的上下文菜单。</p>
+<h2><span id="audiomanager-改变">AudioManager 改变</span></h2><p>不再支持通过 AudioManager类来对某个音频流进行精确的调音或者静音设置。 setStreamSolo()方法已经被弃用了，你应该使用  requestAudioFocus() 方法来替代它。同样的setStreamMute()方法也被弃用了，调用 adjustStreamVolume() 方法来替代它，传入的参数变为ADJUST_MUTE 或 ADJUST_UNMUTE 。</p>
+<h2><span id="文本选择">文本选择</span></h2><p>当用户在你的APP上选择文本时，你现在可以在浮动工具栏里显示一些文本选择动作比如剪切，复制，和粘贴。和用户的交互界面类似于上下文动作菜单，就像为单独的视图配置的上下文菜单。</p>
 <p>为了实现文本选择的浮动工具栏，需要在你已有的APP里做出以下改变：</p>
 <p>1.在你的view里或者activity里，改变你的 ActionMode 的获取方法，由startActionMode(Callback)变为 startActionMode(Callback, ActionMode.TYPE_FLOATING).</p>
 <p>2.将你已经实现了ActionMode.Callback变为继承自ActionMode.Callback2。</p>
@@ -947,7 +1329,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://yoursite.com/2016/08/20/Android-6.0-Change-1/" data-id="cjgxp99yl00016agjvplrj423" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+    <a data-url="http://yoursite.com/2016/08/20/Android-6.0-Change-1/" data-id="cjj6cvmu50002bjgjlt9mbntx" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1135,7 +1517,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://yoursite.com/2016/03/17/Android-declare-styleable-Attribute/" data-id="cjgxp9a0d001g6agjlya6dr7m" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+    <a data-url="http://yoursite.com/2016/03/17/Android-declare-styleable-Attribute/" data-id="cjj6cvmun0008bjgjf3f7gvuj" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1294,7 +1676,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://yoursite.com/2016/03/09/Byte-Common-transition/" data-id="cjgxp9a0b001e6agj9o3s0wa1" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+    <a data-url="http://yoursite.com/2016/03/09/Byte-Common-transition/" data-id="cjj6cvmux000bbjgjv2o1hfrs" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1380,7 +1762,7 @@ ga('send', 'pageview');
    
         
     <div class="widget-wrap">
-        <h3 class="widget-title">Recientes</h3>
+        <h3 class="widget-title">recent</h3>
         <div class="widget">
             <ul id="recent-post" class="">
                 
@@ -1425,6 +1807,44 @@ ga('send', 'pageview');
                     <li>
                         
                         <div class="item-thumbnail">
+                            <a href="/2017/02/17/1-Two-Sum/Record[Chinese ver]/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Chinese/">Chinese</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/Chinese/Algorithm/">Algorithm</a></p>
+                            <p class="item-title"><a href="/2017/02/17/1-Two-Sum/Record[Chinese ver]/" class="title">LeetCode 1 Two Sum [Chinese ver]</a></p>
+                            <p class="item-date"><time datetime="2017-02-16T16:00:00.000Z" itemprop="datePublished">2017-02-17</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/02/17/1-Two-Sum/Record[English ver]/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/English/">English</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/English/Algorithm/">Algorithm</a></p>
+                            <p class="item-title"><a href="/2017/02/17/1-Two-Sum/Record[English ver]/" class="title">LeetCode 1 Two Sum [English ver]</a></p>
+                            <p class="item-date"><time datetime="2017-02-16T16:00:00.000Z" itemprop="datePublished">2017-02-17</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
                             <a href="/2016/08/20/Android-6.0-Change-2/" class="thumbnail">
     
     
@@ -1441,44 +1861,6 @@ ga('send', 'pageview');
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2016/08/20/Android-6.0-Change-1/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/2016/08/20/Android-6.0-Change-1/picThumb.jpg)" alt="Android 6.0的变化 （上）" class="thumbnail-image"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Chinese/">Chinese</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/Chinese/Android/">Android</a></p>
-                            <p class="item-title"><a href="/2016/08/20/Android-6.0-Change-1/" class="title">Android 6.0的变化 （上）</a></p>
-                            <p class="item-date"><time datetime="2016-08-20T12:21:44.000Z" itemprop="datePublished">2016-08-20</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2016/03/17/Android-declare-styleable-Attribute/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/2016/03/17/Android-declare-styleable-Attribute/picThumb.jpg)" alt="Android declare-styleable自定义属性" class="thumbnail-image"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Chinese/">Chinese</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/Chinese/Android/">Android</a></p>
-                            <p class="item-title"><a href="/2016/03/17/Android-declare-styleable-Attribute/" class="title">Android declare-styleable自定义属性</a></p>
-                            <p class="item-date"><time datetime="2016-03-17T07:24:26.000Z" itemprop="datePublished">2016-03-17</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -1486,43 +1868,43 @@ ga('send', 'pageview');
     
         
     <div class="widget-wrap">
-        <h3 class="widget-title">Categorias</h3>
+        <h3 class="widget-title">categories</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/">Chinese</a><span class="category-list-count">6</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/">Android</a><span class="category-list-count">5</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/Error/">Error</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/UI/">UI</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/UI/Custom-View/">Custom View</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/版本差异/">版本差异</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/版本管理/">版本管理</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Java/">Java</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Java/Data-Structure/">Data Structure</a><span class="category-list-count">1</span></li></ul></li></ul></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/">Chinese</a><span class="category-list-count">7</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Algorithm/">Algorithm</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Algorithm/LeetCode/">LeetCode</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/">Android</a><span class="category-list-count">5</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/Error/">Error</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/UI/">UI</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/UI/Custom-View/">Custom View</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/版本差异/">版本差异</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/版本管理/">版本管理</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Java/">Java</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Java/Data-Structure/">Data Structure</a><span class="category-list-count">1</span></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/English/">English</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/English/Algorithm/">Algorithm</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/English/Algorithm/LeetCode/">LeetCode</a><span class="category-list-count">1</span></li></ul></li></ul></li></ul>
         </div>
     </div>
 
     
         
     <div class="widget-wrap">
-        <h3 class="widget-title">Archivos</h3>
+        <h3 class="widget-title">archives</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">2</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">2</span></li></ul>
         </div>
     </div>
 
     
         
     <div class="widget-wrap">
-        <h3 class="widget-title">Etiquetas</h3>
+        <h3 class="widget-title">tags</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chinese/">Chinese</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Custom-View/">Custom View</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Structure/">Data Structure</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Error/">Error</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UI/">UI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/版本差异/">版本差异</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/版本管理/">版本管理</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/">Algorithm</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chinese/">Chinese</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Custom-View/">Custom View</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Structure/">Data Structure</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English/">English</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Error/">Error</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LeetCode/">LeetCode</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UI/">UI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/版本差异/">版本差异</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/版本管理/">版本管理</a><span class="tag-list-count">1</span></li></ul>
         </div>
     </div>
 
     
         
     <div class="widget-wrap">
-        <h3 class="widget-title">Nube de etiquetas</h3>
+        <h3 class="widget-title">tag cloud</h3>
         <div class="widget tagcloud">
-            <a href="/tags/Android/" style="font-size: 16.67px;">Android</a> <a href="/tags/Chinese/" style="font-size: 20px;">Chinese</a> <a href="/tags/Custom-View/" style="font-size: 10px;">Custom View</a> <a href="/tags/Data-Structure/" style="font-size: 10px;">Data Structure</a> <a href="/tags/Error/" style="font-size: 10px;">Error</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/UI/" style="font-size: 10px;">UI</a> <a href="/tags/版本差异/" style="font-size: 13.33px;">版本差异</a> <a href="/tags/版本管理/" style="font-size: 10px;">版本管理</a>
+            <a href="/tags/Algorithm/" style="font-size: 13.33px;">Algorithm</a> <a href="/tags/Android/" style="font-size: 16.67px;">Android</a> <a href="/tags/Chinese/" style="font-size: 20px;">Chinese</a> <a href="/tags/Custom-View/" style="font-size: 10px;">Custom View</a> <a href="/tags/Data-Structure/" style="font-size: 10px;">Data Structure</a> <a href="/tags/English/" style="font-size: 10px;">English</a> <a href="/tags/Error/" style="font-size: 10px;">Error</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/LeetCode/" style="font-size: 13.33px;">LeetCode</a> <a href="/tags/UI/" style="font-size: 10px;">UI</a> <a href="/tags/版本差异/" style="font-size: 13.33px;">版本差异</a> <a href="/tags/版本管理/" style="font-size: 10px;">版本管理</a>
         </div>
     </div>
 
     
         
     <div class="widget-wrap widget-list">
-        <h3 class="widget-title">Links</h3>
+        <h3 class="widget-title">links</h3>
         <div class="widget">
             <ul>
                 
