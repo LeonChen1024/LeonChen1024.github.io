@@ -164,7 +164,7 @@ ga('send', 'pageview');
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                8
+                10
                 <span>posts</span>
             </div>
             <div class="article-info-block">
@@ -193,12 +193,396 @@ ga('send', 'pageview');
                 </tr>
             </table>
         </div>
+        <div class="wechat">
+            <img id="wechatnumber" src="css/images/imgAdOne.jpg" width="280px" height="280px"/>
+        </div>
         
     </div>
 </aside>
 
             
             <section id="main">
+    <article id="post-2-Add-Two-Num/Record[English-ver]" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+	
+		<a href="/2018/07/15/2-Add-Two-Num/Record[English-ver]/" itemprop="url">
+            <img src="/2018/07/15/2-Add-Two-Num/Record[Chinese-ver]/title.jpg" class="article-banner" />
+        </a>
+	
+
+
+
+        
+        
+        <header class="article-header">
+            
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2018/07/15/2-Add-Two-Num/Record[English-ver]/">LeetCode 2. Add Two Numbers [English ver]</a>
+        </h1>
+    
+
+            
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2018/07/15/2-Add-Two-Num/Record[English-ver]/">
+            <time datetime="2018-07-14T16:00:00.000Z" itemprop="datePublished">2018-07-15</time>
+        </a>
+    </div>
+
+
+                
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/English/">English</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/English/Algorithm/">Algorithm</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/English/Algorithm/LeetCode/">LeetCode</a>
+    </div>
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Algorithm/">Algorithm</a>, <a class="tag-link" href="/tags/English/">English</a>, <a class="tag-link" href="/tags/LeetCode/">LeetCode</a>
+    </div>
+
+            </div>
+            
+        </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <p><p>[English ver]</p>
+<h2><span id="2-add-two-numbers">2. Add Two Numbers</span></h2><p>Question ：You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order and each of their nodes contain a single digit. Add the two numbers and return it as a linked list.<br>You may assume the two numbers do not contain any leading zero, except the number 0 itself.</p>
+<p>Input: (2 -&gt; 4 -&gt; 3) + (5 -&gt; 6 -&gt; 4)<br>Output: 7 -&gt; 0 -&gt; 8</p>
+<h3><span id="approach-1">Approach 1：</span></h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> ListNode <span class="title">addTwoNumbers</span><span class="params">(ListNode l1, ListNode l2)</span> </span>&#123;</div><div class="line">    ListNode dummyHead = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</div><div class="line">    ListNode p = l1, q = l2, curr = dummyHead;</div><div class="line">    <span class="keyword">int</span> carry = <span class="number">0</span>;</div><div class="line">    <span class="keyword">while</span> (p != <span class="keyword">null</span> || q != <span class="keyword">null</span>) &#123;</div><div class="line">        <span class="keyword">int</span> x = (p != <span class="keyword">null</span>) ? p.val : <span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span> y = (q != <span class="keyword">null</span>) ? q.val : <span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span> sum = carry + x + y;</div><div class="line">        carry = sum / <span class="number">10</span>;</div><div class="line">        curr.next = <span class="keyword">new</span> ListNode(sum % <span class="number">10</span>);</div><div class="line">        curr = curr.next;</div><div class="line">        <span class="keyword">if</span> (p != <span class="keyword">null</span>) p = p.next;</div><div class="line">        <span class="keyword">if</span> (q != <span class="keyword">null</span>) q = q.next;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (carry &gt; <span class="number">0</span>) &#123;</div><div class="line">        curr.next = <span class="keyword">new</span> ListNode(carry);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> dummyHead.next;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>
+                
+                
+                
+            
+    </div>
+    <div class="article-more-link">
+        <a href="/2018/07/15/2-Add-Two-Num/Record[English-ver]/#more">Read More</a>
+    </div>
+    
+        <!--<div class="article-entry" itemprop="articleBody">-->
+            <!---->
+            <!---->
+            <!--<p>[English ver]</p>
+<h2><span id="2-add-two-numbers">2. Add Two Numbers</span></h2><p>Question ：You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order and each of their nodes contain a single digit. Add the two numbers and return it as a linked list.<br>You may assume the two numbers do not contain any leading zero, except the number 0 itself.</p>
+<p>Input: (2 -&gt; 4 -&gt; 3) + (5 -&gt; 6 -&gt; 4)<br>Output: 7 -&gt; 0 -&gt; 8</p>
+<h3><span id="approach-1">Approach 1：</span></h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> ListNode <span class="title">addTwoNumbers</span><span class="params">(ListNode l1, ListNode l2)</span> </span>&#123;</div><div class="line">    ListNode dummyHead = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</div><div class="line">    ListNode p = l1, q = l2, curr = dummyHead;</div><div class="line">    <span class="keyword">int</span> carry = <span class="number">0</span>;</div><div class="line">    <span class="keyword">while</span> (p != <span class="keyword">null</span> || q != <span class="keyword">null</span>) &#123;</div><div class="line">        <span class="keyword">int</span> x = (p != <span class="keyword">null</span>) ? p.val : <span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span> y = (q != <span class="keyword">null</span>) ? q.val : <span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span> sum = carry + x + y;</div><div class="line">        carry = sum / <span class="number">10</span>;</div><div class="line">        curr.next = <span class="keyword">new</span> ListNode(sum % <span class="number">10</span>);</div><div class="line">        curr = curr.next;</div><div class="line">        <span class="keyword">if</span> (p != <span class="keyword">null</span>) p = p.next;</div><div class="line">        <span class="keyword">if</span> (q != <span class="keyword">null</span>) q = q.next;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (carry &gt; <span class="number">0</span>) &#123;</div><div class="line">        curr.next = <span class="keyword">new</span> ListNode(carry);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> dummyHead.next;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/2%20Add%20Two%20Num/Images/method1result.png?raw=true" alt="Efficiency"></p>
+<h4><span id="analysis">Analysis</span></h4><p>Actually, the problem is easy to resolved if you are familiar with the use of the list and the logic of the arithmetic . Plus every bit base on decimal, note that the addition of the carry will only be 0 or 1, because even if you use the two largest number 9 +9 in finally you only get carry 1, then use the largest number 9 +9 + 1 will only Get 19, the carry is 1 too. So the main logic is (the sum of two numbers )sum / 10 is the carry, sum% 10 is the number of the this bit . DummyHead is a fake data header, used to do an initialization, it is possible if you don’t want to use it, but in the internal logic you need to deal with the difference logic between the first bit of the result and the number of subsequent .<br>Note that there are several special cases. 1. The length of one list is longer than the other. 2. One of the lists is empty. 3. There is still have a carry in the last bit</p>
+<p>Time complexity: O (max (m, n)). The total number of cycles is the largest number between m and n.<br>Space complexity: O (max (m, n)). The length of the new list we create is the maximum length of m, n, plus a dummy header.</p>
+<h3><span id="approach-2">Approach 2</span></h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * Definition for singly-linked list.</span></div><div class="line"><span class="comment"> * public class ListNode &#123;</span></div><div class="line"><span class="comment"> *     int val;</span></div><div class="line"><span class="comment"> *     ListNode next;</span></div><div class="line"><span class="comment"> *     ListNode(int x) &#123; val = x; &#125;</span></div><div class="line"><span class="comment"> * &#125;</span></div><div class="line"><span class="comment"> */</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">addTwoNumbers</span><span class="params">(ListNode l1, ListNode l2)</span> </span>&#123;</div><div class="line">        ListNode ln1 = l1, ln2 = l2, head = <span class="keyword">null</span>, node = <span class="keyword">null</span>;</div><div class="line">        <span class="keyword">int</span> carry = <span class="number">0</span>, remainder = <span class="number">0</span>, sum = <span class="number">0</span>;</div><div class="line">        head = node = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</div><div class="line"></div><div class="line">        <span class="keyword">while</span>(ln1 != <span class="keyword">null</span> || ln2 != <span class="keyword">null</span> || carry != <span class="number">0</span>) &#123;</div><div class="line">            sum = (ln1 != <span class="keyword">null</span> ? ln1.val : <span class="number">0</span>) + (ln2 != <span class="keyword">null</span> ? ln2.val : <span class="number">0</span>) + carry;</div><div class="line">            carry = sum / <span class="number">10</span>;</div><div class="line">            remainder = sum % <span class="number">10</span>;</div><div class="line">            node = node.next = <span class="keyword">new</span> ListNode(remainder);</div><div class="line">            ln1 = (ln1 != <span class="keyword">null</span> ? ln1.next : <span class="keyword">null</span>);</div><div class="line">            ln2 = (ln2 != <span class="keyword">null</span> ? ln2.next : <span class="keyword">null</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> head.next;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/2%20Add%20Two%20Num/Images/method2result.png?raw=true" alt="Efficience"></p>
+<p>This is someone else’s approach, actually these two methods in the overall thinking is almost the same ,but this approach is more faster than approach 1 . why ? I think the approach 1 is always create a int x,y and other objects in the cycle , because the timing was based on thousands of examples , result a gap about 20ms. This is purely personal think , if you have more correct ideas, or somewhere is an argument about the reason this gap, please tell me. Thank you.</p>
+<h2><span id="about-me">About Me</span></h2><p>My blog <a href="http://leonchen1024.com/" target="_blank" rel="external">leonchen1024.com</a></p>
+<p>My Github [<a href="https://github.com/LeonChen1024" target="_blank" rel="external">https://github.com/LeonChen1024</a></p>
+-->
+            <!---->
+        <!--</div>-->
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://yoursite.com/2018/07/15/2-Add-Two-Num/Record[English-ver]/" data-id="cjjm31tt70000u6gj4n2h91vd" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+
+
+
+
+    <article id="post-2-Add-Two-Num/Record[Chinese-ver]" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+	
+		<a href="/2018/07/15/2-Add-Two-Num/Record[Chinese-ver]/" itemprop="url">
+            <img src="/2018/07/15/2-Add-Two-Num/Record[Chinese-ver]/title.jpg" class="article-banner" />
+        </a>
+	
+
+
+
+        
+        
+        <header class="article-header">
+            
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2018/07/15/2-Add-Two-Num/Record[Chinese-ver]/">LeetCode 2. Add Two Numbers [Chinese ver]</a>
+        </h1>
+    
+
+            
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2018/07/15/2-Add-Two-Num/Record[Chinese-ver]/">
+            <time datetime="2018-07-14T16:00:00.000Z" itemprop="datePublished">2018-07-15</time>
+        </a>
+    </div>
+
+
+                
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Chinese/">Chinese</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/Chinese/Algorithm/">Algorithm</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/Chinese/Algorithm/LeetCode/">LeetCode</a>
+    </div>
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Algorithm/">Algorithm</a>, <a class="tag-link" href="/tags/Chinese/">Chinese</a>, <a class="tag-link" href="/tags/LeetCode/">LeetCode</a>
+    </div>
+
+            </div>
+            
+        </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <p><p>[Chinese ver]</p>
+<h2><span id="2-add-two-numbers">2. Add Two Numbers</span></h2><p>问题：你将获得两个非空 linked lists来表示两个非负整数。 数字以反向的顺序存储，并且它们的每个节点包含一位数字。 将两个数字相加并将其以 linked list的形式返回。</p>
+<p>你可以假定这两个数字不包含任何前导零（即不存在首位出现0的情况），除了数字0本身。</p>
+<p>输入 ：(2 -&gt; 4 -&gt; 3) + (5 -&gt; 6 -&gt; 4)<br>输出 ： 7 -&gt; 0 -&gt; 8</p>
+<p>
+                
+                
+                
+            
+    </div>
+    <div class="article-more-link">
+        <a href="/2018/07/15/2-Add-Two-Num/Record[Chinese-ver]/#more">Read More</a>
+    </div>
+    
+        <!--<div class="article-entry" itemprop="articleBody">-->
+            <!---->
+            <!---->
+            <!--<p>[Chinese ver]</p>
+<h2><span id="2-add-two-numbers">2. Add Two Numbers</span></h2><p>问题：你将获得两个非空 linked lists来表示两个非负整数。 数字以反向的顺序存储，并且它们的每个节点包含一位数字。 将两个数字相加并将其以 linked list的形式返回。</p>
+<p>你可以假定这两个数字不包含任何前导零（即不存在首位出现0的情况），除了数字0本身。</p>
+<p>输入 ：(2 -&gt; 4 -&gt; 3) + (5 -&gt; 6 -&gt; 4)<br>输出 ： 7 -&gt; 0 -&gt; 8</p>
+<h3><span id="方法一">方法一：</span></h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> ListNode <span class="title">addTwoNumbers</span><span class="params">(ListNode l1, ListNode l2)</span> </span>&#123;</div><div class="line">    ListNode dummyHead = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</div><div class="line">    ListNode p = l1, q = l2, curr = dummyHead;</div><div class="line">    <span class="keyword">int</span> carry = <span class="number">0</span>;</div><div class="line">    <span class="keyword">while</span> (p != <span class="keyword">null</span> || q != <span class="keyword">null</span>) &#123;</div><div class="line">        <span class="keyword">int</span> x = (p != <span class="keyword">null</span>) ? p.val : <span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span> y = (q != <span class="keyword">null</span>) ? q.val : <span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span> sum = carry + x + y;</div><div class="line">        carry = sum / <span class="number">10</span>;</div><div class="line">        curr.next = <span class="keyword">new</span> ListNode(sum % <span class="number">10</span>);</div><div class="line">        curr = curr.next;</div><div class="line">        <span class="keyword">if</span> (p != <span class="keyword">null</span>) p = p.next;</div><div class="line">        <span class="keyword">if</span> (q != <span class="keyword">null</span>) q = q.next;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (carry &gt; <span class="number">0</span>) &#123;</div><div class="line">        curr.next = <span class="keyword">new</span> ListNode(carry);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> dummyHead.next;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/2%20Add%20Two%20Num/Images/method1result.png?raw=true" alt="效率"></p>
+<h4><span id="分析">分析</span></h4><p>其实这个问题熟悉一下链表的使用和算术的逻辑就可以解决了。按位加过十进一，注意，加法的进位只会是0或者1，因为就算你用两个最大的数9+9最后也只是进一，进一之后再9+9+1也只会得到19，还是进一。所以主要的逻辑就是两个数的和sum/10得到的是进位，sum%10得到的是本位的数。dummyHead是一个假的数据头，用来做一个初始化，不使用也是可以的，但是在内部逻辑中就需要自己在处理第一位和后续的位数的逻辑区别。<br>注意有几种特殊情况。1.其中一个list的长度比另一个要长。2.其中一个list为空。3.加到最后一位时仍然还有进位</p>
+<p>时间复杂度： O(max(m,n)).总共循环m和n中的最大次数。<br>空间复杂度 :   O(max(m,n)).我们得到的新的list 的长度是m,n中最大长度，加上一个假数据头。</p>
+<h3><span id="方法二">方法二</span></h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * Definition for singly-linked list.</span></div><div class="line"><span class="comment"> * public class ListNode &#123;</span></div><div class="line"><span class="comment"> *     int val;</span></div><div class="line"><span class="comment"> *     ListNode next;</span></div><div class="line"><span class="comment"> *     ListNode(int x) &#123; val = x; &#125;</span></div><div class="line"><span class="comment"> * &#125;</span></div><div class="line"><span class="comment"> */</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">addTwoNumbers</span><span class="params">(ListNode l1, ListNode l2)</span> </span>&#123;</div><div class="line">        ListNode ln1 = l1, ln2 = l2, head = <span class="keyword">null</span>, node = <span class="keyword">null</span>;</div><div class="line">        <span class="keyword">int</span> carry = <span class="number">0</span>, remainder = <span class="number">0</span>, sum = <span class="number">0</span>;</div><div class="line">        head = node = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</div><div class="line"></div><div class="line">        <span class="keyword">while</span>(ln1 != <span class="keyword">null</span> || ln2 != <span class="keyword">null</span> || carry != <span class="number">0</span>) &#123;</div><div class="line">            sum = (ln1 != <span class="keyword">null</span> ? ln1.val : <span class="number">0</span>) + (ln2 != <span class="keyword">null</span> ? ln2.val : <span class="number">0</span>) + carry;</div><div class="line">            carry = sum / <span class="number">10</span>;</div><div class="line">            remainder = sum % <span class="number">10</span>;</div><div class="line">            node = node.next = <span class="keyword">new</span> ListNode(remainder);</div><div class="line">            ln1 = (ln1 != <span class="keyword">null</span> ? ln1.next : <span class="keyword">null</span>);</div><div class="line">            ln2 = (ln2 != <span class="keyword">null</span> ? ln2.next : <span class="keyword">null</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> head.next;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/2%20Add%20Two%20Num/Images/method2result.png?raw=true" alt="效率"></p>
+<p>这个是别人的做法，居然能够比方法一快了许多，说实话，其实这两个方法在整体思路上是差不多的，至于为什么会比前者快那么多我觉的是方法一在循环中不断新建了x,y等对象，由于计时时用了成千上百的例子验证所以导致了20ms左右的差距。以上纯属个人看法，如果你有更正确的想法，或者哪里有有关这种差距的论证，请告诉我。谢谢。</p>
+<h2><span id="about-me">About Me</span></h2><p>我的博客 <a href="http://leonchen1024.com/" target="_blank" rel="external">leonchen1024.com</a></p>
+<p>我的 GitHub <a href="https://github.com/LeonChen1024" target="_blank" rel="external">https://github.com/LeonChen1024</a></p>
+<p>微信公众号 </p>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/Images/CooderQRcodem.jpg?raw=false" alt="wechat"></p>
+-->
+            <!---->
+        <!--</div>-->
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://yoursite.com/2018/07/15/2-Add-Two-Num/Record[Chinese-ver]/" data-id="cjjm34vbi0000uggjyicwab42" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+
+
+
+
     <article id="post-APP-Version-Control" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -322,7 +706,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://yoursite.com/2018/04/13/APP-Version-Control/" data-id="cjj76nyyp0000jygjj0hhsv4v" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2018/04/13/APP-Version-Control/" data-id="cjjlcsazj0003w3gj8gnpau13" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -506,156 +890,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://yoursite.com/2018/01/10/Android-Error-And-Solution/" data-id="cjj76nyzd0008jygjccl3n97v" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-
-
-
-
-    <article id="post-1-Two-Sum/Record[English ver]" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-        <header class="article-header">
-            
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2017/02/17/1-Two-Sum/Record[English ver]/">LeetCode 1 Two Sum [English ver]</a>
-        </h1>
-    
-
-            
-            <div class="article-meta">
-                
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2017/02/17/1-Two-Sum/Record[English ver]/">
-            <time datetime="2017-02-16T16:00:00.000Z" itemprop="datePublished">2017-02-17</time>
-        </a>
-    </div>
-
-
-                
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/English/">English</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/English/Algorithm/">Algorithm</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/English/Algorithm/LeetCode/">LeetCode</a>
-    </div>
-
-                
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/Algorithm/">Algorithm</a>, <a class="tag-link" href="/tags/English/">English</a>, <a class="tag-link" href="/tags/LeetCode/">LeetCode</a>
-    </div>
-
-            </div>
-            
-        </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-            
-            
-            
-            
-            <p><h1 id="English-ver-1-Two-Sum"><a href="#English-ver-1-Two-Sum" class="headerlink" title="[English ver]1 Two Sum"></a>[English ver]1 Two Sum</h1><h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p>Two SumGiven an array of integers, return <strong>indices</strong> of the two numbers such that they add up to a specific target.<br>You may assume that each input would have <strong><em>exactly</em></strong> one solution, and you may not use the <em>same</em> element twice.</p></p>
-            
-                
-            
-    </div>
-    <div class="article-more-link">
-        <a href="/2017/02/17/1-Two-Sum/Record[English ver]/#more">Read More</a>
-    </div>
-    
-        <!--<div class="article-entry" itemprop="articleBody">-->
-            <!---->
-            <!--<p><h1 id="English-ver-1-Two-Sum"><a href="#English-ver-1-Two-Sum" class="headerlink" title="[English ver]1 Two Sum"></a>[English ver]1 Two Sum</h1><h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p>Two SumGiven an array of integers, return <strong>indices</strong> of the two numbers such that they add up to a specific target.<br>You may assume that each input would have <strong><em>exactly</em></strong> one solution, and you may not use the <em>same</em> element twice.</p></p>-->
-            <!--<p class="article-more-link">-->
-                <!--<a href="/2017/02/17/1-Two-Sum/Record[English ver]/#more">Read More</a>-->
-            <!--</p>-->
-            <!---->
-        <!--</div>-->
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://yoursite.com/2017/02/17/1-Two-Sum/Record[English ver]/" data-id="cjj76nz1r0028jygjgj8yfy3v" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2018/01/10/Android-Error-And-Solution/" data-id="cjjlcsaz60000w3gjj9xqxrlb" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -804,7 +1039,156 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/02/17/1-Two-Sum/Record[Chinese ver]/" data-id="cjj76nz1s0029jygjerwbbrjz" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/02/17/1-Two-Sum/Record[Chinese ver]/" data-id="cjjlcsb2l0028w3gj13soqus6" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+
+
+
+
+    <article id="post-1-Two-Sum/Record[English ver]" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+        <header class="article-header">
+            
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2017/02/17/1-Two-Sum/Record[English ver]/">LeetCode 1 Two Sum [English ver]</a>
+        </h1>
+    
+
+            
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/02/17/1-Two-Sum/Record[English ver]/">
+            <time datetime="2017-02-16T16:00:00.000Z" itemprop="datePublished">2017-02-17</time>
+        </a>
+    </div>
+
+
+                
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/English/">English</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/English/Algorithm/">Algorithm</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/English/Algorithm/LeetCode/">LeetCode</a>
+    </div>
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Algorithm/">Algorithm</a>, <a class="tag-link" href="/tags/English/">English</a>, <a class="tag-link" href="/tags/LeetCode/">LeetCode</a>
+    </div>
+
+            </div>
+            
+        </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+            
+            
+            
+            <p><h1 id="English-ver-1-Two-Sum"><a href="#English-ver-1-Two-Sum" class="headerlink" title="[English ver]1 Two Sum"></a>[English ver]1 Two Sum</h1><h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p>Two SumGiven an array of integers, return <strong>indices</strong> of the two numbers such that they add up to a specific target.<br>You may assume that each input would have <strong><em>exactly</em></strong> one solution, and you may not use the <em>same</em> element twice.</p></p>
+            
+                
+            
+    </div>
+    <div class="article-more-link">
+        <a href="/2017/02/17/1-Two-Sum/Record[English ver]/#more">Read More</a>
+    </div>
+    
+        <!--<div class="article-entry" itemprop="articleBody">-->
+            <!---->
+            <!--<p><h1 id="English-ver-1-Two-Sum"><a href="#English-ver-1-Two-Sum" class="headerlink" title="[English ver]1 Two Sum"></a>[English ver]1 Two Sum</h1><h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p>Two SumGiven an array of integers, return <strong>indices</strong> of the two numbers such that they add up to a specific target.<br>You may assume that each input would have <strong><em>exactly</em></strong> one solution, and you may not use the <em>same</em> element twice.</p></p>-->
+            <!--<p class="article-more-link">-->
+                <!--<a href="/2017/02/17/1-Two-Sum/Record[English ver]/#more">Read More</a>-->
+            <!--</p>-->
+            <!---->
+        <!--</div>-->
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://yoursite.com/2017/02/17/1-Two-Sum/Record[English ver]/" data-id="cjjlcsb2m0029w3gjclt5712l" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1030,7 +1414,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://yoursite.com/2016/08/20/Android-6.0-Change-2/" data-id="cjj76nyz70005jygjefycxx97" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2016/08/20/Android-6.0-Change-2/" data-id="cjjlcsazr0005w3gjy636uppi" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1245,7 +1629,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://yoursite.com/2016/08/20/Android-6.0-Change-1/" data-id="cjj76nyyx0002jygj00rygmpx" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2016/08/20/Android-6.0-Change-1/" data-id="cjjlcsazc0001w3gj4zxxnmuz" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1433,7 +1817,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://yoursite.com/2016/03/17/Android-declare-styleable-Attribute/" data-id="cjj76nyzn000ajygjsir2fb3e" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2016/03/17/Android-declare-styleable-Attribute/" data-id="cjjlcsazw0006w3gjadf3n3y0" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1592,7 +1976,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://yoursite.com/2016/03/09/Byte-Common-transition/" data-id="cjj76nz02000djygjw0qyx8ad" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2016/03/09/Byte-Common-transition/" data-id="cjjlcsb060009w3gjiyi6qp6o" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1685,6 +2069,44 @@ ga('send', 'pageview');
                     <li>
                         
                         <div class="item-thumbnail">
+                            <a href="/2018/07/15/2-Add-Two-Num/Record[English-ver]/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/2018/07/15/2-Add-Two-Num/Record[Chinese-ver]/titleThumb.jpg)" alt="LeetCode 2. Add Two Numbers [English ver]" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/English/">English</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/English/Algorithm/">Algorithm</a></p>
+                            <p class="item-title"><a href="/2018/07/15/2-Add-Two-Num/Record[English-ver]/" class="title">LeetCode 2. Add Two Numbers [English ver]</a></p>
+                            <p class="item-date"><time datetime="2018-07-14T16:00:00.000Z" itemprop="datePublished">2018-07-15</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/07/15/2-Add-Two-Num/Record[Chinese-ver]/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/2018/07/15/2-Add-Two-Num/Record[Chinese-ver]/titleThumb.jpg)" alt="LeetCode 2. Add Two Numbers [Chinese ver]" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Chinese/">Chinese</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/Chinese/Algorithm/">Algorithm</a></p>
+                            <p class="item-title"><a href="/2018/07/15/2-Add-Two-Num/Record[Chinese-ver]/" class="title">LeetCode 2. Add Two Numbers [Chinese ver]</a></p>
+                            <p class="item-date"><time datetime="2018-07-14T16:00:00.000Z" itemprop="datePublished">2018-07-15</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
                             <a href="/2018/04/13/APP-Version-Control/" class="thumbnail">
     
     
@@ -1723,25 +2145,6 @@ ga('send', 'pageview');
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2017/02/17/1-Two-Sum/Record[English ver]/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/English/">English</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/English/Algorithm/">Algorithm</a></p>
-                            <p class="item-title"><a href="/2017/02/17/1-Two-Sum/Record[English ver]/" class="title">LeetCode 1 Two Sum [English ver]</a></p>
-                            <p class="item-date"><time datetime="2017-02-16T16:00:00.000Z" itemprop="datePublished">2017-02-17</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
                             <a href="/2017/02/17/1-Two-Sum/Record[Chinese ver]/" class="thumbnail">
     
     
@@ -1758,25 +2161,6 @@ ga('send', 'pageview');
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2016/08/20/Android-6.0-Change-2/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/2016/08/20/Android-6.0-Change-2/picThumb.jpg)" alt="Android 6.0的变化 （下）" class="thumbnail-image"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Chinese/">Chinese</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/Chinese/Android/">Android</a></p>
-                            <p class="item-title"><a href="/2016/08/20/Android-6.0-Change-2/" class="title">Android 6.0的变化 （下）</a></p>
-                            <p class="item-date"><time datetime="2016-08-20T15:31:40.000Z" itemprop="datePublished">2016-08-20</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -1786,7 +2170,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">categories</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/">Chinese</a><span class="category-list-count">7</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Algorithm/">Algorithm</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Algorithm/LeetCode/">LeetCode</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/">Android</a><span class="category-list-count">5</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/Error/">Error</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/UI/">UI</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/UI/Custom-View/">Custom View</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/版本差异/">版本差异</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/版本管理/">版本管理</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Java/">Java</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Java/Data-Structure/">Data Structure</a><span class="category-list-count">1</span></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/English/">English</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/English/Algorithm/">Algorithm</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/English/Algorithm/LeetCode/">LeetCode</a><span class="category-list-count">1</span></li></ul></li></ul></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/">Chinese</a><span class="category-list-count">8</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Algorithm/">Algorithm</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Algorithm/LeetCode/">LeetCode</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/">Android</a><span class="category-list-count">5</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/Error/">Error</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/UI/">UI</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/UI/Custom-View/">Custom View</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/版本差异/">版本差异</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/版本管理/">版本管理</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Java/">Java</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Java/Data-Structure/">Data Structure</a><span class="category-list-count">1</span></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/English/">English</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/English/Algorithm/">Algorithm</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/English/Algorithm/LeetCode/">LeetCode</a><span class="category-list-count">2</span></li></ul></li></ul></li></ul>
         </div>
     </div>
 
@@ -1795,7 +2179,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">archives</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">2</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">2</span></li></ul>
         </div>
     </div>
 
@@ -1804,7 +2188,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">tags</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/">Algorithm</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chinese/">Chinese</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Custom-View/">Custom View</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Structure/">Data Structure</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English/">English</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Error/">Error</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LeetCode/">LeetCode</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UI/">UI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/版本差异/">版本差异</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/版本管理/">版本管理</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/">Algorithm</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chinese/">Chinese</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Custom-View/">Custom View</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Structure/">Data Structure</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English/">English</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Error/">Error</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LeetCode/">LeetCode</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UI/">UI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/版本差异/">版本差异</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/版本管理/">版本管理</a><span class="tag-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -1813,7 +2197,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">tag cloud</h3>
         <div class="widget tagcloud">
-            <a href="/tags/Algorithm/" style="font-size: 13.33px;">Algorithm</a> <a href="/tags/Android/" style="font-size: 16.67px;">Android</a> <a href="/tags/Chinese/" style="font-size: 20px;">Chinese</a> <a href="/tags/Custom-View/" style="font-size: 10px;">Custom View</a> <a href="/tags/Data-Structure/" style="font-size: 10px;">Data Structure</a> <a href="/tags/English/" style="font-size: 10px;">English</a> <a href="/tags/Error/" style="font-size: 10px;">Error</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/LeetCode/" style="font-size: 13.33px;">LeetCode</a> <a href="/tags/UI/" style="font-size: 10px;">UI</a> <a href="/tags/版本差异/" style="font-size: 13.33px;">版本差异</a> <a href="/tags/版本管理/" style="font-size: 10px;">版本管理</a>
+            <a href="/tags/Algorithm/" style="font-size: 15px;">Algorithm</a> <a href="/tags/Android/" style="font-size: 17.5px;">Android</a> <a href="/tags/Chinese/" style="font-size: 20px;">Chinese</a> <a href="/tags/Custom-View/" style="font-size: 10px;">Custom View</a> <a href="/tags/Data-Structure/" style="font-size: 10px;">Data Structure</a> <a href="/tags/English/" style="font-size: 12.5px;">English</a> <a href="/tags/Error/" style="font-size: 10px;">Error</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/LeetCode/" style="font-size: 15px;">LeetCode</a> <a href="/tags/UI/" style="font-size: 10px;">UI</a> <a href="/tags/版本差异/" style="font-size: 12.5px;">版本差异</a> <a href="/tags/版本管理/" style="font-size: 10px;">版本管理</a>
         </div>
     </div>
 
