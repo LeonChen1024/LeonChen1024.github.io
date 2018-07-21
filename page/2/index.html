@@ -3,21 +3,14 @@
 <head>
     <meta charset="utf-8">
     
-    <title>Android declare-styleable自定义属性 | LeonChen&#39;s Blog</title>
+    <title>LeonChen&#39;s Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="我们自己定义view，通常继承View，重写构造方法和onDraw等函数，然后具体实现自己定义的复杂view。但是继承这个自定义view的有的属性又各有不同，有的属性在原生属性中没有，这时候就可以使用自定义的属性来便捷的设置相应的属性。 1、在res/values/下新建一个attrs.xml文件。写入这三级标签。并填入相应属性。 123456789101112131415161718&amp;lt;?x">
-<meta name="keywords" content="Chinese,Android,UI,Custom View">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Android declare-styleable自定义属性">
-<meta property="og:url" content="http://yoursite.com/2016/03/17/Android-declare-styleable-Attribute/index.html">
+    <meta property="og:type" content="website">
+<meta property="og:title" content="LeonChen&#39;s Blog">
+<meta property="og:url" content="http://yoursite.com/page/2/index.html">
 <meta property="og:site_name" content="LeonChen&#39;s Blog">
-<meta property="og:description" content="我们自己定义view，通常继承View，重写构造方法和onDraw等函数，然后具体实现自己定义的复杂view。但是继承这个自定义view的有的属性又各有不同，有的属性在原生属性中没有，这时候就可以使用自定义的属性来便捷的设置相应的属性。 1、在res/values/下新建一个attrs.xml文件。写入这三级标签。并填入相应属性。 123456789101112131415161718&amp;lt;?x">
-<meta property="og:image" content="http://yoursite.com/2016/03/17/Android-declare-styleable-Attribute/picThumb.jpg">
-<meta property="og:updated_time" content="2018-07-03T22:48:36.132Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Android declare-styleable自定义属性">
-<meta name="twitter:description" content="我们自己定义view，通常继承View，重写构造方法和onDraw等函数，然后具体实现自己定义的复杂view。但是继承这个自定义view的有的属性又各有不同，有的属性在原生属性中没有，这时候就可以使用自定义的属性来便捷的设置相应的属性。 1、在res/values/下新建一个attrs.xml文件。写入这三级标签。并填入相应属性。 123456789101112131415161718&amp;lt;?x">
-<meta name="twitter:image" content="http://yoursite.com/2016/03/17/Android-declare-styleable-Attribute/picThumb.jpg">
+<meta name="twitter:title" content="LeonChen&#39;s Blog">
     
 
     
@@ -205,12 +198,15 @@ ga('send', 'pageview');
 </aside>
 
             
-            <section id="main"><article id="post-Android-declare-styleable-Attribute" class="article article-type-post" itemscope itemprop="blogPost">
+            <section id="main">
+    <article id="post-Android-declare-styleable-Attribute" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
         
 	
-		<img src="/2016/03/17/Android-declare-styleable-Attribute/pic.jpg" class="article-banner" />
+		<a href="/2016/03/17/Android-declare-styleable-Attribute/" itemprop="url">
+            <img src="/2016/03/17/Android-declare-styleable-Attribute/pic.jpg" class="article-banner" />
+        </a>
 	
 
 
@@ -220,8 +216,8 @@ ga('send', 'pageview');
         <header class="article-header">
             
     
-        <h1 class="article-title" itemprop="name">
-            Android declare-styleable自定义属性
+        <h1 itemprop="name">
+            <a class="article-title" href="/2016/03/17/Android-declare-styleable-Attribute/">Android declare-styleable自定义属性</a>
         </h1>
     
 
@@ -256,23 +252,37 @@ ga('send', 'pageview');
         <div class="article-entry" itemprop="articleBody">
             
             
-                
             
             
-            <p>我们自己定义view，通常继承View，重写构造方法和onDraw等函数，然后具体实现自己定义的复杂view。但是继承这个自定义view的有的属性又各有不同，有的属性在原生属性中没有，这时候就可以使用自定义的属性来便捷的设置相应的属性。</p>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <p><p>我们自己定义view，通常继承View，重写构造方法和onDraw等函数，然后具体实现自己定义的复杂view。但是继承这个自定义view的有的属性又各有不同，有的属性在原生属性中没有，这时候就可以使用自定义的属性来便捷的设置相应的属性。</p>
 <p>1、在res/values/下新建一个attrs.xml文件。写入<resources><declare-styleable><attr>这三级标签。并填入相应属性。</attr></declare-styleable></resources></p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</div><div class="line"><span class="tag">&lt;<span class="name">resources</span>&gt;</span></div><div class="line"></div><div class="line">  <span class="tag">&lt;<span class="name">declare-styleable</span> <span class="attr">name</span>=<span class="string">"myStyle"</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">attr</span> <span class="attr">name</span>=<span class="string">"textSize"</span> <span class="attr">format</span>=<span class="string">"dimension"</span> /&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">attr</span> <span class="attr">name</span>=<span class="string">"backgroud"</span> <span class="attr">format</span>=<span class="string">"reference"</span> /&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">attr</span> <span class="attr">name</span>=<span class="string">"text"</span> <span class="attr">format</span>=<span class="string">"string|reference"</span> /&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">attr</span> <span class="attr">name</span>=<span class="string">"textColor"</span> <span class="attr">format</span>=<span class="string">"color"</span> /&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">attr</span> <span class="attr">name</span>=<span class="string">"yesOrNot"</span> <span class="attr">format</span>=<span class="string">"boolean"</span> /&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">attr</span> <span class="attr">name</span>=<span class="string">"number"</span>&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">enum</span> <span class="attr">name</span>=<span class="string">"one"</span> <span class="attr">value</span>=<span class="string">"0"</span> /&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">enum</span> <span class="attr">name</span>=<span class="string">"two"</span> <span class="attr">value</span>=<span class="string">"1"</span> /&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">enum</span> <span class="attr">name</span>=<span class="string">"leftToRight"</span> <span class="attr">value</span>=<span class="string">"2"</span> /&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">enum</span> <span class="attr">name</span>=<span class="string">"topToBottom"</span> <span class="attr">value</span>=<span class="string">"3"</span> /&gt;</span></div><div class="line">      <span class="tag">&lt;/<span class="name">attr</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">declare-styleable</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">resources</span>&gt;</span></div></pre></td></tr></table></figure>
 <p>2、建立一个自定义视图类，本次偷懒直接继承自textview。然后使用typedarray类来获取控件相应的属性并使用。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> android.content.Context;</div><div class="line"><span class="keyword">import</span> android.content.res.TypedArray;</div><div class="line"><span class="keyword">import</span> android.graphics.Color;</div><div class="line"><span class="keyword">import</span> android.graphics.drawable.Drawable;</div><div class="line"><span class="keyword">import</span> android.util.AttributeSet;</div><div class="line"><span class="keyword">import</span> android.widget.TextView;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyView</span> <span class="keyword">extends</span> <span class="title">TextView</span></span></div><div class="line"><span class="class"></span>&#123;</div><div class="line"></div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="title">MyView</span><span class="params">(Context context, AttributeSet attrs)</span></span></div><div class="line"><span class="function">  </span>&#123;</div><div class="line">      <span class="keyword">super</span>(context, attrs);</div><div class="line">      TypedArray typedArray = context.obtainStyledAttributes(attrs,R.styleable.myStyle);</div><div class="line"></div><div class="line">      <span class="keyword">float</span> textSize = typedArray.getDimension(R.styleable.myStyle_textSize, <span class="number">15</span>);</div><div class="line">      Drawable back = typedArray.getDrawable(R.styleable.myStyle_backgroud);</div><div class="line">      String textString = typedArray.getString(R.styleable.myStyle_text);</div><div class="line">      <span class="keyword">int</span> textColor = typedArray.getInt(R.styleable.myStyle_textColor, Color.BLACK);</div><div class="line">      <span class="keyword">boolean</span> yesOrNot = typedArray.getBoolean(R.styleable.myStyle_yesOrNot, <span class="keyword">true</span>);</div><div class="line">      <span class="keyword">int</span> number = typedArray.getInt(R.styleable.myStyle_number, <span class="number">0</span>);</div><div class="line"></div><div class="line">      setTextSize(textSize);</div><div class="line">      setText(textString);</div><div class="line">      setBackgroundDrawable(back);</div><div class="line">      setTextColor(textColor);</div><div class="line"></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>3、在布局文件里引用该类，并设定相应的属性。记得要定义xmlns:myapp（后面的名称随意取，但要上下一致。）= “<a href="http://schemas.android.com/apk/res/com.example.declarestyleabletest&quot;（最后是该自定义视图类所在的包名）" target="_blank" rel="external">http://schemas.android.com/apk/res/com.example.declarestyleabletest&quot;（最后是该自定义视图类所在的包名）</a></p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">LinearLayout</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></div><div class="line"><span class="tag">  <span class="attr">xmlns:tools</span>=<span class="string">"http://schemas.android.com/tools"</span></span></div><div class="line"><span class="tag">  <span class="attr">xmlns:myapp</span>=<span class="string">"http://schemas.android.com/apk/res/com.example.declarestyleabletest"</span></span></div><div class="line"><span class="tag">  <span class="attr">android:id</span>=<span class="string">"@+id/container"</span></span></div><div class="line"><span class="tag">  <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></div><div class="line"><span class="tag">  <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></span></div><div class="line"><span class="tag">  <span class="attr">android:orientation</span>=<span class="string">"vertical"</span></span></div><div class="line"><span class="tag">  <span class="attr">tools:context</span>=<span class="string">"com.example.declarestyleabletest.MainActivity"</span></span></div><div class="line"><span class="tag">  <span class="attr">tools:ignore</span>=<span class="string">"MergeRootFrame"</span> &gt;</span></div><div class="line"></div><div class="line">  <span class="tag">&lt;<span class="name">com.example.declarestyleabletest.MyView</span></span></div><div class="line"><span class="tag">      <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></span></div><div class="line"><span class="tag">      <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></div><div class="line"><span class="tag">      <span class="attr">myapp:backgroud</span>=<span class="string">"@drawable/ic_launcher"</span></span></div><div class="line"><span class="tag">      <span class="attr">myapp:number</span>=<span class="string">"one"</span></span></div><div class="line"><span class="tag">      <span class="attr">myapp:text</span>=<span class="string">"sdfkks"</span></span></div><div class="line"><span class="tag">      <span class="attr">myapp:textColor</span>=<span class="string">"@color/black"</span></span></div><div class="line"><span class="tag">      <span class="attr">myapp:textSize</span>=<span class="string">"15sp"</span> /&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>补充一些常用的format</p>
-<p>reference  指定某资源ID<br>string   字符串<br>dimension   尺寸<br>color   颜色<br>boolean   布尔<br>integer   整型<br>float   浮点型<br>fraction   百分数<br>enum   枚举<br>flag  位运算</p>
-<p>xml 中定义好自己的属性值，在在代码中得到值，或使用默认值</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="title">CText</span><span class="params">(Context context, AttributeSet set)</span> </span>&#123;</div><div class="line">      <span class="keyword">super</span>(context, set);</div><div class="line">      <span class="keyword">this</span>.context  = context;</div><div class="line">      initView();</div><div class="line">      TypedArray array = context.obtainStyledAttributes(set,R.styleable.CEditText);</div><div class="line">      initAttrs(array);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initAttrs</span><span class="params">(TypedArray a)</span> </span>&#123;</div><div class="line">      hint = a.getString(R.styleable.CEditText_cHint);</div><div class="line">      text = a.getString(R.styleable.CEditText_cText);</div><div class="line">      setAttrs();</div><div class="line">      a.recycle();</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
-
-        </div>
-        
+<p>
+                
+                
+                
+            
+    </div>
+    <div class="article-more-link">
+        <a href="/2016/03/17/Android-declare-styleable-Attribute/#more">Read More</a>
+    </div>
+    
         <!--<div class="article-entry" itemprop="articleBody">-->
             <!---->
             <!---->
@@ -369,38 +379,176 @@ ga('send', 'pageview');
         </footer>
     </div>
     
+</article>
+
+
+
+
+
+
+
+    <article id="post-Byte-Common-transition" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+	
+		<a href="/2016/03/09/Byte-Common-transition/" itemprop="url">
+            <img src="/2016/03/09/Byte-Common-transition/Byte.jpg" class="article-banner" />
+        </a>
+	
+
+
+
+        
+        
+        <header class="article-header">
+            
     
-<nav id="article-nav">
+        <h1 itemprop="name">
+            <a class="article-title" href="/2016/03/09/Byte-Common-transition/">Byte 常用转换</a>
+        </h1>
     
-        <a href="/2016/08/20/Android-6.0-Change-1/" id="article-nav-newer" class="article-nav-link-wrap">
-            <strong class="article-nav-caption">Más nuevo</strong>
-            <div class="article-nav-title">
+
+            
+            <div class="article-meta">
                 
-                    Android 6.0的变化 （上）
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2016/03/09/Byte-Common-transition/">
+            <time datetime="2016-03-08T16:00:00.000Z" itemprop="datePublished">2016-03-09</time>
+        </a>
+    </div>
+
+
                 
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Chinese/">Chinese</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/Chinese/Java/">Java</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/Chinese/Java/Data-Structure/">Data Structure</a>
+    </div>
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Chinese/">Chinese</a>, <a class="tag-link" href="/tags/Data-Structure/">Data Structure</a>, <a class="tag-link" href="/tags/Java/">Java</a>
+    </div>
+
             </div>
-        </a>
+            
+        </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+            
+            
+            
+            <p><p><strong>思路:</strong><br>以 int 作为例子, 首先要知道他们的换算公式。 1 int = 4 byte ，1 byte = 8 bit , 一个 bit 是一位二进制。i 和 0xFF 取与得到最低位的 1byte 数据，然后将 i 右移8位再与 0xFF 取与得到第二低位的 1byte数据，以此类推。</p></p>
+            
+                
+            
+    </div>
+    <div class="article-more-link">
+        <a href="/2016/03/09/Byte-Common-transition/#more">Read More</a>
+    </div>
     
-    
-        <a href="/2016/03/09/Byte-Common-transition/" id="article-nav-older" class="article-nav-link-wrap">
-            <strong class="article-nav-caption">Más viejo</strong>
-            <div class="article-nav-title">Byte 常用转换</div>
-        </a>
-    
-</nav>
+        <!--<div class="article-entry" itemprop="articleBody">-->
+            <!---->
+            <!--<p><p><strong>思路:</strong><br>以 int 作为例子, 首先要知道他们的换算公式。 1 int = 4 byte ，1 byte = 8 bit , 一个 bit 是一位二进制。i 和 0xFF 取与得到最低位的 1byte 数据，然后将 i 右移8位再与 0xFF 取与得到第二低位的 1byte数据，以此类推。</p></p>-->
+            <!--<p class="article-more-link">-->
+                <!--<a href="/2016/03/09/Byte-Common-transition/#more">Read More</a>-->
+            <!--</p>-->
+            <!---->
+        <!--</div>-->
+        <footer class="article-footer">
+            <div class="share-container">
 
 
+
+</div>
+
+    <a data-url="http://yoursite.com/2016/03/09/Byte-Common-transition/" data-id="cjjum0wp70006mmfymh32kimk" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
     
 </article>
 
 
 
-    
 
 
 
 
-
+    <nav id="page-nav">
+        <a class="extend prev" rel="prev" href="/">&laquo; Anterior</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    </nav>
 </section>
             
                 
