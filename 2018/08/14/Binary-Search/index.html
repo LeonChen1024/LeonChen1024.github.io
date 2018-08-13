@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>Binary Search(二分搜索) | LeonChen&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="Binary Search(二分搜索)二分搜索(binary search),也叫做 折半搜索(half-interval search),对数搜索(logarithmic search),对半搜索(binary chop),是一种在有序数组中查找某一特定元素的搜索算法. 二分搜索有几个变体.特别是,分散层叠(fractional cascading)(将每个数组里的值集合成一个数组,元素为11[">
+<meta name="keywords" content="Chinese,Algorithm">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Binary Search(二分搜索)">
+<meta property="og:url" content="http://yoursite.com/2018/08/14/Binary-Search/index.html">
+<meta property="og:site_name" content="LeonChen&#39;s Blog">
+<meta property="og:description" content="Binary Search(二分搜索)二分搜索(binary search),也叫做 折半搜索(half-interval search),对数搜索(logarithmic search),对半搜索(binary chop),是一种在有序数组中查找某一特定元素的搜索算法. 二分搜索有几个变体.特别是,分散层叠(fractional cascading)(将每个数组里的值集合成一个数组,元素为11[">
+<meta property="og:image" content="http://yoursite.com/2018/08/14/Binary-Search/titleThumb.jpg">
+<meta property="og:updated_time" content="2018-08-13T23:39:51.915Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Binary Search(二分搜索)">
+<meta name="twitter:description" content="Binary Search(二分搜索)二分搜索(binary search),也叫做 折半搜索(half-interval search),对数搜索(logarithmic search),对半搜索(binary chop),是一种在有序数组中查找某一特定元素的搜索算法. 二分搜索有几个变体.特别是,分散层叠(fractional cascading)(将每个数组里的值集合成一个数组,元素为11[">
+<meta name="twitter:image" content="http://yoursite.com/2018/08/14/Binary-Search/titleThumb.jpg">
+    
+
+    
+
+    
+        <link rel="icon" href="/images/Facicon.png" />
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-111687087-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+    
+
+
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">LeonChen&#39;s Blog</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/tags">Tags</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="/css/images/avatar.png" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">Tags</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/avatar.png" />
+            <h2 id="name">Leon Chen</h2>
+            <h3 id="title">Android Developer</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>XiaMen, China</span>
+            <a id="follow" target="_blank" href="https://github.com/LeonChen1024">FOLLOW</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                13
+                <span>posts</span>
+            </div>
+            <div class="article-info-block">
+                12
+                <span>tags</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="https://github.com/LeonChen1024/" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/en" target="_blank" title="english" class=tooltip>
+                            <i class="fa fa-english"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+         
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-Binary-Search" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+	
+		<img src="/2018/08/14/Binary-Search/title.jpg" class="article-banner" />
+	
+
+
+
+        
+        
+        <header class="article-header">
+            
+    
+        <h1 class="article-title" itemprop="name">
+            Binary Search(二分搜索)
+        </h1>
+    
+
+            
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2018/08/14/Binary-Search/">
+            <time datetime="2018-08-13T16:00:00.000Z" itemprop="datePublished">2018-08-14</time>
+        </a>
+    </div>
+
+
+                
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Chinese/">Chinese</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/Chinese/Algorithm/">Algorithm</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/Chinese/Algorithm/Common/">Common</a>
+    </div>
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Algorithm/">Algorithm</a>, <a class="tag-link" href="/tags/Chinese/">Chinese</a>
+    </div>
+
+            </div>
+            
+        </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+            
+                
+            <div id="toc" class="toc-article">
+                <strong class="toc-title">Catalogue</strong>
+                <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">Binary Search(二分搜索)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.1.</span> <span class="toc-text">原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.1.1.</span> <span class="toc-text">步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.1.2.</span> <span class="toc-text">大致匹配</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.2.</span> <span class="toc-text">性能分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.3.</span> <span class="toc-text">应用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.4.</span> <span class="toc-text">二分搜索和其他的方案对比</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.4.1.</span> <span class="toc-text">Hashing</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.4.2.</span> <span class="toc-text">Trees</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.4.3.</span> <span class="toc-text">Linear search</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.4.4.</span> <span class="toc-text">Set membership algorithms</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.4.5.</span> <span class="toc-text">其他的数据结构</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.5.</span> <span class="toc-text">变体</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.5.1.</span> <span class="toc-text"></span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.5.2.</span> <span class="toc-text"></span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.5.3.</span> <span class="toc-text"></span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.5.4.</span> <span class="toc-text"></span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.6.</span> <span class="toc-text">实现时的问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.7.</span> <span class="toc-text">示例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.8.</span> <span class="toc-text">References</span></a></li></ol></li></ol>
+            </div>
+            
+            
+            
+            <h1><span id="binary-search二分搜索">Binary Search(二分搜索)</span></h1><p>二分搜索(binary search),也叫做 折半搜索(half-interval search),对数搜索(logarithmic search),对半搜索(binary chop),是一种在有序数组中查找某一特定元素的搜索算法.</p>
+<p>二分搜索有几个变体.特别是,分散层叠(<a href="https://en.wikipedia.org/wiki/Fractional_cascading" target="_blank" rel="external">fractional cascading</a>)(将每个数组里的值集合成一个数组,元素为11[0,3,2,0] 的形式,括号内的数字是该值在对应数组中应该返回的数字)提高了在多个数组中查找相同值的效率,高效的解决了一系列计算几何和其他领域的查找问题).指数查找(<a href="https://en.wikipedia.org/wiki/Exponential_search" target="_blank" rel="external">Exponential search</a>)延伸了二分查找到一个没有边界的 list.<a href="https://en.wikipedia.org/wiki/Binary_search_tree" target="_blank" rel="external">binary search tree</a>和<a href="https://en.wikipedia.org/wiki/B-tree" target="_blank" rel="external">B-tree</a>是基于 binary search 延伸的.</p>
+<h2><span id="原理">原理</span></h2><p>搜索时从数组中间元素开始,如果中间元素正好是要查找的元素,则搜索过程结束;如果中间元素大于或者小于要查找的元素,则在数组中大于或者小于查找元素的一半中继续查找,重复这个过程直到找到这个元素,或者这一半的大小为空时则代表找不到.这样子每一次比较都使得搜索范围缩小一半.</p>
+<h3><span id="步骤">步骤</span></h3><p>给定一个有序数组 A 是 A0,…,An-1并保证 A0&lt;=…&lt;=An-1,以及目标值 T.</p>
+<ol>
+<li>令 L 为0,R 为 n-1.</li>
+<li>如果 L&gt;R 则搜索失败</li>
+<li>令m(中间值元素索引)为最大的小于(L+R)/2的整数</li>
+<li>如果 Am&lt;T ,令 L=m+1并回到第2步;</li>
+<li>如果 Am&gt;T ,令 R=m-1并回到第2步;</li>
+<li>当 Am=T,搜索结束;T 所在的索引位置为m.</li>
+</ol>
+<p><code>变体</code></p>
+<ol>
+<li>令 L 为0,R 为 n-1.</li>
+<li>令 m(中间元素索引) 为上限,也就是最小的大于(L+R)/2的值.</li>
+<li>如果 Am&gt;T ,设置 R 为 m-1并且返回第2步</li>
+<li>如果 Am&lt;=T ,设置 L 为m 并且返回第2步.</li>
+<li>直到 L=R ,搜索完成.这时候如果T=Am,返回 m,否则,搜索失败.</li>
+</ol>
+<p>在 Am&lt;=T 的时候,这个变体将 L 设置为 m 而不是 m+1.这个方式的比较是更快速的,因为它在每个循环里省略了一次比较.但是平均就会多出来一次循环.在数组包含重复的元素的时候这个变体总是会返回最右侧的元素索引.比如 A 是[1,2,3,4,4,5,6,7]查找的对象是4,那么这个方法会返回 index 4,而不是 index 3.</p>
+<h3><span id="大致匹配">大致匹配</span></h3><p>由于有序数组的顺序性,可以将二分搜索扩展到大致匹配.可以用来计算赋值的排名(或称秩,比它更小的元素的数量),前趋(下一个最小元素),后继(下一个最大元素)以及最近邻.还可以使用两个排名查询来执行范围查询.</p>
+<ul>
+<li>排名查询可以使用调整后的二分搜索来进行.成功时返回m,失败时返回 L, 这样就等于返回了比目标值小的元素数目.</li>
+<li>前趋和后继可以使用排名查询来进行.当知道目标值的排名,成功时前趋是排名位置的上一个元素,失败时则是排名位置的元素.它的后继是排名位置的后一个元素,或是前趋的下一个元素.目标值的最近领可能是前趋或后继,取决于哪个更接近目标值.</li>
+<li>范围查询,一旦知道范围两边的值的排名,那么大于边界最小值且小于边界最大值的元素排名就是他们的范围,是否包含边界值根据需要处理.</li>
+</ul>
+<h2><span id="性能分析">性能分析</span></h2><p><strong>时间复杂度</strong><br>二分查找每次把搜索区域减少一半,时间复杂度为<br>$$<br>O(log_2 n)<br>$$<br>(n 是集合中元素的个数)<br>最差的情况是 遍历到最后一层,或者是没有找到该元素的时候,复杂度为 $O(\lfloor log_2 n + 1 \rfloor)$ .</p>
+<p>综合复杂度为 $O(log_2 n)$</p>
+<p>分散层叠(fractional cascading) 可以提高在多数组中查询相同值的效率. k 是数组的数量,在每个数组中查询目标值消耗 $O(k log n)$ 的时间.分散层叠可以将它降低到 $O(k+log n)$.</p>
+<p><code>变体效率分析</code><br>相对于正常的二分搜索,它减少了每次循环的比对次数,但是它必须做完完整的循环,而不会在中间就得到答案.但是在 n 很大的情况下减少了对比次数的提升不能够抵消多余的循环的消耗.</p>
+<p><strong>空间复杂度</strong><br>O(1).尾递归,可以改写为循环.</p>
+<h2><span id="应用">应用</span></h2><p>查找数组中的元素,或用于插入排序.</p>
+<h2><span id="二分搜索和其他的方案对比">二分搜索和其他的方案对比</span></h2><p>使用二分搜索的有序数组在插入和删除操作效率很低,每个操作消耗 O(n) 的时间.其他的数据结构提供了更高效的插入和删除,并且提供了同样高效的完全匹配.然而,二分搜索适用于很多的搜索问题,只消耗 $O(log n)$ 的时间.</p>
+<h3><span id="hashing">Hashing</span></h3><p>对于<a href="https://en.wikipedia.org/wiki/Associative_arrays" target="_blank" rel="external">关联数组 (associative arrays)</a>,<a href="https://en.wikipedia.org/wiki/Hash_table" target="_blank" rel="external">哈希表 (hash tables)</a>,他们是通过hash 函数将键映射到记录上的数据结构,通常情况下比在有序数组的情况下使用二分查找要更快.大部分的实现平均开销都是常量级的.然而, hashing 并不适用于模糊匹配,比如计算前趋,后继,以及最近的键,它在失败的查询情况下能给我们的唯一信息就是目标在记录中不存在.二分查找是这种匹配的理想模式,消耗对数级别的时间.</p>
+<h3><span id="trees">Trees</span></h3><p><a href="todo">二叉搜索树(binary search tree)</a> 是一个基于二叉搜索原理的<a href="todo">二叉树(binary tree)</a>数据结构.树的记录按照顺序排列,并且每个树里的每个记录都可以使用类似二叉搜索的方法来搜索,平均耗费对数级的时间.插入和删除的平均时间也是对数级的.这会比有序数组消耗的线性时间要快,并且二叉树拥有所有有序数组可以执行的操作,包含范围和模糊查找.</p>
+<p>然而二叉搜索通常情况下比二叉搜索树的搜索更有效率,因为二叉搜索树很可能会完全不平衡,导致性能稍差.这同样适用于 <a href="todo">平衡二叉搜索树( balanced binary search trees)</a> , 它平衡了它自己的节点稍微向完全平衡树靠拢.虽然不太可能,但是树有可能只有少数节点有两个子节点导致严重不平衡,这种情况下平均时间损耗和最差的情况差不多都是 O(n) .二叉搜索树比有序数组占用更多的空间.</p>
+<p>二叉搜索树因为可以高效的在文件系统中结构化,所以他们可以在硬盘中进行快速搜索.B-tree 泛化了这种树结构的方法.B-tree 常用于组织长时间的存储比如<a href="todo">数据库(databases)</a>和<a href="todo">文件系统(filesystems)</a>.</p>
+<h3><span id="linear-search">Linear search</span></h3><p><a href="todo">线性搜索( Linear Search)</a>是一种简单的搜索算法,它查找每一个记录直到找到目标值.线性搜索可以在 链表(linked list) 上使用,它的插入和删除会比在数组上要快.二分搜索比线性搜索要快除非数组很短.如果数组必须先被排序,这个消耗必须在搜索中平摊.对数组进行排序还可以进行有效的近似匹配和其他操作.</p>
+<h3><span id="set-membership-algorithms">Set membership algorithms</span></h3><p>一个和搜索相关的问题是<a href="todo">集合成员(set membership)</a>.所有有关查找的算法,比如二分搜索,都可以用于集合成员.还有一些更适用于集合成员的算法,<a href="todo">位数组(bit array)</a>是最简单的一个,在键的范围是有限的时候非常有用.它非常快,是需要O(1)的时间.<a href="todo">朱迪矩阵(Judy array)</a>可以高效的处理64位键.</p>
+<p>对于近似结果,<a href="todo">布隆过滤器(Bloom filters)</a>是另外一个基于哈希的概率性数据结构,通过存储使用bit array 和多重 hash 函数编码的键集合. Bloom filters 在大多数情况下空间效率比bit arrays 要高而不会慢太多:使用了 k 重hash 函数,成员查找只需要 O(k) 的时间.然而, Bloom filters 有一定的误判性.</p>
+<h3><span id="其他的数据结构">其他的数据结构</span></h3><p>这里存在一些数据结构在某些情况下比在有序数组上使用二分搜索进行查找或其他的操作更加高效.比如,在<a href="todo">van Emde Boas trees</a>, <a href="todo">fusion trees</a>, <a href="todo">前缀树(tries)</a>, 和<a href="todo">位数组</a> 上进行查找,近似匹配,以及其他可用的操作可以比在有序数组上进行二分搜索更加的高效.然而,尽管这些操作可以比在无视键的情况下比有序数组上使用更高效,这样的数据结构通常是因为利用了某些键的属性(键通常是一些小整数),因此如果键缺乏那些属性将会消耗更多的空间或时间.一些结构如朱迪矩阵,使用了多种方式的组合来保证效率和执行近似匹配的能力.</p>
+<h2><span id="变体">变体</span></h2><h3><span id="uniform-binary-search"></span></h3><p>Uniform binary search 不是存储下限和上限的边界值,而是中间元素的索引,和从这次循环的中间元素到下次循环的中间元素的变化.每一步的变化减少一半.比如,要搜索的数组是[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],中间元素是6.Uniform binary search 同时对左边和右边的子数组进行操作.在这个情况下,左边的子数组([1, 2, 3, 4, 5]) 的中间元素 3 而右边的子数组 ([7, 8, 9, 10, 11]) 的中间元素是 9.然后存储3 作为两个中间元素和 6 的差别.为了减少搜索的空间使用,算法同时加上或减去这个和中间元素的改变.这个算法的好处是可以将每次循环的索引的差别存储到一个表里,在某些系统里可以提高算法的性能.</p>
+<p><img src="Resource/Uniform_binary_search.svg.png" alt=""></p>
+<h3><span id="exponential-search"></span></h3><p>指数查找(Exponential Search)将二分搜索拓展到无边界数组.它最开始寻找第一个索引是2的幂次方并且要比目标值大的元素的索引.然后,它将这个元素索引设置为上边界,然后开始二分搜索.指数查找消耗 $\lfloor log_2 x =1 \rfloor$ 次循环 ,然后二分搜索消耗 $\lfloor log_2 x \rfloor$ 次循环, x 是目标值的位置.指数查找适用于有界列表,在目标值接近数组开始的位置的时候比二分查找性能有所提高.</p>
+<p><img src="Resource/Exponential_search.svg.png" alt=""></p>
+<h3><span id="interpolation-search"></span></h3><p>内插搜索(Interpolation search)忽略了目标值的位置,计算数组的最低和最高元素的距离即数组的长度.这只有在数组元素是数字的时候才能使用.它适用于中间值不是最好的猜测选择的情况.比如,如果目标值接近数组的最高元素,最好是定位在数组的末端.如果数组的分布是均匀的或者接近均匀的,它消耗 $O(log log n)$ 次比较.</p>
+<p>实际上,内插搜索在数组元素较少的情况下是比二分搜索更慢的,因为内插搜索需要额外的计算.尽管它的时间复杂度增长是小于二分搜索的,只有在在大数组的情况下这个计算的损耗可以被弥补.</p>
+<p><img src="Resource/Interpolation_search.svg.png" alt=""></p>
+<h3><span id="fractional-cascading"></span></h3><p>分散层叠(Fractional cascading) 可以提高在多个有序数组里查找相同的元素或近似匹配的效率,分别在每个数组里查找总共需要 $O(klogn)$的时间, k 是数组的数量.分散层叠通过将每个数组的信息按指定的方式存储起来将这个时间降低到 $O(k+logn)$ .</p>
+<p>它将每个数组里的值集合成一个数组,元素为 11[0,3,2,0] 的形式,括号内的数字是该值在对应数组中应该返回的数字)提高了在多个数组中查找相同值的效率,高效的解决了一系列计算几何和其他领域的查找问题</p>
+<p>分散层叠被发明的时候是为了高效的解决各种<a href="todo">计算几何学(computational geometry)</a> 问题,但是它同样适用于其他地方,例如 <a href="todo">数据挖掘(data mining)</a> 和 <a href="todo">互联网协议(Internet Protocal)</a> 等.</p>
+<h2><span id="实现时的问题">实现时的问题</span></h2><p>要注意中间值的取值方法,如果使用 (L+R)/2 当数组的元素数量很大的时候回造成计算溢出.所以要使用L+(R-L)/2.</p>
+<h2><span id="示例">示例</span></h2><p>C 版本- 递归<br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">binary_search</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> arr[], <span class="keyword">int</span> start , <span class="keyword">int</span> end , <span class="keyword">int</span> khey)</span></span>&#123;</div><div class="line">    <span class="keyword">if</span> (start &gt; end)</div><div class="line">      <span class="keyword">return</span> <span class="number">-1</span>;</div><div class="line"></div><div class="line">    <span class="keyword">int</span> mid = start +(end - start)/<span class="number">2</span>;   <span class="comment">//直接平均可能会溢位,所以用此算法</span></div><div class="line">    <span class="keyword">if</span> (arr[mid] &gt; khey)</div><div class="line">        <span class="keyword">return</span> binary_search(arr , start , mid - <span class="number">1</span> , khey);</div><div class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (arr[mid] &lt; khey)</div><div class="line">        <span class="keyword">return</span> binary_search(arr , mid + <span class="number">1</span> , end , khey);</div><div class="line">    <span class="keyword">else</span></div><div class="line">        <span class="keyword">return</span> mid;    <span class="comment">//最后才检测相等的情况是因为大多数搜寻情况不是大于就是小于</span></div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>C 版本- while 循环</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">binary_search</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> arr[], <span class="keyword">int</span> start, <span class="keyword">int</span> end, <span class="keyword">int</span> khey)</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> result = <span class="number">-1</span>;    <span class="comment">//如果没有搜索到数据返回 -1</span></div><div class="line"></div><div class="line">    <span class="keyword">int</span> mid;</div><div class="line">    <span class="keyword">while</span> (start &lt;= end)&#123;</div><div class="line">      mid = start + (end - start)/<span class="number">2</span> ;    <span class="comment">//直接平均可能会溢位,所以用此算法</span></div><div class="line">      <span class="keyword">if</span> (arr[mid] &gt; khey)</div><div class="line">          end = mid<span class="number">-1</span>;</div><div class="line">      <span class="keyword">else</span> <span class="keyword">if</span> (arr[mid] &lt; khey)</div><div class="line">          start = mid + <span class="number">1</span>;</div><div class="line">      <span class="keyword">else</span>&#123;    <span class="comment">//最后才检测相等的情况是因为大多数搜寻情况不是大于就是小于</span></div><div class="line">          result = mid;</div><div class="line">          <span class="keyword">break</span>;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> result;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Python3 递归</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">binary_search</span><span class="params">(arr, start, end, hkey)</span>:</span></div><div class="line">    <span class="keyword">if</span> start &gt; end:</div><div class="line">        <span class="keyword">return</span> <span class="number">-1</span></div><div class="line"></div><div class="line">    mid = start + (end - start) / <span class="number">2</span></div><div class="line">    <span class="keyword">if</span> arr[mid] &gt; hkey:</div><div class="line">        <span class="keyword">return</span> binary_search(arr, start , mid - <span class="number">1</span>,hkey)</div><div class="line">    <span class="keyword">if</span> arr[mid] &lt; hkey:</div><div class="line">        <span class="keyword">return</span> binary_search(arr, mid + <span class="number">1</span>, end, hkey)</div><div class="line">    <span class="keyword">return</span> mid</div></pre></td></tr></table></figure>
+<p>Python3 while 循环</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">binary_search</span><span class="params">(arr, start, end, hkey)</span>:</span></div><div class="line">    result = <span class="number">-1</span></div><div class="line"></div><div class="line">    <span class="keyword">while</span> start &lt;= end:</div><div class="line">        mid = start + (end - start) / <span class="number">2</span></div><div class="line">        <span class="keyword">if</span> arr[mid] &gt; hkey :</div><div class="line">            end = mid - <span class="number">1</span></div><div class="line">        <span class="keyword">elif</span> arr[mid] &lt; hkey :</div><div class="line">            start = mid + <span class="number">1</span></div><div class="line">        <span class="keyword">else</span> :</div><div class="line">            result = mid</div><div class="line">            <span class="keyword">break</span></div><div class="line"></div><div class="line">    <span class="keyword">return</span> result</div></pre></td></tr></table></figure>
+<p>Java 递归</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">binarySearch</span><span class="params">(<span class="keyword">int</span>[] arr, <span class="keyword">int</span> start, <span class="keyword">int</span> end, <span class="keyword">int</span> hkey)</span></span>&#123;</div><div class="line">    <span class="keyword">if</span> (start &gt; end)</div><div class="line">        <span class="keyword">return</span> -<span class="number">1</span>;</div><div class="line"></div><div class="line">    <span class="keyword">int</span> mid = start + (end - start)/<span class="number">2</span>;    <span class="comment">//防止溢位</span></div><div class="line">    <span class="keyword">if</span> (arr[mid] &gt; hkey)</div><div class="line">        <span class="keyword">return</span> binarySearch(arr, start, mid - <span class="number">1</span>, hkey);</div><div class="line">    <span class="keyword">if</span> (arr[mid] &lt; hkey)</div><div class="line">        <span class="keyword">return</span> binarySearch(arr, mid + <span class="number">1</span>, end, hkey);</div><div class="line">    <span class="keyword">return</span> mid;  </div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Java while 循环</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">binarySearch</span><span class="params">(<span class="keyword">int</span>[] arr, <span class="keyword">int</span> start, <span class="keyword">int</span> end, <span class="keyword">int</span> hkey)</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> result = -<span class="number">1</span>;</div><div class="line"></div><div class="line">    <span class="keyword">while</span> (start &lt;= end)&#123;</div><div class="line">        <span class="keyword">int</span> mid = start + (end - start)/<span class="number">2</span>;    <span class="comment">//防止溢位</span></div><div class="line">        <span class="keyword">if</span> (arr[mid] &gt; hkey)</div><div class="line">            end = mid - <span class="number">1</span>;</div><div class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (arr[mid] &lt; hkey)</div><div class="line">            start = mid + <span class="number">1</span>;</div><div class="line">        <span class="keyword">else</span> &#123;</div><div class="line">            result = mid ;  </div><div class="line">            <span class="keyword">break</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> result;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2><span id="references">References</span></h2><p><a href="https://en.wikipedia.org/wiki/Binary_search_algorithm" target="_blank" rel="external">https://en.wikipedia.org/wiki/Binary_search_algorithm</a></p>
+
+        </div>
+        
+        <!--<div class="article-entry" itemprop="articleBody">-->
+            <!---->
+            <!---->
+            <!--<div id="toc" class="toc-article">-->
+                <!--<strong class="toc-title">Catalogue</strong>-->
+                <!--<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">Binary Search(二分搜索)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.1.</span> <span class="toc-text">原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.1.1.</span> <span class="toc-text">步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.1.2.</span> <span class="toc-text">大致匹配</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.2.</span> <span class="toc-text">性能分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.3.</span> <span class="toc-text">应用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.4.</span> <span class="toc-text">二分搜索和其他的方案对比</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.4.1.</span> <span class="toc-text">Hashing</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.4.2.</span> <span class="toc-text">Trees</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.4.3.</span> <span class="toc-text">Linear search</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.4.4.</span> <span class="toc-text">Set membership algorithms</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.4.5.</span> <span class="toc-text">其他的数据结构</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.5.</span> <span class="toc-text">变体</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.5.1.</span> <span class="toc-text"></span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.5.2.</span> <span class="toc-text"></span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.5.3.</span> <span class="toc-text"></span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.5.4.</span> <span class="toc-text"></span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.6.</span> <span class="toc-text">实现时的问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.7.</span> <span class="toc-text">示例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.8.</span> <span class="toc-text">References</span></a></li></ol></li></ol>-->
+            <!--</div>-->
+            <!---->
+            <!--<h1><span id="binary-search二分搜索">Binary Search(二分搜索)</span></h1><p>二分搜索(binary search),也叫做 折半搜索(half-interval search),对数搜索(logarithmic search),对半搜索(binary chop),是一种在有序数组中查找某一特定元素的搜索算法.</p>
+<p>二分搜索有几个变体.特别是,分散层叠(<a href="https://en.wikipedia.org/wiki/Fractional_cascading" target="_blank" rel="external">fractional cascading</a>)(将每个数组里的值集合成一个数组,元素为11[0,3,2,0] 的形式,括号内的数字是该值在对应数组中应该返回的数字)提高了在多个数组中查找相同值的效率,高效的解决了一系列计算几何和其他领域的查找问题).指数查找(<a href="https://en.wikipedia.org/wiki/Exponential_search" target="_blank" rel="external">Exponential search</a>)延伸了二分查找到一个没有边界的 list.<a href="https://en.wikipedia.org/wiki/Binary_search_tree" target="_blank" rel="external">binary search tree</a>和<a href="https://en.wikipedia.org/wiki/B-tree" target="_blank" rel="external">B-tree</a>是基于 binary search 延伸的.</p>
+<h2><span id="原理">原理</span></h2><p>搜索时从数组中间元素开始,如果中间元素正好是要查找的元素,则搜索过程结束;如果中间元素大于或者小于要查找的元素,则在数组中大于或者小于查找元素的一半中继续查找,重复这个过程直到找到这个元素,或者这一半的大小为空时则代表找不到.这样子每一次比较都使得搜索范围缩小一半.</p>
+<h3><span id="步骤">步骤</span></h3><p>给定一个有序数组 A 是 A0,…,An-1并保证 A0&lt;=…&lt;=An-1,以及目标值 T.</p>
+<ol>
+<li>令 L 为0,R 为 n-1.</li>
+<li>如果 L&gt;R 则搜索失败</li>
+<li>令m(中间值元素索引)为最大的小于(L+R)/2的整数</li>
+<li>如果 Am&lt;T ,令 L=m+1并回到第2步;</li>
+<li>如果 Am&gt;T ,令 R=m-1并回到第2步;</li>
+<li>当 Am=T,搜索结束;T 所在的索引位置为m.</li>
+</ol>
+<p><code>变体</code></p>
+<ol>
+<li>令 L 为0,R 为 n-1.</li>
+<li>令 m(中间元素索引) 为上限,也就是最小的大于(L+R)/2的值.</li>
+<li>如果 Am&gt;T ,设置 R 为 m-1并且返回第2步</li>
+<li>如果 Am&lt;=T ,设置 L 为m 并且返回第2步.</li>
+<li>直到 L=R ,搜索完成.这时候如果T=Am,返回 m,否则,搜索失败.</li>
+</ol>
+<p>在 Am&lt;=T 的时候,这个变体将 L 设置为 m 而不是 m+1.这个方式的比较是更快速的,因为它在每个循环里省略了一次比较.但是平均就会多出来一次循环.在数组包含重复的元素的时候这个变体总是会返回最右侧的元素索引.比如 A 是[1,2,3,4,4,5,6,7]查找的对象是4,那么这个方法会返回 index 4,而不是 index 3.</p>
+<h3><span id="大致匹配">大致匹配</span></h3><p>由于有序数组的顺序性,可以将二分搜索扩展到大致匹配.可以用来计算赋值的排名(或称秩,比它更小的元素的数量),前趋(下一个最小元素),后继(下一个最大元素)以及最近邻.还可以使用两个排名查询来执行范围查询.</p>
+<ul>
+<li>排名查询可以使用调整后的二分搜索来进行.成功时返回m,失败时返回 L, 这样就等于返回了比目标值小的元素数目.</li>
+<li>前趋和后继可以使用排名查询来进行.当知道目标值的排名,成功时前趋是排名位置的上一个元素,失败时则是排名位置的元素.它的后继是排名位置的后一个元素,或是前趋的下一个元素.目标值的最近领可能是前趋或后继,取决于哪个更接近目标值.</li>
+<li>范围查询,一旦知道范围两边的值的排名,那么大于边界最小值且小于边界最大值的元素排名就是他们的范围,是否包含边界值根据需要处理.</li>
+</ul>
+<h2><span id="性能分析">性能分析</span></h2><p><strong>时间复杂度</strong><br>二分查找每次把搜索区域减少一半,时间复杂度为<br>$$<br>O(log_2 n)<br>$$<br>(n 是集合中元素的个数)<br>最差的情况是 遍历到最后一层,或者是没有找到该元素的时候,复杂度为 $O(\lfloor log_2 n + 1 \rfloor)$ .</p>
+<p>综合复杂度为 $O(log_2 n)$</p>
+<p>分散层叠(fractional cascading) 可以提高在多数组中查询相同值的效率. k 是数组的数量,在每个数组中查询目标值消耗 $O(k log n)$ 的时间.分散层叠可以将它降低到 $O(k+log n)$.</p>
+<p><code>变体效率分析</code><br>相对于正常的二分搜索,它减少了每次循环的比对次数,但是它必须做完完整的循环,而不会在中间就得到答案.但是在 n 很大的情况下减少了对比次数的提升不能够抵消多余的循环的消耗.</p>
+<p><strong>空间复杂度</strong><br>O(1).尾递归,可以改写为循环.</p>
+<h2><span id="应用">应用</span></h2><p>查找数组中的元素,或用于插入排序.</p>
+<h2><span id="二分搜索和其他的方案对比">二分搜索和其他的方案对比</span></h2><p>使用二分搜索的有序数组在插入和删除操作效率很低,每个操作消耗 O(n) 的时间.其他的数据结构提供了更高效的插入和删除,并且提供了同样高效的完全匹配.然而,二分搜索适用于很多的搜索问题,只消耗 $O(log n)$ 的时间.</p>
+<h3><span id="hashing">Hashing</span></h3><p>对于<a href="https://en.wikipedia.org/wiki/Associative_arrays" target="_blank" rel="external">关联数组 (associative arrays)</a>,<a href="https://en.wikipedia.org/wiki/Hash_table" target="_blank" rel="external">哈希表 (hash tables)</a>,他们是通过hash 函数将键映射到记录上的数据结构,通常情况下比在有序数组的情况下使用二分查找要更快.大部分的实现平均开销都是常量级的.然而, hashing 并不适用于模糊匹配,比如计算前趋,后继,以及最近的键,它在失败的查询情况下能给我们的唯一信息就是目标在记录中不存在.二分查找是这种匹配的理想模式,消耗对数级别的时间.</p>
+<h3><span id="trees">Trees</span></h3><p><a href="todo">二叉搜索树(binary search tree)</a> 是一个基于二叉搜索原理的<a href="todo">二叉树(binary tree)</a>数据结构.树的记录按照顺序排列,并且每个树里的每个记录都可以使用类似二叉搜索的方法来搜索,平均耗费对数级的时间.插入和删除的平均时间也是对数级的.这会比有序数组消耗的线性时间要快,并且二叉树拥有所有有序数组可以执行的操作,包含范围和模糊查找.</p>
+<p>然而二叉搜索通常情况下比二叉搜索树的搜索更有效率,因为二叉搜索树很可能会完全不平衡,导致性能稍差.这同样适用于 <a href="todo">平衡二叉搜索树( balanced binary search trees)</a> , 它平衡了它自己的节点稍微向完全平衡树靠拢.虽然不太可能,但是树有可能只有少数节点有两个子节点导致严重不平衡,这种情况下平均时间损耗和最差的情况差不多都是 O(n) .二叉搜索树比有序数组占用更多的空间.</p>
+<p>二叉搜索树因为可以高效的在文件系统中结构化,所以他们可以在硬盘中进行快速搜索.B-tree 泛化了这种树结构的方法.B-tree 常用于组织长时间的存储比如<a href="todo">数据库(databases)</a>和<a href="todo">文件系统(filesystems)</a>.</p>
+<h3><span id="linear-search">Linear search</span></h3><p><a href="todo">线性搜索( Linear Search)</a>是一种简单的搜索算法,它查找每一个记录直到找到目标值.线性搜索可以在 链表(linked list) 上使用,它的插入和删除会比在数组上要快.二分搜索比线性搜索要快除非数组很短.如果数组必须先被排序,这个消耗必须在搜索中平摊.对数组进行排序还可以进行有效的近似匹配和其他操作.</p>
+<h3><span id="set-membership-algorithms">Set membership algorithms</span></h3><p>一个和搜索相关的问题是<a href="todo">集合成员(set membership)</a>.所有有关查找的算法,比如二分搜索,都可以用于集合成员.还有一些更适用于集合成员的算法,<a href="todo">位数组(bit array)</a>是最简单的一个,在键的范围是有限的时候非常有用.它非常快,是需要O(1)的时间.<a href="todo">朱迪矩阵(Judy array)</a>可以高效的处理64位键.</p>
+<p>对于近似结果,<a href="todo">布隆过滤器(Bloom filters)</a>是另外一个基于哈希的概率性数据结构,通过存储使用bit array 和多重 hash 函数编码的键集合. Bloom filters 在大多数情况下空间效率比bit arrays 要高而不会慢太多:使用了 k 重hash 函数,成员查找只需要 O(k) 的时间.然而, Bloom filters 有一定的误判性.</p>
+<h3><span id="其他的数据结构">其他的数据结构</span></h3><p>这里存在一些数据结构在某些情况下比在有序数组上使用二分搜索进行查找或其他的操作更加高效.比如,在<a href="todo">van Emde Boas trees</a>, <a href="todo">fusion trees</a>, <a href="todo">前缀树(tries)</a>, 和<a href="todo">位数组</a> 上进行查找,近似匹配,以及其他可用的操作可以比在有序数组上进行二分搜索更加的高效.然而,尽管这些操作可以比在无视键的情况下比有序数组上使用更高效,这样的数据结构通常是因为利用了某些键的属性(键通常是一些小整数),因此如果键缺乏那些属性将会消耗更多的空间或时间.一些结构如朱迪矩阵,使用了多种方式的组合来保证效率和执行近似匹配的能力.</p>
+<h2><span id="变体">变体</span></h2><h3><span id="uniform-binary-search"></span></h3><p>Uniform binary search 不是存储下限和上限的边界值,而是中间元素的索引,和从这次循环的中间元素到下次循环的中间元素的变化.每一步的变化减少一半.比如,要搜索的数组是[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],中间元素是6.Uniform binary search 同时对左边和右边的子数组进行操作.在这个情况下,左边的子数组([1, 2, 3, 4, 5]) 的中间元素 3 而右边的子数组 ([7, 8, 9, 10, 11]) 的中间元素是 9.然后存储3 作为两个中间元素和 6 的差别.为了减少搜索的空间使用,算法同时加上或减去这个和中间元素的改变.这个算法的好处是可以将每次循环的索引的差别存储到一个表里,在某些系统里可以提高算法的性能.</p>
+<p><img src="Resource/Uniform_binary_search.svg.png" alt=""></p>
+<h3><span id="exponential-search"></span></h3><p>指数查找(Exponential Search)将二分搜索拓展到无边界数组.它最开始寻找第一个索引是2的幂次方并且要比目标值大的元素的索引.然后,它将这个元素索引设置为上边界,然后开始二分搜索.指数查找消耗 $\lfloor log_2 x =1 \rfloor$ 次循环 ,然后二分搜索消耗 $\lfloor log_2 x \rfloor$ 次循环, x 是目标值的位置.指数查找适用于有界列表,在目标值接近数组开始的位置的时候比二分查找性能有所提高.</p>
+<p><img src="Resource/Exponential_search.svg.png" alt=""></p>
+<h3><span id="interpolation-search"></span></h3><p>内插搜索(Interpolation search)忽略了目标值的位置,计算数组的最低和最高元素的距离即数组的长度.这只有在数组元素是数字的时候才能使用.它适用于中间值不是最好的猜测选择的情况.比如,如果目标值接近数组的最高元素,最好是定位在数组的末端.如果数组的分布是均匀的或者接近均匀的,它消耗 $O(log log n)$ 次比较.</p>
+<p>实际上,内插搜索在数组元素较少的情况下是比二分搜索更慢的,因为内插搜索需要额外的计算.尽管它的时间复杂度增长是小于二分搜索的,只有在在大数组的情况下这个计算的损耗可以被弥补.</p>
+<p><img src="Resource/Interpolation_search.svg.png" alt=""></p>
+<h3><span id="fractional-cascading"></span></h3><p>分散层叠(Fractional cascading) 可以提高在多个有序数组里查找相同的元素或近似匹配的效率,分别在每个数组里查找总共需要 $O(klogn)$的时间, k 是数组的数量.分散层叠通过将每个数组的信息按指定的方式存储起来将这个时间降低到 $O(k+logn)$ .</p>
+<p>它将每个数组里的值集合成一个数组,元素为 11[0,3,2,0] 的形式,括号内的数字是该值在对应数组中应该返回的数字)提高了在多个数组中查找相同值的效率,高效的解决了一系列计算几何和其他领域的查找问题</p>
+<p>分散层叠被发明的时候是为了高效的解决各种<a href="todo">计算几何学(computational geometry)</a> 问题,但是它同样适用于其他地方,例如 <a href="todo">数据挖掘(data mining)</a> 和 <a href="todo">互联网协议(Internet Protocal)</a> 等.</p>
+<h2><span id="实现时的问题">实现时的问题</span></h2><p>要注意中间值的取值方法,如果使用 (L+R)/2 当数组的元素数量很大的时候回造成计算溢出.所以要使用L+(R-L)/2.</p>
+<h2><span id="示例">示例</span></h2><p>C 版本- 递归<br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">binary_search</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> arr[], <span class="keyword">int</span> start , <span class="keyword">int</span> end , <span class="keyword">int</span> khey)</span></span>&#123;</div><div class="line">    <span class="keyword">if</span> (start &gt; end)</div><div class="line">      <span class="keyword">return</span> <span class="number">-1</span>;</div><div class="line"></div><div class="line">    <span class="keyword">int</span> mid = start +(end - start)/<span class="number">2</span>;   <span class="comment">//直接平均可能会溢位,所以用此算法</span></div><div class="line">    <span class="keyword">if</span> (arr[mid] &gt; khey)</div><div class="line">        <span class="keyword">return</span> binary_search(arr , start , mid - <span class="number">1</span> , khey);</div><div class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (arr[mid] &lt; khey)</div><div class="line">        <span class="keyword">return</span> binary_search(arr , mid + <span class="number">1</span> , end , khey);</div><div class="line">    <span class="keyword">else</span></div><div class="line">        <span class="keyword">return</span> mid;    <span class="comment">//最后才检测相等的情况是因为大多数搜寻情况不是大于就是小于</span></div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>C 版本- while 循环</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">binary_search</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> arr[], <span class="keyword">int</span> start, <span class="keyword">int</span> end, <span class="keyword">int</span> khey)</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> result = <span class="number">-1</span>;    <span class="comment">//如果没有搜索到数据返回 -1</span></div><div class="line"></div><div class="line">    <span class="keyword">int</span> mid;</div><div class="line">    <span class="keyword">while</span> (start &lt;= end)&#123;</div><div class="line">      mid = start + (end - start)/<span class="number">2</span> ;    <span class="comment">//直接平均可能会溢位,所以用此算法</span></div><div class="line">      <span class="keyword">if</span> (arr[mid] &gt; khey)</div><div class="line">          end = mid<span class="number">-1</span>;</div><div class="line">      <span class="keyword">else</span> <span class="keyword">if</span> (arr[mid] &lt; khey)</div><div class="line">          start = mid + <span class="number">1</span>;</div><div class="line">      <span class="keyword">else</span>&#123;    <span class="comment">//最后才检测相等的情况是因为大多数搜寻情况不是大于就是小于</span></div><div class="line">          result = mid;</div><div class="line">          <span class="keyword">break</span>;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> result;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Python3 递归</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">binary_search</span><span class="params">(arr, start, end, hkey)</span>:</span></div><div class="line">    <span class="keyword">if</span> start &gt; end:</div><div class="line">        <span class="keyword">return</span> <span class="number">-1</span></div><div class="line"></div><div class="line">    mid = start + (end - start) / <span class="number">2</span></div><div class="line">    <span class="keyword">if</span> arr[mid] &gt; hkey:</div><div class="line">        <span class="keyword">return</span> binary_search(arr, start , mid - <span class="number">1</span>,hkey)</div><div class="line">    <span class="keyword">if</span> arr[mid] &lt; hkey:</div><div class="line">        <span class="keyword">return</span> binary_search(arr, mid + <span class="number">1</span>, end, hkey)</div><div class="line">    <span class="keyword">return</span> mid</div></pre></td></tr></table></figure>
+<p>Python3 while 循环</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">binary_search</span><span class="params">(arr, start, end, hkey)</span>:</span></div><div class="line">    result = <span class="number">-1</span></div><div class="line"></div><div class="line">    <span class="keyword">while</span> start &lt;= end:</div><div class="line">        mid = start + (end - start) / <span class="number">2</span></div><div class="line">        <span class="keyword">if</span> arr[mid] &gt; hkey :</div><div class="line">            end = mid - <span class="number">1</span></div><div class="line">        <span class="keyword">elif</span> arr[mid] &lt; hkey :</div><div class="line">            start = mid + <span class="number">1</span></div><div class="line">        <span class="keyword">else</span> :</div><div class="line">            result = mid</div><div class="line">            <span class="keyword">break</span></div><div class="line"></div><div class="line">    <span class="keyword">return</span> result</div></pre></td></tr></table></figure>
+<p>Java 递归</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">binarySearch</span><span class="params">(<span class="keyword">int</span>[] arr, <span class="keyword">int</span> start, <span class="keyword">int</span> end, <span class="keyword">int</span> hkey)</span></span>&#123;</div><div class="line">    <span class="keyword">if</span> (start &gt; end)</div><div class="line">        <span class="keyword">return</span> -<span class="number">1</span>;</div><div class="line"></div><div class="line">    <span class="keyword">int</span> mid = start + (end - start)/<span class="number">2</span>;    <span class="comment">//防止溢位</span></div><div class="line">    <span class="keyword">if</span> (arr[mid] &gt; hkey)</div><div class="line">        <span class="keyword">return</span> binarySearch(arr, start, mid - <span class="number">1</span>, hkey);</div><div class="line">    <span class="keyword">if</span> (arr[mid] &lt; hkey)</div><div class="line">        <span class="keyword">return</span> binarySearch(arr, mid + <span class="number">1</span>, end, hkey);</div><div class="line">    <span class="keyword">return</span> mid;  </div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Java while 循环</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">binarySearch</span><span class="params">(<span class="keyword">int</span>[] arr, <span class="keyword">int</span> start, <span class="keyword">int</span> end, <span class="keyword">int</span> hkey)</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> result = -<span class="number">1</span>;</div><div class="line"></div><div class="line">    <span class="keyword">while</span> (start &lt;= end)&#123;</div><div class="line">        <span class="keyword">int</span> mid = start + (end - start)/<span class="number">2</span>;    <span class="comment">//防止溢位</span></div><div class="line">        <span class="keyword">if</span> (arr[mid] &gt; hkey)</div><div class="line">            end = mid - <span class="number">1</span>;</div><div class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (arr[mid] &lt; hkey)</div><div class="line">            start = mid + <span class="number">1</span>;</div><div class="line">        <span class="keyword">else</span> &#123;</div><div class="line">            result = mid ;  </div><div class="line">            <span class="keyword">break</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> result;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2><span id="references">References</span></h2><p><a href="https://en.wikipedia.org/wiki/Binary_search_algorithm" target="_blank" rel="external">https://en.wikipedia.org/wiki/Binary_search_algorithm</a></p>
+-->
+            <!---->
+        <!--</div>-->
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://yoursite.com/2018/08/14/Binary-Search/" data-id="cjksxpsop001ytjgj36cp16vt" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+    
+<nav id="article-nav">
+    
+    
+        <a href="/2018/07/21/3-Longest-Substring-Without-Repeating-Characters/Record[English-ver]/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">LeetCode 3. Longest Substring Without Repeating Characters [English ver]</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+
+    
+
+
+
+
+
+</section>
+            
+                
+<aside id="sidebar">
+   
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">recent</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/08/14/Binary-Search/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/2018/08/14/Binary-Search/titleThumb.jpg)" alt="Binary Search(二分搜索)" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Chinese/">Chinese</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/Chinese/Algorithm/">Algorithm</a></p>
+                            <p class="item-title"><a href="/2018/08/14/Binary-Search/" class="title">Binary Search(二分搜索)</a></p>
+                            <p class="item-date"><time datetime="2018-08-13T16:00:00.000Z" itemprop="datePublished">2018-08-14</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/07/21/3-Longest-Substring-Without-Repeating-Characters/Record[English-ver]/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/2018/07/21/3-Longest-Substring-Without-Repeating-Characters/Record[Chinese-ver]/titleThumb.jpg)" alt="LeetCode 3. Longest Substring Without Repeating Characters [English ver]" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/English/">English</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/English/Algorithm/">Algorithm</a></p>
+                            <p class="item-title"><a href="/2018/07/21/3-Longest-Substring-Without-Repeating-Characters/Record[English-ver]/" class="title">LeetCode 3. Longest Substring Without Repeating Characters [English ver]</a></p>
+                            <p class="item-date"><time datetime="2018-07-20T16:00:00.000Z" itemprop="datePublished">2018-07-21</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/07/21/3-Longest-Substring-Without-Repeating-Characters/Record[Chinese-ver]/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/2018/07/21/3-Longest-Substring-Without-Repeating-Characters/Record[Chinese-ver]/titleThumb.jpg)" alt="LeetCode 3.最长的没有重复字符的子字符串 [Chinese ver]" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Chinese/">Chinese</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/Chinese/Algorithm/">Algorithm</a></p>
+                            <p class="item-title"><a href="/2018/07/21/3-Longest-Substring-Without-Repeating-Characters/Record[Chinese-ver]/" class="title">LeetCode 3.最长的没有重复字符的子字符串 [Chinese ver]</a></p>
+                            <p class="item-date"><time datetime="2018-07-20T16:00:00.000Z" itemprop="datePublished">2018-07-21</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/07/15/2-Add-Two-Num/Record[Chinese-ver]/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/2018/07/15/2-Add-Two-Num/Record[Chinese-ver]/titleThumb.jpg)" alt="LeetCode 2. Add Two Numbers [Chinese ver]" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Chinese/">Chinese</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/Chinese/Algorithm/">Algorithm</a></p>
+                            <p class="item-title"><a href="/2018/07/15/2-Add-Two-Num/Record[Chinese-ver]/" class="title">LeetCode 2. Add Two Numbers [Chinese ver]</a></p>
+                            <p class="item-date"><time datetime="2018-07-14T16:00:00.000Z" itemprop="datePublished">2018-07-15</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/07/15/2-Add-Two-Num/Record[English-ver]/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/2018/07/15/2-Add-Two-Num/Record[Chinese-ver]/titleThumb.jpg)" alt="LeetCode 2. Add Two Numbers [English ver]" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/English/">English</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/English/Algorithm/">Algorithm</a></p>
+                            <p class="item-title"><a href="/2018/07/15/2-Add-Two-Num/Record[English-ver]/" class="title">LeetCode 2. Add Two Numbers [English ver]</a></p>
+                            <p class="item-date"><time datetime="2018-07-14T16:00:00.000Z" itemprop="datePublished">2018-07-15</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/">Chinese</a><span class="category-list-count">10</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Algorithm/">Algorithm</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Algorithm/Common/">Common</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Algorithm/LeetCode/">LeetCode</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/">Android</a><span class="category-list-count">5</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/Error/">Error</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/UI/">UI</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/UI/Custom-View/">Custom View</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/版本差异/">版本差异</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/版本管理/">版本管理</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Java/">Java</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Java/Data-Structure/">Data Structure</a><span class="category-list-count">1</span></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/English/">English</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/English/Algorithm/">Algorithm</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/English/Algorithm/LeetCode/">LeetCode</a><span class="category-list-count">3</span></li></ul></li></ul></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">2</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">tags</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/">Algorithm</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chinese/">Chinese</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Custom-View/">Custom View</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Structure/">Data Structure</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English/">English</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Error/">Error</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LeetCode/">LeetCode</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UI/">UI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/版本差异/">版本差异</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/版本管理/">版本管理</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/Algorithm/" style="font-size: 18.33px;">Algorithm</a> <a href="/tags/Android/" style="font-size: 15px;">Android</a> <a href="/tags/Chinese/" style="font-size: 20px;">Chinese</a> <a href="/tags/Custom-View/" style="font-size: 10px;">Custom View</a> <a href="/tags/Data-Structure/" style="font-size: 10px;">Data Structure</a> <a href="/tags/English/" style="font-size: 13.33px;">English</a> <a href="/tags/Error/" style="font-size: 10px;">Error</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/LeetCode/" style="font-size: 16.67px;">LeetCode</a> <a href="/tags/UI/" style="font-size: 10px;">UI</a> <a href="/tags/版本差异/" style="font-size: 11.67px;">版本差异</a> <a href="/tags/版本管理/" style="font-size: 10px;">版本管理</a>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+            </ul>
+        </div>
+    </div>
+
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+
+            
+        </div>
+        <!-- ad start -->
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-9191109011370892",
+    enable_page_level_ads: true
+  });
+</script>
+        <!-- ad end -->
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2018 LeonChen<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. 
+        </div>
+    </div>
+</footer>
+        
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
