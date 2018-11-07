@@ -18,7 +18,13 @@
     
         <link rel="icon" href="/images/Facicon.png" />
     
-
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-9191109011370892",
+    enable_page_level_ads: true
+  });
+</script>
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="/libs/open-sans/styles.css">
     <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
@@ -164,7 +170,7 @@ ga('send', 'pageview');
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                17
+                19
                 <span>posts</span>
             </div>
             <div class="article-info-block">
@@ -199,6 +205,401 @@ ga('send', 'pageview');
 
             
             <section id="main">
+    <article id="post-2-Add-Two-Num/Record[Chinese-ver]" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+	
+		<a href="/2018/07/15/2-Add-Two-Num/Record[Chinese-ver]/" itemprop="url">
+            <img src="/2018/07/15/2-Add-Two-Num/Record[Chinese-ver]/title.jpg" class="article-banner" />
+        </a>
+	
+
+
+
+        
+        
+        <header class="article-header">
+            
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2018/07/15/2-Add-Two-Num/Record[Chinese-ver]/">LeetCode 2. Add Two Numbers [Chinese ver]</a>
+        </h1>
+    
+
+            
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2018/07/15/2-Add-Two-Num/Record[Chinese-ver]/">
+            <time datetime="2018-07-14T16:00:00.000Z" itemprop="datePublished">2018-07-15</time>
+        </a>
+    </div>
+
+
+                
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Chinese/">Chinese</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/Chinese/Algorithm/">Algorithm</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/Chinese/Algorithm/LeetCode/">LeetCode</a>
+    </div>
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Algorithm/">Algorithm</a>, <a class="tag-link" href="/tags/Chinese/">Chinese</a>, <a class="tag-link" href="/tags/LeetCode/">LeetCode</a>
+    </div>
+
+            </div>
+            
+        </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <p><p>[Chinese ver]</p>
+<h2><span id="2-add-two-numbers">2. Add Two Numbers</span></h2><p>问题：你将获得两个非空 linked lists来表示两个非负整数。 数字以反向的顺序存储，并且它们的每个节点包含一位数字。 将两个数字相加并将其以 linked list的形式返回。</p>
+<p>你可以假定这两个数字不包含任何前导零（即不存在首位出现0的情况），除了数字0本身。</p>
+<p>输入 ：(2 -&gt; 4 -&gt; 3) + (5 -&gt; 6 -&gt; 4)<br>输出 ： 7 -&gt; 0 -&gt; 8</p>
+<p>
+                
+                
+                
+            
+    </div>
+    <div class="article-more-link">
+        <a href="/2018/07/15/2-Add-Two-Num/Record[Chinese-ver]/#more">Read More</a>
+    </div>
+    
+        <!--<div class="article-entry" itemprop="articleBody">-->
+            <!---->
+            <!---->
+            <!--<p>[Chinese ver]</p>
+<h2><span id="2-add-two-numbers">2. Add Two Numbers</span></h2><p>问题：你将获得两个非空 linked lists来表示两个非负整数。 数字以反向的顺序存储，并且它们的每个节点包含一位数字。 将两个数字相加并将其以 linked list的形式返回。</p>
+<p>你可以假定这两个数字不包含任何前导零（即不存在首位出现0的情况），除了数字0本身。</p>
+<p>输入 ：(2 -&gt; 4 -&gt; 3) + (5 -&gt; 6 -&gt; 4)<br>输出 ： 7 -&gt; 0 -&gt; 8</p>
+<h3><span id="方法一">方法一：</span></h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> ListNode <span class="title">addTwoNumbers</span><span class="params">(ListNode l1, ListNode l2)</span> </span>&#123;</div><div class="line">    ListNode dummyHead = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</div><div class="line">    ListNode p = l1, q = l2, curr = dummyHead;</div><div class="line">    <span class="keyword">int</span> carry = <span class="number">0</span>;</div><div class="line">    <span class="keyword">while</span> (p != <span class="keyword">null</span> || q != <span class="keyword">null</span>) &#123;</div><div class="line">        <span class="keyword">int</span> x = (p != <span class="keyword">null</span>) ? p.val : <span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span> y = (q != <span class="keyword">null</span>) ? q.val : <span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span> sum = carry + x + y;</div><div class="line">        carry = sum / <span class="number">10</span>;</div><div class="line">        curr.next = <span class="keyword">new</span> ListNode(sum % <span class="number">10</span>);</div><div class="line">        curr = curr.next;</div><div class="line">        <span class="keyword">if</span> (p != <span class="keyword">null</span>) p = p.next;</div><div class="line">        <span class="keyword">if</span> (q != <span class="keyword">null</span>) q = q.next;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (carry &gt; <span class="number">0</span>) &#123;</div><div class="line">        curr.next = <span class="keyword">new</span> ListNode(carry);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> dummyHead.next;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/2%20Add%20Two%20Num/Images/method1result.png?raw=true" alt="效率"></p>
+<h4><span id="分析">分析</span></h4><p>其实这个问题熟悉一下链表的使用和算术的逻辑就可以解决了。按位加过十进一，注意，加法的进位只会是0或者1，因为就算你用两个最大的数9+9最后也只是进一，进一之后再9+9+1也只会得到19，还是进一。所以主要的逻辑就是两个数的和sum/10得到的是进位，sum%10得到的是本位的数。dummyHead是一个假的数据头，用来做一个初始化，不使用也是可以的，但是在内部逻辑中就需要自己在处理第一位和后续的位数的逻辑区别。<br>注意有几种特殊情况。1.其中一个list的长度比另一个要长。2.其中一个list为空。3.加到最后一位时仍然还有进位</p>
+<p>时间复杂度： O(max(m,n)).总共循环m和n中的最大次数。<br>空间复杂度 :   O(max(m,n)).我们得到的新的list 的长度是m,n中最大长度，加上一个假数据头。</p>
+<h3><span id="方法二">方法二</span></h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * Definition for singly-linked list.</span></div><div class="line"><span class="comment"> * public class ListNode &#123;</span></div><div class="line"><span class="comment"> *     int val;</span></div><div class="line"><span class="comment"> *     ListNode next;</span></div><div class="line"><span class="comment"> *     ListNode(int x) &#123; val = x; &#125;</span></div><div class="line"><span class="comment"> * &#125;</span></div><div class="line"><span class="comment"> */</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">addTwoNumbers</span><span class="params">(ListNode l1, ListNode l2)</span> </span>&#123;</div><div class="line">        ListNode ln1 = l1, ln2 = l2, head = <span class="keyword">null</span>, node = <span class="keyword">null</span>;</div><div class="line">        <span class="keyword">int</span> carry = <span class="number">0</span>, remainder = <span class="number">0</span>, sum = <span class="number">0</span>;</div><div class="line">        head = node = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</div><div class="line"></div><div class="line">        <span class="keyword">while</span>(ln1 != <span class="keyword">null</span> || ln2 != <span class="keyword">null</span> || carry != <span class="number">0</span>) &#123;</div><div class="line">            sum = (ln1 != <span class="keyword">null</span> ? ln1.val : <span class="number">0</span>) + (ln2 != <span class="keyword">null</span> ? ln2.val : <span class="number">0</span>) + carry;</div><div class="line">            carry = sum / <span class="number">10</span>;</div><div class="line">            remainder = sum % <span class="number">10</span>;</div><div class="line">            node = node.next = <span class="keyword">new</span> ListNode(remainder);</div><div class="line">            ln1 = (ln1 != <span class="keyword">null</span> ? ln1.next : <span class="keyword">null</span>);</div><div class="line">            ln2 = (ln2 != <span class="keyword">null</span> ? ln2.next : <span class="keyword">null</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> head.next;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/2%20Add%20Two%20Num/Images/method2result.png?raw=true" alt="效率"></p>
+<p>这个是别人的做法，居然能够比方法一快了许多，说实话，其实这两个方法在整体思路上是差不多的，至于为什么会比前者快那么多我觉的是方法一在循环中不断新建了x,y等对象，由于计时时用了成千上百的例子验证所以导致了20ms左右的差距。以上纯属个人看法，如果你有更正确的想法，或者哪里有有关这种差距的论证，请告诉我。谢谢。</p>
+<h2><span id="about-me">About Me</span></h2><p>我的博客 <a href="http://leonchen1024.com/" target="_blank" rel="external">leonchen1024.com</a></p>
+<p>我的 GitHub <a href="https://github.com/LeonChen1024" target="_blank" rel="external">https://github.com/LeonChen1024</a></p>
+<p>微信公众号 </p>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/Images/CooderQRcodem.jpg?raw=false" alt="wechat"></p>
+-->
+            <!---->
+        <!--</div>-->
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://yoursite.com/2018/07/15/2-Add-Two-Num/Record[Chinese-ver]/" data-id="cjo6xygcz002i6obj7j1f6vwy" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+
+
+
+
+    <article id="post-APP-Version-Control" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+	
+		<a href="/2018/04/13/APP-Version-Control/" itemprop="url">
+            <img src="/2018/04/13/APP-Version-Control/VersionControl.jpg" class="article-banner" />
+        </a>
+	
+
+
+
+        
+        
+        <header class="article-header">
+            
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2018/04/13/APP-Version-Control/">APP 版本控制</a>
+        </h1>
+    
+
+            
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2018/04/13/APP-Version-Control/">
+            <time datetime="2018-04-12T16:00:00.000Z" itemprop="datePublished">2018-04-13</time>
+        </a>
+    </div>
+
+
+                
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Chinese/">Chinese</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/Chinese/Android/">Android</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/Chinese/Android/版本管理/">版本管理</a>
+    </div>
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Android/">Android</a>, <a class="tag-link" href="/tags/Chinese/">Chinese</a>, <a class="tag-link" href="/tags/版本管理/">版本管理</a>
+    </div>
+
+            </div>
+            
+        </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <p><p>版本管理是app的一个重要部分，他主要的用途有：</p>
+<ul>
+<li>让用户了解当前的版本信息，了解升级或者降级信息等</li>
+<li>不同的版本可能提供的服务和功能有所差别，版本信息可以给我们一个标志来识别当前版本可提供的服务和功能。</li>
+<p>
+                
+                
+                
+            
+    </div>
+    <div class="article-more-link">
+        <a href="/2018/04/13/APP-Version-Control/#more">Read More</a>
+    </div>
+    
+        <!--<div class="article-entry" itemprop="articleBody">-->
+            <!---->
+            <!---->
+            <!--<p>版本管理是app的一个重要部分，他主要的用途有：</p>
+<ul>
+<li>让用户了解当前的版本信息，了解升级或者降级信息等</li>
+<li>不同的版本可能提供的服务和功能有所差别，版本信息可以给我们一个标志来识别当前版本可提供的服务和功能。</li>
+</ul>
+<h2><span id="目录">目录</span></h2><ul>
+<li><a href="#设置版本信息">设置版本信息</a></li>
+<li><a href="#统一配置">统一配置</a></li>
+<li><a href="#reference">Reference</a></li>
+</ul>
+<h2><span id="设置版本信息">设置版本信息</span></h2><p>官方推荐是在Gradle中进行版本设置，因为Gradle中设置的版本信息会在构建的时候合并到manifest文件中，并会替换掉manifest中有关版本信息的设置。并且在Gradle中进行设置的话还可以根据应用不同的Flavor进行不同的设置。</p>
+<p>版本控制主要有这么两个属性：</p>
+<p>-versionCode ： 整数，是内部版本号，仅用于判断一个版本是否比另一个版本新，用户并不会看到。通常是跟随着发布版本增加该code。</p>
+<p>-versionName : 字符串，用户能看到的版本号。</p>
+<p>通常我们将这些设置放在gradle下的android {} 块内部使用defaultConfig {} 包裹它。要注意，如果你在productFlavors中定义了这些属性，他们会覆盖defaultConfig中的值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">android &#123;</div><div class="line">  ...</div><div class="line">  defaultConfig &#123;</div><div class="line">    ...</div><div class="line">    versionCode 1</div><div class="line">    versionName &quot;1.0.0&quot;</div><div class="line">  &#125;</div><div class="line">  productFlavors &#123;</div><div class="line">    a &#123;</div><div class="line">      ...</div><div class="line">      versionName &quot;1.0.0&quot;</div><div class="line">    &#125;</div><div class="line">    b &#123;</div><div class="line">      ...</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在android中使用 PackageManager 的 getPackageInfo(java.lang.String, int) 方法可以获取版本信息。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">getVersion</span><span class="params">(Context context)</span><span class="comment">//获取版本号</span></span></div><div class="line"><span class="function">	</span>&#123;</div><div class="line">		<span class="keyword">try</span> &#123;</div><div class="line">			PackageInfo pi=context.getPackageManager().getPackageInfo(context.getPackageName(), <span class="number">0</span>);</div><div class="line">			<span class="keyword">return</span> pi.versionName;</div><div class="line">		&#125; <span class="keyword">catch</span> (NameNotFoundException e) &#123;</div><div class="line">			<span class="comment">// TODO Auto-generated catch block</span></div><div class="line">			e.printStackTrace();</div><div class="line">			<span class="keyword">return</span> context.getString(R.string.version_unknown);</div><div class="line">		&#125;</div><div class="line">	&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">getVersionCode</span><span class="params">(Context context)</span><span class="comment">//获取版本号(内部识别号)</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">  <span class="keyword">try</span> &#123;</div><div class="line">    PackageInfo pi=context.getPackageManager().getPackageInfo(context.getPackageName(), <span class="number">0</span>);</div><div class="line">    <span class="keyword">return</span> pi.versionCode;</div><div class="line">  &#125; <span class="keyword">catch</span> (NameNotFoundException e) &#123;</div><div class="line">    <span class="comment">// TODO Auto-generated catch block</span></div><div class="line">    e.printStackTrace();</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>如果使用 Instant Run，Android Studio 会自动将 versionCode 设置为 MAXINT，将 versionName 设置为 INSTANTRUN。</p>
+<h2><span id="统一配置">统一配置</span></h2><p>顺便说一下一个可以统一所有的配置在一个地方的方法，这样可以便于我们管理版本。<br>首先在主工程的build.gradle里增加一个配置区</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">ext &#123;</div><div class="line">    // Sdk and tools</div><div class="line">    minSdkVersion = 17</div><div class="line">    targetSdkVersion = 21</div><div class="line">    compileSdkVersion = 23</div><div class="line">    buildToolsVersion = &quot;23.0.3&quot;</div><div class="line"></div><div class="line">    // App dependencies</div><div class="line">    supportLibraryVersion = &apos;23.3.0&apos;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>然后在module的build.gradle里使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">targetSdkVersion rootProject.ext.targetSdkVersion</div><div class="line"></div><div class="line">compile &quot;com.android.support:appcompat-v7:$rootProject.supportLibraryVersion&quot;</div></pre></td></tr></table></figure></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * 判断当前应用是否是debug状态</span></div><div class="line"><span class="comment"> */</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">isApkInDebug</span><span class="params">(Context context)</span> </span>&#123;</div><div class="line">    <span class="keyword">try</span> &#123;</div><div class="line">        ApplicationInfo info = context.getApplicationInfo();</div><div class="line">        <span class="keyword">return</span> (info.flags &amp; ApplicationInfo.FLAG_DEBUGGABLE) != <span class="number">0</span>;</div><div class="line">    &#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment">*检测其他应用是否处于debug模式。</span></div><div class="line"><span class="comment">*/</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">isApkDebugable</span><span class="params">(Context context,String packageName)</span> </span>&#123;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            PackageInfo pkginfo = context.getPackageManager().getPackageInfo(</div><div class="line">                    packageName, <span class="number">1</span>);</div><div class="line">            <span class="keyword">if</span> (pkginfo != <span class="keyword">null</span> ) &#123;</div><div class="line">                ApplicationInfo info= pkginfo.applicationInfo;</div><div class="line">                <span class="keyword">return</span> (info.flags&amp;ApplicationInfo.FLAG_DEBUGGABLE)!=<span class="number">0</span>;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line"></div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<h2><span id="reference">Reference</span></h2><p><a href="https://developer.android.com/studio/publish/versioning.html" target="_blank" rel="external">https://developer.android.com/studio/publish/versioning.html</a></p>
+-->
+            <!---->
+        <!--</div>-->
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://yoursite.com/2018/04/13/APP-Version-Control/" data-id="cjo6xyga100006obj7oreeu3k" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+
+
+
+
     <article id="post-Android-Error-And-Solution" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -303,156 +704,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://yoursite.com/2018/01/10/Android-Error-And-Solution/" data-id="cjlniz4tf0005pygjni0behoa" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-
-
-
-
-    <article id="post-1-Two-Sum/Record[English ver]" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-        <header class="article-header">
-            
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2017/02/17/1-Two-Sum/Record[English ver]/">LeetCode 1 Two Sum [English ver]</a>
-        </h1>
-    
-
-            
-            <div class="article-meta">
-                
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2017/02/17/1-Two-Sum/Record[English ver]/">
-            <time datetime="2017-02-16T16:00:00.000Z" itemprop="datePublished">2017-02-17</time>
-        </a>
-    </div>
-
-
-                
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/English/">English</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/English/Algorithm/">Algorithm</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/English/Algorithm/LeetCode/">LeetCode</a>
-    </div>
-
-                
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/Algorithm/">Algorithm</a>, <a class="tag-link" href="/tags/English/">English</a>, <a class="tag-link" href="/tags/LeetCode/">LeetCode</a>
-    </div>
-
-            </div>
-            
-        </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-            
-            
-            
-            
-            <p><h1 id="English-ver-1-Two-Sum"><a href="#English-ver-1-Two-Sum" class="headerlink" title="[English ver]1 Two Sum"></a>[English ver]1 Two Sum</h1><h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p>Two SumGiven an array of integers, return <strong>indices</strong> of the two numbers such that they add up to a specific target.<br>You may assume that each input would have <strong><em>exactly</em></strong> one solution, and you may not use the <em>same</em> element twice.</p></p>
-            
-                
-            
-    </div>
-    <div class="article-more-link">
-        <a href="/2017/02/17/1-Two-Sum/Record[English ver]/#more">Read More</a>
-    </div>
-    
-        <!--<div class="article-entry" itemprop="articleBody">-->
-            <!---->
-            <!--<p><h1 id="English-ver-1-Two-Sum"><a href="#English-ver-1-Two-Sum" class="headerlink" title="[English ver]1 Two Sum"></a>[English ver]1 Two Sum</h1><h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p>Two SumGiven an array of integers, return <strong>indices</strong> of the two numbers such that they add up to a specific target.<br>You may assume that each input would have <strong><em>exactly</em></strong> one solution, and you may not use the <em>same</em> element twice.</p></p>-->
-            <!--<p class="article-more-link">-->
-                <!--<a href="/2017/02/17/1-Two-Sum/Record[English ver]/#more">Read More</a>-->
-            <!--</p>-->
-            <!---->
-        <!--</div>-->
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://yoursite.com/2017/02/17/1-Two-Sum/Record[English ver]/" data-id="cjlniz4vv002gpygj7cetdcqx" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2018/01/10/Android-Error-And-Solution/" data-id="cjo6xyga900036objmovncmhl" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -601,7 +853,156 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/02/17/1-Two-Sum/Record[Chinese ver]/" data-id="cjlniz4vt002dpygje1jkkp8a" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/02/17/1-Two-Sum/Record[Chinese ver]/" data-id="cjo6xygcx002d6objjdjatmbd" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+
+
+
+
+    <article id="post-1-Two-Sum/Record[English ver]" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+        <header class="article-header">
+            
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2017/02/17/1-Two-Sum/Record[English ver]/">LeetCode 1 Two Sum [English ver]</a>
+        </h1>
+    
+
+            
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/02/17/1-Two-Sum/Record[English ver]/">
+            <time datetime="2017-02-16T16:00:00.000Z" itemprop="datePublished">2017-02-17</time>
+        </a>
+    </div>
+
+
+                
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/English/">English</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/English/Algorithm/">Algorithm</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/English/Algorithm/LeetCode/">LeetCode</a>
+    </div>
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Algorithm/">Algorithm</a>, <a class="tag-link" href="/tags/English/">English</a>, <a class="tag-link" href="/tags/LeetCode/">LeetCode</a>
+    </div>
+
+            </div>
+            
+        </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+            
+            
+            
+            <p><h1 id="English-ver-1-Two-Sum"><a href="#English-ver-1-Two-Sum" class="headerlink" title="[English ver]1 Two Sum"></a>[English ver]1 Two Sum</h1><h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p>Two SumGiven an array of integers, return <strong>indices</strong> of the two numbers such that they add up to a specific target.<br>You may assume that each input would have <strong><em>exactly</em></strong> one solution, and you may not use the <em>same</em> element twice.</p></p>
+            
+                
+            
+    </div>
+    <div class="article-more-link">
+        <a href="/2017/02/17/1-Two-Sum/Record[English ver]/#more">Read More</a>
+    </div>
+    
+        <!--<div class="article-entry" itemprop="articleBody">-->
+            <!---->
+            <!--<p><h1 id="English-ver-1-Two-Sum"><a href="#English-ver-1-Two-Sum" class="headerlink" title="[English ver]1 Two Sum"></a>[English ver]1 Two Sum</h1><h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p>Two SumGiven an array of integers, return <strong>indices</strong> of the two numbers such that they add up to a specific target.<br>You may assume that each input would have <strong><em>exactly</em></strong> one solution, and you may not use the <em>same</em> element twice.</p></p>-->
+            <!--<p class="article-more-link">-->
+                <!--<a href="/2017/02/17/1-Two-Sum/Record[English ver]/#more">Read More</a>-->
+            <!--</p>-->
+            <!---->
+        <!--</div>-->
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://yoursite.com/2017/02/17/1-Two-Sum/Record[English ver]/" data-id="cjo6xygcy002g6objv1c45kyd" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -827,7 +1228,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://yoursite.com/2016/08/20/Android-6.0-Change-2/" data-id="cjlniz4v1001xpygj46j8iess" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2016/08/20/Android-6.0-Change-2/" data-id="cjo6xygc7001t6objrq2ugr1c" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1042,7 +1443,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://yoursite.com/2016/08/20/Android-6.0-Change-1/" data-id="cjlniz4t70000pygjiv7yze9o" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2016/08/20/Android-6.0-Change-1/" data-id="cjo6xyga600016objs23xbtn2" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1230,7 +1631,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://yoursite.com/2016/03/17/Android-declare-styleable-Attribute/" data-id="cjlniz4th0008pygj8x8ls8qf" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2016/03/17/Android-declare-styleable-Attribute/" data-id="cjo6xygab00056obj0sv5hhci" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1389,7 +1790,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://yoursite.com/2016/03/09/Byte-Common-transition/" data-id="cjlniz4tk000apygjq4f4boqu" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2016/03/09/Byte-Common-transition/" data-id="cjo6xygac00066objwuj3sb6c" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1486,10 +1887,10 @@ ga('send', 'pageview');
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2018/08/31/5-Longest-Palindromic-Substring/Record-en/" class="thumbnail">
+                            <a href="/2018/09/12/6-ZigZag-Conversion/Record-en/" class="thumbnail">
     
     
-        <span style="background-image:url(/2018/08/31/5-Longest-Palindromic-Substring/Record-cn/titleThumb.jpg)" alt="LeetCode 5.Longest Palindromic Substring" class="thumbnail-image"></span>
+        <span style="background-image:url(/2018/09/12/6-ZigZag-Conversion/Record-cn/titleThumb.jpg)" alt="LeetCode 6. ZigZag Conversion" class="thumbnail-image"></span>
     
 </a>
 
@@ -1497,8 +1898,27 @@ ga('send', 'pageview');
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/English/">English</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/English/Algorithm/">Algorithm</a></p>
-                            <p class="item-title"><a href="/2018/08/31/5-Longest-Palindromic-Substring/Record-en/" class="title">LeetCode 5.Longest Palindromic Substring</a></p>
-                            <p class="item-date"><time datetime="2018-08-30T16:00:00.000Z" itemprop="datePublished">2018-08-31</time></p>
+                            <p class="item-title"><a href="/2018/09/12/6-ZigZag-Conversion/Record-en/" class="title">LeetCode 6. ZigZag Conversion</a></p>
+                            <p class="item-date"><time datetime="2018-09-11T16:00:00.000Z" itemprop="datePublished">2018-09-12</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/09/12/6-ZigZag-Conversion/Record-cn/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/2018/09/12/6-ZigZag-Conversion/Record-cn/titleThumb.jpg)" alt="LeetCode 6. 锯齿形转换" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Chinese/">Chinese</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/Chinese/Algorithm/">Algorithm</a></p>
+                            <p class="item-title"><a href="/2018/09/12/6-ZigZag-Conversion/Record-cn/" class="title">LeetCode 6. 锯齿形转换</a></p>
+                            <p class="item-date"><time datetime="2018-09-11T16:00:00.000Z" itemprop="datePublished">2018-09-12</time></p>
                         </div>
                     </li>
                 
@@ -1524,19 +1944,19 @@ ga('send', 'pageview');
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2018/08/15/4-Median-of-Two-Sorted-Arrays/Record-cn/" class="thumbnail">
+                            <a href="/2018/08/31/5-Longest-Palindromic-Substring/Record-en/" class="thumbnail">
     
     
-        <span style="background-image:url(/2018/08/15/4-Median-of-Two-Sorted-Arrays/Record-cn/titleThumb.jpg)" alt="LeetCode 4. Median of Two Sorted Arrays [Chinese ver]" class="thumbnail-image"></span>
+        <span style="background-image:url(/2018/08/31/5-Longest-Palindromic-Substring/Record-cn/titleThumb.jpg)" alt="LeetCode 5.Longest Palindromic Substring" class="thumbnail-image"></span>
     
 </a>
 
                         </div>
                         
                         <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Chinese/">Chinese</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/Chinese/Algorithm/">Algorithm</a></p>
-                            <p class="item-title"><a href="/2018/08/15/4-Median-of-Two-Sorted-Arrays/Record-cn/" class="title">LeetCode 4. Median of Two Sorted Arrays [Chinese ver]</a></p>
-                            <p class="item-date"><time datetime="2018-08-14T16:00:00.000Z" itemprop="datePublished">2018-08-15</time></p>
+                            <p class="item-category"><a class="article-category-link" href="/categories/English/">English</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/English/Algorithm/">Algorithm</a></p>
+                            <p class="item-title"><a href="/2018/08/31/5-Longest-Palindromic-Substring/Record-en/" class="title">LeetCode 5.Longest Palindromic Substring</a></p>
+                            <p class="item-date"><time datetime="2018-08-30T16:00:00.000Z" itemprop="datePublished">2018-08-31</time></p>
                         </div>
                     </li>
                 
@@ -1559,25 +1979,6 @@ ga('send', 'pageview');
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2018/08/14/Binary-Search/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/2018/08/14/Binary-Search/titleThumb.jpg)" alt="Binary Search(二分搜索)" class="thumbnail-image"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Chinese/">Chinese</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/Chinese/Algorithm/">Algorithm</a></p>
-                            <p class="item-title"><a href="/2018/08/14/Binary-Search/" class="title">Binary Search(二分搜索)</a></p>
-                            <p class="item-date"><time datetime="2018-08-13T16:00:00.000Z" itemprop="datePublished">2018-08-14</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -1587,7 +1988,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">categories</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/">Chinese</a><span class="category-list-count">12</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Algorithm/">Algorithm</a><span class="category-list-count">6</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Algorithm/Common/">Common</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Algorithm/LeetCode/">LeetCode</a><span class="category-list-count">5</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/">Android</a><span class="category-list-count">5</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/Error/">Error</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/UI/">UI</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/UI/Custom-View/">Custom View</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/版本差异/">版本差异</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/版本管理/">版本管理</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Java/">Java</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Java/Data-Structure/">Data Structure</a><span class="category-list-count">1</span></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/English/">English</a><span class="category-list-count">5</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/English/Algorithm/">Algorithm</a><span class="category-list-count">5</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/English/Algorithm/LeetCode/">LeetCode</a><span class="category-list-count">5</span></li></ul></li></ul></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/">Chinese</a><span class="category-list-count">13</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Algorithm/">Algorithm</a><span class="category-list-count">7</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Algorithm/Common/">Common</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Algorithm/LeetCode/">LeetCode</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/">Android</a><span class="category-list-count">5</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/Error/">Error</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/UI/">UI</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/UI/Custom-View/">Custom View</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/版本差异/">版本差异</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/版本管理/">版本管理</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Java/">Java</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Java/Data-Structure/">Data Structure</a><span class="category-list-count">1</span></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/English/">English</a><span class="category-list-count">6</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/English/Algorithm/">Algorithm</a><span class="category-list-count">6</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/English/Algorithm/LeetCode/">LeetCode</a><span class="category-list-count">6</span></li></ul></li></ul></li></ul>
         </div>
     </div>
 
@@ -1596,7 +1997,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">archives</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">2</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">2</span></li></ul>
         </div>
     </div>
 
@@ -1605,7 +2006,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">tags</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/">Algorithm</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chinese/">Chinese</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Custom-View/">Custom View</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Structure/">Data Structure</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English/">English</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Error/">Error</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LeetCode/">LeetCode</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UI/">UI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/版本差异/">版本差异</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/版本管理/">版本管理</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/">Algorithm</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chinese/">Chinese</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Custom-View/">Custom View</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Structure/">Data Structure</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English/">English</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Error/">Error</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LeetCode/">LeetCode</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UI/">UI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/版本差异/">版本差异</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/版本管理/">版本管理</a><span class="tag-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -1614,7 +2015,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">tag cloud</h3>
         <div class="widget tagcloud">
-            <a href="/tags/Algorithm/" style="font-size: 18px;">Algorithm</a> <a href="/tags/Android/" style="font-size: 14px;">Android</a> <a href="/tags/Chinese/" style="font-size: 20px;">Chinese</a> <a href="/tags/Custom-View/" style="font-size: 10px;">Custom View</a> <a href="/tags/Data-Structure/" style="font-size: 10px;">Data Structure</a> <a href="/tags/English/" style="font-size: 14px;">English</a> <a href="/tags/Error/" style="font-size: 10px;">Error</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/LeetCode/" style="font-size: 16px;">LeetCode</a> <a href="/tags/UI/" style="font-size: 10px;">UI</a> <a href="/tags/版本差异/" style="font-size: 12px;">版本差异</a> <a href="/tags/版本管理/" style="font-size: 10px;">版本管理</a>
+            <a href="/tags/Algorithm/" style="font-size: 20px;">Algorithm</a> <a href="/tags/Android/" style="font-size: 14px;">Android</a> <a href="/tags/Chinese/" style="font-size: 20px;">Chinese</a> <a href="/tags/Custom-View/" style="font-size: 10px;">Custom View</a> <a href="/tags/Data-Structure/" style="font-size: 10px;">Data Structure</a> <a href="/tags/English/" style="font-size: 16px;">English</a> <a href="/tags/Error/" style="font-size: 10px;">Error</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/LeetCode/" style="font-size: 18px;">LeetCode</a> <a href="/tags/UI/" style="font-size: 10px;">UI</a> <a href="/tags/版本差异/" style="font-size: 12px;">版本差异</a> <a href="/tags/版本管理/" style="font-size: 10px;">版本管理</a>
         </div>
     </div>
 

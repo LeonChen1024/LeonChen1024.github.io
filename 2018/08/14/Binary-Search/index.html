@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="LeonChen&#39;s Blog">
 <meta property="og:description" content="Binary Search(二分搜索)二分搜索(binary search),也叫做 折半搜索(half-interval search),对数搜索(logarithmic search),对半搜索(binary chop),是一种在有序数组中查找某一特定元素的搜索算法. 二分搜索有几个变体.特别是,分散层叠(fractional cascading)(将每个数组里的值集合成一个数组,元素为11[">
 <meta property="og:image" content="http://yoursite.com/2018/08/14/Binary-Search/titleThumb.jpg">
-<meta property="og:updated_time" content="2018-08-13T23:39:51.915Z">
+<meta property="og:updated_time" content="2018-11-07T09:11:27.336Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Binary Search(二分搜索)">
 <meta name="twitter:description" content="Binary Search(二分搜索)二分搜索(binary search),也叫做 折半搜索(half-interval search),对数搜索(logarithmic search),对半搜索(binary chop),是一种在有序数组中查找某一特定元素的搜索算法. 二分搜索有几个变体.特别是,分散层叠(fractional cascading)(将每个数组里的值集合成一个数组,元素为11[">
@@ -25,7 +25,13 @@
     
         <link rel="icon" href="/images/Facicon.png" />
     
-
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-9191109011370892",
+    enable_page_level_ads: true
+  });
+</script>
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="/libs/open-sans/styles.css">
     <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
@@ -171,7 +177,7 @@ ga('send', 'pageview');
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                17
+                19
                 <span>posts</span>
             </div>
             <div class="article-info-block">
@@ -259,7 +265,7 @@ ga('send', 'pageview');
                 
             <div id="toc" class="toc-article">
                 <strong class="toc-title">Catalogue</strong>
-                <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">Binary Search(二分搜索)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.1.</span> <span class="toc-text">原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.1.1.</span> <span class="toc-text">步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.1.2.</span> <span class="toc-text">大致匹配</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.2.</span> <span class="toc-text">性能分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.3.</span> <span class="toc-text">应用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.4.</span> <span class="toc-text">二分搜索和其他的方案对比</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.4.1.</span> <span class="toc-text">Hashing</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.4.2.</span> <span class="toc-text">Trees</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.4.3.</span> <span class="toc-text">Linear search</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.4.4.</span> <span class="toc-text">Set membership algorithms</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.4.5.</span> <span class="toc-text">其他的数据结构</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.5.</span> <span class="toc-text">变体</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.5.1.</span> <span class="toc-text"></span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.5.2.</span> <span class="toc-text"></span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.5.3.</span> <span class="toc-text"></span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.5.4.</span> <span class="toc-text"></span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.6.</span> <span class="toc-text">实现时的问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.7.</span> <span class="toc-text">示例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.8.</span> <span class="toc-text">References</span></a></li></ol></li></ol>
+                <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">Binary Search(二分搜索)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.1.</span> <span class="toc-text">原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.1.1.</span> <span class="toc-text">步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.1.2.</span> <span class="toc-text">大致匹配</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.2.</span> <span class="toc-text">性能分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.3.</span> <span class="toc-text">应用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.4.</span> <span class="toc-text">二分搜索和其他的方案对比</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.4.1.</span> <span class="toc-text">Hashing</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.4.2.</span> <span class="toc-text">Trees</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.4.3.</span> <span class="toc-text">Linear search</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.4.4.</span> <span class="toc-text">Set membership algorithms</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.4.5.</span> <span class="toc-text">其他的数据结构</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.5.</span> <span class="toc-text">变体</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.5.1.</span> <span class="toc-text">Uniform binary search</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.5.2.</span> <span class="toc-text">Exponential search</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.5.3.</span> <span class="toc-text">Interpolation search</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.5.4.</span> <span class="toc-text">Fractional cascading</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.6.</span> <span class="toc-text">实现时的问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.7.</span> <span class="toc-text">示例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.8.</span> <span class="toc-text">References</span></a></li></ol></li></ol>
             </div>
             
             
@@ -306,14 +312,14 @@ ga('send', 'pageview');
 <h3><span id="set-membership-algorithms">Set membership algorithms</span></h3><p>一个和搜索相关的问题是<a href="todo">集合成员(set membership)</a>.所有有关查找的算法,比如二分搜索,都可以用于集合成员.还有一些更适用于集合成员的算法,<a href="todo">位数组(bit array)</a>是最简单的一个,在键的范围是有限的时候非常有用.它非常快,是需要O(1)的时间.<a href="todo">朱迪矩阵(Judy array)</a>可以高效的处理64位键.</p>
 <p>对于近似结果,<a href="todo">布隆过滤器(Bloom filters)</a>是另外一个基于哈希的概率性数据结构,通过存储使用bit array 和多重 hash 函数编码的键集合. Bloom filters 在大多数情况下空间效率比bit arrays 要高而不会慢太多:使用了 k 重hash 函数,成员查找只需要 O(k) 的时间.然而, Bloom filters 有一定的误判性.</p>
 <h3><span id="其他的数据结构">其他的数据结构</span></h3><p>这里存在一些数据结构在某些情况下比在有序数组上使用二分搜索进行查找或其他的操作更加高效.比如,在<a href="todo">van Emde Boas trees</a>, <a href="todo">fusion trees</a>, <a href="todo">前缀树(tries)</a>, 和<a href="todo">位数组</a> 上进行查找,近似匹配,以及其他可用的操作可以比在有序数组上进行二分搜索更加的高效.然而,尽管这些操作可以比在无视键的情况下比有序数组上使用更高效,这样的数据结构通常是因为利用了某些键的属性(键通常是一些小整数),因此如果键缺乏那些属性将会消耗更多的空间或时间.一些结构如朱迪矩阵,使用了多种方式的组合来保证效率和执行近似匹配的能力.</p>
-<h2><span id="变体">变体</span></h2><h3><span id="uniform-binary-search"></span></h3><p>Uniform binary search 不是存储下限和上限的边界值,而是中间元素的索引,和从这次循环的中间元素到下次循环的中间元素的变化.每一步的变化减少一半.比如,要搜索的数组是[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],中间元素是6.Uniform binary search 同时对左边和右边的子数组进行操作.在这个情况下,左边的子数组([1, 2, 3, 4, 5]) 的中间元素 3 而右边的子数组 ([7, 8, 9, 10, 11]) 的中间元素是 9.然后存储3 作为两个中间元素和 6 的差别.为了减少搜索的空间使用,算法同时加上或减去这个和中间元素的改变.这个算法的好处是可以将每次循环的索引的差别存储到一个表里,在某些系统里可以提高算法的性能.</p>
-<p><img src="Resource/Uniform_binary_search.svg.png" alt=""></p>
-<h3><span id="exponential-search"></span></h3><p>指数查找(Exponential Search)将二分搜索拓展到无边界数组.它最开始寻找第一个索引是2的幂次方并且要比目标值大的元素的索引.然后,它将这个元素索引设置为上边界,然后开始二分搜索.指数查找消耗 $\lfloor log_2 x =1 \rfloor$ 次循环 ,然后二分搜索消耗 $\lfloor log_2 x \rfloor$ 次循环, x 是目标值的位置.指数查找适用于有界列表,在目标值接近数组开始的位置的时候比二分查找性能有所提高.</p>
-<p><img src="Resource/Exponential_search.svg.png" alt=""></p>
-<h3><span id="interpolation-search"></span></h3><p>内插搜索(Interpolation search)忽略了目标值的位置,计算数组的最低和最高元素的距离即数组的长度.这只有在数组元素是数字的时候才能使用.它适用于中间值不是最好的猜测选择的情况.比如,如果目标值接近数组的最高元素,最好是定位在数组的末端.如果数组的分布是均匀的或者接近均匀的,它消耗 $O(log log n)$ 次比较.</p>
+<h2><span id="变体">变体</span></h2><h3><span id="uniform-binary-search">Uniform binary search</span></h3><p>Uniform binary search 不是存储下限和上限的边界值,而是中间元素的索引,和从这次循环的中间元素到下次循环的中间元素的变化.每一步的变化减少一半.比如,要搜索的数组是[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],中间元素是6.Uniform binary search 同时对左边和右边的子数组进行操作.在这个情况下,左边的子数组([1, 2, 3, 4, 5]) 的中间元素 3 而右边的子数组 ([7, 8, 9, 10, 11]) 的中间元素是 9.然后存储3 作为两个中间元素和 6 的差别.为了减少搜索的空间使用,算法同时加上或减去这个和中间元素的改变.这个算法的好处是可以将每次循环的索引的差别存储到一个表里,在某些系统里可以提高算法的性能.</p>
+<p><img src="/2018/08/14/Binary-Search/Uniform_binary_search.svg.png" alt=""></p>
+<h3><span id="exponential-search">Exponential search</span></h3><p>指数查找(Exponential Search)将二分搜索拓展到无边界数组.它最开始寻找第一个索引是2的幂次方并且要比目标值大的元素的索引.然后,它将这个元素索引设置为上边界,然后开始二分搜索.指数查找消耗 $\lfloor log_2 x =1 \rfloor$ 次循环 ,然后二分搜索消耗 $\lfloor log_2 x \rfloor$ 次循环, x 是目标值的位置.指数查找适用于有界列表,在目标值接近数组开始的位置的时候比二分查找性能有所提高.</p>
+<p><img src="/2018/08/14/Binary-Search/Exponential_search.svg.png" alt=""></p>
+<h3><span id="interpolation-search">Interpolation search</span></h3><p>内插搜索(Interpolation search)忽略了目标值的位置,计算数组的最低和最高元素的距离即数组的长度.这只有在数组元素是数字的时候才能使用.它适用于中间值不是最好的猜测选择的情况.比如,如果目标值接近数组的最高元素,最好是定位在数组的末端.如果数组的分布是均匀的或者接近均匀的,它消耗 $O(log log n)$ 次比较.</p>
 <p>实际上,内插搜索在数组元素较少的情况下是比二分搜索更慢的,因为内插搜索需要额外的计算.尽管它的时间复杂度增长是小于二分搜索的,只有在在大数组的情况下这个计算的损耗可以被弥补.</p>
-<p><img src="Resource/Interpolation_search.svg.png" alt=""></p>
-<h3><span id="fractional-cascading"></span></h3><p>分散层叠(Fractional cascading) 可以提高在多个有序数组里查找相同的元素或近似匹配的效率,分别在每个数组里查找总共需要 $O(klogn)$的时间, k 是数组的数量.分散层叠通过将每个数组的信息按指定的方式存储起来将这个时间降低到 $O(k+logn)$ .</p>
+<p><img src="/2018/08/14/Binary-Search/Interpolation_search.svg.png" alt=""></p>
+<h3><span id="fractional-cascading">Fractional cascading</span></h3><p>分散层叠(Fractional cascading) 可以提高在多个有序数组里查找相同的元素或近似匹配的效率,分别在每个数组里查找总共需要 $O(klogn)$的时间, k 是数组的数量.分散层叠通过将每个数组的信息按指定的方式存储起来将这个时间降低到 $O(k+logn)$ .</p>
 <p>它将每个数组里的值集合成一个数组,元素为 11[0,3,2,0] 的形式,括号内的数字是该值在对应数组中应该返回的数字)提高了在多个数组中查找相同值的效率,高效的解决了一系列计算几何和其他领域的查找问题</p>
 <p>分散层叠被发明的时候是为了高效的解决各种<a href="todo">计算几何学(computational geometry)</a> 问题,但是它同样适用于其他地方,例如 <a href="todo">数据挖掘(data mining)</a> 和 <a href="todo">互联网协议(Internet Protocal)</a> 等.</p>
 <h2><span id="实现时的问题">实现时的问题</span></h2><p>要注意中间值的取值方法,如果使用 (L+R)/2 当数组的元素数量很大的时候回造成计算溢出.所以要使用L+(R-L)/2.</p>
@@ -337,7 +343,7 @@ ga('send', 'pageview');
             <!---->
             <!--<div id="toc" class="toc-article">-->
                 <!--<strong class="toc-title">Catalogue</strong>-->
-                <!--<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">Binary Search(二分搜索)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.1.</span> <span class="toc-text">原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.1.1.</span> <span class="toc-text">步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.1.2.</span> <span class="toc-text">大致匹配</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.2.</span> <span class="toc-text">性能分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.3.</span> <span class="toc-text">应用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.4.</span> <span class="toc-text">二分搜索和其他的方案对比</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.4.1.</span> <span class="toc-text">Hashing</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.4.2.</span> <span class="toc-text">Trees</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.4.3.</span> <span class="toc-text">Linear search</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.4.4.</span> <span class="toc-text">Set membership algorithms</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.4.5.</span> <span class="toc-text">其他的数据结构</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.5.</span> <span class="toc-text">变体</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.5.1.</span> <span class="toc-text"></span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.5.2.</span> <span class="toc-text"></span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.5.3.</span> <span class="toc-text"></span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.5.4.</span> <span class="toc-text"></span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.6.</span> <span class="toc-text">实现时的问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.7.</span> <span class="toc-text">示例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.8.</span> <span class="toc-text">References</span></a></li></ol></li></ol>-->
+                <!--<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">Binary Search(二分搜索)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.1.</span> <span class="toc-text">原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.1.1.</span> <span class="toc-text">步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.1.2.</span> <span class="toc-text">大致匹配</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.2.</span> <span class="toc-text">性能分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.3.</span> <span class="toc-text">应用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.4.</span> <span class="toc-text">二分搜索和其他的方案对比</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.4.1.</span> <span class="toc-text">Hashing</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.4.2.</span> <span class="toc-text">Trees</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.4.3.</span> <span class="toc-text">Linear search</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.4.4.</span> <span class="toc-text">Set membership algorithms</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.4.5.</span> <span class="toc-text">其他的数据结构</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.5.</span> <span class="toc-text">变体</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.5.1.</span> <span class="toc-text">Uniform binary search</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.5.2.</span> <span class="toc-text">Exponential search</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.5.3.</span> <span class="toc-text">Interpolation search</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.5.4.</span> <span class="toc-text">Fractional cascading</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.6.</span> <span class="toc-text">实现时的问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.7.</span> <span class="toc-text">示例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.8.</span> <span class="toc-text">References</span></a></li></ol></li></ol>-->
             <!--</div>-->
             <!---->
             <!--<h1><span id="binary-search二分搜索">Binary Search(二分搜索)</span></h1><p>二分搜索(binary search),也叫做 折半搜索(half-interval search),对数搜索(logarithmic search),对半搜索(binary chop),是一种在有序数组中查找某一特定元素的搜索算法.</p>
@@ -382,14 +388,14 @@ ga('send', 'pageview');
 <h3><span id="set-membership-algorithms">Set membership algorithms</span></h3><p>一个和搜索相关的问题是<a href="todo">集合成员(set membership)</a>.所有有关查找的算法,比如二分搜索,都可以用于集合成员.还有一些更适用于集合成员的算法,<a href="todo">位数组(bit array)</a>是最简单的一个,在键的范围是有限的时候非常有用.它非常快,是需要O(1)的时间.<a href="todo">朱迪矩阵(Judy array)</a>可以高效的处理64位键.</p>
 <p>对于近似结果,<a href="todo">布隆过滤器(Bloom filters)</a>是另外一个基于哈希的概率性数据结构,通过存储使用bit array 和多重 hash 函数编码的键集合. Bloom filters 在大多数情况下空间效率比bit arrays 要高而不会慢太多:使用了 k 重hash 函数,成员查找只需要 O(k) 的时间.然而, Bloom filters 有一定的误判性.</p>
 <h3><span id="其他的数据结构">其他的数据结构</span></h3><p>这里存在一些数据结构在某些情况下比在有序数组上使用二分搜索进行查找或其他的操作更加高效.比如,在<a href="todo">van Emde Boas trees</a>, <a href="todo">fusion trees</a>, <a href="todo">前缀树(tries)</a>, 和<a href="todo">位数组</a> 上进行查找,近似匹配,以及其他可用的操作可以比在有序数组上进行二分搜索更加的高效.然而,尽管这些操作可以比在无视键的情况下比有序数组上使用更高效,这样的数据结构通常是因为利用了某些键的属性(键通常是一些小整数),因此如果键缺乏那些属性将会消耗更多的空间或时间.一些结构如朱迪矩阵,使用了多种方式的组合来保证效率和执行近似匹配的能力.</p>
-<h2><span id="变体">变体</span></h2><h3><span id="uniform-binary-search"></span></h3><p>Uniform binary search 不是存储下限和上限的边界值,而是中间元素的索引,和从这次循环的中间元素到下次循环的中间元素的变化.每一步的变化减少一半.比如,要搜索的数组是[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],中间元素是6.Uniform binary search 同时对左边和右边的子数组进行操作.在这个情况下,左边的子数组([1, 2, 3, 4, 5]) 的中间元素 3 而右边的子数组 ([7, 8, 9, 10, 11]) 的中间元素是 9.然后存储3 作为两个中间元素和 6 的差别.为了减少搜索的空间使用,算法同时加上或减去这个和中间元素的改变.这个算法的好处是可以将每次循环的索引的差别存储到一个表里,在某些系统里可以提高算法的性能.</p>
-<p><img src="Resource/Uniform_binary_search.svg.png" alt=""></p>
-<h3><span id="exponential-search"></span></h3><p>指数查找(Exponential Search)将二分搜索拓展到无边界数组.它最开始寻找第一个索引是2的幂次方并且要比目标值大的元素的索引.然后,它将这个元素索引设置为上边界,然后开始二分搜索.指数查找消耗 $\lfloor log_2 x =1 \rfloor$ 次循环 ,然后二分搜索消耗 $\lfloor log_2 x \rfloor$ 次循环, x 是目标值的位置.指数查找适用于有界列表,在目标值接近数组开始的位置的时候比二分查找性能有所提高.</p>
-<p><img src="Resource/Exponential_search.svg.png" alt=""></p>
-<h3><span id="interpolation-search"></span></h3><p>内插搜索(Interpolation search)忽略了目标值的位置,计算数组的最低和最高元素的距离即数组的长度.这只有在数组元素是数字的时候才能使用.它适用于中间值不是最好的猜测选择的情况.比如,如果目标值接近数组的最高元素,最好是定位在数组的末端.如果数组的分布是均匀的或者接近均匀的,它消耗 $O(log log n)$ 次比较.</p>
+<h2><span id="变体">变体</span></h2><h3><span id="uniform-binary-search">Uniform binary search</span></h3><p>Uniform binary search 不是存储下限和上限的边界值,而是中间元素的索引,和从这次循环的中间元素到下次循环的中间元素的变化.每一步的变化减少一半.比如,要搜索的数组是[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],中间元素是6.Uniform binary search 同时对左边和右边的子数组进行操作.在这个情况下,左边的子数组([1, 2, 3, 4, 5]) 的中间元素 3 而右边的子数组 ([7, 8, 9, 10, 11]) 的中间元素是 9.然后存储3 作为两个中间元素和 6 的差别.为了减少搜索的空间使用,算法同时加上或减去这个和中间元素的改变.这个算法的好处是可以将每次循环的索引的差别存储到一个表里,在某些系统里可以提高算法的性能.</p>
+<p><img src="/2018/08/14/Binary-Search/Uniform_binary_search.svg.png" alt=""></p>
+<h3><span id="exponential-search">Exponential search</span></h3><p>指数查找(Exponential Search)将二分搜索拓展到无边界数组.它最开始寻找第一个索引是2的幂次方并且要比目标值大的元素的索引.然后,它将这个元素索引设置为上边界,然后开始二分搜索.指数查找消耗 $\lfloor log_2 x =1 \rfloor$ 次循环 ,然后二分搜索消耗 $\lfloor log_2 x \rfloor$ 次循环, x 是目标值的位置.指数查找适用于有界列表,在目标值接近数组开始的位置的时候比二分查找性能有所提高.</p>
+<p><img src="/2018/08/14/Binary-Search/Exponential_search.svg.png" alt=""></p>
+<h3><span id="interpolation-search">Interpolation search</span></h3><p>内插搜索(Interpolation search)忽略了目标值的位置,计算数组的最低和最高元素的距离即数组的长度.这只有在数组元素是数字的时候才能使用.它适用于中间值不是最好的猜测选择的情况.比如,如果目标值接近数组的最高元素,最好是定位在数组的末端.如果数组的分布是均匀的或者接近均匀的,它消耗 $O(log log n)$ 次比较.</p>
 <p>实际上,内插搜索在数组元素较少的情况下是比二分搜索更慢的,因为内插搜索需要额外的计算.尽管它的时间复杂度增长是小于二分搜索的,只有在在大数组的情况下这个计算的损耗可以被弥补.</p>
-<p><img src="Resource/Interpolation_search.svg.png" alt=""></p>
-<h3><span id="fractional-cascading"></span></h3><p>分散层叠(Fractional cascading) 可以提高在多个有序数组里查找相同的元素或近似匹配的效率,分别在每个数组里查找总共需要 $O(klogn)$的时间, k 是数组的数量.分散层叠通过将每个数组的信息按指定的方式存储起来将这个时间降低到 $O(k+logn)$ .</p>
+<p><img src="/2018/08/14/Binary-Search/Interpolation_search.svg.png" alt=""></p>
+<h3><span id="fractional-cascading">Fractional cascading</span></h3><p>分散层叠(Fractional cascading) 可以提高在多个有序数组里查找相同的元素或近似匹配的效率,分别在每个数组里查找总共需要 $O(klogn)$的时间, k 是数组的数量.分散层叠通过将每个数组的信息按指定的方式存储起来将这个时间降低到 $O(k+logn)$ .</p>
 <p>它将每个数组里的值集合成一个数组,元素为 11[0,3,2,0] 的形式,括号内的数字是该值在对应数组中应该返回的数字)提高了在多个数组中查找相同值的效率,高效的解决了一系列计算几何和其他领域的查找问题</p>
 <p>分散层叠被发明的时候是为了高效的解决各种<a href="todo">计算几何学(computational geometry)</a> 问题,但是它同样适用于其他地方,例如 <a href="todo">数据挖掘(data mining)</a> 和 <a href="todo">互联网协议(Internet Protocal)</a> 等.</p>
 <h2><span id="实现时的问题">实现时的问题</span></h2><p>要注意中间值的取值方法,如果使用 (L+R)/2 当数组的元素数量很大的时候回造成计算溢出.所以要使用L+(R-L)/2.</p>
@@ -415,7 +421,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://yoursite.com/2018/08/14/Binary-Search/" data-id="cjlniz4v2001ypygjv5bgv4lz" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2018/08/14/Binary-Search/" data-id="cjo6xygc8001v6objncq6gmog" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -490,11 +496,11 @@ ga('send', 'pageview');
     
 <nav id="article-nav">
     
-        <a href="/2018/08/15/4-Median-of-Two-Sorted-Arrays/Record-en/" id="article-nav-newer" class="article-nav-link-wrap">
+        <a href="/2018/08/15/4-Median-of-Two-Sorted-Arrays/Record-cn/" id="article-nav-newer" class="article-nav-link-wrap">
             <strong class="article-nav-caption">Newer</strong>
             <div class="article-nav-title">
                 
-                    LeetCode 4. Median of Two Sorted Arrays [English ver]
+                    LeetCode 4. Median of Two Sorted Arrays [Chinese ver]
                 
             </div>
         </a>
@@ -533,10 +539,10 @@ ga('send', 'pageview');
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2018/08/31/5-Longest-Palindromic-Substring/Record-en/" class="thumbnail">
+                            <a href="/2018/09/12/6-ZigZag-Conversion/Record-en/" class="thumbnail">
     
     
-        <span style="background-image:url(/2018/08/31/5-Longest-Palindromic-Substring/Record-cn/titleThumb.jpg)" alt="LeetCode 5.Longest Palindromic Substring" class="thumbnail-image"></span>
+        <span style="background-image:url(/2018/09/12/6-ZigZag-Conversion/Record-cn/titleThumb.jpg)" alt="LeetCode 6. ZigZag Conversion" class="thumbnail-image"></span>
     
 </a>
 
@@ -544,8 +550,27 @@ ga('send', 'pageview');
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/English/">English</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/English/Algorithm/">Algorithm</a></p>
-                            <p class="item-title"><a href="/2018/08/31/5-Longest-Palindromic-Substring/Record-en/" class="title">LeetCode 5.Longest Palindromic Substring</a></p>
-                            <p class="item-date"><time datetime="2018-08-30T16:00:00.000Z" itemprop="datePublished">2018-08-31</time></p>
+                            <p class="item-title"><a href="/2018/09/12/6-ZigZag-Conversion/Record-en/" class="title">LeetCode 6. ZigZag Conversion</a></p>
+                            <p class="item-date"><time datetime="2018-09-11T16:00:00.000Z" itemprop="datePublished">2018-09-12</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/09/12/6-ZigZag-Conversion/Record-cn/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/2018/09/12/6-ZigZag-Conversion/Record-cn/titleThumb.jpg)" alt="LeetCode 6. 锯齿形转换" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Chinese/">Chinese</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/Chinese/Algorithm/">Algorithm</a></p>
+                            <p class="item-title"><a href="/2018/09/12/6-ZigZag-Conversion/Record-cn/" class="title">LeetCode 6. 锯齿形转换</a></p>
+                            <p class="item-date"><time datetime="2018-09-11T16:00:00.000Z" itemprop="datePublished">2018-09-12</time></p>
                         </div>
                     </li>
                 
@@ -571,19 +596,19 @@ ga('send', 'pageview');
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2018/08/15/4-Median-of-Two-Sorted-Arrays/Record-cn/" class="thumbnail">
+                            <a href="/2018/08/31/5-Longest-Palindromic-Substring/Record-en/" class="thumbnail">
     
     
-        <span style="background-image:url(/2018/08/15/4-Median-of-Two-Sorted-Arrays/Record-cn/titleThumb.jpg)" alt="LeetCode 4. Median of Two Sorted Arrays [Chinese ver]" class="thumbnail-image"></span>
+        <span style="background-image:url(/2018/08/31/5-Longest-Palindromic-Substring/Record-cn/titleThumb.jpg)" alt="LeetCode 5.Longest Palindromic Substring" class="thumbnail-image"></span>
     
 </a>
 
                         </div>
                         
                         <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Chinese/">Chinese</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/Chinese/Algorithm/">Algorithm</a></p>
-                            <p class="item-title"><a href="/2018/08/15/4-Median-of-Two-Sorted-Arrays/Record-cn/" class="title">LeetCode 4. Median of Two Sorted Arrays [Chinese ver]</a></p>
-                            <p class="item-date"><time datetime="2018-08-14T16:00:00.000Z" itemprop="datePublished">2018-08-15</time></p>
+                            <p class="item-category"><a class="article-category-link" href="/categories/English/">English</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/English/Algorithm/">Algorithm</a></p>
+                            <p class="item-title"><a href="/2018/08/31/5-Longest-Palindromic-Substring/Record-en/" class="title">LeetCode 5.Longest Palindromic Substring</a></p>
+                            <p class="item-date"><time datetime="2018-08-30T16:00:00.000Z" itemprop="datePublished">2018-08-31</time></p>
                         </div>
                     </li>
                 
@@ -606,25 +631,6 @@ ga('send', 'pageview');
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2018/08/14/Binary-Search/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/2018/08/14/Binary-Search/titleThumb.jpg)" alt="Binary Search(二分搜索)" class="thumbnail-image"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Chinese/">Chinese</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/Chinese/Algorithm/">Algorithm</a></p>
-                            <p class="item-title"><a href="/2018/08/14/Binary-Search/" class="title">Binary Search(二分搜索)</a></p>
-                            <p class="item-date"><time datetime="2018-08-13T16:00:00.000Z" itemprop="datePublished">2018-08-14</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -634,7 +640,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">categories</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/">Chinese</a><span class="category-list-count">12</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Algorithm/">Algorithm</a><span class="category-list-count">6</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Algorithm/Common/">Common</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Algorithm/LeetCode/">LeetCode</a><span class="category-list-count">5</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/">Android</a><span class="category-list-count">5</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/Error/">Error</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/UI/">UI</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/UI/Custom-View/">Custom View</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/版本差异/">版本差异</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/版本管理/">版本管理</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Java/">Java</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Java/Data-Structure/">Data Structure</a><span class="category-list-count">1</span></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/English/">English</a><span class="category-list-count">5</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/English/Algorithm/">Algorithm</a><span class="category-list-count">5</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/English/Algorithm/LeetCode/">LeetCode</a><span class="category-list-count">5</span></li></ul></li></ul></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/">Chinese</a><span class="category-list-count">13</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Algorithm/">Algorithm</a><span class="category-list-count">7</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Algorithm/Common/">Common</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Algorithm/LeetCode/">LeetCode</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/">Android</a><span class="category-list-count">5</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/Error/">Error</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/UI/">UI</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/UI/Custom-View/">Custom View</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/版本差异/">版本差异</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/版本管理/">版本管理</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Java/">Java</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Java/Data-Structure/">Data Structure</a><span class="category-list-count">1</span></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/English/">English</a><span class="category-list-count">6</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/English/Algorithm/">Algorithm</a><span class="category-list-count">6</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/English/Algorithm/LeetCode/">LeetCode</a><span class="category-list-count">6</span></li></ul></li></ul></li></ul>
         </div>
     </div>
 
@@ -643,7 +649,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">archives</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">2</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">2</span></li></ul>
         </div>
     </div>
 
@@ -652,7 +658,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">tags</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/">Algorithm</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chinese/">Chinese</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Custom-View/">Custom View</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Structure/">Data Structure</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English/">English</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Error/">Error</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LeetCode/">LeetCode</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UI/">UI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/版本差异/">版本差异</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/版本管理/">版本管理</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/">Algorithm</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chinese/">Chinese</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Custom-View/">Custom View</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Structure/">Data Structure</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English/">English</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Error/">Error</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LeetCode/">LeetCode</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UI/">UI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/版本差异/">版本差异</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/版本管理/">版本管理</a><span class="tag-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -661,7 +667,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">tag cloud</h3>
         <div class="widget tagcloud">
-            <a href="/tags/Algorithm/" style="font-size: 18px;">Algorithm</a> <a href="/tags/Android/" style="font-size: 14px;">Android</a> <a href="/tags/Chinese/" style="font-size: 20px;">Chinese</a> <a href="/tags/Custom-View/" style="font-size: 10px;">Custom View</a> <a href="/tags/Data-Structure/" style="font-size: 10px;">Data Structure</a> <a href="/tags/English/" style="font-size: 14px;">English</a> <a href="/tags/Error/" style="font-size: 10px;">Error</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/LeetCode/" style="font-size: 16px;">LeetCode</a> <a href="/tags/UI/" style="font-size: 10px;">UI</a> <a href="/tags/版本差异/" style="font-size: 12px;">版本差异</a> <a href="/tags/版本管理/" style="font-size: 10px;">版本管理</a>
+            <a href="/tags/Algorithm/" style="font-size: 20px;">Algorithm</a> <a href="/tags/Android/" style="font-size: 14px;">Android</a> <a href="/tags/Chinese/" style="font-size: 20px;">Chinese</a> <a href="/tags/Custom-View/" style="font-size: 10px;">Custom View</a> <a href="/tags/Data-Structure/" style="font-size: 10px;">Data Structure</a> <a href="/tags/English/" style="font-size: 16px;">English</a> <a href="/tags/Error/" style="font-size: 10px;">Error</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/LeetCode/" style="font-size: 18px;">LeetCode</a> <a href="/tags/UI/" style="font-size: 10px;">UI</a> <a href="/tags/版本差异/" style="font-size: 12px;">版本差异</a> <a href="/tags/版本管理/" style="font-size: 10px;">版本管理</a>
         </div>
     </div>
 
