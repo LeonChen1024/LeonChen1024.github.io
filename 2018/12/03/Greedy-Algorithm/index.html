@@ -3,21 +3,21 @@
 <head>
     <meta charset="utf-8">
     
-    <title>LeetCode 2. Add Two Numbers [Chinese ver] | LeonChen&#39;s Blog</title>
+    <title>贪婪算法 | LeonChen&#39;s Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="[Chinese ver] 2. Add Two Numbers问题：你将获得两个非空 linked lists来表示两个非负整数。 数字以反向的顺序存储，并且它们的每个节点包含一位数字。 将两个数字相加并将其以 linked list的形式返回。 你可以假定这两个数字不包含任何前导零（即不存在首位出现0的情况），除了数字0本身。 输入 ：(2 -&amp;gt; 4 -&amp;gt; 3) + (5 -&amp;gt">
-<meta name="keywords" content="Chinese,Algorithm,LeetCode">
+    <meta name="description" content="贪婪算法贪婪算法(Greedy Algorithm)也叫算贪心法,贪婪法.它是一个遵循启发式解决问题的算法范式.它的核心思想就是通过在每一步的选择中都选用当前步骤下最优的选择,期望结果是最优的算法.如 旅行推销员问题. 贪婪算法尤其适用于有最优子结构的问题中,最优子结构的意思是局部的最优解可以导出全局的最优解.贪婪算法与动态规划 的不同在于贪婪算法对每一个子问题都作出选择,不能回退;动态规划则会保">
+<meta name="keywords" content="Chinese,Algorithm">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LeetCode 2. Add Two Numbers [Chinese ver]">
-<meta property="og:url" content="http://yoursite.com/2018/07/15/2-Add-Two-Num/Record[Chinese-ver]/index.html">
+<meta property="og:title" content="贪婪算法">
+<meta property="og:url" content="http://yoursite.com/2018/12/03/Greedy-Algorithm/index.html">
 <meta property="og:site_name" content="LeonChen&#39;s Blog">
-<meta property="og:description" content="[Chinese ver] 2. Add Two Numbers问题：你将获得两个非空 linked lists来表示两个非负整数。 数字以反向的顺序存储，并且它们的每个节点包含一位数字。 将两个数字相加并将其以 linked list的形式返回。 你可以假定这两个数字不包含任何前导零（即不存在首位出现0的情况），除了数字0本身。 输入 ：(2 -&amp;gt; 4 -&amp;gt; 3) + (5 -&amp;gt">
-<meta property="og:image" content="http://yoursite.com/2018/07/15/2-Add-Two-Num/Record[Chinese-ver]/titleThumb.jpg">
-<meta property="og:updated_time" content="2018-07-15T00:11:36.497Z">
+<meta property="og:description" content="贪婪算法贪婪算法(Greedy Algorithm)也叫算贪心法,贪婪法.它是一个遵循启发式解决问题的算法范式.它的核心思想就是通过在每一步的选择中都选用当前步骤下最优的选择,期望结果是最优的算法.如 旅行推销员问题. 贪婪算法尤其适用于有最优子结构的问题中,最优子结构的意思是局部的最优解可以导出全局的最优解.贪婪算法与动态规划 的不同在于贪婪算法对每一个子问题都作出选择,不能回退;动态规划则会保">
+<meta property="og:image" content="http://yoursite.com/2018/12/03/Greedy-Algorithm/titleThumb.jpg">
+<meta property="og:updated_time" content="2018-12-02T10:26:42.501Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LeetCode 2. Add Two Numbers [Chinese ver]">
-<meta name="twitter:description" content="[Chinese ver] 2. Add Two Numbers问题：你将获得两个非空 linked lists来表示两个非负整数。 数字以反向的顺序存储，并且它们的每个节点包含一位数字。 将两个数字相加并将其以 linked list的形式返回。 你可以假定这两个数字不包含任何前导零（即不存在首位出现0的情况），除了数字0本身。 输入 ：(2 -&amp;gt; 4 -&amp;gt; 3) + (5 -&amp;gt">
-<meta name="twitter:image" content="http://yoursite.com/2018/07/15/2-Add-Two-Num/Record[Chinese-ver]/titleThumb.jpg">
+<meta name="twitter:title" content="贪婪算法">
+<meta name="twitter:description" content="贪婪算法贪婪算法(Greedy Algorithm)也叫算贪心法,贪婪法.它是一个遵循启发式解决问题的算法范式.它的核心思想就是通过在每一步的选择中都选用当前步骤下最优的选择,期望结果是最优的算法.如 旅行推销员问题. 贪婪算法尤其适用于有最优子结构的问题中,最优子结构的意思是局部的最优解可以导出全局的最优解.贪婪算法与动态规划 的不同在于贪婪算法对每一个子问题都作出选择,不能回退;动态规划则会保">
+<meta name="twitter:image" content="http://yoursite.com/2018/12/03/Greedy-Algorithm/titleThumb.jpg">
     
 
     
@@ -211,12 +211,12 @@ ga('send', 'pageview');
 </aside>
 
             
-            <section id="main"><article id="post-2-Add-Two-Num/Record[Chinese-ver]" class="article article-type-post" itemscope itemprop="blogPost">
+            <section id="main"><article id="post-Greedy-Algorithm" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
         
 	
-		<img src="/2018/07/15/2-Add-Two-Num/Record[Chinese-ver]/title.jpg" class="article-banner" />
+		<img src="/2018/08/14/Greedy-Algorithm/title.jpg" class="article-banner" />
 	
 
 
@@ -227,7 +227,7 @@ ga('send', 'pageview');
             
     
         <h1 class="article-title" itemprop="name">
-            LeetCode 2. Add Two Numbers [Chinese ver]
+            贪婪算法
         </h1>
     
 
@@ -236,8 +236,8 @@ ga('send', 'pageview');
                 
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2018/07/15/2-Add-Two-Num/Record[Chinese-ver]/">
-            <time datetime="2018-07-14T16:00:00.000Z" itemprop="datePublished">2018-07-15</time>
+        <a href="/2018/12/03/Greedy-Algorithm/">
+            <time datetime="2018-12-02T16:00:00.000Z" itemprop="datePublished">2018-12-03</time>
         </a>
     </div>
 
@@ -245,13 +245,13 @@ ga('send', 'pageview');
                 
     <div class="article-category">
     	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/Chinese/">Chinese</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/Chinese/Algorithm/">Algorithm</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/Chinese/Algorithm/LeetCode/">LeetCode</a>
+        <a class="article-category-link" href="/categories/Chinese/">Chinese</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/Chinese/Algorithm/">Algorithm</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/Chinese/Algorithm/Common/">Common</a>
     </div>
 
                 
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/Algorithm/">Algorithm</a>, <a class="tag-link" href="/tags/Chinese/">Chinese</a>, <a class="tag-link" href="/tags/LeetCode/">LeetCode</a>
+        <a class="tag-link" href="/tags/Algorithm/">Algorithm</a>, <a class="tag-link" href="/tags/Chinese/">Chinese</a>
     </div>
 
             </div>
@@ -265,22 +265,45 @@ ga('send', 'pageview');
                 
             <div id="toc" class="toc-article">
                 <strong class="toc-title">Catalogue</strong>
-                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">2. Add Two Numbers</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.1.</span> <span class="toc-text">方法一：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">1.1.1.</span> <span class="toc-text">分析</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.2.</span> <span class="toc-text">方法二</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">2.</span> <span class="toc-text">About Me</span></a></li></ol>
+                <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">贪婪算法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.1.</span> <span class="toc-text">原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.1.1.</span> <span class="toc-text">步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.1.2.</span> <span class="toc-text">适用情况</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">1.1.2.1.</span> <span class="toc-text">Greedy choice property (贪婪选择的属性)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">1.1.2.2.</span> <span class="toc-text">Optimal substructure (最优子结构)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">1.1.2.3.</span> <span class="toc-text">Matroids (拟阵)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">1.1.2.4.</span> <span class="toc-text">(子模块函数)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">1.1.2.5.</span> <span class="toc-text">其他一些相对可以使用的问题</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.1.3.</span> <span class="toc-text">失败的情况</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.2.</span> <span class="toc-text">Application</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.3.</span> <span class="toc-text">Reference</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.4.</span> <span class="toc-text">About Me</span></a></li></ol></li></ol>
             </div>
             
             
             
-            <p>[Chinese ver]</p>
-<h2><span id="2-add-two-numbers">2. Add Two Numbers</span></h2><p>问题：你将获得两个非空 linked lists来表示两个非负整数。 数字以反向的顺序存储，并且它们的每个节点包含一位数字。 将两个数字相加并将其以 linked list的形式返回。</p>
-<p>你可以假定这两个数字不包含任何前导零（即不存在首位出现0的情况），除了数字0本身。</p>
-<p>输入 ：(2 -&gt; 4 -&gt; 3) + (5 -&gt; 6 -&gt; 4)<br>输出 ： 7 -&gt; 0 -&gt; 8</p>
-<h3><span id="方法一">方法一：</span></h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> ListNode <span class="title">addTwoNumbers</span><span class="params">(ListNode l1, ListNode l2)</span> </span>&#123;</div><div class="line">    ListNode dummyHead = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</div><div class="line">    ListNode p = l1, q = l2, curr = dummyHead;</div><div class="line">    <span class="keyword">int</span> carry = <span class="number">0</span>;</div><div class="line">    <span class="keyword">while</span> (p != <span class="keyword">null</span> || q != <span class="keyword">null</span>) &#123;</div><div class="line">        <span class="keyword">int</span> x = (p != <span class="keyword">null</span>) ? p.val : <span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span> y = (q != <span class="keyword">null</span>) ? q.val : <span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span> sum = carry + x + y;</div><div class="line">        carry = sum / <span class="number">10</span>;</div><div class="line">        curr.next = <span class="keyword">new</span> ListNode(sum % <span class="number">10</span>);</div><div class="line">        curr = curr.next;</div><div class="line">        <span class="keyword">if</span> (p != <span class="keyword">null</span>) p = p.next;</div><div class="line">        <span class="keyword">if</span> (q != <span class="keyword">null</span>) q = q.next;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (carry &gt; <span class="number">0</span>) &#123;</div><div class="line">        curr.next = <span class="keyword">new</span> ListNode(carry);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> dummyHead.next;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/2%20Add%20Two%20Num/Images/method1result.png?raw=true" alt="效率"></p>
-<h4><span id="分析">分析</span></h4><p>其实这个问题熟悉一下链表的使用和算术的逻辑就可以解决了。按位加过十进一，注意，加法的进位只会是0或者1，因为就算你用两个最大的数9+9最后也只是进一，进一之后再9+9+1也只会得到19，还是进一。所以主要的逻辑就是两个数的和sum/10得到的是进位，sum%10得到的是本位的数。dummyHead是一个假的数据头，用来做一个初始化，不使用也是可以的，但是在内部逻辑中就需要自己在处理第一位和后续的位数的逻辑区别。<br>注意有几种特殊情况。1.其中一个list的长度比另一个要长。2.其中一个list为空。3.加到最后一位时仍然还有进位</p>
-<p>时间复杂度： O(max(m,n)).总共循环m和n中的最大次数。<br>空间复杂度 :   O(max(m,n)).我们得到的新的list 的长度是m,n中最大长度，加上一个假数据头。</p>
-<h3><span id="方法二">方法二</span></h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * Definition for singly-linked list.</span></div><div class="line"><span class="comment"> * public class ListNode &#123;</span></div><div class="line"><span class="comment"> *     int val;</span></div><div class="line"><span class="comment"> *     ListNode next;</span></div><div class="line"><span class="comment"> *     ListNode(int x) &#123; val = x; &#125;</span></div><div class="line"><span class="comment"> * &#125;</span></div><div class="line"><span class="comment"> */</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">addTwoNumbers</span><span class="params">(ListNode l1, ListNode l2)</span> </span>&#123;</div><div class="line">        ListNode ln1 = l1, ln2 = l2, head = <span class="keyword">null</span>, node = <span class="keyword">null</span>;</div><div class="line">        <span class="keyword">int</span> carry = <span class="number">0</span>, remainder = <span class="number">0</span>, sum = <span class="number">0</span>;</div><div class="line">        head = node = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</div><div class="line"></div><div class="line">        <span class="keyword">while</span>(ln1 != <span class="keyword">null</span> || ln2 != <span class="keyword">null</span> || carry != <span class="number">0</span>) &#123;</div><div class="line">            sum = (ln1 != <span class="keyword">null</span> ? ln1.val : <span class="number">0</span>) + (ln2 != <span class="keyword">null</span> ? ln2.val : <span class="number">0</span>) + carry;</div><div class="line">            carry = sum / <span class="number">10</span>;</div><div class="line">            remainder = sum % <span class="number">10</span>;</div><div class="line">            node = node.next = <span class="keyword">new</span> ListNode(remainder);</div><div class="line">            ln1 = (ln1 != <span class="keyword">null</span> ? ln1.next : <span class="keyword">null</span>);</div><div class="line">            ln2 = (ln2 != <span class="keyword">null</span> ? ln2.next : <span class="keyword">null</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> head.next;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/2%20Add%20Two%20Num/Images/method2result.png?raw=true" alt="效率"></p>
-<p>这个是别人的做法，居然能够比方法一快了许多，说实话，其实这两个方法在整体思路上是差不多的，至于为什么会比前者快那么多我觉的是方法一在循环中不断新建了x,y等对象，由于计时时用了成千上百的例子验证所以导致了20ms左右的差距。以上纯属个人看法，如果你有更正确的想法，或者哪里有有关这种差距的论证，请告诉我。谢谢。</p>
+            <h1><span id="贪婪算法">贪婪算法</span></h1><p>贪婪算法(Greedy Algorithm)也叫算贪心法,贪婪法.它是一个遵循启发式解决问题的算法范式.它的核心思想就是通过在每一步的选择中都选用当前步骤下最优的选择,期望结果是最优的算法.如 <a href="https://zh.wikipedia.org/wiki/%E6%97%85%E8%A1%8C%E6%8E%A8%E9%94%80%E5%91%98%E9%97%AE%E9%A2%98" target="_blank" rel="external">旅行推销员问题</a>.</p>
+<p>贪婪算法尤其适用于有最优子结构的问题中,最优子结构的意思是局部的最优解可以导出全局的最优解.贪婪算法与<a href="https://zh.wikipedia.org/wiki/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92" target="_blank" rel="external">动态规划</a> 的不同在于贪婪算法对每一个子问题都作出选择,不能回退;动态规划则会保存以前的运算结果,根据以前的结果对当前进行选择,可以回退.</p>
+<p>贪婪算法可以解决一些<a href="https://zh.wikipedia.org/wiki/%E6%9C%80%E4%BC%98%E5%8C%96" target="_blank" rel="external">最优化</a>(如最大值最小值等)问题,比如求图中的<a href="https://zh.wikipedia.org/wiki/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91" target="_blank" rel="external">最小生成树</a>、求<a href="https://zh.wikipedia.org/wiki/%E5%93%88%E5%A4%AB%E6%9B%BC%E7%BC%96%E7%A0%81" target="_blank" rel="external">哈夫曼编码</a>…其他大多数的情况都不适用贪婪算法,一旦一个问题可以使用贪婪算法来解决,那么贪婪算法一般是解决这个问题的最好办法.由于贪婪算法的高效性以及其答案比较接近最有结果,也可以作为辅助算法或直接解决一些结果要求不那么精确的问题.</p>
+<h2><span id="原理">原理</span></h2><h3><span id="步骤">步骤</span></h3><ol>
+<li><p>建立数学模型来描述问题,并建立一个备选答案区</p>
+</li>
+<li><p>把求解的问题分成若干个子问题,</p>
+</li>
+<li><p>使用一个选择函数对每个子问题求解最优解,并判断是否可用于整体问题</p>
+</li>
+<li><p>把所有子问题的最优解合成一个整的解</p>
+</li>
+</ol>
+<h3><span id="适用情况">适用情况</span></h3><p>贪婪算法适用于一些数学问题等,大部分适用的问题都有两个特点:</p>
+<h4><span id="greedy-choice-property-贪婪选择的属性">Greedy choice property (贪婪选择的属性)</span></h4><p>我们可以在每个子问题找出最好的选择然后进行总结.贪婪算法可能会根据迄今为止已经做的选择进行计算,但是却不会考虑之后子问题的选择.它将一个大的问题分解成小的问题并一个一个进行迭代计算.换句话说,贪婪算法不会重新考虑它已经得出的选择.这是它和  <a href="https://en.wikipedia.org/wiki/Dynamic_programming" target="_blank" rel="external">dynamic programming</a> 的主要区别,动态规划会详尽的计算并确保得到最优解,在一步之后,动态规划会根据之前所有得到的选择进行下一个选择,并可能会重新对之前步骤的算法路径进行修改.</p>
+<h4><span id="optimal-substructure-最优子结构">Optimal substructure (最优子结构)</span></h4><p>这个问题要包含<a href="https://en.wikipedia.org/wiki/Optimal_substructure" target="_blank" rel="external">optimal substructure</a>(即这个问题的最优解包含了它的子问题的最优解)</p>
+<p>如以下几种类型的问题</p>
+<h4><span id="matroids-拟阵">Matroids (拟阵)</span></h4><p><a href="https://en.wikipedia.org/wiki/Matroid" target="_blank" rel="external">matroid</a>(拟阵) 是一个数学上的结构,它将<a href="https://en.wikipedia.org/wiki/Linear_independence" target="_blank" rel="external">linear independence</a> (线性无关)的概念从 <a href="https://en.wikipedia.org/wiki/Vector_spaces" target="_blank" rel="external">vector spaces</a> (向量空间)推广到了任意的集合.如果一个最优解问题有一个拟阵结构,那么贪婪算法是最佳的解决办法.</p>
+<h4><span id="submodular-functions子模块函数">(子模块函数)</span></h4><p>一个函数 $f$ 定义了当集合 $\Omega$ 的所有子集合 $S,T \subseteq \Omega$ 都满足 $f(S)+f(T)\geq f(S\cup T)+f(S\cap T)$ 的情况即为子模块. </p>
+<p>假设有人想要找到一个集合 $S$ 使得函数 $f$ 最大.贪婪算法将会通过逐个添加在每一步中使得 $f$ 增加最多的元素,产生一个结果至少是  $(1-1/e)\max _{X\subseteq \Omega }f(X)$ ??todo. 所以,贪婪算法至少得出最优解的 $(1-1/e) \approx 0.63$倍的解. </p>
+<h4><span id="其他一些相对可以使用的问题">其他一些相对可以使用的问题</span></h4><ul>
+<li><a href="https://en.wikipedia.org/wiki/Set_cover_problem#Greedy_algorithm" target="_blank" rel="external">Set cover</a></li>
+<li>The <a href="https://en.wikipedia.org/wiki/Steiner_tree_problem" target="_blank" rel="external">Steiner tree problem</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Load_balancing_(computing" target="_blank" rel="external">Load balancing</a>)<a href="https://en.wikipedia.org/wiki/Greedy_algorithm#cite_note-9" target="_blank" rel="external">[9]</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Independent_set_(graph_theory" target="_blank" rel="external">Independent set</a>#Approximation_algorithms)</li>
+</ul>
+<p>这些问题也可以使用贪婪算法,但不是最好的解法,他们在最差的情况下,可能会得到很差的结果. </p>
+<h3><span id="失败的情况">失败的情况</span></h3><p>在很多其他问题上,贪婪算法无法产生最优解,甚至可能产生一个最坏的解决方案.比如之前提到的  <a href="https://en.wikipedia.org/wiki/Traveling_salesman_problem" target="_blank" rel="external">traveling salesman problem</a> :对每一个城市都要计算一个最近的邻居,这种方式可能会产生一个最坏的路程.</p>
+<p>比如下图,贪婪算法只考虑到下一步的最优解,但是却没有考虑到之后的解决方案,导致实际上得出的不是一个最优解.</p>
+<p><img src="../../../../OneDrive/Code/CodeRecord/Algorithm/Resource/Greedy-search-path-example.gif" alt="Greedy-search-path-example"></p>
+<h2><span id="application">Application</span></h2><p>贪婪法基本上（但并不是一定）不适用于求全局最优解，因为他通常没有遍历所有的数据。他们太早给出了肯定的选择使得他们无法从所有的解法中找到最优解。比如，使用 <a href="https://en.wikipedia.org/wiki/Greedy_coloring" target="_blank" rel="external">greedy coloring</a> 算法来解决  <a href="https://en.wikipedia.org/wiki/Graph_coloring_problem" target="_blank" rel="external">graph coloring problem</a> 以及所有的  <a href="https://en.wikipedia.org/wiki/NP-complete" target="_blank" rel="external">NP-complete</a> 问题。尽管如此，贪婪法还是很有用的，因为他们容易被考虑到并且通常情况下会给出一个比较好的解法。</p>
+<p>如果一个贪婪算法可以被证明是某个问题的全局最优解法，他通常情况下就会成为优先选择的方法，因为它比其他的最优解方法如 <a href="https://en.wikipedia.org/wiki/Dynamic_programming" target="_blank" rel="external">dynamic programming</a> 要快。这种例子有使用  <a href="https://en.wikipedia.org/wiki/Kruskal%27s_algorithm" target="_blank" rel="external">Kruskal’s algorithm</a> 和 <a href="https://en.wikipedia.org/wiki/Prim%27s_algorithm" target="_blank" rel="external">Prim’s algorithm</a> 找到<a href="https://en.wikipedia.org/wiki/Minimum_spanning_tree" target="_blank" rel="external">minimum spanning trees</a>,还有找到最优  <a href="https://en.wikipedia.org/wiki/Huffman_tree" target="_blank" rel="external">Huffman trees</a>.</p>
+<p>贪心法也使用于 网络 <a href="https://en.wikipedia.org/wiki/Routing" target="_blank" rel="external">路由</a> 中。使用贪心路由，消息会被发送到距离目标节点“最近”的相邻节点。一个节点位置的定义（还有“最近”的含义）也许会取决于它的物理位置，如同在 <a href="https://en.wikipedia.org/wiki/Ad_hoc_network" target="_blank" rel="external">ad hoc networks</a> 中使用  <a href="https://en.wikipedia.org/wiki/Geographic_routing" target="_blank" rel="external">geographic routing</a> . 位置也可能会使一个人造的结构如同在  <a href="https://en.wikipedia.org/wiki/Small_world_routing" target="_blank" rel="external">small world routing</a> 和 <a href="https://en.wikipedia.org/wiki/Distributed_hash_table" target="_blank" rel="external">distributed hash table</a> 中.</p>
+<h2><span id="reference">Reference</span></h2><p><a href="https://en.wikipedia.org/wiki/Greedy_algorithm" target="_blank" rel="external">https://en.wikipedia.org/wiki/Greedy_algorithm</a></p>
 <h2><span id="about-me">About Me</span></h2><p>我的博客 <a href="http://leonchen1024.com/" target="_blank" rel="external">leonchen1024.com</a></p>
 <p>我的 GitHub <a href="https://github.com/LeonChen1024" target="_blank" rel="external">https://github.com/LeonChen1024</a></p>
 <p>微信公众号 </p>
@@ -293,20 +316,43 @@ ga('send', 'pageview');
             <!---->
             <!--<div id="toc" class="toc-article">-->
                 <!--<strong class="toc-title">Catalogue</strong>-->
-                <!--<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">2. Add Two Numbers</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.1.</span> <span class="toc-text">方法一：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">1.1.1.</span> <span class="toc-text">分析</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.2.</span> <span class="toc-text">方法二</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">2.</span> <span class="toc-text">About Me</span></a></li></ol>-->
+                <!--<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">贪婪算法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.1.</span> <span class="toc-text">原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.1.1.</span> <span class="toc-text">步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.1.2.</span> <span class="toc-text">适用情况</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">1.1.2.1.</span> <span class="toc-text">Greedy choice property (贪婪选择的属性)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">1.1.2.2.</span> <span class="toc-text">Optimal substructure (最优子结构)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">1.1.2.3.</span> <span class="toc-text">Matroids (拟阵)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">1.1.2.4.</span> <span class="toc-text">(子模块函数)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">1.1.2.5.</span> <span class="toc-text">其他一些相对可以使用的问题</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.1.3.</span> <span class="toc-text">失败的情况</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.2.</span> <span class="toc-text">Application</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.3.</span> <span class="toc-text">Reference</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.4.</span> <span class="toc-text">About Me</span></a></li></ol></li></ol>-->
             <!--</div>-->
             <!---->
-            <!--<p>[Chinese ver]</p>
-<h2><span id="2-add-two-numbers">2. Add Two Numbers</span></h2><p>问题：你将获得两个非空 linked lists来表示两个非负整数。 数字以反向的顺序存储，并且它们的每个节点包含一位数字。 将两个数字相加并将其以 linked list的形式返回。</p>
-<p>你可以假定这两个数字不包含任何前导零（即不存在首位出现0的情况），除了数字0本身。</p>
-<p>输入 ：(2 -&gt; 4 -&gt; 3) + (5 -&gt; 6 -&gt; 4)<br>输出 ： 7 -&gt; 0 -&gt; 8</p>
-<h3><span id="方法一">方法一：</span></h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> ListNode <span class="title">addTwoNumbers</span><span class="params">(ListNode l1, ListNode l2)</span> </span>&#123;</div><div class="line">    ListNode dummyHead = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</div><div class="line">    ListNode p = l1, q = l2, curr = dummyHead;</div><div class="line">    <span class="keyword">int</span> carry = <span class="number">0</span>;</div><div class="line">    <span class="keyword">while</span> (p != <span class="keyword">null</span> || q != <span class="keyword">null</span>) &#123;</div><div class="line">        <span class="keyword">int</span> x = (p != <span class="keyword">null</span>) ? p.val : <span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span> y = (q != <span class="keyword">null</span>) ? q.val : <span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span> sum = carry + x + y;</div><div class="line">        carry = sum / <span class="number">10</span>;</div><div class="line">        curr.next = <span class="keyword">new</span> ListNode(sum % <span class="number">10</span>);</div><div class="line">        curr = curr.next;</div><div class="line">        <span class="keyword">if</span> (p != <span class="keyword">null</span>) p = p.next;</div><div class="line">        <span class="keyword">if</span> (q != <span class="keyword">null</span>) q = q.next;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (carry &gt; <span class="number">0</span>) &#123;</div><div class="line">        curr.next = <span class="keyword">new</span> ListNode(carry);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> dummyHead.next;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/2%20Add%20Two%20Num/Images/method1result.png?raw=true" alt="效率"></p>
-<h4><span id="分析">分析</span></h4><p>其实这个问题熟悉一下链表的使用和算术的逻辑就可以解决了。按位加过十进一，注意，加法的进位只会是0或者1，因为就算你用两个最大的数9+9最后也只是进一，进一之后再9+9+1也只会得到19，还是进一。所以主要的逻辑就是两个数的和sum/10得到的是进位，sum%10得到的是本位的数。dummyHead是一个假的数据头，用来做一个初始化，不使用也是可以的，但是在内部逻辑中就需要自己在处理第一位和后续的位数的逻辑区别。<br>注意有几种特殊情况。1.其中一个list的长度比另一个要长。2.其中一个list为空。3.加到最后一位时仍然还有进位</p>
-<p>时间复杂度： O(max(m,n)).总共循环m和n中的最大次数。<br>空间复杂度 :   O(max(m,n)).我们得到的新的list 的长度是m,n中最大长度，加上一个假数据头。</p>
-<h3><span id="方法二">方法二</span></h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * Definition for singly-linked list.</span></div><div class="line"><span class="comment"> * public class ListNode &#123;</span></div><div class="line"><span class="comment"> *     int val;</span></div><div class="line"><span class="comment"> *     ListNode next;</span></div><div class="line"><span class="comment"> *     ListNode(int x) &#123; val = x; &#125;</span></div><div class="line"><span class="comment"> * &#125;</span></div><div class="line"><span class="comment"> */</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">addTwoNumbers</span><span class="params">(ListNode l1, ListNode l2)</span> </span>&#123;</div><div class="line">        ListNode ln1 = l1, ln2 = l2, head = <span class="keyword">null</span>, node = <span class="keyword">null</span>;</div><div class="line">        <span class="keyword">int</span> carry = <span class="number">0</span>, remainder = <span class="number">0</span>, sum = <span class="number">0</span>;</div><div class="line">        head = node = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</div><div class="line"></div><div class="line">        <span class="keyword">while</span>(ln1 != <span class="keyword">null</span> || ln2 != <span class="keyword">null</span> || carry != <span class="number">0</span>) &#123;</div><div class="line">            sum = (ln1 != <span class="keyword">null</span> ? ln1.val : <span class="number">0</span>) + (ln2 != <span class="keyword">null</span> ? ln2.val : <span class="number">0</span>) + carry;</div><div class="line">            carry = sum / <span class="number">10</span>;</div><div class="line">            remainder = sum % <span class="number">10</span>;</div><div class="line">            node = node.next = <span class="keyword">new</span> ListNode(remainder);</div><div class="line">            ln1 = (ln1 != <span class="keyword">null</span> ? ln1.next : <span class="keyword">null</span>);</div><div class="line">            ln2 = (ln2 != <span class="keyword">null</span> ? ln2.next : <span class="keyword">null</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> head.next;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/2%20Add%20Two%20Num/Images/method2result.png?raw=true" alt="效率"></p>
-<p>这个是别人的做法，居然能够比方法一快了许多，说实话，其实这两个方法在整体思路上是差不多的，至于为什么会比前者快那么多我觉的是方法一在循环中不断新建了x,y等对象，由于计时时用了成千上百的例子验证所以导致了20ms左右的差距。以上纯属个人看法，如果你有更正确的想法，或者哪里有有关这种差距的论证，请告诉我。谢谢。</p>
+            <!--<h1><span id="贪婪算法">贪婪算法</span></h1><p>贪婪算法(Greedy Algorithm)也叫算贪心法,贪婪法.它是一个遵循启发式解决问题的算法范式.它的核心思想就是通过在每一步的选择中都选用当前步骤下最优的选择,期望结果是最优的算法.如 <a href="https://zh.wikipedia.org/wiki/%E6%97%85%E8%A1%8C%E6%8E%A8%E9%94%80%E5%91%98%E9%97%AE%E9%A2%98" target="_blank" rel="external">旅行推销员问题</a>.</p>
+<p>贪婪算法尤其适用于有最优子结构的问题中,最优子结构的意思是局部的最优解可以导出全局的最优解.贪婪算法与<a href="https://zh.wikipedia.org/wiki/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92" target="_blank" rel="external">动态规划</a> 的不同在于贪婪算法对每一个子问题都作出选择,不能回退;动态规划则会保存以前的运算结果,根据以前的结果对当前进行选择,可以回退.</p>
+<p>贪婪算法可以解决一些<a href="https://zh.wikipedia.org/wiki/%E6%9C%80%E4%BC%98%E5%8C%96" target="_blank" rel="external">最优化</a>(如最大值最小值等)问题,比如求图中的<a href="https://zh.wikipedia.org/wiki/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91" target="_blank" rel="external">最小生成树</a>、求<a href="https://zh.wikipedia.org/wiki/%E5%93%88%E5%A4%AB%E6%9B%BC%E7%BC%96%E7%A0%81" target="_blank" rel="external">哈夫曼编码</a>…其他大多数的情况都不适用贪婪算法,一旦一个问题可以使用贪婪算法来解决,那么贪婪算法一般是解决这个问题的最好办法.由于贪婪算法的高效性以及其答案比较接近最有结果,也可以作为辅助算法或直接解决一些结果要求不那么精确的问题.</p>
+<h2><span id="原理">原理</span></h2><h3><span id="步骤">步骤</span></h3><ol>
+<li><p>建立数学模型来描述问题,并建立一个备选答案区</p>
+</li>
+<li><p>把求解的问题分成若干个子问题,</p>
+</li>
+<li><p>使用一个选择函数对每个子问题求解最优解,并判断是否可用于整体问题</p>
+</li>
+<li><p>把所有子问题的最优解合成一个整的解</p>
+</li>
+</ol>
+<h3><span id="适用情况">适用情况</span></h3><p>贪婪算法适用于一些数学问题等,大部分适用的问题都有两个特点:</p>
+<h4><span id="greedy-choice-property-贪婪选择的属性">Greedy choice property (贪婪选择的属性)</span></h4><p>我们可以在每个子问题找出最好的选择然后进行总结.贪婪算法可能会根据迄今为止已经做的选择进行计算,但是却不会考虑之后子问题的选择.它将一个大的问题分解成小的问题并一个一个进行迭代计算.换句话说,贪婪算法不会重新考虑它已经得出的选择.这是它和  <a href="https://en.wikipedia.org/wiki/Dynamic_programming" target="_blank" rel="external">dynamic programming</a> 的主要区别,动态规划会详尽的计算并确保得到最优解,在一步之后,动态规划会根据之前所有得到的选择进行下一个选择,并可能会重新对之前步骤的算法路径进行修改.</p>
+<h4><span id="optimal-substructure-最优子结构">Optimal substructure (最优子结构)</span></h4><p>这个问题要包含<a href="https://en.wikipedia.org/wiki/Optimal_substructure" target="_blank" rel="external">optimal substructure</a>(即这个问题的最优解包含了它的子问题的最优解)</p>
+<p>如以下几种类型的问题</p>
+<h4><span id="matroids-拟阵">Matroids (拟阵)</span></h4><p><a href="https://en.wikipedia.org/wiki/Matroid" target="_blank" rel="external">matroid</a>(拟阵) 是一个数学上的结构,它将<a href="https://en.wikipedia.org/wiki/Linear_independence" target="_blank" rel="external">linear independence</a> (线性无关)的概念从 <a href="https://en.wikipedia.org/wiki/Vector_spaces" target="_blank" rel="external">vector spaces</a> (向量空间)推广到了任意的集合.如果一个最优解问题有一个拟阵结构,那么贪婪算法是最佳的解决办法.</p>
+<h4><span id="submodular-functions子模块函数">(子模块函数)</span></h4><p>一个函数 $f$ 定义了当集合 $\Omega$ 的所有子集合 $S,T \subseteq \Omega$ 都满足 $f(S)+f(T)\geq f(S\cup T)+f(S\cap T)$ 的情况即为子模块. </p>
+<p>假设有人想要找到一个集合 $S$ 使得函数 $f$ 最大.贪婪算法将会通过逐个添加在每一步中使得 $f$ 增加最多的元素,产生一个结果至少是  $(1-1/e)\max _{X\subseteq \Omega }f(X)$ ??todo. 所以,贪婪算法至少得出最优解的 $(1-1/e) \approx 0.63$倍的解. </p>
+<h4><span id="其他一些相对可以使用的问题">其他一些相对可以使用的问题</span></h4><ul>
+<li><a href="https://en.wikipedia.org/wiki/Set_cover_problem#Greedy_algorithm" target="_blank" rel="external">Set cover</a></li>
+<li>The <a href="https://en.wikipedia.org/wiki/Steiner_tree_problem" target="_blank" rel="external">Steiner tree problem</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Load_balancing_(computing" target="_blank" rel="external">Load balancing</a>)<a href="https://en.wikipedia.org/wiki/Greedy_algorithm#cite_note-9" target="_blank" rel="external">[9]</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Independent_set_(graph_theory" target="_blank" rel="external">Independent set</a>#Approximation_algorithms)</li>
+</ul>
+<p>这些问题也可以使用贪婪算法,但不是最好的解法,他们在最差的情况下,可能会得到很差的结果. </p>
+<h3><span id="失败的情况">失败的情况</span></h3><p>在很多其他问题上,贪婪算法无法产生最优解,甚至可能产生一个最坏的解决方案.比如之前提到的  <a href="https://en.wikipedia.org/wiki/Traveling_salesman_problem" target="_blank" rel="external">traveling salesman problem</a> :对每一个城市都要计算一个最近的邻居,这种方式可能会产生一个最坏的路程.</p>
+<p>比如下图,贪婪算法只考虑到下一步的最优解,但是却没有考虑到之后的解决方案,导致实际上得出的不是一个最优解.</p>
+<p><img src="../../../../OneDrive/Code/CodeRecord/Algorithm/Resource/Greedy-search-path-example.gif" alt="Greedy-search-path-example"></p>
+<h2><span id="application">Application</span></h2><p>贪婪法基本上（但并不是一定）不适用于求全局最优解，因为他通常没有遍历所有的数据。他们太早给出了肯定的选择使得他们无法从所有的解法中找到最优解。比如，使用 <a href="https://en.wikipedia.org/wiki/Greedy_coloring" target="_blank" rel="external">greedy coloring</a> 算法来解决  <a href="https://en.wikipedia.org/wiki/Graph_coloring_problem" target="_blank" rel="external">graph coloring problem</a> 以及所有的  <a href="https://en.wikipedia.org/wiki/NP-complete" target="_blank" rel="external">NP-complete</a> 问题。尽管如此，贪婪法还是很有用的，因为他们容易被考虑到并且通常情况下会给出一个比较好的解法。</p>
+<p>如果一个贪婪算法可以被证明是某个问题的全局最优解法，他通常情况下就会成为优先选择的方法，因为它比其他的最优解方法如 <a href="https://en.wikipedia.org/wiki/Dynamic_programming" target="_blank" rel="external">dynamic programming</a> 要快。这种例子有使用  <a href="https://en.wikipedia.org/wiki/Kruskal%27s_algorithm" target="_blank" rel="external">Kruskal’s algorithm</a> 和 <a href="https://en.wikipedia.org/wiki/Prim%27s_algorithm" target="_blank" rel="external">Prim’s algorithm</a> 找到<a href="https://en.wikipedia.org/wiki/Minimum_spanning_tree" target="_blank" rel="external">minimum spanning trees</a>,还有找到最优  <a href="https://en.wikipedia.org/wiki/Huffman_tree" target="_blank" rel="external">Huffman trees</a>.</p>
+<p>贪心法也使用于 网络 <a href="https://en.wikipedia.org/wiki/Routing" target="_blank" rel="external">路由</a> 中。使用贪心路由，消息会被发送到距离目标节点“最近”的相邻节点。一个节点位置的定义（还有“最近”的含义）也许会取决于它的物理位置，如同在 <a href="https://en.wikipedia.org/wiki/Ad_hoc_network" target="_blank" rel="external">ad hoc networks</a> 中使用  <a href="https://en.wikipedia.org/wiki/Geographic_routing" target="_blank" rel="external">geographic routing</a> . 位置也可能会使一个人造的结构如同在  <a href="https://en.wikipedia.org/wiki/Small_world_routing" target="_blank" rel="external">small world routing</a> 和 <a href="https://en.wikipedia.org/wiki/Distributed_hash_table" target="_blank" rel="external">distributed hash table</a> 中.</p>
+<h2><span id="reference">Reference</span></h2><p><a href="https://en.wikipedia.org/wiki/Greedy_algorithm" target="_blank" rel="external">https://en.wikipedia.org/wiki/Greedy_algorithm</a></p>
 <h2><span id="about-me">About Me</span></h2><p>我的博客 <a href="http://leonchen1024.com/" target="_blank" rel="external">leonchen1024.com</a></p>
 <p>我的 GitHub <a href="https://github.com/LeonChen1024" target="_blank" rel="external">https://github.com/LeonChen1024</a></p>
 <p>微信公众号 </p>
@@ -321,7 +367,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://yoursite.com/2018/07/15/2-Add-Two-Num/Record[Chinese-ver]/" data-id="cjp6r4801002ty0bjxvgjp5eu" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2018/12/03/Greedy-Algorithm/" data-id="cjp6r47yz002dy0bjdkxbxoaf" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -396,19 +442,10 @@ ga('send', 'pageview');
     
 <nav id="article-nav">
     
-        <a href="/2018/07/21/3-Longest-Substring-Without-Repeating-Characters/Record[English-ver]/" id="article-nav-newer" class="article-nav-link-wrap">
-            <strong class="article-nav-caption">Newer</strong>
-            <div class="article-nav-title">
-                
-                    LeetCode 3. Longest Substring Without Repeating Characters [English ver]
-                
-            </div>
-        </a>
     
-    
-        <a href="/2018/07/15/2-Add-Two-Num/Record[English-ver]/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2018/12/02/7-Reverse-Integer/Record-cn/" id="article-nav-older" class="article-nav-link-wrap">
             <strong class="article-nav-caption">Older</strong>
-            <div class="article-nav-title">LeetCode 2. Add Two Numbers [English ver]</div>
+            <div class="article-nav-title">LeetCode 7. 数字反转</div>
         </a>
     
 </nav>

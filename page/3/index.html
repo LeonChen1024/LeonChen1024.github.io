@@ -170,7 +170,7 @@ ga('send', 'pageview');
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                21
+                22
                 <span>posts</span>
             </div>
             <div class="article-info-block">
@@ -205,6 +205,194 @@ ga('send', 'pageview');
 
             
             <section id="main">
+    <article id="post-Android-declare-styleable-Attribute" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+	
+		<a href="/2016/03/17/Android-declare-styleable-Attribute/" itemprop="url">
+            <img src="/2016/03/17/Android-declare-styleable-Attribute/pic.jpg" class="article-banner" />
+        </a>
+	
+
+
+
+        
+        
+        <header class="article-header">
+            
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2016/03/17/Android-declare-styleable-Attribute/">Android declare-styleable自定义属性</a>
+        </h1>
+    
+
+            
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2016/03/17/Android-declare-styleable-Attribute/">
+            <time datetime="2016-03-17T07:24:26.000Z" itemprop="datePublished">2016-03-17</time>
+        </a>
+    </div>
+
+
+                
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Chinese/">Chinese</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/Chinese/Android/">Android</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/Chinese/Android/UI/">UI</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/Chinese/Android/UI/Custom-View/">Custom View</a>
+    </div>
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Android/">Android</a>, <a class="tag-link" href="/tags/Chinese/">Chinese</a>, <a class="tag-link" href="/tags/Custom-View/">Custom View</a>, <a class="tag-link" href="/tags/UI/">UI</a>
+    </div>
+
+            </div>
+            
+        </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <p><p>我们自己定义view，通常继承View，重写构造方法和onDraw等函数，然后具体实现自己定义的复杂view。但是继承这个自定义view的有的属性又各有不同，有的属性在原生属性中没有，这时候就可以使用自定义的属性来便捷的设置相应的属性。</p>
+<p>1、在res/values/下新建一个attrs.xml文件。写入<resources><declare-styleable><attr>这三级标签。并填入相应属性。</attr></declare-styleable></resources></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</div><div class="line"><span class="tag">&lt;<span class="name">resources</span>&gt;</span></div><div class="line"></div><div class="line">  <span class="tag">&lt;<span class="name">declare-styleable</span> <span class="attr">name</span>=<span class="string">"myStyle"</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">attr</span> <span class="attr">name</span>=<span class="string">"textSize"</span> <span class="attr">format</span>=<span class="string">"dimension"</span> /&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">attr</span> <span class="attr">name</span>=<span class="string">"backgroud"</span> <span class="attr">format</span>=<span class="string">"reference"</span> /&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">attr</span> <span class="attr">name</span>=<span class="string">"text"</span> <span class="attr">format</span>=<span class="string">"string|reference"</span> /&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">attr</span> <span class="attr">name</span>=<span class="string">"textColor"</span> <span class="attr">format</span>=<span class="string">"color"</span> /&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">attr</span> <span class="attr">name</span>=<span class="string">"yesOrNot"</span> <span class="attr">format</span>=<span class="string">"boolean"</span> /&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">attr</span> <span class="attr">name</span>=<span class="string">"number"</span>&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">enum</span> <span class="attr">name</span>=<span class="string">"one"</span> <span class="attr">value</span>=<span class="string">"0"</span> /&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">enum</span> <span class="attr">name</span>=<span class="string">"two"</span> <span class="attr">value</span>=<span class="string">"1"</span> /&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">enum</span> <span class="attr">name</span>=<span class="string">"leftToRight"</span> <span class="attr">value</span>=<span class="string">"2"</span> /&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">enum</span> <span class="attr">name</span>=<span class="string">"topToBottom"</span> <span class="attr">value</span>=<span class="string">"3"</span> /&gt;</span></div><div class="line">      <span class="tag">&lt;/<span class="name">attr</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">declare-styleable</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">resources</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>2、建立一个自定义视图类，本次偷懒直接继承自textview。然后使用typedarray类来获取控件相应的属性并使用。</p>
+<p>
+                
+                
+                
+            
+    </div>
+    <div class="article-more-link">
+        <a href="/2016/03/17/Android-declare-styleable-Attribute/#more">Read More</a>
+    </div>
+    
+        <!--<div class="article-entry" itemprop="articleBody">-->
+            <!---->
+            <!---->
+            <!--<p>我们自己定义view，通常继承View，重写构造方法和onDraw等函数，然后具体实现自己定义的复杂view。但是继承这个自定义view的有的属性又各有不同，有的属性在原生属性中没有，这时候就可以使用自定义的属性来便捷的设置相应的属性。</p>
+<p>1、在res/values/下新建一个attrs.xml文件。写入<resources><declare-styleable><attr>这三级标签。并填入相应属性。</attr></declare-styleable></resources></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</div><div class="line"><span class="tag">&lt;<span class="name">resources</span>&gt;</span></div><div class="line"></div><div class="line">  <span class="tag">&lt;<span class="name">declare-styleable</span> <span class="attr">name</span>=<span class="string">"myStyle"</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">attr</span> <span class="attr">name</span>=<span class="string">"textSize"</span> <span class="attr">format</span>=<span class="string">"dimension"</span> /&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">attr</span> <span class="attr">name</span>=<span class="string">"backgroud"</span> <span class="attr">format</span>=<span class="string">"reference"</span> /&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">attr</span> <span class="attr">name</span>=<span class="string">"text"</span> <span class="attr">format</span>=<span class="string">"string|reference"</span> /&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">attr</span> <span class="attr">name</span>=<span class="string">"textColor"</span> <span class="attr">format</span>=<span class="string">"color"</span> /&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">attr</span> <span class="attr">name</span>=<span class="string">"yesOrNot"</span> <span class="attr">format</span>=<span class="string">"boolean"</span> /&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">attr</span> <span class="attr">name</span>=<span class="string">"number"</span>&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">enum</span> <span class="attr">name</span>=<span class="string">"one"</span> <span class="attr">value</span>=<span class="string">"0"</span> /&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">enum</span> <span class="attr">name</span>=<span class="string">"two"</span> <span class="attr">value</span>=<span class="string">"1"</span> /&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">enum</span> <span class="attr">name</span>=<span class="string">"leftToRight"</span> <span class="attr">value</span>=<span class="string">"2"</span> /&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">enum</span> <span class="attr">name</span>=<span class="string">"topToBottom"</span> <span class="attr">value</span>=<span class="string">"3"</span> /&gt;</span></div><div class="line">      <span class="tag">&lt;/<span class="name">attr</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">declare-styleable</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">resources</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>2、建立一个自定义视图类，本次偷懒直接继承自textview。然后使用typedarray类来获取控件相应的属性并使用。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> android.content.Context;</div><div class="line"><span class="keyword">import</span> android.content.res.TypedArray;</div><div class="line"><span class="keyword">import</span> android.graphics.Color;</div><div class="line"><span class="keyword">import</span> android.graphics.drawable.Drawable;</div><div class="line"><span class="keyword">import</span> android.util.AttributeSet;</div><div class="line"><span class="keyword">import</span> android.widget.TextView;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyView</span> <span class="keyword">extends</span> <span class="title">TextView</span></span></div><div class="line"><span class="class"></span>&#123;</div><div class="line"></div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="title">MyView</span><span class="params">(Context context, AttributeSet attrs)</span></span></div><div class="line"><span class="function">  </span>&#123;</div><div class="line">      <span class="keyword">super</span>(context, attrs);</div><div class="line">      TypedArray typedArray = context.obtainStyledAttributes(attrs,R.styleable.myStyle);</div><div class="line"></div><div class="line">      <span class="keyword">float</span> textSize = typedArray.getDimension(R.styleable.myStyle_textSize, <span class="number">15</span>);</div><div class="line">      Drawable back = typedArray.getDrawable(R.styleable.myStyle_backgroud);</div><div class="line">      String textString = typedArray.getString(R.styleable.myStyle_text);</div><div class="line">      <span class="keyword">int</span> textColor = typedArray.getInt(R.styleable.myStyle_textColor, Color.BLACK);</div><div class="line">      <span class="keyword">boolean</span> yesOrNot = typedArray.getBoolean(R.styleable.myStyle_yesOrNot, <span class="keyword">true</span>);</div><div class="line">      <span class="keyword">int</span> number = typedArray.getInt(R.styleable.myStyle_number, <span class="number">0</span>);</div><div class="line"></div><div class="line">      setTextSize(textSize);</div><div class="line">      setText(textString);</div><div class="line">      setBackgroundDrawable(back);</div><div class="line">      setTextColor(textColor);</div><div class="line"></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>3、在布局文件里引用该类，并设定相应的属性。记得要定义xmlns:myapp（后面的名称随意取，但要上下一致。）= “<a href="http://schemas.android.com/apk/res/com.example.declarestyleabletest&quot;（最后是该自定义视图类所在的包名）" target="_blank" rel="external">http://schemas.android.com/apk/res/com.example.declarestyleabletest&quot;（最后是该自定义视图类所在的包名）</a></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">LinearLayout</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></div><div class="line"><span class="tag">  <span class="attr">xmlns:tools</span>=<span class="string">"http://schemas.android.com/tools"</span></span></div><div class="line"><span class="tag">  <span class="attr">xmlns:myapp</span>=<span class="string">"http://schemas.android.com/apk/res/com.example.declarestyleabletest"</span></span></div><div class="line"><span class="tag">  <span class="attr">android:id</span>=<span class="string">"@+id/container"</span></span></div><div class="line"><span class="tag">  <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></div><div class="line"><span class="tag">  <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></span></div><div class="line"><span class="tag">  <span class="attr">android:orientation</span>=<span class="string">"vertical"</span></span></div><div class="line"><span class="tag">  <span class="attr">tools:context</span>=<span class="string">"com.example.declarestyleabletest.MainActivity"</span></span></div><div class="line"><span class="tag">  <span class="attr">tools:ignore</span>=<span class="string">"MergeRootFrame"</span> &gt;</span></div><div class="line"></div><div class="line">  <span class="tag">&lt;<span class="name">com.example.declarestyleabletest.MyView</span></span></div><div class="line"><span class="tag">      <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></span></div><div class="line"><span class="tag">      <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></div><div class="line"><span class="tag">      <span class="attr">myapp:backgroud</span>=<span class="string">"@drawable/ic_launcher"</span></span></div><div class="line"><span class="tag">      <span class="attr">myapp:number</span>=<span class="string">"one"</span></span></div><div class="line"><span class="tag">      <span class="attr">myapp:text</span>=<span class="string">"sdfkks"</span></span></div><div class="line"><span class="tag">      <span class="attr">myapp:textColor</span>=<span class="string">"@color/black"</span></span></div><div class="line"><span class="tag">      <span class="attr">myapp:textSize</span>=<span class="string">"15sp"</span> /&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>补充一些常用的format</p>
+<p>reference  指定某资源ID<br>string   字符串<br>dimension   尺寸<br>color   颜色<br>boolean   布尔<br>integer   整型<br>float   浮点型<br>fraction   百分数<br>enum   枚举<br>flag  位运算</p>
+<p>xml 中定义好自己的属性值，在在代码中得到值，或使用默认值</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="title">CText</span><span class="params">(Context context, AttributeSet set)</span> </span>&#123;</div><div class="line">      <span class="keyword">super</span>(context, set);</div><div class="line">      <span class="keyword">this</span>.context  = context;</div><div class="line">      initView();</div><div class="line">      TypedArray array = context.obtainStyledAttributes(set,R.styleable.CEditText);</div><div class="line">      initAttrs(array);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initAttrs</span><span class="params">(TypedArray a)</span> </span>&#123;</div><div class="line">      hint = a.getString(R.styleable.CEditText_cHint);</div><div class="line">      text = a.getString(R.styleable.CEditText_cText);</div><div class="line">      setAttrs();</div><div class="line">      a.recycle();</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+-->
+            <!---->
+        <!--</div>-->
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://yoursite.com/2016/03/17/Android-declare-styleable-Attribute/" data-id="cjp6r47xe0006y0bjw5t0w3lx" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+
+
+
+
     <article id="post-Byte-Common-transition" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -284,7 +472,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://yoursite.com/2016/03/09/Byte-Common-transition/" data-id="cjp65pqls000e0zbj2t3uhilb" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2016/03/09/Byte-Common-transition/" data-id="cjp6r47xh000ay0bjhuem5va1" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -381,19 +569,19 @@ ga('send', 'pageview');
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2018/12/02/7-Reverse-Integer/Record-en/" class="thumbnail">
+                            <a href="/2018/12/03/Greedy-Algorithm/" class="thumbnail">
     
     
-        <span style="background-image:url(/2018/12/02/7-Reverse-Integer/Record-cn/titleThumb.jpg)" alt="LeetCode 7. Reverse Integer" class="thumbnail-image"></span>
+        <span style="background-image:url(/2018/12/03/Greedy-Algorithm/titleThumb.jpg)" alt="贪婪算法" class="thumbnail-image"></span>
     
 </a>
 
                         </div>
                         
                         <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/English/">English</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/English/Algorithm/">Algorithm</a></p>
-                            <p class="item-title"><a href="/2018/12/02/7-Reverse-Integer/Record-en/" class="title">LeetCode 7. Reverse Integer</a></p>
-                            <p class="item-date"><time datetime="2018-12-01T16:00:00.000Z" itemprop="datePublished">2018-12-02</time></p>
+                            <p class="item-category"><a class="article-category-link" href="/categories/Chinese/">Chinese</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/Chinese/Algorithm/">Algorithm</a></p>
+                            <p class="item-title"><a href="/2018/12/03/Greedy-Algorithm/" class="title">贪婪算法</a></p>
+                            <p class="item-date"><time datetime="2018-12-02T16:00:00.000Z" itemprop="datePublished">2018-12-03</time></p>
                         </div>
                     </li>
                 
@@ -412,6 +600,25 @@ ga('send', 'pageview');
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/Chinese/">Chinese</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/Chinese/Algorithm/">Algorithm</a></p>
                             <p class="item-title"><a href="/2018/12/02/7-Reverse-Integer/Record-cn/" class="title">LeetCode 7. 数字反转</a></p>
+                            <p class="item-date"><time datetime="2018-12-01T16:00:00.000Z" itemprop="datePublished">2018-12-02</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/12/02/7-Reverse-Integer/Record-en/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/2018/12/02/7-Reverse-Integer/Record-cn/titleThumb.jpg)" alt="LeetCode 7. Reverse Integer" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/English/">English</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/English/Algorithm/">Algorithm</a></p>
+                            <p class="item-title"><a href="/2018/12/02/7-Reverse-Integer/Record-en/" class="title">LeetCode 7. Reverse Integer</a></p>
                             <p class="item-date"><time datetime="2018-12-01T16:00:00.000Z" itemprop="datePublished">2018-12-02</time></p>
                         </div>
                     </li>
@@ -454,25 +661,6 @@ ga('send', 'pageview');
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2018/08/31/5-Longest-Palindromic-Substring/Record-en/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/2018/08/31/5-Longest-Palindromic-Substring/Record-cn/titleThumb.jpg)" alt="LeetCode 5.Longest Palindromic Substring" class="thumbnail-image"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/English/">English</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/English/Algorithm/">Algorithm</a></p>
-                            <p class="item-title"><a href="/2018/08/31/5-Longest-Palindromic-Substring/Record-en/" class="title">LeetCode 5.Longest Palindromic Substring</a></p>
-                            <p class="item-date"><time datetime="2018-08-30T16:00:00.000Z" itemprop="datePublished">2018-08-31</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -482,7 +670,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">categories</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/">Chinese</a><span class="category-list-count">14</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Algorithm/">Algorithm</a><span class="category-list-count">8</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Algorithm/Common/">Common</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Algorithm/LeetCode/">LeetCode</a><span class="category-list-count">7</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/">Android</a><span class="category-list-count">5</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/Error/">Error</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/UI/">UI</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/UI/Custom-View/">Custom View</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/版本差异/">版本差异</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/版本管理/">版本管理</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Java/">Java</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Java/Data-Structure/">Data Structure</a><span class="category-list-count">1</span></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/English/">English</a><span class="category-list-count">7</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/English/Algorithm/">Algorithm</a><span class="category-list-count">7</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/English/Algorithm/LeetCode/">LeetCode</a><span class="category-list-count">7</span></li></ul></li></ul></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/">Chinese</a><span class="category-list-count">15</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Algorithm/">Algorithm</a><span class="category-list-count">9</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Algorithm/Common/">Common</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Algorithm/LeetCode/">LeetCode</a><span class="category-list-count">7</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/">Android</a><span class="category-list-count">5</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/Error/">Error</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/UI/">UI</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/UI/Custom-View/">Custom View</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/版本差异/">版本差异</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/版本管理/">版本管理</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Java/">Java</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Java/Data-Structure/">Data Structure</a><span class="category-list-count">1</span></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/English/">English</a><span class="category-list-count">7</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/English/Algorithm/">Algorithm</a><span class="category-list-count">7</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/English/Algorithm/LeetCode/">LeetCode</a><span class="category-list-count">7</span></li></ul></li></ul></li></ul>
         </div>
     </div>
 
@@ -491,7 +679,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">archives</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">2</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">2</span></li></ul>
         </div>
     </div>
 
@@ -500,7 +688,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">tags</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/">Algorithm</a><span class="tag-list-count">15</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chinese/">Chinese</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Custom-View/">Custom View</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Structure/">Data Structure</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English/">English</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Error/">Error</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LeetCode/">LeetCode</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UI/">UI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/版本差异/">版本差异</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/版本管理/">版本管理</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/">Algorithm</a><span class="tag-list-count">16</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chinese/">Chinese</a><span class="tag-list-count">15</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Custom-View/">Custom View</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Structure/">Data Structure</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English/">English</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Error/">Error</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LeetCode/">LeetCode</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UI/">UI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/版本差异/">版本差异</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/版本管理/">版本管理</a><span class="tag-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -509,7 +697,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">tag cloud</h3>
         <div class="widget tagcloud">
-            <a href="/tags/Algorithm/" style="font-size: 20px;">Algorithm</a> <a href="/tags/Android/" style="font-size: 14px;">Android</a> <a href="/tags/Chinese/" style="font-size: 18px;">Chinese</a> <a href="/tags/Custom-View/" style="font-size: 10px;">Custom View</a> <a href="/tags/Data-Structure/" style="font-size: 10px;">Data Structure</a> <a href="/tags/English/" style="font-size: 16px;">English</a> <a href="/tags/Error/" style="font-size: 10px;">Error</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/LeetCode/" style="font-size: 18px;">LeetCode</a> <a href="/tags/UI/" style="font-size: 10px;">UI</a> <a href="/tags/版本差异/" style="font-size: 12px;">版本差异</a> <a href="/tags/版本管理/" style="font-size: 10px;">版本管理</a>
+            <a href="/tags/Algorithm/" style="font-size: 20px;">Algorithm</a> <a href="/tags/Android/" style="font-size: 13.33px;">Android</a> <a href="/tags/Chinese/" style="font-size: 18.33px;">Chinese</a> <a href="/tags/Custom-View/" style="font-size: 10px;">Custom View</a> <a href="/tags/Data-Structure/" style="font-size: 10px;">Data Structure</a> <a href="/tags/English/" style="font-size: 15px;">English</a> <a href="/tags/Error/" style="font-size: 10px;">Error</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/LeetCode/" style="font-size: 16.67px;">LeetCode</a> <a href="/tags/UI/" style="font-size: 10px;">UI</a> <a href="/tags/版本差异/" style="font-size: 11.67px;">版本差异</a> <a href="/tags/版本管理/" style="font-size: 10px;">版本管理</a>
         </div>
     </div>
 
