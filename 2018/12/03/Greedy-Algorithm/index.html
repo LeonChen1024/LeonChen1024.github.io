@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="LeonChen&#39;s Blog">
 <meta property="og:description" content="贪婪算法贪婪算法(Greedy Algorithm)也叫算贪心法,贪婪法.它是一个遵循启发式解决问题的算法范式.它的核心思想就是通过在每一步的选择中都选用当前步骤下最优的选择,期望结果是最优的算法.如 旅行推销员问题. 贪婪算法尤其适用于有最优子结构的问题中,最优子结构的意思是局部的最优解可以导出全局的最优解.贪婪算法与动态规划 的不同在于贪婪算法对每一个子问题都作出选择,不能回退;动态规划则会保">
 <meta property="og:image" content="http://yoursite.com/2018/12/03/Greedy-Algorithm/titleThumb.jpg">
-<meta property="og:updated_time" content="2018-12-02T10:26:42.501Z">
+<meta property="og:updated_time" content="2018-12-02T10:41:04.866Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="贪婪算法">
 <meta name="twitter:description" content="贪婪算法贪婪算法(Greedy Algorithm)也叫算贪心法,贪婪法.它是一个遵循启发式解决问题的算法范式.它的核心思想就是通过在每一步的选择中都选用当前步骤下最优的选择,期望结果是最优的算法.如 旅行推销员问题. 贪婪算法尤其适用于有最优子结构的问题中,最优子结构的意思是局部的最优解可以导出全局的最优解.贪婪算法与动态规划 的不同在于贪婪算法对每一个子问题都作出选择,不能回退;动态规划则会保">
@@ -177,11 +177,11 @@ ga('send', 'pageview');
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                22
+                23
                 <span>posts</span>
             </div>
             <div class="article-info-block">
-                12
+                13
                 <span>tags</span>
             </div>
         </div>
@@ -216,7 +216,7 @@ ga('send', 'pageview');
         
         
 	
-		<img src="/2018/08/14/Greedy-Algorithm/title.jpg" class="article-banner" />
+		<img src="/2018/12/03/Greedy-Algorithm/title.jpg" class="article-banner" />
 	
 
 
@@ -299,7 +299,7 @@ ga('send', 'pageview');
 <p>这些问题也可以使用贪婪算法,但不是最好的解法,他们在最差的情况下,可能会得到很差的结果. </p>
 <h3><span id="失败的情况">失败的情况</span></h3><p>在很多其他问题上,贪婪算法无法产生最优解,甚至可能产生一个最坏的解决方案.比如之前提到的  <a href="https://en.wikipedia.org/wiki/Traveling_salesman_problem" target="_blank" rel="external">traveling salesman problem</a> :对每一个城市都要计算一个最近的邻居,这种方式可能会产生一个最坏的路程.</p>
 <p>比如下图,贪婪算法只考虑到下一步的最优解,但是却没有考虑到之后的解决方案,导致实际上得出的不是一个最优解.</p>
-<p><img src="../../../../OneDrive/Code/CodeRecord/Algorithm/Resource/Greedy-search-path-example.gif" alt="Greedy-search-path-example"></p>
+<p><img src="/2018/12/03/Greedy-Algorithm/Greedy-search-path-example.gif" alt="Greedy-search-path-example"></p>
 <h2><span id="application">Application</span></h2><p>贪婪法基本上（但并不是一定）不适用于求全局最优解，因为他通常没有遍历所有的数据。他们太早给出了肯定的选择使得他们无法从所有的解法中找到最优解。比如，使用 <a href="https://en.wikipedia.org/wiki/Greedy_coloring" target="_blank" rel="external">greedy coloring</a> 算法来解决  <a href="https://en.wikipedia.org/wiki/Graph_coloring_problem" target="_blank" rel="external">graph coloring problem</a> 以及所有的  <a href="https://en.wikipedia.org/wiki/NP-complete" target="_blank" rel="external">NP-complete</a> 问题。尽管如此，贪婪法还是很有用的，因为他们容易被考虑到并且通常情况下会给出一个比较好的解法。</p>
 <p>如果一个贪婪算法可以被证明是某个问题的全局最优解法，他通常情况下就会成为优先选择的方法，因为它比其他的最优解方法如 <a href="https://en.wikipedia.org/wiki/Dynamic_programming" target="_blank" rel="external">dynamic programming</a> 要快。这种例子有使用  <a href="https://en.wikipedia.org/wiki/Kruskal%27s_algorithm" target="_blank" rel="external">Kruskal’s algorithm</a> 和 <a href="https://en.wikipedia.org/wiki/Prim%27s_algorithm" target="_blank" rel="external">Prim’s algorithm</a> 找到<a href="https://en.wikipedia.org/wiki/Minimum_spanning_tree" target="_blank" rel="external">minimum spanning trees</a>,还有找到最优  <a href="https://en.wikipedia.org/wiki/Huffman_tree" target="_blank" rel="external">Huffman trees</a>.</p>
 <p>贪心法也使用于 网络 <a href="https://en.wikipedia.org/wiki/Routing" target="_blank" rel="external">路由</a> 中。使用贪心路由，消息会被发送到距离目标节点“最近”的相邻节点。一个节点位置的定义（还有“最近”的含义）也许会取决于它的物理位置，如同在 <a href="https://en.wikipedia.org/wiki/Ad_hoc_network" target="_blank" rel="external">ad hoc networks</a> 中使用  <a href="https://en.wikipedia.org/wiki/Geographic_routing" target="_blank" rel="external">geographic routing</a> . 位置也可能会使一个人造的结构如同在  <a href="https://en.wikipedia.org/wiki/Small_world_routing" target="_blank" rel="external">small world routing</a> 和 <a href="https://en.wikipedia.org/wiki/Distributed_hash_table" target="_blank" rel="external">distributed hash table</a> 中.</p>
@@ -348,7 +348,7 @@ ga('send', 'pageview');
 <p>这些问题也可以使用贪婪算法,但不是最好的解法,他们在最差的情况下,可能会得到很差的结果. </p>
 <h3><span id="失败的情况">失败的情况</span></h3><p>在很多其他问题上,贪婪算法无法产生最优解,甚至可能产生一个最坏的解决方案.比如之前提到的  <a href="https://en.wikipedia.org/wiki/Traveling_salesman_problem" target="_blank" rel="external">traveling salesman problem</a> :对每一个城市都要计算一个最近的邻居,这种方式可能会产生一个最坏的路程.</p>
 <p>比如下图,贪婪算法只考虑到下一步的最优解,但是却没有考虑到之后的解决方案,导致实际上得出的不是一个最优解.</p>
-<p><img src="../../../../OneDrive/Code/CodeRecord/Algorithm/Resource/Greedy-search-path-example.gif" alt="Greedy-search-path-example"></p>
+<p><img src="/2018/12/03/Greedy-Algorithm/Greedy-search-path-example.gif" alt="Greedy-search-path-example"></p>
 <h2><span id="application">Application</span></h2><p>贪婪法基本上（但并不是一定）不适用于求全局最优解，因为他通常没有遍历所有的数据。他们太早给出了肯定的选择使得他们无法从所有的解法中找到最优解。比如，使用 <a href="https://en.wikipedia.org/wiki/Greedy_coloring" target="_blank" rel="external">greedy coloring</a> 算法来解决  <a href="https://en.wikipedia.org/wiki/Graph_coloring_problem" target="_blank" rel="external">graph coloring problem</a> 以及所有的  <a href="https://en.wikipedia.org/wiki/NP-complete" target="_blank" rel="external">NP-complete</a> 问题。尽管如此，贪婪法还是很有用的，因为他们容易被考虑到并且通常情况下会给出一个比较好的解法。</p>
 <p>如果一个贪婪算法可以被证明是某个问题的全局最优解法，他通常情况下就会成为优先选择的方法，因为它比其他的最优解方法如 <a href="https://en.wikipedia.org/wiki/Dynamic_programming" target="_blank" rel="external">dynamic programming</a> 要快。这种例子有使用  <a href="https://en.wikipedia.org/wiki/Kruskal%27s_algorithm" target="_blank" rel="external">Kruskal’s algorithm</a> 和 <a href="https://en.wikipedia.org/wiki/Prim%27s_algorithm" target="_blank" rel="external">Prim’s algorithm</a> 找到<a href="https://en.wikipedia.org/wiki/Minimum_spanning_tree" target="_blank" rel="external">minimum spanning trees</a>,还有找到最优  <a href="https://en.wikipedia.org/wiki/Huffman_tree" target="_blank" rel="external">Huffman trees</a>.</p>
 <p>贪心法也使用于 网络 <a href="https://en.wikipedia.org/wiki/Routing" target="_blank" rel="external">路由</a> 中。使用贪心路由，消息会被发送到距离目标节点“最近”的相邻节点。一个节点位置的定义（还有“最近”的含义）也许会取决于它的物理位置，如同在 <a href="https://en.wikipedia.org/wiki/Ad_hoc_network" target="_blank" rel="external">ad hoc networks</a> 中使用  <a href="https://en.wikipedia.org/wiki/Geographic_routing" target="_blank" rel="external">geographic routing</a> . 位置也可能会使一个人造的结构如同在  <a href="https://en.wikipedia.org/wiki/Small_world_routing" target="_blank" rel="external">small world routing</a> 和 <a href="https://en.wikipedia.org/wiki/Distributed_hash_table" target="_blank" rel="external">distributed hash table</a> 中.</p>
@@ -367,7 +367,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://yoursite.com/2018/12/03/Greedy-Algorithm/" data-id="cjp6r47yz002dy0bjdkxbxoaf" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2018/12/03/Greedy-Algorithm/" data-id="cjq0wmyol000huabj8gnukre1" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -442,10 +442,19 @@ ga('send', 'pageview');
     
 <nav id="article-nav">
     
+        <a href="/2018/12/23/S1ep1-The-macgic-of-LRU-Cache/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    贪婪算法
+                
+            </div>
+        </a>
     
-        <a href="/2018/12/02/7-Reverse-Integer/Record-cn/" id="article-nav-older" class="article-nav-link-wrap">
+    
+        <a href="/2018/12/02/7-Reverse-Integer/Record-en/" id="article-nav-older" class="article-nav-link-wrap">
             <strong class="article-nav-caption">Older</strong>
-            <div class="article-nav-title">LeetCode 7. 数字反转</div>
+            <div class="article-nav-title">LeetCode 7. Reverse Integer</div>
         </a>
     
 </nav>
@@ -476,6 +485,25 @@ ga('send', 'pageview');
                     <li>
                         
                         <div class="item-thumbnail">
+                            <a href="/2018/12/23/S1ep1-The-macgic-of-LRU-Cache/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/2018/12/23/S1ep1-The-macgic-of-LRU-Cache/titleThumb.jpg)" alt="贪婪算法" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Chinese/">Chinese</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/Chinese/Android/">Android</a></p>
+                            <p class="item-title"><a href="/2018/12/23/S1ep1-The-macgic-of-LRU-Cache/" class="title">贪婪算法</a></p>
+                            <p class="item-date"><time datetime="2018-12-22T16:00:00.000Z" itemprop="datePublished">2018-12-23</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
                             <a href="/2018/12/03/Greedy-Algorithm/" class="thumbnail">
     
     
@@ -489,25 +517,6 @@ ga('send', 'pageview');
                             <p class="item-category"><a class="article-category-link" href="/categories/Chinese/">Chinese</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/Chinese/Algorithm/">Algorithm</a></p>
                             <p class="item-title"><a href="/2018/12/03/Greedy-Algorithm/" class="title">贪婪算法</a></p>
                             <p class="item-date"><time datetime="2018-12-02T16:00:00.000Z" itemprop="datePublished">2018-12-03</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2018/12/02/7-Reverse-Integer/Record-cn/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/2018/12/02/7-Reverse-Integer/Record-cn/titleThumb.jpg)" alt="LeetCode 7. 数字反转" class="thumbnail-image"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Chinese/">Chinese</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/Chinese/Algorithm/">Algorithm</a></p>
-                            <p class="item-title"><a href="/2018/12/02/7-Reverse-Integer/Record-cn/" class="title">LeetCode 7. 数字反转</a></p>
-                            <p class="item-date"><time datetime="2018-12-01T16:00:00.000Z" itemprop="datePublished">2018-12-02</time></p>
                         </div>
                     </li>
                 
@@ -533,6 +542,25 @@ ga('send', 'pageview');
                     <li>
                         
                         <div class="item-thumbnail">
+                            <a href="/2018/12/02/7-Reverse-Integer/Record-cn/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/2018/12/02/7-Reverse-Integer/Record-cn/titleThumb.jpg)" alt="LeetCode 7. 数字反转" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Chinese/">Chinese</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/Chinese/Algorithm/">Algorithm</a></p>
+                            <p class="item-title"><a href="/2018/12/02/7-Reverse-Integer/Record-cn/" class="title">LeetCode 7. 数字反转</a></p>
+                            <p class="item-date"><time datetime="2018-12-01T16:00:00.000Z" itemprop="datePublished">2018-12-02</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
                             <a href="/2018/09/12/6-ZigZag-Conversion/Record-cn/" class="thumbnail">
     
     
@@ -549,25 +577,6 @@ ga('send', 'pageview');
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2018/09/12/6-ZigZag-Conversion/Record-en/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/2018/09/12/6-ZigZag-Conversion/Record-cn/titleThumb.jpg)" alt="LeetCode 6. ZigZag Conversion" class="thumbnail-image"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/English/">English</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/English/Algorithm/">Algorithm</a></p>
-                            <p class="item-title"><a href="/2018/09/12/6-ZigZag-Conversion/Record-en/" class="title">LeetCode 6. ZigZag Conversion</a></p>
-                            <p class="item-date"><time datetime="2018-09-11T16:00:00.000Z" itemprop="datePublished">2018-09-12</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -577,7 +586,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">categories</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/">Chinese</a><span class="category-list-count">15</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Algorithm/">Algorithm</a><span class="category-list-count">9</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Algorithm/Common/">Common</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Algorithm/LeetCode/">LeetCode</a><span class="category-list-count">7</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/">Android</a><span class="category-list-count">5</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/Error/">Error</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/UI/">UI</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/UI/Custom-View/">Custom View</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/版本差异/">版本差异</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/版本管理/">版本管理</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Java/">Java</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Java/Data-Structure/">Data Structure</a><span class="category-list-count">1</span></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/English/">English</a><span class="category-list-count">7</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/English/Algorithm/">Algorithm</a><span class="category-list-count">7</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/English/Algorithm/LeetCode/">LeetCode</a><span class="category-list-count">7</span></li></ul></li></ul></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/">Chinese</a><span class="category-list-count">16</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Algorithm/">Algorithm</a><span class="category-list-count">9</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Algorithm/Common/">Common</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Algorithm/LeetCode/">LeetCode</a><span class="category-list-count">7</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/">Android</a><span class="category-list-count">6</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/Algorithm/">Algorithm</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/Error/">Error</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/UI/">UI</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/UI/Custom-View/">Custom View</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/版本差异/">版本差异</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/版本管理/">版本管理</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Java/">Java</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Java/Data-Structure/">Data Structure</a><span class="category-list-count">1</span></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/English/">English</a><span class="category-list-count">7</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/English/Algorithm/">Algorithm</a><span class="category-list-count">7</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/English/Algorithm/LeetCode/">LeetCode</a><span class="category-list-count">7</span></li></ul></li></ul></li></ul>
         </div>
     </div>
 
@@ -586,7 +595,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">archives</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">2</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">2</span></li></ul>
         </div>
     </div>
 
@@ -595,7 +604,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">tags</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/">Algorithm</a><span class="tag-list-count">16</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chinese/">Chinese</a><span class="tag-list-count">15</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Custom-View/">Custom View</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Structure/">Data Structure</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English/">English</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Error/">Error</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LeetCode/">LeetCode</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UI/">UI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/版本差异/">版本差异</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/版本管理/">版本管理</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/">Algorithm</a><span class="tag-list-count">17</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chinese/">Chinese</a><span class="tag-list-count">16</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Custom-View/">Custom View</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Structure/">Data Structure</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English/">English</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Error/">Error</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LeetCode/">LeetCode</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Optimize/">Optimize</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UI/">UI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/版本差异/">版本差异</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/版本管理/">版本管理</a><span class="tag-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -604,7 +613,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">tag cloud</h3>
         <div class="widget tagcloud">
-            <a href="/tags/Algorithm/" style="font-size: 20px;">Algorithm</a> <a href="/tags/Android/" style="font-size: 13.33px;">Android</a> <a href="/tags/Chinese/" style="font-size: 18.33px;">Chinese</a> <a href="/tags/Custom-View/" style="font-size: 10px;">Custom View</a> <a href="/tags/Data-Structure/" style="font-size: 10px;">Data Structure</a> <a href="/tags/English/" style="font-size: 15px;">English</a> <a href="/tags/Error/" style="font-size: 10px;">Error</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/LeetCode/" style="font-size: 16.67px;">LeetCode</a> <a href="/tags/UI/" style="font-size: 10px;">UI</a> <a href="/tags/版本差异/" style="font-size: 11.67px;">版本差异</a> <a href="/tags/版本管理/" style="font-size: 10px;">版本管理</a>
+            <a href="/tags/Algorithm/" style="font-size: 20px;">Algorithm</a> <a href="/tags/Android/" style="font-size: 13.33px;">Android</a> <a href="/tags/Chinese/" style="font-size: 18.33px;">Chinese</a> <a href="/tags/Custom-View/" style="font-size: 10px;">Custom View</a> <a href="/tags/Data-Structure/" style="font-size: 10px;">Data Structure</a> <a href="/tags/English/" style="font-size: 15px;">English</a> <a href="/tags/Error/" style="font-size: 10px;">Error</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/LeetCode/" style="font-size: 16.67px;">LeetCode</a> <a href="/tags/Optimize/" style="font-size: 10px;">Optimize</a> <a href="/tags/UI/" style="font-size: 10px;">UI</a> <a href="/tags/版本差异/" style="font-size: 11.67px;">版本差异</a> <a href="/tags/版本管理/" style="font-size: 10px;">版本管理</a>
         </div>
     </div>
 
