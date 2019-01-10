@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>Serializable | LeonChen&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="Serializable通过实现 java.io.Serializable 可以让 class 实现序列化的功能，否则无法使用序列化的功能。一个实现序列化的类的子类都是可以进行序列化的。Serializable 接口没有方法，字段等只是一个标记它是可以序列化的作用。 序列化是指将数据结构或对象状态转换成可取用格式（例如存成文件，存于缓冲，或在网络中传送），并在需要的时候恢复原先状态的过程。 当子类">
+<meta name="keywords" content="Chinese,Android,Java,SourceCode">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Serializable">
+<meta property="og:url" content="http://yoursite.com/2019/01/02/Serializable/index.html">
+<meta property="og:site_name" content="LeonChen&#39;s Blog">
+<meta property="og:description" content="Serializable通过实现 java.io.Serializable 可以让 class 实现序列化的功能，否则无法使用序列化的功能。一个实现序列化的类的子类都是可以进行序列化的。Serializable 接口没有方法，字段等只是一个标记它是可以序列化的作用。 序列化是指将数据结构或对象状态转换成可取用格式（例如存成文件，存于缓冲，或在网络中传送），并在需要的时候恢复原先状态的过程。 当子类">
+<meta property="og:image" content="http://yoursite.com/2019/01/02/Serializable/titleThumb.jpg">
+<meta property="og:updated_time" content="2019-01-02T01:35:24.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Serializable">
+<meta name="twitter:description" content="Serializable通过实现 java.io.Serializable 可以让 class 实现序列化的功能，否则无法使用序列化的功能。一个实现序列化的类的子类都是可以进行序列化的。Serializable 接口没有方法，字段等只是一个标记它是可以序列化的作用。 序列化是指将数据结构或对象状态转换成可取用格式（例如存成文件，存于缓冲，或在网络中传送），并在需要的时候恢复原先状态的过程。 当子类">
+<meta name="twitter:image" content="http://yoursite.com/2019/01/02/Serializable/titleThumb.jpg">
+    
+
+    
+
+    
+        <link rel="icon" href="/images/Facicon.png" />
+    
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-9191109011370892",
+    enable_page_level_ads: true
+  });
+</script>
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-111687087-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+    
+
+
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">LeonChen&#39;s Blog</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/tags">Tags</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="/css/images/avatar.png" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Buscar" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Entradas',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categorias',
+            TAGS: 'Etiquetas',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">Tags</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Buscar" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/avatar.png" />
+            <h2 id="name">Leon Chen</h2>
+            <h3 id="title">Android Developer</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>XiaMen, China</span>
+            <a id="follow" target="_blank" href="https://github.com/LeonChen1024">SEGUIR</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                24
+                <span>Entradas</span>
+            </div>
+            <div class="article-info-block">
+                14
+                <span>Etiquetas</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="https://github.com/LeonChen1024/" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/en" target="_blank" title="english" class=tooltip>
+                            <i class="fa fa-english"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+         
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-Serializable" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+	
+		<img src="/2019/01/02/Serializable/title.jpg" class="article-banner" />
+	
+
+
+
+        
+        
+        <header class="article-header">
+            
+    
+        <h1 class="article-title" itemprop="name">
+            Serializable
+        </h1>
+    
+
+            
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2019/01/02/Serializable/">
+            <time datetime="2019-01-01T16:00:00.000Z" itemprop="datePublished">2019-01-02</time>
+        </a>
+    </div>
+
+
+                
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Chinese/">Chinese</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/Chinese/Java/">Java</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/Chinese/Java/SourceCode/">SourceCode</a>
+    </div>
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Android/">Android</a>, <a class="tag-link" href="/tags/Chinese/">Chinese</a>, <a class="tag-link" href="/tags/Java/">Java</a>, <a class="tag-link" href="/tags/SourceCode/">SourceCode</a>
+    </div>
+
+            </div>
+            
+        </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+            
+                
+            <div id="toc" class="toc-article">
+                <strong class="toc-title">Catálogo</strong>
+                <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">Serializable</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.1.</span> <span class="toc-text">Reference</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.2.</span> <span class="toc-text">About Me</span></a></li></ol></li></ol>
+            </div>
+            
+            
+            
+            <h1><span id="serializable">Serializable</span></h1><p>通过实现 java.io.Serializable 可以让 class 实现序列化的功能，否则无法使用序列化的功能。一个实现序列化的类的子类都是可以进行序列化的。Serializable 接口没有方法，字段等只是一个标记它是可以序列化的作用。</p>
+<p>序列化是指将数据结构或对象状态转换成可取用格式（例如存成文件，存于缓冲，或在网络中传送），并在需要的时候恢复原先状态的过程。</p>
+<p>当子类实现了 Serializable 接口而父类没有实现的时候，父类要有一个可以访问的无参构造函数。</p>
+<p>在反序列化的时候，没有实现序列化的类字段将会使用 public 或者 protect 的无参构造函数进行初始化。无参构造函数必须是实现序列化的子类可访问的，</p>
+<p>如果需要在序列化和反序列化的时候进行一些特殊操作的话，需要自己实现以下某些方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">writeObject</span><span class="params">(java.io.ObjectOutputStream out)</span></span></div><div class="line"><span class="function">    <span class="keyword">throws</span> IOException</span></div><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">readObject</span><span class="params">(java.io.ObjectInputStream in)</span></span></div><div class="line"><span class="function">    <span class="keyword">throws</span> IOException, ClassNotFoundException</span>;</div><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">readObjectNoData</span><span class="params">()</span></span></div><div class="line"><span class="function">    <span class="keyword">throws</span> ObjectStreamException</span>;</div></pre></td></tr></table></figure>
+<p>writeObject 方法负责写入指定的类的对象状态来让 readObject 方法可以读取这些状态。可以通过调用 out.defaultWriteObject 方法来使用默认的保存对象字段的机制。</p>
+<p>readObject 方法负责从流中读取并回复类字段。它可能会调用 in.defaultReadObject 方法来默认恢复非静态和非临时(transient)的字段机制。defaultReadObject 方法使用流中的信息来分配流中保存的对象字段到目前的对象相应名字的字段中。这解决了当类已经添加了新的字段时的问题。</p>
+<p>这两个方法不需要考虑它自己的父类或者子类。状态是通过 writeObject 方法将各自的字段写入到 ObjectOutputStream 中，或者通过 DataOutput 提供的方法将私有的数据类型进行保存。</p>
+<p>readObjectNoData 方法负责在当序列化流没有列出指定的类作为反序列化的对象的父类的时候初始化对象的状态。这可能会发生在接收部分使用了一个和发送部分不同版本的反序列化实例的类的时候，还有接收的版本继承的类不是发送版本继承的类的时候。还可能发生在序列化流发生错误的时候。因此，readObjectNoData 方法在”恶意”的或者不完整的流情况下初始化反序列化对象属性是非常有用的。</p>
+<p>Serializable 类需要在写入一个对象到流的时候指定一个替换的对象的话需要用指定的修饰符实现这个方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ANY-ACCESS-<span class="function">MODIFIER Object <span class="title">writeReplace</span><span class="params">()</span> <span class="keyword">throws</span> ObjectStreamException</span>;</div></pre></td></tr></table></figure>
+<p>这个 writeReplace 方法如果存在并且它可以被被序列化的对象中定义的方法调用的话，writeReplace 会在序列化的时候被调用。因此，这个方法可以使用 private , protected 或者 package-private修饰。子类的访问权限遵循 Java 的访问规则。</p>
+<p>如果类的实例从流中读取出来的时候需要指定一个替换的类的话应该使用明确的修饰符实现这个方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ANY-ACCESS-<span class="function">MODIFIER Object <span class="title">readResolve</span><span class="params">()</span> <span class="keyword">throws</span> ObjectStreamException</span>;</div></pre></td></tr></table></figure>
+<p>readResolve 方法的调用规则和访问规则和 writeReplace 相同。</p>
+<p>序列化在运行时会关联每一个可以序列化的类的版本数字，名为 serialVersionUID ， 这个 serialVersionUID 会在反序列化的时候使用，主要作用是验证一个序列化对象的发送方和接收方加载的类是兼容的。如果接收方给对象加载的类的 serialVersionUID 和对应的 发送方的类的 serialVersionUID 不同的话，反序列化的时候会导致一个 <a href="">InvalidClassException</a> . 可序列化的类可以通过定义一个静态 final long 字段名为 “serialVersionUID” 声明它自己的 serialVersionUID :</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ANY-ACCESS-MODIFIER <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = <span class="number">42L</span>;</div></pre></td></tr></table></figure>
+<p>如果可序列化的类没有明确的定义一个 serialVersionUID ，那么运行时序列化将会如Java(TM)对象序列化规范所描述的那样依据类的多个方面计算出一个默认的 serialVersionUID 值。尽管如此，官方还是强烈推荐所有的可序列化类明确的定义 serialVersionUID 值，因为默认的 serialVersionUID 计算对类的细节是高度敏感的，会依据编译器的实现而变动，可能会在反序列化时导致预期之外的 InvalidClassException 异常。因此，为了确保在不同的 Java 编译器实现中保持 serialVersionUID 不变，可序列化的类必须明确定义一个 serialVersionUID 值。官方还强烈推荐尽可能使用 private 来修饰 serialVersionUID  定义，因为这样的声明只适用于当前的类，而不会影响那些继承他的类。Array 类不能显式的声明 serialVersionUID ，所以它们总是使用默认计算的值，但是 Array 类不需要比对 serialVersionUID 。</p>
+<p>Android 实现的 serialVersionUID 计算方式在 Android N 上会有一些轻微的不同。为了保持兼容性，这个改变只有在应用的目标  SDK 版本设置为 24 或者更高的时候才会可用。强烈推荐使用显式的 serialVersionUID 字段来避免兼容性问题。</p>
+<p>谨慎的实现 Serializable<br>参考 《Effective Java》中对于序列化 API 覆盖的章节。书中介绍了如何在不影响应用程序的可维护性的前提下使用这个接口。</p>
+<p>推荐另一个可行的方法<br>JSON 是一种简明，可读性高并且高效的方式。Android 包含了 android.util.JsonReader 流 API 和 org.json.JSONObject 树 API 来对 JSON 进行读写。也可以使用绑定库比如 <a href="http://code.google.com/p/google-gson/" target="_blank" rel="external">GSON</a> 来更直接的读写 Java 对象。</p>
+<h2><span id="reference">Reference</span></h2><p><a href="https://docs.oracle.com/javase/7/docs/api/java/io/Serializable.html" target="_blank" rel="external">https://docs.oracle.com/javase/7/docs/api/java/io/Serializable.html</a></p>
+<h2><span id="about-me">About Me</span></h2><p>我的博客 <a href="http://leonchen1024.com/" target="_blank" rel="external">leonchen1024.com</a></p>
+<p>我的 GitHub <a href="https://github.com/LeonChen1024" target="_blank" rel="external">https://github.com/LeonChen1024</a></p>
+<p>微信公众号 </p>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/Images/CooderQRcodem.jpg?raw=false" alt="wechat"></p>
+
+        </div>
+        
+        <!--<div class="article-entry" itemprop="articleBody">-->
+            <!---->
+            <!---->
+            <!--<div id="toc" class="toc-article">-->
+                <!--<strong class="toc-title">Catálogo</strong>-->
+                <!--<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">Serializable</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.1.</span> <span class="toc-text">Reference</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.2.</span> <span class="toc-text">About Me</span></a></li></ol></li></ol>-->
+            <!--</div>-->
+            <!---->
+            <!--<h1><span id="serializable">Serializable</span></h1><p>通过实现 java.io.Serializable 可以让 class 实现序列化的功能，否则无法使用序列化的功能。一个实现序列化的类的子类都是可以进行序列化的。Serializable 接口没有方法，字段等只是一个标记它是可以序列化的作用。</p>
+<p>序列化是指将数据结构或对象状态转换成可取用格式（例如存成文件，存于缓冲，或在网络中传送），并在需要的时候恢复原先状态的过程。</p>
+<p>当子类实现了 Serializable 接口而父类没有实现的时候，父类要有一个可以访问的无参构造函数。</p>
+<p>在反序列化的时候，没有实现序列化的类字段将会使用 public 或者 protect 的无参构造函数进行初始化。无参构造函数必须是实现序列化的子类可访问的，</p>
+<p>如果需要在序列化和反序列化的时候进行一些特殊操作的话，需要自己实现以下某些方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">writeObject</span><span class="params">(java.io.ObjectOutputStream out)</span></span></div><div class="line"><span class="function">    <span class="keyword">throws</span> IOException</span></div><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">readObject</span><span class="params">(java.io.ObjectInputStream in)</span></span></div><div class="line"><span class="function">    <span class="keyword">throws</span> IOException, ClassNotFoundException</span>;</div><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">readObjectNoData</span><span class="params">()</span></span></div><div class="line"><span class="function">    <span class="keyword">throws</span> ObjectStreamException</span>;</div></pre></td></tr></table></figure>
+<p>writeObject 方法负责写入指定的类的对象状态来让 readObject 方法可以读取这些状态。可以通过调用 out.defaultWriteObject 方法来使用默认的保存对象字段的机制。</p>
+<p>readObject 方法负责从流中读取并回复类字段。它可能会调用 in.defaultReadObject 方法来默认恢复非静态和非临时(transient)的字段机制。defaultReadObject 方法使用流中的信息来分配流中保存的对象字段到目前的对象相应名字的字段中。这解决了当类已经添加了新的字段时的问题。</p>
+<p>这两个方法不需要考虑它自己的父类或者子类。状态是通过 writeObject 方法将各自的字段写入到 ObjectOutputStream 中，或者通过 DataOutput 提供的方法将私有的数据类型进行保存。</p>
+<p>readObjectNoData 方法负责在当序列化流没有列出指定的类作为反序列化的对象的父类的时候初始化对象的状态。这可能会发生在接收部分使用了一个和发送部分不同版本的反序列化实例的类的时候，还有接收的版本继承的类不是发送版本继承的类的时候。还可能发生在序列化流发生错误的时候。因此，readObjectNoData 方法在”恶意”的或者不完整的流情况下初始化反序列化对象属性是非常有用的。</p>
+<p>Serializable 类需要在写入一个对象到流的时候指定一个替换的对象的话需要用指定的修饰符实现这个方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ANY-ACCESS-<span class="function">MODIFIER Object <span class="title">writeReplace</span><span class="params">()</span> <span class="keyword">throws</span> ObjectStreamException</span>;</div></pre></td></tr></table></figure>
+<p>这个 writeReplace 方法如果存在并且它可以被被序列化的对象中定义的方法调用的话，writeReplace 会在序列化的时候被调用。因此，这个方法可以使用 private , protected 或者 package-private修饰。子类的访问权限遵循 Java 的访问规则。</p>
+<p>如果类的实例从流中读取出来的时候需要指定一个替换的类的话应该使用明确的修饰符实现这个方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ANY-ACCESS-<span class="function">MODIFIER Object <span class="title">readResolve</span><span class="params">()</span> <span class="keyword">throws</span> ObjectStreamException</span>;</div></pre></td></tr></table></figure>
+<p>readResolve 方法的调用规则和访问规则和 writeReplace 相同。</p>
+<p>序列化在运行时会关联每一个可以序列化的类的版本数字，名为 serialVersionUID ， 这个 serialVersionUID 会在反序列化的时候使用，主要作用是验证一个序列化对象的发送方和接收方加载的类是兼容的。如果接收方给对象加载的类的 serialVersionUID 和对应的 发送方的类的 serialVersionUID 不同的话，反序列化的时候会导致一个 <a href="">InvalidClassException</a> . 可序列化的类可以通过定义一个静态 final long 字段名为 “serialVersionUID” 声明它自己的 serialVersionUID :</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ANY-ACCESS-MODIFIER <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = <span class="number">42L</span>;</div></pre></td></tr></table></figure>
+<p>如果可序列化的类没有明确的定义一个 serialVersionUID ，那么运行时序列化将会如Java(TM)对象序列化规范所描述的那样依据类的多个方面计算出一个默认的 serialVersionUID 值。尽管如此，官方还是强烈推荐所有的可序列化类明确的定义 serialVersionUID 值，因为默认的 serialVersionUID 计算对类的细节是高度敏感的，会依据编译器的实现而变动，可能会在反序列化时导致预期之外的 InvalidClassException 异常。因此，为了确保在不同的 Java 编译器实现中保持 serialVersionUID 不变，可序列化的类必须明确定义一个 serialVersionUID 值。官方还强烈推荐尽可能使用 private 来修饰 serialVersionUID  定义，因为这样的声明只适用于当前的类，而不会影响那些继承他的类。Array 类不能显式的声明 serialVersionUID ，所以它们总是使用默认计算的值，但是 Array 类不需要比对 serialVersionUID 。</p>
+<p>Android 实现的 serialVersionUID 计算方式在 Android N 上会有一些轻微的不同。为了保持兼容性，这个改变只有在应用的目标  SDK 版本设置为 24 或者更高的时候才会可用。强烈推荐使用显式的 serialVersionUID 字段来避免兼容性问题。</p>
+<p>谨慎的实现 Serializable<br>参考 《Effective Java》中对于序列化 API 覆盖的章节。书中介绍了如何在不影响应用程序的可维护性的前提下使用这个接口。</p>
+<p>推荐另一个可行的方法<br>JSON 是一种简明，可读性高并且高效的方式。Android 包含了 android.util.JsonReader 流 API 和 org.json.JSONObject 树 API 来对 JSON 进行读写。也可以使用绑定库比如 <a href="http://code.google.com/p/google-gson/" target="_blank" rel="external">GSON</a> 来更直接的读写 Java 对象。</p>
+<h2><span id="reference">Reference</span></h2><p><a href="https://docs.oracle.com/javase/7/docs/api/java/io/Serializable.html" target="_blank" rel="external">https://docs.oracle.com/javase/7/docs/api/java/io/Serializable.html</a></p>
+<h2><span id="about-me">About Me</span></h2><p>我的博客 <a href="http://leonchen1024.com/" target="_blank" rel="external">leonchen1024.com</a></p>
+<p>我的 GitHub <a href="https://github.com/LeonChen1024" target="_blank" rel="external">https://github.com/LeonChen1024</a></p>
+<p>微信公众号 </p>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/Images/CooderQRcodem.jpg?raw=false" alt="wechat"></p>
+-->
+            <!---->
+        <!--</div>-->
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://yoursite.com/2019/01/02/Serializable/" data-id="cjqqnsx5r000e3lbjt91vhas5" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+    
+<nav id="article-nav">
+    
+    
+        <a href="/2018/12/23/S1ep1-The-macgic-of-LRU-Cache/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Más viejo</strong>
+            <div class="article-nav-title">贪婪算法</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+
+    
+
+
+
+
+
+</section>
+            
+                
+<aside id="sidebar">
+   
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">Recientes</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2019/01/02/Serializable/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/2019/01/02/Serializable/titleThumb.jpg)" alt="Serializable" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Chinese/">Chinese</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/Chinese/Java/">Java</a></p>
+                            <p class="item-title"><a href="/2019/01/02/Serializable/" class="title">Serializable</a></p>
+                            <p class="item-date"><time datetime="2019-01-01T16:00:00.000Z" itemprop="datePublished">2019-01-02</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/12/23/S1ep1-The-macgic-of-LRU-Cache/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/2018/12/23/S1ep1-The-macgic-of-LRU-Cache/titleThumb.jpg)" alt="贪婪算法" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Chinese/">Chinese</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/Chinese/Android/">Android</a></p>
+                            <p class="item-title"><a href="/2018/12/23/S1ep1-The-macgic-of-LRU-Cache/" class="title">贪婪算法</a></p>
+                            <p class="item-date"><time datetime="2018-12-22T16:00:00.000Z" itemprop="datePublished">2018-12-23</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/12/03/Greedy-Algorithm/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/2018/12/03/Greedy-Algorithm/titleThumb.jpg)" alt="贪婪算法" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Chinese/">Chinese</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/Chinese/Algorithm/">Algorithm</a></p>
+                            <p class="item-title"><a href="/2018/12/03/Greedy-Algorithm/" class="title">贪婪算法</a></p>
+                            <p class="item-date"><time datetime="2018-12-02T16:00:00.000Z" itemprop="datePublished">2018-12-03</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/12/02/7-Reverse-Integer/Record-cn/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/2018/12/02/7-Reverse-Integer/Record-cn/titleThumb.jpg)" alt="LeetCode 7. 数字反转" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Chinese/">Chinese</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/Chinese/Algorithm/">Algorithm</a></p>
+                            <p class="item-title"><a href="/2018/12/02/7-Reverse-Integer/Record-cn/" class="title">LeetCode 7. 数字反转</a></p>
+                            <p class="item-date"><time datetime="2018-12-01T16:00:00.000Z" itemprop="datePublished">2018-12-02</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/12/02/7-Reverse-Integer/Record-en/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/2018/12/02/7-Reverse-Integer/Record-cn/titleThumb.jpg)" alt="LeetCode 7. Reverse Integer" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/English/">English</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/English/Algorithm/">Algorithm</a></p>
+                            <p class="item-title"><a href="/2018/12/02/7-Reverse-Integer/Record-en/" class="title">LeetCode 7. Reverse Integer</a></p>
+                            <p class="item-date"><time datetime="2018-12-01T16:00:00.000Z" itemprop="datePublished">2018-12-02</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">Categorias</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/">Chinese</a><span class="category-list-count">17</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Algorithm/">Algorithm</a><span class="category-list-count">9</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Algorithm/Common/">Common</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Algorithm/LeetCode/">LeetCode</a><span class="category-list-count">7</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/">Android</a><span class="category-list-count">6</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/Algorithm/">Algorithm</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/Error/">Error</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/UI/">UI</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/UI/Custom-View/">Custom View</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/版本差异/">版本差异</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/版本管理/">版本管理</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Java/">Java</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Java/Data-Structure/">Data Structure</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Java/SourceCode/">SourceCode</a><span class="category-list-count">1</span></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/English/">English</a><span class="category-list-count">7</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/English/Algorithm/">Algorithm</a><span class="category-list-count">7</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/English/Algorithm/LeetCode/">LeetCode</a><span class="category-list-count">7</span></li></ul></li></ul></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">Archivos</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">2</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">Etiquetas</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/">Algorithm</a><span class="tag-list-count">17</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chinese/">Chinese</a><span class="tag-list-count">17</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Custom-View/">Custom View</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Structure/">Data Structure</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English/">English</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Error/">Error</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LeetCode/">LeetCode</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Optimize/">Optimize</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SourceCode/">SourceCode</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UI/">UI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/版本差异/">版本差异</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/版本管理/">版本管理</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">Nube de etiquetas</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/Algorithm/" style="font-size: 20px;">Algorithm</a> <a href="/tags/Android/" style="font-size: 15px;">Android</a> <a href="/tags/Chinese/" style="font-size: 20px;">Chinese</a> <a href="/tags/Custom-View/" style="font-size: 10px;">Custom View</a> <a href="/tags/Data-Structure/" style="font-size: 10px;">Data Structure</a> <a href="/tags/English/" style="font-size: 15px;">English</a> <a href="/tags/Error/" style="font-size: 10px;">Error</a> <a href="/tags/Java/" style="font-size: 12.5px;">Java</a> <a href="/tags/LeetCode/" style="font-size: 17.5px;">LeetCode</a> <a href="/tags/Optimize/" style="font-size: 10px;">Optimize</a> <a href="/tags/SourceCode/" style="font-size: 10px;">SourceCode</a> <a href="/tags/UI/" style="font-size: 10px;">UI</a> <a href="/tags/版本差异/" style="font-size: 12.5px;">版本差异</a> <a href="/tags/版本管理/" style="font-size: 10px;">版本管理</a>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">Links</h3>
+        <div class="widget">
+            <ul>
+                
+            </ul>
+        </div>
+    </div>
+
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+
+            
+        </div>
+        <!-- ad start -->
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-9191109011370892",
+    enable_page_level_ads: true
+  });
+</script>
+        <!-- ad end -->
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2019 LeonChen<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. 
+        </div>
+    </div>
+</footer>
+        
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>

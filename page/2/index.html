@@ -93,7 +93,7 @@ ga('send', 'pageview');
             <div id="search-form-wrap">
 
     <form class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <input type="text" class="ins-search-input search-form-input" placeholder="Buscar" />
         <button type="submit" class="search-form-submit"></button>
     </form>
     <div class="ins-search">
@@ -112,10 +112,10 @@ ga('send', 'pageview');
 (function (window) {
     var INSIGHT_CONFIG = {
         TRANSLATION: {
-            POSTS: 'Posts',
+            POSTS: 'Entradas',
             PAGES: 'Pages',
-            CATEGORIES: 'Categories',
-            TAGS: 'Tags',
+            CATEGORIES: 'Categorias',
+            TAGS: 'Etiquetas',
             UNTITLED: '(Untitled)',
         },
         ROOT_URL: '/',
@@ -146,7 +146,7 @@ ga('send', 'pageview');
                 <td>
                     
     <div class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <input type="text" class="ins-search-input search-form-input" placeholder="Buscar" />
     </div>
 
                 </td>
@@ -166,16 +166,16 @@ ga('send', 'pageview');
             <h2 id="name">Leon Chen</h2>
             <h3 id="title">Android Developer</h3>
             <span id="location"><i class="fa fa-map-marker"></i>XiaMen, China</span>
-            <a id="follow" target="_blank" href="https://github.com/LeonChen1024">FOLLOW</a>
+            <a id="follow" target="_blank" href="https://github.com/LeonChen1024">SEGUIR</a>
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                23
-                <span>posts</span>
+                24
+                <span>Entradas</span>
             </div>
             <div class="article-info-block">
-                13
-                <span>tags</span>
+                14
+                <span>Etiquetas</span>
             </div>
         </div>
         
@@ -205,6 +205,231 @@ ga('send', 'pageview');
 
             
             <section id="main">
+    <article id="post-4-Median-of-Two-Sorted-Arrays/Record-cn" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+	
+		<a href="/2018/08/15/4-Median-of-Two-Sorted-Arrays/Record-cn/" itemprop="url">
+            <img src="/2018/08/15/4-Median-of-Two-Sorted-Arrays/Record-cn/title.jpg" class="article-banner" />
+        </a>
+	
+
+
+
+        
+        
+        <header class="article-header">
+            
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2018/08/15/4-Median-of-Two-Sorted-Arrays/Record-cn/">LeetCode 4. Median of Two Sorted Arrays [Chinese ver]</a>
+        </h1>
+    
+
+            
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2018/08/15/4-Median-of-Two-Sorted-Arrays/Record-cn/">
+            <time datetime="2018-08-14T16:00:00.000Z" itemprop="datePublished">2018-08-15</time>
+        </a>
+    </div>
+
+
+                
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Chinese/">Chinese</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/Chinese/Algorithm/">Algorithm</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/Chinese/Algorithm/LeetCode/">LeetCode</a>
+    </div>
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Algorithm/">Algorithm</a>, <a class="tag-link" href="/tags/Chinese/">Chinese</a>, <a class="tag-link" href="/tags/LeetCode/">LeetCode</a>
+    </div>
+
+            </div>
+            
+        </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <p><p>[Chinese ver]</p>
+<h1><span id="4-median-of-two-sorted-arrays">4. Median of Two Sorted Arrays</span></h1><p>这里有两个有序数组nums1和nums2，他们各自的大小为m和n.<br>找到这两个数组的中间值，总的时间复杂度应该为O(log (m+n)).</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Example 1:</div><div class="line">nums1 = [1, 3]</div><div class="line">nums2 = [2]</div><div class="line"> 中间值是 2.0</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Example 2:</div><div class="line">nums1 = [1, 2]</div><div class="line">nums2 = [3, 4]</div><div class="line">中间值是 (2 + 3)/2 = 2.5</div></pre></td></tr></table></figure>
+<p>
+                
+                
+                
+            
+    </div>
+    <div class="article-more-link">
+        <a href="/2018/08/15/4-Median-of-Two-Sorted-Arrays/Record-cn/#more">Read More</a>
+    </div>
+    
+        <!--<div class="article-entry" itemprop="articleBody">-->
+            <!---->
+            <!---->
+            <!--<p>[Chinese ver]</p>
+<h1><span id="4-median-of-two-sorted-arrays">4. Median of Two Sorted Arrays</span></h1><p>这里有两个有序数组nums1和nums2，他们各自的大小为m和n.<br>找到这两个数组的中间值，总的时间复杂度应该为O(log (m+n)).</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Example 1:</div><div class="line">nums1 = [1, 3]</div><div class="line">nums2 = [2]</div><div class="line"> 中间值是 2.0</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Example 2:</div><div class="line">nums1 = [1, 2]</div><div class="line">nums2 = [3, 4]</div><div class="line">中间值是 (2 + 3)/2 = 2.5</div></pre></td></tr></table></figure>
+<h2><span id="方法一">方法一：</span></h2><p>首先尝试了一种比较笨的方法<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">findMedianSortedArrays</span><span class="params">(<span class="keyword">int</span>[] nums1, <span class="keyword">int</span>[] nums2)</span> </span>&#123;</div><div class="line">        <span class="comment">//需要几个数值</span></div><div class="line">        <span class="keyword">int</span> needNum = <span class="number">0</span>;</div><div class="line">        <span class="comment">//数值位置</span></div><div class="line">        <span class="keyword">int</span> needIndex = <span class="number">0</span>;</div><div class="line">        <span class="comment">//中间值</span></div><div class="line">        <span class="keyword">double</span> median = <span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span> big = <span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span> stand = <span class="number">0</span>;</div><div class="line">        <span class="comment">//合成的数组</span></div><div class="line">        <span class="keyword">int</span>[] insertnum ;</div><div class="line"></div><div class="line">        <span class="keyword">int</span> m = nums1.length;</div><div class="line">        <span class="keyword">int</span> n = nums2.length;</div><div class="line"></div><div class="line">        <span class="keyword">if</span>((m+n)%<span class="number">2</span>==<span class="number">0</span>)&#123;</div><div class="line">            needNum = <span class="number">2</span>;</div><div class="line">            needIndex = (m+n)/<span class="number">2</span>-<span class="number">1</span>;</div><div class="line">        &#125;<span class="keyword">else</span>&#123;</div><div class="line">            needNum=<span class="number">1</span>;</div><div class="line">            needIndex = (m+n)/<span class="number">2</span>;</div><div class="line">        &#125;</div><div class="line">        insertnum = <span class="keyword">new</span> <span class="keyword">int</span>[m+n];</div><div class="line">        <span class="comment">//nums1的下标</span></div><div class="line">        <span class="keyword">int</span> j =<span class="number">0</span>;</div><div class="line">        <span class="comment">//nums2的下标</span></div><div class="line">        <span class="keyword">int</span> k = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i =<span class="number">0</span>;i&lt;m+n;i++)&#123;</div><div class="line">            <span class="keyword">if</span>(k==n)&#123;</div><div class="line">                insertnum[i] = nums1[j];</div><div class="line">                j++;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(j==m)&#123;</div><div class="line">                insertnum[i] = nums2[k];</div><div class="line">                k++;</div><div class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(nums1[j]&gt;nums2[k])&#123;</div><div class="line">                insertnum[i] = nums2[k];</div><div class="line">                k++;</div><div class="line">            &#125;<span class="keyword">else</span>&#123;</div><div class="line">                insertnum[i] = nums1[j];</div><div class="line">                j++;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(needNum == <span class="number">1</span>)&#123;</div><div class="line">            median = Double.valueOf(insertnum[needIndex]);</div><div class="line">        &#125;<span class="keyword">else</span>&#123;</div><div class="line">            median = Double.valueOf(insertnum[needIndex]+insertnum[needIndex+<span class="number">1</span>]) /<span class="number">2.0</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">return</span> median;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>顺便提一下，这个方法经常无法通过，应该是时间复杂度过高的原因吧。</p>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/4.%20Median%20of%20Two%20Sorted%20Arrays/Images/1SuccessResult.png?raw=true" alt="效率"></p>
+<p><strong>分析</strong><br>这个方法的原理很简单，首先将两个数组个数和是奇数和偶数的情况所需的取值个数以及中间值计算方法得出。然后将两个数组按照从小到大的顺序合并成一个数组，最后根据前面得到的中间数的计算方法得出中间值。<br>时间复杂度 ： O(m+n) 。<br>空间复杂度 ： O(m+n) .</p>
+<p>这个方法可以在做一个优化，如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">findMedianSortedArrays</span><span class="params">(<span class="keyword">int</span>[] nums1, <span class="keyword">int</span>[] nums2)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> needNum = <span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span> needIndex = <span class="number">0</span>;</div><div class="line">        <span class="keyword">double</span> median = <span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span> big = <span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span> stand = <span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span>[] insertnum ;</div><div class="line"></div><div class="line">        <span class="keyword">int</span> m = nums1.length;</div><div class="line">        <span class="keyword">int</span> n = nums2.length;</div><div class="line"></div><div class="line">        <span class="keyword">if</span>((m+n)%<span class="number">2</span>==<span class="number">0</span>)&#123;</div><div class="line">            needNum = <span class="number">2</span>;</div><div class="line">            needIndex = (m+n)/<span class="number">2</span>-<span class="number">1</span>;</div><div class="line">        &#125;<span class="keyword">else</span>&#123;</div><div class="line">            needNum=<span class="number">1</span>;</div><div class="line">            needIndex = (m+n)/<span class="number">2</span>;</div><div class="line">        &#125;</div><div class="line">        insertnum = <span class="keyword">new</span> <span class="keyword">int</span>[(m+n)/<span class="number">2</span>+<span class="number">1</span>];</div><div class="line">        <span class="keyword">int</span> j =<span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span> k = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i =<span class="number">0</span>;i&lt;m+n;i++)&#123;</div><div class="line"></div><div class="line">            <span class="keyword">if</span>(k==n)&#123;</div><div class="line">                insertnum[i] = nums1[j];</div><div class="line">                j++;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(j==m)&#123;</div><div class="line">                insertnum[i] = nums2[k];</div><div class="line">                k++;</div><div class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(nums1[j]&gt;nums2[k])&#123;</div><div class="line">                insertnum[i] = nums2[k];</div><div class="line">                k++;</div><div class="line">            &#125;<span class="keyword">else</span>&#123;</div><div class="line">                insertnum[i] = nums1[j];</div><div class="line">                j++;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">             <span class="keyword">if</span> (i &gt;= needIndex )&#123;</div><div class="line">                <span class="keyword">if</span> (needNum == <span class="number">1</span>)&#123;</div><div class="line">                    median = Double.valueOf(insertnum[needIndex]);</div><div class="line">                    <span class="keyword">return</span> median;</div><div class="line">                &#125;<span class="keyword">else</span>&#123;</div><div class="line">                     <span class="keyword">if</span> (i == needIndex+<span class="number">1</span>)&#123;</div><div class="line">                         median = Double.valueOf(insertnum[needIndex]+insertnum[needIndex+<span class="number">1</span>]) /<span class="number">2.0</span>;</div><div class="line">                         <span class="keyword">return</span> median;</div><div class="line">                     &#125;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">        &#125;</div><div class="line">    <span class="keyword">return</span> median;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>分析</strong><br>这个方法优化的地方就是通过事先得到中间值的位置，在得到该位置的数值之后就不继续往下走了。</p>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/4.%20Median%20of%20Two%20Sorted%20Arrays/Images/1OptimizeSuccessResult.png?raw=true" alt="效率"></p>
+<h2><span id="方法二">方法二：</span></h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">findMedianSortedArrays</span><span class="params">(<span class="keyword">int</span>[] nums1, <span class="keyword">int</span>[] nums2)</span> </span>&#123;</div><div class="line">           <span class="keyword">int</span> N1 = nums1.length;</div><div class="line">           <span class="keyword">int</span> N2 = nums2.length;</div><div class="line">           <span class="keyword">if</span> (N1 &lt; N2)</div><div class="line">               <span class="keyword">return</span> findMedianSortedArrays(nums2, nums1);    <span class="comment">// Make sure A2 is the shorter one.</span></div><div class="line"></div><div class="line">           <span class="keyword">if</span> (N2 == <span class="number">0</span>)</div><div class="line">               <span class="keyword">return</span> ((<span class="keyword">double</span>) nums1[(N1 - <span class="number">1</span>) / <span class="number">2</span>] + (<span class="keyword">double</span>) nums1[N1 / <span class="number">2</span>]) / <span class="number">2</span>;  <span class="comment">// If A2 is empty</span></div><div class="line"></div><div class="line">           <span class="keyword">int</span> lo = <span class="number">0</span>, hi = N2 * <span class="number">2</span>;</div><div class="line">           <span class="keyword">while</span> (lo &lt;= hi) &#123;</div><div class="line">               <span class="keyword">int</span> mid2 = (lo + hi) / <span class="number">2</span>;   <span class="comment">// Try Cut 2</span></div><div class="line">               <span class="keyword">int</span> mid1 = N1 + N2 - mid2;  <span class="comment">// Calculate Cut 1 accordingly</span></div><div class="line"></div><div class="line">               <span class="keyword">double</span> L1 = (mid1 == <span class="number">0</span>) ? Integer.MIN_VALUE : nums1[(mid1 - <span class="number">1</span>) / <span class="number">2</span>];    <span class="comment">// Get L1, R1, L2, R2 respectively</span></div><div class="line">               <span class="keyword">double</span> L2 = (mid2 == <span class="number">0</span>) ? Integer.MIN_VALUE : nums2[(mid2 - <span class="number">1</span>) / <span class="number">2</span>];</div><div class="line">               <span class="keyword">double</span> R1 = (mid1 == N1 * <span class="number">2</span>) ? Integer.MAX_VALUE : nums1[(mid1) / <span class="number">2</span>];</div><div class="line">               <span class="keyword">double</span> R2 = (mid2 == N2 * <span class="number">2</span>) ? Integer.MAX_VALUE : nums2[(mid2) / <span class="number">2</span>];</div><div class="line"></div><div class="line">               <span class="keyword">if</span> (L1 &gt; R2)</div><div class="line">                   lo = mid2 + <span class="number">1</span>;        <span class="comment">// A1's lower half is too big; need to move C1 left (C2 right)</span></div><div class="line">               <span class="keyword">else</span> <span class="keyword">if</span> (L2 &gt; R1)</div><div class="line">                   hi = mid2 - <span class="number">1</span>;    <span class="comment">// A2's lower half too big; need to move C2 left.</span></div><div class="line">               <span class="keyword">else</span></div><div class="line">                   <span class="keyword">return</span> ((L1 &gt; L2 ? L1 : L2) + (R1 &gt; R2 ? R2 : R1)) / <span class="number">2</span>;    <span class="comment">// Otherwise, that's the right cut.</span></div><div class="line">           &#125;</div><div class="line">           <span class="keyword">return</span> -<span class="number">1</span>;</div><div class="line">       &#125;</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/4.%20Median%20of%20Two%20Sorted%20Arrays/Images/2SeccessResult.png?raw=true" alt="效率"></p>
+<p><strong>分析</strong></p>
+<p>这个问题比较困难，很多方法都是把他分成两种情况，奇数个和偶数个。实际上这样有点复杂，我们可以把这两个情况合并成一种情况。</p>
+<p>首先，我们来重新定义一下’median’的含义：</p>
+<p>“如果我们把一个有序的array分成两个等长的部分，那么median就是比较小的那一部分的最大值和比较大的那一部分的最小值的平均值。即划分线两边的数。”</p>
+<p>比如[1,2],我们的分割线就应该在1，2之间，[1 | 2],结果是(1 + 2)/2.0 = 1.5。<br>同理，如果是两个有序的数组，那么我们只需要保证两个数组划分线右侧的数都大于左侧的数，并且两个数组左侧数字个数的和等于右侧数字个数的和。</p>
+<p>我们使用‘|’来代表分割线，(n|n)来表示分割线正好在某个数字n上。<br>比如[1 2 3],得到的分割后的数组像这样[1 (2|2) 3],z中间值就是(2+2)/2.0 = 2</p>
+<p>我们使用L代表分割线左边的数，R代表分割线右边的数。</p>
+<p>可以观察到左边的数和右边的数有这样的规律。</p>
+<p>N        Index of L / R<br>1               0 / 0<br>2               0 / 1<br>3               1 / 1<br>4               1 / 2<br>5               2 / 2<br>6               2 / 3<br>7               3 / 3<br>8               3 / 4</p>
+<p>可以得到 L = (N-1)/2,  R = N/2. 中间值为(L + R)/2 = (A[(N-1)/2] + A[N/2])/2</p>
+<p>为了更方便的计算两个数组的情况，我们添加一些空位在数字之间。用’#’代表，用’position’来表示增加空格后的位置信息。</p>
+<p>[1 2] -&gt; [# 1 # 2 #] (N=2)<br>position  0 1 2 3 4  (N_Position = 5)</p>
+<p>[3 4] -&gt; [# 3 # 4 #] (N=2)<br>position  0 1 2 3 4  (N_Position = 5)</p>
+<p>可以看出N_Position = 2N+1.所以分割线是在N，index(L) = (CutPosition-1)/2, index(R) = (CutPosition)/2.</p>
+<p>当我们分割这两个数组的时候要注意，总共有2N1+2N2+2的位置，所以，分割线的每一边都要有N1+N2个位置，剩下的2个就是切线的位置，所以当我们A2分割线在 C2 = K  , 那么A1的分割线就必须要在C1 = N1 + N2 - k. 比如,  C2 = 2, 那么 C1 = 2 + 2 - C2 = 2.</p>
+<p>[# 1 | 2 #]<br>[# 3 | 4 #]<br>现在我们有了两个L和两个R。<br>L1 = A1[(C1-1)/2]; R1 = A1[C1/2];<br>L2 = A2[(C2-1)/2]; R2 = A2[C2/2];<br>即<br>    L1 = A1[(2-1)/2] = A1[0] = 1; R1 = A1[2/2] = A1[1] = 2;<br>    L2 = A2[(2-1)/2] = A2[0] = 3; R2 = A1[2/2] = A1[1] = 4;</p>
+<p>那么我们要怎么判断这个分割线是不是符合规则的呢？我们只要左边的数字都小于右边的数字。首先这两个数组都是有序的，所以L1,L2是左半边数组里最大的数，R1,R2是右半边数组里最小的数，L1&lt;=R1.L2&lt;=R2.<br>所以我们只要判断L1&lt;=R2,L2&lt;=R1就可以了。</p>
+<p>现在我们用简单的二分法查找就可以得到答案了。</p>
+<p>如果L1&gt;R2,代表A1左边有过多较大的数字，我们必须把C1往左移，同时需要把C2往右移。<br>如果L2&gt;R1,代表A2左边有过多较大的数字，我们必须把C2往左移，同时需要把C1往右移。<br>反之则相反。</p>
+<p>当我们找到正确的分割线位置的时候，中间值  = (max(L1, L2) + min(R1, R2)) / 2。</p>
+<p>1.因为C1和C2可以根据彼此的值互相推断，我们可以使用较短的数组(设为A2)并且只移动C2，然后计算出C1。这样我们的时间复杂度就是O(log(min(N1, N2)))</p>
+<p>2.只有在极限的条件下分割线会在0,或者2N的index。比如，C2=2N2,R2 = A2[2*N2/2] = A2[N2].这种情况下他有一边是没有数值的，我们可以把它当成是极大或者极小，L = INT_MIN ，R = INT_MAX.</p>
+<p>时间复杂度 ： O(log(min(m,n))) 。m,n是两个数组的长度。<br>空间复杂度 ： O(1) .</p>
+<h2><span id="方法三">方法三：</span></h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">findMedianSortedArrays</span><span class="params">(<span class="keyword">int</span> A[], <span class="keyword">int</span> B[])</span> </span>&#123;</div><div class="line">       <span class="keyword">int</span> n = A.length;</div><div class="line">       <span class="keyword">int</span> m = B.length;</div><div class="line">       <span class="comment">// the following call is to make sure len(A) &lt;= len(B).</span></div><div class="line">       <span class="comment">// yes, it calls itself, but at most once, shouldn't be</span></div><div class="line">       <span class="comment">// consider a recursive solution</span></div><div class="line">       <span class="keyword">if</span> (n &gt; m)</div><div class="line">           <span class="keyword">return</span> findMedianSortedArrays(B, A);</div><div class="line"></div><div class="line">       <span class="comment">// now, do binary search</span></div><div class="line">       <span class="keyword">int</span> k = (n + m - <span class="number">1</span>) / <span class="number">2</span>;</div><div class="line">       <span class="keyword">int</span> l = <span class="number">0</span>, r = Math.min(k, n); <span class="comment">// r is n, NOT n-1, this is important!!</span></div><div class="line">       <span class="keyword">while</span> (l &lt; r) &#123;</div><div class="line">           <span class="keyword">int</span> midA = (l + r) / <span class="number">2</span>;</div><div class="line">           <span class="keyword">int</span> midB = k - midA;</div><div class="line">           <span class="keyword">if</span> (A[midA] &lt; B[midB])</div><div class="line">               l = midA + <span class="number">1</span>;</div><div class="line">           <span class="keyword">else</span></div><div class="line">               r = midA;</div><div class="line">       &#125;</div><div class="line"></div><div class="line">       <span class="comment">// after binary search, we almost get the median because it must be between</span></div><div class="line">       <span class="comment">// these 4 numbers: A[l-1], A[l], B[k-l], and B[k-l+1]</span></div><div class="line"></div><div class="line">       <span class="comment">// if (n+m) is odd, the median is the larger one between A[l-1] and B[k-l].</span></div><div class="line">       <span class="comment">// and there are some corner cases we need to take care of.</span></div><div class="line">       <span class="keyword">int</span> a = Math.max(l &gt; <span class="number">0</span> ? A[l - <span class="number">1</span>] : Integer.MIN_VALUE, k - l &gt;= <span class="number">0</span> ? B[k - l] : Integer.MIN_VALUE);</div><div class="line">       <span class="keyword">if</span> (((n + m) &amp; <span class="number">1</span>) == <span class="number">1</span>)</div><div class="line">           <span class="keyword">return</span> (<span class="keyword">double</span>) a;</div><div class="line"></div><div class="line">       <span class="comment">// if (n+m) is even, the median can be calculated by</span></div><div class="line">       <span class="comment">//      median = (max(A[l-1], B[k-l]) + min(A[l], B[k-l+1]) / 2.0</span></div><div class="line">       <span class="comment">// also, there are some corner cases to take care of.</span></div><div class="line">       <span class="keyword">int</span> b = Math.min(l &lt; n ? A[l] : Integer.MAX_VALUE, k - l + <span class="number">1</span> &lt; m ? B[k - l + <span class="number">1</span>] : Integer.MAX_VALUE);</div><div class="line">       <span class="keyword">return</span> (a + b) / <span class="number">2.0</span>;</div><div class="line">   &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/4.%20Median%20of%20Two%20Sorted%20Arrays/Images/3SuccessResult.png?raw=true" alt="效率"></p>
+<p><strong>分析</strong><br>这个方法的原理和上一个方法是大致相同的。<br>时间复杂度 ： O(log(min(m,n))) 。m,n是两个数组的长度。<br>空间复杂度 ： O(1) .</p>
+<h2><span id="方法四">方法四：</span></h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">findMedianSortedArrays</span><span class="params">(<span class="keyword">int</span>[] A, <span class="keyword">int</span>[] B)</span> </span>&#123;</div><div class="line">              <span class="keyword">int</span> m = A.length, n = B.length;</div><div class="line">              <span class="keyword">int</span> l = (m + n + <span class="number">1</span>) / <span class="number">2</span>;<span class="comment">//position of l element (not the index)</span></div><div class="line">              <span class="keyword">int</span> r = (m + n + <span class="number">2</span>) / <span class="number">2</span>;<span class="comment">//position of r element (not the index)</span></div><div class="line">              <span class="keyword">return</span> (getkth(A, <span class="number">0</span>, B, <span class="number">0</span>, l) + getkth(A, <span class="number">0</span>, B, <span class="number">0</span>, r)) / <span class="number">2.0</span>;</div><div class="line">          &#125;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">getkth</span><span class="params">(<span class="keyword">int</span>[] A, <span class="keyword">int</span> aStart, <span class="keyword">int</span>[] B, <span class="keyword">int</span> bStart, <span class="keyword">int</span> k)</span> </span>&#123;</div><div class="line">          <span class="comment">//when the start position is bigger than A.length -1 ,means the median doesn't in the A.</span></div><div class="line">          <span class="keyword">if</span> (aStart &gt; A.length - <span class="number">1</span>) <span class="keyword">return</span> B[bStart + k - <span class="number">1</span>];</div><div class="line">          <span class="keyword">if</span> (bStart &gt; B.length - <span class="number">1</span>) <span class="keyword">return</span> A[aStart + k - <span class="number">1</span>];</div><div class="line">          <span class="keyword">if</span> (k == <span class="number">1</span>) <span class="keyword">return</span> Math.min(A[aStart], B[bStart]);</div><div class="line"></div><div class="line">          <span class="keyword">int</span> aMid = Integer.MAX_VALUE, bMid = Integer.MAX_VALUE;</div><div class="line">          <span class="keyword">if</span> (aStart + k/<span class="number">2</span> - <span class="number">1</span> &lt; A.length) aMid = A[aStart + k/<span class="number">2</span> - <span class="number">1</span>];</div><div class="line">          <span class="keyword">if</span> (bStart + k/<span class="number">2</span> - <span class="number">1</span> &lt; B.length) bMid = B[bStart + k/<span class="number">2</span> - <span class="number">1</span>];</div><div class="line"></div><div class="line">          <span class="keyword">if</span> (aMid &lt; bMid)</div><div class="line">              <span class="keyword">return</span> getkth(A, aStart + k/<span class="number">2</span>, B, bStart, k - k/<span class="number">2</span>);<span class="comment">// Check: aRight + bLeft</span></div><div class="line">          <span class="keyword">else</span></div><div class="line">              <span class="keyword">return</span> getkth(A, aStart, B, bStart + k/<span class="number">2</span>, k - k/<span class="number">2</span>);<span class="comment">// Check: bRight + aLeft</span></div><div class="line">  &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/4.%20Median%20of%20Two%20Sorted%20Arrays/Images/4SuccessResult.png?raw=true" alt="效率"></p>
+<p><strong>分析</strong><br>这个方法的原理是这样的，从两个数组中间值开始通过递归对比，每次排除一半的选项。如果A的中间值小于B的中间值则保留a的右侧数字和b的左侧数字。反之相反。然后得到l和r位置的数字,再相加除以2即可。需要注意的是这里的l和r不是index，不是从零开始的。如果两个数组的长度的和是奇数的话l和r是相同的，偶数则不同。<br>时间复杂度 ： O(log(m + n))<br>空间复杂度 ： O(1)</p>
+<p>如果你有更好的办法或者对我这里的描述有其他看法，请联系我。谢谢</p>
+<h2><span id="about-me">About Me</span></h2><p>我的博客 <a href="http://leonchen1024.com/" target="_blank" rel="external">leonchen1024.com</a></p>
+<p>我的 GitHub <a href="https://github.com/LeonChen1024" target="_blank" rel="external">https://github.com/LeonChen1024</a></p>
+<p>微信公众号 </p>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/Images/CooderQRcodem.jpg?raw=true" alt="wechat"></p>
+-->
+            <!---->
+        <!--</div>-->
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://yoursite.com/2018/08/15/4-Median-of-Two-Sorted-Arrays/Record-cn/" data-id="cjqqnsx9800483lbjqjvkmf5o" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+
+
+
+
     <article id="post-Binary-Search" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -371,7 +596,227 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://yoursite.com/2018/08/14/Binary-Search/" data-id="cjq0wmyog000duabjfggikdpx" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2018/08/14/Binary-Search/" data-id="cjqqnsx5l00093lbjmad5ao70" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+
+
+
+
+    <article id="post-3-Longest-Substring-Without-Repeating-Characters/Record[Chinese-ver]" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+	
+		<a href="/2018/07/21/3-Longest-Substring-Without-Repeating-Characters/Record[Chinese-ver]/" itemprop="url">
+            <img src="/2018/07/21/3-Longest-Substring-Without-Repeating-Characters/Record[Chinese-ver]/title.jpg" class="article-banner" />
+        </a>
+	
+
+
+
+        
+        
+        <header class="article-header">
+            
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2018/07/21/3-Longest-Substring-Without-Repeating-Characters/Record[Chinese-ver]/">LeetCode 3.最长的没有重复字符的子字符串 [Chinese ver]</a>
+        </h1>
+    
+
+            
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2018/07/21/3-Longest-Substring-Without-Repeating-Characters/Record[Chinese-ver]/">
+            <time datetime="2018-07-20T16:00:00.000Z" itemprop="datePublished">2018-07-21</time>
+        </a>
+    </div>
+
+
+                
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Chinese/">Chinese</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/Chinese/Algorithm/">Algorithm</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/Chinese/Algorithm/LeetCode/">LeetCode</a>
+    </div>
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Algorithm/">Algorithm</a>, <a class="tag-link" href="/tags/Chinese/">Chinese</a>, <a class="tag-link" href="/tags/LeetCode/">LeetCode</a>
+    </div>
+
+            </div>
+            
+        </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <p><p>[Chinese ver]</p>
+<h2><span id="3最长的没有重复字符的子字符串">3.最长的没有重复字符的子字符串</span></h2><p>给你一个字符串，得出最长的一个没有重复字符的子字符串的长度。</p>
+<p><strong>例子：</strong></p>
+<p>给定“abcabcbb”，答案是“abc”，长度为3。</p>
+<p>
+                
+                
+                
+            
+    </div>
+    <div class="article-more-link">
+        <a href="/2018/07/21/3-Longest-Substring-Without-Repeating-Characters/Record[Chinese-ver]/#more">Read More</a>
+    </div>
+    
+        <!--<div class="article-entry" itemprop="articleBody">-->
+            <!---->
+            <!---->
+            <!--<p>[Chinese ver]</p>
+<h2><span id="3最长的没有重复字符的子字符串">3.最长的没有重复字符的子字符串</span></h2><p>给你一个字符串，得出最长的一个没有重复字符的子字符串的长度。</p>
+<p><strong>例子：</strong></p>
+<p>给定“abcabcbb”，答案是“abc”，长度为3。</p>
+<p>给定“bbbbb”，答案是“b”，长度为1。</p>
+<p>给定“pwwkew”，答案是“wke”，长度为3.</p>
+<p>注意答案必须是一个子字符串，“pwke”是一个子序列，而不是一个子字符串。</p>
+<p>先来一个极其繁琐的算法，一开始没有经过太多的思考，导致不断有没考虑到情况发生，不断的修修改改，成了一个极其冗余的代码。。</p>
+<h3><span id="初解">初解</span></h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">lengthOfLongestSubstring</span><span class="params">(String s)</span> </span>&#123;</div><div class="line">        HashMap&lt;String,Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</div><div class="line">        <span class="keyword">int</span> maxSubLength = <span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span> tempLength = <span class="number">0</span>;</div><div class="line">        <span class="keyword">boolean</span> isFirstRepeat = <span class="keyword">true</span>;</div><div class="line">        String beginSub = <span class="string">""</span>;</div><div class="line">        <span class="keyword">int</span> bigStartNum = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;s.length();i++)&#123;</div><div class="line">            beginSub = String.valueOf(s.charAt(i));</div><div class="line">            <span class="keyword">if</span>(map.containsKey(beginSub))&#123;</div><div class="line">                <span class="keyword">if</span>(map.get(beginSub)&gt;bigStartNum)&#123;</div><div class="line">                    tempLength = i - map.get(beginSub);</div><div class="line">                    bigStartNum = map.get(beginSub);</div><div class="line">                &#125;<span class="keyword">else</span>&#123;</div><div class="line">                    tempLength = i - bigStartNum;</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">if</span>(tempLength&gt;maxSubLength)&#123;</div><div class="line">                    maxSubLength = tempLength;</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">if</span>(isFirstRepeat)&#123;</div><div class="line">                    tempLength = i;</div><div class="line">                    isFirstRepeat =<span class="keyword">false</span>;</div><div class="line">                    <span class="keyword">if</span>(tempLength&gt;maxSubLength)&#123;</div><div class="line">                    maxSubLength = tempLength;</div><div class="line">                &#125;</div><div class="line">                &#125;</div><div class="line">            &#125;<span class="keyword">else</span>&#123;</div><div class="line">                 tempLength = i - bigStartNum;</div><div class="line">                   <span class="keyword">if</span>(tempLength&gt;maxSubLength)&#123;</div><div class="line">                    maxSubLength = tempLength;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">            map.put(beginSub,i);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>((s.length()-bigStartNum)&gt;maxSubLength)&#123;</div><div class="line">            maxSubLength = (s.length()-bigStartNum-<span class="number">1</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(isFirstRepeat)&#123;</div><div class="line">            <span class="keyword">return</span> s.length();</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">return</span> maxSubLength;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/3.%20Longest%20Substring%20Without%20Repeating%20Characters/Images/most_tedious_result.png?raw=true" alt="这代码。。没脸见人"></p>
+<p>痛定思过，惨痛的教训告诉我们要深思熟虑后再写代码，这个代码就不分析了，写出来的东西自己都要看不懂了，我连注释都不好意思写了，只是给自己留个教训。。接下来会对这个方法做一个优化和重新构思。</p>
+<h3><span id="二次解">二次解</span></h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">lengthOfLongestSubstring</span><span class="params">(String s)</span> </span>&#123;</div><div class="line">        HashMap&lt;String,Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</div><div class="line">		<span class="comment">//max substring's length</span></div><div class="line">        <span class="keyword">int</span> maxSubLength = <span class="number">0</span>;</div><div class="line">		<span class="comment">//the sub character now</span></div><div class="line">        String nowSub = <span class="string">""</span>;</div><div class="line">		<span class="comment">//the bigger index which the string can start</span></div><div class="line">        <span class="keyword">int</span> bigStartNum = -<span class="number">1</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;s.length();i++)&#123;</div><div class="line">            nowSub = String.valueOf(s.charAt(i));</div><div class="line">            <span class="keyword">if</span>(map.containsKey(nowSub))&#123;</div><div class="line">				<span class="comment">//if the character repeat,you can start the string from the larger one of the nowSub occur before this time and bigStartNum.</span></div><div class="line">                bigStartNum = Math.max(map.get(nowSub), bigStartNum);</div><div class="line">            &#125;</div><div class="line">			<span class="comment">//the maxSubLength is the maximum number of the length of bigStartNum to i and old maxSubLength</span></div><div class="line">            maxSubLength = Math.max(i - bigStartNum, maxSubLength);</div><div class="line">            map.put(nowSub,i);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> maxSubLength;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>优化之后的代码就很清晰了。重新构思的时候才想到还有一个Math.max()的方法可以用，对api的敏感度还是不够。</p>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/3.%20Longest%20Substring%20Without%20Repeating%20Characters/Images/promote_self.png?raw=true" alt="效率"></p>
+<p><strong>分析</strong><br>这个方法的原理就是将每一个字符进行遍历，为了避免多重循环嵌套，我们使用了hashmap来将时间成本换成空间成本，通过hashmap来判断前面是否有这个字符，并存储他的序号信息。那怎么得到最长的子字符串呢？其实可以分成以下几种情况：<br>我们在前一个重复的字符加上(p)来表示,后一个重复的字符加上(n)来表示<br>1.这个字符是第一个重复的字符a，长度应该是从开始到a(n)的前一位。<br>2.这个字符不是第一个重复的字符a,上一个重复的字符为b，如果a(p)在b(p)的后面那么长度是两个a之间的长度，如果a(p)在b(p)的前面，那么长度是a(n)到b(p)之间(因为a(n)到a(p)之间包含了两个b，这样的字符串是不合规矩的)<br>3.这个字符没有出现重复的情况，长度就是这个字符到上一个重复字符a(p)出现的位置加一。</p>
+<p>整理一下现在的情况，其实以上的条件都可以整理成一种方式来计算，因为子字符串必须是连续的，所以就是计算当前字符到上一个任意重复字符点的长度，然后取出最大的一个。</p>
+<p>时间复杂度 ： O(n) .<br>空间复杂度 ： O(n) .</p>
+<p>接下来我们看一下这类题目的几类解法。</p>
+<h3><span id="方法一暴力循环">方法一：暴力循环</span></h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">lengthOfLongestSubstring</span><span class="params">(String s)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> n = s.length();</div><div class="line">        <span class="keyword">int</span> ans = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt;= n; j++)</div><div class="line">                <span class="keyword">if</span> (allUnique(s, i, j)) ans = Math.max(ans, j - i);</div><div class="line">        <span class="keyword">return</span> ans;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">	<span class="comment">//judge that all the characters in s is unique.</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">allUnique</span><span class="params">(String s, <span class="keyword">int</span> start, <span class="keyword">int</span> end)</span> </span>&#123;</div><div class="line">        Set&lt;Character&gt; set = <span class="keyword">new</span> HashSet&lt;&gt;();</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = start; i &lt; end; i++) &#123;</div><div class="line">            Character ch = s.charAt(i);</div><div class="line">            <span class="keyword">if</span> (set.contains(ch)) <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">            set.add(ch);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/3.%20Longest%20Substring%20Without%20Repeating%20Characters/Images/brute_result.png?raw=true" alt="扎心了老铁"></p>
+<p><strong>分析</strong><br>这个方法的原理很简单，就是最外层的循环L1遍历每一个字符a，嵌套一个遍历a之后所有字符b的循环L2，在L2中又用了一个循环L3用hashset的方式来遍历a到b间以a为开头的所有字符串，并判断是否是没有重复值的字符串。嵌套了三层的循环！！！直接导致了Time Limit Exceeded 的结果，表示你这个方法太耗时了，不予通过。<br>时间复杂度 ： O(n^3) . 首先是最内层的[i,j)次的循环，时间复杂度为O(j-i)。然后是每一个j的循环[i+1,n),<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">n</div><div class="line">∑ O(j−i)</div><div class="line">i+1</div></pre></td></tr></table></figure></p>
+<p>最后算上最外层的a的循环[0,n).时间复杂度为<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">  n-1   n             n-1   (1+n-i)(n-i)</div><div class="line">O( ∑  ( ∑ (j-i))) = O(∑    —————————————— ) = O(n^3)</div><div class="line">  i=0  j=i+1          i=0         2</div></pre></td></tr></table></figure></p>
+<p>这个转化过程呢其实就是利用的等差数列的n项和公式，太难打公式了，中间步骤就不详细写了。<br><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/Mathematical_Formula/arithmetic%20progression%20_nsum.png?raw=true" alt="等差数列前n项和"></p>
+<p>空间复杂度 ： O(min(n,m)) . n就是字符串的长度，m是字母表的字符集的值。因为我们最多就可能有m个不重复的值，所以hashset的size最大也只会是m.</p>
+<p>这个方法在逻辑上可以稍微做一个优化，主要的思路就是其实如果a到b已经是包含重复的字符了，那么a到b后面的字符也一定是包含重复字符的。可以省略了那些比较。</p>
+<h3><span id="方法二滑窗算法也称k近邻算法">方法二：滑窗算法（也称K近邻算法）</span></h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">lengthOfLongestSubstring</span><span class="params">(String s)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> n = s.length();</div><div class="line">        Set&lt;Character&gt; set = <span class="keyword">new</span> HashSet&lt;&gt;();</div><div class="line">        <span class="keyword">int</span> ans = <span class="number">0</span>, i = <span class="number">0</span>, j = <span class="number">0</span>;</div><div class="line">        <span class="keyword">while</span> (i &lt; n &amp;&amp; j &lt; n) &#123;</div><div class="line">            <span class="comment">// try to extend the range [i, j]</span></div><div class="line">            <span class="keyword">if</span> (!set.contains(s.charAt(j)))&#123;</div><div class="line">                set.add(s.charAt(j++));</div><div class="line">                ans = Math.max(ans, j - i);</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">else</span> &#123;</div><div class="line">                set.remove(s.charAt(i++));</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> ans;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/3.%20Longest%20Substring%20Without%20Repeating%20Characters/Images/Sliding_Window_result.png?raw=true" alt="效率"></p>
+<p><strong>分析</strong><br>方法一重复检查每一个子字符串是否重复，其实没有必要这样，方法二就是避免了多次重复检查，当i~j没有重复时，我们只需要检测s[j + 1]是否和i~j中的字符重复。直到j+1的字符重复了，我们就得到了i字符的最长不重复字符。当j不小于n时就可以停止计算了，因为此时的[i,j)肯定要长于[i+1,j)。</p>
+<p>时间复杂度 ： O(2n) = O(n)<br>空间复杂度 ： O(min(m,n)) n就是字符串的长度，m是字母表的字符集的值。因为我们最多就可能有m个不重复的值，所以hashset的size最大也只会是m.</p>
+<h3><span id="方法三改良后的滑窗算法">方法三：改良后的滑窗算法</span></h3><p>HashMap<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">lengthOfLongestSubstring</span><span class="params">(String s)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> n = s.length(), ans = <span class="number">0</span>;</div><div class="line">        Map&lt;Character, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;(); <span class="comment">// current index of character</span></div><div class="line">        <span class="comment">// try to extend the range [i, j]</span></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>, i = <span class="number">0</span>; j &lt; n; j++) &#123;</div><div class="line">            <span class="keyword">if</span> (map.containsKey(s.charAt(j))) &#123;</div><div class="line">                i = Math.max(map.get(s.charAt(j)), i);</div><div class="line">            &#125;</div><div class="line">            ans = Math.max(ans, j - i + <span class="number">1</span>);</div><div class="line">            map.put(s.charAt(j), j + <span class="number">1</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> ans;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/3.%20Longest%20Substring%20Without%20Repeating%20Characters/Images/Sliding_Window_Optimized_hashmap_result.png?raw=true" alt="效率"></p>
+<p><strong>分析</strong><br>这个方法是对方法二的改进，我们使用HashMap来保存出现的字符和他的位置，当出现重复字符时，我们可以直接定位到重复字符的位置(注意这里的位置和程序上的序号是不同的，他的第一位就是1而不是我们程序上的0.)，对比以前的i取较大的值赋值为新的i。为什么取大值可以看上面的二次解</p>
+<p>时间复杂度 ： O(n)<br>空间复杂度 ： O(min(m,n)) 和方法二相同</p>
+<p>ASCII 128<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">lengthOfLongestSubstring</span><span class="params">(String s)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> n = s.length(), ans = <span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span>[] index = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">128</span>]; <span class="comment">// current index of character</span></div><div class="line">        <span class="comment">// try to extend the range [i, j]</span></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>, i = <span class="number">0</span>; j &lt; n; j++) &#123;</div><div class="line">            i = Math.max(index[s.charAt(j)], i);</div><div class="line">            ans = Math.max(ans, j - i + <span class="number">1</span>);</div><div class="line">            index[s.charAt(j)] = j + <span class="number">1</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> ans;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/3.%20Longest%20Substring%20Without%20Repeating%20Characters/Images/Sliding_Window_Optimized_ascii_result.png?raw=true" alt="效率"></p>
+<p>效率最快的一种，在同样的复杂度上为什么会比上一种hashmap的方法快那么多呢，简单点说，其实集合大部分都是由数组构成的，hashmap其实就是由数组加链表封装而成的，所以在速度上数组查找会优于hashmap查找。</p>
+<p><strong>分析</strong><br>这个方法原理和上一个使用hashmap的方法大致相同，但是它使用的是int[]来存储键值对，使用字符来做下标(是的，字符可以做下标，准确的来说是整型字符常量可以做下标，会被解析为他的ASCII码值)，位置来做值。</p>
+<p>时间复杂度 ： O(n)<br>空间复杂度 ： O(m) m是字符表的大小</p>
+<p>如果你有更好的办法或者对我这里的描述有其他看法，请联系我。谢谢</p>
+<h2><span id="about-me">About Me</span></h2><p>我的博客 <a href="http://leonchen1024.com/" target="_blank" rel="external">leonchen1024.com</a></p>
+<p>我的 GitHub <a href="https://github.com/LeonChen1024" target="_blank" rel="external">https://github.com/LeonChen1024</a></p>
+<p>微信公众号 </p>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/Images/CooderQRcodem.jpg?raw=true" alt="wechat"></p>
+-->
+            <!---->
+        <!--</div>-->
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://yoursite.com/2018/07/21/3-Longest-Substring-Without-Repeating-Characters/Record[Chinese-ver]/" data-id="cjqqnsx8t003g3lbj5srg8njo" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -595,227 +1040,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://yoursite.com/2018/07/21/3-Longest-Substring-Without-Repeating-Characters/Record[English-ver]/" data-id="cjq0wmyqu003euabj5di76lzv" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-
-
-
-
-    <article id="post-3-Longest-Substring-Without-Repeating-Characters/Record[Chinese-ver]" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-	
-		<a href="/2018/07/21/3-Longest-Substring-Without-Repeating-Characters/Record[Chinese-ver]/" itemprop="url">
-            <img src="/2018/07/21/3-Longest-Substring-Without-Repeating-Characters/Record[Chinese-ver]/title.jpg" class="article-banner" />
-        </a>
-	
-
-
-
-        
-        
-        <header class="article-header">
-            
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2018/07/21/3-Longest-Substring-Without-Repeating-Characters/Record[Chinese-ver]/">LeetCode 3.最长的没有重复字符的子字符串 [Chinese ver]</a>
-        </h1>
-    
-
-            
-            <div class="article-meta">
-                
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2018/07/21/3-Longest-Substring-Without-Repeating-Characters/Record[Chinese-ver]/">
-            <time datetime="2018-07-20T16:00:00.000Z" itemprop="datePublished">2018-07-21</time>
-        </a>
-    </div>
-
-
-                
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/Chinese/">Chinese</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/Chinese/Algorithm/">Algorithm</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/Chinese/Algorithm/LeetCode/">LeetCode</a>
-    </div>
-
-                
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/Algorithm/">Algorithm</a>, <a class="tag-link" href="/tags/Chinese/">Chinese</a>, <a class="tag-link" href="/tags/LeetCode/">LeetCode</a>
-    </div>
-
-            </div>
-            
-        </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            <p><p>[Chinese ver]</p>
-<h2><span id="3最长的没有重复字符的子字符串">3.最长的没有重复字符的子字符串</span></h2><p>给你一个字符串，得出最长的一个没有重复字符的子字符串的长度。</p>
-<p><strong>例子：</strong></p>
-<p>给定“abcabcbb”，答案是“abc”，长度为3。</p>
-<p>
-                
-                
-                
-            
-    </div>
-    <div class="article-more-link">
-        <a href="/2018/07/21/3-Longest-Substring-Without-Repeating-Characters/Record[Chinese-ver]/#more">Read More</a>
-    </div>
-    
-        <!--<div class="article-entry" itemprop="articleBody">-->
-            <!---->
-            <!---->
-            <!--<p>[Chinese ver]</p>
-<h2><span id="3最长的没有重复字符的子字符串">3.最长的没有重复字符的子字符串</span></h2><p>给你一个字符串，得出最长的一个没有重复字符的子字符串的长度。</p>
-<p><strong>例子：</strong></p>
-<p>给定“abcabcbb”，答案是“abc”，长度为3。</p>
-<p>给定“bbbbb”，答案是“b”，长度为1。</p>
-<p>给定“pwwkew”，答案是“wke”，长度为3.</p>
-<p>注意答案必须是一个子字符串，“pwke”是一个子序列，而不是一个子字符串。</p>
-<p>先来一个极其繁琐的算法，一开始没有经过太多的思考，导致不断有没考虑到情况发生，不断的修修改改，成了一个极其冗余的代码。。</p>
-<h3><span id="初解">初解</span></h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">lengthOfLongestSubstring</span><span class="params">(String s)</span> </span>&#123;</div><div class="line">        HashMap&lt;String,Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</div><div class="line">        <span class="keyword">int</span> maxSubLength = <span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span> tempLength = <span class="number">0</span>;</div><div class="line">        <span class="keyword">boolean</span> isFirstRepeat = <span class="keyword">true</span>;</div><div class="line">        String beginSub = <span class="string">""</span>;</div><div class="line">        <span class="keyword">int</span> bigStartNum = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;s.length();i++)&#123;</div><div class="line">            beginSub = String.valueOf(s.charAt(i));</div><div class="line">            <span class="keyword">if</span>(map.containsKey(beginSub))&#123;</div><div class="line">                <span class="keyword">if</span>(map.get(beginSub)&gt;bigStartNum)&#123;</div><div class="line">                    tempLength = i - map.get(beginSub);</div><div class="line">                    bigStartNum = map.get(beginSub);</div><div class="line">                &#125;<span class="keyword">else</span>&#123;</div><div class="line">                    tempLength = i - bigStartNum;</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">if</span>(tempLength&gt;maxSubLength)&#123;</div><div class="line">                    maxSubLength = tempLength;</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">if</span>(isFirstRepeat)&#123;</div><div class="line">                    tempLength = i;</div><div class="line">                    isFirstRepeat =<span class="keyword">false</span>;</div><div class="line">                    <span class="keyword">if</span>(tempLength&gt;maxSubLength)&#123;</div><div class="line">                    maxSubLength = tempLength;</div><div class="line">                &#125;</div><div class="line">                &#125;</div><div class="line">            &#125;<span class="keyword">else</span>&#123;</div><div class="line">                 tempLength = i - bigStartNum;</div><div class="line">                   <span class="keyword">if</span>(tempLength&gt;maxSubLength)&#123;</div><div class="line">                    maxSubLength = tempLength;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">            map.put(beginSub,i);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>((s.length()-bigStartNum)&gt;maxSubLength)&#123;</div><div class="line">            maxSubLength = (s.length()-bigStartNum-<span class="number">1</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(isFirstRepeat)&#123;</div><div class="line">            <span class="keyword">return</span> s.length();</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">return</span> maxSubLength;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/3.%20Longest%20Substring%20Without%20Repeating%20Characters/Images/most_tedious_result.png?raw=true" alt="这代码。。没脸见人"></p>
-<p>痛定思过，惨痛的教训告诉我们要深思熟虑后再写代码，这个代码就不分析了，写出来的东西自己都要看不懂了，我连注释都不好意思写了，只是给自己留个教训。。接下来会对这个方法做一个优化和重新构思。</p>
-<h3><span id="二次解">二次解</span></h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">lengthOfLongestSubstring</span><span class="params">(String s)</span> </span>&#123;</div><div class="line">        HashMap&lt;String,Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</div><div class="line">		<span class="comment">//max substring's length</span></div><div class="line">        <span class="keyword">int</span> maxSubLength = <span class="number">0</span>;</div><div class="line">		<span class="comment">//the sub character now</span></div><div class="line">        String nowSub = <span class="string">""</span>;</div><div class="line">		<span class="comment">//the bigger index which the string can start</span></div><div class="line">        <span class="keyword">int</span> bigStartNum = -<span class="number">1</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;s.length();i++)&#123;</div><div class="line">            nowSub = String.valueOf(s.charAt(i));</div><div class="line">            <span class="keyword">if</span>(map.containsKey(nowSub))&#123;</div><div class="line">				<span class="comment">//if the character repeat,you can start the string from the larger one of the nowSub occur before this time and bigStartNum.</span></div><div class="line">                bigStartNum = Math.max(map.get(nowSub), bigStartNum);</div><div class="line">            &#125;</div><div class="line">			<span class="comment">//the maxSubLength is the maximum number of the length of bigStartNum to i and old maxSubLength</span></div><div class="line">            maxSubLength = Math.max(i - bigStartNum, maxSubLength);</div><div class="line">            map.put(nowSub,i);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> maxSubLength;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>优化之后的代码就很清晰了。重新构思的时候才想到还有一个Math.max()的方法可以用，对api的敏感度还是不够。</p>
-<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/3.%20Longest%20Substring%20Without%20Repeating%20Characters/Images/promote_self.png?raw=true" alt="效率"></p>
-<p><strong>分析</strong><br>这个方法的原理就是将每一个字符进行遍历，为了避免多重循环嵌套，我们使用了hashmap来将时间成本换成空间成本，通过hashmap来判断前面是否有这个字符，并存储他的序号信息。那怎么得到最长的子字符串呢？其实可以分成以下几种情况：<br>我们在前一个重复的字符加上(p)来表示,后一个重复的字符加上(n)来表示<br>1.这个字符是第一个重复的字符a，长度应该是从开始到a(n)的前一位。<br>2.这个字符不是第一个重复的字符a,上一个重复的字符为b，如果a(p)在b(p)的后面那么长度是两个a之间的长度，如果a(p)在b(p)的前面，那么长度是a(n)到b(p)之间(因为a(n)到a(p)之间包含了两个b，这样的字符串是不合规矩的)<br>3.这个字符没有出现重复的情况，长度就是这个字符到上一个重复字符a(p)出现的位置加一。</p>
-<p>整理一下现在的情况，其实以上的条件都可以整理成一种方式来计算，因为子字符串必须是连续的，所以就是计算当前字符到上一个任意重复字符点的长度，然后取出最大的一个。</p>
-<p>时间复杂度 ： O(n) .<br>空间复杂度 ： O(n) .</p>
-<p>接下来我们看一下这类题目的几类解法。</p>
-<h3><span id="方法一暴力循环">方法一：暴力循环</span></h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">lengthOfLongestSubstring</span><span class="params">(String s)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> n = s.length();</div><div class="line">        <span class="keyword">int</span> ans = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt;= n; j++)</div><div class="line">                <span class="keyword">if</span> (allUnique(s, i, j)) ans = Math.max(ans, j - i);</div><div class="line">        <span class="keyword">return</span> ans;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">	<span class="comment">//judge that all the characters in s is unique.</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">allUnique</span><span class="params">(String s, <span class="keyword">int</span> start, <span class="keyword">int</span> end)</span> </span>&#123;</div><div class="line">        Set&lt;Character&gt; set = <span class="keyword">new</span> HashSet&lt;&gt;();</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = start; i &lt; end; i++) &#123;</div><div class="line">            Character ch = s.charAt(i);</div><div class="line">            <span class="keyword">if</span> (set.contains(ch)) <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">            set.add(ch);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/3.%20Longest%20Substring%20Without%20Repeating%20Characters/Images/brute_result.png?raw=true" alt="扎心了老铁"></p>
-<p><strong>分析</strong><br>这个方法的原理很简单，就是最外层的循环L1遍历每一个字符a，嵌套一个遍历a之后所有字符b的循环L2，在L2中又用了一个循环L3用hashset的方式来遍历a到b间以a为开头的所有字符串，并判断是否是没有重复值的字符串。嵌套了三层的循环！！！直接导致了Time Limit Exceeded 的结果，表示你这个方法太耗时了，不予通过。<br>时间复杂度 ： O(n^3) . 首先是最内层的[i,j)次的循环，时间复杂度为O(j-i)。然后是每一个j的循环[i+1,n),<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">n</div><div class="line">∑ O(j−i)</div><div class="line">i+1</div></pre></td></tr></table></figure></p>
-<p>最后算上最外层的a的循环[0,n).时间复杂度为<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">  n-1   n             n-1   (1+n-i)(n-i)</div><div class="line">O( ∑  ( ∑ (j-i))) = O(∑    —————————————— ) = O(n^3)</div><div class="line">  i=0  j=i+1          i=0         2</div></pre></td></tr></table></figure></p>
-<p>这个转化过程呢其实就是利用的等差数列的n项和公式，太难打公式了，中间步骤就不详细写了。<br><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/Mathematical_Formula/arithmetic%20progression%20_nsum.png?raw=true" alt="等差数列前n项和"></p>
-<p>空间复杂度 ： O(min(n,m)) . n就是字符串的长度，m是字母表的字符集的值。因为我们最多就可能有m个不重复的值，所以hashset的size最大也只会是m.</p>
-<p>这个方法在逻辑上可以稍微做一个优化，主要的思路就是其实如果a到b已经是包含重复的字符了，那么a到b后面的字符也一定是包含重复字符的。可以省略了那些比较。</p>
-<h3><span id="方法二滑窗算法也称k近邻算法">方法二：滑窗算法（也称K近邻算法）</span></h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">lengthOfLongestSubstring</span><span class="params">(String s)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> n = s.length();</div><div class="line">        Set&lt;Character&gt; set = <span class="keyword">new</span> HashSet&lt;&gt;();</div><div class="line">        <span class="keyword">int</span> ans = <span class="number">0</span>, i = <span class="number">0</span>, j = <span class="number">0</span>;</div><div class="line">        <span class="keyword">while</span> (i &lt; n &amp;&amp; j &lt; n) &#123;</div><div class="line">            <span class="comment">// try to extend the range [i, j]</span></div><div class="line">            <span class="keyword">if</span> (!set.contains(s.charAt(j)))&#123;</div><div class="line">                set.add(s.charAt(j++));</div><div class="line">                ans = Math.max(ans, j - i);</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">else</span> &#123;</div><div class="line">                set.remove(s.charAt(i++));</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> ans;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/3.%20Longest%20Substring%20Without%20Repeating%20Characters/Images/Sliding_Window_result.png?raw=true" alt="效率"></p>
-<p><strong>分析</strong><br>方法一重复检查每一个子字符串是否重复，其实没有必要这样，方法二就是避免了多次重复检查，当i~j没有重复时，我们只需要检测s[j + 1]是否和i~j中的字符重复。直到j+1的字符重复了，我们就得到了i字符的最长不重复字符。当j不小于n时就可以停止计算了，因为此时的[i,j)肯定要长于[i+1,j)。</p>
-<p>时间复杂度 ： O(2n) = O(n)<br>空间复杂度 ： O(min(m,n)) n就是字符串的长度，m是字母表的字符集的值。因为我们最多就可能有m个不重复的值，所以hashset的size最大也只会是m.</p>
-<h3><span id="方法三改良后的滑窗算法">方法三：改良后的滑窗算法</span></h3><p>HashMap<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">lengthOfLongestSubstring</span><span class="params">(String s)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> n = s.length(), ans = <span class="number">0</span>;</div><div class="line">        Map&lt;Character, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;(); <span class="comment">// current index of character</span></div><div class="line">        <span class="comment">// try to extend the range [i, j]</span></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>, i = <span class="number">0</span>; j &lt; n; j++) &#123;</div><div class="line">            <span class="keyword">if</span> (map.containsKey(s.charAt(j))) &#123;</div><div class="line">                i = Math.max(map.get(s.charAt(j)), i);</div><div class="line">            &#125;</div><div class="line">            ans = Math.max(ans, j - i + <span class="number">1</span>);</div><div class="line">            map.put(s.charAt(j), j + <span class="number">1</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> ans;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/3.%20Longest%20Substring%20Without%20Repeating%20Characters/Images/Sliding_Window_Optimized_hashmap_result.png?raw=true" alt="效率"></p>
-<p><strong>分析</strong><br>这个方法是对方法二的改进，我们使用HashMap来保存出现的字符和他的位置，当出现重复字符时，我们可以直接定位到重复字符的位置(注意这里的位置和程序上的序号是不同的，他的第一位就是1而不是我们程序上的0.)，对比以前的i取较大的值赋值为新的i。为什么取大值可以看上面的二次解</p>
-<p>时间复杂度 ： O(n)<br>空间复杂度 ： O(min(m,n)) 和方法二相同</p>
-<p>ASCII 128<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">lengthOfLongestSubstring</span><span class="params">(String s)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> n = s.length(), ans = <span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span>[] index = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">128</span>]; <span class="comment">// current index of character</span></div><div class="line">        <span class="comment">// try to extend the range [i, j]</span></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>, i = <span class="number">0</span>; j &lt; n; j++) &#123;</div><div class="line">            i = Math.max(index[s.charAt(j)], i);</div><div class="line">            ans = Math.max(ans, j - i + <span class="number">1</span>);</div><div class="line">            index[s.charAt(j)] = j + <span class="number">1</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> ans;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/3.%20Longest%20Substring%20Without%20Repeating%20Characters/Images/Sliding_Window_Optimized_ascii_result.png?raw=true" alt="效率"></p>
-<p>效率最快的一种，在同样的复杂度上为什么会比上一种hashmap的方法快那么多呢，简单点说，其实集合大部分都是由数组构成的，hashmap其实就是由数组加链表封装而成的，所以在速度上数组查找会优于hashmap查找。</p>
-<p><strong>分析</strong><br>这个方法原理和上一个使用hashmap的方法大致相同，但是它使用的是int[]来存储键值对，使用字符来做下标(是的，字符可以做下标，准确的来说是整型字符常量可以做下标，会被解析为他的ASCII码值)，位置来做值。</p>
-<p>时间复杂度 ： O(n)<br>空间复杂度 ： O(m) m是字符表的大小</p>
-<p>如果你有更好的办法或者对我这里的描述有其他看法，请联系我。谢谢</p>
-<h2><span id="about-me">About Me</span></h2><p>我的博客 <a href="http://leonchen1024.com/" target="_blank" rel="external">leonchen1024.com</a></p>
-<p>我的 GitHub <a href="https://github.com/LeonChen1024" target="_blank" rel="external">https://github.com/LeonChen1024</a></p>
-<p>微信公众号 </p>
-<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/Images/CooderQRcodem.jpg?raw=true" alt="wechat"></p>
--->
-            <!---->
-        <!--</div>-->
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://yoursite.com/2018/07/21/3-Longest-Substring-Without-Repeating-Characters/Record[Chinese-ver]/" data-id="cjq0wmyqr0038uabj64c1g3sv" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2018/07/21/3-Longest-Substring-Without-Repeating-Characters/Record[English-ver]/" data-id="cjqqnsx8y003j3lbjqbu94ydz" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1007,7 +1232,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://yoursite.com/2018/07/15/2-Add-Two-Num/Record[Chinese-ver]/" data-id="cjq0wmyqm0035uabjm4h4rhdh" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2018/07/15/2-Add-Two-Num/Record[Chinese-ver]/" data-id="cjqqnsx8x003i3lbjxmsx7rtk" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1196,7 +1421,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://yoursite.com/2018/07/15/2-Add-Two-Num/Record[English-ver]/" data-id="cjq0wmyqn0037uabj8ucr9q5t" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2018/07/15/2-Add-Two-Num/Record[English-ver]/" data-id="cjqqnsx8z003n3lbj4ddm2du1" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1399,7 +1624,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://yoursite.com/2018/04/13/APP-Version-Control/" data-id="cjq0wmyo30000uabj551y71a4" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2018/04/13/APP-Version-Control/" data-id="cjqqnsx5d00013lbjj8qkl5or" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1583,7 +1808,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://yoursite.com/2018/01/10/Android-Error-And-Solution/" data-id="cjq0wmyoc0008uabjxt308w3a" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2018/01/10/Android-Error-And-Solution/" data-id="cjqqnsx5h00053lbj7xi0g0wd" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1732,7 +1957,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/02/17/1-Two-Sum/Record[English ver]/" data-id="cjq0wmyql0033uabjc401177u" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/02/17/1-Two-Sum/Record[English ver]/" data-id="cjqqnsx8s003e3lbjfu3d9vww" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1881,233 +2106,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/02/17/1-Two-Sum/Record[Chinese ver]/" data-id="cjq0wmyqk0032uabjmsaw2xf6" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-
-
-
-
-    <article id="post-Android-6.0-Change-2" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-	
-		<a href="/2016/08/20/Android-6.0-Change-2/" itemprop="url">
-            <img src="/2016/08/20/Android-6.0-Change-2/pic.jpg" class="article-banner" />
-        </a>
-	
-
-
-
-        
-        
-        <header class="article-header">
-            
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2016/08/20/Android-6.0-Change-2/">Android 6.0的变化 （下）</a>
-        </h1>
-    
-
-            
-            <div class="article-meta">
-                
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2016/08/20/Android-6.0-Change-2/">
-            <time datetime="2016-08-20T15:31:40.000Z" itemprop="datePublished">2016-08-20</time>
-        </a>
-    </div>
-
-
-                
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/Chinese/">Chinese</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/Chinese/Android/">Android</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/Chinese/Android/版本差异/">版本差异</a>
-    </div>
-
-                
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/Android/">Android</a>, <a class="tag-link" href="/tags/Chinese/">Chinese</a>, <a class="tag-link" href="/tags/版本差异/">版本差异</a>
-    </div>
-
-            </div>
-            
-        </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            <p><h2><span id="目录">目录</span></h2><ul>
-<li><a href="#目录">目录</a></li>
-<li><a href="#浏览器书签变化">浏览器书签变化</a></li>
-<li><a href="#android密钥库变化">Android密钥库变化</a></li>
-<p>
-                
-                
-                
-            
-    </div>
-    <div class="article-more-link">
-        <a href="/2016/08/20/Android-6.0-Change-2/#more">Read More</a>
-    </div>
-    
-        <!--<div class="article-entry" itemprop="articleBody">-->
-            <!---->
-            <!---->
-            <!--<h2><span id="目录">目录</span></h2><ul>
-<li><a href="#目录">目录</a></li>
-<li><a href="#浏览器书签变化">浏览器书签变化</a></li>
-<li><a href="#android密钥库变化">Android密钥库变化</a></li>
-<li><a href="#wifi和网络工作的变化">wifi和网络工作的变化</a></li>
-<li><a href="#照相服务改变">照相服务改变</a></li>
-<li><a href="#运行时">运行时</a></li>
-<li><a href="#apk验证">APK验证</a></li>
-<li><a href="#usb连接">USB连接</a></li>
-<li><a href="#企业级android的变化">企业级Android的变化</a></li>
-<li><a href="#devicepolicymanager-api的变化">DevicePolicyManager api的变化：</a></li>
-<li><a href="#其他api的变化">其他API的变化：</a></li>
-<li><a href="#全局设置的变化">全局设置的变化：</a></li>
-</ul>
-<h2><span id="浏览器书签变化">浏览器书签变化</span></h2><p>这个版本移除了对全局书签的支持。android.provider.Browser.getAllBookmarks()and android.provider.Browser.saveBookmark() 方法现在被移除了。同样的，READ_HISTORY_BOOKMARKS and WRITE_HISTORY_BOOKMARKS 权限也被移除了。如果你的APP目标版本是Android 6.0 (API level 23) 或者更高，不要使用全局书签或使用全局书签的权限，相对应的，你的APP应该使用内部的书签。</p>
-<h2><span id="android密钥库变化">Android密钥库变化</span></h2><p>在这个版本， Android Keystore provider 不在支持DSA.ECDSA仍然被支持。<br>当安全锁屏被禁用或复位时（例如，被用户或设备管理器操作时），那些没加密的密钥将不再被删除，在这些时候那些加密的密钥将被删除。</p>
-<h2><span id="wifi和网络工作的变化">wifi和网络工作的变化</span></h2><p>这个版本介绍了一下几个有关于Wi-Fi 和网络工作的API的行为变化。</p>
-<p>你的APP现在可以改变 WifiConfiguration 对象的状态仅当是你创建了这些对象时。你将不被允许去修改或者删除WifiConfiguration 对象当他是被用户或者别的APP创建的。</p>
-<p>在之前，如果一个APP使用 enableNetwork() 方法并设置disableAllOthers=true 来强制设备连接某个指定的WiFi网络，设备将会拒绝连接其他的网络比如蜂窝数据。在这个版本，设备不在拒绝连接其他的网络。如果你的APP的targetSdkVersion 是20或者更低，他将被固定在所选的WiFi网络。如果你的APP的targetSdkVersion 是21或者更高，使用多网络API（例如 openConnection(), bindSocket(),和新的bindProcessToNetwork() 方法）来确保网络通信是使用被选择的网络。</p>
-<h2><span id="照相服务改变">照相服务改变</span></h2><p>在这个版本中，接收摄像头服务和共享资源的模式已经从原来的“先到先服务”的模式转变为先服务高优先级的进程，服务的行为改变包括：</p>
-<p>获取相机子系统的资源，包括打开和配置相机设备，是基于APP进程的“优先级”来进行授予的。用户可见的或者在最前的activity的APP进程通常给予较高的优先级，来使的相机资源的分配和使用更加的可靠。</p>
-<p>一个低优先级的APP的正在使用相机的用户可能会被“驱逐”当一个高优先级的APP尝试使用相机时。在被弃用的Camera API中，这将导致被驱逐的用户将会调用 onError() 方法，而在Camera2 API中，这将导致被驱逐的用户调用 onDisconnected() 方法。</p>
-<p>当设备拥有合适的照相机硬件时，不同的APP进程可以独立的打开和使用照相机设备。然而，多进程使用的情况下，当同时请求导致对任意的相机设备的性能和能力的降低，现在的相机服务对此进行检测并且禁止改行为。这样的改变可能导致低优先级的用户被“驱逐”即使没有其他的APP明确的尝试访问相同的相机设备。</p>
-<p>改变当前的用户会导致之前的用户中的APP的活动的相机用户被驱逐。访问相机应用将被限制于用户配置文件属于当前设备用户者。在实践中，这就比如说是一个“游客”账户，当用户切换了一个不同的账号时将无法离开正在运行的相机子系统的进程。</p>
-<h2><span id="运行时">运行时</span></h2><p>ART运行时可以正确的实现访问 newInstance()方法的规则。这种改变解决了以前版本中Dalvik 检查访问规则错误的问题。如果你的APP调用了 newInstance()方法并且你想要重写访问检查，应该调用 setAccessible()并将传入参数设为true。如果你的APP使用了v7 appcompat library 或者 v7 recyclerview library 包，你必须在你的APP里更新这些相应的包到最新版。此外，确保你的xml中引用的自定义类已经更新来保证他们的类构造器可用。</p>
-<p>这个版本更新了动态连接器的行为。动态链接器现在可以识别库的soname和他的路径的不同（公共bug6670），并且实现了通过soname来进行查找的功能。在加载的时候那些先前工作在坏的 DT_NEEDED 的项目（在创建机器文件系统时使用绝对路径）可能会失败。</p>
-<p>现在已经支持方法dlopen(3) RTLD_LOCAL模式，需要注意的是RTLD_LOCAL是默认值，当你没有明确使用其他参数时将不会影响到默认值。（除非你的APP明确的使用了 RTLD_GLOBAL）。在使用RTLD_LOCAL的情况下，比较晚使用dlopen(3）进行库加载的标识符将不可用。</p>
-<p>在Android之前的版本里，如果你要求系统加载一个文本重定位的共享库文件，系统会显示警告但是仍然会允许加载该库。从这个版本开始，如果你的APP的目标sdk是23或者更高系统将会拒绝该库。为了帮助你检测到库文件的加载失败，你的APP应该打印有关日志来记录dlopen()失败，包括记录问题的描述以及dlerror返回。为了学习更多的有关文本重定位的内容可见这个指导。</p>
-<h2><span id="apk验证">APK验证</span></h2><p>现在平台执行严格的apk验证。一个在manifest中声明了某文件但是在apk中却没有出现该文件的apk被认为是损坏的。一个apk中的任何内容被修改后必须重新签名。</p>
-<h2><span id="usb连接">USB连接</span></h2><p>设备通过USB端口进行连接现在默认设置为仅充电模式。为了通过USB连接方式访问设备及其内容，用户必须明确的授予这种交互的权限。如果你的应用支持通过USB端口进行交互，请考虑到该交互必须显示的启用。</p>
-<h2><span id="企业级android的变化">企业级Android的变化</span></h2><p>在这个版本包括了以下企业级Android的行为变化。</p>
-<p>个人环境中的企业通讯录。当用户查看过去的通话记录时，google拨号器将会显示企业通讯录。设置setCrossProfileCallerIdDisabled() 为true来使得在google拨号器里隐藏企业联系人记录。当通过蓝牙分享时工作通讯录将会和个人通讯录一起显示，除非你 setBluetoothContactSharingDisabled() 为false。在默认情况下，它是设置为true的。</p>
-<p>WiFi配置清除：通过Profile Owner来添加Wi-Fi配置（例如，调用addNetwork()方法）在它对应的企业配置文件被移除后删除。</p>
-<p>WiFi配置锁定：如果WIFI_DEVICE_OWNER_CONFIGS_LOCKDOWN 不为0时，任何由活动设备拥有者创建的WiFi配置文件将不可以被用户进行修改和删除。用户仍然可以创建和修改他们自己的WiFi配置。活动设备所有者拥有修改和删除包括那些不是由他们创建的WiFi配置的特权。</p>
-<p>通过google账号来下载企业策略控制器：当一个管理环境之外的需要管理的google账号要求通过设备策略控制器app添加到设备时，新增账号流程将会提示用户安装合适的WPC。这一行为同样支持通过设置-账号和初始化设备时添加账号。</p>
-<h2><span id="devicepolicymanager-api的变化">DevicePolicyManager api的变化：</span></h2><p>调用 setCameraDisabled()方法只会影响当前调用相机的用户。从管理文件中调用的话并不影响正在主用户上运行的使用相机的APP。</p>
-<p>此外，现在配置拥有者可以和设备拥有者一样使用setKeyguardDisabledFeatures() 方法。</p>
-<p>配置拥有者可以设置以下锁屏设置：<br>KEYGUARD_DISABLE_TRUST_AGENTS 和 KEYGUARD_DISABLE_FINGERPRINT可以影响配置文件的父用户。<br>KEYGUARD_DISABLE_UNREDACTED_NOTIFICATIONS,会影响APP在管理文件中产生的通知。</p>
-<p>DevicePolicyManager.createAndInitializeUser() 和DevicePolicyManager.createUser()方法被弃用。</p>
-<p> setScreenCaptureDisabled() 方法现在也会阻塞辅助框架当给定的用户在前台活动时。</p>
-<p>EXTRA_PROVISIONING_DEVICE_ADMIN_PACKAGE_CHECKSUM 现在默认SHA-256。SHA-1 现在仍然支持向后兼容但是以后将会被删除。 EXTRA_PROVISIONING_DEVICE_ADMIN_SIGNATURE_CHECKSUM现在只接受SHA-256。</p>
-<p>Android 6.0 (API level 23)中的 Device initializer API 现在被删除了。</p>
-<p>EXTRA_PROVISIONING_RESET_PROTECTION_PARAMETERS 被移除，所以NFC触碰配置不能以编程解锁一个恢复出厂设置保护的设备。</p>
-<p>你现在可以使用EXTRA_PROVISIONING_ADMIN_EXTRAS_BUNDLE在NFC触碰时将管理设备的数据传输给设备拥有者的APP。</p>
-<p>企业Android api 优化了M的运行时权限，包括工作文件，协助层，以及其他等等。新的 DevicePolicyManager 权限API不影响Android M 之前的APP版本。  </p>
-<p>当用户从初始化设置流程中通过ACTION_PROVISION_MANAGED_PROFILE 或 ACTION_PROVISION_MANAGED_DEVICE intent退出同步部分，系统现在会返回一个RESULT_CANCELED返回值。</p>
-<h2><span id="其他api的变化">其他API的变化：</span></h2><p>数据流量统计:android.app.usage.NetworkUsageStats 类被重命名为 NetworkStats.</p>
-<h2><span id="全局设置的变化">全局设置的变化：</span></h2><p>以下属性将不能再通过 setGlobalSettings()来设置：<br>BLUETOOTH_ON<br>DEVELOPMENT_SETTINGS_ENABLED<br>MODE_RINGER<br>NETWORK_PREFERENCE<br>WIFI_ON</p>
-<p>以下全局设置现在可以使用setGlobalSettings()来设置：<br>WIFI_DEVICE_OWNER_CONFIGS_LOCKDOWN</p>
--->
-            <!---->
-        <!--</div>-->
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://yoursite.com/2016/08/20/Android-6.0-Change-2/" data-id="cjq0wmyoa0005uabj18g5nuev" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/02/17/1-Two-Sum/Record[Chinese ver]/" data-id="cjqqnsx8q003d3lbjaqsdwnuy" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -2188,7 +2187,7 @@ ga('send', 'pageview');
 
 
     <nav id="page-nav">
-        <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
+        <a class="extend prev" rel="prev" href="/">&laquo; Anterior</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Siguiente  &raquo;</a>
     </nav>
 </section>
             
@@ -2197,9 +2196,28 @@ ga('send', 'pageview');
    
         
     <div class="widget-wrap">
-        <h3 class="widget-title">recent</h3>
+        <h3 class="widget-title">Recientes</h3>
         <div class="widget">
             <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2019/01/02/Serializable/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/2019/01/02/Serializable/titleThumb.jpg)" alt="Serializable" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Chinese/">Chinese</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/Chinese/Java/">Java</a></p>
+                            <p class="item-title"><a href="/2019/01/02/Serializable/" class="title">Serializable</a></p>
+                            <p class="item-date"><time datetime="2019-01-01T16:00:00.000Z" itemprop="datePublished">2019-01-02</time></p>
+                        </div>
+                    </li>
                 
                     <li>
                         
@@ -2242,25 +2260,6 @@ ga('send', 'pageview');
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2018/12/02/7-Reverse-Integer/Record-en/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/2018/12/02/7-Reverse-Integer/Record-cn/titleThumb.jpg)" alt="LeetCode 7. Reverse Integer" class="thumbnail-image"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/English/">English</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/English/Algorithm/">Algorithm</a></p>
-                            <p class="item-title"><a href="/2018/12/02/7-Reverse-Integer/Record-en/" class="title">LeetCode 7. Reverse Integer</a></p>
-                            <p class="item-date"><time datetime="2018-12-01T16:00:00.000Z" itemprop="datePublished">2018-12-02</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
                             <a href="/2018/12/02/7-Reverse-Integer/Record-cn/" class="thumbnail">
     
     
@@ -2280,19 +2279,19 @@ ga('send', 'pageview');
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2018/09/12/6-ZigZag-Conversion/Record-cn/" class="thumbnail">
+                            <a href="/2018/12/02/7-Reverse-Integer/Record-en/" class="thumbnail">
     
     
-        <span style="background-image:url(/2018/09/12/6-ZigZag-Conversion/Record-cn/titleThumb.jpg)" alt="LeetCode 6. 锯齿形转换" class="thumbnail-image"></span>
+        <span style="background-image:url(/2018/12/02/7-Reverse-Integer/Record-cn/titleThumb.jpg)" alt="LeetCode 7. Reverse Integer" class="thumbnail-image"></span>
     
 </a>
 
                         </div>
                         
                         <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Chinese/">Chinese</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/Chinese/Algorithm/">Algorithm</a></p>
-                            <p class="item-title"><a href="/2018/09/12/6-ZigZag-Conversion/Record-cn/" class="title">LeetCode 6. 锯齿形转换</a></p>
-                            <p class="item-date"><time datetime="2018-09-11T16:00:00.000Z" itemprop="datePublished">2018-09-12</time></p>
+                            <p class="item-category"><a class="article-category-link" href="/categories/English/">English</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/English/Algorithm/">Algorithm</a></p>
+                            <p class="item-title"><a href="/2018/12/02/7-Reverse-Integer/Record-en/" class="title">LeetCode 7. Reverse Integer</a></p>
+                            <p class="item-date"><time datetime="2018-12-01T16:00:00.000Z" itemprop="datePublished">2018-12-02</time></p>
                         </div>
                     </li>
                 
@@ -2303,43 +2302,43 @@ ga('send', 'pageview');
     
         
     <div class="widget-wrap">
-        <h3 class="widget-title">categories</h3>
+        <h3 class="widget-title">Categorias</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/">Chinese</a><span class="category-list-count">16</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Algorithm/">Algorithm</a><span class="category-list-count">9</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Algorithm/Common/">Common</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Algorithm/LeetCode/">LeetCode</a><span class="category-list-count">7</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/">Android</a><span class="category-list-count">6</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/Algorithm/">Algorithm</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/Error/">Error</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/UI/">UI</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/UI/Custom-View/">Custom View</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/版本差异/">版本差异</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/版本管理/">版本管理</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Java/">Java</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Java/Data-Structure/">Data Structure</a><span class="category-list-count">1</span></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/English/">English</a><span class="category-list-count">7</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/English/Algorithm/">Algorithm</a><span class="category-list-count">7</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/English/Algorithm/LeetCode/">LeetCode</a><span class="category-list-count">7</span></li></ul></li></ul></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/">Chinese</a><span class="category-list-count">17</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Algorithm/">Algorithm</a><span class="category-list-count">9</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Algorithm/Common/">Common</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Algorithm/LeetCode/">LeetCode</a><span class="category-list-count">7</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/">Android</a><span class="category-list-count">6</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/Algorithm/">Algorithm</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/Error/">Error</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/UI/">UI</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/UI/Custom-View/">Custom View</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/版本差异/">版本差异</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/版本管理/">版本管理</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Java/">Java</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Java/Data-Structure/">Data Structure</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Java/SourceCode/">SourceCode</a><span class="category-list-count">1</span></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/English/">English</a><span class="category-list-count">7</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/English/Algorithm/">Algorithm</a><span class="category-list-count">7</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/English/Algorithm/LeetCode/">LeetCode</a><span class="category-list-count">7</span></li></ul></li></ul></li></ul>
         </div>
     </div>
 
     
         
     <div class="widget-wrap">
-        <h3 class="widget-title">archives</h3>
+        <h3 class="widget-title">Archivos</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">2</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">2</span></li></ul>
         </div>
     </div>
 
     
         
     <div class="widget-wrap">
-        <h3 class="widget-title">tags</h3>
+        <h3 class="widget-title">Etiquetas</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/">Algorithm</a><span class="tag-list-count">17</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chinese/">Chinese</a><span class="tag-list-count">16</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Custom-View/">Custom View</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Structure/">Data Structure</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English/">English</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Error/">Error</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LeetCode/">LeetCode</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Optimize/">Optimize</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UI/">UI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/版本差异/">版本差异</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/版本管理/">版本管理</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/">Algorithm</a><span class="tag-list-count">17</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chinese/">Chinese</a><span class="tag-list-count">17</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Custom-View/">Custom View</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Structure/">Data Structure</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English/">English</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Error/">Error</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LeetCode/">LeetCode</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Optimize/">Optimize</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SourceCode/">SourceCode</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UI/">UI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/版本差异/">版本差异</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/版本管理/">版本管理</a><span class="tag-list-count">1</span></li></ul>
         </div>
     </div>
 
     
         
     <div class="widget-wrap">
-        <h3 class="widget-title">tag cloud</h3>
+        <h3 class="widget-title">Nube de etiquetas</h3>
         <div class="widget tagcloud">
-            <a href="/tags/Algorithm/" style="font-size: 20px;">Algorithm</a> <a href="/tags/Android/" style="font-size: 13.33px;">Android</a> <a href="/tags/Chinese/" style="font-size: 18.33px;">Chinese</a> <a href="/tags/Custom-View/" style="font-size: 10px;">Custom View</a> <a href="/tags/Data-Structure/" style="font-size: 10px;">Data Structure</a> <a href="/tags/English/" style="font-size: 15px;">English</a> <a href="/tags/Error/" style="font-size: 10px;">Error</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/LeetCode/" style="font-size: 16.67px;">LeetCode</a> <a href="/tags/Optimize/" style="font-size: 10px;">Optimize</a> <a href="/tags/UI/" style="font-size: 10px;">UI</a> <a href="/tags/版本差异/" style="font-size: 11.67px;">版本差异</a> <a href="/tags/版本管理/" style="font-size: 10px;">版本管理</a>
+            <a href="/tags/Algorithm/" style="font-size: 20px;">Algorithm</a> <a href="/tags/Android/" style="font-size: 15px;">Android</a> <a href="/tags/Chinese/" style="font-size: 20px;">Chinese</a> <a href="/tags/Custom-View/" style="font-size: 10px;">Custom View</a> <a href="/tags/Data-Structure/" style="font-size: 10px;">Data Structure</a> <a href="/tags/English/" style="font-size: 15px;">English</a> <a href="/tags/Error/" style="font-size: 10px;">Error</a> <a href="/tags/Java/" style="font-size: 12.5px;">Java</a> <a href="/tags/LeetCode/" style="font-size: 17.5px;">LeetCode</a> <a href="/tags/Optimize/" style="font-size: 10px;">Optimize</a> <a href="/tags/SourceCode/" style="font-size: 10px;">SourceCode</a> <a href="/tags/UI/" style="font-size: 10px;">UI</a> <a href="/tags/版本差异/" style="font-size: 12.5px;">版本差异</a> <a href="/tags/版本管理/" style="font-size: 10px;">版本管理</a>
         </div>
     </div>
 
     
         
     <div class="widget-wrap widget-list">
-        <h3 class="widget-title">links</h3>
+        <h3 class="widget-title">Links</h3>
         <div class="widget">
             <ul>
                 
@@ -2366,7 +2365,7 @@ ga('send', 'pageview');
         <footer id="footer">
     <div class="outer">
         <div id="footer-info" class="inner">
-            &copy; 2018 LeonChen<br>
+            &copy; 2019 LeonChen<br>
             Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. 
         </div>
     </div>
