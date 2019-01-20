@@ -164,7 +164,7 @@ ga('send', 'pageview');
         <div class="base-info profile-block">
             <img id="avatar" src="/css/images/avatar.png" />
             <h2 id="name">Leon Chen</h2>
-            <h3 id="title">Android Developer</h3>
+            <h3 id="title">Software Developer</h3>
             <span id="location"><i class="fa fa-map-marker"></i>XiaMen, China</span>
             <a id="follow" target="_blank" href="https://github.com/LeonChen1024">FOLLOW</a>
         </div>
@@ -205,6 +205,204 @@ ga('send', 'pageview');
 
             
             <section id="main">
+    <article id="post-LeetCode-8-String-to-Integer/Record-cn" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+	
+		<a href="/2019/01/20/LeetCode-8-String-to-Integer/Record-cn/" itemprop="url">
+            <img src="/2019/01/20/LeetCode-8-String-to-Integer/Record-cn/title.jpg" class="article-banner" />
+        </a>
+	
+
+
+
+        
+        
+        <header class="article-header">
+            
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2019/01/20/LeetCode-8-String-to-Integer/Record-cn/">LeetCode 8. 字符串转整数</a>
+        </h1>
+    
+
+            
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2019/01/20/LeetCode-8-String-to-Integer/Record-cn/">
+            <time datetime="2019-01-19T16:00:00.000Z" itemprop="datePublished">2019-01-20</time>
+        </a>
+    </div>
+
+
+                
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Chinese/">Chinese</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/Chinese/Algorithm/">Algorithm</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/Chinese/Algorithm/LeetCode/">LeetCode</a>
+    </div>
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Algorithm/">Algorithm</a>, <a class="tag-link" href="/tags/Chinese/">Chinese</a>, <a class="tag-link" href="/tags/LeetCode/">LeetCode</a>
+    </div>
+
+            </div>
+            
+        </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <p><p>[Chinese ver]</p>
+<h1><span id="8-字符串转整数-atoi">8. 字符串转整数 (atoi)</span></h1><p>实现一个 atoi 方法来将一个 string 转换成一个 integer.</p>
+<p>提示：仔细的思考所有可能的输入情况。如果你想要一个挑战，请不要看以下内容并问你自己什么是可能的输入情况。</p>
+<p>注意：模糊的指定输入范围就是这个题目的目的(比如没有给输入规范)。你负责收集前面所有的输入要求。</p>
+<p>
+                
+                
+                
+            
+    </div>
+    <div class="article-more-link">
+        <a href="/2019/01/20/LeetCode-8-String-to-Integer/Record-cn/#more">Read More</a>
+    </div>
+    
+        <!--<div class="article-entry" itemprop="articleBody">-->
+            <!---->
+            <!---->
+            <!--<p>[Chinese ver]</p>
+<h1><span id="8-字符串转整数-atoi">8. 字符串转整数 (atoi)</span></h1><p>实现一个 atoi 方法来将一个 string 转换成一个 integer.</p>
+<p>提示：仔细的思考所有可能的输入情况。如果你想要一个挑战，请不要看以下内容并问你自己什么是可能的输入情况。</p>
+<p>注意：模糊的指定输入范围就是这个题目的目的(比如没有给输入规范)。你负责收集前面所有的输入要求。</p>
+<hr>
+<p>atoi 的要求：<br>函数首先丢弃所有首个非空格字符之前的所有空格。然后从这个字符开始，得到一个初始化的加号或减号开始的尽可能多的位数，然后将他们转换成数字值。</p>
+<p>这个字符串在数字形式的子字符串后可以有其他的字符，这些字符将会被忽略而且不会对这个方法有影响。</p>
+<p>如果第一个非空格的字符序列不是一个合法的整数，或者如果并没有符合要求的序列比如字符串是空的或者它只包含了空格字符，不执行转化。</p>
+<p>如果不能执行转换，返回0.如果正确值超出了可以描述的值范围，返回 INT_MAX (2147483647) 或者 INT_MIN (-2147483648).</p>
+<hr>
+<h3><span id="方法一">方法一 :</span></h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">myAtoi</span><span class="params">(String str)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> index = <span class="number">0</span> , sign = <span class="number">1</span> ;</div><div class="line">        <span class="keyword">long</span> result = <span class="number">0</span> ;</div><div class="line"></div><div class="line">				<span class="comment">//if str is a empty string or null</span></div><div class="line">        <span class="keyword">if</span> (str.equals(<span class="keyword">null</span>)||str.length()==<span class="number">0</span> )&#123;</div><div class="line">            <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">				<span class="comment">//remove the ' ' in the front</span></div><div class="line">        <span class="keyword">while</span> (str.charAt(index)==<span class="string">' '</span>&amp;&amp;index &lt; str.length())&#123;</div><div class="line">            index++;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">				<span class="comment">//take the sign</span></div><div class="line">        <span class="keyword">if</span>(str.charAt(index)==<span class="string">'+'</span>||str.charAt(index)==<span class="string">'-'</span>)&#123;</div><div class="line">            sign = str.charAt(index)==<span class="string">'+'</span> ? <span class="number">1</span> : -<span class="number">1</span>;</div><div class="line">            index ++;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">				<span class="comment">//convert number and avoid overflows</span></div><div class="line">        <span class="keyword">while</span> (index &lt; str.length())&#123;</div><div class="line"></div><div class="line">            <span class="keyword">if</span>(str.charAt(index)&lt;=<span class="string">'9'</span>&amp;&amp;str.charAt(index)&gt;=<span class="string">'0'</span>)&#123;</div><div class="line">                <span class="keyword">int</span> current = str.charAt(index)-<span class="string">'0'</span>;</div><div class="line">                result = result * <span class="number">10</span> + current;</div><div class="line">								<span class="comment">// check if the str is overflows</span></div><div class="line">                <span class="keyword">if</span>(result&gt;Integer.MAX_VALUE&amp;&amp;sign==<span class="number">1</span>)&#123;</div><div class="line">                    <span class="keyword">return</span> Integer.MAX_VALUE;</div><div class="line">                &#125;<span class="keyword">else</span> <span class="keyword">if</span>(-result&lt;Integer.MIN_VALUE&amp;&amp;sign==-<span class="number">1</span>)&#123;</div><div class="line">                    <span class="keyword">return</span> Integer.MIN_VALUE;</div><div class="line">                &#125;</div><div class="line">                index++;</div><div class="line">            &#125;<span class="keyword">else</span> &#123;</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">return</span> sign*((<span class="keyword">int</span>)result);</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>或者</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution2</span> </span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">myAtoi</span><span class="params">(String str)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> index = <span class="number">0</span>, sign = <span class="number">1</span>, total = <span class="number">0</span>;</div><div class="line">    <span class="comment">//1. Empty string</span></div><div class="line">    <span class="keyword">if</span>(str.length() == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line"></div><div class="line">    <span class="comment">//2. Remove Spaces</span></div><div class="line">    <span class="keyword">while</span>(str.charAt(index) == <span class="string">' '</span> &amp;&amp; index &lt; str.length())</div><div class="line">        index ++;</div><div class="line"></div><div class="line">    <span class="comment">//3. Handle signs</span></div><div class="line">    <span class="keyword">if</span>(str.charAt(index) == <span class="string">'+'</span> || str.charAt(index) == <span class="string">'-'</span>)&#123;</div><div class="line">        sign = str.charAt(index) == <span class="string">'+'</span> ? <span class="number">1</span> : -<span class="number">1</span>;</div><div class="line">        index ++;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">//4. Convert number and avoid overflow</span></div><div class="line">    <span class="keyword">while</span>(index &lt; str.length())&#123;</div><div class="line">        <span class="keyword">int</span> digit = str.charAt(index) - <span class="string">'0'</span>;</div><div class="line">        <span class="keyword">if</span>(digit &lt; <span class="number">0</span> || digit &gt; <span class="number">9</span>) <span class="keyword">break</span>;</div><div class="line"></div><div class="line">        <span class="comment">//check if total will be overflow after 10 times and add digit</span></div><div class="line">        <span class="keyword">if</span>(Integer.MAX_VALUE/<span class="number">10</span> &lt; total || Integer.MAX_VALUE/<span class="number">10</span> == total &amp;&amp; Integer.MAX_VALUE %<span class="number">10</span> &lt; digit)</div><div class="line">            <span class="keyword">return</span> sign == <span class="number">1</span> ? Integer.MAX_VALUE : Integer.MIN_VALUE;</div><div class="line"></div><div class="line">        total = <span class="number">10</span> * total + digit;</div><div class="line">        index ++;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> total * sign;</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/8.%20String%20to%20Integer%20(atoi" alt="效率">/Images/OneResult.png?raw=true)</p>
+<p><strong>分析</strong><br>这两段代码的原理是大致相同的，主要区别就是判断溢出的方式，第一个使用的 long 和 Integer 的区间进行比较来判断是否溢出；第二个使用的是 Int ，但是不能直接和 Integer 的区间进行比较，因为Int 的数据一旦溢出会被处理掉，不会出现区间外的值，所以是将前一次得到的 Int 值和 Max／10 比较，然后将这次取得的数值和 Max%10进行比较</p>
+<p>时间复杂度 ： O(n) 。n是输入的位数<br>空间复杂度 ： O(1) .</p>
+<p>如果你有更好的办法或者对我这里的描述有其他看法，请联系我。谢谢</p>
+<h2><span id="about-me">About Me</span></h2><p>我的博客 <a href="http://leonchen1024.com/" target="_blank" rel="external">leonchen1024.com</a></p>
+<p>我的 GitHub <a href="https://github.com/LeonChen1024" target="_blank" rel="external">https://github.com/LeonChen1024</a></p>
+<p>微信公众号 </p>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/Images/CooderQRcodem.jpg?raw=false" alt="wechat"></p>
+-->
+            <!---->
+        <!--</div>-->
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://yoursite.com/2019/01/20/LeetCode-8-String-to-Integer/Record-cn/" data-id="cjr4v59u4004l9mbjbif3a9gd" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+
+
+
+
     <article id="post-LeetCode-8-String-to-Integer/Record-en" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -324,205 +522,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://yoursite.com/2019/01/20/LeetCode-8-String-to-Integer/Record-en/" data-id="cjr4v1eje004n69bj6hg6r4zf" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-
-
-
-
-    <article id="post-LeetCode-8-String-to-Integer/Record-cn" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-	
-		<a href="/2019/01/20/LeetCode-8-String-to-Integer/Record-cn/" itemprop="url">
-            <img src="/2019/01/20/LeetCode-8-String-to-Integer/Record-cn/title.jpg" class="article-banner" />
-        </a>
-	
-
-
-
-        
-        
-        <header class="article-header">
-            
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2019/01/20/LeetCode-8-String-to-Integer/Record-cn/">LeetCode 8. 字符串转整数</a>
-        </h1>
-    
-
-            
-            <div class="article-meta">
-                
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2019/01/20/LeetCode-8-String-to-Integer/Record-cn/">
-            <time datetime="2019-01-19T16:00:00.000Z" itemprop="datePublished">2019-01-20</time>
-        </a>
-    </div>
-
-
-                
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/Chinese/">Chinese</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/Chinese/Algorithm/">Algorithm</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/Chinese/Algorithm/LeetCode/">LeetCode</a>
-    </div>
-
-                
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/Algorithm/">Algorithm</a>, <a class="tag-link" href="/tags/Chinese/">Chinese</a>, <a class="tag-link" href="/tags/LeetCode/">LeetCode</a>
-    </div>
-
-            </div>
-            
-        </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            <p><p>[Chinese ver]</p>
-<h1><span id="8-字符串转整数-atoi">8. 字符串转整数 (atoi)</span></h1><p>实现一个 atoi 方法来将一个 string 转换成一个 integer.</p>
-<p>提示：仔细的思考所有可能的输入情况。如果你想要一个挑战，请不要看以下内容并问你自己什么是可能的输入情况。</p>
-<p>注意：模糊的指定输入范围就是这个题目的目的(比如没有给输入规范)。你负责收集前面所有的输入要求。</p>
-<p>
-                
-                
-                
-            
-    </div>
-    <div class="article-more-link">
-        <a href="/2019/01/20/LeetCode-8-String-to-Integer/Record-cn/#more">Read More</a>
-    </div>
-    
-        <!--<div class="article-entry" itemprop="articleBody">-->
-            <!---->
-            <!---->
-            <!--<p>[Chinese ver]</p>
-<h1><span id="8-字符串转整数-atoi">8. 字符串转整数 (atoi)</span></h1><p>实现一个 atoi 方法来将一个 string 转换成一个 integer.</p>
-<p>提示：仔细的思考所有可能的输入情况。如果你想要一个挑战，请不要看以下内容并问你自己什么是可能的输入情况。</p>
-<p>注意：模糊的指定输入范围就是这个题目的目的(比如没有给输入规范)。你负责收集前面所有的输入要求。</p>
-<hr>
-<p>atoi 的要求：<br>函数首先丢弃所有首个非空格字符之前的所有空格。然后从这个字符开始，得到一个初始化的加号或减号开始的尽可能多的位数，然后将他们转换成数字值。</p>
-<p>这个字符串在数字形式的子字符串后可以有其他的字符，这些字符将会被忽略而且不会对这个方法有影响。</p>
-<p>如果第一个非空格的字符序列不是一个合法的整数，或者如果并没有符合要求的序列比如字符串是空的或者它只包含了空格字符，不执行转化。</p>
-<p>如果不能执行转换，返回0.如果正确值超出了可以描述的值范围，返回 INT_MAX (2147483647) 或者 INT_MIN (-2147483648).</p>
-<hr>
-<h3><span id="方法一">方法一 :</span></h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">myAtoi</span><span class="params">(String str)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> index = <span class="number">0</span> , sign = <span class="number">1</span> ;</div><div class="line">        <span class="keyword">long</span> result = <span class="number">0</span> ;</div><div class="line"></div><div class="line">				<span class="comment">//if str is a empty string or null</span></div><div class="line">        <span class="keyword">if</span> (str.equals(<span class="keyword">null</span>)||str.length()==<span class="number">0</span> )&#123;</div><div class="line">            <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">				<span class="comment">//remove the ' ' in the front</span></div><div class="line">        <span class="keyword">while</span> (str.charAt(index)==<span class="string">' '</span>&amp;&amp;index &lt; str.length())&#123;</div><div class="line">            index++;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">				<span class="comment">//take the sign</span></div><div class="line">        <span class="keyword">if</span>(str.charAt(index)==<span class="string">'+'</span>||str.charAt(index)==<span class="string">'-'</span>)&#123;</div><div class="line">            sign = str.charAt(index)==<span class="string">'+'</span> ? <span class="number">1</span> : -<span class="number">1</span>;</div><div class="line">            index ++;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">				<span class="comment">//convert number and avoid overflows</span></div><div class="line">        <span class="keyword">while</span> (index &lt; str.length())&#123;</div><div class="line"></div><div class="line">            <span class="keyword">if</span>(str.charAt(index)&lt;=<span class="string">'9'</span>&amp;&amp;str.charAt(index)&gt;=<span class="string">'0'</span>)&#123;</div><div class="line">                <span class="keyword">int</span> current = str.charAt(index)-<span class="string">'0'</span>;</div><div class="line">                result = result * <span class="number">10</span> + current;</div><div class="line">								<span class="comment">// check if the str is overflows</span></div><div class="line">                <span class="keyword">if</span>(result&gt;Integer.MAX_VALUE&amp;&amp;sign==<span class="number">1</span>)&#123;</div><div class="line">                    <span class="keyword">return</span> Integer.MAX_VALUE;</div><div class="line">                &#125;<span class="keyword">else</span> <span class="keyword">if</span>(-result&lt;Integer.MIN_VALUE&amp;&amp;sign==-<span class="number">1</span>)&#123;</div><div class="line">                    <span class="keyword">return</span> Integer.MIN_VALUE;</div><div class="line">                &#125;</div><div class="line">                index++;</div><div class="line">            &#125;<span class="keyword">else</span> &#123;</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">return</span> sign*((<span class="keyword">int</span>)result);</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>或者</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution2</span> </span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">myAtoi</span><span class="params">(String str)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> index = <span class="number">0</span>, sign = <span class="number">1</span>, total = <span class="number">0</span>;</div><div class="line">    <span class="comment">//1. Empty string</span></div><div class="line">    <span class="keyword">if</span>(str.length() == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line"></div><div class="line">    <span class="comment">//2. Remove Spaces</span></div><div class="line">    <span class="keyword">while</span>(str.charAt(index) == <span class="string">' '</span> &amp;&amp; index &lt; str.length())</div><div class="line">        index ++;</div><div class="line"></div><div class="line">    <span class="comment">//3. Handle signs</span></div><div class="line">    <span class="keyword">if</span>(str.charAt(index) == <span class="string">'+'</span> || str.charAt(index) == <span class="string">'-'</span>)&#123;</div><div class="line">        sign = str.charAt(index) == <span class="string">'+'</span> ? <span class="number">1</span> : -<span class="number">1</span>;</div><div class="line">        index ++;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">//4. Convert number and avoid overflow</span></div><div class="line">    <span class="keyword">while</span>(index &lt; str.length())&#123;</div><div class="line">        <span class="keyword">int</span> digit = str.charAt(index) - <span class="string">'0'</span>;</div><div class="line">        <span class="keyword">if</span>(digit &lt; <span class="number">0</span> || digit &gt; <span class="number">9</span>) <span class="keyword">break</span>;</div><div class="line"></div><div class="line">        <span class="comment">//check if total will be overflow after 10 times and add digit</span></div><div class="line">        <span class="keyword">if</span>(Integer.MAX_VALUE/<span class="number">10</span> &lt; total || Integer.MAX_VALUE/<span class="number">10</span> == total &amp;&amp; Integer.MAX_VALUE %<span class="number">10</span> &lt; digit)</div><div class="line">            <span class="keyword">return</span> sign == <span class="number">1</span> ? Integer.MAX_VALUE : Integer.MIN_VALUE;</div><div class="line"></div><div class="line">        total = <span class="number">10</span> * total + digit;</div><div class="line">        index ++;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> total * sign;</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/8.%20String%20to%20Integer%20(atoi" alt="效率">/Images/OneResult.png?raw=true)</p>
-<p><strong>分析</strong><br>这两段代码的原理是大致相同的，主要区别就是判断溢出的方式，第一个使用的 long 和 Integer 的区间进行比较来判断是否溢出；第二个使用的是 Int ，但是不能直接和 Integer 的区间进行比较，因为Int 的数据一旦溢出会被处理掉，不会出现区间外的值，所以是将前一次得到的 Int 值和 Max／10 比较，然后将这次取得的数值和 Max%10进行比较</p>
-<p>时间复杂度 ： O(n) 。n是输入的位数<br>空间复杂度 ： O(1) .</p>
-<p>如果你有更好的办法或者对我这里的描述有其他看法，请联系我。谢谢</p>
-<h2><span id="about-me">About Me</span></h2><p>我的博客 <a href="http://leonchen1024.com/" target="_blank" rel="external">leonchen1024.com</a></p>
-<p>我的 GitHub <a href="https://github.com/LeonChen1024" target="_blank" rel="external">https://github.com/LeonChen1024</a></p>
-<p>微信公众号 </p>
-<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/Images/CooderQRcodem.jpg?raw=false" alt="wechat"></p>
--->
-            <!---->
-        <!--</div>-->
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://yoursite.com/2019/01/20/LeetCode-8-String-to-Integer/Record-cn/" data-id="cjr4v1ej8004i69bjecs5dtx6" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2019/01/20/LeetCode-8-String-to-Integer/Record-en/" data-id="cjr4v59u0004e9mbjp8oox4pz" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -726,7 +726,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://yoursite.com/2019/01/02/Serializable/" data-id="cjr4v1egb000j69bja26kotsm" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2019/01/02/Serializable/" data-id="cjr4v59rp000l9mbj0jnfskz1" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -936,7 +936,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://yoursite.com/2018/12/23/S1ep1-The-macgic-of-LRU-Cache/" data-id="cjr4v1eg6000g69bjr11r4lfv" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2018/12/23/S1ep1-The-macgic-of-LRU-Cache/" data-id="cjr4v59rl000h9mbj012pz7ce" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1151,7 +1151,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://yoursite.com/2018/12/03/Greedy-Algorithm/" data-id="cjr4v1eg5000f69bjplp1tir1" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2018/12/03/Greedy-Algorithm/" data-id="cjr4v59rm000i9mbjr0f5mlf4" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1353,7 +1353,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://yoursite.com/2018/12/02/7-Reverse-Integer/Record-cn/" data-id="cjr4v1ej4004a69bj5oshzq3j" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2018/12/02/7-Reverse-Integer/Record-cn/" data-id="cjr4v59tx00499mbjhsnxp9l4" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1555,209 +1555,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://yoursite.com/2018/12/02/7-Reverse-Integer/Record-en/" data-id="cjr4v1ej7004f69bj60t8m6az" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-
-
-
-
-    <article id="post-6-ZigZag-Conversion/Record-en" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-	
-		<a href="/2018/09/12/6-ZigZag-Conversion/Record-en/" itemprop="url">
-            <img src="/2018/09/12/6-ZigZag-Conversion/Record-cn/title.jpg" class="article-banner" />
-        </a>
-	
-
-
-
-        
-        
-        <header class="article-header">
-            
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2018/09/12/6-ZigZag-Conversion/Record-en/">LeetCode 6. ZigZag Conversion</a>
-        </h1>
-    
-
-            
-            <div class="article-meta">
-                
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2018/09/12/6-ZigZag-Conversion/Record-en/">
-            <time datetime="2018-09-11T16:00:00.000Z" itemprop="datePublished">2018-09-12</time>
-        </a>
-    </div>
-
-
-                
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/English/">English</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/English/Algorithm/">Algorithm</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/English/Algorithm/LeetCode/">LeetCode</a>
-    </div>
-
-                
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/Algorithm/">Algorithm</a>, <a class="tag-link" href="/tags/English/">English</a>, <a class="tag-link" href="/tags/LeetCode/">LeetCode</a>
-    </div>
-
-            </div>
-            
-        </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            <p><p>[English ver]</p>
-<h1><span id="6-zigzag-conversion">6. ZigZag Conversion</span></h1><p>The string “PAYPALISHIRING” is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">P   A   H   N</div><div class="line">A P L S I I G</div><div class="line">Y   I   R</div></pre></td></tr></table></figure></p>
-<p>And then read line by line: “PAHNAPLSIIGYIR”<br>Write the code that will take a string and make this conversion given a number of rows:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">string convert(string text, int nRows);</div></pre></td></tr></table></figure></p>
-<p>convert(“PAYPALISHIRING”, 3) should return “PAHNAPLSIIGYIR”.</p>
-<p>
-                
-                
-                
-            
-    </div>
-    <div class="article-more-link">
-        <a href="/2018/09/12/6-ZigZag-Conversion/Record-en/#more">Read More</a>
-    </div>
-    
-        <!--<div class="article-entry" itemprop="articleBody">-->
-            <!---->
-            <!---->
-            <!--<p>[English ver]</p>
-<h1><span id="6-zigzag-conversion">6. ZigZag Conversion</span></h1><p>The string “PAYPALISHIRING” is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">P   A   H   N</div><div class="line">A P L S I I G</div><div class="line">Y   I   R</div></pre></td></tr></table></figure></p>
-<p>And then read line by line: “PAHNAPLSIIGYIR”<br>Write the code that will take a string and make this conversion given a number of rows:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">string convert(string text, int nRows);</div></pre></td></tr></table></figure></p>
-<p>convert(“PAYPALISHIRING”, 3) should return “PAHNAPLSIIGYIR”.</p>
-<hr>
-<p>First we need to know the meaning about the zigzag pattern, it means a pattern made up of small corners at variable angles, though constant within the zigzag, tracing a path between two parallel lines; it can be described as both jagged and fairly regular. In the begining i think it’s one line in the middle and then some symmetry verticle line between the middle horizontal line,when the number of rows is 4(use number to represent the index of the String)it would look like that:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">1   7    13</div><div class="line">2   8    14</div><div class="line">3 6 9 12 15</div><div class="line">4   10   16</div><div class="line">5   11   17</div></pre></td></tr></table></figure>
-<p>but the trueth is not , it should be looked like that:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">1     7        13</div><div class="line">2   6 8     12 14</div><div class="line">3 5   9  11    15</div><div class="line">4     10       16</div></pre></td></tr></table></figure></p>
-<h3><span id="approach-1-use-string">Approach 1 use String[]:</span></h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">convert</span><span class="params">(String s, <span class="keyword">int</span> numRows)</span> </span>&#123;</div><div class="line">        String result = <span class="string">""</span>;</div><div class="line">        String[] strings = <span class="keyword">new</span> String[numRows];</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i =<span class="number">0</span>;i&lt;numRows;i++)&#123;</div><div class="line">            strings[i] = <span class="string">""</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">int</span> position = <span class="number">0</span> ;</div><div class="line">        <span class="keyword">int</span> numRowsIndex = numRows-<span class="number">1</span>;</div><div class="line">        <span class="keyword">int</span> step = <span class="number">1</span>;</div><div class="line">        <span class="comment">//if the numRows is one ,or the s's length is less than numRows ,return s .</span></div><div class="line">        <span class="keyword">if</span> (numRows ==<span class="number">1</span> || s.length()&lt;numRows)&#123;</div><div class="line">            <span class="keyword">return</span> s;</div><div class="line">        &#125;</div><div class="line">        <span class="comment">//loop the every char in the String, when the position is 0,the step is one ,is the position is numRowsIndex,the step is negative one</span></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i =<span class="number">0</span>;i&lt;s.length();i++)&#123;</div><div class="line">            strings[position] += s.charAt(i);</div><div class="line">            <span class="keyword">if</span> (position ==<span class="number">0</span>)&#123;</div><div class="line">               step = <span class="number">1</span>;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span> (position == numRowsIndex )&#123;</div><div class="line">                step = -<span class="number">1</span>;</div><div class="line">            &#125;</div><div class="line">            position = position+step;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i =<span class="number">0</span>;i&lt;numRows;i++)&#123;</div><div class="line">            result += strings[i];</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">return</span> result;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/6.%20ZigZag%20Conversion/Images/StringsResult.png?raw=true" alt="Efficiency"></p>
-<p><strong>Analysis</strong><br>This method put every line’s String into the String[i] accordingly,in the last concate it together and then we get the result we want . When the position is in the first row , next time the position should move down,so step = 1.When the position is in the last Row , next time the position should move up , so the step = -1.</p>
-<p>Time complexity ： O(n) 。n is the length of the string.<br>Space complexity ： O(n) .</p>
-<h3><span id="approach-2-stringbuilder">Approach 2 StringBuilder[]:</span></h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">convert</span><span class="params">(String s, <span class="keyword">int</span> numRows)</span> </span>&#123;</div><div class="line">        StringBuilder result = <span class="keyword">new</span> StringBuilder(<span class="string">""</span>);</div><div class="line">        StringBuilder[] strings = <span class="keyword">new</span> StringBuilder[numRows];</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i =<span class="number">0</span>;i&lt;numRows;i++)&#123;</div><div class="line">            strings[i] = <span class="keyword">new</span> StringBuilder(<span class="string">""</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">int</span> position = <span class="number">0</span> ;</div><div class="line">        <span class="keyword">int</span> numRowsIndex = numRows-<span class="number">1</span>;</div><div class="line">        <span class="keyword">int</span> step = <span class="number">1</span>;</div><div class="line">          <span class="comment">//if the numRows is one ,or the s's length is less than numRows ,return s .</span></div><div class="line">        <span class="keyword">if</span> (numRows ==<span class="number">1</span> || s.length()&lt;numRows)&#123;</div><div class="line">            <span class="keyword">return</span> s;</div><div class="line">        &#125;</div><div class="line">          <span class="comment">//loop the every char in the String, when the position is 0,the step is one ,is the position is numRowsIndex,the step is negative one</span></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i =<span class="number">0</span>;i&lt;s.length();i++)&#123;</div><div class="line">            strings[position].append(s.charAt(i));</div><div class="line">            <span class="keyword">if</span> (position ==<span class="number">0</span>)&#123;</div><div class="line">               step = <span class="number">1</span>;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span> (position == numRowsIndex )&#123;</div><div class="line">                step = -<span class="number">1</span>;</div><div class="line">            &#125;</div><div class="line">            position = position+step;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i =<span class="number">0</span>;i&lt;numRows;i++)&#123;</div><div class="line">            result.append(strings[i]);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> result.toString();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/6.%20ZigZag%20Conversion/Images/StringBuilderResult.png?raw=true" alt="Efficiency"></p>
-<p><strong>Analysis</strong><br>This method’s principle is the same as the Approach 1 , it just replace the String into StringBuilder,it has a big optimization.</p>
-<p>Time complexity ： O(n) 。n is the length of the string.<br>Space complexity ： O(n) .</p>
-<h3><span id="approach-3-use-interval">Approach 3 use interval</span></h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">convert</span><span class="params">(String s, <span class="keyword">int</span> numRows)</span> </span>&#123;</div><div class="line"></div><div class="line">        String result=<span class="string">""</span>;</div><div class="line">        <span class="keyword">if</span>(numRows==<span class="number">1</span>)</div><div class="line">            <span class="keyword">return</span> s;</div><div class="line">        <span class="keyword">int</span> step1,step2;</div><div class="line">        <span class="keyword">int</span> len=s.length();</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;numRows;++i)&#123;</div><div class="line">            step1=(numRows-i-<span class="number">1</span>)*<span class="number">2</span>;</div><div class="line">            step2=(i)*<span class="number">2</span>;</div><div class="line">            <span class="keyword">int</span> pos=i;</div><div class="line">            <span class="keyword">if</span>(pos&lt;len)</div><div class="line">                result+=s.charAt(pos);</div><div class="line">            <span class="keyword">while</span>(<span class="keyword">true</span>)&#123;</div><div class="line">                pos+=step1;</div><div class="line">                <span class="keyword">if</span>(pos&gt;=len)</div><div class="line">                    <span class="keyword">break</span>;</div><div class="line">                <span class="keyword">if</span>(step1&gt;<span class="number">0</span>)</div><div class="line">                    result+=s.charAt(pos);</div><div class="line">                pos+=step2;</div><div class="line">                <span class="keyword">if</span>(pos&gt;=len)</div><div class="line">                    <span class="keyword">break</span>;</div><div class="line">                <span class="keyword">if</span>(step2&gt;<span class="number">0</span>)</div><div class="line">                    result+=s.charAt(pos);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> result;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><strong>Analysis</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">/*n=numRows</div><div class="line">Δ=2n-2    1                           2n-1                         4n-3</div><div class="line">Δ=        2                     2n-2  2n                    4n-4   4n-2</div><div class="line">Δ=        3               2n-3        2n+1              4n-5       .</div><div class="line">Δ=        .           .               .               .            .</div><div class="line">Δ=        .       n+2                 .           3n               .</div><div class="line">Δ=        n-1 n+1                     3n-3    3n-1                 5n-5</div><div class="line">Δ=2n-2    n                           3n-2                         5n-4</div><div class="line">*/</div></pre></td></tr></table></figure>
-<p>This method used regular interval to calculate position .</p>
-<p>Time complexity ： O(n) 。n is the length of the string.<br>Space complexity ： O(n) .</p>
-<p>If you have any suggestions to make the logic and implementation more better , or you have some advice on my description. Please let me know!Thanks!</p>
-<h2><span id="about-me">About Me</span></h2><p>My blog <a href="http://leonchen1024.com/" target="_blank" rel="external">leonchen1024.com</a></p>
-<p>My Github  <a href="https://github.com/LeonChen1024" target="_blank" rel="external">https://github.com/LeonChen1024</a></p>
-<p>My twitter <a href="https://twitter.com/LChen1024?lang=en" target="_blank" rel="external">https://twitter.com/LChen1024?lang=en</a></p>
--->
-            <!---->
-        <!--</div>-->
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://yoursite.com/2018/09/12/6-ZigZag-Conversion/Record-en/" data-id="cjr4v1ej3004769bjlez8y30c" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2018/12/02/7-Reverse-Integer/Record-en/" data-id="cjr4v59u2004h9mbjtfonpovg" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1960,7 +1758,209 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://yoursite.com/2018/09/12/6-ZigZag-Conversion/Record-cn/" data-id="cjr4v1ej1004269bj9u8rtqsm" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2018/09/12/6-ZigZag-Conversion/Record-cn/" data-id="cjr4v59tv00469mbji5xkim8e" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+
+
+
+
+    <article id="post-6-ZigZag-Conversion/Record-en" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+	
+		<a href="/2018/09/12/6-ZigZag-Conversion/Record-en/" itemprop="url">
+            <img src="/2018/09/12/6-ZigZag-Conversion/Record-cn/title.jpg" class="article-banner" />
+        </a>
+	
+
+
+
+        
+        
+        <header class="article-header">
+            
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2018/09/12/6-ZigZag-Conversion/Record-en/">LeetCode 6. ZigZag Conversion</a>
+        </h1>
+    
+
+            
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2018/09/12/6-ZigZag-Conversion/Record-en/">
+            <time datetime="2018-09-11T16:00:00.000Z" itemprop="datePublished">2018-09-12</time>
+        </a>
+    </div>
+
+
+                
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/English/">English</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/English/Algorithm/">Algorithm</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/English/Algorithm/LeetCode/">LeetCode</a>
+    </div>
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Algorithm/">Algorithm</a>, <a class="tag-link" href="/tags/English/">English</a>, <a class="tag-link" href="/tags/LeetCode/">LeetCode</a>
+    </div>
+
+            </div>
+            
+        </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <p><p>[English ver]</p>
+<h1><span id="6-zigzag-conversion">6. ZigZag Conversion</span></h1><p>The string “PAYPALISHIRING” is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">P   A   H   N</div><div class="line">A P L S I I G</div><div class="line">Y   I   R</div></pre></td></tr></table></figure></p>
+<p>And then read line by line: “PAHNAPLSIIGYIR”<br>Write the code that will take a string and make this conversion given a number of rows:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">string convert(string text, int nRows);</div></pre></td></tr></table></figure></p>
+<p>convert(“PAYPALISHIRING”, 3) should return “PAHNAPLSIIGYIR”.</p>
+<p>
+                
+                
+                
+            
+    </div>
+    <div class="article-more-link">
+        <a href="/2018/09/12/6-ZigZag-Conversion/Record-en/#more">Read More</a>
+    </div>
+    
+        <!--<div class="article-entry" itemprop="articleBody">-->
+            <!---->
+            <!---->
+            <!--<p>[English ver]</p>
+<h1><span id="6-zigzag-conversion">6. ZigZag Conversion</span></h1><p>The string “PAYPALISHIRING” is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">P   A   H   N</div><div class="line">A P L S I I G</div><div class="line">Y   I   R</div></pre></td></tr></table></figure></p>
+<p>And then read line by line: “PAHNAPLSIIGYIR”<br>Write the code that will take a string and make this conversion given a number of rows:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">string convert(string text, int nRows);</div></pre></td></tr></table></figure></p>
+<p>convert(“PAYPALISHIRING”, 3) should return “PAHNAPLSIIGYIR”.</p>
+<hr>
+<p>First we need to know the meaning about the zigzag pattern, it means a pattern made up of small corners at variable angles, though constant within the zigzag, tracing a path between two parallel lines; it can be described as both jagged and fairly regular. In the begining i think it’s one line in the middle and then some symmetry verticle line between the middle horizontal line,when the number of rows is 4(use number to represent the index of the String)it would look like that:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">1   7    13</div><div class="line">2   8    14</div><div class="line">3 6 9 12 15</div><div class="line">4   10   16</div><div class="line">5   11   17</div></pre></td></tr></table></figure>
+<p>but the trueth is not , it should be looked like that:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">1     7        13</div><div class="line">2   6 8     12 14</div><div class="line">3 5   9  11    15</div><div class="line">4     10       16</div></pre></td></tr></table></figure></p>
+<h3><span id="approach-1-use-string">Approach 1 use String[]:</span></h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">convert</span><span class="params">(String s, <span class="keyword">int</span> numRows)</span> </span>&#123;</div><div class="line">        String result = <span class="string">""</span>;</div><div class="line">        String[] strings = <span class="keyword">new</span> String[numRows];</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i =<span class="number">0</span>;i&lt;numRows;i++)&#123;</div><div class="line">            strings[i] = <span class="string">""</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">int</span> position = <span class="number">0</span> ;</div><div class="line">        <span class="keyword">int</span> numRowsIndex = numRows-<span class="number">1</span>;</div><div class="line">        <span class="keyword">int</span> step = <span class="number">1</span>;</div><div class="line">        <span class="comment">//if the numRows is one ,or the s's length is less than numRows ,return s .</span></div><div class="line">        <span class="keyword">if</span> (numRows ==<span class="number">1</span> || s.length()&lt;numRows)&#123;</div><div class="line">            <span class="keyword">return</span> s;</div><div class="line">        &#125;</div><div class="line">        <span class="comment">//loop the every char in the String, when the position is 0,the step is one ,is the position is numRowsIndex,the step is negative one</span></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i =<span class="number">0</span>;i&lt;s.length();i++)&#123;</div><div class="line">            strings[position] += s.charAt(i);</div><div class="line">            <span class="keyword">if</span> (position ==<span class="number">0</span>)&#123;</div><div class="line">               step = <span class="number">1</span>;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span> (position == numRowsIndex )&#123;</div><div class="line">                step = -<span class="number">1</span>;</div><div class="line">            &#125;</div><div class="line">            position = position+step;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i =<span class="number">0</span>;i&lt;numRows;i++)&#123;</div><div class="line">            result += strings[i];</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">return</span> result;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/6.%20ZigZag%20Conversion/Images/StringsResult.png?raw=true" alt="Efficiency"></p>
+<p><strong>Analysis</strong><br>This method put every line’s String into the String[i] accordingly,in the last concate it together and then we get the result we want . When the position is in the first row , next time the position should move down,so step = 1.When the position is in the last Row , next time the position should move up , so the step = -1.</p>
+<p>Time complexity ： O(n) 。n is the length of the string.<br>Space complexity ： O(n) .</p>
+<h3><span id="approach-2-stringbuilder">Approach 2 StringBuilder[]:</span></h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">convert</span><span class="params">(String s, <span class="keyword">int</span> numRows)</span> </span>&#123;</div><div class="line">        StringBuilder result = <span class="keyword">new</span> StringBuilder(<span class="string">""</span>);</div><div class="line">        StringBuilder[] strings = <span class="keyword">new</span> StringBuilder[numRows];</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i =<span class="number">0</span>;i&lt;numRows;i++)&#123;</div><div class="line">            strings[i] = <span class="keyword">new</span> StringBuilder(<span class="string">""</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">int</span> position = <span class="number">0</span> ;</div><div class="line">        <span class="keyword">int</span> numRowsIndex = numRows-<span class="number">1</span>;</div><div class="line">        <span class="keyword">int</span> step = <span class="number">1</span>;</div><div class="line">          <span class="comment">//if the numRows is one ,or the s's length is less than numRows ,return s .</span></div><div class="line">        <span class="keyword">if</span> (numRows ==<span class="number">1</span> || s.length()&lt;numRows)&#123;</div><div class="line">            <span class="keyword">return</span> s;</div><div class="line">        &#125;</div><div class="line">          <span class="comment">//loop the every char in the String, when the position is 0,the step is one ,is the position is numRowsIndex,the step is negative one</span></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i =<span class="number">0</span>;i&lt;s.length();i++)&#123;</div><div class="line">            strings[position].append(s.charAt(i));</div><div class="line">            <span class="keyword">if</span> (position ==<span class="number">0</span>)&#123;</div><div class="line">               step = <span class="number">1</span>;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span> (position == numRowsIndex )&#123;</div><div class="line">                step = -<span class="number">1</span>;</div><div class="line">            &#125;</div><div class="line">            position = position+step;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i =<span class="number">0</span>;i&lt;numRows;i++)&#123;</div><div class="line">            result.append(strings[i]);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> result.toString();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/6.%20ZigZag%20Conversion/Images/StringBuilderResult.png?raw=true" alt="Efficiency"></p>
+<p><strong>Analysis</strong><br>This method’s principle is the same as the Approach 1 , it just replace the String into StringBuilder,it has a big optimization.</p>
+<p>Time complexity ： O(n) 。n is the length of the string.<br>Space complexity ： O(n) .</p>
+<h3><span id="approach-3-use-interval">Approach 3 use interval</span></h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">convert</span><span class="params">(String s, <span class="keyword">int</span> numRows)</span> </span>&#123;</div><div class="line"></div><div class="line">        String result=<span class="string">""</span>;</div><div class="line">        <span class="keyword">if</span>(numRows==<span class="number">1</span>)</div><div class="line">            <span class="keyword">return</span> s;</div><div class="line">        <span class="keyword">int</span> step1,step2;</div><div class="line">        <span class="keyword">int</span> len=s.length();</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;numRows;++i)&#123;</div><div class="line">            step1=(numRows-i-<span class="number">1</span>)*<span class="number">2</span>;</div><div class="line">            step2=(i)*<span class="number">2</span>;</div><div class="line">            <span class="keyword">int</span> pos=i;</div><div class="line">            <span class="keyword">if</span>(pos&lt;len)</div><div class="line">                result+=s.charAt(pos);</div><div class="line">            <span class="keyword">while</span>(<span class="keyword">true</span>)&#123;</div><div class="line">                pos+=step1;</div><div class="line">                <span class="keyword">if</span>(pos&gt;=len)</div><div class="line">                    <span class="keyword">break</span>;</div><div class="line">                <span class="keyword">if</span>(step1&gt;<span class="number">0</span>)</div><div class="line">                    result+=s.charAt(pos);</div><div class="line">                pos+=step2;</div><div class="line">                <span class="keyword">if</span>(pos&gt;=len)</div><div class="line">                    <span class="keyword">break</span>;</div><div class="line">                <span class="keyword">if</span>(step2&gt;<span class="number">0</span>)</div><div class="line">                    result+=s.charAt(pos);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> result;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>Analysis</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">/*n=numRows</div><div class="line">Δ=2n-2    1                           2n-1                         4n-3</div><div class="line">Δ=        2                     2n-2  2n                    4n-4   4n-2</div><div class="line">Δ=        3               2n-3        2n+1              4n-5       .</div><div class="line">Δ=        .           .               .               .            .</div><div class="line">Δ=        .       n+2                 .           3n               .</div><div class="line">Δ=        n-1 n+1                     3n-3    3n-1                 5n-5</div><div class="line">Δ=2n-2    n                           3n-2                         5n-4</div><div class="line">*/</div></pre></td></tr></table></figure>
+<p>This method used regular interval to calculate position .</p>
+<p>Time complexity ： O(n) 。n is the length of the string.<br>Space complexity ： O(n) .</p>
+<p>If you have any suggestions to make the logic and implementation more better , or you have some advice on my description. Please let me know!Thanks!</p>
+<h2><span id="about-me">About Me</span></h2><p>My blog <a href="http://leonchen1024.com/" target="_blank" rel="external">leonchen1024.com</a></p>
+<p>My Github  <a href="https://github.com/LeonChen1024" target="_blank" rel="external">https://github.com/LeonChen1024</a></p>
+<p>My twitter <a href="https://twitter.com/LChen1024?lang=en" target="_blank" rel="external">https://twitter.com/LChen1024?lang=en</a></p>
+-->
+            <!---->
+        <!--</div>-->
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://yoursite.com/2018/09/12/6-ZigZag-Conversion/Record-en/" data-id="cjr4v59tt00419mbjzw2j6reo" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -2167,7 +2167,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://yoursite.com/2018/08/31/5-Longest-Palindromic-Substring/Record-en/" data-id="cjr4v1ej0003z69bjhakpd08w" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2018/08/31/5-Longest-Palindromic-Substring/Record-en/" data-id="cjr4v59ts003y9mbjlve3c7jx" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -2264,25 +2264,6 @@ ga('send', 'pageview');
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2019/01/20/LeetCode-8-String-to-Integer/Record-en/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/2019/01/20/LeetCode-8-String-to-Integer/Record-cn/titleThumb.jpg)" alt="LeetCode 8. String to Integer (atoi)" class="thumbnail-image"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/English/">English</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/English/Algorithm/">Algorithm</a></p>
-                            <p class="item-title"><a href="/2019/01/20/LeetCode-8-String-to-Integer/Record-en/" class="title">LeetCode 8. String to Integer (atoi)</a></p>
-                            <p class="item-date"><time datetime="2019-01-19T16:00:00.000Z" itemprop="datePublished">2019-01-20</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
                             <a href="/2019/01/20/LeetCode-8-String-to-Integer/Record-cn/" class="thumbnail">
     
     
@@ -2295,6 +2276,25 @@ ga('send', 'pageview');
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/Chinese/">Chinese</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/Chinese/Algorithm/">Algorithm</a></p>
                             <p class="item-title"><a href="/2019/01/20/LeetCode-8-String-to-Integer/Record-cn/" class="title">LeetCode 8. 字符串转整数</a></p>
+                            <p class="item-date"><time datetime="2019-01-19T16:00:00.000Z" itemprop="datePublished">2019-01-20</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2019/01/20/LeetCode-8-String-to-Integer/Record-en/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/2019/01/20/LeetCode-8-String-to-Integer/Record-cn/titleThumb.jpg)" alt="LeetCode 8. String to Integer (atoi)" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/English/">English</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/English/Algorithm/">Algorithm</a></p>
+                            <p class="item-title"><a href="/2019/01/20/LeetCode-8-String-to-Integer/Record-en/" class="title">LeetCode 8. String to Integer (atoi)</a></p>
                             <p class="item-date"><time datetime="2019-01-19T16:00:00.000Z" itemprop="datePublished">2019-01-20</time></p>
                         </div>
                     </li>
