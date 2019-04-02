@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html >
 <head>
     <meta charset="utf-8">
-    
-    <title>Android 6.0的变化 （上） | LeonChen&#39;s Blog</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<title>Android 6.0的变化 （上） - LeonChen&#39;s Blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+
+
     <meta name="description" content="随着一系列新的特性以及功能， Android 6.0 (API level 23)包含了很多的系统变化以及API行为的变化。本文着重介绍了一些你应该理解的和占用APP中重要部分的变化。 如果你之前已经在Android平台发布过APP，要知道这些平台上的变化将会影响你的APP。 目录 目录 运行时权限 休眠和应用待机模式 移除Apache的 HTTP Client BoringSSL 获取硬件标识符">
 <meta name="keywords" content="Chinese,Android,版本差异">
 <meta property="og:type" content="article">
@@ -12,660 +14,1373 @@
 <meta property="og:url" content="http://yoursite.com/2016/08/20/Android-6.0-Change-1/index.html">
 <meta property="og:site_name" content="LeonChen&#39;s Blog">
 <meta property="og:description" content="随着一系列新的特性以及功能， Android 6.0 (API level 23)包含了很多的系统变化以及API行为的变化。本文着重介绍了一些你应该理解的和占用APP中重要部分的变化。 如果你之前已经在Android平台发布过APP，要知道这些平台上的变化将会影响你的APP。 目录 目录 运行时权限 休眠和应用待机模式 移除Apache的 HTTP Client BoringSSL 获取硬件标识符">
-<meta property="og:image" content="http://yoursite.com/2016/08/20/Android-6.0-Change-1/picThumb.jpg">
 <meta property="og:updated_time" content="2018-05-18T14:08:52.525Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android 6.0的变化 （上）">
 <meta name="twitter:description" content="随着一系列新的特性以及功能， Android 6.0 (API level 23)包含了很多的系统变化以及API行为的变化。本文着重介绍了一些你应该理解的和占用APP中重要部分的变化。 如果你之前已经在Android平台发布过APP，要知道这些平台上的变化将会影响你的APP。 目录 目录 运行时权限 休眠和应用待机模式 移除Apache的 HTTP Client BoringSSL 获取硬件标识符">
-<meta name="twitter:image" content="http://yoursite.com/2016/08/20/Android-6.0-Change-1/picThumb.jpg">
+
+
+
+
+
+<link rel="icon" href="/images/favicon.png">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
     
 
     
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
 
     
-        <link rel="icon" href="/images/Facicon.png" />
     
-    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-111687087-1"></script>
 <script>
-  (adsbygoogle = window.adsbygoogle || []).push({
-    google_ad_client: "ca-pub-9191109011370892",
-    enable_page_level_ads: true
-  });
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-111687087-1');
 </script>
-    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/libs/open-sans/styles.css">
-    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
 
-    <link rel="stylesheet" href="/css/style.css">
 
-    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
     
     
-        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
     
     
-        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
-    
-    
-        <script type="text/javascript">
-(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-ga('create', 'UA-111687087-1', 'auto');
-ga('send', 'pageview');
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
 
-</script>
+    
+    
+    
+
     
     
     
 
 
+<link rel="stylesheet" href="/css/style.css">
 </head>
-
-<body>
-    <div id="container">
-        <header id="header">
-    <div id="header-main" class="header-inner">
-        <div class="outer">
-            <a href="/" id="logo">
-                <i class="logo"></i>
-                <span class="site-title">LeonChen&#39;s Blog</span>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.png" alt="Android 6.0的变化 （上）" height="28">
+            
             </a>
-            <nav id="main-nav">
-                
-                    <a class="main-nav-link" href="/.">Home</a>
-                
-                    <a class="main-nav-link" href="/archives">Archives</a>
-                
-                    <a class="main-nav-link" href="/categories">Categories</a>
-                
-                    <a class="main-nav-link" href="/tags">Tags</a>
-                
-                    <a class="main-nav-link" href="/about">About</a>
-                
-            </nav>
-            
-                
-                <nav id="sub-nav">
-                    <div class="profile" id="profile-nav">
-                        <a id="profile-anchor" href="javascript:;">
-                            <img class="avatar" src="/css/images/avatar.png" />
-                            <i class="fa fa-caret-down"></i>
-                        </a>
-                    </div>
-                </nav>
-            
-            <div id="search-form-wrap">
-
-    <form class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
-        <button type="submit" class="search-form-submit"></button>
-    </form>
-    <div class="ins-search">
-    <div class="ins-search-mask"></div>
-    <div class="ins-search-container">
-        <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="Type something..." />
-            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
-        <div class="ins-section-wrapper">
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/archives">Archives</a>
+                
+                <a class="navbar-item"
+                href="/categories">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags">Tags</a>
+                
+                <a class="navbar-item"
+                href="/about">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="https://github.com/LeonChen1024">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                
+                <a class="navbar-item search" title="Search" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-image">
+        <span  class="image is-7by1">
+            <img class="banner" src="/2016/08/20/Android-6.0-Change-1/pic.jpg" alt="Android 6.0的变化 （上）">
+        </span>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2016-08-20T12:21:44.000Z">2016-08-20</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Android/版本差异/">版本差异</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    12 minutes read (About 1824 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                Android 6.0的变化 （上）
+            
+        </h1>
+        <div class="content">
+            <!-- <p>随着一系列新的特性以及功能， Android 6.0 (API level 23)包含了很多的系统变化以及API行为的变化。本文着重介绍了一些你应该理解的和占用APP中重要部分的变化。</p>
+<p>如果你之前已经在Android平台发布过APP，要知道这些平台上的变化将会影响你的APP。</p>
+<h2><span id="目录">目录</span></h2><ul>
+<li><a href="#目录">目录</a></li>
+<li><a href="#运行时权限">运行时权限</a></li>
+<li><a href="#休眠和应用待机模式">休眠和应用待机模式</a></li>
+<li><a href="#移除apache的-http-client">移除Apache的 HTTP Client</a></li>
+<li><a href="#boringssl">BoringSSL</a></li>
+<li><a href="#获取硬件标识符">获取硬件标识符</a></li>
+<li><a href="#通知">通知</a></li>
+<li><a href="#audiomanager-改变">AudioManager 改变</a></li>
+<li><a href="#文本选择">文本选择</a></li>
+</ul>
+<h2><span id="运行时权限">运行时权限</span></h2><p>这个版本引入了一个新的权限模型，使得用户现在可以在运行时直接管理APP权限。这个模型改善了用户对权限管理的可见度和管理程度，并简化了APP开发者对安装和自动升级的流程。用户可以对已安装的APP的权限分别进行授权和取消。</p>
+<p>当你的APP的目标版本在Android 6.0 (API level 23)或者更高的时候， 请确保在运行时检查并申请权限。要确定你的APP是否被授予了某权限，可以通过调用新的checkSelfPermission()方法。为了去申请一个权限，可以通过调用 requestPermissions() 新方法。即使你的APP目标版本不是 Android 6.0 (API level 23)，你也应该在新的权限模型下进行测试。</p>
+<p>想要了解更多的在你的APP里支持新的权限模型的细节，可见 Working with System Permissions。获得更多的评估对你的APP的影响的提示，可见Permissions Best Practices。</p>
+<p>危险权限和普通权限见下链接<br><a href="http://blog.csdn.net/chenlinfeng772885775/article/details/53508204" target="_blank" rel="external">点击打开链接</a></p>
+<h2><span id="休眠和应用待机模式">休眠和应用待机模式</span></h2><p>这个版本将为空闲的设备和APP引入新的节能方式。这些新功能将会影响所有的APP，所以请确保你的APP在新的模式下进行测试。</p>
+<p>休眠：如果用户拔出一个设备并将其屏幕关闭闲置一段时间，设备将会进入休眠模式，尝试使系统进入睡眠状态。在这个模式下，设备周期性的恢复短暂时间的正常操作使得APP可以进行同步，使得系统可以进行一些待执行的操作。</p>
+<p>APP待机：APP待机允许系统判定一个APP是处于待机状态当这个APP没有被用户显式的使用。系统在用户一段时间内并没有触摸这个APP时做出这个决定。如果设备没有连接充电器，系统将会禁止访问网络并暂停APP的同步以及相应的工作当他被认为是闲置的时候。</p>
+<p>学习更多的有关节能方面的改变，详见Optimizing for Doze and App Standby。</p>
+<h2><span id="移除apache的-http-client">移除Apache的 HTTP Client</span></h2><p>Android 6.0 的版本移除了对 Apache HTTP client的支持.如果你的APP正在使用这个client并且目标版本在Android 2.3 (API level 9)或者更高，请使用HttpURLConnection类来替代。这个API是更加高效的，因为他采用了透明压缩和响应缓存来减少网络使用，减少电能消耗。如果仍然想继续使用Apache HTTP APIs，你必须一开始就在你的build.gradle文件里定义以下编译时依赖。</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">android &#123;</div><div class="line">    useLibrary &apos;org.apache.http.legacy&apos;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2><span id="boringssl">BoringSSL</span></h2><p>Android正在将OpenSSL替换为BoringSSL库。如果你的APP使用的是 Android NDK，请不要使用那些不属于NDK API里的库，比如：libcrypto.so 和 libssl.so.这些库不是公开的API,他们的修改和禁用也不会通过文件和设备通知开发者。另外，这样可能还会暴露你APP的安全漏洞。取而代之的是你需要修改你的native代码，通过JNI来调用Java cryptography APIs或者静态连接到你选择的加密库。</p>
+<h2><span id="获取硬件标识符">获取硬件标识符</span></h2><p>从这个版本开始，为了给用户提供更好点数据保护，Android删除了通过编程方式从Wi-Fi 和 Bluetooth APIs来获得硬件本地标识符的方法。现在 WifiInfo.getMacAddress() 和 BluetoothAdapter.getAddress()方法将始终返回一个常量值02:00:00:00:00:00。</p>
+<p>为了通过蓝牙或WiFi扫描获取附近的设备的硬件标识符，你的APP必须拥有ACCESS_FINE_LOCATION 或 ACCESS_COARSE_LOCATION权限。</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">WifiManager.getScanResults()</div><div class="line">BluetoothDevice.ACTION_FOUND</div><div class="line">BluetoothLeScanner.startScan()</div></pre></td></tr></table></figure>
+<p>注意：当一个运行Android 6.0 (API level 23)的设备启动WiFi或者蓝牙扫描时，这个操作对外部设备是可见的，并会被初始化一个随机的mac地址。</p>
+<h2><span id="通知">通知</span></h2><p>这个版本删除了 Notification.setLatestEventInfo()方法。使用Notification.Builder来取代它进行构造通知。为了反复更新一个通知，可以重用 Notification.Builder 实例，调用 build() 方法来更新通知实例。</p>
+<p>adb shell dumpsys notification命令不在打印你的通知文本。使用adb shell dumpsys notification –noredact命令来取代它打印你的通知对象文本。</p>
+<h2><span id="audiomanager-改变">AudioManager 改变</span></h2><p>不再支持通过 AudioManager类来对某个音频流进行精确的调音或者静音设置。 setStreamSolo()方法已经被弃用了，你应该使用  requestAudioFocus() 方法来替代它。同样的setStreamMute()方法也被弃用了，调用 adjustStreamVolume() 方法来替代它，传入的参数变为ADJUST_MUTE 或 ADJUST_UNMUTE 。</p>
+<h2><span id="文本选择">文本选择</span></h2><p>当用户在你的APP上选择文本时，你现在可以在浮动工具栏里显示一些文本选择动作比如剪切，复制，和粘贴。和用户的交互界面类似于上下文动作菜单，就像为单独的视图配置的上下文菜单。</p>
+<p>为了实现文本选择的浮动工具栏，需要在你已有的APP里做出以下改变：</p>
+<p>1.在你的view里或者activity里，改变你的 ActionMode 的获取方法，由startActionMode(Callback)变为 startActionMode(Callback, ActionMode.TYPE_FLOATING).</p>
+<p>2.将你已经实现了ActionMode.Callback变为继承自ActionMode.Callback2。</p>
+<p>3.重写 onGetContentRect()方法来提供视图中内容选中框（比如文本选中框）的坐标。</p>
+<p>4.在矩形框作为一个唯一的元素不再有效时，调用 invalidateContentRect() 方法。</p>
+<p>如果你在使用 Android Support Library revision 22.2, 你要知道浮动工具栏并不向后支持并且APP兼容会默认控制 ActionMode。这会阻止悬浮工具栏的显示。为了实现在 AppCompatActivity 里对 ActionMode的支持，调用 getDelegate()方法，并用其得到的 AppCompatDelegate 对象调用setHandleNativeActionModesEnabled()并将传入参数设为false。这个调用返回 ActionMode的控制给框架。在设备运行Android 6.0 (API level 23),这允许框架去支持 ActionBar 或者浮动工具栏模式，而当设备运行早Android 5.1 (API level 22)或更低的版本上时，只有 ActionBar 模式被支持。</p>
+ -->
+            <div class="article-entry">
+                    
+                    
+                    
+                        <p>随着一系列新的特性以及功能， Android 6.0 (API level 23)包含了很多的系统变化以及API行为的变化。本文着重介绍了一些你应该理解的和占用APP中重要部分的变化。</p>
+<p>如果你之前已经在Android平台发布过APP，要知道这些平台上的变化将会影响你的APP。</p>
+<h2><span id="目录">目录</span></h2><ul>
+<li><a href="#目录">目录</a></li>
+<li><a href="#运行时权限">运行时权限</a></li>
+<li><a href="#休眠和应用待机模式">休眠和应用待机模式</a></li>
+<li><a href="#移除apache的-http-client">移除Apache的 HTTP Client</a></li>
+<li><a href="#boringssl">BoringSSL</a></li>
+<li><a href="#获取硬件标识符">获取硬件标识符</a></li>
+<li><a href="#通知">通知</a></li>
+<li><a href="#audiomanager-改变">AudioManager 改变</a></li>
+<li><a href="#文本选择">文本选择</a></li>
+</ul>
+<h2><span id="运行时权限">运行时权限</span></h2><p>这个版本引入了一个新的权限模型，使得用户现在可以在运行时直接管理APP权限。这个模型改善了用户对权限管理的可见度和管理程度，并简化了APP开发者对安装和自动升级的流程。用户可以对已安装的APP的权限分别进行授权和取消。</p>
+<p>当你的APP的目标版本在Android 6.0 (API level 23)或者更高的时候， 请确保在运行时检查并申请权限。要确定你的APP是否被授予了某权限，可以通过调用新的checkSelfPermission()方法。为了去申请一个权限，可以通过调用 requestPermissions() 新方法。即使你的APP目标版本不是 Android 6.0 (API level 23)，你也应该在新的权限模型下进行测试。</p>
+<p>想要了解更多的在你的APP里支持新的权限模型的细节，可见 Working with System Permissions。获得更多的评估对你的APP的影响的提示，可见Permissions Best Practices。</p>
+<p>危险权限和普通权限见下链接<br><a href="http://blog.csdn.net/chenlinfeng772885775/article/details/53508204" target="_blank" rel="external">点击打开链接</a></p>
+<h2><span id="休眠和应用待机模式">休眠和应用待机模式</span></h2><p>这个版本将为空闲的设备和APP引入新的节能方式。这些新功能将会影响所有的APP，所以请确保你的APP在新的模式下进行测试。</p>
+<p>休眠：如果用户拔出一个设备并将其屏幕关闭闲置一段时间，设备将会进入休眠模式，尝试使系统进入睡眠状态。在这个模式下，设备周期性的恢复短暂时间的正常操作使得APP可以进行同步，使得系统可以进行一些待执行的操作。</p>
+<p>APP待机：APP待机允许系统判定一个APP是处于待机状态当这个APP没有被用户显式的使用。系统在用户一段时间内并没有触摸这个APP时做出这个决定。如果设备没有连接充电器，系统将会禁止访问网络并暂停APP的同步以及相应的工作当他被认为是闲置的时候。</p>
+<p>学习更多的有关节能方面的改变，详见Optimizing for Doze and App Standby。</p>
+<h2><span id="移除apache的-http-client">移除Apache的 HTTP Client</span></h2><p>Android 6.0 的版本移除了对 Apache HTTP client的支持.如果你的APP正在使用这个client并且目标版本在Android 2.3 (API level 9)或者更高，请使用HttpURLConnection类来替代。这个API是更加高效的，因为他采用了透明压缩和响应缓存来减少网络使用，减少电能消耗。如果仍然想继续使用Apache HTTP APIs，你必须一开始就在你的build.gradle文件里定义以下编译时依赖。</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">android &#123;</div><div class="line">    useLibrary &apos;org.apache.http.legacy&apos;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2><span id="boringssl">BoringSSL</span></h2><p>Android正在将OpenSSL替换为BoringSSL库。如果你的APP使用的是 Android NDK，请不要使用那些不属于NDK API里的库，比如：libcrypto.so 和 libssl.so.这些库不是公开的API,他们的修改和禁用也不会通过文件和设备通知开发者。另外，这样可能还会暴露你APP的安全漏洞。取而代之的是你需要修改你的native代码，通过JNI来调用Java cryptography APIs或者静态连接到你选择的加密库。</p>
+<h2><span id="获取硬件标识符">获取硬件标识符</span></h2><p>从这个版本开始，为了给用户提供更好点数据保护，Android删除了通过编程方式从Wi-Fi 和 Bluetooth APIs来获得硬件本地标识符的方法。现在 WifiInfo.getMacAddress() 和 BluetoothAdapter.getAddress()方法将始终返回一个常量值02:00:00:00:00:00。</p>
+<p>为了通过蓝牙或WiFi扫描获取附近的设备的硬件标识符，你的APP必须拥有ACCESS_FINE_LOCATION 或 ACCESS_COARSE_LOCATION权限。</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">WifiManager.getScanResults()</div><div class="line">BluetoothDevice.ACTION_FOUND</div><div class="line">BluetoothLeScanner.startScan()</div></pre></td></tr></table></figure>
+<p>注意：当一个运行Android 6.0 (API level 23)的设备启动WiFi或者蓝牙扫描时，这个操作对外部设备是可见的，并会被初始化一个随机的mac地址。</p>
+<h2><span id="通知">通知</span></h2><p>这个版本删除了 Notification.setLatestEventInfo()方法。使用Notification.Builder来取代它进行构造通知。为了反复更新一个通知，可以重用 Notification.Builder 实例，调用 build() 方法来更新通知实例。</p>
+<p>adb shell dumpsys notification命令不在打印你的通知文本。使用adb shell dumpsys notification –noredact命令来取代它打印你的通知对象文本。</p>
+<h2><span id="audiomanager-改变">AudioManager 改变</span></h2><p>不再支持通过 AudioManager类来对某个音频流进行精确的调音或者静音设置。 setStreamSolo()方法已经被弃用了，你应该使用  requestAudioFocus() 方法来替代它。同样的setStreamMute()方法也被弃用了，调用 adjustStreamVolume() 方法来替代它，传入的参数变为ADJUST_MUTE 或 ADJUST_UNMUTE 。</p>
+<h2><span id="文本选择">文本选择</span></h2><p>当用户在你的APP上选择文本时，你现在可以在浮动工具栏里显示一些文本选择动作比如剪切，复制，和粘贴。和用户的交互界面类似于上下文动作菜单，就像为单独的视图配置的上下文菜单。</p>
+<p>为了实现文本选择的浮动工具栏，需要在你已有的APP里做出以下改变：</p>
+<p>1.在你的view里或者activity里，改变你的 ActionMode 的获取方法，由startActionMode(Callback)变为 startActionMode(Callback, ActionMode.TYPE_FLOATING).</p>
+<p>2.将你已经实现了ActionMode.Callback变为继承自ActionMode.Callback2。</p>
+<p>3.重写 onGetContentRect()方法来提供视图中内容选中框（比如文本选中框）的坐标。</p>
+<p>4.在矩形框作为一个唯一的元素不再有效时，调用 invalidateContentRect() 方法。</p>
+<p>如果你在使用 Android Support Library revision 22.2, 你要知道浮动工具栏并不向后支持并且APP兼容会默认控制 ActionMode。这会阻止悬浮工具栏的显示。为了实现在 AppCompatActivity 里对 ActionMode的支持，调用 getDelegate()方法，并用其得到的 AppCompatDelegate 对象调用setHandleNativeActionModesEnabled()并将传入参数设为false。这个调用返回 ActionMode的控制给框架。在设备运行Android 6.0 (API level 23),这允许框架去支持 ActionBar 或者浮动工具栏模式，而当设备运行早Android 5.1 (API level 22)或更低的版本上时，只有 ActionBar 模式被支持。</p>
+
+                        </div>
+                    
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/Android/">Android</a>, <a class="has-link-grey -link" href="/tags/Chinese/">Chinese</a>, <a class="has-link-grey -link" href="/tags/版本差异/">版本差异</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">Like this article? Support the author with</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>Alipay</span>
+    <div class="qrcode"><img src="/images/Alipay.jpg" alt="Alipay"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>Wechat</span>
+    <div class="qrcode"><img src="/images/Wepay.jpg" alt="Wechat"></div>
+</a>
+
+                
+                <!-- Visit https://www.paypal.com/donate/buttons/ to get your donate button -->
+
+<div class="notification is-danger">
+    You forgot to set the <code>business</code> and <code>currency_code</code> for Paypal. Please set it in <code>_config.yml</code>.
+</div>
+
+                
+                
+<div class="notification is-danger">
+    You forgot to set the <code>url</code> Patreon. Please set it in <code>_config.yml</code>.
+</div>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2016/08/20/Android-6.0-Change-2/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">Android 6.0的变化 （下）</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2016/03/17/Android-declare-styleable-Attribute/">
+                <span class="level-item">Android declare-styleable自定义属性</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered">
+                <div>
+                    
+                        <img class="image is-128x128 has-mb-6" src="/images/logo.png" alt="Leon Chen">
+                    
+                    
+                    <p class="is-size-4 is-block">
+                        Leon Chen
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        Software Developer
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Xiamen China</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Posts
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        26
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Categories
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        17
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Tags
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        14
+                    </p>
+                </div>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/LeonChen1024">
+                Follow</a>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Github" href="https://github.com/LeonChen1024">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+    
+        
+
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Categories
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="undefined">
+            <span class="level-start">
+                <span class="level-item">Chinese</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">18</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="undefined">
+            <span class="level-start">
+                <span class="level-item">Algorithm</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">10</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="undefined">
+            <span class="level-start">
+                <span class="level-item">Android</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">6</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="undefined">
+            <span class="level-start">
+                <span class="level-item">Java</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="undefined">
+            <span class="level-start">
+                <span class="level-item">English</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">8</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="undefined">
+            <span class="level-start">
+                <span class="level-item">Algorithm</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">8</span>
+            </span>
+        </a></li></ul></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Tag Cloud
+        </h3>
+        <a href="/tags/Algorithm/" style="font-size: 20px;">Algorithm</a> <a href="/tags/Android/" style="font-size: 13.33px;">Android</a> <a href="/tags/Chinese/" style="font-size: 18.33px;">Chinese</a> <a href="/tags/Custom-View/" style="font-size: 10px;">Custom View</a> <a href="/tags/Data-Structure/" style="font-size: 10px;">Data Structure</a> <a href="/tags/English/" style="font-size: 15px;">English</a> <a href="/tags/Error/" style="font-size: 10px;">Error</a> <a href="/tags/Java/" style="font-size: 11.67px;">Java</a> <a href="/tags/LeetCode/" style="font-size: 16.67px;">LeetCode</a> <a href="/tags/Optimize/" style="font-size: 10px;">Optimize</a> <a href="/tags/SourceCode/" style="font-size: 10px;">SourceCode</a> <a href="/tags/UI/" style="font-size: 10px;">UI</a> <a href="/tags/版本差异/" style="font-size: 11.67px;">版本差异</a> <a href="/tags/版本管理/" style="font-size: 10px;">版本管理</a>
+    </div>
+</div>
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+            
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Recent
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/01/20/LeetCode-8-String-to-Integer/Record-en/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/2019/01/20/LeetCode-8-String-to-Integer/Record-cn/titleThumb.jpg" alt="LeetCode 8. String to Integer (atoi)">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-01-19T16:00:00.000Z">2019-01-20</time></div>
+                    <a href="/2019/01/20/LeetCode-8-String-to-Integer/Record-en/" class="has-link-black-ter is-size-6">LeetCode 8. String to Integer (atoi)</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/English/">English</a> / <a class="has-link-grey -link" href="/categories/English/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/01/20/LeetCode-8-String-to-Integer/Record-cn/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/2019/01/20/LeetCode-8-String-to-Integer/Record-cn/titleThumb.jpg" alt="LeetCode 8. 字符串转整数">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-01-19T16:00:00.000Z">2019-01-20</time></div>
+                    <a href="/2019/01/20/LeetCode-8-String-to-Integer/Record-cn/" class="has-link-black-ter is-size-6">LeetCode 8. 字符串转整数</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/01/02/Serializable/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/2019/01/02/Serializable/titleThumb.jpg" alt="Serializable">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-01-01T16:00:00.000Z">2019-01-02</time></div>
+                    <a href="/2019/01/02/Serializable/" class="has-link-black-ter is-size-6">Serializable</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Java/">Java</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2018/12/23/S1ep1-The-macgic-of-LRU-Cache/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/2018/12/23/S1ep1-The-macgic-of-LRU-Cache/titleThumb.jpg" alt="LRU 缓存的魔力">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-12-22T16:00:00.000Z">2018-12-23</time></div>
+                    <a href="/2018/12/23/S1ep1-The-macgic-of-LRU-Cache/" class="has-link-black-ter is-size-6">LRU 缓存的魔力</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2018/12/03/Greedy-Algorithm/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/2018/12/03/Greedy-Algorithm/titleThumb.jpg" alt="贪婪算法">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-12-02T16:00:00.000Z">2018-12-03</time></div>
+                    <a href="/2018/12/03/Greedy-Algorithm/" class="has-link-black-ter is-size-6">贪婪算法</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Archives
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/01/">
+                <span class="level-start">
+                    <span class="level-item">January 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/12/">
+                <span class="level-start">
+                    <span class="level-item">December 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/09/">
+                <span class="level-start">
+                    <span class="level-item">September 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/08/">
+                <span class="level-start">
+                    <span class="level-item">August 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/01/">
+                <span class="level-start">
+                    <span class="level-item">January 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/02/">
+                <span class="level-start">
+                    <span class="level-item">February 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2016/08/">
+                <span class="level-start">
+                    <span class="level-item">August 2016</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2016/03/">
+                <span class="level-start">
+                    <span class="level-item">March 2016</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Tags
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Algorithm/">
+                        <span class="tag">Algorithm</span>
+                        <span class="tag is-grey">19</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Android/">
+                        <span class="tag">Android</span>
+                        <span class="tag is-grey">7</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Chinese/">
+                        <span class="tag">Chinese</span>
+                        <span class="tag is-grey">18</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Custom-View/">
+                        <span class="tag">Custom View</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Data-Structure/">
+                        <span class="tag">Data Structure</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/English/">
+                        <span class="tag">English</span>
+                        <span class="tag is-grey">8</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Error/">
+                        <span class="tag">Error</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Java/">
+                        <span class="tag">Java</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/LeetCode/">
+                        <span class="tag">LeetCode</span>
+                        <span class="tag is-grey">16</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Optimize/">
+                        <span class="tag">Optimize</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/SourceCode/">
+                        <span class="tag">SourceCode</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/UI/">
+                        <span class="tag">UI</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/版本差异/">
+                        <span class="tag">版本差异</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/版本管理/">
+                        <span class="tag">版本管理</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+        
+        </div>
+    
+</div>
+
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Recent
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/01/20/LeetCode-8-String-to-Integer/Record-en/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/2019/01/20/LeetCode-8-String-to-Integer/Record-cn/titleThumb.jpg" alt="LeetCode 8. String to Integer (atoi)">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-01-19T16:00:00.000Z">2019-01-20</time></div>
+                    <a href="/2019/01/20/LeetCode-8-String-to-Integer/Record-en/" class="has-link-black-ter is-size-6">LeetCode 8. String to Integer (atoi)</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/English/">English</a> / <a class="has-link-grey -link" href="/categories/English/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/01/20/LeetCode-8-String-to-Integer/Record-cn/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/2019/01/20/LeetCode-8-String-to-Integer/Record-cn/titleThumb.jpg" alt="LeetCode 8. 字符串转整数">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-01-19T16:00:00.000Z">2019-01-20</time></div>
+                    <a href="/2019/01/20/LeetCode-8-String-to-Integer/Record-cn/" class="has-link-black-ter is-size-6">LeetCode 8. 字符串转整数</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/01/02/Serializable/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/2019/01/02/Serializable/titleThumb.jpg" alt="Serializable">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-01-01T16:00:00.000Z">2019-01-02</time></div>
+                    <a href="/2019/01/02/Serializable/" class="has-link-black-ter is-size-6">Serializable</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Java/">Java</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2018/12/23/S1ep1-The-macgic-of-LRU-Cache/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/2018/12/23/S1ep1-The-macgic-of-LRU-Cache/titleThumb.jpg" alt="LRU 缓存的魔力">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-12-22T16:00:00.000Z">2018-12-23</time></div>
+                    <a href="/2018/12/23/S1ep1-The-macgic-of-LRU-Cache/" class="has-link-black-ter is-size-6">LRU 缓存的魔力</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2018/12/03/Greedy-Algorithm/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/2018/12/03/Greedy-Algorithm/titleThumb.jpg" alt="贪婪算法">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-12-02T16:00:00.000Z">2018-12-03</time></div>
+                    <a href="/2018/12/03/Greedy-Algorithm/" class="has-link-black-ter is-size-6">贪婪算法</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Archives
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/01/">
+                <span class="level-start">
+                    <span class="level-item">January 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/12/">
+                <span class="level-start">
+                    <span class="level-item">December 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/09/">
+                <span class="level-start">
+                    <span class="level-item">September 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/08/">
+                <span class="level-start">
+                    <span class="level-item">August 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/01/">
+                <span class="level-start">
+                    <span class="level-item">January 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/02/">
+                <span class="level-start">
+                    <span class="level-item">February 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2016/08/">
+                <span class="level-start">
+                    <span class="level-item">August 2016</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2016/03/">
+                <span class="level-start">
+                    <span class="level-item">March 2016</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Tags
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Algorithm/">
+                        <span class="tag">Algorithm</span>
+                        <span class="tag is-grey">19</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Android/">
+                        <span class="tag">Android</span>
+                        <span class="tag is-grey">7</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Chinese/">
+                        <span class="tag">Chinese</span>
+                        <span class="tag is-grey">18</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Custom-View/">
+                        <span class="tag">Custom View</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Data-Structure/">
+                        <span class="tag">Data Structure</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/English/">
+                        <span class="tag">English</span>
+                        <span class="tag is-grey">8</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Error/">
+                        <span class="tag">Error</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Java/">
+                        <span class="tag">Java</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/LeetCode/">
+                        <span class="tag">LeetCode</span>
+                        <span class="tag is-grey">16</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Optimize/">
+                        <span class="tag">Optimize</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/SourceCode/">
+                        <span class="tag">SourceCode</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/UI/">
+                        <span class="tag">UI</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/版本差异/">
+                        <span class="tag">版本差异</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/版本管理/">
+                        <span class="tag">版本管理</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.png" alt="Android 6.0的变化 （上）" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2019 LeonChen&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="https://github.com/LeonChen1024/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("en");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="Back to Top" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
             <div class="ins-section-container"></div>
         </div>
     </div>
 </div>
 <script>
-(function (window) {
-    var INSIGHT_CONFIG = {
-        TRANSLATION: {
-            POSTS: 'Posts',
-            PAGES: 'Pages',
-            CATEGORIES: 'Categories',
-            TAGS: 'Tags',
-            UNTITLED: '(Untitled)',
-        },
-        ROOT_URL: '/',
-        CONTENT_URL: '/content.json',
-    };
-    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
-})(window);
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
 </script>
-<script src="/js/insight.js"></script>
-
-</div>
-        </div>
-    </div>
-    <div id="main-nav-mobile" class="header-sub header-inner">
-        <table class="menu outer">
-            <tr>
-                
-                    <td><a class="main-nav-link" href="/.">Home</a></td>
-                
-                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
-                
-                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
-                
-                    <td><a class="main-nav-link" href="/tags">Tags</a></td>
-                
-                    <td><a class="main-nav-link" href="/about">About</a></td>
-                
-                <td>
-                    
-    <div class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
-    </div>
-
-                </td>
-            </tr>
-        </table>
-    </div>
-</header>
-
-        <div class="outer">
-            
-                
-
-<aside id="profile">
-    <div class="inner profile-inner">
-        <div class="base-info profile-block">
-            <img id="avatar" src="/css/images/avatar.png" />
-            <h2 id="name">Leon Chen</h2>
-            <h3 id="title">Software Developer</h3>
-            <span id="location"><i class="fa fa-map-marker"></i>XiaMen, China</span>
-            <a id="follow" target="_blank" href="https://github.com/LeonChen1024">FOLLOW</a>
-        </div>
-        <div class="article-info profile-block">
-            <div class="article-info-block">
-                26
-                <span>posts</span>
-            </div>
-            <div class="article-info-block">
-                14
-                <span>tags</span>
-            </div>
-        </div>
-        
-        <div class="profile-block social-links">
-            <table>
-                <tr>
-                    
-                    
-                    <td>
-                        <a href="https://github.com/LeonChen1024/" target="_blank" title="github" class=tooltip>
-                            <i class="fa fa-github"></i>
-                        </a>
-                    </td>
-                    
-                    <td>
-                        <a href="/en" target="_blank" title="english" class=tooltip>
-                            <i class="fa fa-english"></i>
-                        </a>
-                    </td>
-                    
-                </tr>
-            </table>
-        </div>
-         
-    </div>
-</aside>
-
-            
-            <section id="main"><article id="post-Android-6.0-Change-1" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-	
-		<img src="/2016/08/20/Android-6.0-Change-1/pic.jpg" class="article-banner" />
-	
-
-
-
-        
-        
-        <header class="article-header">
-            
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
     
-        <h1 class="article-title" itemprop="name">
-            Android 6.0的变化 （上）
-        </h1>
-    
-
-            
-            <div class="article-meta">
-                
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2016/08/20/Android-6.0-Change-1/">
-            <time datetime="2016-08-20T12:21:44.000Z" itemprop="datePublished">2016-08-20</time>
-        </a>
-    </div>
-
-
-                
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/Chinese/">Chinese</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/Chinese/Android/">Android</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/Chinese/Android/版本差异/">版本差异</a>
-    </div>
-
-                
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/Android/">Android</a>, <a class="tag-link" href="/tags/Chinese/">Chinese</a>, <a class="tag-link" href="/tags/版本差异/">版本差异</a>
-    </div>
-
-            </div>
-            
-        </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-            
-            
-                
-            
-            
-            <p>随着一系列新的特性以及功能， Android 6.0 (API level 23)包含了很多的系统变化以及API行为的变化。本文着重介绍了一些你应该理解的和占用APP中重要部分的变化。</p>
-<p>如果你之前已经在Android平台发布过APP，要知道这些平台上的变化将会影响你的APP。</p>
-<h2><span id="目录">目录</span></h2><ul>
-<li><a href="#目录">目录</a></li>
-<li><a href="#运行时权限">运行时权限</a></li>
-<li><a href="#休眠和应用待机模式">休眠和应用待机模式</a></li>
-<li><a href="#移除apache的-http-client">移除Apache的 HTTP Client</a></li>
-<li><a href="#boringssl">BoringSSL</a></li>
-<li><a href="#获取硬件标识符">获取硬件标识符</a></li>
-<li><a href="#通知">通知</a></li>
-<li><a href="#audiomanager-改变">AudioManager 改变</a></li>
-<li><a href="#文本选择">文本选择</a></li>
-</ul>
-<h2><span id="运行时权限">运行时权限</span></h2><p>这个版本引入了一个新的权限模型，使得用户现在可以在运行时直接管理APP权限。这个模型改善了用户对权限管理的可见度和管理程度，并简化了APP开发者对安装和自动升级的流程。用户可以对已安装的APP的权限分别进行授权和取消。</p>
-<p>当你的APP的目标版本在Android 6.0 (API level 23)或者更高的时候， 请确保在运行时检查并申请权限。要确定你的APP是否被授予了某权限，可以通过调用新的checkSelfPermission()方法。为了去申请一个权限，可以通过调用 requestPermissions() 新方法。即使你的APP目标版本不是 Android 6.0 (API level 23)，你也应该在新的权限模型下进行测试。</p>
-<p>想要了解更多的在你的APP里支持新的权限模型的细节，可见 Working with System Permissions。获得更多的评估对你的APP的影响的提示，可见Permissions Best Practices。</p>
-<p>危险权限和普通权限见下链接<br><a href="http://blog.csdn.net/chenlinfeng772885775/article/details/53508204" target="_blank" rel="external">点击打开链接</a></p>
-<h2><span id="休眠和应用待机模式">休眠和应用待机模式</span></h2><p>这个版本将为空闲的设备和APP引入新的节能方式。这些新功能将会影响所有的APP，所以请确保你的APP在新的模式下进行测试。</p>
-<p>休眠：如果用户拔出一个设备并将其屏幕关闭闲置一段时间，设备将会进入休眠模式，尝试使系统进入睡眠状态。在这个模式下，设备周期性的恢复短暂时间的正常操作使得APP可以进行同步，使得系统可以进行一些待执行的操作。</p>
-<p>APP待机：APP待机允许系统判定一个APP是处于待机状态当这个APP没有被用户显式的使用。系统在用户一段时间内并没有触摸这个APP时做出这个决定。如果设备没有连接充电器，系统将会禁止访问网络并暂停APP的同步以及相应的工作当他被认为是闲置的时候。</p>
-<p>学习更多的有关节能方面的改变，详见Optimizing for Doze and App Standby。</p>
-<h2><span id="移除apache的-http-client">移除Apache的 HTTP Client</span></h2><p>Android 6.0 的版本移除了对 Apache HTTP client的支持.如果你的APP正在使用这个client并且目标版本在Android 2.3 (API level 9)或者更高，请使用HttpURLConnection类来替代。这个API是更加高效的，因为他采用了透明压缩和响应缓存来减少网络使用，减少电能消耗。如果仍然想继续使用Apache HTTP APIs，你必须一开始就在你的build.gradle文件里定义以下编译时依赖。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">android &#123;</div><div class="line">    useLibrary &apos;org.apache.http.legacy&apos;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2><span id="boringssl">BoringSSL</span></h2><p>Android正在将OpenSSL替换为BoringSSL库。如果你的APP使用的是 Android NDK，请不要使用那些不属于NDK API里的库，比如：libcrypto.so 和 libssl.so.这些库不是公开的API,他们的修改和禁用也不会通过文件和设备通知开发者。另外，这样可能还会暴露你APP的安全漏洞。取而代之的是你需要修改你的native代码，通过JNI来调用Java cryptography APIs或者静态连接到你选择的加密库。</p>
-<h2><span id="获取硬件标识符">获取硬件标识符</span></h2><p>从这个版本开始，为了给用户提供更好点数据保护，Android删除了通过编程方式从Wi-Fi 和 Bluetooth APIs来获得硬件本地标识符的方法。现在 WifiInfo.getMacAddress() 和 BluetoothAdapter.getAddress()方法将始终返回一个常量值02:00:00:00:00:00。</p>
-<p>为了通过蓝牙或WiFi扫描获取附近的设备的硬件标识符，你的APP必须拥有ACCESS_FINE_LOCATION 或 ACCESS_COARSE_LOCATION权限。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">WifiManager.getScanResults()</div><div class="line">BluetoothDevice.ACTION_FOUND</div><div class="line">BluetoothLeScanner.startScan()</div></pre></td></tr></table></figure>
-<p>注意：当一个运行Android 6.0 (API level 23)的设备启动WiFi或者蓝牙扫描时，这个操作对外部设备是可见的，并会被初始化一个随机的mac地址。</p>
-<h2><span id="通知">通知</span></h2><p>这个版本删除了 Notification.setLatestEventInfo()方法。使用Notification.Builder来取代它进行构造通知。为了反复更新一个通知，可以重用 Notification.Builder 实例，调用 build() 方法来更新通知实例。</p>
-<p>adb shell dumpsys notification命令不在打印你的通知文本。使用adb shell dumpsys notification –noredact命令来取代它打印你的通知对象文本。</p>
-<h2><span id="audiomanager-改变">AudioManager 改变</span></h2><p>不再支持通过 AudioManager类来对某个音频流进行精确的调音或者静音设置。 setStreamSolo()方法已经被弃用了，你应该使用  requestAudioFocus() 方法来替代它。同样的setStreamMute()方法也被弃用了，调用 adjustStreamVolume() 方法来替代它，传入的参数变为ADJUST_MUTE 或 ADJUST_UNMUTE 。</p>
-<h2><span id="文本选择">文本选择</span></h2><p>当用户在你的APP上选择文本时，你现在可以在浮动工具栏里显示一些文本选择动作比如剪切，复制，和粘贴。和用户的交互界面类似于上下文动作菜单，就像为单独的视图配置的上下文菜单。</p>
-<p>为了实现文本选择的浮动工具栏，需要在你已有的APP里做出以下改变：</p>
-<p>1.在你的view里或者activity里，改变你的 ActionMode 的获取方法，由startActionMode(Callback)变为 startActionMode(Callback, ActionMode.TYPE_FLOATING).</p>
-<p>2.将你已经实现了ActionMode.Callback变为继承自ActionMode.Callback2。</p>
-<p>3.重写 onGetContentRect()方法来提供视图中内容选中框（比如文本选中框）的坐标。</p>
-<p>4.在矩形框作为一个唯一的元素不再有效时，调用 invalidateContentRect() 方法。</p>
-<p>如果你在使用 Android Support Library revision 22.2, 你要知道浮动工具栏并不向后支持并且APP兼容会默认控制 ActionMode。这会阻止悬浮工具栏的显示。为了实现在 AppCompatActivity 里对 ActionMode的支持，调用 getDelegate()方法，并用其得到的 AppCompatDelegate 对象调用setHandleNativeActionModesEnabled()并将传入参数设为false。这个调用返回 ActionMode的控制给框架。在设备运行Android 6.0 (API level 23),这允许框架去支持 ActionBar 或者浮动工具栏模式，而当设备运行早Android 5.1 (API level 22)或更低的版本上时，只有 ActionBar 模式被支持。</p>
-
-        </div>
-        
-        <!--<div class="article-entry" itemprop="articleBody">-->
-            <!---->
-            <!---->
-            <!--<p>随着一系列新的特性以及功能， Android 6.0 (API level 23)包含了很多的系统变化以及API行为的变化。本文着重介绍了一些你应该理解的和占用APP中重要部分的变化。</p>
-<p>如果你之前已经在Android平台发布过APP，要知道这些平台上的变化将会影响你的APP。</p>
-<h2><span id="目录">目录</span></h2><ul>
-<li><a href="#目录">目录</a></li>
-<li><a href="#运行时权限">运行时权限</a></li>
-<li><a href="#休眠和应用待机模式">休眠和应用待机模式</a></li>
-<li><a href="#移除apache的-http-client">移除Apache的 HTTP Client</a></li>
-<li><a href="#boringssl">BoringSSL</a></li>
-<li><a href="#获取硬件标识符">获取硬件标识符</a></li>
-<li><a href="#通知">通知</a></li>
-<li><a href="#audiomanager-改变">AudioManager 改变</a></li>
-<li><a href="#文本选择">文本选择</a></li>
-</ul>
-<h2><span id="运行时权限">运行时权限</span></h2><p>这个版本引入了一个新的权限模型，使得用户现在可以在运行时直接管理APP权限。这个模型改善了用户对权限管理的可见度和管理程度，并简化了APP开发者对安装和自动升级的流程。用户可以对已安装的APP的权限分别进行授权和取消。</p>
-<p>当你的APP的目标版本在Android 6.0 (API level 23)或者更高的时候， 请确保在运行时检查并申请权限。要确定你的APP是否被授予了某权限，可以通过调用新的checkSelfPermission()方法。为了去申请一个权限，可以通过调用 requestPermissions() 新方法。即使你的APP目标版本不是 Android 6.0 (API level 23)，你也应该在新的权限模型下进行测试。</p>
-<p>想要了解更多的在你的APP里支持新的权限模型的细节，可见 Working with System Permissions。获得更多的评估对你的APP的影响的提示，可见Permissions Best Practices。</p>
-<p>危险权限和普通权限见下链接<br><a href="http://blog.csdn.net/chenlinfeng772885775/article/details/53508204" target="_blank" rel="external">点击打开链接</a></p>
-<h2><span id="休眠和应用待机模式">休眠和应用待机模式</span></h2><p>这个版本将为空闲的设备和APP引入新的节能方式。这些新功能将会影响所有的APP，所以请确保你的APP在新的模式下进行测试。</p>
-<p>休眠：如果用户拔出一个设备并将其屏幕关闭闲置一段时间，设备将会进入休眠模式，尝试使系统进入睡眠状态。在这个模式下，设备周期性的恢复短暂时间的正常操作使得APP可以进行同步，使得系统可以进行一些待执行的操作。</p>
-<p>APP待机：APP待机允许系统判定一个APP是处于待机状态当这个APP没有被用户显式的使用。系统在用户一段时间内并没有触摸这个APP时做出这个决定。如果设备没有连接充电器，系统将会禁止访问网络并暂停APP的同步以及相应的工作当他被认为是闲置的时候。</p>
-<p>学习更多的有关节能方面的改变，详见Optimizing for Doze and App Standby。</p>
-<h2><span id="移除apache的-http-client">移除Apache的 HTTP Client</span></h2><p>Android 6.0 的版本移除了对 Apache HTTP client的支持.如果你的APP正在使用这个client并且目标版本在Android 2.3 (API level 9)或者更高，请使用HttpURLConnection类来替代。这个API是更加高效的，因为他采用了透明压缩和响应缓存来减少网络使用，减少电能消耗。如果仍然想继续使用Apache HTTP APIs，你必须一开始就在你的build.gradle文件里定义以下编译时依赖。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">android &#123;</div><div class="line">    useLibrary &apos;org.apache.http.legacy&apos;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2><span id="boringssl">BoringSSL</span></h2><p>Android正在将OpenSSL替换为BoringSSL库。如果你的APP使用的是 Android NDK，请不要使用那些不属于NDK API里的库，比如：libcrypto.so 和 libssl.so.这些库不是公开的API,他们的修改和禁用也不会通过文件和设备通知开发者。另外，这样可能还会暴露你APP的安全漏洞。取而代之的是你需要修改你的native代码，通过JNI来调用Java cryptography APIs或者静态连接到你选择的加密库。</p>
-<h2><span id="获取硬件标识符">获取硬件标识符</span></h2><p>从这个版本开始，为了给用户提供更好点数据保护，Android删除了通过编程方式从Wi-Fi 和 Bluetooth APIs来获得硬件本地标识符的方法。现在 WifiInfo.getMacAddress() 和 BluetoothAdapter.getAddress()方法将始终返回一个常量值02:00:00:00:00:00。</p>
-<p>为了通过蓝牙或WiFi扫描获取附近的设备的硬件标识符，你的APP必须拥有ACCESS_FINE_LOCATION 或 ACCESS_COARSE_LOCATION权限。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">WifiManager.getScanResults()</div><div class="line">BluetoothDevice.ACTION_FOUND</div><div class="line">BluetoothLeScanner.startScan()</div></pre></td></tr></table></figure>
-<p>注意：当一个运行Android 6.0 (API level 23)的设备启动WiFi或者蓝牙扫描时，这个操作对外部设备是可见的，并会被初始化一个随机的mac地址。</p>
-<h2><span id="通知">通知</span></h2><p>这个版本删除了 Notification.setLatestEventInfo()方法。使用Notification.Builder来取代它进行构造通知。为了反复更新一个通知，可以重用 Notification.Builder 实例，调用 build() 方法来更新通知实例。</p>
-<p>adb shell dumpsys notification命令不在打印你的通知文本。使用adb shell dumpsys notification –noredact命令来取代它打印你的通知对象文本。</p>
-<h2><span id="audiomanager-改变">AudioManager 改变</span></h2><p>不再支持通过 AudioManager类来对某个音频流进行精确的调音或者静音设置。 setStreamSolo()方法已经被弃用了，你应该使用  requestAudioFocus() 方法来替代它。同样的setStreamMute()方法也被弃用了，调用 adjustStreamVolume() 方法来替代它，传入的参数变为ADJUST_MUTE 或 ADJUST_UNMUTE 。</p>
-<h2><span id="文本选择">文本选择</span></h2><p>当用户在你的APP上选择文本时，你现在可以在浮动工具栏里显示一些文本选择动作比如剪切，复制，和粘贴。和用户的交互界面类似于上下文动作菜单，就像为单独的视图配置的上下文菜单。</p>
-<p>为了实现文本选择的浮动工具栏，需要在你已有的APP里做出以下改变：</p>
-<p>1.在你的view里或者activity里，改变你的 ActionMode 的获取方法，由startActionMode(Callback)变为 startActionMode(Callback, ActionMode.TYPE_FLOATING).</p>
-<p>2.将你已经实现了ActionMode.Callback变为继承自ActionMode.Callback2。</p>
-<p>3.重写 onGetContentRect()方法来提供视图中内容选中框（比如文本选中框）的坐标。</p>
-<p>4.在矩形框作为一个唯一的元素不再有效时，调用 invalidateContentRect() 方法。</p>
-<p>如果你在使用 Android Support Library revision 22.2, 你要知道浮动工具栏并不向后支持并且APP兼容会默认控制 ActionMode。这会阻止悬浮工具栏的显示。为了实现在 AppCompatActivity 里对 ActionMode的支持，调用 getDelegate()方法，并用其得到的 AppCompatDelegate 对象调用setHandleNativeActionModesEnabled()并将传入参数设为false。这个调用返回 ActionMode的控制给框架。在设备运行Android 6.0 (API level 23),这允许框架去支持 ActionBar 或者浮动工具栏模式，而当设备运行早Android 5.1 (API level 22)或更低的版本上时，只有 ActionBar 模式被支持。</p>
--->
-            <!---->
-        <!--</div>-->
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://yoursite.com/2016/08/20/Android-6.0-Change-1/" data-id="cjr4v59r700029mbjd27f25a3" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
-    </div>
-    
-    
-<nav id="article-nav">
-    
-        <a href="/2016/08/20/Android-6.0-Change-2/" id="article-nav-newer" class="article-nav-link-wrap">
-            <strong class="article-nav-caption">Newer</strong>
-            <div class="article-nav-title">
-                
-                    Android 6.0的变化 （下）
-                
-            </div>
-        </a>
-    
-    
-        <a href="/2016/03/17/Android-declare-styleable-Attribute/" id="article-nav-older" class="article-nav-link-wrap">
-            <strong class="article-nav-caption">Older</strong>
-            <div class="article-nav-title">Android declare-styleable自定义属性</div>
-        </a>
-    
-</nav>
-
-
-    
-</article>
-
-
-
-    
-
-
-
-
-
-</section>
-            
-                
-<aside id="sidebar">
-   
-        
-    <div class="widget-wrap">
-        <h3 class="widget-title">recent</h3>
-        <div class="widget">
-            <ul id="recent-post" class="">
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2019/01/20/LeetCode-8-String-to-Integer/Record-cn/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/2019/01/20/LeetCode-8-String-to-Integer/Record-cn/titleThumb.jpg)" alt="LeetCode 8. 字符串转整数" class="thumbnail-image"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Chinese/">Chinese</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/Chinese/Algorithm/">Algorithm</a></p>
-                            <p class="item-title"><a href="/2019/01/20/LeetCode-8-String-to-Integer/Record-cn/" class="title">LeetCode 8. 字符串转整数</a></p>
-                            <p class="item-date"><time datetime="2019-01-19T16:00:00.000Z" itemprop="datePublished">2019-01-20</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2019/01/20/LeetCode-8-String-to-Integer/Record-en/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/2019/01/20/LeetCode-8-String-to-Integer/Record-cn/titleThumb.jpg)" alt="LeetCode 8. String to Integer (atoi)" class="thumbnail-image"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/English/">English</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/English/Algorithm/">Algorithm</a></p>
-                            <p class="item-title"><a href="/2019/01/20/LeetCode-8-String-to-Integer/Record-en/" class="title">LeetCode 8. String to Integer (atoi)</a></p>
-                            <p class="item-date"><time datetime="2019-01-19T16:00:00.000Z" itemprop="datePublished">2019-01-20</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2019/01/02/Serializable/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/2019/01/02/Serializable/titleThumb.jpg)" alt="Serializable" class="thumbnail-image"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Chinese/">Chinese</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/Chinese/Java/">Java</a></p>
-                            <p class="item-title"><a href="/2019/01/02/Serializable/" class="title">Serializable</a></p>
-                            <p class="item-date"><time datetime="2019-01-01T16:00:00.000Z" itemprop="datePublished">2019-01-02</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2018/12/23/S1ep1-The-macgic-of-LRU-Cache/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/2018/12/23/S1ep1-The-macgic-of-LRU-Cache/titleThumb.jpg)" alt="LRU 缓存的魔力" class="thumbnail-image"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Chinese/">Chinese</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/Chinese/Android/">Android</a></p>
-                            <p class="item-title"><a href="/2018/12/23/S1ep1-The-macgic-of-LRU-Cache/" class="title">LRU 缓存的魔力</a></p>
-                            <p class="item-date"><time datetime="2018-12-22T16:00:00.000Z" itemprop="datePublished">2018-12-23</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2018/12/03/Greedy-Algorithm/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/2018/12/03/Greedy-Algorithm/titleThumb.jpg)" alt="贪婪算法" class="thumbnail-image"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Chinese/">Chinese</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/Chinese/Algorithm/">Algorithm</a></p>
-                            <p class="item-title"><a href="/2018/12/03/Greedy-Algorithm/" class="title">贪婪算法</a></p>
-                            <p class="item-date"><time datetime="2018-12-02T16:00:00.000Z" itemprop="datePublished">2018-12-03</time></p>
-                        </div>
-                    </li>
-                
-            </ul>
-        </div>
-    </div>
-
-    
-        
-    <div class="widget-wrap">
-        <h3 class="widget-title">categories</h3>
-        <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/">Chinese</a><span class="category-list-count">18</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Algorithm/">Algorithm</a><span class="category-list-count">10</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Algorithm/Common/">Common</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Algorithm/LeetCode/">LeetCode</a><span class="category-list-count">8</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/">Android</a><span class="category-list-count">6</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/Algorithm/">Algorithm</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/Error/">Error</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/UI/">UI</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/UI/Custom-View/">Custom View</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/版本差异/">版本差异</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Android/版本管理/">版本管理</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Java/">Java</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Java/Data-Structure/">Data Structure</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chinese/Java/SourceCode/">SourceCode</a><span class="category-list-count">1</span></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/English/">English</a><span class="category-list-count">8</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/English/Algorithm/">Algorithm</a><span class="category-list-count">8</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/English/Algorithm/LeetCode/">LeetCode</a><span class="category-list-count">8</span></li></ul></li></ul></li></ul>
-        </div>
-    </div>
-
-    
-        
-    <div class="widget-wrap">
-        <h3 class="widget-title">archives</h3>
-        <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">2</span></li></ul>
-        </div>
-    </div>
-
-    
-        
-    <div class="widget-wrap">
-        <h3 class="widget-title">tags</h3>
-        <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/">Algorithm</a><span class="tag-list-count">19</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chinese/">Chinese</a><span class="tag-list-count">18</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Custom-View/">Custom View</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Structure/">Data Structure</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English/">English</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Error/">Error</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LeetCode/">LeetCode</a><span class="tag-list-count">16</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Optimize/">Optimize</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SourceCode/">SourceCode</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UI/">UI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/版本差异/">版本差异</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/版本管理/">版本管理</a><span class="tag-list-count">1</span></li></ul>
-        </div>
-    </div>
-
-    
-        
-    <div class="widget-wrap">
-        <h3 class="widget-title">tag cloud</h3>
-        <div class="widget tagcloud">
-            <a href="/tags/Algorithm/" style="font-size: 20px;">Algorithm</a> <a href="/tags/Android/" style="font-size: 13.33px;">Android</a> <a href="/tags/Chinese/" style="font-size: 18.33px;">Chinese</a> <a href="/tags/Custom-View/" style="font-size: 10px;">Custom View</a> <a href="/tags/Data-Structure/" style="font-size: 10px;">Data Structure</a> <a href="/tags/English/" style="font-size: 15px;">English</a> <a href="/tags/Error/" style="font-size: 10px;">Error</a> <a href="/tags/Java/" style="font-size: 11.67px;">Java</a> <a href="/tags/LeetCode/" style="font-size: 16.67px;">LeetCode</a> <a href="/tags/Optimize/" style="font-size: 10px;">Optimize</a> <a href="/tags/SourceCode/" style="font-size: 10px;">SourceCode</a> <a href="/tags/UI/" style="font-size: 10px;">UI</a> <a href="/tags/版本差异/" style="font-size: 11.67px;">版本差异</a> <a href="/tags/版本管理/" style="font-size: 10px;">版本管理</a>
-        </div>
-    </div>
-
-    
-        
-    <div class="widget-wrap widget-list">
-        <h3 class="widget-title">links</h3>
-        <div class="widget">
-            <ul>
-                
-            </ul>
-        </div>
-    </div>
-
-
-    
-    <div id="toTop" class="fa fa-angle-up"></div>
-</aside>
-
-            
-        </div>
-        <!-- ad start -->
-        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<script>
-  (adsbygoogle = window.adsbygoogle || []).push({
-    google_ad_client: "ca-pub-9191109011370892",
-    enable_page_level_ads: true
-  });
-</script>
-        <!-- ad end -->
-        <footer id="footer">
-    <div class="outer">
-        <div id="footer-info" class="inner">
-            &copy; 2019 LeonChen<br>
-            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. 
-        </div>
-    </div>
-</footer>
-        
-
-
-    
-        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
-    
-    
-        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
-    
-    
-
-
-
-<!-- Custom Scripts -->
-<script src="/js/main.js"></script>
-
-    </div>
 </body>
 </html>
