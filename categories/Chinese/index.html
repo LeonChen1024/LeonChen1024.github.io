@@ -177,7 +177,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    34 minutes read (About 5079 words)
+                    34 minutes read (About 5083 words)
                 </span>
                 
                 
@@ -190,7 +190,8 @@
             
         </h1>
         <div class="content">
-            <!-- <h1><span id="实现键值对存储-第五部分-hash-table-实现">实现键值对存储-第五部分: Hash table 实现</span></h1><p>这篇文章是 IKVS 系列的第五部分,”实现一个键值对存储”.你也可以查看 <a href="http://codecapsule.com/2012/11/07/ikvs-implementing-a-key-value-store-table-of-contents/" target="_blank" rel="external">Table of Contents</a>  来查看其他部分.</p>
+            <!-- <h1><span id="实现键值对存储-第五部分-hash-table-实现">实现键值对存储-第五部分: Hash table 实现</span></h1><p><a href="http://codecapsule.com/2013/05/13/implementing-a-key-value-store-part-5-hash-table-implementations/" target="_blank" rel="external">原文链接</a></p>
+<p>这篇文章是 IKVS 系列的第五部分,”实现一个键值对存储”.你也可以查看 <a href="http://codecapsule.com/2012/11/07/ikvs-implementing-a-key-value-store-table-of-contents/" target="_blank" rel="external">Table of Contents</a>  来查看其他部分.</p>
 <p>在这篇文章中,我将会学习C++中实际的 hash table 来理解它的瓶颈在哪里.Hash 函数是 CPU-密集型的操作应该要进行优化.然而,大多数的 hash table 的机制都只是关注于高效的内存和I/O读取,这也是这篇文章主要的焦点.我将会学习三种不同的 C++中的hash table 的实现,同时包含内存中的和硬盘中的,并且会观察这些数据都是怎么组织和访问的.这篇文章将会包含以下内容.</p>
 <p>[TOC]</p>
 <p><img src="/2019/04/09/Key-Value-pair-in-hashtable/kvstore-part5-intro.jpg" alt="kvstore-part5-intro"></p>
@@ -274,11 +275,11 @@
                             
                             
                                 
-                                <p><h1><span id="实现键值对存储-第五部分-hash-table-实现">实现键值对存储-第五部分: Hash table 实现</span></h1><p>这篇文章是 IKVS 系列的第五部分,”实现一个键值对存储”.你也可以查看 <a href="http://codecapsule.com/2012/11/07/ikvs-implementing-a-key-value-store-table-of-contents/" target="_blank" rel="external">Table of Contents</a>  来查看其他部分.</p>
+                                <p><h1><span id="实现键值对存储-第五部分-hash-table-实现">实现键值对存储-第五部分: Hash table 实现</span></h1><p><a href="http://codecapsule.com/2013/05/13/implementing-a-key-value-store-part-5-hash-table-implementations/" target="_blank" rel="external">原文链接</a></p>
+<p>这篇文章是 IKVS 系列的第五部分,”实现一个键值对存储”.你也可以查看 <a href="http://codecapsule.com/2012/11/07/ikvs-implementing-a-key-value-store-table-of-contents/" target="_blank" rel="external">Table of Contents</a>  来查看其他部分.</p>
 <p>在这篇文章中,我将会学习C++中实际的 hash table 来理解它的瓶颈在哪里.Hash 函数是 CPU-密集型的操作应该要进行优化.然而,大多数的 hash table 的机制都只是关注于高效的内存和I/O读取,这也是这篇文章主要的焦点.我将会学习三种不同的 C++中的hash table 的实现,同时包含内存中的和硬盘中的,并且会观察这些数据都是怎么组织和访问的.这篇文章将会包含以下内容.</p>
 <p>[TOC]</p>
 <p><img src="/2019/04/09/Key-Value-pair-in-hashtable/kvstore-part5-intro.jpg" alt="kvstore-part5-intro"></p>
-<h2><span id="1-hash-tables">1. Hash tables</span></h2><h3><span id="11-对-hash-tables-的一个快速介绍">1.1 对 hash tables 的一个快速介绍</span></h3><blockquote>
 <p>
                             
                         
