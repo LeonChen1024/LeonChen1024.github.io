@@ -2,26 +2,25 @@
 <html >
 <head>
     <meta charset="utf-8">
-<title>LeetCode 2. Add Two Numbers [Chinese ver] - LeonChen&#39;s Blog</title>
+<title>Java 调试中你可能会遇到的问题以及如何解决他们 - LeonChen&#39;s Blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
 
 
-    <meta name="description" content="[Chinese ver] 2. Add Two Numbers问题：你将获得两个非空 linked lists来表示两个非负整数。 数字以反向的顺序存储，并且它们的每个节点包含一位数字。 将两个数字相加并将其以 linked list的形式返回。 你可以假定这两个数字不包含任何前导零（即不存在首位出现0的情况），除了数字0本身。 输入 ：(2 -&amp;gt; 4 -&amp;gt; 3) + (5 -&amp;gt">
-<meta name="keywords" content="Chinese,Algorithm,LeetCode">
+    <meta name="description" content="[TOC] 原文链接 当你的生产环境发生了异常的时候,事情变得艰难.Made Up Stats™ 的科学研究表明开发者团队会收到比平时更大的压力,咖啡杯脏的比平时快3倍而且上帝杀死了两只小猫因为一只是不够的(嗯…. 这个猫的梗有点污,原文是 god kills 2 kittens because one is just not enough.  查了一下取自一个梗…每当你手淫的时候,上帝会杀死一只">
+<meta name="keywords" content="Chinese,Java">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LeetCode 2. Add Two Numbers [Chinese ver]">
-<meta property="og:url" content="http://yoursite.com/2018/07/15/2-Add-Two-Num/Record[Chinese-ver]/index.html">
+<meta property="og:title" content="Java 调试中你可能会遇到的问题以及如何解决他们">
+<meta property="og:url" content="http://yoursite.com/2019/04/20/Java-Debugging-Problems-and-How-to-Solve-Them/index.html">
 <meta property="og:site_name" content="LeonChen&#39;s Blog">
-<meta property="og:description" content="[Chinese ver] 2. Add Two Numbers问题：你将获得两个非空 linked lists来表示两个非负整数。 数字以反向的顺序存储，并且它们的每个节点包含一位数字。 将两个数字相加并将其以 linked list的形式返回。 你可以假定这两个数字不包含任何前导零（即不存在首位出现0的情况），除了数字0本身。 输入 ：(2 -&amp;gt; 4 -&amp;gt; 3) + (5 -&amp;gt">
-<meta property="og:image" content="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/2%20Add%20Two%20Num/Images/method1result.png?raw=true">
-<meta property="og:image" content="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/2%20Add%20Two%20Num/Images/method2result.png?raw=true">
+<meta property="og:description" content="[TOC] 原文链接 当你的生产环境发生了异常的时候,事情变得艰难.Made Up Stats™ 的科学研究表明开发者团队会收到比平时更大的压力,咖啡杯脏的比平时快3倍而且上帝杀死了两只小猫因为一只是不够的(嗯…. 这个猫的梗有点污,原文是 god kills 2 kittens because one is just not enough.  查了一下取自一个梗…每当你手淫的时候,上帝会杀死一只">
+<meta property="og:image" content="https://zeroturnaround.com/wp-content/uploads/2015/04/takipi-error-analysis-screen-640x410.png">
 <meta property="og:image" content="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/Images/CooderQRcodem.jpg?raw=false">
-<meta property="og:updated_time" content="2018-07-15T00:11:36.497Z">
+<meta property="og:updated_time" content="2019-04-20T12:48:20.667Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LeetCode 2. Add Two Numbers [Chinese ver]">
-<meta name="twitter:description" content="[Chinese ver] 2. Add Two Numbers问题：你将获得两个非空 linked lists来表示两个非负整数。 数字以反向的顺序存储，并且它们的每个节点包含一位数字。 将两个数字相加并将其以 linked list的形式返回。 你可以假定这两个数字不包含任何前导零（即不存在首位出现0的情况），除了数字0本身。 输入 ：(2 -&amp;gt; 4 -&amp;gt; 3) + (5 -&amp;gt">
-<meta name="twitter:image" content="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/2%20Add%20Two%20Num/Images/method1result.png?raw=true">
+<meta name="twitter:title" content="Java 调试中你可能会遇到的问题以及如何解决他们">
+<meta name="twitter:description" content="[TOC] 原文链接 当你的生产环境发生了异常的时候,事情变得艰难.Made Up Stats™ 的科学研究表明开发者团队会收到比平时更大的压力,咖啡杯脏的比平时快3倍而且上帝杀死了两只小猫因为一只是不够的(嗯…. 这个猫的梗有点污,原文是 god kills 2 kittens because one is just not enough.  查了一下取自一个梗…每当你手淫的时候,上帝会杀死一只">
+<meta name="twitter:image" content="https://zeroturnaround.com/wp-content/uploads/2015/04/takipi-error-analysis-screen-640x410.png">
 
 
 
@@ -102,7 +101,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.png" alt="LeetCode 2. Add Two Numbers [Chinese ver]" height="28">
+                <img src="/images/logo.png" alt="Java 调试中你可能会遇到的问题以及如何解决他们" height="28">
             
             </a>
         </div>
@@ -160,7 +159,7 @@
     
     <div class="card-image">
         <span  class="image is-7by1">
-            <img class="banner" src="/2018/07/15/2-Add-Two-Num/Record[Chinese-ver]/title.jpg" alt="LeetCode 2. Add Two Numbers [Chinese ver]">
+            <img class="banner" src="/2019/04/20/Java-Debugging-Problems-and-How-to-Solve-Them/title.jpg" alt="Java 调试中你可能会遇到的问题以及如何解决他们">
         </span>
     </div>
     
@@ -168,17 +167,17 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2018-07-14T16:00:00.000Z">2018-07-15</time>
+                <time class="level-item has-text-grey" datetime="2019-04-19T16:00:00.000Z">2019-04-20</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Algorithm/">Algorithm</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Algorithm/LeetCode/">LeetCode</a>
+                <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Java/">Java</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    5 minutes read (About 801 words)
+                    19 minutes read (About 2891 words)
                 </span>
                 
                 
@@ -187,21 +186,46 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                LeetCode 2. Add Two Numbers [Chinese ver]
+                Java 调试中你可能会遇到的问题以及如何解决他们
             
         </h1>
         <div class="content">
-            <!-- <p>[Chinese ver]</p>
-<h2><span id="2-add-two-numbers">2. Add Two Numbers</span></h2><p>问题：你将获得两个非空 linked lists来表示两个非负整数。 数字以反向的顺序存储，并且它们的每个节点包含一位数字。 将两个数字相加并将其以 linked list的形式返回。</p>
-<p>你可以假定这两个数字不包含任何前导零（即不存在首位出现0的情况），除了数字0本身。</p>
-<p>输入 ：(2 -&gt; 4 -&gt; 3) + (5 -&gt; 6 -&gt; 4)<br>输出 ： 7 -&gt; 0 -&gt; 8</p>
-<h3><span id="方法一">方法一：</span></h3><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title">addTwoNumbers</span><span class="hljs-params">(ListNode l1, ListNode l2)</span> </span>&#123;</div><div class="line">    ListNode dummyHead = <span class="hljs-keyword">new</span> ListNode(<span class="hljs-number">0</span>);</div><div class="line">    ListNode p = l1, q = l2, curr = dummyHead;</div><div class="line">    <span class="hljs-keyword">int</span> carry = <span class="hljs-number">0</span>;</div><div class="line">    <span class="hljs-keyword">while</span> (p != <span class="hljs-keyword">null</span> || q != <span class="hljs-keyword">null</span>) &#123;</div><div class="line">        <span class="hljs-keyword">int</span> x = (p != <span class="hljs-keyword">null</span>) ? p.val : <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-keyword">int</span> y = (q != <span class="hljs-keyword">null</span>) ? q.val : <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-keyword">int</span> sum = carry + x + y;</div><div class="line">        carry = sum / <span class="hljs-number">10</span>;</div><div class="line">        curr.next = <span class="hljs-keyword">new</span> ListNode(sum % <span class="hljs-number">10</span>);</div><div class="line">        curr = curr.next;</div><div class="line">        <span class="hljs-keyword">if</span> (p != <span class="hljs-keyword">null</span>) p = p.next;</div><div class="line">        <span class="hljs-keyword">if</span> (q != <span class="hljs-keyword">null</span>) q = q.next;</div><div class="line">    &#125;</div><div class="line">    <span class="hljs-keyword">if</span> (carry &gt; <span class="hljs-number">0</span>) &#123;</div><div class="line">        curr.next = <span class="hljs-keyword">new</span> ListNode(carry);</div><div class="line">    &#125;</div><div class="line">    <span class="hljs-keyword">return</span> dummyHead.next;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/2%20Add%20Two%20Num/Images/method1result.png?raw=true" alt="效率"></p>
-<h4><span id="分析">分析</span></h4><p>其实这个问题熟悉一下链表的使用和算术的逻辑就可以解决了。按位加过十进一，注意，加法的进位只会是0或者1，因为就算你用两个最大的数9+9最后也只是进一，进一之后再9+9+1也只会得到19，还是进一。所以主要的逻辑就是两个数的和sum/10得到的是进位，sum%10得到的是本位的数。dummyHead是一个假的数据头，用来做一个初始化，不使用也是可以的，但是在内部逻辑中就需要自己在处理第一位和后续的位数的逻辑区别。<br>注意有几种特殊情况。1.其中一个list的长度比另一个要长。2.其中一个list为空。3.加到最后一位时仍然还有进位</p>
-<p>时间复杂度： O(max(m,n)).总共循环m和n中的最大次数。<br>空间复杂度 :   O(max(m,n)).我们得到的新的list 的长度是m,n中最大长度，加上一个假数据头。</p>
-<h3><span id="方法二">方法二</span></h3><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-comment">/**</span></div><div class="line"><span class="hljs-comment"> * Definition for singly-linked list.</span></div><div class="line"><span class="hljs-comment"> * public class ListNode &#123;</span></div><div class="line"><span class="hljs-comment"> *     int val;</span></div><div class="line"><span class="hljs-comment"> *     ListNode next;</span></div><div class="line"><span class="hljs-comment"> *     ListNode(int x) &#123; val = x; &#125;</span></div><div class="line"><span class="hljs-comment"> * &#125;</span></div><div class="line"><span class="hljs-comment"> */</span></div><div class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</div><div class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title">addTwoNumbers</span><span class="hljs-params">(ListNode l1, ListNode l2)</span> </span>&#123;</div><div class="line">        ListNode ln1 = l1, ln2 = l2, head = <span class="hljs-keyword">null</span>, node = <span class="hljs-keyword">null</span>;</div><div class="line">        <span class="hljs-keyword">int</span> carry = <span class="hljs-number">0</span>, remainder = <span class="hljs-number">0</span>, sum = <span class="hljs-number">0</span>;</div><div class="line">        head = node = <span class="hljs-keyword">new</span> ListNode(<span class="hljs-number">0</span>);</div><div class="line"></div><div class="line">        <span class="hljs-keyword">while</span>(ln1 != <span class="hljs-keyword">null</span> || ln2 != <span class="hljs-keyword">null</span> || carry != <span class="hljs-number">0</span>) &#123;</div><div class="line">            sum = (ln1 != <span class="hljs-keyword">null</span> ? ln1.val : <span class="hljs-number">0</span>) + (ln2 != <span class="hljs-keyword">null</span> ? ln2.val : <span class="hljs-number">0</span>) + carry;</div><div class="line">            carry = sum / <span class="hljs-number">10</span>;</div><div class="line">            remainder = sum % <span class="hljs-number">10</span>;</div><div class="line">            node = node.next = <span class="hljs-keyword">new</span> ListNode(remainder);</div><div class="line">            ln1 = (ln1 != <span class="hljs-keyword">null</span> ? ln1.next : <span class="hljs-keyword">null</span>);</div><div class="line">            ln2 = (ln2 != <span class="hljs-keyword">null</span> ? ln2.next : <span class="hljs-keyword">null</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="hljs-keyword">return</span> head.next;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/2%20Add%20Two%20Num/Images/method2result.png?raw=true" alt="效率"></p>
-<p>这个是别人的做法，居然能够比方法一快了许多，说实话，其实这两个方法在整体思路上是差不多的，至于为什么会比前者快那么多我觉的是方法一在循环中不断新建了x,y等对象，由于计时时用了成千上百的例子验证所以导致了20ms左右的差距。以上纯属个人看法，如果你有更正确的想法，或者哪里有有关这种差距的论证，请告诉我。谢谢。</p>
+            <!-- <h1><span id="5-java-debugging-problems-you-probably-have-and-how-to-solve-them"></span></h1><p>[TOC]</p>
+<p><a href="https://zeroturnaround.com/rebellabs/how-to-turn-the-light-on-in-your-production-environment-and-scare-the-bugs-out/" target="_blank" rel="external">原文链接</a></p>
+<p>当你的生产环境发生了异常的时候,事情变得艰难.Made Up Stats™ 的科学研究表明开发者团队会收到比平时更大的压力,咖啡杯脏的比平时快3倍而且上帝杀死了两只小猫因为一只是不够的(嗯…. 这个猫的梗有点污,原文是 god kills 2 kittens because one is just not enough.  查了一下取自一个梗…每当你手淫的时候,上帝会杀死一只猫).在下面的内容中我们将会分析你在调试生产环境的代码面对的主要的问题.接下来让我们用一个正直的警告来开始,这是我们的法律部门强迫我们放在这里的.</p>
+<blockquote>
+<p><strong>警告:</strong> 下面的内容包含一些开发者会觉得困扰的生产环境的 bug 的准确描述. </p>
+</blockquote>
+<h2><span id="问题-0-你的生产环境里有-bug">问题 #0 : 你的生产环境里有 bug</span></h2><p>第一步是承认你是有部分问题的,无论你的代码经过了多少次的测试 bug 总是会找到出现在产品的路.不管你的展示环境是多么漂亮并且不管你的负载测试多么精确.在生产环境中现实生活中经过你系统的数据流动是完全不同的.你也不是在 Intellij 或者 Eclipse 中,你身边也没有 <a href="https://zeroturnaround.com/software/xrebel/" target="_blank" rel="external">XRebel</a> ,除非你做了一些事: 你和 bugs 都在一篇黑暗中.但是不要担心,你并不是唯一处在这种环境里的 - 让我们来看看如何打开灯,测试可能的解决方案并一劳永逸的解决这个问题.</p>
+<p>为了解决 bug 你通常需要一个东西,导致错误的变量值还要知道他们是怎么进入到调用栈的.让我们来分解这个问题并看看我们如何从每个情况中获得最多的数据.</p>
+<p><strong>解决方案:</strong> 继续阅读并跟紧了,马上就要来了</p>
+<h2><span id="问题-1一个错误发生了但是你不知道它是从哪里来的">问题 #1:一个错误发生了但是你不知道它是从哪里来的</span></h2><p>某些不好的情况发生了,现在让我们将它保持在 日志异常/未捕获异常的等级.所以你查找你的 log 只看到了有关于错误空白的声明.它通常看起来像这样:</p>
+<p><em>05-04-2015 11:52:32 ERROR – Problem parsing input for servlet. [http-nio-8080-exec-62]</em></p>
+<p>但是,哇,哇,哇,等一下,除了这个异常我还知道什么呢,很好,有一些不好的东西发生在了 http-nio 中?当我检查代码并看到它运行的很好那么异常很可能是从其他机器,微服务,进程,或者甚至另一个线程产生的,事情变得棘手了.这就是在日志中迷失的全部.如果这个场景听起来很熟悉那么你大概在日志中丢失了一个事务 ID.这是一个唯一的 ID来帮助你跟踪它是从哪里开始的到它变成一个日志错误的全部过程.</p>
+<p> 除了事务 ID,你需要记住其他有关于错误的数据也是会丢失的除非你将它打印出来.关键是要尽你的可能绘制出足够的上下文,比如你进入的线程,类,甚至在关键路径上的特定方法.理想情况下我们在这里还拥有变量值,但是这个对于这种类型的问题来说太多了. <a href="http://blog.takipi.com/how-to-instantly-improve-your-java-logging-with-7-logback-tweaks/" target="_blank" rel="external">在 Takipi blog 的这篇文章中</a> 我们测试了使用 Logback 的不同类型的样式,如果你想要了解更多的内容就去看看吧.</p>
+<p><strong>解决方案:</strong> 在每个线程的实例里生成一个 UUID 指向你的应用并且将它添加到每一个日志条目 -  在整个机器上保持一致来保存他的原始上下文.同样的,如果你想要摆脱 console 可以考虑使用一些  <a href="http://blog.takipi.com/the-7-log-management-tools-you-need-to-know/" target="_blank" rel="external">日志管理工具</a> .</p>
+<h2><span id="问题-2-未捕获并异常没有关于错误的信息">问题 #2: 未捕获并异常没有关于错误的信息</span></h2><p>当我们逃离了日志错误并且捕获到了异常,我们进入了一个更黑暗的地方.未捕获异常会在线程死亡的地方出现.但是并不是所有的都这么残酷,我们有一个最后的防线: <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Thread.html#getDefaultUncaughtExceptionHandler--" target="_blank" rel="external">默认未捕获异常处理器</a>. 一旦我们在这里有了一个未捕获异常处理器,我们实际上可以对他们做一些事并且绘制出一些变量数据.问题是当他们到达调用栈上的未捕获异常处理器的时候,大部分我们可以得到的关于错误的上下文已经丢失了.再说一次,我们在这里还有另一个机会并且不是所有的都丢失了:  <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/ThreadLocal.html" target="_blank" rel="external">Thread Local Storage</a> (TLS) 还有线程名称.</p>
+<p>Thread Local Storage 让我们可以再这个线程上存储变量,不会被限制在任何的栈帧上.实际上,线程可以做很酷的事情,想要知道更多的使用线程的技巧你可以查看 <a href="http://blog.takipi.com/java-thread-magic-tricks/" target="_blank" rel="external">这个技巧</a>.所以通过 TLS 我们可以在这个异常被抛出的时候存储更多有关于这个状态的数据.另一件很酷的技巧是使用有意义的线程名字,取代像这样的名字:</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pool-1-thread-1</div></pre></td></tr></table></figure>
+<p>我们可以这么做:<br><code>Thread.currentThread().setName(Context + TID + Params + current Time, ...);</code></p>
+<p>然后可以得到:</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Queue Processing Thread, MessageID: AB5CAD, type: AnalyzeGraph, queue: ACTIVE_PROD, Transaction_ID: 5678956, Start Time: 02/04/2015 17:37</div></pre></td></tr></table></figure>
+<p><strong>解决方案:</strong> 设置一个未捕获异常处理器,记住线程的名字并且让你的 Thread Local Storage 工作.</p>
+<h2><span id="问题-3-你的进程被挂起了而你还不知道为什么">问题 #3: 你的进程被挂起了而你还不知道为什么</span></h2><p>一个进程被卡住了可能你知道有一些奇怪的东西在你的应用中流动?从你的 JDK 中构建的工具来看这可能是一个很好的任务.它可以连接到任何一个 Java 进程,只需要指向一个 PID ,然后对所有的输出进行分类,包括现在运行的所有线程的堆栈跟踪,切面,他们持有的锁还有所有其他的元数据.使用 jstack 你还可以分析哪些已经不存在的进程的堆输出或者核心输出.</p>
+<p>要获得更多实践的概述还有在特定条件下自动开启它的方法,可以查看 <a href="http://blog.takipi.com/supercharged-jstack-how-to-debug-your-servers-at-100mph/" target="_blank" rel="external">这篇文章</a>,还有 <a href="https://github.com/takipi/jstack" target="_blank" rel="external">Github</a> 上的示例,它可以完成这个功能.为了从中提取出最大的价值,你同事还需要做一些手动工作来理解你得到的结果.</p>
+<p><strong>解决方案:</strong>  了解如何处理 jstack 并用它来解决棘手的问题.</p>
+<h2><span id="问题-4-所有的这些解决方案都需要改动代码">问题 #4: 所有的这些解决方案都需要改动代码</span></h2><p>介绍你的应用的改变并且在你的服务器重构你的日志系统是一个非常困难的任务.如果这里有一种方式可以再不影响代码的内部结构的情况下提取出调试应用程序所需的信息呢?如果你设置没有访问某些部分的权限但是错误就产生在那些地方呢?使用 Java 代理.</p>
+<p>Java 代理可以挂载到一个运行的 JVM 中并且提取出它里面所有的信息. 其中有一个叫  <a href="https://kenai.com/projects/btrace" target="_blank" rel="external">BTrace</a> 的 Java 代理你可以看看. 通过 JVM 参数将它绑定上之后,你可以通过 BTrace 脚本语言将它绑定. 你可以测试自己的代码并且获取运行它的数据而不需要改变实际的应用. 让我们看看如何通过使用 BTrace 脚本语言激活 jstack 来使用这个技巧.</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-meta">@BTrace</span> <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Classload</span> </span>&#123;</div><div class="line">   <span class="hljs-meta">@OnMethod</span>(</div><div class="line">       Clazz=”+java.lang.ClassLoader”,</div><div class="line">       method=”defineClass”,</div><div class="line">       location=<span class="hljs-meta">@Location</span>(Kind.RETURN)</div><div class="line">    )</div><div class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">defineClass</span><span class="hljs-params">(@Return class cl)</span> </span>&#123;</div><div class="line">       println(Strings.strcat(“loaded ”, Reflective.name(cl)));</div><div class="line">       Threads.jstack();</div><div class="line">      println(“==============================”);</div><div class="line">   &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在这里我们获取了所有的 ClassLoader 还有他们的子类.不管什么时候返回了 “defineClass” ,这个脚本都会打印出加载的类并且运行 jstack.这个方法的缺点是不推荐在生产环境中持续使用它,只适合于指出特定的问题.它也有一些限制,比如不能创建新的对象,捕捉异常或包含循环.</p>
+<p>如果你想要更冒险一点,你可以自己自定义一个 Java 代理,就像 BTrace一样.比如,当我们有一个类出现了问题,它在到处产生了数百万个新的对象,一个简单的 Java 代理帮助我们解决了这个问题.我们会挂载到这个对象的构造器上,并且不管它在什么时候被分配了一个实例,我们可以获得它的堆栈记录并可以知道这个加载是从哪里来的.这个代理的代码可以在 Github 上得到,欢迎你来 <a href="https://github.com/takipi/debugAgent" target="_blank" rel="external">查看</a>.</p>
+<p><strong>解决方案:</strong>  学习更多关于 Java 代理的知识并且使用他们来解决真正棘手的问题.</p>
+<h2><span id="问题-5-没有关于错误的根本原因的数据">问题 #5: 没有关于错误的根本原因的数据</span></h2><p>再更深入一点,与自定义 Java 代理不同,本地代理在处理的时候拥有一个更加强大的功能.你可以在 <a href="http://blog.takipi.com/double-agent-java-vs-native-agents/" target="_blank" rel="external">这里</a> 了解更多具体的不同.通常来说,Java 代理拥有代码检测功能,然而本机代理拥有访问 JVM 底层的 API 的权限(<a href="http://docs.oracle.com/javase/8/docs/platform/jvmti/jvmti.html" target="_blank" rel="external">JVMTI</a>). 这意味着他们可以越过基础的栈追踪数据并且获得真正的根本原因,包含导致错误的变量值.</p>
+<p><a href="http://takipi.com/" target="_blank" rel="external"><img src="https://zeroturnaround.com/wp-content/uploads/2015/04/takipi-error-analysis-screen-640x410.png" alt="Takipi&#39;s error analysis screen"></a></p>
+<p><em>Takipi 的错误分析屏</em></p>
+<p><a href="https://www.takipi.com/" target="_blank" rel="external">Takipi 的本地代理</a> 专门用于监控大规模的生产环境中的服务器.它工作在 JVM 层来捕获有关于你错误的完整的代码和变量,而不需要依赖日志文件.在配置方面,它只需要你在服务器上使用一个 JVM 参数启动就会立刻开始反馈并分析所有你的异常和日志错误.</p>
+<p><strong>解决方案:</strong> 尝试于是用一个可以访问底层并且得到真正的根本原因的本地代理.</p>
+<h2><span id="结论">结论</span></h2><p>希望这个演练可以帮助你以无痛的方式来解决生产环境的错误,而不需要浪费很多小时甚至是很多天的时间.你有更多的调试生产环境的方法吗?或者你想要分享你和 bug 斗争的故事吗?通过下面的评论模块让我们知道.</p>
 <h2><span id="about-me">About Me</span></h2><p>我的博客 <a href="http://leonchen1024.com/" target="_blank" rel="external">leonchen1024.com</a></p>
 <p>我的 GitHub <a href="https://github.com/LeonChen1024" target="_blank" rel="external">https://github.com/LeonChen1024</a></p>
 <p>微信公众号 </p>
@@ -211,17 +235,42 @@
                     
                     
                     
-                        <p>[Chinese ver]</p>
-<h2><span id="2-add-two-numbers">2. Add Two Numbers</span></h2><p>问题：你将获得两个非空 linked lists来表示两个非负整数。 数字以反向的顺序存储，并且它们的每个节点包含一位数字。 将两个数字相加并将其以 linked list的形式返回。</p>
-<p>你可以假定这两个数字不包含任何前导零（即不存在首位出现0的情况），除了数字0本身。</p>
-<p>输入 ：(2 -&gt; 4 -&gt; 3) + (5 -&gt; 6 -&gt; 4)<br>输出 ： 7 -&gt; 0 -&gt; 8</p>
-<h3><span id="方法一">方法一：</span></h3><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title">addTwoNumbers</span><span class="hljs-params">(ListNode l1, ListNode l2)</span> </span>&#123;</div><div class="line">    ListNode dummyHead = <span class="hljs-keyword">new</span> ListNode(<span class="hljs-number">0</span>);</div><div class="line">    ListNode p = l1, q = l2, curr = dummyHead;</div><div class="line">    <span class="hljs-keyword">int</span> carry = <span class="hljs-number">0</span>;</div><div class="line">    <span class="hljs-keyword">while</span> (p != <span class="hljs-keyword">null</span> || q != <span class="hljs-keyword">null</span>) &#123;</div><div class="line">        <span class="hljs-keyword">int</span> x = (p != <span class="hljs-keyword">null</span>) ? p.val : <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-keyword">int</span> y = (q != <span class="hljs-keyword">null</span>) ? q.val : <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-keyword">int</span> sum = carry + x + y;</div><div class="line">        carry = sum / <span class="hljs-number">10</span>;</div><div class="line">        curr.next = <span class="hljs-keyword">new</span> ListNode(sum % <span class="hljs-number">10</span>);</div><div class="line">        curr = curr.next;</div><div class="line">        <span class="hljs-keyword">if</span> (p != <span class="hljs-keyword">null</span>) p = p.next;</div><div class="line">        <span class="hljs-keyword">if</span> (q != <span class="hljs-keyword">null</span>) q = q.next;</div><div class="line">    &#125;</div><div class="line">    <span class="hljs-keyword">if</span> (carry &gt; <span class="hljs-number">0</span>) &#123;</div><div class="line">        curr.next = <span class="hljs-keyword">new</span> ListNode(carry);</div><div class="line">    &#125;</div><div class="line">    <span class="hljs-keyword">return</span> dummyHead.next;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/2%20Add%20Two%20Num/Images/method1result.png?raw=true" alt="效率"></p>
-<h4><span id="分析">分析</span></h4><p>其实这个问题熟悉一下链表的使用和算术的逻辑就可以解决了。按位加过十进一，注意，加法的进位只会是0或者1，因为就算你用两个最大的数9+9最后也只是进一，进一之后再9+9+1也只会得到19，还是进一。所以主要的逻辑就是两个数的和sum/10得到的是进位，sum%10得到的是本位的数。dummyHead是一个假的数据头，用来做一个初始化，不使用也是可以的，但是在内部逻辑中就需要自己在处理第一位和后续的位数的逻辑区别。<br>注意有几种特殊情况。1.其中一个list的长度比另一个要长。2.其中一个list为空。3.加到最后一位时仍然还有进位</p>
-<p>时间复杂度： O(max(m,n)).总共循环m和n中的最大次数。<br>空间复杂度 :   O(max(m,n)).我们得到的新的list 的长度是m,n中最大长度，加上一个假数据头。</p>
-<h3><span id="方法二">方法二</span></h3><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-comment">/**</span></div><div class="line"><span class="hljs-comment"> * Definition for singly-linked list.</span></div><div class="line"><span class="hljs-comment"> * public class ListNode &#123;</span></div><div class="line"><span class="hljs-comment"> *     int val;</span></div><div class="line"><span class="hljs-comment"> *     ListNode next;</span></div><div class="line"><span class="hljs-comment"> *     ListNode(int x) &#123; val = x; &#125;</span></div><div class="line"><span class="hljs-comment"> * &#125;</span></div><div class="line"><span class="hljs-comment"> */</span></div><div class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</div><div class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title">addTwoNumbers</span><span class="hljs-params">(ListNode l1, ListNode l2)</span> </span>&#123;</div><div class="line">        ListNode ln1 = l1, ln2 = l2, head = <span class="hljs-keyword">null</span>, node = <span class="hljs-keyword">null</span>;</div><div class="line">        <span class="hljs-keyword">int</span> carry = <span class="hljs-number">0</span>, remainder = <span class="hljs-number">0</span>, sum = <span class="hljs-number">0</span>;</div><div class="line">        head = node = <span class="hljs-keyword">new</span> ListNode(<span class="hljs-number">0</span>);</div><div class="line"></div><div class="line">        <span class="hljs-keyword">while</span>(ln1 != <span class="hljs-keyword">null</span> || ln2 != <span class="hljs-keyword">null</span> || carry != <span class="hljs-number">0</span>) &#123;</div><div class="line">            sum = (ln1 != <span class="hljs-keyword">null</span> ? ln1.val : <span class="hljs-number">0</span>) + (ln2 != <span class="hljs-keyword">null</span> ? ln2.val : <span class="hljs-number">0</span>) + carry;</div><div class="line">            carry = sum / <span class="hljs-number">10</span>;</div><div class="line">            remainder = sum % <span class="hljs-number">10</span>;</div><div class="line">            node = node.next = <span class="hljs-keyword">new</span> ListNode(remainder);</div><div class="line">            ln1 = (ln1 != <span class="hljs-keyword">null</span> ? ln1.next : <span class="hljs-keyword">null</span>);</div><div class="line">            ln2 = (ln2 != <span class="hljs-keyword">null</span> ? ln2.next : <span class="hljs-keyword">null</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="hljs-keyword">return</span> head.next;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/2%20Add%20Two%20Num/Images/method2result.png?raw=true" alt="效率"></p>
-<p>这个是别人的做法，居然能够比方法一快了许多，说实话，其实这两个方法在整体思路上是差不多的，至于为什么会比前者快那么多我觉的是方法一在循环中不断新建了x,y等对象，由于计时时用了成千上百的例子验证所以导致了20ms左右的差距。以上纯属个人看法，如果你有更正确的想法，或者哪里有有关这种差距的论证，请告诉我。谢谢。</p>
+                        <h1><span id="5-java-debugging-problems-you-probably-have-and-how-to-solve-them"></span></h1><p>[TOC]</p>
+<p><a href="https://zeroturnaround.com/rebellabs/how-to-turn-the-light-on-in-your-production-environment-and-scare-the-bugs-out/" target="_blank" rel="external">原文链接</a></p>
+<p>当你的生产环境发生了异常的时候,事情变得艰难.Made Up Stats™ 的科学研究表明开发者团队会收到比平时更大的压力,咖啡杯脏的比平时快3倍而且上帝杀死了两只小猫因为一只是不够的(嗯…. 这个猫的梗有点污,原文是 god kills 2 kittens because one is just not enough.  查了一下取自一个梗…每当你手淫的时候,上帝会杀死一只猫).在下面的内容中我们将会分析你在调试生产环境的代码面对的主要的问题.接下来让我们用一个正直的警告来开始,这是我们的法律部门强迫我们放在这里的.</p>
+<blockquote>
+<p><strong>警告:</strong> 下面的内容包含一些开发者会觉得困扰的生产环境的 bug 的准确描述. </p>
+</blockquote>
+<h2><span id="问题-0-你的生产环境里有-bug">问题 #0 : 你的生产环境里有 bug</span></h2><p>第一步是承认你是有部分问题的,无论你的代码经过了多少次的测试 bug 总是会找到出现在产品的路.不管你的展示环境是多么漂亮并且不管你的负载测试多么精确.在生产环境中现实生活中经过你系统的数据流动是完全不同的.你也不是在 Intellij 或者 Eclipse 中,你身边也没有 <a href="https://zeroturnaround.com/software/xrebel/" target="_blank" rel="external">XRebel</a> ,除非你做了一些事: 你和 bugs 都在一篇黑暗中.但是不要担心,你并不是唯一处在这种环境里的 - 让我们来看看如何打开灯,测试可能的解决方案并一劳永逸的解决这个问题.</p>
+<p>为了解决 bug 你通常需要一个东西,导致错误的变量值还要知道他们是怎么进入到调用栈的.让我们来分解这个问题并看看我们如何从每个情况中获得最多的数据.</p>
+<p><strong>解决方案:</strong> 继续阅读并跟紧了,马上就要来了</p>
+<h2><span id="问题-1一个错误发生了但是你不知道它是从哪里来的">问题 #1:一个错误发生了但是你不知道它是从哪里来的</span></h2><p>某些不好的情况发生了,现在让我们将它保持在 日志异常/未捕获异常的等级.所以你查找你的 log 只看到了有关于错误空白的声明.它通常看起来像这样:</p>
+<p><em>05-04-2015 11:52:32 ERROR – Problem parsing input for servlet. [http-nio-8080-exec-62]</em></p>
+<p>但是,哇,哇,哇,等一下,除了这个异常我还知道什么呢,很好,有一些不好的东西发生在了 http-nio 中?当我检查代码并看到它运行的很好那么异常很可能是从其他机器,微服务,进程,或者甚至另一个线程产生的,事情变得棘手了.这就是在日志中迷失的全部.如果这个场景听起来很熟悉那么你大概在日志中丢失了一个事务 ID.这是一个唯一的 ID来帮助你跟踪它是从哪里开始的到它变成一个日志错误的全部过程.</p>
+<p> 除了事务 ID,你需要记住其他有关于错误的数据也是会丢失的除非你将它打印出来.关键是要尽你的可能绘制出足够的上下文,比如你进入的线程,类,甚至在关键路径上的特定方法.理想情况下我们在这里还拥有变量值,但是这个对于这种类型的问题来说太多了. <a href="http://blog.takipi.com/how-to-instantly-improve-your-java-logging-with-7-logback-tweaks/" target="_blank" rel="external">在 Takipi blog 的这篇文章中</a> 我们测试了使用 Logback 的不同类型的样式,如果你想要了解更多的内容就去看看吧.</p>
+<p><strong>解决方案:</strong> 在每个线程的实例里生成一个 UUID 指向你的应用并且将它添加到每一个日志条目 -  在整个机器上保持一致来保存他的原始上下文.同样的,如果你想要摆脱 console 可以考虑使用一些  <a href="http://blog.takipi.com/the-7-log-management-tools-you-need-to-know/" target="_blank" rel="external">日志管理工具</a> .</p>
+<h2><span id="问题-2-未捕获并异常没有关于错误的信息">问题 #2: 未捕获并异常没有关于错误的信息</span></h2><p>当我们逃离了日志错误并且捕获到了异常,我们进入了一个更黑暗的地方.未捕获异常会在线程死亡的地方出现.但是并不是所有的都这么残酷,我们有一个最后的防线: <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Thread.html#getDefaultUncaughtExceptionHandler--" target="_blank" rel="external">默认未捕获异常处理器</a>. 一旦我们在这里有了一个未捕获异常处理器,我们实际上可以对他们做一些事并且绘制出一些变量数据.问题是当他们到达调用栈上的未捕获异常处理器的时候,大部分我们可以得到的关于错误的上下文已经丢失了.再说一次,我们在这里还有另一个机会并且不是所有的都丢失了:  <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/ThreadLocal.html" target="_blank" rel="external">Thread Local Storage</a> (TLS) 还有线程名称.</p>
+<p>Thread Local Storage 让我们可以再这个线程上存储变量,不会被限制在任何的栈帧上.实际上,线程可以做很酷的事情,想要知道更多的使用线程的技巧你可以查看 <a href="http://blog.takipi.com/java-thread-magic-tricks/" target="_blank" rel="external">这个技巧</a>.所以通过 TLS 我们可以在这个异常被抛出的时候存储更多有关于这个状态的数据.另一件很酷的技巧是使用有意义的线程名字,取代像这样的名字:</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pool-1-thread-1</div></pre></td></tr></table></figure>
+<p>我们可以这么做:<br><code>Thread.currentThread().setName(Context + TID + Params + current Time, ...);</code></p>
+<p>然后可以得到:</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Queue Processing Thread, MessageID: AB5CAD, type: AnalyzeGraph, queue: ACTIVE_PROD, Transaction_ID: 5678956, Start Time: 02/04/2015 17:37</div></pre></td></tr></table></figure>
+<p><strong>解决方案:</strong> 设置一个未捕获异常处理器,记住线程的名字并且让你的 Thread Local Storage 工作.</p>
+<h2><span id="问题-3-你的进程被挂起了而你还不知道为什么">问题 #3: 你的进程被挂起了而你还不知道为什么</span></h2><p>一个进程被卡住了可能你知道有一些奇怪的东西在你的应用中流动?从你的 JDK 中构建的工具来看这可能是一个很好的任务.它可以连接到任何一个 Java 进程,只需要指向一个 PID ,然后对所有的输出进行分类,包括现在运行的所有线程的堆栈跟踪,切面,他们持有的锁还有所有其他的元数据.使用 jstack 你还可以分析哪些已经不存在的进程的堆输出或者核心输出.</p>
+<p>要获得更多实践的概述还有在特定条件下自动开启它的方法,可以查看 <a href="http://blog.takipi.com/supercharged-jstack-how-to-debug-your-servers-at-100mph/" target="_blank" rel="external">这篇文章</a>,还有 <a href="https://github.com/takipi/jstack" target="_blank" rel="external">Github</a> 上的示例,它可以完成这个功能.为了从中提取出最大的价值,你同事还需要做一些手动工作来理解你得到的结果.</p>
+<p><strong>解决方案:</strong>  了解如何处理 jstack 并用它来解决棘手的问题.</p>
+<h2><span id="问题-4-所有的这些解决方案都需要改动代码">问题 #4: 所有的这些解决方案都需要改动代码</span></h2><p>介绍你的应用的改变并且在你的服务器重构你的日志系统是一个非常困难的任务.如果这里有一种方式可以再不影响代码的内部结构的情况下提取出调试应用程序所需的信息呢?如果你设置没有访问某些部分的权限但是错误就产生在那些地方呢?使用 Java 代理.</p>
+<p>Java 代理可以挂载到一个运行的 JVM 中并且提取出它里面所有的信息. 其中有一个叫  <a href="https://kenai.com/projects/btrace" target="_blank" rel="external">BTrace</a> 的 Java 代理你可以看看. 通过 JVM 参数将它绑定上之后,你可以通过 BTrace 脚本语言将它绑定. 你可以测试自己的代码并且获取运行它的数据而不需要改变实际的应用. 让我们看看如何通过使用 BTrace 脚本语言激活 jstack 来使用这个技巧.</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-meta">@BTrace</span> <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Classload</span> </span>&#123;</div><div class="line">   <span class="hljs-meta">@OnMethod</span>(</div><div class="line">       Clazz=”+java.lang.ClassLoader”,</div><div class="line">       method=”defineClass”,</div><div class="line">       location=<span class="hljs-meta">@Location</span>(Kind.RETURN)</div><div class="line">    )</div><div class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">defineClass</span><span class="hljs-params">(@Return class cl)</span> </span>&#123;</div><div class="line">       println(Strings.strcat(“loaded ”, Reflective.name(cl)));</div><div class="line">       Threads.jstack();</div><div class="line">      println(“==============================”);</div><div class="line">   &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在这里我们获取了所有的 ClassLoader 还有他们的子类.不管什么时候返回了 “defineClass” ,这个脚本都会打印出加载的类并且运行 jstack.这个方法的缺点是不推荐在生产环境中持续使用它,只适合于指出特定的问题.它也有一些限制,比如不能创建新的对象,捕捉异常或包含循环.</p>
+<p>如果你想要更冒险一点,你可以自己自定义一个 Java 代理,就像 BTrace一样.比如,当我们有一个类出现了问题,它在到处产生了数百万个新的对象,一个简单的 Java 代理帮助我们解决了这个问题.我们会挂载到这个对象的构造器上,并且不管它在什么时候被分配了一个实例,我们可以获得它的堆栈记录并可以知道这个加载是从哪里来的.这个代理的代码可以在 Github 上得到,欢迎你来 <a href="https://github.com/takipi/debugAgent" target="_blank" rel="external">查看</a>.</p>
+<p><strong>解决方案:</strong>  学习更多关于 Java 代理的知识并且使用他们来解决真正棘手的问题.</p>
+<h2><span id="问题-5-没有关于错误的根本原因的数据">问题 #5: 没有关于错误的根本原因的数据</span></h2><p>再更深入一点,与自定义 Java 代理不同,本地代理在处理的时候拥有一个更加强大的功能.你可以在 <a href="http://blog.takipi.com/double-agent-java-vs-native-agents/" target="_blank" rel="external">这里</a> 了解更多具体的不同.通常来说,Java 代理拥有代码检测功能,然而本机代理拥有访问 JVM 底层的 API 的权限(<a href="http://docs.oracle.com/javase/8/docs/platform/jvmti/jvmti.html" target="_blank" rel="external">JVMTI</a>). 这意味着他们可以越过基础的栈追踪数据并且获得真正的根本原因,包含导致错误的变量值.</p>
+<p><a href="http://takipi.com/" target="_blank" rel="external"><img src="https://zeroturnaround.com/wp-content/uploads/2015/04/takipi-error-analysis-screen-640x410.png" alt="Takipi&#39;s error analysis screen"></a></p>
+<p><em>Takipi 的错误分析屏</em></p>
+<p><a href="https://www.takipi.com/" target="_blank" rel="external">Takipi 的本地代理</a> 专门用于监控大规模的生产环境中的服务器.它工作在 JVM 层来捕获有关于你错误的完整的代码和变量,而不需要依赖日志文件.在配置方面,它只需要你在服务器上使用一个 JVM 参数启动就会立刻开始反馈并分析所有你的异常和日志错误.</p>
+<p><strong>解决方案:</strong> 尝试于是用一个可以访问底层并且得到真正的根本原因的本地代理.</p>
+<h2><span id="结论">结论</span></h2><p>希望这个演练可以帮助你以无痛的方式来解决生产环境的错误,而不需要浪费很多小时甚至是很多天的时间.你有更多的调试生产环境的方法吗?或者你想要分享你和 bug 斗争的故事吗?通过下面的评论模块让我们知道.</p>
 <h2><span id="about-me">About Me</span></h2><p>我的博客 <a href="http://leonchen1024.com/" target="_blank" rel="external">leonchen1024.com</a></p>
 <p>我的 GitHub <a href="https://github.com/LeonChen1024" target="_blank" rel="external">https://github.com/LeonChen1024</a></p>
 <p>微信公众号 </p>
@@ -235,7 +284,7 @@
             <div class="level-start">
                 <div class="level-item">
                     <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/Algorithm/">Algorithm</a>, <a class="has-link-grey -link" href="/tags/Chinese/">Chinese</a>, <a class="has-link-grey -link" href="/tags/LeetCode/">LeetCode</a>
+                    <a class="has-link-grey -link" href="/tags/Chinese/">Chinese</a>, <a class="has-link-grey -link" href="/tags/Java/">Java</a>
                 </div>
             </div>
         </div>
@@ -294,17 +343,10 @@
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2018/07/21/3-Longest-Substring-Without-Repeating-Characters/Record[English-ver]/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">LeetCode 3. Longest Substring Without Repeating Characters [English ver]</span>
-            </a>
-        </div>
-        
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2018/07/15/2-Add-Two-Num/Record[English-ver]/">
-                <span class="level-item">LeetCode 2. Add Two Numbers [English ver]</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/04/09/Key-Value-pair-in-hashtable/">
+                <span class="level-item">实现键值对存储 第五部分 Hash table 实现</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -409,31 +451,51 @@
                 Catalogue
             </h3>
             <ul class="menu-list"><li>
-        <a class="is-flex" href="#2-add-two-numbers">
+        <a class="is-flex" href="#5-java-debugging-problems-you-probably-have-and-how-to-solve-them">
             <!-- number of title -->
         <!-- <span class="has-mr-6">1</span> -->
-        <span>2. Add Two Numbers</span>
+        <span></span>
         </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#方法一">
+        <a class="is-flex" href="#问题-0-你的生产环境里有-bug">
             <!-- number of title -->
         <!-- <span class="has-mr-6">1.1</span> -->
-        <span>方法一：</span>
-        </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#分析">
-            <!-- number of title -->
-        <!-- <span class="has-mr-6">1.1.1</span> -->
-        <span>分析</span>
-        </a></li></ul></li><li>
-        <a class="is-flex" href="#方法二">
+        <span>问题 #0 : 你的生产环境里有 bug</span>
+        </a></li><li>
+        <a class="is-flex" href="#问题-1一个错误发生了但是你不知道它是从哪里来的">
             <!-- number of title -->
         <!-- <span class="has-mr-6">1.2</span> -->
-        <span>方法二</span>
-        </a></li></ul></li><li>
+        <span>问题 #1:一个错误发生了但是你不知道它是从哪里来的</span>
+        </a></li><li>
+        <a class="is-flex" href="#问题-2-未捕获并异常没有关于错误的信息">
+            <!-- number of title -->
+        <!-- <span class="has-mr-6">1.3</span> -->
+        <span>问题 #2: 未捕获并异常没有关于错误的信息</span>
+        </a></li><li>
+        <a class="is-flex" href="#问题-3-你的进程被挂起了而你还不知道为什么">
+            <!-- number of title -->
+        <!-- <span class="has-mr-6">1.4</span> -->
+        <span>问题 #3: 你的进程被挂起了而你还不知道为什么</span>
+        </a></li><li>
+        <a class="is-flex" href="#问题-4-所有的这些解决方案都需要改动代码">
+            <!-- number of title -->
+        <!-- <span class="has-mr-6">1.5</span> -->
+        <span>问题 #4: 所有的这些解决方案都需要改动代码</span>
+        </a></li><li>
+        <a class="is-flex" href="#问题-5-没有关于错误的根本原因的数据">
+            <!-- number of title -->
+        <!-- <span class="has-mr-6">1.6</span> -->
+        <span>问题 #5: 没有关于错误的根本原因的数据</span>
+        </a></li><li>
+        <a class="is-flex" href="#结论">
+            <!-- number of title -->
+        <!-- <span class="has-mr-6">1.7</span> -->
+        <span>结论</span>
+        </a></li><li>
         <a class="is-flex" href="#about-me">
             <!-- number of title -->
-        <!-- <span class="has-mr-6">2</span> -->
+        <!-- <span class="has-mr-6">1.8</span> -->
         <span>About Me</span>
-        </a></li></ul>
+        </a></li></ul></li></ul>
         </div>
     </div>
 </div>
@@ -1266,7 +1328,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.png" alt="LeetCode 2. Add Two Numbers [Chinese ver]" height="28">
+                    <img src="/images/logo.png" alt="Java 调试中你可能会遇到的问题以及如何解决他们" height="28">
                 
                 </a>
                 <p class="is-size-7">
