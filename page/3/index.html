@@ -147,6 +147,109 @@
     <div class="card">
     
     <div class="card-image">
+        <a href="/2018/07/15/2-Add-Two-Num/Record[Chinese-ver]/" class="image is-7by1">
+            <img class="banner" src="/2018/07/15/2-Add-Two-Num/Record[Chinese-ver]/title.jpg" alt="LeetCode 2. Add Two Numbers [Chinese ver]">
+        </a>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2018-07-14T16:00:00.000Z">2018-07-15</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Algorithm/">Algorithm</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Algorithm/LeetCode/">LeetCode</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    5 minutes read (About 801 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2018/07/15/2-Add-Two-Num/Record[Chinese-ver]/">LeetCode 2. Add Two Numbers [Chinese ver]</a>
+            
+        </h1>
+        <div class="content">
+            <!-- <p>[Chinese ver]</p>
+<h2><span id="2-add-two-numbers">2. Add Two Numbers</span></h2><p>问题：你将获得两个非空 linked lists来表示两个非负整数。 数字以反向的顺序存储，并且它们的每个节点包含一位数字。 将两个数字相加并将其以 linked list的形式返回。</p>
+<p>你可以假定这两个数字不包含任何前导零（即不存在首位出现0的情况），除了数字0本身。</p>
+<p>输入 ：(2 -&gt; 4 -&gt; 3) + (5 -&gt; 6 -&gt; 4)<br>输出 ： 7 -&gt; 0 -&gt; 8</p>
+<h3><span id="方法一">方法一：</span></h3><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title">addTwoNumbers</span><span class="hljs-params">(ListNode l1, ListNode l2)</span> </span>&#123;</div><div class="line">    ListNode dummyHead = <span class="hljs-keyword">new</span> ListNode(<span class="hljs-number">0</span>);</div><div class="line">    ListNode p = l1, q = l2, curr = dummyHead;</div><div class="line">    <span class="hljs-keyword">int</span> carry = <span class="hljs-number">0</span>;</div><div class="line">    <span class="hljs-keyword">while</span> (p != <span class="hljs-keyword">null</span> || q != <span class="hljs-keyword">null</span>) &#123;</div><div class="line">        <span class="hljs-keyword">int</span> x = (p != <span class="hljs-keyword">null</span>) ? p.val : <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-keyword">int</span> y = (q != <span class="hljs-keyword">null</span>) ? q.val : <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-keyword">int</span> sum = carry + x + y;</div><div class="line">        carry = sum / <span class="hljs-number">10</span>;</div><div class="line">        curr.next = <span class="hljs-keyword">new</span> ListNode(sum % <span class="hljs-number">10</span>);</div><div class="line">        curr = curr.next;</div><div class="line">        <span class="hljs-keyword">if</span> (p != <span class="hljs-keyword">null</span>) p = p.next;</div><div class="line">        <span class="hljs-keyword">if</span> (q != <span class="hljs-keyword">null</span>) q = q.next;</div><div class="line">    &#125;</div><div class="line">    <span class="hljs-keyword">if</span> (carry &gt; <span class="hljs-number">0</span>) &#123;</div><div class="line">        curr.next = <span class="hljs-keyword">new</span> ListNode(carry);</div><div class="line">    &#125;</div><div class="line">    <span class="hljs-keyword">return</span> dummyHead.next;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/2%20Add%20Two%20Num/Images/method1result.png?raw=true" alt="效率"></p>
+<h4><span id="分析">分析</span></h4><p>其实这个问题熟悉一下链表的使用和算术的逻辑就可以解决了。按位加过十进一，注意，加法的进位只会是0或者1，因为就算你用两个最大的数9+9最后也只是进一，进一之后再9+9+1也只会得到19，还是进一。所以主要的逻辑就是两个数的和sum/10得到的是进位，sum%10得到的是本位的数。dummyHead是一个假的数据头，用来做一个初始化，不使用也是可以的，但是在内部逻辑中就需要自己在处理第一位和后续的位数的逻辑区别。<br>注意有几种特殊情况。1.其中一个list的长度比另一个要长。2.其中一个list为空。3.加到最后一位时仍然还有进位</p>
+<p>时间复杂度： O(max(m,n)).总共循环m和n中的最大次数。<br>空间复杂度 :   O(max(m,n)).我们得到的新的list 的长度是m,n中最大长度，加上一个假数据头。</p>
+<h3><span id="方法二">方法二</span></h3><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-comment">/**</span></div><div class="line"><span class="hljs-comment"> * Definition for singly-linked list.</span></div><div class="line"><span class="hljs-comment"> * public class ListNode &#123;</span></div><div class="line"><span class="hljs-comment"> *     int val;</span></div><div class="line"><span class="hljs-comment"> *     ListNode next;</span></div><div class="line"><span class="hljs-comment"> *     ListNode(int x) &#123; val = x; &#125;</span></div><div class="line"><span class="hljs-comment"> * &#125;</span></div><div class="line"><span class="hljs-comment"> */</span></div><div class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</div><div class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title">addTwoNumbers</span><span class="hljs-params">(ListNode l1, ListNode l2)</span> </span>&#123;</div><div class="line">        ListNode ln1 = l1, ln2 = l2, head = <span class="hljs-keyword">null</span>, node = <span class="hljs-keyword">null</span>;</div><div class="line">        <span class="hljs-keyword">int</span> carry = <span class="hljs-number">0</span>, remainder = <span class="hljs-number">0</span>, sum = <span class="hljs-number">0</span>;</div><div class="line">        head = node = <span class="hljs-keyword">new</span> ListNode(<span class="hljs-number">0</span>);</div><div class="line"></div><div class="line">        <span class="hljs-keyword">while</span>(ln1 != <span class="hljs-keyword">null</span> || ln2 != <span class="hljs-keyword">null</span> || carry != <span class="hljs-number">0</span>) &#123;</div><div class="line">            sum = (ln1 != <span class="hljs-keyword">null</span> ? ln1.val : <span class="hljs-number">0</span>) + (ln2 != <span class="hljs-keyword">null</span> ? ln2.val : <span class="hljs-number">0</span>) + carry;</div><div class="line">            carry = sum / <span class="hljs-number">10</span>;</div><div class="line">            remainder = sum % <span class="hljs-number">10</span>;</div><div class="line">            node = node.next = <span class="hljs-keyword">new</span> ListNode(remainder);</div><div class="line">            ln1 = (ln1 != <span class="hljs-keyword">null</span> ? ln1.next : <span class="hljs-keyword">null</span>);</div><div class="line">            ln2 = (ln2 != <span class="hljs-keyword">null</span> ? ln2.next : <span class="hljs-keyword">null</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="hljs-keyword">return</span> head.next;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/2%20Add%20Two%20Num/Images/method2result.png?raw=true" alt="效率"></p>
+<p>这个是别人的做法，居然能够比方法一快了许多，说实话，其实这两个方法在整体思路上是差不多的，至于为什么会比前者快那么多我觉的是方法一在循环中不断新建了x,y等对象，由于计时时用了成千上百的例子验证所以导致了20ms左右的差距。以上纯属个人看法，如果你有更正确的想法，或者哪里有有关这种差距的论证，请告诉我。谢谢。</p>
+<h2><span id="about-me">About Me</span></h2><p>我的博客 <a href="http://leonchen1024.com/" target="_blank" rel="external">leonchen1024.com</a></p>
+<p>我的 GitHub <a href="https://github.com/LeonChen1024" target="_blank" rel="external">https://github.com/LeonChen1024</a></p>
+<p>微信公众号 </p>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/Images/CooderQRcodem.jpg?raw=false" alt="wechat"></p>
+ -->
+            <div class="article-entry">
+                    
+                    
+                        
+                            
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                            
+                                
+                                <p><p>[Chinese ver]</p>
+<h2><span id="2-add-two-numbers">2. Add Two Numbers</span></h2><p>问题：你将获得两个非空 linked lists来表示两个非负整数。 数字以反向的顺序存储，并且它们的每个节点包含一位数字。 将两个数字相加并将其以 linked list的形式返回。</p>
+<p>你可以假定这两个数字不包含任何前导零（即不存在首位出现0的情况），除了数字0本身。</p>
+<p>输入 ：(2 -&gt; 4 -&gt; 3) + (5 -&gt; 6 -&gt; 4)<br>输出 ： 7 -&gt; 0 -&gt; 8</p>
+<h3><span id="方法一">方法一：</span></h3><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title">addTwoNumbers</span><span class="hljs-params">(ListNode l1, ListNode l2)</span> </span>&#123;</div><div class="line">    ListNode dummyHead = <span class="hljs-keyword">new</span> ListNode(<span class="hljs-number">0</span>);</div><div class="line">    ListNode p = l1, q = l2, curr = dummyHead;</div><div class="line">    <span class="hljs-keyword">int</span> carry = <span class="hljs-number">0</span>;</div><div class="line">    <span class="hljs-keyword">while</span> (p != <span class="hljs-keyword">null</span> || q != <span class="hljs-keyword">null</span>) &#123;</div><div class="line">        <span class="hljs-keyword">int</span> x = (p != <span class="hljs-keyword">null</span>) ? p.val : <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-keyword">int</span> y = (q != <span class="hljs-keyword">null</span>) ? q.val : <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-keyword">int</span> sum = carry + x + y;</div><div class="line">        carry = sum / <span class="hljs-number">10</span>;</div><div class="line">        curr.next = <span class="hljs-keyword">new</span> ListNode(sum % <span class="hljs-number">10</span>);</div><div class="line">        curr = curr.next;</div><div class="line">        <span class="hljs-keyword">if</span> (p != <span class="hljs-keyword">null</span>) p = p.next;</div><div class="line">        <span class="hljs-keyword">if</span> (q != <span class="hljs-keyword">null</span>) q = q.next;</div><div class="line">    &#125;</div><div class="line">    <span class="hljs-keyword">if</span> (carry &gt; <span class="hljs-number">0</span>) &#123;</div><div class="line">        curr.next = <span class="hljs-keyword">new</span> ListNode(carry);</div><div class="line">    &#125;</div><div class="line">    <span class="hljs-keyword">return</span> dummyHead.next;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>
+                            
+                        
+                    
+                    
+                        </div>   
+                        <div class="article-more-link">
+                            <a href="/2018/07/15/2-Add-Two-Num/Record[Chinese-ver]/#more">Read More</a>
+                        </div>
+                    
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-image">
         <a href="/2018/04/13/APP-Version-Control/" class="image is-7by1">
             <img class="banner" src="/2018/04/13/APP-Version-Control/VersionControl.jpg" alt="APP 版本控制">
         </a>
@@ -983,7 +1086,7 @@
                         Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        28
+                        29
                     </p>
                 </div>
             </div>
@@ -993,7 +1096,7 @@
                         Categories
                     </p>
                     <p class="title has-text-weight-normal">
-                        19
+                        20
                     </p>
                 </div>
             </div>
@@ -1003,7 +1106,7 @@
                         Tags
                     </p>
                     <p class="title has-text-weight-normal">
-                        15
+                        16
                     </p>
                 </div>
             </div>
@@ -1048,7 +1151,7 @@
                 <span class="level-item">Chinese</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">20</span>
+                <span class="level-item tag">21</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="undefined">
@@ -1070,6 +1173,14 @@
         <a class="level is-marginless" href="undefined">
             <span class="level-start">
                 <span class="level-item">DataStructure</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="undefined">
+            <span class="level-start">
+                <span class="level-item">Gradle</span>
             </span>
             <span class="level-end">
                 <span class="level-item tag">1</span>
@@ -1110,7 +1221,7 @@
         <h3 class="menu-label">
             Tag Cloud
         </h3>
-        <a href="/tags/Algorithm/" style="font-size: 18.57px;">Algorithm</a> <a href="/tags/Android/" style="font-size: 14.29px;">Android</a> <a href="/tags/Chinese/" style="font-size: 20px;">Chinese</a> <a href="/tags/Custom-View/" style="font-size: 10px;">Custom View</a> <a href="/tags/Data-Structure/" style="font-size: 10px;">Data Structure</a> <a href="/tags/DataStructure/" style="font-size: 10px;">DataStructure</a> <a href="/tags/English/" style="font-size: 15.71px;">English</a> <a href="/tags/Error/" style="font-size: 10px;">Error</a> <a href="/tags/Java/" style="font-size: 12.86px;">Java</a> <a href="/tags/LeetCode/" style="font-size: 17.14px;">LeetCode</a> <a href="/tags/Optimize/" style="font-size: 10px;">Optimize</a> <a href="/tags/SourceCode/" style="font-size: 10px;">SourceCode</a> <a href="/tags/UI/" style="font-size: 10px;">UI</a> <a href="/tags/版本差异/" style="font-size: 11.43px;">版本差异</a> <a href="/tags/版本管理/" style="font-size: 10px;">版本管理</a>
+        <a href="/tags/Algorithm/" style="font-size: 18.33px;">Algorithm</a> <a href="/tags/Android/" style="font-size: 15px;">Android</a> <a href="/tags/Chinese/" style="font-size: 20px;">Chinese</a> <a href="/tags/Custom-View/" style="font-size: 10px;">Custom View</a> <a href="/tags/Data-Structure/" style="font-size: 10px;">Data Structure</a> <a href="/tags/DataStructure/" style="font-size: 10px;">DataStructure</a> <a href="/tags/English/" style="font-size: 15px;">English</a> <a href="/tags/Error/" style="font-size: 10px;">Error</a> <a href="/tags/Gradle/" style="font-size: 10px;">Gradle</a> <a href="/tags/Java/" style="font-size: 13.33px;">Java</a> <a href="/tags/LeetCode/" style="font-size: 16.67px;">LeetCode</a> <a href="/tags/Optimize/" style="font-size: 10px;">Optimize</a> <a href="/tags/SourceCode/" style="font-size: 10px;">SourceCode</a> <a href="/tags/UI/" style="font-size: 10px;">UI</a> <a href="/tags/版本差异/" style="font-size: 11.67px;">版本差异</a> <a href="/tags/版本管理/" style="font-size: 10px;">版本管理</a>
     </div>
 </div>
 
@@ -1124,6 +1235,25 @@
         <h3 class="menu-label">
             Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/05/24/Gradle-Skill/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/2019/05/24/Gradle-Skill/titleThumb.jpg" alt="Gradle 使用技巧 [Chinese ver]">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-23T16:00:00.000Z">2019-05-24</time></div>
+                    <a href="/2019/05/24/Gradle-Skill/" class="has-link-black-ter is-size-6">Gradle 使用技巧 [Chinese ver]</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Gradle/">Gradle</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -1165,25 +1295,6 @@
         
         <article class="media">
             
-            <a href="/2019/01/20/LeetCode-8-String-to-Integer/Record-cn/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/2019/01/20/LeetCode-8-String-to-Integer/Record-cn/titleThumb.jpg" alt="LeetCode 8. 字符串转整数">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-01-19T16:00:00.000Z">2019-01-20</time></div>
-                    <a href="/2019/01/20/LeetCode-8-String-to-Integer/Record-cn/" class="has-link-black-ter is-size-6">LeetCode 8. 字符串转整数</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
             <a href="/2019/01/20/LeetCode-8-String-to-Integer/Record-en/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/2019/01/20/LeetCode-8-String-to-Integer/Record-cn/titleThumb.jpg" alt="LeetCode 8. String to Integer (atoi)">
@@ -1203,18 +1314,18 @@
         
         <article class="media">
             
-            <a href="/2019/01/02/Serializable/" class="media-left">
+            <a href="/2019/01/20/LeetCode-8-String-to-Integer/Record-cn/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/2019/01/02/Serializable/titleThumb.jpg" alt="Serializable">
+                    <img class="thumbnail" src="/2019/01/20/LeetCode-8-String-to-Integer/Record-cn/titleThumb.jpg" alt="LeetCode 8. 字符串转整数">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-01-01T16:00:00.000Z">2019-01-02</time></div>
-                    <a href="/2019/01/02/Serializable/" class="has-link-black-ter is-size-6">Serializable</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-01-19T16:00:00.000Z">2019-01-20</time></div>
+                    <a href="/2019/01/20/LeetCode-8-String-to-Integer/Record-cn/" class="has-link-black-ter is-size-6">LeetCode 8. 字符串转整数</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Java/">Java</a>
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Algorithm/">Algorithm</a>
                     </p>
                 </div>
             </div>
@@ -1231,6 +1342,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/05/">
+                <span class="level-start">
+                    <span class="level-item">May 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/04/">
@@ -1376,14 +1498,14 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Android/">
                         <span class="tag">Android</span>
-                        <span class="tag is-grey">7</span>
+                        <span class="tag is-grey">8</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Chinese/">
                         <span class="tag">Chinese</span>
-                        <span class="tag is-grey">20</span>
+                        <span class="tag is-grey">21</span>
                     </a>
                 </div>
                 
@@ -1418,6 +1540,13 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Error/">
                         <span class="tag">Error</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Gradle/">
+                        <span class="tag">Gradle</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -1496,6 +1625,25 @@
         
         <article class="media">
             
+            <a href="/2019/05/24/Gradle-Skill/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/2019/05/24/Gradle-Skill/titleThumb.jpg" alt="Gradle 使用技巧 [Chinese ver]">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-23T16:00:00.000Z">2019-05-24</time></div>
+                    <a href="/2019/05/24/Gradle-Skill/" class="has-link-black-ter is-size-6">Gradle 使用技巧 [Chinese ver]</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Gradle/">Gradle</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/04/20/Java-Debugging-Problems-and-How-to-Solve-Them/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/2019/04/20/Java-Debugging-Problems-and-How-to-Solve-Them/titleThumb.jpg" alt="Java 调试中你可能会遇到的问题以及如何解决他们">
@@ -1534,25 +1682,6 @@
         
         <article class="media">
             
-            <a href="/2019/01/20/LeetCode-8-String-to-Integer/Record-cn/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/2019/01/20/LeetCode-8-String-to-Integer/Record-cn/titleThumb.jpg" alt="LeetCode 8. 字符串转整数">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-01-19T16:00:00.000Z">2019-01-20</time></div>
-                    <a href="/2019/01/20/LeetCode-8-String-to-Integer/Record-cn/" class="has-link-black-ter is-size-6">LeetCode 8. 字符串转整数</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
             <a href="/2019/01/20/LeetCode-8-String-to-Integer/Record-en/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/2019/01/20/LeetCode-8-String-to-Integer/Record-cn/titleThumb.jpg" alt="LeetCode 8. String to Integer (atoi)">
@@ -1572,18 +1701,18 @@
         
         <article class="media">
             
-            <a href="/2019/01/02/Serializable/" class="media-left">
+            <a href="/2019/01/20/LeetCode-8-String-to-Integer/Record-cn/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/2019/01/02/Serializable/titleThumb.jpg" alt="Serializable">
+                    <img class="thumbnail" src="/2019/01/20/LeetCode-8-String-to-Integer/Record-cn/titleThumb.jpg" alt="LeetCode 8. 字符串转整数">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-01-01T16:00:00.000Z">2019-01-02</time></div>
-                    <a href="/2019/01/02/Serializable/" class="has-link-black-ter is-size-6">Serializable</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-01-19T16:00:00.000Z">2019-01-20</time></div>
+                    <a href="/2019/01/20/LeetCode-8-String-to-Integer/Record-cn/" class="has-link-black-ter is-size-6">LeetCode 8. 字符串转整数</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Java/">Java</a>
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Algorithm/">Algorithm</a>
                     </p>
                 </div>
             </div>
@@ -1600,6 +1729,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/05/">
+                <span class="level-start">
+                    <span class="level-item">May 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/04/">
@@ -1745,14 +1885,14 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Android/">
                         <span class="tag">Android</span>
-                        <span class="tag is-grey">7</span>
+                        <span class="tag is-grey">8</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Chinese/">
                         <span class="tag">Chinese</span>
-                        <span class="tag is-grey">20</span>
+                        <span class="tag is-grey">21</span>
                     </a>
                 </div>
                 
@@ -1787,6 +1927,13 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Error/">
                         <span class="tag">Error</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Gradle/">
+                        <span class="tag">Gradle</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>

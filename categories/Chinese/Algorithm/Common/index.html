@@ -181,7 +181,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    12 minutes read (About 1775 words)
+                    12 minutes read (About 1789 words)
                 </span>
                 
                 
@@ -194,7 +194,8 @@
             
         </h1>
         <div class="content">
-            <!-- <h1><span id="贪婪算法">贪婪算法</span></h1><p>贪婪算法(Greedy Algorithm)也叫算贪心法,贪婪法.它是一个遵循启发式解决问题的算法范式.它的核心思想就是通过在每一步的选择中都选用当前步骤下最优的选择,期望结果是最优的算法.如 <a href="https://zh.wikipedia.org/wiki/%E6%97%85%E8%A1%8C%E6%8E%A8%E9%94%80%E5%91%98%E9%97%AE%E9%A2%98" target="_blank" rel="external">旅行推销员问题</a>.</p>
+            <!-- <h1><span id="贪婪算法">贪婪算法</span></h1><p>[TOC]</p>
+<p>贪婪算法(Greedy Algorithm)也叫算贪心法,贪婪法.它是一个遵循启发式解决问题的算法范式.它的核心思想就是通过在每一步的选择中都选用当前步骤下最优的选择,期望结果是最优的算法.如 <a href="https://zh.wikipedia.org/wiki/%E6%97%85%E8%A1%8C%E6%8E%A8%E9%94%80%E5%91%98%E9%97%AE%E9%A2%98" target="_blank" rel="external">旅行推销员问题</a>.</p>
 <p>贪婪算法尤其适用于有最优子结构的问题中,最优子结构的意思是局部的最优解可以导出全局的最优解.贪婪算法与<a href="https://zh.wikipedia.org/wiki/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92" target="_blank" rel="external">动态规划</a> 的不同在于贪婪算法对每一个子问题都作出选择,不能回退;动态规划则会保存以前的运算结果,根据以前的结果对当前进行选择,可以回退.</p>
 <p>贪婪算法可以解决一些<a href="https://zh.wikipedia.org/wiki/%E6%9C%80%E4%BC%98%E5%8C%96" target="_blank" rel="external">最优化</a>(如最大值最小值等)问题,比如求图中的<a href="https://zh.wikipedia.org/wiki/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91" target="_blank" rel="external">最小生成树</a>、求<a href="https://zh.wikipedia.org/wiki/%E5%93%88%E5%A4%AB%E6%9B%BC%E7%BC%96%E7%A0%81" target="_blank" rel="external">哈夫曼编码</a>…其他大多数的情况都不适用贪婪算法,一旦一个问题可以使用贪婪算法来解决,那么贪婪算法一般是解决这个问题的最好办法.由于贪婪算法的高效性以及其答案比较接近最有结果,也可以作为辅助算法或直接解决一些结果要求不那么精确的问题.</p>
 <h2><span id="原理">原理</span></h2><h3><span id="步骤">步骤</span></h3><ol>
@@ -215,10 +216,10 @@
 <h4><span id="submodular-functions子模块函数">(子模块函数)</span></h4><p>一个函数 $f$ 定义了当集合 $\Omega$ 的所有子集合 $S,T \subseteq \Omega$ 都满足 $f(S)+f(T)\geq f(S\cup T)+f(S\cap T)$ 的情况即为子模块. </p>
 <p>假设有人想要找到一个集合 $S$ 使得函数 $f$ 最大.贪婪算法将会通过逐个添加在每一步中使得 $f$ 增加最多的元素,产生一个结果至少是  $(1-1/e)\max _{X\subseteq \Omega }f(X)$ ??todo. 所以,贪婪算法至少得出最优解的 $(1-1/e) \approx 0.63$倍的解. </p>
 <h4><span id="其他一些相对可以使用的问题">其他一些相对可以使用的问题</span></h4><ul>
-<li><a href="https://en.wikipedia.org/wiki/Set_cover_problem#Greedy_algorithm" target="_blank" rel="external">Set cover</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Set_cover_problem#Greedy_algorithm" target="_blank" rel="external">集合覆盖问题 Set cover</a></li>
 <li>The <a href="https://en.wikipedia.org/wiki/Steiner_tree_problem" target="_blank" rel="external">Steiner tree problem</a></li>
-<li><a href="https://en.wikipedia.org/wiki/Load_balancing_(computing" target="_blank" rel="external">Load balancing</a>)<a href="https://en.wikipedia.org/wiki/Greedy_algorithm#cite_note-9" target="_blank" rel="external">[9]</a></li>
-<li><a href="https://en.wikipedia.org/wiki/Independent_set_(graph_theory" target="_blank" rel="external">Independent set</a>#Approximation_algorithms)</li>
+<li><a href="https://en.wikipedia.org/wiki/Load_balancing_(computing" target="_blank" rel="external">负载均衡 Load balancing</a>)<a href="https://en.wikipedia.org/wiki/Greedy_algorithm#cite_note-9" target="_blank" rel="external">[9]</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Independent_set_(graph_theory" target="_blank" rel="external">独立集 Independent set</a>#Approximation_algorithms)</li>
 </ul>
 <p>这些问题也可以使用贪婪算法,但不是最好的解法,他们在最差的情况下,可能会得到很差的结果. </p>
 <h3><span id="失败的情况">失败的情况</span></h3><p>在很多其他问题上,贪婪算法无法产生最优解,甚至可能产生一个最坏的解决方案.比如之前提到的  <a href="https://en.wikipedia.org/wiki/Traveling_salesman_problem" target="_blank" rel="external">traveling salesman problem</a> :对每一个城市都要计算一个最近的邻居,这种方式可能会产生一个最坏的路程.</p>
@@ -256,11 +257,11 @@
                             
                             
                                 
-                                <p><h1><span id="贪婪算法">贪婪算法</span></h1><p>贪婪算法(Greedy Algorithm)也叫算贪心法,贪婪法.它是一个遵循启发式解决问题的算法范式.它的核心思想就是通过在每一步的选择中都选用当前步骤下最优的选择,期望结果是最优的算法.如 <a href="https://zh.wikipedia.org/wiki/%E6%97%85%E8%A1%8C%E6%8E%A8%E9%94%80%E5%91%98%E9%97%AE%E9%A2%98" target="_blank" rel="external">旅行推销员问题</a>.</p>
+                                <p><h1><span id="贪婪算法">贪婪算法</span></h1><p>[TOC]</p>
+<p>贪婪算法(Greedy Algorithm)也叫算贪心法,贪婪法.它是一个遵循启发式解决问题的算法范式.它的核心思想就是通过在每一步的选择中都选用当前步骤下最优的选择,期望结果是最优的算法.如 <a href="https://zh.wikipedia.org/wiki/%E6%97%85%E8%A1%8C%E6%8E%A8%E9%94%80%E5%91%98%E9%97%AE%E9%A2%98" target="_blank" rel="external">旅行推销员问题</a>.</p>
 <p>贪婪算法尤其适用于有最优子结构的问题中,最优子结构的意思是局部的最优解可以导出全局的最优解.贪婪算法与<a href="https://zh.wikipedia.org/wiki/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92" target="_blank" rel="external">动态规划</a> 的不同在于贪婪算法对每一个子问题都作出选择,不能回退;动态规划则会保存以前的运算结果,根据以前的结果对当前进行选择,可以回退.</p>
 <p>贪婪算法可以解决一些<a href="https://zh.wikipedia.org/wiki/%E6%9C%80%E4%BC%98%E5%8C%96" target="_blank" rel="external">最优化</a>(如最大值最小值等)问题,比如求图中的<a href="https://zh.wikipedia.org/wiki/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91" target="_blank" rel="external">最小生成树</a>、求<a href="https://zh.wikipedia.org/wiki/%E5%93%88%E5%A4%AB%E6%9B%BC%E7%BC%96%E7%A0%81" target="_blank" rel="external">哈夫曼编码</a>…其他大多数的情况都不适用贪婪算法,一旦一个问题可以使用贪婪算法来解决,那么贪婪算法一般是解决这个问题的最好办法.由于贪婪算法的高效性以及其答案比较接近最有结果,也可以作为辅助算法或直接解决一些结果要求不那么精确的问题.</p>
 <h2><span id="原理">原理</span></h2><h3><span id="步骤">步骤</span></h3><ol>
-<li><p>建立数学模型来描述问题,并建立一个备选答案区</p>
 <p>
                             
                         
@@ -485,7 +486,7 @@
                         Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        28
+                        29
                     </p>
                 </div>
             </div>
@@ -495,7 +496,7 @@
                         Categories
                     </p>
                     <p class="title has-text-weight-normal">
-                        19
+                        20
                     </p>
                 </div>
             </div>
@@ -505,7 +506,7 @@
                         Tags
                     </p>
                     <p class="title has-text-weight-normal">
-                        15
+                        16
                     </p>
                 </div>
             </div>
@@ -550,7 +551,7 @@
                 <span class="level-item">Chinese</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">20</span>
+                <span class="level-item tag">21</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="undefined">
@@ -572,6 +573,14 @@
         <a class="level is-marginless" href="undefined">
             <span class="level-start">
                 <span class="level-item">DataStructure</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="undefined">
+            <span class="level-start">
+                <span class="level-item">Gradle</span>
             </span>
             <span class="level-end">
                 <span class="level-item tag">1</span>
@@ -612,7 +621,7 @@
         <h3 class="menu-label">
             Tag Cloud
         </h3>
-        <a href="/tags/Algorithm/" style="font-size: 18.57px;">Algorithm</a> <a href="/tags/Android/" style="font-size: 14.29px;">Android</a> <a href="/tags/Chinese/" style="font-size: 20px;">Chinese</a> <a href="/tags/Custom-View/" style="font-size: 10px;">Custom View</a> <a href="/tags/Data-Structure/" style="font-size: 10px;">Data Structure</a> <a href="/tags/DataStructure/" style="font-size: 10px;">DataStructure</a> <a href="/tags/English/" style="font-size: 15.71px;">English</a> <a href="/tags/Error/" style="font-size: 10px;">Error</a> <a href="/tags/Java/" style="font-size: 12.86px;">Java</a> <a href="/tags/LeetCode/" style="font-size: 17.14px;">LeetCode</a> <a href="/tags/Optimize/" style="font-size: 10px;">Optimize</a> <a href="/tags/SourceCode/" style="font-size: 10px;">SourceCode</a> <a href="/tags/UI/" style="font-size: 10px;">UI</a> <a href="/tags/版本差异/" style="font-size: 11.43px;">版本差异</a> <a href="/tags/版本管理/" style="font-size: 10px;">版本管理</a>
+        <a href="/tags/Algorithm/" style="font-size: 18.33px;">Algorithm</a> <a href="/tags/Android/" style="font-size: 15px;">Android</a> <a href="/tags/Chinese/" style="font-size: 20px;">Chinese</a> <a href="/tags/Custom-View/" style="font-size: 10px;">Custom View</a> <a href="/tags/Data-Structure/" style="font-size: 10px;">Data Structure</a> <a href="/tags/DataStructure/" style="font-size: 10px;">DataStructure</a> <a href="/tags/English/" style="font-size: 15px;">English</a> <a href="/tags/Error/" style="font-size: 10px;">Error</a> <a href="/tags/Gradle/" style="font-size: 10px;">Gradle</a> <a href="/tags/Java/" style="font-size: 13.33px;">Java</a> <a href="/tags/LeetCode/" style="font-size: 16.67px;">LeetCode</a> <a href="/tags/Optimize/" style="font-size: 10px;">Optimize</a> <a href="/tags/SourceCode/" style="font-size: 10px;">SourceCode</a> <a href="/tags/UI/" style="font-size: 10px;">UI</a> <a href="/tags/版本差异/" style="font-size: 11.67px;">版本差异</a> <a href="/tags/版本管理/" style="font-size: 10px;">版本管理</a>
     </div>
 </div>
 
@@ -626,6 +635,25 @@
         <h3 class="menu-label">
             Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/05/24/Gradle-Skill/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/2019/05/24/Gradle-Skill/titleThumb.jpg" alt="Gradle 使用技巧 [Chinese ver]">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-23T16:00:00.000Z">2019-05-24</time></div>
+                    <a href="/2019/05/24/Gradle-Skill/" class="has-link-black-ter is-size-6">Gradle 使用技巧 [Chinese ver]</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Gradle/">Gradle</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -667,25 +695,6 @@
         
         <article class="media">
             
-            <a href="/2019/01/20/LeetCode-8-String-to-Integer/Record-cn/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/2019/01/20/LeetCode-8-String-to-Integer/Record-cn/titleThumb.jpg" alt="LeetCode 8. 字符串转整数">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-01-19T16:00:00.000Z">2019-01-20</time></div>
-                    <a href="/2019/01/20/LeetCode-8-String-to-Integer/Record-cn/" class="has-link-black-ter is-size-6">LeetCode 8. 字符串转整数</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
             <a href="/2019/01/20/LeetCode-8-String-to-Integer/Record-en/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/2019/01/20/LeetCode-8-String-to-Integer/Record-cn/titleThumb.jpg" alt="LeetCode 8. String to Integer (atoi)">
@@ -705,18 +714,18 @@
         
         <article class="media">
             
-            <a href="/2019/01/02/Serializable/" class="media-left">
+            <a href="/2019/01/20/LeetCode-8-String-to-Integer/Record-cn/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/2019/01/02/Serializable/titleThumb.jpg" alt="Serializable">
+                    <img class="thumbnail" src="/2019/01/20/LeetCode-8-String-to-Integer/Record-cn/titleThumb.jpg" alt="LeetCode 8. 字符串转整数">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-01-01T16:00:00.000Z">2019-01-02</time></div>
-                    <a href="/2019/01/02/Serializable/" class="has-link-black-ter is-size-6">Serializable</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-01-19T16:00:00.000Z">2019-01-20</time></div>
+                    <a href="/2019/01/20/LeetCode-8-String-to-Integer/Record-cn/" class="has-link-black-ter is-size-6">LeetCode 8. 字符串转整数</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Java/">Java</a>
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Algorithm/">Algorithm</a>
                     </p>
                 </div>
             </div>
@@ -733,6 +742,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/05/">
+                <span class="level-start">
+                    <span class="level-item">May 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/04/">
@@ -878,14 +898,14 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Android/">
                         <span class="tag">Android</span>
-                        <span class="tag is-grey">7</span>
+                        <span class="tag is-grey">8</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Chinese/">
                         <span class="tag">Chinese</span>
-                        <span class="tag is-grey">20</span>
+                        <span class="tag is-grey">21</span>
                     </a>
                 </div>
                 
@@ -920,6 +940,13 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Error/">
                         <span class="tag">Error</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Gradle/">
+                        <span class="tag">Gradle</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -998,6 +1025,25 @@
         
         <article class="media">
             
+            <a href="/2019/05/24/Gradle-Skill/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/2019/05/24/Gradle-Skill/titleThumb.jpg" alt="Gradle 使用技巧 [Chinese ver]">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-23T16:00:00.000Z">2019-05-24</time></div>
+                    <a href="/2019/05/24/Gradle-Skill/" class="has-link-black-ter is-size-6">Gradle 使用技巧 [Chinese ver]</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Gradle/">Gradle</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/04/20/Java-Debugging-Problems-and-How-to-Solve-Them/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/2019/04/20/Java-Debugging-Problems-and-How-to-Solve-Them/titleThumb.jpg" alt="Java 调试中你可能会遇到的问题以及如何解决他们">
@@ -1036,25 +1082,6 @@
         
         <article class="media">
             
-            <a href="/2019/01/20/LeetCode-8-String-to-Integer/Record-cn/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/2019/01/20/LeetCode-8-String-to-Integer/Record-cn/titleThumb.jpg" alt="LeetCode 8. 字符串转整数">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-01-19T16:00:00.000Z">2019-01-20</time></div>
-                    <a href="/2019/01/20/LeetCode-8-String-to-Integer/Record-cn/" class="has-link-black-ter is-size-6">LeetCode 8. 字符串转整数</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
             <a href="/2019/01/20/LeetCode-8-String-to-Integer/Record-en/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/2019/01/20/LeetCode-8-String-to-Integer/Record-cn/titleThumb.jpg" alt="LeetCode 8. String to Integer (atoi)">
@@ -1074,18 +1101,18 @@
         
         <article class="media">
             
-            <a href="/2019/01/02/Serializable/" class="media-left">
+            <a href="/2019/01/20/LeetCode-8-String-to-Integer/Record-cn/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/2019/01/02/Serializable/titleThumb.jpg" alt="Serializable">
+                    <img class="thumbnail" src="/2019/01/20/LeetCode-8-String-to-Integer/Record-cn/titleThumb.jpg" alt="LeetCode 8. 字符串转整数">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-01-01T16:00:00.000Z">2019-01-02</time></div>
-                    <a href="/2019/01/02/Serializable/" class="has-link-black-ter is-size-6">Serializable</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-01-19T16:00:00.000Z">2019-01-20</time></div>
+                    <a href="/2019/01/20/LeetCode-8-String-to-Integer/Record-cn/" class="has-link-black-ter is-size-6">LeetCode 8. 字符串转整数</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Java/">Java</a>
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Algorithm/">Algorithm</a>
                     </p>
                 </div>
             </div>
@@ -1102,6 +1129,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/05/">
+                <span class="level-start">
+                    <span class="level-item">May 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/04/">
@@ -1247,14 +1285,14 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Android/">
                         <span class="tag">Android</span>
-                        <span class="tag is-grey">7</span>
+                        <span class="tag is-grey">8</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Chinese/">
                         <span class="tag">Chinese</span>
-                        <span class="tag is-grey">20</span>
+                        <span class="tag is-grey">21</span>
                     </a>
                 </div>
                 
@@ -1289,6 +1327,13 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Error/">
                         <span class="tag">Error</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Gradle/">
+                        <span class="tag">Gradle</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
