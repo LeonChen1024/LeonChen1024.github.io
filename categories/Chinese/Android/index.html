@@ -160,6 +160,131 @@
     <div class="card">
     
     <div class="card-image">
+        <a href="/2019/05/28/Automatic-Version-Code-Release/" class="image is-7by1">
+            <img class="banner" src="/2019/05/28/Automatic-Version-Code-Release/title.jpg" alt="自动版本号发布">
+        </a>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-05-27T16:00:00.000Z">2019-05-28</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Android/版本管理/">版本管理</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    10 minutes read (About 1487 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/05/28/Automatic-Version-Code-Release/">自动版本号发布</a>
+            
+        </h1>
+        <div class="content">
+            <!-- <h1><span id="自动版本号发布">自动版本号发布</span></h1><p>[TOC]</p>
+<h1><span id="背景">背景</span></h1><p>由于手动升级版本号等操作容易被遗忘和操作错误,,所以要找到一个可以自动管理版本号的方式.</p>
+<h1><span id="内容">内容</span></h1><p>版本控制主要有这么两个属性：</p>
+<ul>
+<li><p><code>android:versionCode</code> ： 整数，是内部版本号，用于判断一个版本是否比另一个版本新，用户并不需要看到。通常是跟随着发布版本增加该code。如果安装的app 的 versionCode 比当前该 app 的 versionCode 小的话会导致安装失败,提示无法降级安装.</p>
+</li>
+<li><p><code>android:versionName</code> : 字符串，用户能看到的版本号。如 <code>1.0.0</code> .系统不关心这个值.</p>
+</li>
+</ul>
+<h1><span id="方案">方案</span></h1><h2><span id="方案1-使用-git-提交记录来生成">方案1 使用 Git 提交记录来生成</span></h2><h3><span id="自动化版本号代码">自动化版本号代码</span></h3><p>用 Git 的话,我们可以使用 Git 中的 commit 数量作为 versionCode . 如下 :</p>
+<figure class="highlight groovy hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-comment">// 获取当前分支的 commit 数量.</span></div><div class="line"><span class="hljs-keyword">def</span> cmdVersionCode = <span class="hljs-string">'git rev-list HEAD --count'</span></div><div class="line"><span class="hljs-keyword">def</span> versionCodeValue = cmdVersionCode.execute().text.trim().toInteger()</div><div class="line"></div><div class="line">android &#123;  </div><div class="line">  defaultConfig &#123;</div><div class="line">    versionCode versionCodeValue</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这个方案要求开发者要及时提交代码,否则会出现版本号不增加的情况,不利于维护.</p>
+<p>有些开发者会担心一次版本发布中会有很多次 commit 的情况.首先这个 versionCode 的类型是 int 类型的,最大值是 <code>2^31-1</code> , 大约可以达到 21亿. </p>
+<h3><span id="自动化版本名">自动化版本名</span></h3><p>使用该方法的话需要在 Git 中标记 <code>tag</code> , tag 就是版本名.这样也有利于后期追溯版本.</p>
+<figure class="highlight groovy hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-comment">// 获取当前 commit 到距离他最近的 tag 描述.</span></div><div class="line"><span class="hljs-keyword">def</span> cmdVersionName = <span class="hljs-string">'git describe --tags'</span></div><div class="line"><span class="hljs-keyword">def</span> versionNameValue  = cmdVersionName.execute().text.trim()</div><div class="line"></div><div class="line">android &#123;  </div><div class="line">  defaultConfig &#123;</div><div class="line">    versionName versionNameValue</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这个时候版本名的后面可能会带上 <code>g.....</code> 的一串字符串,我们可以针对这个情况做一个修改,让版本名更加通俗易懂.</p>
+<figure class="highlight groovy hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-comment">// 获取tag 后面跟上的 距离上个 tag 提交次数,以及提交码.</span></div><div class="line"><span class="hljs-keyword">def</span> pattern = <span class="hljs-string">"-(\\d+)-g"</span></div><div class="line"><span class="hljs-keyword">def</span> matcher = versionNameValue =~ pattern</div><div class="line"></div><div class="line"><span class="hljs-keyword">if</span> (matcher) &#123;</div><div class="line">    <span class="hljs-comment">// 将距离上个 tag 的提交次数变为版本名.</span></div><div class="line"></div><div class="line">    <span class="hljs-comment">// 以多少为基数.</span></div><div class="line">    <span class="hljs-keyword">def</span> baseNum = <span class="hljs-number">20</span></div><div class="line">    <span class="hljs-keyword">def</span> thirdNum = matcher[<span class="hljs-number">0</span>][<span class="hljs-number">1</span>].toInteger().intdiv(baseNum)</div><div class="line">    <span class="hljs-keyword">def</span> fourthNum = matcher[<span class="hljs-number">0</span>][<span class="hljs-number">1</span>].toInteger() % baseNum</div><div class="line"></div><div class="line">    versionNameValue = versionNameValue.substring(<span class="hljs-number">0</span>, matcher.start()) + <span class="hljs-string">"."</span> + thirdNum + <span class="hljs-string">"."</span>+fourthNum</div><div class="line"><span class="hljs-comment">// 直接以距离上个 tag 的提交次数为第三个版本号.</span></div><div class="line"><span class="hljs-comment">//    versionNameValue = versionNameValue.substring(0, matcher.start()) + "." + matcher[0][1]</span></div><div class="line">&#125; <span class="hljs-keyword">else</span> &#123;</div><div class="line">    versionNameValue = versionNameValue + <span class="hljs-string">".0"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>由于直接把距离上个tag 的提交次数作为版本号会导致版本号增长过快,所以将他拆分为两部分.上面的例子以20为基数,比如此时距离上个提交次数为 32 , 上一个版本为 v1.0 , 那么生成的版本名就是 v1.0.1.12 ,而不是 1.0.32</p>
+<p>还要注意一点,这样写的画每次调试的debug版本也会生成不同的版本名,可能会导致有接入线上统计的版本出现繁杂冗余的情况.所以可以加上一个判断版本的方式,如下:</p>
+<p>现在项目的总 build.gradle 文件中添加</p>
+<figure class="highlight groovy hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-comment">// 通过taskName判断当前操作是否是在打release包</span></div><div class="line"><span class="hljs-keyword">def</span> checkRelease() &#123;</div><div class="line">    <span class="hljs-keyword">def</span> runTasks = gradle.startParameter.taskNames</div><div class="line">    <span class="hljs-keyword">for</span> (String <span class="hljs-string">task :</span> runTasks) &#123;</div><div class="line">        <span class="hljs-comment">// 执行“assemble”并且非“debug”的任务就是执行“release”的任务</span></div><div class="line">        <span class="hljs-keyword">if</span> (task.contains(<span class="hljs-string">"assemble"</span>) &amp;&amp; !task.contains(<span class="hljs-string">"Debug"</span>)) &#123;</div><div class="line">			<span class="hljs-comment">// targetTask = task</span></div><div class="line">            <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span></div><div class="line">&#125;</div><div class="line"></div><div class="line">ext &#123;</div><div class="line">    <span class="hljs-comment">// 定义当前gradle文件的全局变量, 是否是release版本</span></div><div class="line">    isRelease = checkRelease()</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>然后在 module 的 build.gradle 中修改之前的方法为</p>
+<figure class="highlight groovy hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-keyword">if</span> (matcher) &#123;</div><div class="line">    <span class="hljs-keyword">if</span> (isRelease) &#123;</div><div class="line">        <span class="hljs-comment">// 将距离上个 tag 的提交次数变为版本名.</span></div><div class="line"></div><div class="line">        <span class="hljs-comment">// 以多少为基数.</span></div><div class="line">        <span class="hljs-keyword">def</span> baseNum = <span class="hljs-number">20</span></div><div class="line">        <span class="hljs-keyword">def</span> thirdNum = matcher[<span class="hljs-number">0</span>][<span class="hljs-number">1</span>].toInteger().intdiv(baseNum)</div><div class="line">        <span class="hljs-keyword">def</span> fourthNum = matcher[<span class="hljs-number">0</span>][<span class="hljs-number">1</span>].toInteger().mod(baseNum)</div><div class="line">        versionNameValue = versionNameValue.substring(<span class="hljs-number">0</span>, matcher.start()) + <span class="hljs-string">"."</span> + thirdNum + <span class="hljs-string">"."</span> + fourthNum</div><div class="line">    &#125;<span class="hljs-keyword">else</span> &#123;</div><div class="line">        versionNameValue = <span class="hljs-string">"0.0.0"</span></div><div class="line">    &#125;</div><div class="line">&#125; <span class="hljs-keyword">else</span> &#123;</div><div class="line">    versionNameValue = versionNameValue + <span class="hljs-string">".0"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这样debug 的时候版本名称就都是0.0.0了.</p>
+<h2><span id="方案2-使用配置文件叠加">方案2 使用配置文件叠加</span></h2><p>该方法的思路是利用 property 文件进行保存版本号等信息,然后在每次生成 release 的时候进行叠加.</p>
+<p>以下是 <code>autoversion.gradle</code> 文件. 在你的 module 的 gradle 文件中引入该文件就可以了.</p>
+<figure class="highlight groovy hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div></pre></td><td class="code"><pre><div class="line">apply <span class="hljs-string">from:</span> <span class="hljs-string">"util.gradle"</span></div><div class="line"></div><div class="line">ext &#123;</div><div class="line">    versionFile = <span class="hljs-keyword">new</span> File(project.rootDir, <span class="hljs-string">'version.properties'</span>)</div><div class="line">    calculateVersionName = &#123;</div><div class="line">        <span class="hljs-keyword">if</span> (checkRelease()) &#123;</div><div class="line">            incrementVersionNumber()</div><div class="line">        &#125;</div><div class="line">        <span class="hljs-keyword">def</span> version = readVersion()</div><div class="line">        <span class="hljs-keyword">return</span> <span class="hljs-string">"$&#123;version['major']&#125;.$&#123;version['minor']&#125;.$&#123;version['build']&#125;"</span></div><div class="line">    &#125;</div><div class="line">    calculateVersionCode = &#123;</div><div class="line">        <span class="hljs-keyword">def</span> version = readVersion()</div><div class="line">        <span class="hljs-keyword">def</span> major = version[<span class="hljs-string">'major'</span>] <span class="hljs-keyword">as</span> <span class="hljs-keyword">int</span> <span class="hljs-comment">// 1..∞</span></div><div class="line">        <span class="hljs-keyword">def</span> minor = version[<span class="hljs-string">'minor'</span>] <span class="hljs-keyword">as</span> <span class="hljs-keyword">int</span> <span class="hljs-comment">// 0..99</span></div><div class="line">        <span class="hljs-keyword">def</span> build = version[<span class="hljs-string">'build'</span>] <span class="hljs-keyword">as</span> <span class="hljs-keyword">int</span> <span class="hljs-comment">// 0..999</span></div><div class="line">        <span class="hljs-keyword">return</span> (major * <span class="hljs-number">100</span> + minor) * <span class="hljs-number">1000</span> + build</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Properties readVersion() &#123;</div><div class="line">    <span class="hljs-keyword">def</span> version = <span class="hljs-keyword">new</span> Properties()</div><div class="line">    <span class="hljs-keyword">def</span> stream</div><div class="line">    <span class="hljs-keyword">try</span> &#123;</div><div class="line">        stream = <span class="hljs-keyword">new</span> FileInputStream(versionFile)</div><div class="line">        version.load(stream)</div><div class="line"></div><div class="line">    &#125; <span class="hljs-keyword">catch</span> (FileNotFoundException ignore) &#123;</div><div class="line">    &#125; <span class="hljs-keyword">finally</span> &#123;</div><div class="line">        <span class="hljs-keyword">if</span> (stream != <span class="hljs-literal">null</span>) stream.close()</div><div class="line">    &#125;</div><div class="line">    <span class="hljs-comment">// safety defaults in case file is missing</span></div><div class="line">    <span class="hljs-keyword">if</span> (!version[<span class="hljs-string">'major'</span>]) version[<span class="hljs-string">'major'</span>] = <span class="hljs-string">"1"</span></div><div class="line">    <span class="hljs-keyword">if</span> (!version[<span class="hljs-string">'minor'</span>]) version[<span class="hljs-string">'minor'</span>] = <span class="hljs-string">"0"</span></div><div class="line">    <span class="hljs-keyword">if</span> (!version[<span class="hljs-string">'build'</span>]) version[<span class="hljs-string">'build'</span>] = <span class="hljs-string">"0"</span></div><div class="line">    <span class="hljs-keyword">return</span> version</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="hljs-keyword">void</span> incrementVersionNumber() &#123;</div><div class="line">    <span class="hljs-keyword">def</span> version = readVersion()</div><div class="line"></div><div class="line">    <span class="hljs-comment">// careful with the types, culprits: "9"++ = ":", "9" + 1 = "91"</span></div><div class="line">    <span class="hljs-keyword">def</span> build = version[<span class="hljs-string">'build'</span>] <span class="hljs-keyword">as</span> <span class="hljs-keyword">int</span></div><div class="line">    build++</div><div class="line">    version[<span class="hljs-string">'build'</span>] = build.toString()</div><div class="line"></div><div class="line">    <span class="hljs-keyword">def</span> stream = <span class="hljs-keyword">new</span> FileOutputStream(versionFile)</div><div class="line">    <span class="hljs-keyword">try</span> &#123;</div><div class="line">        version.store(stream, <span class="hljs-literal">null</span>)</div><div class="line">    &#125; <span class="hljs-keyword">finally</span> &#123;</div><div class="line">        stream.close()</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="hljs-keyword">if</span> (plugins.hasPlugin(<span class="hljs-string">'android'</span>) || plugins.hasPlugin(<span class="hljs-string">'android-library'</span>)) &#123;</div><div class="line">    android &#123;</div><div class="line">        defaultConfig &#123;</div><div class="line">            versionName = calculateVersionName()</div><div class="line">            versionCode = calculateVersionCode()</div><div class="line">        &#125;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>以下是 <code>autoversion.gradle</code> 引用的 工具类</p>
+<figure class="highlight groovy hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">ext &#123;</div><div class="line"></div><div class="line">    checkRelease = <span class="hljs-keyword">this</span>.&amp;checkRelease</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="hljs-comment">// 通过taskName判断当前操作是否是在打release包</span></div><div class="line"><span class="hljs-keyword">def</span> checkRelease() &#123;</div><div class="line">    <span class="hljs-keyword">def</span> runTasks = gradle.startParameter.taskNames</div><div class="line">    <span class="hljs-keyword">for</span> (String <span class="hljs-string">task :</span> runTasks) &#123;</div><div class="line">        <span class="hljs-comment">// 执行“assemble”并且非“debug”的任务就是执行“release”的任务</span></div><div class="line">        <span class="hljs-keyword">if</span> (task.contains(<span class="hljs-string">"assemble"</span>) &amp;&amp; !task.contains(<span class="hljs-string">"Debug"</span>)) &#123;</div><div class="line">            <span class="hljs-comment">// targetTask = task</span></div><div class="line">            <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这样子有一些不太理想的是,它是使用 版本名来生成版本号的,有可能出现同一份代码多次打包后出现多个不同的版本.所以可以考虑和第一种Git 版本的方式结合.</p>
+<p>修改后的版本</p>
+<figure class="highlight groovy hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div></pre></td><td class="code"><pre><div class="line">apply <span class="hljs-string">from:</span> <span class="hljs-string">"../../AndroidShareLib/gradle/util.gradle"</span></div><div class="line"></div><div class="line">ext &#123;</div><div class="line">    versionFile = <span class="hljs-keyword">new</span> File(project.rootDir, <span class="hljs-string">'version.properties'</span>)</div><div class="line">    calculateVersionName = &#123;</div><div class="line">        <span class="hljs-keyword">def</span> version = readVersion()</div><div class="line">        <span class="hljs-keyword">def</span> code = version[<span class="hljs-string">'versioncode'</span>] <span class="hljs-keyword">as</span> <span class="hljs-keyword">int</span></div><div class="line">        <span class="hljs-keyword">if</span> ((code &lt; versionCode)) &#123;</div><div class="line">            incrementVersionNumber()</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="hljs-keyword">return</span> <span class="hljs-string">"$&#123;version['major']&#125;.$&#123;version['minor']&#125;.$&#123;version['build']&#125;"</span></div><div class="line">    &#125;</div><div class="line">    calculateVersionCode = &#123;</div><div class="line">        <span class="hljs-comment">// 获取当前分支的 commit 数量.</span></div><div class="line">        <span class="hljs-keyword">def</span> cmdVersionCode = <span class="hljs-string">'git rev-list HEAD --count'</span></div><div class="line">        <span class="hljs-keyword">return</span> cmdVersionCode.execute().text.trim().toInteger()</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Properties readVersion() &#123;</div><div class="line">    <span class="hljs-keyword">def</span> version = <span class="hljs-keyword">new</span> Properties()</div><div class="line">    <span class="hljs-keyword">def</span> stream</div><div class="line">    <span class="hljs-keyword">try</span> &#123;</div><div class="line">        stream = <span class="hljs-keyword">new</span> FileInputStream(versionFile)</div><div class="line">        version.load(stream)</div><div class="line"></div><div class="line">    &#125; <span class="hljs-keyword">catch</span> (FileNotFoundException ignore) &#123;</div><div class="line">    &#125; <span class="hljs-keyword">finally</span> &#123;</div><div class="line">        <span class="hljs-keyword">if</span> (stream != <span class="hljs-literal">null</span>) stream.close()</div><div class="line">    &#125;</div><div class="line">    <span class="hljs-comment">// safety defaults in case file is missing</span></div><div class="line">    <span class="hljs-keyword">if</span> (!version[<span class="hljs-string">'major'</span>]) version[<span class="hljs-string">'major'</span>] = <span class="hljs-string">"1"</span></div><div class="line">    <span class="hljs-keyword">if</span> (!version[<span class="hljs-string">'minor'</span>]) version[<span class="hljs-string">'minor'</span>] = <span class="hljs-string">"0"</span></div><div class="line">    <span class="hljs-keyword">if</span> (!version[<span class="hljs-string">'build'</span>]) version[<span class="hljs-string">'build'</span>] = <span class="hljs-string">"0"</span></div><div class="line">    <span class="hljs-keyword">if</span> (!version[<span class="hljs-string">'versioncode'</span>]) version[<span class="hljs-string">'versioncode'</span>] = <span class="hljs-string">"0"</span></div><div class="line">    <span class="hljs-keyword">return</span> version</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="hljs-keyword">void</span> incrementVersionNumber() &#123;</div><div class="line">    <span class="hljs-keyword">def</span> version = readVersion()</div><div class="line"></div><div class="line">    <span class="hljs-comment">// careful with the types, culprits: "9"++ = ":", "9" + 1 = "91"</span></div><div class="line">    <span class="hljs-keyword">def</span> build = version[<span class="hljs-string">'build'</span>] <span class="hljs-keyword">as</span> <span class="hljs-keyword">int</span></div><div class="line">    build++</div><div class="line">    version[<span class="hljs-string">'build'</span>] = build.toString()</div><div class="line">    version[<span class="hljs-string">'versioncode'</span>] = versionCode <span class="hljs-keyword">as</span> String</div><div class="line"></div><div class="line">    <span class="hljs-keyword">def</span> stream = <span class="hljs-keyword">new</span> FileOutputStream(versionFile)</div><div class="line">    <span class="hljs-keyword">try</span> &#123;</div><div class="line">        version.store(stream, <span class="hljs-literal">null</span>)</div><div class="line">    &#125; <span class="hljs-keyword">finally</span> &#123;</div><div class="line">        stream.close()</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="hljs-keyword">if</span> (plugins.hasPlugin(<span class="hljs-string">'android'</span>) || plugins.hasPlugin(<span class="hljs-string">'android-library'</span>)) &#123;</div><div class="line">    android &#123;</div><div class="line">        defaultConfig &#123;</div><div class="line">            versionName = calculateVersionName()</div><div class="line">            versionCode = calculateVersionCode()</div><div class="line">        &#125;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1><span id="reference">Reference</span></h1><p><a href="http://leonchen1024.com/2018/04/13/APP-Version-Control/" target="_blank" rel="external">APP 版本控制</a></p>
+<h2><span id="about-me">About Me</span></h2><p>我的博客 <a href="http://leonchen1024.com/" target="_blank" rel="external">leonchen1024.com</a></p>
+<p>我的 GitHub <a href="https://github.com/LeonChen1024" target="_blank" rel="external">https://github.com/LeonChen1024</a></p>
+<p>微信公众号 </p>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/Images/CooderQRcodem.jpg?raw=false" alt="wechat"></p>
+ -->
+            <div class="article-entry">
+                    
+                    
+                        
+                            
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                            
+                                
+                                <p><h1><span id="自动版本号发布">自动版本号发布</span></h1><p>[TOC]</p>
+<h1><span id="背景">背景</span></h1><p>由于手动升级版本号等操作容易被遗忘和操作错误,,所以要找到一个可以自动管理版本号的方式.</p>
+<h1><span id="内容">内容</span></h1><p>版本控制主要有这么两个属性：</p>
+<ul>
+<li><p><code>android:versionCode</code> ： 整数，是内部版本号，用于判断一个版本是否比另一个版本新，用户并不需要看到。通常是跟随着发布版本增加该code。如果安装的app 的 versionCode 比当前该 app 的 versionCode 小的话会导致安装失败,提示无法降级安装.</p>
+<p>
+                            
+                        
+                    
+                    
+                        </div>   
+                        <div class="article-more-link">
+                            <a href="/2019/05/28/Automatic-Version-Code-Release/#more">Read More</a>
+                        </div>
+                    
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-image">
         <a href="/2018/12/23/S1ep1-The-macgic-of-LRU-Cache/" class="image is-7by1">
             <img class="banner" src="/2018/12/23/S1ep1-The-macgic-of-LRU-Cache/title.jpg" alt="LRU 缓存的魔力">
         </a>
@@ -892,7 +1017,7 @@
                         Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        29
+                        30
                     </p>
                 </div>
             </div>
@@ -957,7 +1082,7 @@
                 <span class="level-item">Chinese</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">21</span>
+                <span class="level-item tag">22</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="undefined">
@@ -973,7 +1098,7 @@
                 <span class="level-item">Android</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">6</span>
+                <span class="level-item tag">7</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="undefined">
@@ -1027,7 +1152,7 @@
         <h3 class="menu-label">
             Tag Cloud
         </h3>
-        <a href="/tags/Algorithm/" style="font-size: 18.33px;">Algorithm</a> <a href="/tags/Android/" style="font-size: 15px;">Android</a> <a href="/tags/Chinese/" style="font-size: 20px;">Chinese</a> <a href="/tags/Custom-View/" style="font-size: 10px;">Custom View</a> <a href="/tags/Data-Structure/" style="font-size: 10px;">Data Structure</a> <a href="/tags/DataStructure/" style="font-size: 10px;">DataStructure</a> <a href="/tags/English/" style="font-size: 15px;">English</a> <a href="/tags/Error/" style="font-size: 10px;">Error</a> <a href="/tags/Gradle/" style="font-size: 10px;">Gradle</a> <a href="/tags/Java/" style="font-size: 13.33px;">Java</a> <a href="/tags/LeetCode/" style="font-size: 16.67px;">LeetCode</a> <a href="/tags/Optimize/" style="font-size: 10px;">Optimize</a> <a href="/tags/SourceCode/" style="font-size: 10px;">SourceCode</a> <a href="/tags/UI/" style="font-size: 10px;">UI</a> <a href="/tags/版本差异/" style="font-size: 11.67px;">版本差异</a> <a href="/tags/版本管理/" style="font-size: 10px;">版本管理</a>
+        <a href="/tags/Algorithm/" style="font-size: 18.57px;">Algorithm</a> <a href="/tags/Android/" style="font-size: 15.71px;">Android</a> <a href="/tags/Chinese/" style="font-size: 20px;">Chinese</a> <a href="/tags/Custom-View/" style="font-size: 10px;">Custom View</a> <a href="/tags/Data-Structure/" style="font-size: 10px;">Data Structure</a> <a href="/tags/DataStructure/" style="font-size: 10px;">DataStructure</a> <a href="/tags/English/" style="font-size: 14.29px;">English</a> <a href="/tags/Error/" style="font-size: 10px;">Error</a> <a href="/tags/Gradle/" style="font-size: 10px;">Gradle</a> <a href="/tags/Java/" style="font-size: 12.86px;">Java</a> <a href="/tags/LeetCode/" style="font-size: 17.14px;">LeetCode</a> <a href="/tags/Optimize/" style="font-size: 10px;">Optimize</a> <a href="/tags/SourceCode/" style="font-size: 10px;">SourceCode</a> <a href="/tags/UI/" style="font-size: 10px;">UI</a> <a href="/tags/版本差异/" style="font-size: 11.43px;">版本差异</a> <a href="/tags/版本管理/" style="font-size: 11.43px;">版本管理</a>
     </div>
 </div>
 
@@ -1041,6 +1166,25 @@
         <h3 class="menu-label">
             Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/05/28/Automatic-Version-Code-Release/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/2019/05/28/Automatic-Version-Code-Release/titleThumb.jpg" alt="自动版本号发布">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-27T16:00:00.000Z">2019-05-28</time></div>
+                    <a href="/2019/05/28/Automatic-Version-Code-Release/" class="has-link-black-ter is-size-6">自动版本号发布</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -1101,25 +1245,6 @@
         
         <article class="media">
             
-            <a href="/2019/01/20/LeetCode-8-String-to-Integer/Record-en/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/2019/01/20/LeetCode-8-String-to-Integer/Record-cn/titleThumb.jpg" alt="LeetCode 8. String to Integer (atoi)">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-01-19T16:00:00.000Z">2019-01-20</time></div>
-                    <a href="/2019/01/20/LeetCode-8-String-to-Integer/Record-en/" class="has-link-black-ter is-size-6">LeetCode 8. String to Integer (atoi)</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/English/">English</a> / <a class="has-link-grey -link" href="/categories/English/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
             <a href="/2019/01/20/LeetCode-8-String-to-Integer/Record-cn/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/2019/01/20/LeetCode-8-String-to-Integer/Record-cn/titleThumb.jpg" alt="LeetCode 8. 字符串转整数">
@@ -1155,7 +1280,7 @@
                     <span class="level-item">May 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -1304,14 +1429,14 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Android/">
                         <span class="tag">Android</span>
-                        <span class="tag is-grey">8</span>
+                        <span class="tag is-grey">9</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Chinese/">
                         <span class="tag">Chinese</span>
-                        <span class="tag is-grey">21</span>
+                        <span class="tag is-grey">22</span>
                     </a>
                 </div>
                 
@@ -1402,7 +1527,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/版本管理/">
                         <span class="tag">版本管理</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -1431,6 +1556,25 @@
         
         <article class="media">
             
+            <a href="/2019/05/28/Automatic-Version-Code-Release/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/2019/05/28/Automatic-Version-Code-Release/titleThumb.jpg" alt="自动版本号发布">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-27T16:00:00.000Z">2019-05-28</time></div>
+                    <a href="/2019/05/28/Automatic-Version-Code-Release/" class="has-link-black-ter is-size-6">自动版本号发布</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/05/24/Gradle-Skill/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/2019/05/24/Gradle-Skill/titleThumb.jpg" alt="Gradle 使用技巧 [Chinese ver]">
@@ -1488,25 +1632,6 @@
         
         <article class="media">
             
-            <a href="/2019/01/20/LeetCode-8-String-to-Integer/Record-en/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/2019/01/20/LeetCode-8-String-to-Integer/Record-cn/titleThumb.jpg" alt="LeetCode 8. String to Integer (atoi)">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-01-19T16:00:00.000Z">2019-01-20</time></div>
-                    <a href="/2019/01/20/LeetCode-8-String-to-Integer/Record-en/" class="has-link-black-ter is-size-6">LeetCode 8. String to Integer (atoi)</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/English/">English</a> / <a class="has-link-grey -link" href="/categories/English/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
             <a href="/2019/01/20/LeetCode-8-String-to-Integer/Record-cn/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/2019/01/20/LeetCode-8-String-to-Integer/Record-cn/titleThumb.jpg" alt="LeetCode 8. 字符串转整数">
@@ -1542,7 +1667,7 @@
                     <span class="level-item">May 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -1691,14 +1816,14 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Android/">
                         <span class="tag">Android</span>
-                        <span class="tag is-grey">8</span>
+                        <span class="tag is-grey">9</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Chinese/">
                         <span class="tag">Chinese</span>
-                        <span class="tag is-grey">21</span>
+                        <span class="tag is-grey">22</span>
                     </a>
                 </div>
                 
@@ -1789,7 +1914,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/版本管理/">
                         <span class="tag">版本管理</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 

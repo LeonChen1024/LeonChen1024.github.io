@@ -2,17 +2,24 @@
 <html >
 <head>
     <meta charset="utf-8">
-<title>Tag: 版本管理 - LeonChen&#39;s Blog</title>
+<title>自动版本号发布 - LeonChen&#39;s Blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
 
 
-    <meta property="og:type" content="website">
-<meta property="og:title" content="LeonChen&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/tags/版本管理/index.html">
+    <meta name="description" content="自动版本号发布[TOC] 背景由于手动升级版本号等操作容易被遗忘和操作错误,,所以要找到一个可以自动管理版本号的方式. 内容版本控制主要有这么两个属性：  android:versionCode ： 整数，是内部版本号，用于判断一个版本是否比另一个版本新，用户并不需要看到。通常是跟随着发布版本增加该code。如果安装的app 的 versionCode 比当前该 app 的 versionCode">
+<meta name="keywords" content="Chinese,Android,版本管理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="自动版本号发布">
+<meta property="og:url" content="http://yoursite.com/2019/05/28/Automatic-Version-Code-Release/index.html">
 <meta property="og:site_name" content="LeonChen&#39;s Blog">
+<meta property="og:description" content="自动版本号发布[TOC] 背景由于手动升级版本号等操作容易被遗忘和操作错误,,所以要找到一个可以自动管理版本号的方式. 内容版本控制主要有这么两个属性：  android:versionCode ： 整数，是内部版本号，用于判断一个版本是否比另一个版本新，用户并不需要看到。通常是跟随着发布版本增加该code。如果安装的app 的 versionCode 比当前该 app 的 versionCode">
+<meta property="og:image" content="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/Images/CooderQRcodem.jpg?raw=false">
+<meta property="og:updated_time" content="2019-05-27T23:21:06.963Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LeonChen&#39;s Blog">
+<meta name="twitter:title" content="自动版本号发布">
+<meta name="twitter:description" content="自动版本号发布[TOC] 背景由于手动升级版本号等操作容易被遗忘和操作错误,,所以要找到一个可以自动管理版本号的方式. 内容版本控制主要有这么两个属性：  android:versionCode ： 整数，是内部版本号，用于判断一个版本是否比另一个版本新，用户并不需要看到。通常是跟随着发布版本增加该code。如果安装的app 的 versionCode 比当前该 app 的 versionCode">
+<meta name="twitter:image" content="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/Images/CooderQRcodem.jpg?raw=false">
 
 
 
@@ -93,7 +100,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.png" alt="LeonChen&#39;s Blog" height="28">
+                <img src="/images/logo.png" alt="自动版本号发布" height="28">
             
             </a>
         </div>
@@ -144,22 +151,11 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
-    <div class="card-content">
-        <nav class="breadcrumb" aria-label="breadcrumbs">
-        <ul>
-            <li><a href="/tags">Tags</a></li>
-            <li class="is-active"><a href="#" aria-current="page">版本管理</a></li>
-        </ul>
-        </nav>
-    </div>
-</div>
-
-    <div class="card">
     
     <div class="card-image">
-        <a href="/2019/05/28/Automatic-Version-Code-Release/" class="image is-7by1">
+        <span  class="image is-7by1">
             <img class="banner" src="/2019/05/28/Automatic-Version-Code-Release/title.jpg" alt="自动版本号发布">
-        </a>
+        </span>
     </div>
     
     <div class="card-content article ">
@@ -185,7 +181,7 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2019/05/28/Automatic-Version-Code-Release/">自动版本号发布</a>
+                自动版本号发布
             
         </h1>
         <div class="content">
@@ -230,157 +226,58 @@
             <div class="article-entry">
                     
                     
-                        
-                            
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                            
-                                
-                                <p><h1><span id="自动版本号发布">自动版本号发布</span></h1><p>[TOC]</p>
+                    
+                        <h1><span id="自动版本号发布">自动版本号发布</span></h1><p>[TOC]</p>
 <h1><span id="背景">背景</span></h1><p>由于手动升级版本号等操作容易被遗忘和操作错误,,所以要找到一个可以自动管理版本号的方式.</p>
 <h1><span id="内容">内容</span></h1><p>版本控制主要有这么两个属性：</p>
 <ul>
 <li><p><code>android:versionCode</code> ： 整数，是内部版本号，用于判断一个版本是否比另一个版本新，用户并不需要看到。通常是跟随着发布版本增加该code。如果安装的app 的 versionCode 比当前该 app 的 versionCode 小的话会导致安装失败,提示无法降级安装.</p>
-<p>
-                            
-                        
-                    
-                    
-                        </div>   
-                        <div class="article-more-link">
-                            <a href="/2019/05/28/Automatic-Version-Code-Release/#more">Read More</a>
+</li>
+<li><p><code>android:versionName</code> : 字符串，用户能看到的版本号。如 <code>1.0.0</code> .系统不关心这个值.</p>
+</li>
+</ul>
+<h1><span id="方案">方案</span></h1><h2><span id="方案1-使用-git-提交记录来生成">方案1 使用 Git 提交记录来生成</span></h2><h3><span id="自动化版本号代码">自动化版本号代码</span></h3><p>用 Git 的话,我们可以使用 Git 中的 commit 数量作为 versionCode . 如下 :</p>
+<figure class="highlight groovy hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-comment">// 获取当前分支的 commit 数量.</span></div><div class="line"><span class="hljs-keyword">def</span> cmdVersionCode = <span class="hljs-string">'git rev-list HEAD --count'</span></div><div class="line"><span class="hljs-keyword">def</span> versionCodeValue = cmdVersionCode.execute().text.trim().toInteger()</div><div class="line"></div><div class="line">android &#123;  </div><div class="line">  defaultConfig &#123;</div><div class="line">    versionCode versionCodeValue</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这个方案要求开发者要及时提交代码,否则会出现版本号不增加的情况,不利于维护.</p>
+<p>有些开发者会担心一次版本发布中会有很多次 commit 的情况.首先这个 versionCode 的类型是 int 类型的,最大值是 <code>2^31-1</code> , 大约可以达到 21亿. </p>
+<h3><span id="自动化版本名">自动化版本名</span></h3><p>使用该方法的话需要在 Git 中标记 <code>tag</code> , tag 就是版本名.这样也有利于后期追溯版本.</p>
+<figure class="highlight groovy hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-comment">// 获取当前 commit 到距离他最近的 tag 描述.</span></div><div class="line"><span class="hljs-keyword">def</span> cmdVersionName = <span class="hljs-string">'git describe --tags'</span></div><div class="line"><span class="hljs-keyword">def</span> versionNameValue  = cmdVersionName.execute().text.trim()</div><div class="line"></div><div class="line">android &#123;  </div><div class="line">  defaultConfig &#123;</div><div class="line">    versionName versionNameValue</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这个时候版本名的后面可能会带上 <code>g.....</code> 的一串字符串,我们可以针对这个情况做一个修改,让版本名更加通俗易懂.</p>
+<figure class="highlight groovy hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-comment">// 获取tag 后面跟上的 距离上个 tag 提交次数,以及提交码.</span></div><div class="line"><span class="hljs-keyword">def</span> pattern = <span class="hljs-string">"-(\\d+)-g"</span></div><div class="line"><span class="hljs-keyword">def</span> matcher = versionNameValue =~ pattern</div><div class="line"></div><div class="line"><span class="hljs-keyword">if</span> (matcher) &#123;</div><div class="line">    <span class="hljs-comment">// 将距离上个 tag 的提交次数变为版本名.</span></div><div class="line"></div><div class="line">    <span class="hljs-comment">// 以多少为基数.</span></div><div class="line">    <span class="hljs-keyword">def</span> baseNum = <span class="hljs-number">20</span></div><div class="line">    <span class="hljs-keyword">def</span> thirdNum = matcher[<span class="hljs-number">0</span>][<span class="hljs-number">1</span>].toInteger().intdiv(baseNum)</div><div class="line">    <span class="hljs-keyword">def</span> fourthNum = matcher[<span class="hljs-number">0</span>][<span class="hljs-number">1</span>].toInteger() % baseNum</div><div class="line"></div><div class="line">    versionNameValue = versionNameValue.substring(<span class="hljs-number">0</span>, matcher.start()) + <span class="hljs-string">"."</span> + thirdNum + <span class="hljs-string">"."</span>+fourthNum</div><div class="line"><span class="hljs-comment">// 直接以距离上个 tag 的提交次数为第三个版本号.</span></div><div class="line"><span class="hljs-comment">//    versionNameValue = versionNameValue.substring(0, matcher.start()) + "." + matcher[0][1]</span></div><div class="line">&#125; <span class="hljs-keyword">else</span> &#123;</div><div class="line">    versionNameValue = versionNameValue + <span class="hljs-string">".0"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>由于直接把距离上个tag 的提交次数作为版本号会导致版本号增长过快,所以将他拆分为两部分.上面的例子以20为基数,比如此时距离上个提交次数为 32 , 上一个版本为 v1.0 , 那么生成的版本名就是 v1.0.1.12 ,而不是 1.0.32</p>
+<p>还要注意一点,这样写的画每次调试的debug版本也会生成不同的版本名,可能会导致有接入线上统计的版本出现繁杂冗余的情况.所以可以加上一个判断版本的方式,如下:</p>
+<p>现在项目的总 build.gradle 文件中添加</p>
+<figure class="highlight groovy hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-comment">// 通过taskName判断当前操作是否是在打release包</span></div><div class="line"><span class="hljs-keyword">def</span> checkRelease() &#123;</div><div class="line">    <span class="hljs-keyword">def</span> runTasks = gradle.startParameter.taskNames</div><div class="line">    <span class="hljs-keyword">for</span> (String <span class="hljs-string">task :</span> runTasks) &#123;</div><div class="line">        <span class="hljs-comment">// 执行“assemble”并且非“debug”的任务就是执行“release”的任务</span></div><div class="line">        <span class="hljs-keyword">if</span> (task.contains(<span class="hljs-string">"assemble"</span>) &amp;&amp; !task.contains(<span class="hljs-string">"Debug"</span>)) &#123;</div><div class="line">			<span class="hljs-comment">// targetTask = task</span></div><div class="line">            <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span></div><div class="line">&#125;</div><div class="line"></div><div class="line">ext &#123;</div><div class="line">    <span class="hljs-comment">// 定义当前gradle文件的全局变量, 是否是release版本</span></div><div class="line">    isRelease = checkRelease()</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>然后在 module 的 build.gradle 中修改之前的方法为</p>
+<figure class="highlight groovy hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-keyword">if</span> (matcher) &#123;</div><div class="line">    <span class="hljs-keyword">if</span> (isRelease) &#123;</div><div class="line">        <span class="hljs-comment">// 将距离上个 tag 的提交次数变为版本名.</span></div><div class="line"></div><div class="line">        <span class="hljs-comment">// 以多少为基数.</span></div><div class="line">        <span class="hljs-keyword">def</span> baseNum = <span class="hljs-number">20</span></div><div class="line">        <span class="hljs-keyword">def</span> thirdNum = matcher[<span class="hljs-number">0</span>][<span class="hljs-number">1</span>].toInteger().intdiv(baseNum)</div><div class="line">        <span class="hljs-keyword">def</span> fourthNum = matcher[<span class="hljs-number">0</span>][<span class="hljs-number">1</span>].toInteger().mod(baseNum)</div><div class="line">        versionNameValue = versionNameValue.substring(<span class="hljs-number">0</span>, matcher.start()) + <span class="hljs-string">"."</span> + thirdNum + <span class="hljs-string">"."</span> + fourthNum</div><div class="line">    &#125;<span class="hljs-keyword">else</span> &#123;</div><div class="line">        versionNameValue = <span class="hljs-string">"0.0.0"</span></div><div class="line">    &#125;</div><div class="line">&#125; <span class="hljs-keyword">else</span> &#123;</div><div class="line">    versionNameValue = versionNameValue + <span class="hljs-string">".0"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这样debug 的时候版本名称就都是0.0.0了.</p>
+<h2><span id="方案2-使用配置文件叠加">方案2 使用配置文件叠加</span></h2><p>该方法的思路是利用 property 文件进行保存版本号等信息,然后在每次生成 release 的时候进行叠加.</p>
+<p>以下是 <code>autoversion.gradle</code> 文件. 在你的 module 的 gradle 文件中引入该文件就可以了.</p>
+<figure class="highlight groovy hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div></pre></td><td class="code"><pre><div class="line">apply <span class="hljs-string">from:</span> <span class="hljs-string">"util.gradle"</span></div><div class="line"></div><div class="line">ext &#123;</div><div class="line">    versionFile = <span class="hljs-keyword">new</span> File(project.rootDir, <span class="hljs-string">'version.properties'</span>)</div><div class="line">    calculateVersionName = &#123;</div><div class="line">        <span class="hljs-keyword">if</span> (checkRelease()) &#123;</div><div class="line">            incrementVersionNumber()</div><div class="line">        &#125;</div><div class="line">        <span class="hljs-keyword">def</span> version = readVersion()</div><div class="line">        <span class="hljs-keyword">return</span> <span class="hljs-string">"$&#123;version['major']&#125;.$&#123;version['minor']&#125;.$&#123;version['build']&#125;"</span></div><div class="line">    &#125;</div><div class="line">    calculateVersionCode = &#123;</div><div class="line">        <span class="hljs-keyword">def</span> version = readVersion()</div><div class="line">        <span class="hljs-keyword">def</span> major = version[<span class="hljs-string">'major'</span>] <span class="hljs-keyword">as</span> <span class="hljs-keyword">int</span> <span class="hljs-comment">// 1..∞</span></div><div class="line">        <span class="hljs-keyword">def</span> minor = version[<span class="hljs-string">'minor'</span>] <span class="hljs-keyword">as</span> <span class="hljs-keyword">int</span> <span class="hljs-comment">// 0..99</span></div><div class="line">        <span class="hljs-keyword">def</span> build = version[<span class="hljs-string">'build'</span>] <span class="hljs-keyword">as</span> <span class="hljs-keyword">int</span> <span class="hljs-comment">// 0..999</span></div><div class="line">        <span class="hljs-keyword">return</span> (major * <span class="hljs-number">100</span> + minor) * <span class="hljs-number">1000</span> + build</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Properties readVersion() &#123;</div><div class="line">    <span class="hljs-keyword">def</span> version = <span class="hljs-keyword">new</span> Properties()</div><div class="line">    <span class="hljs-keyword">def</span> stream</div><div class="line">    <span class="hljs-keyword">try</span> &#123;</div><div class="line">        stream = <span class="hljs-keyword">new</span> FileInputStream(versionFile)</div><div class="line">        version.load(stream)</div><div class="line"></div><div class="line">    &#125; <span class="hljs-keyword">catch</span> (FileNotFoundException ignore) &#123;</div><div class="line">    &#125; <span class="hljs-keyword">finally</span> &#123;</div><div class="line">        <span class="hljs-keyword">if</span> (stream != <span class="hljs-literal">null</span>) stream.close()</div><div class="line">    &#125;</div><div class="line">    <span class="hljs-comment">// safety defaults in case file is missing</span></div><div class="line">    <span class="hljs-keyword">if</span> (!version[<span class="hljs-string">'major'</span>]) version[<span class="hljs-string">'major'</span>] = <span class="hljs-string">"1"</span></div><div class="line">    <span class="hljs-keyword">if</span> (!version[<span class="hljs-string">'minor'</span>]) version[<span class="hljs-string">'minor'</span>] = <span class="hljs-string">"0"</span></div><div class="line">    <span class="hljs-keyword">if</span> (!version[<span class="hljs-string">'build'</span>]) version[<span class="hljs-string">'build'</span>] = <span class="hljs-string">"0"</span></div><div class="line">    <span class="hljs-keyword">return</span> version</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="hljs-keyword">void</span> incrementVersionNumber() &#123;</div><div class="line">    <span class="hljs-keyword">def</span> version = readVersion()</div><div class="line"></div><div class="line">    <span class="hljs-comment">// careful with the types, culprits: "9"++ = ":", "9" + 1 = "91"</span></div><div class="line">    <span class="hljs-keyword">def</span> build = version[<span class="hljs-string">'build'</span>] <span class="hljs-keyword">as</span> <span class="hljs-keyword">int</span></div><div class="line">    build++</div><div class="line">    version[<span class="hljs-string">'build'</span>] = build.toString()</div><div class="line"></div><div class="line">    <span class="hljs-keyword">def</span> stream = <span class="hljs-keyword">new</span> FileOutputStream(versionFile)</div><div class="line">    <span class="hljs-keyword">try</span> &#123;</div><div class="line">        version.store(stream, <span class="hljs-literal">null</span>)</div><div class="line">    &#125; <span class="hljs-keyword">finally</span> &#123;</div><div class="line">        stream.close()</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="hljs-keyword">if</span> (plugins.hasPlugin(<span class="hljs-string">'android'</span>) || plugins.hasPlugin(<span class="hljs-string">'android-library'</span>)) &#123;</div><div class="line">    android &#123;</div><div class="line">        defaultConfig &#123;</div><div class="line">            versionName = calculateVersionName()</div><div class="line">            versionCode = calculateVersionCode()</div><div class="line">        &#125;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>以下是 <code>autoversion.gradle</code> 引用的 工具类</p>
+<figure class="highlight groovy hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">ext &#123;</div><div class="line"></div><div class="line">    checkRelease = <span class="hljs-keyword">this</span>.&amp;checkRelease</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="hljs-comment">// 通过taskName判断当前操作是否是在打release包</span></div><div class="line"><span class="hljs-keyword">def</span> checkRelease() &#123;</div><div class="line">    <span class="hljs-keyword">def</span> runTasks = gradle.startParameter.taskNames</div><div class="line">    <span class="hljs-keyword">for</span> (String <span class="hljs-string">task :</span> runTasks) &#123;</div><div class="line">        <span class="hljs-comment">// 执行“assemble”并且非“debug”的任务就是执行“release”的任务</span></div><div class="line">        <span class="hljs-keyword">if</span> (task.contains(<span class="hljs-string">"assemble"</span>) &amp;&amp; !task.contains(<span class="hljs-string">"Debug"</span>)) &#123;</div><div class="line">            <span class="hljs-comment">// targetTask = task</span></div><div class="line">            <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这样子有一些不太理想的是,它是使用 版本名来生成版本号的,有可能出现同一份代码多次打包后出现多个不同的版本.所以可以考虑和第一种Git 版本的方式结合.</p>
+<p>修改后的版本</p>
+<figure class="highlight groovy hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div></pre></td><td class="code"><pre><div class="line">apply <span class="hljs-string">from:</span> <span class="hljs-string">"../../AndroidShareLib/gradle/util.gradle"</span></div><div class="line"></div><div class="line">ext &#123;</div><div class="line">    versionFile = <span class="hljs-keyword">new</span> File(project.rootDir, <span class="hljs-string">'version.properties'</span>)</div><div class="line">    calculateVersionName = &#123;</div><div class="line">        <span class="hljs-keyword">def</span> version = readVersion()</div><div class="line">        <span class="hljs-keyword">def</span> code = version[<span class="hljs-string">'versioncode'</span>] <span class="hljs-keyword">as</span> <span class="hljs-keyword">int</span></div><div class="line">        <span class="hljs-keyword">if</span> ((code &lt; versionCode)) &#123;</div><div class="line">            incrementVersionNumber()</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="hljs-keyword">return</span> <span class="hljs-string">"$&#123;version['major']&#125;.$&#123;version['minor']&#125;.$&#123;version['build']&#125;"</span></div><div class="line">    &#125;</div><div class="line">    calculateVersionCode = &#123;</div><div class="line">        <span class="hljs-comment">// 获取当前分支的 commit 数量.</span></div><div class="line">        <span class="hljs-keyword">def</span> cmdVersionCode = <span class="hljs-string">'git rev-list HEAD --count'</span></div><div class="line">        <span class="hljs-keyword">return</span> cmdVersionCode.execute().text.trim().toInteger()</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Properties readVersion() &#123;</div><div class="line">    <span class="hljs-keyword">def</span> version = <span class="hljs-keyword">new</span> Properties()</div><div class="line">    <span class="hljs-keyword">def</span> stream</div><div class="line">    <span class="hljs-keyword">try</span> &#123;</div><div class="line">        stream = <span class="hljs-keyword">new</span> FileInputStream(versionFile)</div><div class="line">        version.load(stream)</div><div class="line"></div><div class="line">    &#125; <span class="hljs-keyword">catch</span> (FileNotFoundException ignore) &#123;</div><div class="line">    &#125; <span class="hljs-keyword">finally</span> &#123;</div><div class="line">        <span class="hljs-keyword">if</span> (stream != <span class="hljs-literal">null</span>) stream.close()</div><div class="line">    &#125;</div><div class="line">    <span class="hljs-comment">// safety defaults in case file is missing</span></div><div class="line">    <span class="hljs-keyword">if</span> (!version[<span class="hljs-string">'major'</span>]) version[<span class="hljs-string">'major'</span>] = <span class="hljs-string">"1"</span></div><div class="line">    <span class="hljs-keyword">if</span> (!version[<span class="hljs-string">'minor'</span>]) version[<span class="hljs-string">'minor'</span>] = <span class="hljs-string">"0"</span></div><div class="line">    <span class="hljs-keyword">if</span> (!version[<span class="hljs-string">'build'</span>]) version[<span class="hljs-string">'build'</span>] = <span class="hljs-string">"0"</span></div><div class="line">    <span class="hljs-keyword">if</span> (!version[<span class="hljs-string">'versioncode'</span>]) version[<span class="hljs-string">'versioncode'</span>] = <span class="hljs-string">"0"</span></div><div class="line">    <span class="hljs-keyword">return</span> version</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="hljs-keyword">void</span> incrementVersionNumber() &#123;</div><div class="line">    <span class="hljs-keyword">def</span> version = readVersion()</div><div class="line"></div><div class="line">    <span class="hljs-comment">// careful with the types, culprits: "9"++ = ":", "9" + 1 = "91"</span></div><div class="line">    <span class="hljs-keyword">def</span> build = version[<span class="hljs-string">'build'</span>] <span class="hljs-keyword">as</span> <span class="hljs-keyword">int</span></div><div class="line">    build++</div><div class="line">    version[<span class="hljs-string">'build'</span>] = build.toString()</div><div class="line">    version[<span class="hljs-string">'versioncode'</span>] = versionCode <span class="hljs-keyword">as</span> String</div><div class="line"></div><div class="line">    <span class="hljs-keyword">def</span> stream = <span class="hljs-keyword">new</span> FileOutputStream(versionFile)</div><div class="line">    <span class="hljs-keyword">try</span> &#123;</div><div class="line">        version.store(stream, <span class="hljs-literal">null</span>)</div><div class="line">    &#125; <span class="hljs-keyword">finally</span> &#123;</div><div class="line">        stream.close()</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="hljs-keyword">if</span> (plugins.hasPlugin(<span class="hljs-string">'android'</span>) || plugins.hasPlugin(<span class="hljs-string">'android-library'</span>)) &#123;</div><div class="line">    android &#123;</div><div class="line">        defaultConfig &#123;</div><div class="line">            versionName = calculateVersionName()</div><div class="line">            versionCode = calculateVersionCode()</div><div class="line">        &#125;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1><span id="reference">Reference</span></h1><p><a href="http://leonchen1024.com/2018/04/13/APP-Version-Control/" target="_blank" rel="external">APP 版本控制</a></p>
+<h2><span id="about-me">About Me</span></h2><p>我的博客 <a href="http://leonchen1024.com/" target="_blank" rel="external">leonchen1024.com</a></p>
+<p>我的 GitHub <a href="https://github.com/LeonChen1024" target="_blank" rel="external">https://github.com/LeonChen1024</a></p>
+<p>微信公众号 </p>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/Images/CooderQRcodem.jpg?raw=false" alt="wechat"></p>
+
                         </div>
                     
         </div>
         
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-image">
-        <a href="/2018/04/13/APP-Version-Control/" class="image is-7by1">
-            <img class="banner" src="/2018/04/13/APP-Version-Control/VersionControl.jpg" alt="APP 版本控制">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2018-04-12T16:00:00.000Z">2018-04-13</time>
-                
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Android/版本管理/">版本管理</a>
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/Android/">Android</a>, <a class="has-link-grey -link" href="/tags/Chinese/">Chinese</a>, <a class="has-link-grey -link" href="/tags/版本管理/">版本管理</a>
                 </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    4 minutes read (About 670 words)
-                </span>
-                
-                
             </div>
         </div>
         
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2018/04/13/APP-Version-Control/">APP 版本控制</a>
-            
-        </h1>
-        <div class="content">
-            <!-- <p>版本管理是app的一个重要部分，他主要的用途有：</p>
-<ul>
-<li>让用户了解当前的版本信息，了解升级或者降级信息等</li>
-<li>不同的版本可能提供的服务和功能有所差别，版本信息可以给我们一个标志来识别当前版本可提供的服务和功能。</li>
-</ul>
-<h2><span id="目录">目录</span></h2><ul>
-<li><a href="#设置版本信息">设置版本信息</a></li>
-<li><a href="#统一配置">统一配置</a></li>
-<li><a href="#reference">Reference</a></li>
-</ul>
-<h2><span id="设置版本信息">设置版本信息</span></h2><p>官方推荐是在Gradle中进行版本设置，因为Gradle中设置的版本信息会在构建的时候合并到manifest文件中，并会替换掉manifest中有关版本信息的设置。并且在Gradle中进行设置的话还可以根据应用不同的Flavor进行不同的设置。</p>
-<p>版本控制主要有这么两个属性：</p>
-<p>-versionCode ： 整数，是内部版本号，仅用于判断一个版本是否比另一个版本新，用户并不会看到。通常是跟随着发布版本增加该code。</p>
-<p>-versionName : 字符串，用户能看到的版本号。</p>
-<p>通常我们将这些设置放在gradle下的android {} 块内部使用defaultConfig {} 包裹它。要注意，如果你在productFlavors中定义了这些属性，他们会覆盖defaultConfig中的值。</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">android &#123;</div><div class="line">  ...</div><div class="line">  defaultConfig &#123;</div><div class="line">    ...</div><div class="line">    versionCode 1</div><div class="line">    versionName &quot;1.0.0&quot;</div><div class="line">  &#125;</div><div class="line">  productFlavors &#123;</div><div class="line">    a &#123;</div><div class="line">      ...</div><div class="line">      versionName &quot;1.0.0&quot;</div><div class="line">    &#125;</div><div class="line">    b &#123;</div><div class="line">      ...</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>在android中使用 PackageManager 的 getPackageInfo(java.lang.String, int) 方法可以获取版本信息。</p>
-<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> String <span class="hljs-title">getVersion</span><span class="hljs-params">(Context context)</span><span class="hljs-comment">//获取版本号</span></span></div><div class="line"><span class="hljs-function">	</span>&#123;</div><div class="line">		<span class="hljs-keyword">try</span> &#123;</div><div class="line">			PackageInfo pi=context.getPackageManager().getPackageInfo(context.getPackageName(), <span class="hljs-number">0</span>);</div><div class="line">			<span class="hljs-keyword">return</span> pi.versionName;</div><div class="line">		&#125; <span class="hljs-keyword">catch</span> (NameNotFoundException e) &#123;</div><div class="line">			<span class="hljs-comment">// TODO Auto-generated catch block</span></div><div class="line">			e.printStackTrace();</div><div class="line">			<span class="hljs-keyword">return</span> context.getString(R.string.version_unknown);</div><div class="line">		&#125;</div><div class="line">	&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getVersionCode</span><span class="hljs-params">(Context context)</span><span class="hljs-comment">//获取版本号(内部识别号)</span></span></div><div class="line"><span class="hljs-function"></span>&#123;</div><div class="line">  <span class="hljs-keyword">try</span> &#123;</div><div class="line">    PackageInfo pi=context.getPackageManager().getPackageInfo(context.getPackageName(), <span class="hljs-number">0</span>);</div><div class="line">    <span class="hljs-keyword">return</span> pi.versionCode;</div><div class="line">  &#125; <span class="hljs-keyword">catch</span> (NameNotFoundException e) &#123;</div><div class="line">    <span class="hljs-comment">// TODO Auto-generated catch block</span></div><div class="line">    e.printStackTrace();</div><div class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>如果使用 Instant Run，Android Studio 会自动将 versionCode 设置为 MAXINT，将 versionName 设置为 INSTANTRUN。</p>
-<h2><span id="统一配置">统一配置</span></h2><p>顺便说一下一个可以统一所有的配置在一个地方的方法，这样可以便于我们管理版本。<br>首先在主工程的build.gradle里增加一个配置区</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">ext &#123;</div><div class="line">    // Sdk and tools</div><div class="line">    minSdkVersion = 17</div><div class="line">    targetSdkVersion = 21</div><div class="line">    compileSdkVersion = 23</div><div class="line">    buildToolsVersion = &quot;23.0.3&quot;</div><div class="line"></div><div class="line">    // App dependencies</div><div class="line">    supportLibraryVersion = &apos;23.3.0&apos;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>然后在module的build.gradle里使用<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">targetSdkVersion rootProject.ext.targetSdkVersion</div><div class="line"></div><div class="line">compile &quot;com.android.support:appcompat-v7:$rootProject.supportLibraryVersion&quot;</div></pre></td></tr></table></figure></p>
-<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-comment">/**</span></div><div class="line"><span class="hljs-comment"> * 判断当前应用是否是debug状态</span></div><div class="line"><span class="hljs-comment"> */</span></div><div class="line"></div><div class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isApkInDebug</span><span class="hljs-params">(Context context)</span> </span>&#123;</div><div class="line">    <span class="hljs-keyword">try</span> &#123;</div><div class="line">        ApplicationInfo info = context.getApplicationInfo();</div><div class="line">        <span class="hljs-keyword">return</span> (info.flags &amp; ApplicationInfo.FLAG_DEBUGGABLE) != <span class="hljs-number">0</span>;</div><div class="line">    &#125; <span class="hljs-keyword">catch</span> (Exception e) &#123;</div><div class="line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-comment">/**</span></div><div class="line"><span class="hljs-comment">*检测其他应用是否处于debug模式。</span></div><div class="line"><span class="hljs-comment">*/</span></div><div class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isApkDebugable</span><span class="hljs-params">(Context context,String packageName)</span> </span>&#123;</div><div class="line">        <span class="hljs-keyword">try</span> &#123;</div><div class="line">            PackageInfo pkginfo = context.getPackageManager().getPackageInfo(</div><div class="line">                    packageName, <span class="hljs-number">1</span>);</div><div class="line">            <span class="hljs-keyword">if</span> (pkginfo != <span class="hljs-keyword">null</span> ) &#123;</div><div class="line">                ApplicationInfo info= pkginfo.applicationInfo;</div><div class="line">                <span class="hljs-keyword">return</span> (info.flags&amp;ApplicationInfo.FLAG_DEBUGGABLE)!=<span class="hljs-number">0</span>;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">        &#125; <span class="hljs-keyword">catch</span> (Exception e) &#123;</div><div class="line"></div><div class="line">        &#125;</div><div class="line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
-<h2><span id="reference">Reference</span></h2><p><a href="https://developer.android.com/studio/publish/versioning.html" target="_blank" rel="external">https://developer.android.com/studio/publish/versioning.html</a></p>
- -->
-            <div class="article-entry">
-                    
-                    
-                        
-                            
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                            
-                                
-                                <p><p>版本管理是app的一个重要部分，他主要的用途有：</p>
-<ul>
-<li>让用户了解当前的版本信息，了解升级或者降级信息等</li>
-<li>不同的版本可能提供的服务和功能有所差别，版本信息可以给我们一个标志来识别当前版本可提供的服务和功能。</li>
-</ul>
-<p>
-                            
-                        
-                    
-                    
-                        </div>   
-                        <div class="article-more-link">
-                            <a href="/2018/04/13/APP-Version-Control/#more">Read More</a>
-                        </div>
-                    
-        </div>
-        
         
         
     </div>
@@ -388,9 +285,63 @@
 
 
 
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">Like this article? Support the author with</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>Alipay</span>
+    <div class="qrcode"><img src="/images/Alipay.jpg" alt="Alipay"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>Wechat</span>
+    <div class="qrcode"><img src="/images/Wepay.jpg" alt="Wechat"></div>
+</a>
+
+                
+                <!-- Visit https://www.paypal.com/donate/buttons/ to get your donate button -->
+
+<div class="notification is-danger">
+    You forgot to set the <code>business</code> and <code>currency_code</code> for Paypal. Please set it in <code>_config.yml</code>.
+</div>
+
+                
+                
+<div class="notification is-danger">
+    You forgot to set the <code>url</code> Patreon. Please set it in <code>_config.yml</code>.
+</div>
+
+                
+        </div>
+    </div>
+</div>
 
 
 
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/05/24/Gradle-Skill/">
+                <span class="level-item">Gradle 使用技巧 [Chinese ver]</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
 
 
 </div>
@@ -1354,7 +1305,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.png" alt="LeonChen&#39;s Blog" height="28">
+                    <img src="/images/logo.png" alt="自动版本号发布" height="28">
                 
                 </a>
                 <p class="is-size-7">
