@@ -147,6 +147,141 @@
     <div class="card">
     
     <div class="card-image">
+        <a href="/2018/07/21/3-Longest-Substring-Without-Repeating-Characters/Record[English-ver]/" class="image is-7by1">
+            <img class="banner" src="/2018/07/21/3-Longest-Substring-Without-Repeating-Characters/Record[Chinese-ver]/title.jpg" alt="LeetCode 3. Longest Substring Without Repeating Characters [English ver]">
+        </a>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2018-07-20T16:00:00.000Z">2018-07-21</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/English/">English</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/English/Algorithm/">Algorithm</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/English/Algorithm/LeetCode/">LeetCode</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    9 minutes read (About 1384 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2018/07/21/3-Longest-Substring-Without-Repeating-Characters/Record[English-ver]/">LeetCode 3. Longest Substring Without Repeating Characters [English ver]</a>
+            
+        </h1>
+        <div class="content">
+            <!-- <p>[English ver]</p>
+<h1><span id="3-longest-substring-without-repeating-characters">3. Longest Substring Without Repeating Characters</span></h1><p>Given a string, find the length of the longest substring without repeating characters.</p>
+<p><strong>Example:</strong><br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Given &quot;abcabcbb&quot;, the answer is &quot;abc&quot;, which the length is 3.</div><div class="line"></div><div class="line">Given &quot;bbbbb&quot;, the answer is &quot;b&quot;, with the length of 1.</div><div class="line"></div><div class="line">Given &quot;pwwkew&quot;, the answer is &quot;wke&quot;, with the length of 3. Note that the answer must be a substring, &quot;pwke&quot; is a subsequence and not a substring.</div></pre></td></tr></table></figure></p>
+<p>First time i get a very tedious algorithm, because of i did not thinking about the problem carefully in the beginning, it causes that i hava to fix bug again and again because of the situation i haven’t think about . this makes code become very redundant .</p>
+<h3><span id="the-solution-for-the-first-time">The solution for the first time</span></h3><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</div><div class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">lengthOfLongestSubstring</span><span class="hljs-params">(String s)</span> </span>&#123;</div><div class="line">        HashMap&lt;String,Integer&gt; map = <span class="hljs-keyword">new</span> HashMap&lt;&gt;();</div><div class="line">        <span class="hljs-keyword">int</span> maxSubLength = <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-keyword">int</span> tempLength = <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-keyword">boolean</span> isFirstRepeat = <span class="hljs-keyword">true</span>;</div><div class="line">        String beginSub = <span class="hljs-string">""</span>;</div><div class="line">        <span class="hljs-keyword">int</span> bigStartNum = <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;s.length();i++)&#123;</div><div class="line">            beginSub = String.valueOf(s.charAt(i));</div><div class="line">            <span class="hljs-keyword">if</span>(map.containsKey(beginSub))&#123;</div><div class="line">                <span class="hljs-keyword">if</span>(map.get(beginSub)&gt;bigStartNum)&#123;</div><div class="line">                    tempLength = i - map.get(beginSub);</div><div class="line">                    bigStartNum = map.get(beginSub);</div><div class="line">                &#125;<span class="hljs-keyword">else</span>&#123;</div><div class="line">                    tempLength = i - bigStartNum;</div><div class="line">                &#125;</div><div class="line">                <span class="hljs-keyword">if</span>(tempLength&gt;maxSubLength)&#123;</div><div class="line">                    maxSubLength = tempLength;</div><div class="line">                &#125;</div><div class="line">                <span class="hljs-keyword">if</span>(isFirstRepeat)&#123;</div><div class="line">                    tempLength = i;</div><div class="line">                    isFirstRepeat =<span class="hljs-keyword">false</span>;</div><div class="line">                    <span class="hljs-keyword">if</span>(tempLength&gt;maxSubLength)&#123;</div><div class="line">                    maxSubLength = tempLength;</div><div class="line">                &#125;</div><div class="line">                &#125;</div><div class="line">            &#125;<span class="hljs-keyword">else</span>&#123;</div><div class="line">                 tempLength = i - bigStartNum;</div><div class="line">                   <span class="hljs-keyword">if</span>(tempLength&gt;maxSubLength)&#123;</div><div class="line">                    maxSubLength = tempLength;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">            map.put(beginSub,i);</div><div class="line">        &#125;</div><div class="line">        <span class="hljs-keyword">if</span>((s.length()-bigStartNum)&gt;maxSubLength)&#123;</div><div class="line">            maxSubLength = (s.length()-bigStartNum-<span class="hljs-number">1</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="hljs-keyword">if</span>(isFirstRepeat)&#123;</div><div class="line">            <span class="hljs-keyword">return</span> s.length();</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="hljs-keyword">return</span> maxSubLength;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/3.%20Longest%20Substring%20Without%20Repeating%20Characters/Images/most_tedious_result.png?raw=true" alt="shame on this code "></p>
+<p>i have thinking about did i have problems in the way i tried before, the twists before let me realize to think carefully and then write the code,i am not going to analyze this code, because i almost can’t understand what i writen, I even  embarrassed to write the annotate, just leave A lesson to me. The next step i will optimize and rethink this approach.</p>
+<h3><span id="the-solution-for-the-second-time">The solution for the second time</span></h3><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</div><div class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">lengthOfLongestSubstring</span><span class="hljs-params">(String s)</span> </span>&#123;</div><div class="line">        HashMap&lt;String,Integer&gt; map = <span class="hljs-keyword">new</span> HashMap&lt;&gt;();</div><div class="line">		<span class="hljs-comment">//max substring's length</span></div><div class="line">        <span class="hljs-keyword">int</span> maxSubLength = <span class="hljs-number">0</span>;</div><div class="line">		<span class="hljs-comment">//the sub character now</span></div><div class="line">        String nowSub = <span class="hljs-string">""</span>;</div><div class="line">		<span class="hljs-comment">//the bigger index which the string can start</span></div><div class="line">        <span class="hljs-keyword">int</span> bigStartNum = -<span class="hljs-number">1</span>;</div><div class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;s.length();i++)&#123;</div><div class="line">            nowSub = String.valueOf(s.charAt(i));</div><div class="line">            <span class="hljs-keyword">if</span>(map.containsKey(nowSub))&#123;</div><div class="line">				<span class="hljs-comment">//if the character repeat,you can start the string from the larger one of the nowSub occur before this time and bigStartNum.</span></div><div class="line">                bigStartNum = Math.max(map.get(nowSub), bigStartNum);</div><div class="line">            &#125;</div><div class="line">			<span class="hljs-comment">//the maxSubLength is the maximum number of the length of bigStartNum to i and old maxSubLength</span></div><div class="line">            maxSubLength = Math.max(i - bigStartNum, maxSubLength);</div><div class="line">            map.put(nowSub,i);</div><div class="line">        &#125;</div><div class="line">        <span class="hljs-keyword">return</span> maxSubLength;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>After the optimize ,the code is very clear. I haven’t thought that there is a Math.max () method can be used util i re-conceived the code, still need more sensitivity of the api.</p>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/3.%20Longest%20Substring%20Without%20Repeating%20Characters/Images/promote_self.png?raw=true" alt="效率"></p>
+<p><strong>Analysis</strong><br>The principle of this method is to traverse each character, in order to avoid nest loop, we use the hashmap to replace the time cost of space costs,determine whether there is a character in front by hashmap, and store his index number information. How do we get the longest substring? In fact, it can be divided into the following situations:</p>
+<p>We use (p) to represent the previous repeat character, (n) to represent the latter repeat character.</p>
+<ol>
+<li>The character a is the first repeat character, and the length should be from the beginning to the location a(n)-1.</li>
+<li>the character a is not the first repeat character, the last repeat character is b, if a(p) is behind b(p) then the length is between two a, if a(p) is in front of b(p), then the length is between a(n) and b(p) (because a(n) to a(p) contains two b, which is irregular)</li>
+<li>This character does not repeat, the length is the character to location of the last repeat character a(p)+1.</li>
+</ol>
+<p>Sort out the current situation util now .in fact, the conditions above can be sorted into one way to calculate, because the sub-string must be continuous, so it is to calculate the length between current character and the repeat character previous one ,and then get the largest length.</p>
+<p>Time complexity: O(n).<br>Space complexity: O(n).</p>
+<p>and then we look some type solution of this kind problem.</p>
+<h3><span id="approach-1brute-force">Approach 1：Brute Force</span></h3><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</div><div class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">lengthOfLongestSubstring</span><span class="hljs-params">(String s)</span> </span>&#123;</div><div class="line">        <span class="hljs-keyword">int</span> n = s.length();</div><div class="line">        <span class="hljs-keyword">int</span> ans = <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++)</div><div class="line">            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = i + <span class="hljs-number">1</span>; j &lt;= n; j++)</div><div class="line">                <span class="hljs-keyword">if</span> (allUnique(s, i, j)) ans = Math.max(ans, j - i);</div><div class="line">        <span class="hljs-keyword">return</span> ans;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">	<span class="hljs-comment">//judge that all the characters in s is unique.</span></div><div class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">allUnique</span><span class="hljs-params">(String s, <span class="hljs-keyword">int</span> start, <span class="hljs-keyword">int</span> end)</span> </span>&#123;</div><div class="line">        Set&lt;Character&gt; set = <span class="hljs-keyword">new</span> HashSet&lt;&gt;();</div><div class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = start; i &lt; end; i++) &#123;</div><div class="line">            Character ch = s.charAt(i);</div><div class="line">            <span class="hljs-keyword">if</span> (set.contains(ch)) <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;</div><div class="line">            set.add(ch);</div><div class="line">        &#125;</div><div class="line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/3.%20Longest%20Substring%20Without%20Repeating%20Characters/Images/brute_result.png?raw=true" alt="heartbreak"></p>
+<p><strong>Analysis</strong><br>The principle of this method is very simple, the outermost loop L1 traverse of every character a, nest a loop L2 traverse of b (all the characters which is after a), use another loop with the hashset to traverse all the string between a and b which is beginning with a, and determine that if it is a string with no repeat character. Nested a three-tier loop! it lead to the results of Time Limit Exceeded, that means your method is too time-consuming, is not a good method.</p>
+<p>Time complexity: O(n^3) . The first is the innermost [i, j) times cycle, the time complexity is O(j-i). And then is every cycle of j which takes [i + 1, n),<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">n</div><div class="line">∑ O(j−i)</div><div class="line">i+1</div></pre></td></tr></table></figure></p>
+<p>Finally count the outermost loop [0, n). The time complexity is<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">  n-1   n             n-1   (1+n-i)(n-i)</div><div class="line">O( ∑  ( ∑ (j-i))) = O(∑    —————————————— ) = O(n^3)</div><div class="line">  i=0  j=i+1          i=0         2</div></pre></td></tr></table></figure></p>
+<p>This transformation process is actually the use of the sum of the first n terms of an arithmetic progression, is too difficult to print the formula on my computer, i am not going to print the detail of the steps .<br><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/Mathematical_Formula/arithmetic%20progression%20_nsum.png?raw=true" alt="the sum of the first n terms of an arithmetic progression"></p>
+<p>Space complexity: O(min(n,m)) . n is the length of the string,m is the set of the size of charset.Because there are m didn’t repeat value at most,so the hashset’s size will be m at most.</p>
+<p>This method can make a little optimization logically , the main idea is that if from a to b is already containing repeated characters, then a to the characters after b must also contain repeated characters. You can omit those comparisons.</p>
+<h3><span id="approach-2sliding-windowk-nearest-neighbor-algorithm">Approach 2：Sliding Window（K-Nearest Neighbor algorithm）</span></h3><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</div><div class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">lengthOfLongestSubstring</span><span class="hljs-params">(String s)</span> </span>&#123;</div><div class="line">        <span class="hljs-keyword">int</span> n = s.length();</div><div class="line">        Set&lt;Character&gt; set = <span class="hljs-keyword">new</span> HashSet&lt;&gt;();</div><div class="line">        <span class="hljs-keyword">int</span> ans = <span class="hljs-number">0</span>, i = <span class="hljs-number">0</span>, j = <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-keyword">while</span> (i &lt; n &amp;&amp; j &lt; n) &#123;</div><div class="line">            <span class="hljs-comment">// try to extend the range [i, j]</span></div><div class="line">            <span class="hljs-keyword">if</span> (!set.contains(s.charAt(j)))&#123;</div><div class="line">                set.add(s.charAt(j++));</div><div class="line">                ans = Math.max(ans, j - i);</div><div class="line">            &#125;</div><div class="line">            <span class="hljs-keyword">else</span> &#123;</div><div class="line">                set.remove(s.charAt(i++));</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="hljs-keyword">return</span> ans;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/3.%20Longest%20Substring%20Without%20Repeating%20Characters/Images/Sliding_Window_result.png.png?raw=true" alt="efficiency"></p>
+<p><strong>Analysis</strong></p>
+<p>Method 1 is repeatly to check each sub-string has duplicate character,but in fact, it is unnecessary, the second method is avoid repeated checks, when i ~ j has not repeat, we only need to check s[j + 1] is already in i ~ j characters . Until the characters of j + 1 is already in i~j, we get the longest non-repetitive substring which start with i character. we can stop the calculation When j is not less than n , because at this time [i, j) must be longer than [i + 1, j).</p>
+<p>Time complexity: O(2n) = O(n)<br>Space complexity: O(min(m,n)) n is the length of the string,m is the size of the charset.Because there are m didn’t repeat value at most,so the hashset’s size will be m at most.</p>
+<p>####Approach 3:Sliding Window Optimized</p>
+<p>HashMap<br><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</div><div class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">lengthOfLongestSubstring</span><span class="hljs-params">(String s)</span> </span>&#123;</div><div class="line">        <span class="hljs-keyword">int</span> n = s.length(), ans = <span class="hljs-number">0</span>;</div><div class="line">        Map&lt;Character, Integer&gt; map = <span class="hljs-keyword">new</span> HashMap&lt;&gt;(); <span class="hljs-comment">// current index of character</span></div><div class="line">        <span class="hljs-comment">// try to extend the range [i, j]</span></div><div class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>, i = <span class="hljs-number">0</span>; j &lt; n; j++) &#123;</div><div class="line">            <span class="hljs-keyword">if</span> (map.containsKey(s.charAt(j))) &#123;</div><div class="line">                i = Math.max(map.get(s.charAt(j)), i);</div><div class="line">            &#125;</div><div class="line">            ans = Math.max(ans, j - i + <span class="hljs-number">1</span>);</div><div class="line">            map.put(s.charAt(j), j + <span class="hljs-number">1</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="hljs-keyword">return</span> ans;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/3.%20Longest%20Substring%20Without%20Repeating%20Characters/Images/Sliding_Window_Optimized_hashmap_result.png?raw=true" alt="efficiency"></p>
+<p><strong>Analysis</strong></p>
+<p>This method is the improvement of the method two, we use the HashMap to save the characters and his position, when there are duplicate characters appeared, we can directly locate the location of the repeated characters (Note that the location here and the program’s index number is different , it’s first is 1 rather than our program is 0.), compared to the previous i and take a larger value assigned to the new i. Why should we take a large value can see the above solution for the second time.</p>
+<p>Time complexity： O(n)<br>Space complexity： O(min(m,n)) the same to the method 2</p>
+<p>ASCII 128<br><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</div><div class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">lengthOfLongestSubstring</span><span class="hljs-params">(String s)</span> </span>&#123;</div><div class="line">        <span class="hljs-keyword">int</span> n = s.length(), ans = <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-keyword">int</span>[] index = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[<span class="hljs-number">128</span>]; <span class="hljs-comment">// current index of character</span></div><div class="line">        <span class="hljs-comment">// try to extend the range [i, j]</span></div><div class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>, i = <span class="hljs-number">0</span>; j &lt; n; j++) &#123;</div><div class="line">            i = Math.max(index[s.charAt(j)], i);</div><div class="line">            ans = Math.max(ans, j - i + <span class="hljs-number">1</span>);</div><div class="line">            index[s.charAt(j)] = j + <span class="hljs-number">1</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="hljs-keyword">return</span> ans;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/3.%20Longest%20Substring%20Without%20Repeating%20Characters/Images/Sliding_Window_Optimized_ascii_result.png?raw=true" alt="efficiency"></p>
+<p>The most efficient one, the reason of this method can run more fast than the previous hashmap while they have the same complexity, simply said, in fact of most collection is composed of arrays, hashmap is actually composed by the array and the list , So the array’s search speed will be better than the hashmap search speed.</p>
+<p><strong>分析</strong></p>
+<p>This method’s principle is almost the same as the previous method which is using hashmap, but this method uses int[] to store key-value pairs, using characters to represent subscripts (yes, characters can be used as subscripts, exactly is Integer character constants can be used as subscript, it will be parsed to ASCII value), the location use as value.<br>Time complexity： O(n)<br>Space complexity： O(m) m is the charset’s size.</p>
+<p>If you have a better method or have other opinions on the description of me here, please contact me. Thank you.</p>
+<h2><span id="about-me">About Me</span></h2><p>My blog <a href="http://leonchen1024.com/" target="_blank" rel="external">leonchen1024.com</a></p>
+<p>My Github <a href="https://github.com/LeonChen1024" target="_blank" rel="external">https://github.com/LeonChen1024</a></p>
+ -->
+            <div class="article-entry">
+                    
+                    
+                        
+                            
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                            
+                                
+                                <p><p>[English ver]</p>
+<h1><span id="3-longest-substring-without-repeating-characters">3. Longest Substring Without Repeating Characters</span></h1><p>Given a string, find the length of the longest substring without repeating characters.</p>
+<p><strong>Example:</strong><br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Given &quot;abcabcbb&quot;, the answer is &quot;abc&quot;, which the length is 3.</div><div class="line"></div><div class="line">Given &quot;bbbbb&quot;, the answer is &quot;b&quot;, with the length of 1.</div><div class="line"></div><div class="line">Given &quot;pwwkew&quot;, the answer is &quot;wke&quot;, with the length of 3. Note that the answer must be a substring, &quot;pwke&quot; is a subsequence and not a substring.</div></pre></td></tr></table></figure></p>
+<p>First time i get a very tedious algorithm, because of i did not thinking about the problem carefully in the beginning, it causes that i hava to fix bug again and again because of the situation i haven’t think about . this makes code become very redundant .</p>
+<h3><span id="the-solution-for-the-first-time">The solution for the first time</span></h3><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</div><div class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">lengthOfLongestSubstring</span><span class="hljs-params">(String s)</span> </span>&#123;</div><div class="line">        HashMap&lt;String,Integer&gt; map = <span class="hljs-keyword">new</span> HashMap&lt;&gt;();</div><div class="line">        <span class="hljs-keyword">int</span> maxSubLength = <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-keyword">int</span> tempLength = <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-keyword">boolean</span> isFirstRepeat = <span class="hljs-keyword">true</span>;</div><div class="line">        String beginSub = <span class="hljs-string">""</span>;</div><div class="line">        <span class="hljs-keyword">int</span> bigStartNum = <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;s.length();i++)&#123;</div><div class="line">            beginSub = String.valueOf(s.charAt(i));</div><div class="line">            <span class="hljs-keyword">if</span>(map.containsKey(beginSub))&#123;</div><div class="line">                <span class="hljs-keyword">if</span>(map.get(beginSub)&gt;bigStartNum)&#123;</div><div class="line">                    tempLength = i - map.get(beginSub);</div><div class="line">                    bigStartNum = map.get(beginSub);</div><div class="line">                &#125;<span class="hljs-keyword">else</span>&#123;</div><div class="line">                    tempLength = i - bigStartNum;</div><div class="line">                &#125;</div><div class="line">                <span class="hljs-keyword">if</span>(tempLength&gt;maxSubLength)&#123;</div><div class="line">                    maxSubLength = tempLength;</div><div class="line">                &#125;</div><div class="line">                <span class="hljs-keyword">if</span>(isFirstRepeat)&#123;</div><div class="line">                    tempLength = i;</div><div class="line">                    isFirstRepeat =<span class="hljs-keyword">false</span>;</div><div class="line">                    <span class="hljs-keyword">if</span>(tempLength&gt;maxSubLength)&#123;</div><div class="line">                    maxSubLength = tempLength;</div><div class="line">                &#125;</div><div class="line">                &#125;</div><div class="line">            &#125;<span class="hljs-keyword">else</span>&#123;</div><div class="line">                 tempLength = i - bigStartNum;</div><div class="line">                   <span class="hljs-keyword">if</span>(tempLength&gt;maxSubLength)&#123;</div><div class="line">                    maxSubLength = tempLength;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">            map.put(beginSub,i);</div><div class="line">        &#125;</div><div class="line">        <span class="hljs-keyword">if</span>((s.length()-bigStartNum)&gt;maxSubLength)&#123;</div><div class="line">            maxSubLength = (s.length()-bigStartNum-<span class="hljs-number">1</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="hljs-keyword">if</span>(isFirstRepeat)&#123;</div><div class="line">            <span class="hljs-keyword">return</span> s.length();</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="hljs-keyword">return</span> maxSubLength;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>
+                            
+                        
+                    
+                    
+                        </div>   
+                        <div class="article-more-link">
+                            <a href="/2018/07/21/3-Longest-Substring-Without-Repeating-Characters/Record[English-ver]/#more">Read More</a>
+                        </div>
+                    
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-image">
         <a href="/2018/07/15/2-Add-Two-Num/Record[English-ver]/" class="image is-7by1">
             <img class="banner" src="/2018/07/15/2-Add-Two-Num/Record[Chinese-ver]/title.jpg" alt="LeetCode 2. Add Two Numbers [English ver]">
         </a>
@@ -1050,87 +1185,15 @@
 
 
 
-    <div class="card">
-    
-    <div class="card-image">
-        <a href="/2016/03/09/Byte-Common-transition/" class="image is-7by1">
-            <img class="banner" src="/2016/03/09/Byte-Common-transition/Byte.jpg" alt="Byte 常用转换">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2016-03-08T16:00:00.000Z">2016-03-09</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Java/">Java</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Java/Data-Structure/">Data Structure</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    4 minutes read (About 585 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2016/03/09/Byte-Common-transition/">Byte 常用转换</a>
-            
-        </h1>
-        <div class="content">
-            <!-- <p><strong>思路:</strong><br>以 int 作为例子, 首先要知道他们的换算公式。 1 int = 4 byte ，1 byte = 8 bit , 一个 bit 是一位二进制。i 和 0xFF 取与得到最低位的 1byte 数据，然后将 i 右移8位再与 0xFF 取与得到第二低位的 1byte数据，以此类推。</p> -->
-            <div class="article-entry">
-                    
-                    
-                        
-                            
-                            <p><p><strong>思路:</strong><br>以 int 作为例子, 首先要知道他们的换算公式。 1 int = 4 byte ，1 byte = 8 bit , 一个 bit 是一位二进制。i 和 0xFF 取与得到最低位的 1byte 数据，然后将 i 右移8位再与 0xFF 取与得到第二低位的 1byte数据，以此类推。</p></p>
-                        
-                    
-                    
-                        </div>   
-                        <div class="article-more-link">
-                            <a href="/2016/03/09/Byte-Common-transition/#more">Read More</a>
-                        </div>
-                    
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2016/03/09/Byte-Common-transition/#more">Read More</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
     <nav class="pagination is-centered" role="navigation" aria-label="pagination">
         <div class="pagination-previous">
-            <a class="is-flex-grow has-text-black-ter" href="/page/2/">Previous</a>
+            <a class="is-flex-grow has-text-black-ter" href="/page/2/">Préc</a>
         </div>
-        <div class="pagination-next is-invisible is-hidden-mobile">
-            <a class="is-flex-grow has-text-black-ter" href="/page/4/">Next</a>
+        <div class="pagination-next">
+            <a class="is-flex-grow has-text-black-ter" href="/page/4/">Suiv</a>
         </div>
         <ul class="pagination-list is-hidden-mobile">
             
@@ -1139,6 +1202,8 @@
             <li><a class="pagination-link has-text-black-ter" href="/page/2/">2</a></li>
             
             <li><a class="pagination-link is-current" href="/page/3/">3</a></li>
+            
+            <li><a class="pagination-link has-text-black-ter" href="/page/4/">4</a></li>
             
         </ul>
     </nav>
@@ -1183,17 +1248,17 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Posts
+                        Articles
                     </p>
                     <p class="title has-text-weight-normal">
-                        30
+                        31
                     </p>
                 </div>
             </div>
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categories
+                        Catégories
                     </p>
                     <p class="title has-text-weight-normal">
                         20
@@ -1213,7 +1278,7 @@
         </nav>
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://github.com/LeonChen1024">
-                Follow</a>
+                SUIVRE</a>
         </div>
         
         
@@ -1242,7 +1307,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categories
+                Catégories
             </h3>
             <ul class="menu-list">
             <li>
@@ -1251,7 +1316,7 @@
                 <span class="level-item">Chinese</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">22</span>
+                <span class="level-item tag">23</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="undefined">
@@ -1267,7 +1332,7 @@
                 <span class="level-item">Android</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">7</span>
+                <span class="level-item tag">8</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="undefined">
@@ -1319,9 +1384,9 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Tag Cloud
+            Nuage de tags
         </h3>
-        <a href="/tags/Algorithm/" style="font-size: 18.57px;">Algorithm</a> <a href="/tags/Android/" style="font-size: 15.71px;">Android</a> <a href="/tags/Chinese/" style="font-size: 20px;">Chinese</a> <a href="/tags/Custom-View/" style="font-size: 10px;">Custom View</a> <a href="/tags/Data-Structure/" style="font-size: 10px;">Data Structure</a> <a href="/tags/DataStructure/" style="font-size: 10px;">DataStructure</a> <a href="/tags/English/" style="font-size: 14.29px;">English</a> <a href="/tags/Error/" style="font-size: 10px;">Error</a> <a href="/tags/Gradle/" style="font-size: 10px;">Gradle</a> <a href="/tags/Java/" style="font-size: 12.86px;">Java</a> <a href="/tags/LeetCode/" style="font-size: 17.14px;">LeetCode</a> <a href="/tags/Optimize/" style="font-size: 10px;">Optimize</a> <a href="/tags/SourceCode/" style="font-size: 10px;">SourceCode</a> <a href="/tags/UI/" style="font-size: 10px;">UI</a> <a href="/tags/版本差异/" style="font-size: 11.43px;">版本差异</a> <a href="/tags/版本管理/" style="font-size: 11.43px;">版本管理</a>
+        <a href="/tags/Algorithm/" style="font-size: 18.57px;">Algorithm</a> <a href="/tags/Android/" style="font-size: 15.71px;">Android</a> <a href="/tags/Chinese/" style="font-size: 20px;">Chinese</a> <a href="/tags/Custom-View/" style="font-size: 10px;">Custom View</a> <a href="/tags/Data-Structure/" style="font-size: 10px;">Data Structure</a> <a href="/tags/DataStructure/" style="font-size: 10px;">DataStructure</a> <a href="/tags/English/" style="font-size: 14.29px;">English</a> <a href="/tags/Error/" style="font-size: 10px;">Error</a> <a href="/tags/Gradle/" style="font-size: 10px;">Gradle</a> <a href="/tags/Java/" style="font-size: 12.86px;">Java</a> <a href="/tags/LeetCode/" style="font-size: 17.14px;">LeetCode</a> <a href="/tags/Optimize/" style="font-size: 11.43px;">Optimize</a> <a href="/tags/SourceCode/" style="font-size: 10px;">SourceCode</a> <a href="/tags/UI/" style="font-size: 10px;">UI</a> <a href="/tags/版本差异/" style="font-size: 11.43px;">版本差异</a> <a href="/tags/版本管理/" style="font-size: 11.43px;">版本管理</a>
     </div>
 </div>
 
@@ -1333,8 +1398,27 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Récents
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/06/17/S1ep2-Using-Lint-for-Performance-Tips/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/2019/06/17/S1ep2-Using-Lint-for-Performance-Tips/titleThumb.jpg" alt="使用 Lint 来获取性能贴士">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-16T16:00:00.000Z">2019-06-17</time></div>
+                    <a href="/2019/06/17/S1ep2-Using-Lint-for-Performance-Tips/" class="has-link-black-ter is-size-6">使用 Lint 来获取性能贴士</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -1412,25 +1496,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/01/20/LeetCode-8-String-to-Integer/Record-en/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/2019/01/20/LeetCode-8-String-to-Integer/Record-cn/titleThumb.jpg" alt="LeetCode 8. String to Integer (atoi)">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-01-19T16:00:00.000Z">2019-01-20</time></div>
-                    <a href="/2019/01/20/LeetCode-8-String-to-Integer/Record-en/" class="has-link-black-ter is-size-6">LeetCode 8. String to Integer (atoi)</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/English/">English</a> / <a class="has-link-grey -link" href="/categories/English/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1442,6 +1507,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/06/">
+                <span class="level-start">
+                    <span class="level-item">June 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/05/">
@@ -1598,14 +1674,14 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Android/">
                         <span class="tag">Android</span>
-                        <span class="tag is-grey">9</span>
+                        <span class="tag is-grey">10</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Chinese/">
                         <span class="tag">Chinese</span>
-                        <span class="tag is-grey">22</span>
+                        <span class="tag is-grey">23</span>
                     </a>
                 </div>
                 
@@ -1668,7 +1744,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Optimize/">
                         <span class="tag">Optimize</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -1720,8 +1796,27 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Récents
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/06/17/S1ep2-Using-Lint-for-Performance-Tips/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/2019/06/17/S1ep2-Using-Lint-for-Performance-Tips/titleThumb.jpg" alt="使用 Lint 来获取性能贴士">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-16T16:00:00.000Z">2019-06-17</time></div>
+                    <a href="/2019/06/17/S1ep2-Using-Lint-for-Performance-Tips/" class="has-link-black-ter is-size-6">使用 Lint 来获取性能贴士</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -1799,25 +1894,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/01/20/LeetCode-8-String-to-Integer/Record-en/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/2019/01/20/LeetCode-8-String-to-Integer/Record-cn/titleThumb.jpg" alt="LeetCode 8. String to Integer (atoi)">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-01-19T16:00:00.000Z">2019-01-20</time></div>
-                    <a href="/2019/01/20/LeetCode-8-String-to-Integer/Record-en/" class="has-link-black-ter is-size-6">LeetCode 8. String to Integer (atoi)</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/English/">English</a> / <a class="has-link-grey -link" href="/categories/English/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1829,6 +1905,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/06/">
+                <span class="level-start">
+                    <span class="level-item">June 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/05/">
@@ -1985,14 +2072,14 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Android/">
                         <span class="tag">Android</span>
-                        <span class="tag is-grey">9</span>
+                        <span class="tag is-grey">10</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Chinese/">
                         <span class="tag">Chinese</span>
-                        <span class="tag is-grey">22</span>
+                        <span class="tag is-grey">23</span>
                     </a>
                 </div>
                 
@@ -2055,7 +2142,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Optimize/">
                         <span class="tag">Optimize</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -2201,7 +2288,7 @@ document.addEventListener('DOMContentLoaded', function () {
     
     
 
-<a id="back-to-top" title="Back to Top" href="javascript:;">
+<a id="back-to-top" title="Kembali ke atas" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
 <script src="/js/back-to-top.js" defer></script>
@@ -2247,9 +2334,9 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Posts',
+                POSTS: 'Articles',
                 PAGES: 'Pages',
-                CATEGORIES: 'Categories',
+                CATEGORIES: 'Catégories',
                 TAGS: 'Tags',
                 UNTITLED: '(Untitled)',
             },

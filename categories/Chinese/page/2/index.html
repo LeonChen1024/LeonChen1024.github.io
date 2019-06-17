@@ -2,7 +2,7 @@
 <html >
 <head>
     <meta charset="utf-8">
-<title>Category: Chinese - LeonChen&#39;s Blog</title>
+<title>Catégorie: Chinese - LeonChen&#39;s Blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
 
@@ -147,13 +147,127 @@
     <div class="card-content">
         <nav class="breadcrumb" aria-label="breadcrumbs">
         <ul>
-            <li><a href="/categories">Categories</a></li>
+            <li><a href="/categories">Catégories</a></li>
             
             <li class="is-active"><a href="#" aria-current="page">Chinese</a></li>
         </ul>
         </nav>
     </div>
 </div>
+
+    <div class="card">
+    
+    <div class="card-image">
+        <a href="/2018/09/12/6-ZigZag-Conversion/Record-cn/" class="image is-7by1">
+            <img class="banner" src="/2018/09/12/6-ZigZag-Conversion/Record-cn/title.jpg" alt="LeetCode 6. 锯齿形转换">
+        </a>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2018-09-11T16:00:00.000Z">2018-09-12</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Algorithm/">Algorithm</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Algorithm/LeetCode/">LeetCode</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    3 minutes read (About 449 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2018/09/12/6-ZigZag-Conversion/Record-cn/">LeetCode 6. 锯齿形转换</a>
+            
+        </h1>
+        <div class="content">
+            <!-- <p>[Chinese ver]</p>
+<h1><span id="6-zigzag-conversion">6. ZigZag Conversion</span></h1><p>字符串”PAYPALISHIRING”是通过一个如下给定行数的锯齿模式书写的:(你可能想要使用一个固定的字体来更好的显示它)</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">P   A   H   N</div><div class="line">A P L S I I G</div><div class="line">Y   I   R</div></pre></td></tr></table></figure>
+<p>然后一行一行的读取这个字符串:”PAHNAPLSIIGYIR”<br>编写代码实现获取一个字符串然后根据给出的行数来实现这个锯齿转换:<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">string convert(string text, int nRows);</div></pre></td></tr></table></figure></p>
+<p>convert(“PAYPALISHIRING”, 3) 应该返回 “PAHNAPLSIIGYIR”.</p>
+<hr>
+<p>首先我们来分析下什么是zigzag pattern,zigzag是锯齿或之字形的意思。是以一定的角度相交的两条线依次以其平行线进行重复相交的线路。一开始我以为是中间都是一行然后旁边是锯齿，当为4行的情况如下(以数字作为字符的index):</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">1   7    13</div><div class="line">2   8    14</div><div class="line">3 6 9 12 15</div><div class="line">4   10   16</div><div class="line">5   11   17</div></pre></td></tr></table></figure>
+<p>但是事实并不是这样的，zigzag pattern 4行的情况应该是如下：<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">1     7        13</div><div class="line">2   6 8     12 14</div><div class="line">3 5   9  11    15</div><div class="line">4     10       16</div></pre></td></tr></table></figure></p>
+<p>字符以这种锯齿形分布。</p>
+<h4><span id="方法一-使用string">方法一 使用String[]：</span></h4><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</div><div class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">convert</span><span class="hljs-params">(String s, <span class="hljs-keyword">int</span> numRows)</span> </span>&#123;</div><div class="line">        String result = <span class="hljs-string">""</span>;</div><div class="line">        String[] strings = <span class="hljs-keyword">new</span> String[numRows];</div><div class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i =<span class="hljs-number">0</span>;i&lt;numRows;i++)&#123;</div><div class="line">            strings[i] = <span class="hljs-string">""</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="hljs-keyword">int</span> position = <span class="hljs-number">0</span> ;</div><div class="line">        <span class="hljs-keyword">int</span> numRowsIndex = numRows-<span class="hljs-number">1</span>;</div><div class="line">        <span class="hljs-keyword">int</span> step = <span class="hljs-number">1</span>;</div><div class="line">        <span class="hljs-comment">//if the numRows is one ,or the s's length is less than numRows ,return s .</span></div><div class="line">        <span class="hljs-keyword">if</span> (numRows ==<span class="hljs-number">1</span> || s.length()&lt;numRows)&#123;</div><div class="line">            <span class="hljs-keyword">return</span> s;</div><div class="line">        &#125;</div><div class="line">        <span class="hljs-comment">//loop the every char in the String, when the position is 0,the step is one ,is the position is numRowsIndex,the step is negative one</span></div><div class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i =<span class="hljs-number">0</span>;i&lt;s.length();i++)&#123;</div><div class="line">            strings[position] += s.charAt(i);</div><div class="line">            <span class="hljs-keyword">if</span> (position ==<span class="hljs-number">0</span>)&#123;</div><div class="line">               step = <span class="hljs-number">1</span>;</div><div class="line">            &#125;</div><div class="line">            <span class="hljs-keyword">if</span> (position == numRowsIndex )&#123;</div><div class="line">                step = -<span class="hljs-number">1</span>;</div><div class="line">            &#125;</div><div class="line">            position = position+step;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i =<span class="hljs-number">0</span>;i&lt;numRows;i++)&#123;</div><div class="line">            result += strings[i];</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="hljs-keyword">return</span> result;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/6.%20ZigZag%20Conversion/Images/StringsResult.png?raw=true" alt="效率"></p>
+<p><strong>分析</strong><br>这个方法将每一行的字符串存入对应的String[i]中，最后在将String[]按顺序拼接起来就得到了我们要的结果。当目前的位置在第一行的时候，下一个位置应该向下移动，所以step =1 . 当位置在最后一行的时候，下一个位置应该向上移动，所以step =-1.<br>时间复杂度 ： O(n) 。n是字符串的长度<br>空间复杂度 ： O(n) .</p>
+<h4><span id="方法二-stringbuilder">方法二 StringBuilder[]：</span></h4><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</div><div class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">convert</span><span class="hljs-params">(String s, <span class="hljs-keyword">int</span> numRows)</span> </span>&#123;</div><div class="line">        StringBuilder result = <span class="hljs-keyword">new</span> StringBuilder(<span class="hljs-string">""</span>);</div><div class="line">        StringBuilder[] strings = <span class="hljs-keyword">new</span> StringBuilder[numRows];</div><div class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i =<span class="hljs-number">0</span>;i&lt;numRows;i++)&#123;</div><div class="line">            strings[i] = <span class="hljs-keyword">new</span> StringBuilder(<span class="hljs-string">""</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="hljs-keyword">int</span> position = <span class="hljs-number">0</span> ;</div><div class="line">        <span class="hljs-keyword">int</span> numRowsIndex = numRows-<span class="hljs-number">1</span>;</div><div class="line">        <span class="hljs-keyword">int</span> step = <span class="hljs-number">1</span>;</div><div class="line">          <span class="hljs-comment">//if the numRows is one ,or the s's length is less than numRows ,return s .</span></div><div class="line">        <span class="hljs-keyword">if</span> (numRows ==<span class="hljs-number">1</span> || s.length()&lt;numRows)&#123;</div><div class="line">            <span class="hljs-keyword">return</span> s;</div><div class="line">        &#125;</div><div class="line">          <span class="hljs-comment">//loop the every char in the String, when the position is 0,the step is one ,is the position is numRowsIndex,the step is negative one</span></div><div class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i =<span class="hljs-number">0</span>;i&lt;s.length();i++)&#123;</div><div class="line">            strings[position].append(s.charAt(i));</div><div class="line">            <span class="hljs-keyword">if</span> (position ==<span class="hljs-number">0</span>)&#123;</div><div class="line">               step = <span class="hljs-number">1</span>;</div><div class="line">            &#125;</div><div class="line">            <span class="hljs-keyword">if</span> (position == numRowsIndex )&#123;</div><div class="line">                step = -<span class="hljs-number">1</span>;</div><div class="line">            &#125;</div><div class="line">            position = position+step;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i =<span class="hljs-number">0</span>;i&lt;numRows;i++)&#123;</div><div class="line">            result.append(strings[i]);</div><div class="line">        &#125;</div><div class="line">        <span class="hljs-keyword">return</span> result.toString();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/6.%20ZigZag%20Conversion/Images/StringBuilderResult.png?raw=true" alt="效率"></p>
+<p><strong>分析</strong><br>这个方法原理和方法一一样，只是把String 换成 StringBuilder来处理，效率有了很大的提高</p>
+<p>时间复杂度 ： O(n) 。n是字符串的长度<br>空间复杂度 ： O(n) .</p>
+<h4><span id="方法三-间隔算法">方法三 间隔算法</span></h4><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</div><div class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">convert</span><span class="hljs-params">(String s, <span class="hljs-keyword">int</span> numRows)</span> </span>&#123;</div><div class="line"></div><div class="line">        String result=<span class="hljs-string">""</span>;</div><div class="line">        <span class="hljs-keyword">if</span>(numRows==<span class="hljs-number">1</span>)</div><div class="line">            <span class="hljs-keyword">return</span> s;</div><div class="line">        <span class="hljs-keyword">int</span> step1,step2;</div><div class="line">        <span class="hljs-keyword">int</span> len=s.length();</div><div class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;numRows;++i)&#123;</div><div class="line">            step1=(numRows-i-<span class="hljs-number">1</span>)*<span class="hljs-number">2</span>;</div><div class="line">            step2=(i)*<span class="hljs-number">2</span>;</div><div class="line">            <span class="hljs-keyword">int</span> pos=i;</div><div class="line">            <span class="hljs-keyword">if</span>(pos&lt;len)</div><div class="line">                result+=s.charAt(pos);</div><div class="line">            <span class="hljs-keyword">while</span>(<span class="hljs-keyword">true</span>)&#123;</div><div class="line">                pos+=step1;</div><div class="line">                <span class="hljs-keyword">if</span>(pos&gt;=len)</div><div class="line">                    <span class="hljs-keyword">break</span>;</div><div class="line">                <span class="hljs-keyword">if</span>(step1&gt;<span class="hljs-number">0</span>)</div><div class="line">                    result+=s.charAt(pos);</div><div class="line">                pos+=step2;</div><div class="line">                <span class="hljs-keyword">if</span>(pos&gt;=len)</div><div class="line">                    <span class="hljs-keyword">break</span>;</div><div class="line">                <span class="hljs-keyword">if</span>(step2&gt;<span class="hljs-number">0</span>)</div><div class="line">                    result+=s.charAt(pos);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="hljs-keyword">return</span> result;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>分析</strong><br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">/*n=numRows</div><div class="line">Δ=2n-2    1                           2n-1                         4n-3</div><div class="line">Δ=        2                     2n-2  2n                    4n-4   4n-2</div><div class="line">Δ=        3               2n-3        2n+1              4n-5       .</div><div class="line">Δ=        .           .               .               .            .</div><div class="line">Δ=        .       n+2                 .           3n               .</div><div class="line">Δ=        n-1 n+1                     3n-3    3n-1                 5n-5</div><div class="line">Δ=2n-2    n                           3n-2                         5n-4</div><div class="line">*/</div></pre></td></tr></table></figure></p>
+<p>这个方法主要是通过间隔的规律来进行计算和排位。</p>
+<p>时间复杂度 ： O(n) 。n是字符串长度<br>空间复杂度 ： O(n) .</p>
+<p>如果你有更好的办法或者对我这里的描述有其他看法，请联系我。谢谢</p>
+<h2><span id="about-me">About Me</span></h2><p>我的博客 <a href="http://leonchen1024.com/" target="_blank" rel="external">leonchen1024.com</a></p>
+<p>我的 GitHub <a href="https://github.com/LeonChen1024" target="_blank" rel="external">https://github.com/LeonChen1024</a></p>
+<p>微信公众号 </p>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/Images/CooderQRcodem.jpg?raw=false" alt="wechat"></p>
+ -->
+            <div class="article-entry">
+                    
+                    
+                        
+                            
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                            
+                                
+                                <p><p>[Chinese ver]</p>
+<h1><span id="6-zigzag-conversion">6. ZigZag Conversion</span></h1><p>字符串”PAYPALISHIRING”是通过一个如下给定行数的锯齿模式书写的:(你可能想要使用一个固定的字体来更好的显示它)</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">P   A   H   N</div><div class="line">A P L S I I G</div><div class="line">Y   I   R</div></pre></td></tr></table></figure>
+<p>然后一行一行的读取这个字符串:”PAHNAPLSIIGYIR”<br>编写代码实现获取一个字符串然后根据给出的行数来实现这个锯齿转换:<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">string convert(string text, int nRows);</div></pre></td></tr></table></figure></p>
+<p>convert(“PAYPALISHIRING”, 3) 应该返回 “PAHNAPLSIIGYIR”.</p>
+<p>
+                            
+                        
+                    
+                    
+                        </div>   
+                        <div class="article-more-link">
+                            <a href="/2018/09/12/6-ZigZag-Conversion/Record-cn/#more">Read More</a>
+                        </div>
+                    
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
 
     <div class="card">
     
@@ -1210,141 +1324,15 @@
 
 
 
-    <div class="card">
-    
-    <div class="card-image">
-        <a href="/2016/08/20/Android-6.0-Change-1/" class="image is-7by1">
-            <img class="banner" src="/2016/08/20/Android-6.0-Change-1/pic.jpg" alt="Android 6.0的变化 （上）">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2016-08-20T12:21:44.000Z">2016-08-20</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Android/版本差异/">版本差异</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    12 minutes read (About 1824 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2016/08/20/Android-6.0-Change-1/">Android 6.0的变化 （上）</a>
-            
-        </h1>
-        <div class="content">
-            <!-- <p>随着一系列新的特性以及功能， Android 6.0 (API level 23)包含了很多的系统变化以及API行为的变化。本文着重介绍了一些你应该理解的和占用APP中重要部分的变化。</p>
-<p>如果你之前已经在Android平台发布过APP，要知道这些平台上的变化将会影响你的APP。</p>
-<h2><span id="目录">目录</span></h2><ul>
-<li><a href="#目录">目录</a></li>
-<li><a href="#运行时权限">运行时权限</a></li>
-<li><a href="#休眠和应用待机模式">休眠和应用待机模式</a></li>
-<li><a href="#移除apache的-http-client">移除Apache的 HTTP Client</a></li>
-<li><a href="#boringssl">BoringSSL</a></li>
-<li><a href="#获取硬件标识符">获取硬件标识符</a></li>
-<li><a href="#通知">通知</a></li>
-<li><a href="#audiomanager-改变">AudioManager 改变</a></li>
-<li><a href="#文本选择">文本选择</a></li>
-</ul>
-<h2><span id="运行时权限">运行时权限</span></h2><p>这个版本引入了一个新的权限模型，使得用户现在可以在运行时直接管理APP权限。这个模型改善了用户对权限管理的可见度和管理程度，并简化了APP开发者对安装和自动升级的流程。用户可以对已安装的APP的权限分别进行授权和取消。</p>
-<p>当你的APP的目标版本在Android 6.0 (API level 23)或者更高的时候， 请确保在运行时检查并申请权限。要确定你的APP是否被授予了某权限，可以通过调用新的checkSelfPermission()方法。为了去申请一个权限，可以通过调用 requestPermissions() 新方法。即使你的APP目标版本不是 Android 6.0 (API level 23)，你也应该在新的权限模型下进行测试。</p>
-<p>想要了解更多的在你的APP里支持新的权限模型的细节，可见 Working with System Permissions。获得更多的评估对你的APP的影响的提示，可见Permissions Best Practices。</p>
-<p>危险权限和普通权限见下链接<br><a href="http://blog.csdn.net/chenlinfeng772885775/article/details/53508204" target="_blank" rel="external">点击打开链接</a></p>
-<h2><span id="休眠和应用待机模式">休眠和应用待机模式</span></h2><p>这个版本将为空闲的设备和APP引入新的节能方式。这些新功能将会影响所有的APP，所以请确保你的APP在新的模式下进行测试。</p>
-<p>休眠：如果用户拔出一个设备并将其屏幕关闭闲置一段时间，设备将会进入休眠模式，尝试使系统进入睡眠状态。在这个模式下，设备周期性的恢复短暂时间的正常操作使得APP可以进行同步，使得系统可以进行一些待执行的操作。</p>
-<p>APP待机：APP待机允许系统判定一个APP是处于待机状态当这个APP没有被用户显式的使用。系统在用户一段时间内并没有触摸这个APP时做出这个决定。如果设备没有连接充电器，系统将会禁止访问网络并暂停APP的同步以及相应的工作当他被认为是闲置的时候。</p>
-<p>学习更多的有关节能方面的改变，详见Optimizing for Doze and App Standby。</p>
-<h2><span id="移除apache的-http-client">移除Apache的 HTTP Client</span></h2><p>Android 6.0 的版本移除了对 Apache HTTP client的支持.如果你的APP正在使用这个client并且目标版本在Android 2.3 (API level 9)或者更高，请使用HttpURLConnection类来替代。这个API是更加高效的，因为他采用了透明压缩和响应缓存来减少网络使用，减少电能消耗。如果仍然想继续使用Apache HTTP APIs，你必须一开始就在你的build.gradle文件里定义以下编译时依赖。</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">android &#123;</div><div class="line">    useLibrary &apos;org.apache.http.legacy&apos;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2><span id="boringssl">BoringSSL</span></h2><p>Android正在将OpenSSL替换为BoringSSL库。如果你的APP使用的是 Android NDK，请不要使用那些不属于NDK API里的库，比如：libcrypto.so 和 libssl.so.这些库不是公开的API,他们的修改和禁用也不会通过文件和设备通知开发者。另外，这样可能还会暴露你APP的安全漏洞。取而代之的是你需要修改你的native代码，通过JNI来调用Java cryptography APIs或者静态连接到你选择的加密库。</p>
-<h2><span id="获取硬件标识符">获取硬件标识符</span></h2><p>从这个版本开始，为了给用户提供更好点数据保护，Android删除了通过编程方式从Wi-Fi 和 Bluetooth APIs来获得硬件本地标识符的方法。现在 WifiInfo.getMacAddress() 和 BluetoothAdapter.getAddress()方法将始终返回一个常量值02:00:00:00:00:00。</p>
-<p>为了通过蓝牙或WiFi扫描获取附近的设备的硬件标识符，你的APP必须拥有ACCESS_FINE_LOCATION 或 ACCESS_COARSE_LOCATION权限。</p>
-<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">WifiManager.getScanResults()</div><div class="line">BluetoothDevice.ACTION_FOUND</div><div class="line">BluetoothLeScanner.startScan()</div></pre></td></tr></table></figure>
-<p>注意：当一个运行Android 6.0 (API level 23)的设备启动WiFi或者蓝牙扫描时，这个操作对外部设备是可见的，并会被初始化一个随机的mac地址。</p>
-<h2><span id="通知">通知</span></h2><p>这个版本删除了 Notification.setLatestEventInfo()方法。使用Notification.Builder来取代它进行构造通知。为了反复更新一个通知，可以重用 Notification.Builder 实例，调用 build() 方法来更新通知实例。</p>
-<p>adb shell dumpsys notification命令不在打印你的通知文本。使用adb shell dumpsys notification –noredact命令来取代它打印你的通知对象文本。</p>
-<h2><span id="audiomanager-改变">AudioManager 改变</span></h2><p>不再支持通过 AudioManager类来对某个音频流进行精确的调音或者静音设置。 setStreamSolo()方法已经被弃用了，你应该使用  requestAudioFocus() 方法来替代它。同样的setStreamMute()方法也被弃用了，调用 adjustStreamVolume() 方法来替代它，传入的参数变为ADJUST_MUTE 或 ADJUST_UNMUTE 。</p>
-<h2><span id="文本选择">文本选择</span></h2><p>当用户在你的APP上选择文本时，你现在可以在浮动工具栏里显示一些文本选择动作比如剪切，复制，和粘贴。和用户的交互界面类似于上下文动作菜单，就像为单独的视图配置的上下文菜单。</p>
-<p>为了实现文本选择的浮动工具栏，需要在你已有的APP里做出以下改变：</p>
-<p>1.在你的view里或者activity里，改变你的 ActionMode 的获取方法，由startActionMode(Callback)变为 startActionMode(Callback, ActionMode.TYPE_FLOATING).</p>
-<p>2.将你已经实现了ActionMode.Callback变为继承自ActionMode.Callback2。</p>
-<p>3.重写 onGetContentRect()方法来提供视图中内容选中框（比如文本选中框）的坐标。</p>
-<p>4.在矩形框作为一个唯一的元素不再有效时，调用 invalidateContentRect() 方法。</p>
-<p>如果你在使用 Android Support Library revision 22.2, 你要知道浮动工具栏并不向后支持并且APP兼容会默认控制 ActionMode。这会阻止悬浮工具栏的显示。为了实现在 AppCompatActivity 里对 ActionMode的支持，调用 getDelegate()方法，并用其得到的 AppCompatDelegate 对象调用setHandleNativeActionModesEnabled()并将传入参数设为false。这个调用返回 ActionMode的控制给框架。在设备运行Android 6.0 (API level 23),这允许框架去支持 ActionBar 或者浮动工具栏模式，而当设备运行早Android 5.1 (API level 22)或更低的版本上时，只有 ActionBar 模式被支持。</p>
- -->
-            <div class="article-entry">
-                    
-                    
-                        
-                            
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                            
-                                
-                                <p><p>随着一系列新的特性以及功能， Android 6.0 (API level 23)包含了很多的系统变化以及API行为的变化。本文着重介绍了一些你应该理解的和占用APP中重要部分的变化。</p>
-<p>如果你之前已经在Android平台发布过APP，要知道这些平台上的变化将会影响你的APP。</p>
-<h2><span id="目录">目录</span></h2><ul>
-<li><a href="#目录">目录</a></li>
-<li><a href="#运行时权限">运行时权限</a></li>
-<p>
-                            
-                        
-                    
-                    
-                        </div>   
-                        <div class="article-more-link">
-                            <a href="/2016/08/20/Android-6.0-Change-1/#more">Read More</a>
-                        </div>
-                    
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
     <nav class="pagination is-centered" role="navigation" aria-label="pagination">
         <div class="pagination-previous">
-            <a class="is-flex-grow has-text-black-ter" href="/categories/Chinese/">Previous</a>
+            <a class="is-flex-grow has-text-black-ter" href="/categories/Chinese/">Préc</a>
         </div>
         <div class="pagination-next">
-            <a class="is-flex-grow has-text-black-ter" href="/categories/Chinese/page/3/">Next</a>
+            <a class="is-flex-grow has-text-black-ter" href="/categories/Chinese/page/3/">Suiv</a>
         </div>
         <ul class="pagination-list is-hidden-mobile">
             
@@ -1397,17 +1385,17 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Posts
+                        Articles
                     </p>
                     <p class="title has-text-weight-normal">
-                        30
+                        31
                     </p>
                 </div>
             </div>
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categories
+                        Catégories
                     </p>
                     <p class="title has-text-weight-normal">
                         20
@@ -1427,7 +1415,7 @@
         </nav>
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://github.com/LeonChen1024">
-                Follow</a>
+                SUIVRE</a>
         </div>
         
         
@@ -1456,7 +1444,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categories
+                Catégories
             </h3>
             <ul class="menu-list">
             <li>
@@ -1465,7 +1453,7 @@
                 <span class="level-item">Chinese</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">22</span>
+                <span class="level-item tag">23</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="undefined">
@@ -1481,7 +1469,7 @@
                 <span class="level-item">Android</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">7</span>
+                <span class="level-item tag">8</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="undefined">
@@ -1533,9 +1521,9 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Tag Cloud
+            Nuage de tags
         </h3>
-        <a href="/tags/Algorithm/" style="font-size: 18.57px;">Algorithm</a> <a href="/tags/Android/" style="font-size: 15.71px;">Android</a> <a href="/tags/Chinese/" style="font-size: 20px;">Chinese</a> <a href="/tags/Custom-View/" style="font-size: 10px;">Custom View</a> <a href="/tags/Data-Structure/" style="font-size: 10px;">Data Structure</a> <a href="/tags/DataStructure/" style="font-size: 10px;">DataStructure</a> <a href="/tags/English/" style="font-size: 14.29px;">English</a> <a href="/tags/Error/" style="font-size: 10px;">Error</a> <a href="/tags/Gradle/" style="font-size: 10px;">Gradle</a> <a href="/tags/Java/" style="font-size: 12.86px;">Java</a> <a href="/tags/LeetCode/" style="font-size: 17.14px;">LeetCode</a> <a href="/tags/Optimize/" style="font-size: 10px;">Optimize</a> <a href="/tags/SourceCode/" style="font-size: 10px;">SourceCode</a> <a href="/tags/UI/" style="font-size: 10px;">UI</a> <a href="/tags/版本差异/" style="font-size: 11.43px;">版本差异</a> <a href="/tags/版本管理/" style="font-size: 11.43px;">版本管理</a>
+        <a href="/tags/Algorithm/" style="font-size: 18.57px;">Algorithm</a> <a href="/tags/Android/" style="font-size: 15.71px;">Android</a> <a href="/tags/Chinese/" style="font-size: 20px;">Chinese</a> <a href="/tags/Custom-View/" style="font-size: 10px;">Custom View</a> <a href="/tags/Data-Structure/" style="font-size: 10px;">Data Structure</a> <a href="/tags/DataStructure/" style="font-size: 10px;">DataStructure</a> <a href="/tags/English/" style="font-size: 14.29px;">English</a> <a href="/tags/Error/" style="font-size: 10px;">Error</a> <a href="/tags/Gradle/" style="font-size: 10px;">Gradle</a> <a href="/tags/Java/" style="font-size: 12.86px;">Java</a> <a href="/tags/LeetCode/" style="font-size: 17.14px;">LeetCode</a> <a href="/tags/Optimize/" style="font-size: 11.43px;">Optimize</a> <a href="/tags/SourceCode/" style="font-size: 10px;">SourceCode</a> <a href="/tags/UI/" style="font-size: 10px;">UI</a> <a href="/tags/版本差异/" style="font-size: 11.43px;">版本差异</a> <a href="/tags/版本管理/" style="font-size: 11.43px;">版本管理</a>
     </div>
 </div>
 
@@ -1547,8 +1535,27 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Récents
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/06/17/S1ep2-Using-Lint-for-Performance-Tips/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/2019/06/17/S1ep2-Using-Lint-for-Performance-Tips/titleThumb.jpg" alt="使用 Lint 来获取性能贴士">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-16T16:00:00.000Z">2019-06-17</time></div>
+                    <a href="/2019/06/17/S1ep2-Using-Lint-for-Performance-Tips/" class="has-link-black-ter is-size-6">使用 Lint 来获取性能贴士</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -1626,25 +1633,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/01/20/LeetCode-8-String-to-Integer/Record-en/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/2019/01/20/LeetCode-8-String-to-Integer/Record-cn/titleThumb.jpg" alt="LeetCode 8. String to Integer (atoi)">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-01-19T16:00:00.000Z">2019-01-20</time></div>
-                    <a href="/2019/01/20/LeetCode-8-String-to-Integer/Record-en/" class="has-link-black-ter is-size-6">LeetCode 8. String to Integer (atoi)</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/English/">English</a> / <a class="has-link-grey -link" href="/categories/English/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1656,6 +1644,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/06/">
+                <span class="level-start">
+                    <span class="level-item">June 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/05/">
@@ -1812,14 +1811,14 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Android/">
                         <span class="tag">Android</span>
-                        <span class="tag is-grey">9</span>
+                        <span class="tag is-grey">10</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Chinese/">
                         <span class="tag">Chinese</span>
-                        <span class="tag is-grey">22</span>
+                        <span class="tag is-grey">23</span>
                     </a>
                 </div>
                 
@@ -1882,7 +1881,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Optimize/">
                         <span class="tag">Optimize</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -1934,8 +1933,27 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Récents
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/06/17/S1ep2-Using-Lint-for-Performance-Tips/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/2019/06/17/S1ep2-Using-Lint-for-Performance-Tips/titleThumb.jpg" alt="使用 Lint 来获取性能贴士">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-16T16:00:00.000Z">2019-06-17</time></div>
+                    <a href="/2019/06/17/S1ep2-Using-Lint-for-Performance-Tips/" class="has-link-black-ter is-size-6">使用 Lint 来获取性能贴士</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -2013,25 +2031,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/01/20/LeetCode-8-String-to-Integer/Record-en/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/2019/01/20/LeetCode-8-String-to-Integer/Record-cn/titleThumb.jpg" alt="LeetCode 8. String to Integer (atoi)">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-01-19T16:00:00.000Z">2019-01-20</time></div>
-                    <a href="/2019/01/20/LeetCode-8-String-to-Integer/Record-en/" class="has-link-black-ter is-size-6">LeetCode 8. String to Integer (atoi)</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/English/">English</a> / <a class="has-link-grey -link" href="/categories/English/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -2043,6 +2042,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/06/">
+                <span class="level-start">
+                    <span class="level-item">June 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/05/">
@@ -2199,14 +2209,14 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Android/">
                         <span class="tag">Android</span>
-                        <span class="tag is-grey">9</span>
+                        <span class="tag is-grey">10</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Chinese/">
                         <span class="tag">Chinese</span>
-                        <span class="tag is-grey">22</span>
+                        <span class="tag is-grey">23</span>
                     </a>
                 </div>
                 
@@ -2269,7 +2279,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Optimize/">
                         <span class="tag">Optimize</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -2415,7 +2425,7 @@ document.addEventListener('DOMContentLoaded', function () {
     
     
 
-<a id="back-to-top" title="Back to Top" href="javascript:;">
+<a id="back-to-top" title="Kembali ke atas" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
 <script src="/js/back-to-top.js" defer></script>
@@ -2461,9 +2471,9 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Posts',
+                POSTS: 'Articles',
                 PAGES: 'Pages',
-                CATEGORIES: 'Categories',
+                CATEGORIES: 'Catégories',
                 TAGS: 'Tags',
                 UNTITLED: '(Untitled)',
             },
