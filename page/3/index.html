@@ -86,6 +86,7 @@
 
 
 <link rel="stylesheet" href="/css/style.css">
+    <meta name="baidu_union_verify" content="2cfead148d1185a6fe5094daac2bec48">
 </head>
 <body class="is-3-column">
     <nav class="navbar navbar-main">
@@ -282,106 +283,6 @@
     <div class="card">
     
     <div class="card-image">
-        <a href="/2018/07/15/2-Add-Two-Num/Record[English-ver]/" class="image is-7by1">
-            <img class="banner" src="/2018/07/15/2-Add-Two-Num/Record[Chinese-ver]/title.jpg" alt="LeetCode 2. Add Two Numbers [English ver]">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2018-07-14T16:00:00.000Z">2018-07-15</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/English/">English</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/English/Algorithm/">Algorithm</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/English/Algorithm/LeetCode/">LeetCode</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    4 minutes read (About 576 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2018/07/15/2-Add-Two-Num/Record[English-ver]/">LeetCode 2. Add Two Numbers [English ver]</a>
-            
-        </h1>
-        <div class="content">
-            <!-- <p>[English ver]</p>
-<h2><span id="2-add-two-numbers">2. Add Two Numbers</span></h2><p>Question ：You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order and each of their nodes contain a single digit. Add the two numbers and return it as a linked list.<br>You may assume the two numbers do not contain any leading zero, except the number 0 itself.</p>
-<p>Input: (2 -&gt; 4 -&gt; 3) + (5 -&gt; 6 -&gt; 4)<br>Output: 7 -&gt; 0 -&gt; 8</p>
-<h3><span id="approach-1">Approach 1：</span></h3><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title">addTwoNumbers</span><span class="hljs-params">(ListNode l1, ListNode l2)</span> </span>&#123;</div><div class="line">    ListNode dummyHead = <span class="hljs-keyword">new</span> ListNode(<span class="hljs-number">0</span>);</div><div class="line">    ListNode p = l1, q = l2, curr = dummyHead;</div><div class="line">    <span class="hljs-keyword">int</span> carry = <span class="hljs-number">0</span>;</div><div class="line">    <span class="hljs-keyword">while</span> (p != <span class="hljs-keyword">null</span> || q != <span class="hljs-keyword">null</span>) &#123;</div><div class="line">        <span class="hljs-keyword">int</span> x = (p != <span class="hljs-keyword">null</span>) ? p.val : <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-keyword">int</span> y = (q != <span class="hljs-keyword">null</span>) ? q.val : <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-keyword">int</span> sum = carry + x + y;</div><div class="line">        carry = sum / <span class="hljs-number">10</span>;</div><div class="line">        curr.next = <span class="hljs-keyword">new</span> ListNode(sum % <span class="hljs-number">10</span>);</div><div class="line">        curr = curr.next;</div><div class="line">        <span class="hljs-keyword">if</span> (p != <span class="hljs-keyword">null</span>) p = p.next;</div><div class="line">        <span class="hljs-keyword">if</span> (q != <span class="hljs-keyword">null</span>) q = q.next;</div><div class="line">    &#125;</div><div class="line">    <span class="hljs-keyword">if</span> (carry &gt; <span class="hljs-number">0</span>) &#123;</div><div class="line">        curr.next = <span class="hljs-keyword">new</span> ListNode(carry);</div><div class="line">    &#125;</div><div class="line">    <span class="hljs-keyword">return</span> dummyHead.next;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/2%20Add%20Two%20Num/Images/method1result.png?raw=true" alt="Efficiency"></p>
-<h4><span id="analysis">Analysis</span></h4><p>Actually, the problem is easy to resolved if you are familiar with the use of the list and the logic of the arithmetic . Plus every bit base on decimal, note that the addition of the carry will only be 0 or 1, because even if you use the two largest number 9 +9 in finally you only get carry 1, then use the largest number 9 +9 + 1 will only Get 19, the carry is 1 too. So the main logic is (the sum of two numbers )sum / 10 is the carry, sum% 10 is the number of the this bit . DummyHead is a fake data header, used to do an initialization, it is possible if you don’t want to use it, but in the internal logic you need to deal with the difference logic between the first bit of the result and the number of subsequent .<br>Note that there are several special cases. 1. The length of one list is longer than the other. 2. One of the lists is empty. 3. There is still have a carry in the last bit</p>
-<p>Time complexity: O (max (m, n)). The total number of cycles is the largest number between m and n.<br>Space complexity: O (max (m, n)). The length of the new list we create is the maximum length of m, n, plus a dummy header.</p>
-<h3><span id="approach-2">Approach 2</span></h3><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-comment">/**</span></div><div class="line"><span class="hljs-comment"> * Definition for singly-linked list.</span></div><div class="line"><span class="hljs-comment"> * public class ListNode &#123;</span></div><div class="line"><span class="hljs-comment"> *     int val;</span></div><div class="line"><span class="hljs-comment"> *     ListNode next;</span></div><div class="line"><span class="hljs-comment"> *     ListNode(int x) &#123; val = x; &#125;</span></div><div class="line"><span class="hljs-comment"> * &#125;</span></div><div class="line"><span class="hljs-comment"> */</span></div><div class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</div><div class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title">addTwoNumbers</span><span class="hljs-params">(ListNode l1, ListNode l2)</span> </span>&#123;</div><div class="line">        ListNode ln1 = l1, ln2 = l2, head = <span class="hljs-keyword">null</span>, node = <span class="hljs-keyword">null</span>;</div><div class="line">        <span class="hljs-keyword">int</span> carry = <span class="hljs-number">0</span>, remainder = <span class="hljs-number">0</span>, sum = <span class="hljs-number">0</span>;</div><div class="line">        head = node = <span class="hljs-keyword">new</span> ListNode(<span class="hljs-number">0</span>);</div><div class="line"></div><div class="line">        <span class="hljs-keyword">while</span>(ln1 != <span class="hljs-keyword">null</span> || ln2 != <span class="hljs-keyword">null</span> || carry != <span class="hljs-number">0</span>) &#123;</div><div class="line">            sum = (ln1 != <span class="hljs-keyword">null</span> ? ln1.val : <span class="hljs-number">0</span>) + (ln2 != <span class="hljs-keyword">null</span> ? ln2.val : <span class="hljs-number">0</span>) + carry;</div><div class="line">            carry = sum / <span class="hljs-number">10</span>;</div><div class="line">            remainder = sum % <span class="hljs-number">10</span>;</div><div class="line">            node = node.next = <span class="hljs-keyword">new</span> ListNode(remainder);</div><div class="line">            ln1 = (ln1 != <span class="hljs-keyword">null</span> ? ln1.next : <span class="hljs-keyword">null</span>);</div><div class="line">            ln2 = (ln2 != <span class="hljs-keyword">null</span> ? ln2.next : <span class="hljs-keyword">null</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="hljs-keyword">return</span> head.next;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/2%20Add%20Two%20Num/Images/method2result.png?raw=true" alt="Efficience"></p>
-<p>This is someone else’s approach, actually these two methods in the overall thinking is almost the same ,but this approach is more faster than approach 1 . why ? I think the approach 1 is always create a int x,y and other objects in the cycle , because the timing was based on thousands of examples , result a gap about 20ms. This is purely personal think , if you have more correct ideas, or somewhere is an argument about the reason this gap, please tell me. Thank you.</p>
-<h2><span id="about-me">About Me</span></h2><p>My blog <a href="http://leonchen1024.com/" target="_blank" rel="external">leonchen1024.com</a></p>
-<p>My Github [<a href="https://github.com/LeonChen1024" target="_blank" rel="external">https://github.com/LeonChen1024</a></p>
- -->
-            <div class="article-entry">
-                    
-                    
-                        
-                            
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                            
-                                
-                                <p><p>[English ver]</p>
-<h2><span id="2-add-two-numbers">2. Add Two Numbers</span></h2><p>Question ：You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order and each of their nodes contain a single digit. Add the two numbers and return it as a linked list.<br>You may assume the two numbers do not contain any leading zero, except the number 0 itself.</p>
-<p>Input: (2 -&gt; 4 -&gt; 3) + (5 -&gt; 6 -&gt; 4)<br>Output: 7 -&gt; 0 -&gt; 8</p>
-<h3><span id="approach-1">Approach 1：</span></h3><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title">addTwoNumbers</span><span class="hljs-params">(ListNode l1, ListNode l2)</span> </span>&#123;</div><div class="line">    ListNode dummyHead = <span class="hljs-keyword">new</span> ListNode(<span class="hljs-number">0</span>);</div><div class="line">    ListNode p = l1, q = l2, curr = dummyHead;</div><div class="line">    <span class="hljs-keyword">int</span> carry = <span class="hljs-number">0</span>;</div><div class="line">    <span class="hljs-keyword">while</span> (p != <span class="hljs-keyword">null</span> || q != <span class="hljs-keyword">null</span>) &#123;</div><div class="line">        <span class="hljs-keyword">int</span> x = (p != <span class="hljs-keyword">null</span>) ? p.val : <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-keyword">int</span> y = (q != <span class="hljs-keyword">null</span>) ? q.val : <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-keyword">int</span> sum = carry + x + y;</div><div class="line">        carry = sum / <span class="hljs-number">10</span>;</div><div class="line">        curr.next = <span class="hljs-keyword">new</span> ListNode(sum % <span class="hljs-number">10</span>);</div><div class="line">        curr = curr.next;</div><div class="line">        <span class="hljs-keyword">if</span> (p != <span class="hljs-keyword">null</span>) p = p.next;</div><div class="line">        <span class="hljs-keyword">if</span> (q != <span class="hljs-keyword">null</span>) q = q.next;</div><div class="line">    &#125;</div><div class="line">    <span class="hljs-keyword">if</span> (carry &gt; <span class="hljs-number">0</span>) &#123;</div><div class="line">        curr.next = <span class="hljs-keyword">new</span> ListNode(carry);</div><div class="line">    &#125;</div><div class="line">    <span class="hljs-keyword">return</span> dummyHead.next;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/2%20Add%20Two%20Num/Images/method1result.png?raw=true" alt="Efficiency"></p>
-<p>
-                            
-                        
-                    
-                    
-                        </div>   
-                        <div class="article-more-link">
-                            <a href="/2018/07/15/2-Add-Two-Num/Record[English-ver]/#more">Read More</a>
-                        </div>
-                    
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-image">
         <a href="/2018/07/15/2-Add-Two-Num/Record[Chinese-ver]/" class="image is-7by1">
             <img class="banner" src="/2018/07/15/2-Add-Two-Num/Record[Chinese-ver]/title.jpg" alt="LeetCode 2. Add Two Numbers [Chinese ver]">
         </a>
@@ -466,6 +367,106 @@
                         </div>   
                         <div class="article-more-link">
                             <a href="/2018/07/15/2-Add-Two-Num/Record[Chinese-ver]/#more">Read More</a>
+                        </div>
+                    
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-image">
+        <a href="/2018/07/15/2-Add-Two-Num/Record[English-ver]/" class="image is-7by1">
+            <img class="banner" src="/2018/07/15/2-Add-Two-Num/Record[Chinese-ver]/title.jpg" alt="LeetCode 2. Add Two Numbers [English ver]">
+        </a>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2018-07-14T16:00:00.000Z">2018-07-15</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/English/">English</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/English/Algorithm/">Algorithm</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/English/Algorithm/LeetCode/">LeetCode</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    4 minutes read (About 576 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2018/07/15/2-Add-Two-Num/Record[English-ver]/">LeetCode 2. Add Two Numbers [English ver]</a>
+            
+        </h1>
+        <div class="content">
+            <!-- <p>[English ver]</p>
+<h2><span id="2-add-two-numbers">2. Add Two Numbers</span></h2><p>Question ：You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order and each of their nodes contain a single digit. Add the two numbers and return it as a linked list.<br>You may assume the two numbers do not contain any leading zero, except the number 0 itself.</p>
+<p>Input: (2 -&gt; 4 -&gt; 3) + (5 -&gt; 6 -&gt; 4)<br>Output: 7 -&gt; 0 -&gt; 8</p>
+<h3><span id="approach-1">Approach 1：</span></h3><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title">addTwoNumbers</span><span class="hljs-params">(ListNode l1, ListNode l2)</span> </span>&#123;</div><div class="line">    ListNode dummyHead = <span class="hljs-keyword">new</span> ListNode(<span class="hljs-number">0</span>);</div><div class="line">    ListNode p = l1, q = l2, curr = dummyHead;</div><div class="line">    <span class="hljs-keyword">int</span> carry = <span class="hljs-number">0</span>;</div><div class="line">    <span class="hljs-keyword">while</span> (p != <span class="hljs-keyword">null</span> || q != <span class="hljs-keyword">null</span>) &#123;</div><div class="line">        <span class="hljs-keyword">int</span> x = (p != <span class="hljs-keyword">null</span>) ? p.val : <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-keyword">int</span> y = (q != <span class="hljs-keyword">null</span>) ? q.val : <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-keyword">int</span> sum = carry + x + y;</div><div class="line">        carry = sum / <span class="hljs-number">10</span>;</div><div class="line">        curr.next = <span class="hljs-keyword">new</span> ListNode(sum % <span class="hljs-number">10</span>);</div><div class="line">        curr = curr.next;</div><div class="line">        <span class="hljs-keyword">if</span> (p != <span class="hljs-keyword">null</span>) p = p.next;</div><div class="line">        <span class="hljs-keyword">if</span> (q != <span class="hljs-keyword">null</span>) q = q.next;</div><div class="line">    &#125;</div><div class="line">    <span class="hljs-keyword">if</span> (carry &gt; <span class="hljs-number">0</span>) &#123;</div><div class="line">        curr.next = <span class="hljs-keyword">new</span> ListNode(carry);</div><div class="line">    &#125;</div><div class="line">    <span class="hljs-keyword">return</span> dummyHead.next;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/2%20Add%20Two%20Num/Images/method1result.png?raw=true" alt="Efficiency"></p>
+<h4><span id="analysis">Analysis</span></h4><p>Actually, the problem is easy to resolved if you are familiar with the use of the list and the logic of the arithmetic . Plus every bit base on decimal, note that the addition of the carry will only be 0 or 1, because even if you use the two largest number 9 +9 in finally you only get carry 1, then use the largest number 9 +9 + 1 will only Get 19, the carry is 1 too. So the main logic is (the sum of two numbers )sum / 10 is the carry, sum% 10 is the number of the this bit . DummyHead is a fake data header, used to do an initialization, it is possible if you don’t want to use it, but in the internal logic you need to deal with the difference logic between the first bit of the result and the number of subsequent .<br>Note that there are several special cases. 1. The length of one list is longer than the other. 2. One of the lists is empty. 3. There is still have a carry in the last bit</p>
+<p>Time complexity: O (max (m, n)). The total number of cycles is the largest number between m and n.<br>Space complexity: O (max (m, n)). The length of the new list we create is the maximum length of m, n, plus a dummy header.</p>
+<h3><span id="approach-2">Approach 2</span></h3><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-comment">/**</span></div><div class="line"><span class="hljs-comment"> * Definition for singly-linked list.</span></div><div class="line"><span class="hljs-comment"> * public class ListNode &#123;</span></div><div class="line"><span class="hljs-comment"> *     int val;</span></div><div class="line"><span class="hljs-comment"> *     ListNode next;</span></div><div class="line"><span class="hljs-comment"> *     ListNode(int x) &#123; val = x; &#125;</span></div><div class="line"><span class="hljs-comment"> * &#125;</span></div><div class="line"><span class="hljs-comment"> */</span></div><div class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</div><div class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title">addTwoNumbers</span><span class="hljs-params">(ListNode l1, ListNode l2)</span> </span>&#123;</div><div class="line">        ListNode ln1 = l1, ln2 = l2, head = <span class="hljs-keyword">null</span>, node = <span class="hljs-keyword">null</span>;</div><div class="line">        <span class="hljs-keyword">int</span> carry = <span class="hljs-number">0</span>, remainder = <span class="hljs-number">0</span>, sum = <span class="hljs-number">0</span>;</div><div class="line">        head = node = <span class="hljs-keyword">new</span> ListNode(<span class="hljs-number">0</span>);</div><div class="line"></div><div class="line">        <span class="hljs-keyword">while</span>(ln1 != <span class="hljs-keyword">null</span> || ln2 != <span class="hljs-keyword">null</span> || carry != <span class="hljs-number">0</span>) &#123;</div><div class="line">            sum = (ln1 != <span class="hljs-keyword">null</span> ? ln1.val : <span class="hljs-number">0</span>) + (ln2 != <span class="hljs-keyword">null</span> ? ln2.val : <span class="hljs-number">0</span>) + carry;</div><div class="line">            carry = sum / <span class="hljs-number">10</span>;</div><div class="line">            remainder = sum % <span class="hljs-number">10</span>;</div><div class="line">            node = node.next = <span class="hljs-keyword">new</span> ListNode(remainder);</div><div class="line">            ln1 = (ln1 != <span class="hljs-keyword">null</span> ? ln1.next : <span class="hljs-keyword">null</span>);</div><div class="line">            ln2 = (ln2 != <span class="hljs-keyword">null</span> ? ln2.next : <span class="hljs-keyword">null</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="hljs-keyword">return</span> head.next;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/2%20Add%20Two%20Num/Images/method2result.png?raw=true" alt="Efficience"></p>
+<p>This is someone else’s approach, actually these two methods in the overall thinking is almost the same ,but this approach is more faster than approach 1 . why ? I think the approach 1 is always create a int x,y and other objects in the cycle , because the timing was based on thousands of examples , result a gap about 20ms. This is purely personal think , if you have more correct ideas, or somewhere is an argument about the reason this gap, please tell me. Thank you.</p>
+<h2><span id="about-me">About Me</span></h2><p>My blog <a href="http://leonchen1024.com/" target="_blank" rel="external">leonchen1024.com</a></p>
+<p>My Github [<a href="https://github.com/LeonChen1024" target="_blank" rel="external">https://github.com/LeonChen1024</a></p>
+ -->
+            <div class="article-entry">
+                    
+                    
+                        
+                            
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                            
+                                
+                                <p><p>[English ver]</p>
+<h2><span id="2-add-two-numbers">2. Add Two Numbers</span></h2><p>Question ：You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order and each of their nodes contain a single digit. Add the two numbers and return it as a linked list.<br>You may assume the two numbers do not contain any leading zero, except the number 0 itself.</p>
+<p>Input: (2 -&gt; 4 -&gt; 3) + (5 -&gt; 6 -&gt; 4)<br>Output: 7 -&gt; 0 -&gt; 8</p>
+<h3><span id="approach-1">Approach 1：</span></h3><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title">addTwoNumbers</span><span class="hljs-params">(ListNode l1, ListNode l2)</span> </span>&#123;</div><div class="line">    ListNode dummyHead = <span class="hljs-keyword">new</span> ListNode(<span class="hljs-number">0</span>);</div><div class="line">    ListNode p = l1, q = l2, curr = dummyHead;</div><div class="line">    <span class="hljs-keyword">int</span> carry = <span class="hljs-number">0</span>;</div><div class="line">    <span class="hljs-keyword">while</span> (p != <span class="hljs-keyword">null</span> || q != <span class="hljs-keyword">null</span>) &#123;</div><div class="line">        <span class="hljs-keyword">int</span> x = (p != <span class="hljs-keyword">null</span>) ? p.val : <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-keyword">int</span> y = (q != <span class="hljs-keyword">null</span>) ? q.val : <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-keyword">int</span> sum = carry + x + y;</div><div class="line">        carry = sum / <span class="hljs-number">10</span>;</div><div class="line">        curr.next = <span class="hljs-keyword">new</span> ListNode(sum % <span class="hljs-number">10</span>);</div><div class="line">        curr = curr.next;</div><div class="line">        <span class="hljs-keyword">if</span> (p != <span class="hljs-keyword">null</span>) p = p.next;</div><div class="line">        <span class="hljs-keyword">if</span> (q != <span class="hljs-keyword">null</span>) q = q.next;</div><div class="line">    &#125;</div><div class="line">    <span class="hljs-keyword">if</span> (carry &gt; <span class="hljs-number">0</span>) &#123;</div><div class="line">        curr.next = <span class="hljs-keyword">new</span> ListNode(carry);</div><div class="line">    &#125;</div><div class="line">    <span class="hljs-keyword">return</span> dummyHead.next;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/2%20Add%20Two%20Num/Images/method1result.png?raw=true" alt="Efficiency"></p>
+<p>
+                            
+                        
+                    
+                    
+                        </div>   
+                        <div class="article-more-link">
+                            <a href="/2018/07/15/2-Add-Two-Num/Record[English-ver]/#more">Read More</a>
                         </div>
                     
         </div>
