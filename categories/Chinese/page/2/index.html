@@ -2,7 +2,7 @@
 <html >
 <head>
     <meta charset="utf-8">
-<title>Catégorie: Chinese - LeonChen&#39;s Blog</title>
+<title>Category: Chinese - LeonChen&#39;s Blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
 
@@ -147,13 +147,253 @@
     <div class="card-content">
         <nav class="breadcrumb" aria-label="breadcrumbs">
         <ul>
-            <li><a href="/categories">Catégories</a></li>
+            <li><a href="/categories">Categories</a></li>
             
             <li class="is-active"><a href="#" aria-current="page">Chinese</a></li>
         </ul>
         </nav>
     </div>
 </div>
+
+    <div class="card">
+    
+    <div class="card-image">
+        <a href="/2018/12/03/Greedy-Algorithm/" class="image is-7by1">
+            <img class="banner" src="/2018/12/03/Greedy-Algorithm/title.jpg" alt="贪婪算法">
+        </a>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2018-12-02T16:00:00.000Z">2018-12-03</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Algorithm/">Algorithm</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Algorithm/Common/">Common</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    12 minutes read (About 1789 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2018/12/03/Greedy-Algorithm/">贪婪算法</a>
+            
+        </h1>
+        <div class="content">
+            <!-- <h1><span id="贪婪算法">贪婪算法</span></h1><p>[TOC]</p>
+<p>贪婪算法(Greedy Algorithm)也叫算贪心法,贪婪法.它是一个遵循启发式解决问题的算法范式.它的核心思想就是通过在每一步的选择中都选用当前步骤下最优的选择,期望结果是最优的算法.如 <a href="https://zh.wikipedia.org/wiki/%E6%97%85%E8%A1%8C%E6%8E%A8%E9%94%80%E5%91%98%E9%97%AE%E9%A2%98" target="_blank" rel="external">旅行推销员问题</a>.</p>
+<p>贪婪算法尤其适用于有最优子结构的问题中,最优子结构的意思是局部的最优解可以导出全局的最优解.贪婪算法与<a href="https://zh.wikipedia.org/wiki/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92" target="_blank" rel="external">动态规划</a> 的不同在于贪婪算法对每一个子问题都作出选择,不能回退;动态规划则会保存以前的运算结果,根据以前的结果对当前进行选择,可以回退.</p>
+<p>贪婪算法可以解决一些<a href="https://zh.wikipedia.org/wiki/%E6%9C%80%E4%BC%98%E5%8C%96" target="_blank" rel="external">最优化</a>(如最大值最小值等)问题,比如求图中的<a href="https://zh.wikipedia.org/wiki/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91" target="_blank" rel="external">最小生成树</a>、求<a href="https://zh.wikipedia.org/wiki/%E5%93%88%E5%A4%AB%E6%9B%BC%E7%BC%96%E7%A0%81" target="_blank" rel="external">哈夫曼编码</a>…其他大多数的情况都不适用贪婪算法,一旦一个问题可以使用贪婪算法来解决,那么贪婪算法一般是解决这个问题的最好办法.由于贪婪算法的高效性以及其答案比较接近最有结果,也可以作为辅助算法或直接解决一些结果要求不那么精确的问题.</p>
+<h2><span id="原理">原理</span></h2><h3><span id="步骤">步骤</span></h3><ol>
+<li><p>建立数学模型来描述问题,并建立一个备选答案区</p>
+</li>
+<li><p>把求解的问题分成若干个子问题,</p>
+</li>
+<li><p>使用一个选择函数对每个子问题求解最优解,并判断是否可用于整体问题</p>
+</li>
+<li><p>把所有子问题的最优解合成一个整的解</p>
+</li>
+</ol>
+<h3><span id="适用情况">适用情况</span></h3><p>贪婪算法适用于一些数学问题等,大部分适用的问题都有两个特点:</p>
+<h4><span id="greedy-choice-property-贪婪选择的属性">Greedy choice property (贪婪选择的属性)</span></h4><p>我们可以在每个子问题找出最好的选择然后进行总结.贪婪算法可能会根据迄今为止已经做的选择进行计算,但是却不会考虑之后子问题的选择.它将一个大的问题分解成小的问题并一个一个进行迭代计算.换句话说,贪婪算法不会重新考虑它已经得出的选择.这是它和  <a href="https://en.wikipedia.org/wiki/Dynamic_programming" target="_blank" rel="external">dynamic programming</a> 的主要区别,动态规划会详尽的计算并确保得到最优解,在一步之后,动态规划会根据之前所有得到的选择进行下一个选择,并可能会重新对之前步骤的算法路径进行修改.</p>
+<h4><span id="optimal-substructure-最优子结构">Optimal substructure (最优子结构)</span></h4><p>这个问题要包含<a href="https://en.wikipedia.org/wiki/Optimal_substructure" target="_blank" rel="external">optimal substructure</a>(即这个问题的最优解包含了它的子问题的最优解)</p>
+<p>如以下几种类型的问题</p>
+<h4><span id="matroids-拟阵">Matroids (拟阵)</span></h4><p><a href="https://en.wikipedia.org/wiki/Matroid" target="_blank" rel="external">matroid</a>(拟阵) 是一个数学上的结构,它将<a href="https://en.wikipedia.org/wiki/Linear_independence" target="_blank" rel="external">linear independence</a> (线性无关)的概念从 <a href="https://en.wikipedia.org/wiki/Vector_spaces" target="_blank" rel="external">vector spaces</a> (向量空间)推广到了任意的集合.如果一个最优解问题有一个拟阵结构,那么贪婪算法是最佳的解决办法.</p>
+<h4><span id="submodular-functions子模块函数">(子模块函数)</span></h4><p>一个函数 $f$ 定义了当集合 $\Omega$ 的所有子集合 $S,T \subseteq \Omega$ 都满足 $f(S)+f(T)\geq f(S\cup T)+f(S\cap T)$ 的情况即为子模块. </p>
+<p>假设有人想要找到一个集合 $S$ 使得函数 $f$ 最大.贪婪算法将会通过逐个添加在每一步中使得 $f$ 增加最多的元素,产生一个结果至少是  $(1-1/e)\max _{X\subseteq \Omega }f(X)$ ??todo. 所以,贪婪算法至少得出最优解的 $(1-1/e) \approx 0.63$倍的解. </p>
+<h4><span id="其他一些相对可以使用的问题">其他一些相对可以使用的问题</span></h4><ul>
+<li><a href="https://en.wikipedia.org/wiki/Set_cover_problem#Greedy_algorithm" target="_blank" rel="external">集合覆盖问题 Set cover</a></li>
+<li>The <a href="https://en.wikipedia.org/wiki/Steiner_tree_problem" target="_blank" rel="external">Steiner tree problem</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Load_balancing_(computing" target="_blank" rel="external">负载均衡 Load balancing</a>)<a href="https://en.wikipedia.org/wiki/Greedy_algorithm#cite_note-9" target="_blank" rel="external">[9]</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Independent_set_(graph_theory" target="_blank" rel="external">独立集 Independent set</a>#Approximation_algorithms)</li>
+</ul>
+<p>这些问题也可以使用贪婪算法,但不是最好的解法,他们在最差的情况下,可能会得到很差的结果. </p>
+<h3><span id="失败的情况">失败的情况</span></h3><p>在很多其他问题上,贪婪算法无法产生最优解,甚至可能产生一个最坏的解决方案.比如之前提到的  <a href="https://en.wikipedia.org/wiki/Traveling_salesman_problem" target="_blank" rel="external">traveling salesman problem</a> :对每一个城市都要计算一个最近的邻居,这种方式可能会产生一个最坏的路程.</p>
+<p>比如下图,贪婪算法只考虑到下一步的最优解,但是却没有考虑到之后的解决方案,导致实际上得出的不是一个最优解.</p>
+<p><img src="/2018/12/03/Greedy-Algorithm/Greedy-search-path-example.gif" alt="Greedy-search-path-example"></p>
+<h2><span id="application">Application</span></h2><p>贪婪法基本上（但并不是一定）不适用于求全局最优解，因为他通常没有遍历所有的数据。他们太早给出了肯定的选择使得他们无法从所有的解法中找到最优解。比如，使用 <a href="https://en.wikipedia.org/wiki/Greedy_coloring" target="_blank" rel="external">greedy coloring</a> 算法来解决  <a href="https://en.wikipedia.org/wiki/Graph_coloring_problem" target="_blank" rel="external">graph coloring problem</a> 以及所有的  <a href="https://en.wikipedia.org/wiki/NP-complete" target="_blank" rel="external">NP-complete</a> 问题。尽管如此，贪婪法还是很有用的，因为他们容易被考虑到并且通常情况下会给出一个比较好的解法。</p>
+<p>如果一个贪婪算法可以被证明是某个问题的全局最优解法，他通常情况下就会成为优先选择的方法，因为它比其他的最优解方法如 <a href="https://en.wikipedia.org/wiki/Dynamic_programming" target="_blank" rel="external">dynamic programming</a> 要快。这种例子有使用  <a href="https://en.wikipedia.org/wiki/Kruskal%27s_algorithm" target="_blank" rel="external">Kruskal’s algorithm</a> 和 <a href="https://en.wikipedia.org/wiki/Prim%27s_algorithm" target="_blank" rel="external">Prim’s algorithm</a> 找到<a href="https://en.wikipedia.org/wiki/Minimum_spanning_tree" target="_blank" rel="external">minimum spanning trees</a>,还有找到最优  <a href="https://en.wikipedia.org/wiki/Huffman_tree" target="_blank" rel="external">Huffman trees</a>.</p>
+<p>贪心法也使用于 网络 <a href="https://en.wikipedia.org/wiki/Routing" target="_blank" rel="external">路由</a> 中。使用贪心路由，消息会被发送到距离目标节点“最近”的相邻节点。一个节点位置的定义（还有“最近”的含义）也许会取决于它的物理位置，如同在 <a href="https://en.wikipedia.org/wiki/Ad_hoc_network" target="_blank" rel="external">ad hoc networks</a> 中使用  <a href="https://en.wikipedia.org/wiki/Geographic_routing" target="_blank" rel="external">geographic routing</a> . 位置也可能会使一个人造的结构如同在  <a href="https://en.wikipedia.org/wiki/Small_world_routing" target="_blank" rel="external">small world routing</a> 和 <a href="https://en.wikipedia.org/wiki/Distributed_hash_table" target="_blank" rel="external">distributed hash table</a> 中.</p>
+<h2><span id="reference">Reference</span></h2><p><a href="https://en.wikipedia.org/wiki/Greedy_algorithm" target="_blank" rel="external">https://en.wikipedia.org/wiki/Greedy_algorithm</a></p>
+<h2><span id="about-me">About Me</span></h2><p>我的博客 <a href="http://leonchen1024.com/" target="_blank" rel="external">leonchen1024.com</a></p>
+<p>我的 GitHub <a href="https://github.com/LeonChen1024" target="_blank" rel="external">https://github.com/LeonChen1024</a></p>
+<p>微信公众号 </p>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/Images/CooderQRcodem.jpg?raw=false" alt="wechat"></p>
+ -->
+            <div class="article-entry">
+                    
+                    
+                        
+                            
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                            
+                                
+                                <p><h1><span id="贪婪算法">贪婪算法</span></h1><p>[TOC]</p>
+<p>贪婪算法(Greedy Algorithm)也叫算贪心法,贪婪法.它是一个遵循启发式解决问题的算法范式.它的核心思想就是通过在每一步的选择中都选用当前步骤下最优的选择,期望结果是最优的算法.如 <a href="https://zh.wikipedia.org/wiki/%E6%97%85%E8%A1%8C%E6%8E%A8%E9%94%80%E5%91%98%E9%97%AE%E9%A2%98" target="_blank" rel="external">旅行推销员问题</a>.</p>
+<p>贪婪算法尤其适用于有最优子结构的问题中,最优子结构的意思是局部的最优解可以导出全局的最优解.贪婪算法与<a href="https://zh.wikipedia.org/wiki/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92" target="_blank" rel="external">动态规划</a> 的不同在于贪婪算法对每一个子问题都作出选择,不能回退;动态规划则会保存以前的运算结果,根据以前的结果对当前进行选择,可以回退.</p>
+<p>贪婪算法可以解决一些<a href="https://zh.wikipedia.org/wiki/%E6%9C%80%E4%BC%98%E5%8C%96" target="_blank" rel="external">最优化</a>(如最大值最小值等)问题,比如求图中的<a href="https://zh.wikipedia.org/wiki/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91" target="_blank" rel="external">最小生成树</a>、求<a href="https://zh.wikipedia.org/wiki/%E5%93%88%E5%A4%AB%E6%9B%BC%E7%BC%96%E7%A0%81" target="_blank" rel="external">哈夫曼编码</a>…其他大多数的情况都不适用贪婪算法,一旦一个问题可以使用贪婪算法来解决,那么贪婪算法一般是解决这个问题的最好办法.由于贪婪算法的高效性以及其答案比较接近最有结果,也可以作为辅助算法或直接解决一些结果要求不那么精确的问题.</p>
+<h2><span id="原理">原理</span></h2><h3><span id="步骤">步骤</span></h3><ol>
+<p>
+                            
+                        
+                    
+                    
+                        </div>   
+                        <div class="article-more-link">
+                            <a href="/2018/12/03/Greedy-Algorithm/#more">Read More</a>
+                        </div>
+                    
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-image">
+        <a href="/2018/12/02/7-Reverse-Integer/Record-cn/" class="image is-7by1">
+            <img class="banner" src="/2018/12/02/7-Reverse-Integer/Record-cn/title.jpg" alt="LeetCode 7. 数字反转">
+        </a>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2018-12-01T16:00:00.000Z">2018-12-02</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Algorithm/">Algorithm</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Algorithm/LeetCode/">LeetCode</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    6 minutes read (About 827 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2018/12/02/7-Reverse-Integer/Record-cn/">LeetCode 7. 数字反转</a>
+            
+        </h1>
+        <div class="content">
+            <!-- <p>[Chinese ver]</p>
+<h1><span id="7-reverse-integer">7. Reverse Integer</span></h1><p>颠倒一个 integer 的前后位数。</p>
+<p>例子: x = 123, return 321<br>例子: x = -123, return -321</p>
+<p>注意：<br>输入是一个32位的有符号 integer . 当颠倒的 interger 溢出的时候你的函数应该返回0。</p>
+<hr>
+<p>提示</p>
+<p>你是否注意到了这些？<br>在你编程之前你应该先想想这些问题。如果你已经考虑到了这些那是很加分的！</p>
+<p>如果 integer 的最后一位是0，应该输出什么？比如，10，100.</p>
+<p>你是否注意到了颠倒的 integer 可能会溢出？假设输入是一个 32位的 integer ，那么1000000003的颠倒溢出了。你该怎么处理这种情况？</p>
+<p>为了解决这个问题，假设你的函数当颠倒的 integer 溢出的话返回0.</p>
+<hr>
+<h3><span id="方法一-使用stringbuilder">方法一 使用StringBuilder：</span></h3><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</div><div class="line"></div><div class="line">	    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">reverse</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123;</div><div class="line">          <span class="hljs-comment">//judge x is negative or not</span></div><div class="line">	        <span class="hljs-keyword">boolean</span> isNegative = <span class="hljs-keyword">false</span>;</div><div class="line">	        <span class="hljs-keyword">int</span> result =<span class="hljs-number">0</span>;</div><div class="line">	        <span class="hljs-keyword">if</span> (x&lt;<span class="hljs-number">0</span>)&#123;</div><div class="line">	            isNegative = <span class="hljs-keyword">true</span>;</div><div class="line">	            x = Math.abs(x);</div><div class="line">	        &#125;</div><div class="line"></div><div class="line">	        StringBuilder oldSB = <span class="hljs-keyword">new</span> StringBuilder(String.valueOf(x));</div><div class="line">	        StringBuilder newSB = <span class="hljs-keyword">new</span> StringBuilder();</div><div class="line">          <span class="hljs-comment">//reverse the x use StringBuilder</span></div><div class="line">	        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;i &lt; oldSB.length() ; i++)&#123;</div><div class="line">	            newSB.append(oldSB.charAt(oldSB.length()-i-<span class="hljs-number">1</span>));</div><div class="line">	        &#125;</div><div class="line"></div><div class="line">	        <span class="hljs-keyword">try</span>&#123;</div><div class="line">	            result = Integer.valueOf(newSB.toString());</div><div class="line">	        &#125;</div><div class="line">	        <span class="hljs-keyword">catch</span>(Exception e)&#123;</div><div class="line">              <span class="hljs-comment">//if overflows return the result 0</span></div><div class="line">	            <span class="hljs-keyword">return</span> result;</div><div class="line">	        &#125;</div><div class="line">	        <span class="hljs-keyword">if</span> (isNegative)&#123;</div><div class="line">	            result = -result;</div><div class="line">	        &#125;</div><div class="line"></div><div class="line">	        <span class="hljs-keyword">return</span> result;</div><div class="line">	    &#125;</div><div class="line">	&#125;</div></pre></td></tr></table></figure>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/7.%20Reverse%20Integer/Images/StringBuilderResult.png?raw=true" alt="效率"></p>
+<p><strong>分析</strong><br>这个方法使用StringBuilder 将 Integer 转换成正数进行颠倒的操作，使用 try catch 来处理溢出的情况。如果输入是负数，最后的结果在转为负数。<br>时间复杂度 ： O(n) 。n是输入的位数<br>空间复杂度 ： O(1) .</p>
+<h3><span id="方法二-使用int">方法二 使用int：</span></h3><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution1</span> </span>&#123;</div><div class="line">   <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">reverse</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span></span></div><div class="line"><span class="hljs-function">	</span>&#123;</div><div class="line">	    <span class="hljs-keyword">int</span> result = <span class="hljs-number">0</span>;</div><div class="line"></div><div class="line">	    <span class="hljs-keyword">while</span> (x != <span class="hljs-number">0</span>)</div><div class="line">	    &#123;</div><div class="line">          <span class="hljs-comment">//get the last digit of the x.</span></div><div class="line">	        <span class="hljs-keyword">int</span> tail = x % <span class="hljs-number">10</span>;</div><div class="line">          <span class="hljs-comment">//add a digit in the end of the newResult ,and update the newResult's last digit</span></div><div class="line">	        <span class="hljs-keyword">int</span> newResult = result * <span class="hljs-number">10</span> + tail;</div><div class="line">          <span class="hljs-comment">//judge if newResult is overflows</span></div><div class="line">	        <span class="hljs-keyword">if</span> ((newResult - tail) / <span class="hljs-number">10</span> != result)</div><div class="line">	        &#123; <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>; &#125;</div><div class="line">	        result = newResult;</div><div class="line">          <span class="hljs-comment">//remove the last digit of x</span></div><div class="line">	        x = x / <span class="hljs-number">10</span>;</div><div class="line">	    &#125;</div><div class="line"></div><div class="line">	    <span class="hljs-keyword">return</span> result;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>或者</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution2</span> </span>&#123;</div><div class="line">  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">reverse</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123;</div><div class="line">        <span class="hljs-keyword">long</span> rev= <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-keyword">while</span>( x != <span class="hljs-number">0</span>)&#123;</div><div class="line">            <span class="hljs-comment">//add a digit in the end of the newResult ,and update the newResult's last digit</span></div><div class="line">            rev= rev*<span class="hljs-number">10</span> + x % <span class="hljs-number">10</span>;</div><div class="line">            <span class="hljs-comment">//remove the last digit of x</span></div><div class="line">            x= x/<span class="hljs-number">10</span>;</div><div class="line">            <span class="hljs-comment">//judge if newResult is overflows</span></div><div class="line">            <span class="hljs-keyword">if</span>( rev &gt; Integer.MAX_VALUE || rev &lt; Integer.MIN_VALUE)</div><div class="line">                <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="hljs-keyword">return</span> (<span class="hljs-keyword">int</span>) rev;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/7.%20Reverse%20Integer/Images/IntResult.png?raw=true" alt="效率"></p>
+<p><strong>分析</strong><br>这两个方法的原理都是一样的，通过将输入的x%10取余数得到最后一位数的值，然后使用 result*10 将result 增加一位并将最后一位更新为余数值，然后更新x为x/10。<br>这两个方法不同的地方是判断溢出的方法，Solution1 在更新 result 之后将新的 result 去掉最后一位和旧的 result 进行比较，看是否一致来判断是否溢出。Solution2 则是将新的 result 和 Integer 的临界值进行比较来判断是否溢出，要注意的是 Solution2 里的 long rev= 0; 一定不能使用 Integer ，因为一旦 Integer 溢出了 rev 就会被自动处理溢出，所以  rev &gt; Integer.MAX_VALUE || rev &lt; Integer.MIN_VALUE 永远不会为true。</p>
+<p>时间复杂度 ： O(n) 。n是输入的位数<br>空间复杂度 ： O(1) .</p>
+<p>如果你有更好的办法或者对我这里的描述有其他看法，请联系我。谢谢</p>
+<h2><span id="about-me">About Me</span></h2><p>我的博客 <a href="http://leonchen1024.com/" target="_blank" rel="external">leonchen1024.com</a></p>
+<p>我的 GitHub <a href="https://github.com/LeonChen1024" target="_blank" rel="external">https://github.com/LeonChen1024</a></p>
+<p>微信公众号 </p>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/Images/CooderQRcodem.jpg?raw=false" alt="wechat"></p>
+ -->
+            <div class="article-entry">
+                    
+                    
+                        
+                            
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                            
+                                
+                                <p><p>[Chinese ver]</p>
+<h1><span id="7-reverse-integer">7. Reverse Integer</span></h1><p>颠倒一个 integer 的前后位数。</p>
+<p>例子: x = 123, return 321<br>例子: x = -123, return -321</p>
+<p>注意：<br>输入是一个32位的有符号 integer . 当颠倒的 interger 溢出的时候你的函数应该返回0。</p>
+<hr>
+<p>
+                            
+                        
+                    
+                    
+                        </div>   
+                        <div class="article-more-link">
+                            <a href="/2018/12/02/7-Reverse-Integer/Record-cn/#more">Read More</a>
+                        </div>
+                    
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
 
     <div class="card">
     
@@ -1121,218 +1361,15 @@
 
 
 
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2017-02-16T16:00:00.000Z">2017-02-17</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Algorithm/">Algorithm</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Algorithm/LeetCode/">LeetCode</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    5 minutes read (About 714 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2017/02/17/1-Two-Sum/Record[Chinese ver]/">LeetCode 1 Two Sum [Chinese ver]</a>
-            
-        </h1>
-        <div class="content">
-            <!-- <h1 id="Chinese-ver-1-Two-Sum"><a href="#Chinese-ver-1-Two-Sum" class="headerlink" title="[Chinese ver]1 Two Sum"></a>[Chinese ver]1 Two Sum</h1><h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p>两数求和 。给定一个整数的数组，返回两个数字的索引使得这两个数字加起来成为一个指定的目标值。<br>你可以假设每个输入都至少有一个解决方案，并且你不能使用相同的元素两次。</p> -->
-            <div class="article-entry">
-                    
-                    
-                        
-                            
-                            <p><h1 id="Chinese-ver-1-Two-Sum"><a href="#Chinese-ver-1-Two-Sum" class="headerlink" title="[Chinese ver]1 Two Sum"></a>[Chinese ver]1 Two Sum</h1><h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p>两数求和 。给定一个整数的数组，返回两个数字的索引使得这两个数字加起来成为一个指定的目标值。<br>你可以假设每个输入都至少有一个解决方案，并且你不能使用相同的元素两次。</p></p>
-                        
-                    
-                    
-                        </div>   
-                        <div class="article-more-link">
-                            <a href="/2017/02/17/1-Two-Sum/Record[Chinese ver]/#more">Read More</a>
-                        </div>
-                    
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2017/02/17/1-Two-Sum/Record[Chinese ver]/#more">Read More</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-image">
-        <a href="/2016/08/20/Android-6.0-Change-2/" class="image is-7by1">
-            <img class="banner" src="/2016/08/20/Android-6.0-Change-2/pic.jpg" alt="Android 6.0的变化 （下）">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2016-08-20T15:31:40.000Z">2016-08-20</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Android/版本差异/">版本差异</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    18 minutes read (About 2633 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2016/08/20/Android-6.0-Change-2/">Android 6.0的变化 （下）</a>
-            
-        </h1>
-        <div class="content">
-            <!-- <h2><span id="目录">目录</span></h2><ul>
-<li><a href="#目录">目录</a></li>
-<li><a href="#浏览器书签变化">浏览器书签变化</a></li>
-<li><a href="#android密钥库变化">Android密钥库变化</a></li>
-<li><a href="#wifi和网络工作的变化">wifi和网络工作的变化</a></li>
-<li><a href="#照相服务改变">照相服务改变</a></li>
-<li><a href="#运行时">运行时</a></li>
-<li><a href="#apk验证">APK验证</a></li>
-<li><a href="#usb连接">USB连接</a></li>
-<li><a href="#企业级android的变化">企业级Android的变化</a></li>
-<li><a href="#devicepolicymanager-api的变化">DevicePolicyManager api的变化：</a></li>
-<li><a href="#其他api的变化">其他API的变化：</a></li>
-<li><a href="#全局设置的变化">全局设置的变化：</a></li>
-</ul>
-<h2><span id="浏览器书签变化">浏览器书签变化</span></h2><p>这个版本移除了对全局书签的支持。android.provider.Browser.getAllBookmarks()and android.provider.Browser.saveBookmark() 方法现在被移除了。同样的，READ_HISTORY_BOOKMARKS and WRITE_HISTORY_BOOKMARKS 权限也被移除了。如果你的APP目标版本是Android 6.0 (API level 23) 或者更高，不要使用全局书签或使用全局书签的权限，相对应的，你的APP应该使用内部的书签。</p>
-<h2><span id="android密钥库变化">Android密钥库变化</span></h2><p>在这个版本， Android Keystore provider 不在支持DSA.ECDSA仍然被支持。<br>当安全锁屏被禁用或复位时（例如，被用户或设备管理器操作时），那些没加密的密钥将不再被删除，在这些时候那些加密的密钥将被删除。</p>
-<h2><span id="wifi和网络工作的变化">wifi和网络工作的变化</span></h2><p>这个版本介绍了一下几个有关于Wi-Fi 和网络工作的API的行为变化。</p>
-<p>你的APP现在可以改变 WifiConfiguration 对象的状态仅当是你创建了这些对象时。你将不被允许去修改或者删除WifiConfiguration 对象当他是被用户或者别的APP创建的。</p>
-<p>在之前，如果一个APP使用 enableNetwork() 方法并设置disableAllOthers=true 来强制设备连接某个指定的WiFi网络，设备将会拒绝连接其他的网络比如蜂窝数据。在这个版本，设备不在拒绝连接其他的网络。如果你的APP的targetSdkVersion 是20或者更低，他将被固定在所选的WiFi网络。如果你的APP的targetSdkVersion 是21或者更高，使用多网络API（例如 openConnection(), bindSocket(),和新的bindProcessToNetwork() 方法）来确保网络通信是使用被选择的网络。</p>
-<h2><span id="照相服务改变">照相服务改变</span></h2><p>在这个版本中，接收摄像头服务和共享资源的模式已经从原来的“先到先服务”的模式转变为先服务高优先级的进程，服务的行为改变包括：</p>
-<p>获取相机子系统的资源，包括打开和配置相机设备，是基于APP进程的“优先级”来进行授予的。用户可见的或者在最前的activity的APP进程通常给予较高的优先级，来使的相机资源的分配和使用更加的可靠。</p>
-<p>一个低优先级的APP的正在使用相机的用户可能会被“驱逐”当一个高优先级的APP尝试使用相机时。在被弃用的Camera API中，这将导致被驱逐的用户将会调用 onError() 方法，而在Camera2 API中，这将导致被驱逐的用户调用 onDisconnected() 方法。</p>
-<p>当设备拥有合适的照相机硬件时，不同的APP进程可以独立的打开和使用照相机设备。然而，多进程使用的情况下，当同时请求导致对任意的相机设备的性能和能力的降低，现在的相机服务对此进行检测并且禁止改行为。这样的改变可能导致低优先级的用户被“驱逐”即使没有其他的APP明确的尝试访问相同的相机设备。</p>
-<p>改变当前的用户会导致之前的用户中的APP的活动的相机用户被驱逐。访问相机应用将被限制于用户配置文件属于当前设备用户者。在实践中，这就比如说是一个“游客”账户，当用户切换了一个不同的账号时将无法离开正在运行的相机子系统的进程。</p>
-<h2><span id="运行时">运行时</span></h2><p>ART运行时可以正确的实现访问 newInstance()方法的规则。这种改变解决了以前版本中Dalvik 检查访问规则错误的问题。如果你的APP调用了 newInstance()方法并且你想要重写访问检查，应该调用 setAccessible()并将传入参数设为true。如果你的APP使用了v7 appcompat library 或者 v7 recyclerview library 包，你必须在你的APP里更新这些相应的包到最新版。此外，确保你的xml中引用的自定义类已经更新来保证他们的类构造器可用。</p>
-<p>这个版本更新了动态连接器的行为。动态链接器现在可以识别库的soname和他的路径的不同（公共bug6670），并且实现了通过soname来进行查找的功能。在加载的时候那些先前工作在坏的 DT_NEEDED 的项目（在创建机器文件系统时使用绝对路径）可能会失败。</p>
-<p>现在已经支持方法dlopen(3) RTLD_LOCAL模式，需要注意的是RTLD_LOCAL是默认值，当你没有明确使用其他参数时将不会影响到默认值。（除非你的APP明确的使用了 RTLD_GLOBAL）。在使用RTLD_LOCAL的情况下，比较晚使用dlopen(3）进行库加载的标识符将不可用。</p>
-<p>在Android之前的版本里，如果你要求系统加载一个文本重定位的共享库文件，系统会显示警告但是仍然会允许加载该库。从这个版本开始，如果你的APP的目标sdk是23或者更高系统将会拒绝该库。为了帮助你检测到库文件的加载失败，你的APP应该打印有关日志来记录dlopen()失败，包括记录问题的描述以及dlerror返回。为了学习更多的有关文本重定位的内容可见这个指导。</p>
-<h2><span id="apk验证">APK验证</span></h2><p>现在平台执行严格的apk验证。一个在manifest中声明了某文件但是在apk中却没有出现该文件的apk被认为是损坏的。一个apk中的任何内容被修改后必须重新签名。</p>
-<h2><span id="usb连接">USB连接</span></h2><p>设备通过USB端口进行连接现在默认设置为仅充电模式。为了通过USB连接方式访问设备及其内容，用户必须明确的授予这种交互的权限。如果你的应用支持通过USB端口进行交互，请考虑到该交互必须显示的启用。</p>
-<h2><span id="企业级android的变化">企业级Android的变化</span></h2><p>在这个版本包括了以下企业级Android的行为变化。</p>
-<p>个人环境中的企业通讯录。当用户查看过去的通话记录时，google拨号器将会显示企业通讯录。设置setCrossProfileCallerIdDisabled() 为true来使得在google拨号器里隐藏企业联系人记录。当通过蓝牙分享时工作通讯录将会和个人通讯录一起显示，除非你 setBluetoothContactSharingDisabled() 为false。在默认情况下，它是设置为true的。</p>
-<p>WiFi配置清除：通过Profile Owner来添加Wi-Fi配置（例如，调用addNetwork()方法）在它对应的企业配置文件被移除后删除。</p>
-<p>WiFi配置锁定：如果WIFI_DEVICE_OWNER_CONFIGS_LOCKDOWN 不为0时，任何由活动设备拥有者创建的WiFi配置文件将不可以被用户进行修改和删除。用户仍然可以创建和修改他们自己的WiFi配置。活动设备所有者拥有修改和删除包括那些不是由他们创建的WiFi配置的特权。</p>
-<p>通过google账号来下载企业策略控制器：当一个管理环境之外的需要管理的google账号要求通过设备策略控制器app添加到设备时，新增账号流程将会提示用户安装合适的WPC。这一行为同样支持通过设置-账号和初始化设备时添加账号。</p>
-<h2><span id="devicepolicymanager-api的变化">DevicePolicyManager api的变化：</span></h2><p>调用 setCameraDisabled()方法只会影响当前调用相机的用户。从管理文件中调用的话并不影响正在主用户上运行的使用相机的APP。</p>
-<p>此外，现在配置拥有者可以和设备拥有者一样使用setKeyguardDisabledFeatures() 方法。</p>
-<p>配置拥有者可以设置以下锁屏设置：<br>KEYGUARD_DISABLE_TRUST_AGENTS 和 KEYGUARD_DISABLE_FINGERPRINT可以影响配置文件的父用户。<br>KEYGUARD_DISABLE_UNREDACTED_NOTIFICATIONS,会影响APP在管理文件中产生的通知。</p>
-<p>DevicePolicyManager.createAndInitializeUser() 和DevicePolicyManager.createUser()方法被弃用。</p>
-<p> setScreenCaptureDisabled() 方法现在也会阻塞辅助框架当给定的用户在前台活动时。</p>
-<p>EXTRA_PROVISIONING_DEVICE_ADMIN_PACKAGE_CHECKSUM 现在默认SHA-256。SHA-1 现在仍然支持向后兼容但是以后将会被删除。 EXTRA_PROVISIONING_DEVICE_ADMIN_SIGNATURE_CHECKSUM现在只接受SHA-256。</p>
-<p>Android 6.0 (API level 23)中的 Device initializer API 现在被删除了。</p>
-<p>EXTRA_PROVISIONING_RESET_PROTECTION_PARAMETERS 被移除，所以NFC触碰配置不能以编程解锁一个恢复出厂设置保护的设备。</p>
-<p>你现在可以使用EXTRA_PROVISIONING_ADMIN_EXTRAS_BUNDLE在NFC触碰时将管理设备的数据传输给设备拥有者的APP。</p>
-<p>企业Android api 优化了M的运行时权限，包括工作文件，协助层，以及其他等等。新的 DevicePolicyManager 权限API不影响Android M 之前的APP版本。  </p>
-<p>当用户从初始化设置流程中通过ACTION_PROVISION_MANAGED_PROFILE 或 ACTION_PROVISION_MANAGED_DEVICE intent退出同步部分，系统现在会返回一个RESULT_CANCELED返回值。</p>
-<h2><span id="其他api的变化">其他API的变化：</span></h2><p>数据流量统计:android.app.usage.NetworkUsageStats 类被重命名为 NetworkStats.</p>
-<h2><span id="全局设置的变化">全局设置的变化：</span></h2><p>以下属性将不能再通过 setGlobalSettings()来设置：<br>BLUETOOTH_ON<br>DEVELOPMENT_SETTINGS_ENABLED<br>MODE_RINGER<br>NETWORK_PREFERENCE<br>WIFI_ON</p>
-<p>以下全局设置现在可以使用setGlobalSettings()来设置：<br>WIFI_DEVICE_OWNER_CONFIGS_LOCKDOWN</p>
- -->
-            <div class="article-entry">
-                    
-                    
-                        
-                            
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                            
-                                
-                                <p><h2><span id="目录">目录</span></h2><ul>
-<li><a href="#目录">目录</a></li>
-<li><a href="#浏览器书签变化">浏览器书签变化</a></li>
-<li><a href="#android密钥库变化">Android密钥库变化</a></li>
-<li><a href="#wifi和网络工作的变化">wifi和网络工作的变化</a></li>
-<p>
-                            
-                        
-                    
-                    
-                        </div>   
-                        <div class="article-more-link">
-                            <a href="/2016/08/20/Android-6.0-Change-2/#more">Read More</a>
-                        </div>
-                    
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
     <nav class="pagination is-centered" role="navigation" aria-label="pagination">
         <div class="pagination-previous">
-            <a class="is-flex-grow has-text-black-ter" href="/categories/Chinese/">Préc</a>
+            <a class="is-flex-grow has-text-black-ter" href="/categories/Chinese/">Previous</a>
         </div>
         <div class="pagination-next">
-            <a class="is-flex-grow has-text-black-ter" href="/categories/Chinese/page/3/">Suiv</a>
+            <a class="is-flex-grow has-text-black-ter" href="/categories/Chinese/page/3/">Next</a>
         </div>
         <ul class="pagination-list is-hidden-mobile">
             
@@ -1385,17 +1422,17 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Articles
+                        Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        31
+                        33
                     </p>
                 </div>
             </div>
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Catégories
+                        Categories
                     </p>
                     <p class="title has-text-weight-normal">
                         20
@@ -1408,14 +1445,14 @@
                         Tags
                     </p>
                     <p class="title has-text-weight-normal">
-                        16
+                        17
                     </p>
                 </div>
             </div>
         </nav>
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://github.com/LeonChen1024">
-                SUIVRE</a>
+                Follow</a>
         </div>
         
         
@@ -1444,7 +1481,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Catégories
+                Categories
             </h3>
             <ul class="menu-list">
             <li>
@@ -1453,7 +1490,7 @@
                 <span class="level-item">Chinese</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">23</span>
+                <span class="level-item tag">25</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="undefined">
@@ -1469,7 +1506,7 @@
                 <span class="level-item">Android</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">8</span>
+                <span class="level-item tag">10</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="undefined">
@@ -1521,9 +1558,9 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Nuage de tags
+            Tag Cloud
         </h3>
-        <a href="/tags/Algorithm/" style="font-size: 18.57px;">Algorithm</a> <a href="/tags/Android/" style="font-size: 15.71px;">Android</a> <a href="/tags/Chinese/" style="font-size: 20px;">Chinese</a> <a href="/tags/Custom-View/" style="font-size: 10px;">Custom View</a> <a href="/tags/Data-Structure/" style="font-size: 10px;">Data Structure</a> <a href="/tags/DataStructure/" style="font-size: 10px;">DataStructure</a> <a href="/tags/English/" style="font-size: 14.29px;">English</a> <a href="/tags/Error/" style="font-size: 10px;">Error</a> <a href="/tags/Gradle/" style="font-size: 10px;">Gradle</a> <a href="/tags/Java/" style="font-size: 12.86px;">Java</a> <a href="/tags/LeetCode/" style="font-size: 17.14px;">LeetCode</a> <a href="/tags/Optimize/" style="font-size: 11.43px;">Optimize</a> <a href="/tags/SourceCode/" style="font-size: 10px;">SourceCode</a> <a href="/tags/UI/" style="font-size: 10px;">UI</a> <a href="/tags/版本差异/" style="font-size: 11.43px;">版本差异</a> <a href="/tags/版本管理/" style="font-size: 11.43px;">版本管理</a>
+        <a href="/tags/Algorithm/" style="font-size: 18.57px;">Algorithm</a> <a href="/tags/Android/" style="font-size: 15.71px;">Android</a> <a href="/tags/Chinese/" style="font-size: 20px;">Chinese</a> <a href="/tags/Custom-View/" style="font-size: 10px;">Custom View</a> <a href="/tags/Data-Structure/" style="font-size: 10px;">Data Structure</a> <a href="/tags/DataStructure/" style="font-size: 10px;">DataStructure</a> <a href="/tags/English/" style="font-size: 14.29px;">English</a> <a href="/tags/Error/" style="font-size: 10px;">Error</a> <a href="/tags/Gradle/" style="font-size: 10px;">Gradle</a> <a href="/tags/Java/" style="font-size: 12.86px;">Java</a> <a href="/tags/Jetpack/" style="font-size: 11.43px;">Jetpack</a> <a href="/tags/LeetCode/" style="font-size: 17.14px;">LeetCode</a> <a href="/tags/Optimize/" style="font-size: 11.43px;">Optimize</a> <a href="/tags/SourceCode/" style="font-size: 10px;">SourceCode</a> <a href="/tags/UI/" style="font-size: 10px;">UI</a> <a href="/tags/版本差异/" style="font-size: 11.43px;">版本差异</a> <a href="/tags/版本管理/" style="font-size: 11.43px;">版本管理</a>
     </div>
 </div>
 
@@ -1535,8 +1572,46 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Récents
+            Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/07/04/Navigation/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/2019/07/04/Navigation/titleThumb.jpg" alt="Navigation 指南">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-03T16:00:00.000Z">2019-07-04</time></div>
+                    <a href="/2019/07/04/Navigation/" class="has-link-black-ter is-size-6">Navigation 指南</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/07/04/Navigation-Getting-Started/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/2019/07/04/Navigation-Getting-Started/titleThumb.jpg" alt="开始使用 Navigation">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-03T16:00:00.000Z">2019-07-04</time></div>
+                    <a href="/2019/07/04/Navigation-Getting-Started/" class="has-link-black-ter is-size-6">开始使用 Navigation</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -1595,44 +1670,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/04/20/Java-Debugging-Problems-and-How-to-Solve-Them/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/2019/04/20/Java-Debugging-Problems-and-How-to-Solve-Them/titleThumb.jpg" alt="Java 调试中你可能会遇到的问题以及如何解决他们">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-19T16:00:00.000Z">2019-04-20</time></div>
-                    <a href="/2019/04/20/Java-Debugging-Problems-and-How-to-Solve-Them/" class="has-link-black-ter is-size-6">Java 调试中你可能会遇到的问题以及如何解决他们</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Java/">Java</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/04/09/Key-Value-pair-in-hashtable/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/2019/04/09/Key-Value-pair-in-hashtable/titleThumb.jpg" alt="实现键值对存储 第五部分 Hash table 实现">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-08T16:00:00.000Z">2019-04-09</time></div>
-                    <a href="/2019/04/09/Key-Value-pair-in-hashtable/" class="has-link-black-ter is-size-6">实现键值对存储 第五部分 Hash table 实现</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/DataStructure/">DataStructure</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1644,6 +1681,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/06/">
@@ -1811,14 +1859,14 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Android/">
                         <span class="tag">Android</span>
-                        <span class="tag is-grey">10</span>
+                        <span class="tag is-grey">12</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Chinese/">
                         <span class="tag">Chinese</span>
-                        <span class="tag is-grey">23</span>
+                        <span class="tag is-grey">25</span>
                     </a>
                 </div>
                 
@@ -1868,6 +1916,13 @@
                     <a class="tags has-addons" href="/tags/Java/">
                         <span class="tag">Java</span>
                         <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Jetpack/">
+                        <span class="tag">Jetpack</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -1933,8 +1988,46 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Récents
+            Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/07/04/Navigation/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/2019/07/04/Navigation/titleThumb.jpg" alt="Navigation 指南">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-03T16:00:00.000Z">2019-07-04</time></div>
+                    <a href="/2019/07/04/Navigation/" class="has-link-black-ter is-size-6">Navigation 指南</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/07/04/Navigation-Getting-Started/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/2019/07/04/Navigation-Getting-Started/titleThumb.jpg" alt="开始使用 Navigation">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-03T16:00:00.000Z">2019-07-04</time></div>
+                    <a href="/2019/07/04/Navigation-Getting-Started/" class="has-link-black-ter is-size-6">开始使用 Navigation</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -1993,44 +2086,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/04/20/Java-Debugging-Problems-and-How-to-Solve-Them/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/2019/04/20/Java-Debugging-Problems-and-How-to-Solve-Them/titleThumb.jpg" alt="Java 调试中你可能会遇到的问题以及如何解决他们">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-19T16:00:00.000Z">2019-04-20</time></div>
-                    <a href="/2019/04/20/Java-Debugging-Problems-and-How-to-Solve-Them/" class="has-link-black-ter is-size-6">Java 调试中你可能会遇到的问题以及如何解决他们</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Java/">Java</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/04/09/Key-Value-pair-in-hashtable/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/2019/04/09/Key-Value-pair-in-hashtable/titleThumb.jpg" alt="实现键值对存储 第五部分 Hash table 实现">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-08T16:00:00.000Z">2019-04-09</time></div>
-                    <a href="/2019/04/09/Key-Value-pair-in-hashtable/" class="has-link-black-ter is-size-6">实现键值对存储 第五部分 Hash table 实现</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/DataStructure/">DataStructure</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -2042,6 +2097,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/06/">
@@ -2209,14 +2275,14 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Android/">
                         <span class="tag">Android</span>
-                        <span class="tag is-grey">10</span>
+                        <span class="tag is-grey">12</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Chinese/">
                         <span class="tag">Chinese</span>
-                        <span class="tag is-grey">23</span>
+                        <span class="tag is-grey">25</span>
                     </a>
                 </div>
                 
@@ -2266,6 +2332,13 @@
                     <a class="tags has-addons" href="/tags/Java/">
                         <span class="tag">Java</span>
                         <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Jetpack/">
+                        <span class="tag">Jetpack</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -2425,7 +2498,7 @@ document.addEventListener('DOMContentLoaded', function () {
     
     
 
-<a id="back-to-top" title="Kembali ke atas" href="javascript:;">
+<a id="back-to-top" title="Back to Top" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
 <script src="/js/back-to-top.js" defer></script>
@@ -2471,9 +2544,9 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Articles',
+                POSTS: 'Posts',
                 PAGES: 'Pages',
-                CATEGORIES: 'Catégories',
+                CATEGORIES: 'Categories',
                 TAGS: 'Tags',
                 UNTITLED: '(Untitled)',
             },

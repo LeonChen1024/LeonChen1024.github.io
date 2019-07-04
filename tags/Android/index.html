@@ -157,6 +157,415 @@
     <div class="card">
     
     <div class="card-image">
+        <a href="/2019/07/04/Navigation/" class="image is-7by1">
+            <img class="banner" src="/2019/07/04/Navigation/title.jpg" alt="Navigation 指南">
+        </a>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-07-03T16:00:00.000Z">2019-07-04</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    6 minutes read (About 861 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/07/04/Navigation/">Navigation 指南</a>
+            
+        </h1>
+        <div class="content">
+            <!-- <h1><span id="navigation-指南">Navigation 指南</span></h1><p>[TOC]</p>
+<p>由于官网暂时没有中文版本,所以在这里根据内容抽空做了一些中文的版本.</p>
+<p><code>Navigation</code> 是用来管理你的app中内容的跳转,返回等操作.它主要包含了以下三个部分:</p>
+<ul>
+<li><code>Navigation graph</code> : 一个 xml 资源包含了所有的导航相关的信息. 这些信息包含了你app里所有独立的内容区域,也就是 <code>destinations</code>  .</li>
+<li><code>NavHost</code> : 一个空白的容器用来展示你的  <code>Navigation graph</code> 中的 <code>destinations</code> . <code>Navigation</code> 模块中包含了一个默认的实现 <a href="https://developer.android.com/reference/androidx/navigation/fragment/NavHostFragment.html" target="_blank" rel="external"><code>NavHostFragment</code></a> 用来展示 Fragment 的 <code>destinations</code> .</li>
+<li><code>NavController</code> :  一个管理 NavHost 中的导航的对象. 会在用户使用app的时候管理 NavHost 中的内容.</li>
+</ul>
+<p>当在页面内导航的时候,你可以告诉 NavController 你想要通过Navigation graph 中的某个路径或者直接导航到一个destination .这时候 NavController 就会在 NavHost 中展示合适的 destination.</p>
+<p>Navigation 模块还提供了其他的好处,比如:</p>
+<ul>
+<li>处理了 fragment transactions</li>
+<li>默认情况下正确的处理了向上和返回动作</li>
+<li>为动画和过渡提供了标准化的资源</li>
+<li>实现和处理了深链接</li>
+<li>内置了 Navigation UI 组件,比如 navigation drawers 和 bottom navigation,可以减少附加的工作</li>
+<li><a href="https://developer.android.com/guide/navigation/navigation-pass-data#Safe-args" target="_blank" rel="external">Safe Args</a> - 一个 Gradle 插件当导航并在两个目的地中传递数据的时候提供了类型安全机制</li>
+<li>ViewModel 支持 - 你可以将 ViewModel 的作用域设置为 navigation graph 来在不同的 目的地之间共享 UI 相关连的数据</li>
+</ul>
+<p>并且你还可以使用 Android Studio’s <a href="https://developer.android.com/guide/navigation/navigation-getting-started" target="_blank" rel="external">Navigation Editor</a>  来查看和编辑 navigation graphs.</p>
+<p>Next steps</p>
+<p>For more documentation and resources related to the Navigation component, see the following.</p>
+<p>Getting started</p>
+<ul>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-getting-started" target="_blank" rel="external">Get started with the Navigation component</a></li>
+</ul>
+<p>Further topics</p>
+<ul>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-principles" target="_blank" rel="external">Principles of Navigation</a></li>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-form-factors" target="_blank" rel="external">Design for different form factors</a></li>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-design-graph" target="_blank" rel="external">Design navigation graphs</a></li>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-nested-graphs" target="_blank" rel="external">Nested graphs</a></li>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-global-action" target="_blank" rel="external">Global actions</a></li>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-conditional" target="_blank" rel="external">Conditional navigation</a></li>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-pass-data" target="_blank" rel="external">Pass data between destinations</a></li>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-deep-link" target="_blank" rel="external">Create a deep link for a destination</a></li>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-animate-transitions" target="_blank" rel="external">Animate transitions between destinations</a></li>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-ui" target="_blank" rel="external">Update UI components with NavigationUI</a></li>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-swipe-view" target="_blank" rel="external">Create swipe views with tabs</a></li>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-programmatic" target="_blank" rel="external">Interact programmatically with the Navigation component</a></li>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-testing" target="_blank" rel="external">Test navigation</a></li>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-add-new" target="_blank" rel="external">Add new destination types</a></li>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-custom-back" target="_blank" rel="external">Provide custom back navigation</a></li>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-migrate" target="_blank" rel="external">Migrate to the Navigation component</a></li>
+</ul>
+<p>Additional resources</p>
+<p>To learn more about navigation, see the following additional resources.</p>
+<p>Samples</p>
+<ul>
+<li><a href="https://github.com/googlesamples/android-architecture-components/tree/master/BasicSample" target="_blank" rel="external">Android Architecture Components basic sample</a></li>
+</ul>
+<p>Codelabs</p>
+<ul>
+<li><a href="https://codelabs.developers.google.com/codelabs/android-navigation/index.html?index=..%2F..%2Findex#0" target="_blank" rel="external">Navigation codelab</a></li>
+</ul>
+<p>Blog posts</p>
+<ul>
+<li><a href="https://medium.com/androiddevelopers/livedata-with-snackbar-navigation-and-other-events-the-singleliveevent-case-ac2622673150" target="_blank" rel="external">LiveData with SnackBar, Navigation and other events (the SingleLiveEvent case</a></li>
+</ul>
+<p>Videos</p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=9O1D_Ytk0xg" target="_blank" rel="external">10 Best Practices for Moving to a Single Activity</a></li>
+<li><a href="https://www.youtube.com/watch?v=2k8x8V77CrU" target="_blank" rel="external">Single Activity: Why, When, and How (Android Dev Summit ‘18)</a></li>
+<li><a href="https://www.youtube.com/watch?v=8GCXtCjtg40" target="_blank" rel="external">Android Jetpack: manage UI navigation with Navigation Controller (Google I/O ‘18)</a></li>
+</ul>
+<h1><span id="reference">Reference</span></h1><p><a href="https://developer.android.google.cn/guide/navigation" target="_blank" rel="external">https://developer.android.google.cn/guide/navigation</a></p>
+<h2><span id="about-me">About Me</span></h2><p>我的博客 <a href="http://leonchen1024.com/" target="_blank" rel="external">leonchen1024.com</a></p>
+<p>我的 GitHub <a href="https://github.com/LeonChen1024" target="_blank" rel="external">https://github.com/LeonChen1024</a></p>
+<p>微信公众号 </p>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/Images/CooderQRcodem.jpg?raw=false" alt="wechat"></p>
+ -->
+            <div class="article-entry">
+                    
+                    
+                        
+                            
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                            
+                                
+                                <p><h1><span id="navigation-指南">Navigation 指南</span></h1><p>[TOC]</p>
+<p>由于官网暂时没有中文版本,所以在这里根据内容抽空做了一些中文的版本.</p>
+<p><code>Navigation</code> 是用来管理你的app中内容的跳转,返回等操作.它主要包含了以下三个部分:</p>
+<ul>
+<li><code>Navigation graph</code> : 一个 xml 资源包含了所有的导航相关的信息. 这些信息包含了你app里所有独立的内容区域,也就是 <code>destinations</code>  .</li>
+<p>
+                            
+                        
+                    
+                    
+                        </div>   
+                        <div class="article-more-link">
+                            <a href="/2019/07/04/Navigation/#more">Read More</a>
+                        </div>
+                    
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-image">
+        <a href="/2019/07/04/Navigation-Getting-Started/" class="image is-7by1">
+            <img class="banner" src="/2019/07/04/Navigation-Getting-Started/title.jpg" alt="开始使用 Navigation">
+        </a>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-07-03T16:00:00.000Z">2019-07-04</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    25 minutes read (About 3724 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/07/04/Navigation-Getting-Started/">开始使用 Navigation</a>
+            
+        </h1>
+        <div class="content">
+            <!-- <h1><span id="开始使用-navigation">开始使用 Navigation</span></h1><p>[TOC]</p>
+<p>由于官网暂时没有中文版本,所以在这里根据内容抽空做了一些中文的版本.</p>
+<h1><span id="开始使用">开始使用</span></h1><h2><span id="依赖引入">依赖引入</span></h2><figure class="highlight groovy hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">dependencies &#123;</div><div class="line">    <span class="hljs-keyword">def</span> nav_version = <span class="hljs-string">"2.1.0-alpha05"</span></div><div class="line"></div><div class="line">    implementation <span class="hljs-string">"androidx.navigation:navigation-fragment:$nav_version"</span> <span class="hljs-comment">// For Kotlin use navigation-fragment-ktx</span></div><div class="line">    implementation <span class="hljs-string">"androidx.navigation:navigation-ui:$nav_version"</span> <span class="hljs-comment">// For Kotlin use navigation-ui-ktx</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>最新版本清关注官方版本 <a href="https://developer.android.google.cn/jetpack/androidx/releases/navigation#declaring_dependencies" target="_blank" rel="external">https://developer.android.google.cn/jetpack/androidx/releases/navigation#declaring_dependencies</a></p>
+<h2><span id="创建一个导航图">创建一个导航图</span></h2><p>Navigation 发生在 app 内目的地之间的跳转.这些目的地通过action 进行连接.</p>
+<p>一个导航图是一个包含了你所有目的地和 action 的资源文件.这个图表代表了你所有的导航路径.</p>
+<p>下图是一个导航图的示例,</p>
+<p><img src="https://developer.android.google.cn/images/topic/libraries/architecture/navigation-graph_2x-callouts.png" alt=""></p>
+<p>图中的 1 是 app 中的不同的内容</p>
+<p>2 是导航的路径</p>
+<p>通过以下步骤添加导航图</p>
+<ol>
+<li>在项目窗口中右键 <code>res</code> 文件夹选择 <code>New &gt; Android Resource File</code> </li>
+<li>输入文件名</li>
+<li>在 <strong>Resource type</strong> 中选择 <strong>Navigation</strong> ,确认.</li>
+</ol>
+<p>生成的文件会保存在 <code>navigation</code> 文件夹下面.</p>
+<h2><span id="navigation-editor">Navigation Editor</span></h2><p>当你添加了导航图的时候,可以使用 <em>Navigation Editor</em> 来进行可视化操作,或者对 xml 文件直接进行修改</p>
+<p><img src="https://developer.android.google.cn/images/topic/libraries/architecture/navigation-editor_2x.png" alt=""></p>
+<p>图中序号代表的东西 :</p>
+<p>1: <strong>目的地面板</strong>, 列出你的导航所有者和当前导航图中所有的目的地.</p>
+<p>2: <strong>图编辑器</strong> , 可以通过下方的 tab 切换成可视化编辑和文本编辑模式.</p>
+<p>3: <strong>属性</strong> , 展示当前选择项的属性.</p>
+<p>当你使用文本编辑的时候,应该会看到类似以下的结构:</p>
+<figure class="highlight xml hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</div><div class="line"><span class="hljs-tag">&lt;<span class="hljs-name">navigation</span> <span class="hljs-attr">xmlns:android</span>=<span class="hljs-string">"http://schemas.android.com/apk/res/android"</span></span></div><div class="line"><span class="hljs-tag">            <span class="hljs-attr">xmlns:app</span>=<span class="hljs-string">"http://schemas.android.com/apk/res-auto"</span></span></div><div class="line"><span class="hljs-tag">            <span class="hljs-attr">android:id</span>=<span class="hljs-string">"@+id/nav_graph"</span>&gt;</span></div><div class="line"></div><div class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">navigation</span>&gt;</span></div></pre></td></tr></table></figure>
+<p><navigation> 节点是根节点,当你添加了目的地和 action 的时候它们对应的<destination>和<action>都会以 <navigation> 的子元素的形式展现出来. 如果你使用了嵌套图的时候,它会以子<navigation>的形式展现.</navigation></navigation></action></destination></navigation></p>
+<h2><span id="添加一个-navhost-到-activity">添加一个 NavHost 到 activity</span></h2><p>Navigation 模块中的一个核心部分就是  <em>navigation host</em> . navigation host 是一个空的容器,当用户在你的 app 内导航的时候目的地将会在这个容器中进出.</p>
+<p>一个 navigation host 必须从 NavHost 中衍生而来.模块中有一个默认的实现,<a href="https://developer.android.google.cn/reference/androidx/navigation/fragment/NavHostFragment.html" target="_blank" rel="external"><code>NavHostFragment</code></a> , 处理了 fragment 目的地的转场.</p>
+<blockquote>
+<p>注意: Navigation 模块的设计是为了处理一个 Activity 和多个目的地Fragment 的情况,每一个 Activity 都会关联一个导航图并拥有自己的<strong>NavHostFragment</strong> 来响应内容的切换转场.</p>
+</blockquote>
+<h3><span id="通过-xml-添加一个navhostfragment">通过 xml 添加一个NavHostFragment</span></h3><p>下面的 xml 展示了一个 NavHostFragment 作为主 activity 的一部分的情况:</p>
+<figure class="highlight xml hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</div><div class="line"><span class="hljs-tag">&lt;<span class="hljs-name">android.support.constraint.ConstraintLayout</span></span></div><div class="line"><span class="hljs-tag">    <span class="hljs-attr">xmlns:android</span>=<span class="hljs-string">"http://schemas.android.com/apk/res/android"</span></span></div><div class="line"><span class="hljs-tag">    <span class="hljs-attr">xmlns:app</span>=<span class="hljs-string">"http://schemas.android.com/apk/res-auto"</span></span></div><div class="line"><span class="hljs-tag">    <span class="hljs-attr">xmlns:tools</span>=<span class="hljs-string">"http://schemas.android.com/tools"</span></span></div><div class="line"><span class="hljs-tag">    <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">"match_parent"</span></span></div><div class="line"><span class="hljs-tag">    <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">"match_parent"</span></span></div><div class="line"><span class="hljs-tag">    <span class="hljs-attr">tools:context</span>=<span class="hljs-string">".MainActivity"</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">androidx.appcompat.widget.Toolbar</span></span></div><div class="line"><span class="hljs-tag">        <span class="hljs-attr">...</span>/&gt;</span></div><div class="line"></div><div class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">fragment</span></span></div><div class="line"><span class="hljs-tag">        <span class="hljs-attr">android:id</span>=<span class="hljs-string">"@+id/nav_host_fragment"</span></span></div><div class="line"><span class="hljs-tag">        <span class="hljs-attr">android:name</span>=<span class="hljs-string">"androidx.navigation.fragment.NavHostFragment"</span></span></div><div class="line"><span class="hljs-tag">        <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">"0dp"</span></span></div><div class="line"><span class="hljs-tag">        <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">"0dp"</span></span></div><div class="line"><span class="hljs-tag">        <span class="hljs-attr">app:layout_constraintLeft_toLeftOf</span>=<span class="hljs-string">"parent"</span></span></div><div class="line"><span class="hljs-tag">        <span class="hljs-attr">app:layout_constraintRight_toRightOf</span>=<span class="hljs-string">"parent"</span></span></div><div class="line"><span class="hljs-tag">        <span class="hljs-attr">app:layout_constraintTop_toTopOf</span>=<span class="hljs-string">"parent"</span></span></div><div class="line"><span class="hljs-tag">        <span class="hljs-attr">app:layout_constraintBottom_toBottomOf</span>=<span class="hljs-string">"parent"</span></span></div><div class="line"><span class="hljs-tag"></span></div><div class="line"><span class="hljs-tag">        <span class="hljs-attr">app:defaultNavHost</span>=<span class="hljs-string">"true"</span></span></div><div class="line"><span class="hljs-tag">        <span class="hljs-attr">app:navGraph</span>=<span class="hljs-string">"@navigation/nav_graph"</span> /&gt;</span></div><div class="line"></div><div class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">com.google.android.material.bottomnavigation.BottomNavigationView</span></span></div><div class="line"><span class="hljs-tag">        <span class="hljs-attr">...</span>/&gt;</span></div><div class="line"></div><div class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">android.support.constraint.ConstraintLayout</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>注意以下内容:</p>
+<ul>
+<li><code>android:name</code> 属性包含了你的 <code>NavHost</code> 实现的类名</li>
+<li><code>app:navGraph</code> 属性将 NavHostFragment 和一个 导航图进行关联,导航图会显示在这个 NavHostFragment 中用户能到达的所有目的地.</li>
+<li><code>app:defaultNavHost=&quot;true&quot;</code> 属性确保你的 NavHostFragment 可以拦截系统的返回事件,要注意只有一个 NavHost 可以作为默认拦截.</li>
+</ul>
+<p>你也可以通过以下方法来通过布局编辑器来添加一个 NavHostFragment 到 activity 中.</p>
+<ul>
+<li>打开你的 activity 的 xml 文件,并使用布局编辑器.</li>
+<li>在 <strong>Palette</strong> 面板中选择<strong>Containers</strong>目录,或者搜索 “NavHostFragment”</li>
+<li>拖动 NavHostFragment 到你的布局中.</li>
+<li>在 <strong>Navigation Graphs</strong> 的弹窗中,选择对应的导航图和 NavHostFragment 关联,并点 ok.</li>
+</ul>
+<h2><span id="添加目的地到导航图">添加目的地到导航图</span></h2><p>你可以在 Fragment 或者 activity 中添加目的地,也可以通过导航编辑器来添加目的地或者占位符以便在后面用 activity 或 Fragment 来替换.</p>
+<h3><span id="从现有的-activity-或-fragment-中添加目的地">从现有的 activity 或 Fragment 中添加目的地</span></h3><p>如果你想添加现有的目的地到你的导航图中,点击  <strong>New Destination</strong> <img src="https://developer.android.google.cn/studio/images/buttons/navigation-add.png" alt="img">, 再出现的下拉框中选择你想要添加的目的地.然后你就可以在 <strong>Design</strong> 视图中看到该目的地的预览图.以及对应的xml 数据出现在你的 <strong>Text</strong> 视图中.</p>
+<h3><span id="创建一个新的fragment目的地">创建一个新的Fragment目的地</span></h3><p>使用以下步骤创建一个新的 Fragment 目的地:</p>
+<ol>
+<li>在导航编辑器中点击 <strong>New Destination</strong>图标 <img src="https://developer.android.google.cn/images/topic/libraries/architecture/navigation-new-destination-icon.png" alt="img">, 然后点击 <strong>Create new destination</strong> .</li>
+<li>在 <strong>New Android Component</strong> 弹窗中创建你的 Fragment , </li>
+</ol>
+<h3><span id="从-dialogfragment-中创建一个目的地">从 DialogFragment 中创建一个目的地</span></h3><p>如果你已经有了 DialogFragment 的话,你可以使用 <code>&lt;dialog&gt;</code> 元素将它添加到导航图中.代码如下:</p>
+<figure class="highlight xml hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</div><div class="line"><span class="hljs-tag">&lt;<span class="hljs-name">navigation</span> <span class="hljs-attr">xmlns:android</span>=<span class="hljs-string">"http://schemas.android.com/apk/res/android"</span></span></div><div class="line"><span class="hljs-tag">            <span class="hljs-attr">xmlns:app</span>=<span class="hljs-string">"http://schemas.android.com/apk/res-auto"</span></span></div><div class="line"><span class="hljs-tag">            <span class="hljs-attr">android:id</span>=<span class="hljs-string">"@+id/nav_graph"</span>&gt;</span></div><div class="line"></div><div class="line">...</div><div class="line"></div><div class="line"></div><div class="line"><span class="hljs-tag">&lt;<span class="hljs-name">dialog</span></span></div><div class="line"><span class="hljs-tag">    <span class="hljs-attr">android:id</span>=<span class="hljs-string">"@+id/my_dialog_fragment"</span></span></div><div class="line"><span class="hljs-tag">    <span class="hljs-attr">android:name</span>=<span class="hljs-string">"androidx.navigation.myapp.MyDialogFragment"</span>&gt;</span></div><div class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">argument</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">"myarg"</span> <span class="hljs-attr">android:defaultValue</span>=<span class="hljs-string">"@null"</span> /&gt;</span></div><div class="line">        <span class="hljs-tag">&lt;<span class="hljs-name">action</span></span></div><div class="line"><span class="hljs-tag">            <span class="hljs-attr">android:id</span>=<span class="hljs-string">"@+id/myaction"</span></span></div><div class="line"><span class="hljs-tag">            <span class="hljs-attr">app:destination</span>=<span class="hljs-string">"@+id/another_destination"</span>/&gt;</span></div><div class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">dialog</span>&gt;</span></div><div class="line"></div><div class="line">...</div><div class="line"></div><div class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">navigation</span>&gt;</span></div></pre></td></tr></table></figure>
+<h3><span id="占位目的地">占位目的地</span></h3><p>你可以使用占位符来代表没有实现的目的地,占位符也是目的地的视觉表示.在导航编辑器中可以像使用目的地一样使用占位符.</p>
+<blockquote>
+<p>注意:在你运行你的 app 之前你必须要将 <em>class</em> 设置成已经存在的目的地.否则会导致运行时异常.</p>
+</blockquote>
+<h2><span id="解析目的地">解析目的地</span></h2><p>点击任意的目的地,并注意以下属性:</p>
+<ul>
+<li><strong>Type</strong> : 表明这个目的地是使用  fragment, activity,  还是其他源码中的自定义类实现.</li>
+<li><strong>Label</strong> : 目的地的 xml 资源文件名</li>
+<li><strong>ID</strong>: 目的地的 ID ,可以用于在代码中引用该目的地</li>
+<li><strong>Class</strong> : 下拉窗中展示了所有与该目的地相关联的类.可以选择不同的选项将类与其他目的地类型关联.</li>
+</ul>
+<p>在 xml 文件中的展示如下:</p>
+<figure class="highlight xml hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</div><div class="line"><span class="hljs-tag">&lt;<span class="hljs-name">navigation</span> <span class="hljs-attr">xmlns:app</span>=<span class="hljs-string">"http://schemas.android.com/apk/res-auto"</span></span></div><div class="line"><span class="hljs-tag">    <span class="hljs-attr">xmlns:tools</span>=<span class="hljs-string">"http://schemas.android.com/tools"</span></span></div><div class="line"><span class="hljs-tag">    <span class="hljs-attr">xmlns:android</span>=<span class="hljs-string">"http://schemas.android.com/apk/res/android"</span></span></div><div class="line"><span class="hljs-tag">    <span class="hljs-attr">app:startDestination</span>=<span class="hljs-string">"@id/blankFragment"</span>&gt;</span></div><div class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">fragment</span></span></div><div class="line"><span class="hljs-tag">        <span class="hljs-attr">android:id</span>=<span class="hljs-string">"@+id/blankFragment"</span></span></div><div class="line"><span class="hljs-tag">        <span class="hljs-attr">android:name</span>=<span class="hljs-string">"com.example.cashdog.cashdog.BlankFragment"</span></span></div><div class="line"><span class="hljs-tag">        <span class="hljs-attr">android:label</span>=<span class="hljs-string">"Blank"</span></span></div><div class="line"><span class="hljs-tag">        <span class="hljs-attr">tools:layout</span>=<span class="hljs-string">"@layout/fragment_blank"</span> /&gt;</span></div><div class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">navigation</span>&gt;</span></div></pre></td></tr></table></figure>
+<h2><span id="设置一个屏幕作为起始目的地">设置一个屏幕作为起始目的地</span></h2><p>起始目的地是用户打开你的app看到的第一个屏幕,并且也是用户退出你的app看到的最后一个页面.导航编辑器使用一个房子图标 <img src="https://developer.android.google.cn/studio/images/buttons/navigation-house.png" alt="img"> 来代表这个起始目的地.</p>
+<p>一旦你拥有所有的目的地,你可以通过以下步骤选择一个作为起始目的地:</p>
+<ol>
+<li>在 <strong>Design</strong> 标签页面下,点击一个目的地使它高亮.</li>
+<li>点击  <strong>Assign start destination</strong> 按钮   <img src="https://developer.android.google.cn/images/topic/libraries/architecture/navigation-start-destination-icon.png" alt="img"> .或者,右键目的地并点击 <strong>Set as Start Destination</strong>.</li>
+</ol>
+<h2><span id="连接目的地">连接目的地</span></h2><p>action 是目的地之间的一个逻辑连接.action 在导航图里用箭头表示.action 通常将一个目的地连接到另一个,尽管你也可以创建一个  <a href="https://developer.android.google.cn/guide/navigation/navigation-global-action" target="_blank" rel="external">global actions</a> 来把你引导到你的app中的任意一个目的地.</p>
+<p>通过action ,你可以用不同的路径来代表用户可以如何在你的app中导航.要注意,要实际导航到某个目的地的时候,你仍然需要编写代码来实现这个导航.这在 <a href="https://developer.android.google.cn/guide/navigation/navigation-getting-started#navigate" target="_blank" rel="external">Navigate to a destination</a> 中会有介绍.</p>
+<p>你可以通过以下步骤使用导航编辑器来连接两个目的地:</p>
+<ol>
+<li><p>在 <strong>Design</strong> 标签下,高亮你要作为起点的目的地.它的右侧会出现一个圆圈 <br> <img src="https://developer.android.google.cn/images/topic/libraries/architecture/navigation-actioncircle_2x.png" alt="img"></p>
+</li>
+<li><p>点击这个圆圈并拖动鼠标指针到你想要作为终点的目的地,然后释放鼠标.两个目的地之间会出现一条线来代表这个action <br> <img src="https://developer.android.google.cn/images/topic/libraries/architecture/navigation-connected_2x.png" alt="img"></p>
+</li>
+<li><p>点击箭头来高亮这个 action . <strong>Attributes</strong> 面板中显示了下面的属性:</p>
+<ul>
+<li><strong>Type</strong> : Action 的类型 </li>
+<li><strong>ID</strong> : action的ID</li>
+<li><strong>Destination</strong> : 包含了目的地fragment 或者 activity 的 ID</li>
+</ul>
+</li>
+<li><p>点击  <strong>Text</strong> 标签来切换到 XML 视图. 一个 action 元素会被添加到源目的地中.这个action拥有一个 ID 和一个目的地属性包含了下一个目的地的ID 如下所示: <br> </p>
+<figure class="highlight xml hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</div><div class="line"><span class="hljs-tag">&lt;<span class="hljs-name">navigation</span> <span class="hljs-attr">xmlns:app</span>=<span class="hljs-string">"http://schemas.android.com/apk/res-auto"</span></span></div><div class="line"><span class="hljs-tag">    <span class="hljs-attr">xmlns:tools</span>=<span class="hljs-string">"http://schemas.android.com/tools"</span></span></div><div class="line"><span class="hljs-tag">    <span class="hljs-attr">xmlns:android</span>=<span class="hljs-string">"http://schemas.android.com/apk/res/android"</span></span></div><div class="line"><span class="hljs-tag">    <span class="hljs-attr">app:startDestination</span>=<span class="hljs-string">"@id/blankFragment"</span>&gt;</span></div><div class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">fragment</span></span></div><div class="line"><span class="hljs-tag">        <span class="hljs-attr">android:id</span>=<span class="hljs-string">"@+id/blankFragment"</span></span></div><div class="line"><span class="hljs-tag">        <span class="hljs-attr">android:name</span>=<span class="hljs-string">"com.example.cashdog.cashdog.BlankFragment"</span></span></div><div class="line"><span class="hljs-tag">        <span class="hljs-attr">android:label</span>=<span class="hljs-string">"fragment_blank"</span></span></div><div class="line"><span class="hljs-tag">        <span class="hljs-attr">tools:layout</span>=<span class="hljs-string">"@layout/fragment_blank"</span> &gt;</span></div><div class="line">        <span class="hljs-tag">&lt;<span class="hljs-name">action</span></span></div><div class="line"><span class="hljs-tag">            <span class="hljs-attr">android:id</span>=<span class="hljs-string">"@+id/action_blankFragment_to_blankFragment2"</span></span></div><div class="line"><span class="hljs-tag">            <span class="hljs-attr">app:destination</span>=<span class="hljs-string">"@id/blankFragment2"</span> /&gt;</span></div><div class="line">    <span class="hljs-tag">&lt;/<span class="hljs-name">fragment</span>&gt;</span></div><div class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">fragment</span></span></div><div class="line"><span class="hljs-tag">        <span class="hljs-attr">android:id</span>=<span class="hljs-string">"@+id/blankFragment2"</span></span></div><div class="line"><span class="hljs-tag">        <span class="hljs-attr">android:name</span>=<span class="hljs-string">"com.example.cashdog.cashdog.BlankFragment2"</span></span></div><div class="line"><span class="hljs-tag">        <span class="hljs-attr">android:label</span>=<span class="hljs-string">"fragment_blank_fragment2"</span></span></div><div class="line"><span class="hljs-tag">        <span class="hljs-attr">tools:layout</span>=<span class="hljs-string">"@layout/fragment_blank_fragment2"</span> /&gt;</span></div><div class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">navigation</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>在你的导航图里,action是使用 <code>&lt;action&gt;</code> 元素代表的. 一个 action 里至少要包含它自己的ID 和用户要导航到的目的地的ID .</p>
+<h2><span id="导航到目的地">导航到目的地</span></h2><p>可以使用 <a href="https://developer.android.google.cn/reference/androidx/navigation/NavController" target="_blank" rel="external"><code>NavController</code></a> 导航到一个目的地,它是一个通过 NavHost 来管理app导航的对象.每一个 NavHost 都有一个它对应的 NavController . NavController 提供一些不同的方式来导航到一个目的地,在下面的章节中将会详细介绍.</p>
+<p>使用以下方法之一来从 fragment ,activity,或者view 中获取一个 NavController :</p>
+<p><strong>Kotlin:</strong></p>
+<ul>
+<li><a href="https://developer.android.google.cn/reference/kotlin/androidx/navigation/fragment/package-summary#findnavcontroller" target="_blank" rel="external"><code>Fragment.findNavController()</code></a></li>
+<li><a href="https://developer.android.google.cn/reference/kotlin/androidx/navigation/package-summary#(android.view.View" target="_blank" rel="external"><code>View.findNavController()</code></a>.findNavController())</li>
+<li><a href="https://developer.android.google.cn/reference/kotlin/androidx/navigation/package-summary#findnavcontroller" target="_blank" rel="external"><code>Activity.findNavController(viewId: Int)</code></a></li>
+</ul>
+<p><strong>Java:</strong></p>
+<ul>
+<li><a href="https://developer.android.google.cn/reference/androidx/navigation/fragment/NavHostFragment.html#findNavController(android.support.v4.app.Fragment" target="_blank" rel="external"><code>NavHostFragment.findNavController(Fragment)</code></a>)</li>
+<li><a href="https://developer.android.google.cn/reference/androidx/navigation/Navigation.html#findNavController(android.app.Activity, int" target="_blank" rel="external"><code>Navigation.findNavController(Activity, @IdRes int viewId)</code></a>)</li>
+<li><a href="https://developer.android.google.cn/reference/androidx/navigation/Navigation.html#findNavController(android.view.View" target="_blank" rel="external"><code>Navigation.findNavController(View)</code></a>)</li>
+</ul>
+<h3><span id="使用-id-导航">使用 ID 导航</span></h3><p><a href="https://developer.android.google.cn/reference/androidx/navigation/NavController.html#navigate(int" target="_blank" rel="external"><code>navigate(int)</code></a>) 使用 action 或者目的地的资源 ID来导航. 下面的例子展示了如何导航到 ViewTransactionsFragment .</p>
+<figure class="highlight kotlin hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">viewTransactionsButton.setOnClickListener &#123; view -&gt;</div><div class="line">   view.findNavController().navigate(R.id.viewTransactionsAction)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">viewTransactionsButton.setOnClickListener(<span class="hljs-keyword">new</span> View.OnClickListener() &#123;</div><div class="line">    <span class="hljs-meta">@Override</span></div><div class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onClick</span><span class="hljs-params">(View view)</span> </span>&#123;</div><div class="line">        Navigation.findNavController(view).navigate(R.id.viewTransactionsAction);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<blockquote>
+<p>注意: 当你使用 ID 来导航的时候,我们强烈推荐你尽可能使用 action. action 在你的导航图里提供了额外的可视信息,它展示了你的目的地是如何和其它目的地连接起来的.通过创建 action ,你可以使用  <a href="https://developer.android.google.cn/guide/navigation/navigation-pass-data#Safe-args" target="_blank" rel="external">Safe Args-generated operations</a> 来替换资源ID ,提供额外的编译时安全性.通过使用 action 你也可以在目的地之间使用转场动画.详细可以查看  <a href="https://developer.android.google.cn/guide/navigation/navigation-animate-transitions" target="_blank" rel="external">Animate transitions between destinations</a>.</p>
+</blockquote>
+<p>对于按钮,你也可以使用 <a href="https://developer.android.google.cn/reference/androidx/navigation/Navigation.html" target="_blank" rel="external"><code>Navigation</code></a> 类的 <a href="https://developer.android.google.cn/reference/androidx/navigation/Navigation.html#createNavigateOnClickListener(int" target="_blank" rel="external"><code>createNavigateOnClickListener()</code></a>) 方法来便捷的导航到一个目的地,如下面的例子所示:</p>
+<figure class="highlight kotlin hljs"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">button.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.next_fragment, <span class="hljs-literal">null</span>))</div></pre></td></tr></table></figure>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">button.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.next_fragment, <span class="hljs-keyword">null</span>));</div></pre></td></tr></table></figure>
+<p>为了处理其它的共用 UI 模块,比如顶部的 top app bar 和 bottom navigation , 详见  <a href="https://developer.android.google.cn/guide/navigation/navigation-ui" target="_blank" rel="external">Update UI components with NavigationUI</a>.</p>
+<h3><span id="通过-uri-进行导航">通过 URI 进行导航</span></h3><p>你可以通过使用 <a href="https://developer.android.google.cn/reference/androidx/navigation/NavController#navigate(android.net.Uri" target="_blank" rel="external"><code>navigate(Uri)</code></a>) 来直接导航到一个  <a href="https://developer.android.google.cn/guide/navigation/navigation-deep-link#implicit" target="_blank" rel="external">implicit deep link destination</a>, 如下:</p>
+<figure class="highlight kotlin hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-keyword">val</span> navController = findNavController()</div><div class="line"><span class="hljs-keyword">val</span> deeplink = Uri.parse(<span class="hljs-string">"android-app://androidx.navigation.app/profile"</span>)</div><div class="line">findNavController().navigate(deeplink)</div></pre></td></tr></table></figure>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Uri deeplink = Uri.parse(<span class="hljs-string">"android-app://androidx.navigation.app/profile"</span>);</div><div class="line">view.findNavController().navigate(deeplink);</div></pre></td></tr></table></figure>
+<p>和使用 action 或者 目的地ID 不同,你可以导航到你的导航图中的任意一个 URI ,无论目的地是否在当前导航图中可见.你可以导航到当前导航图或者一个不同的导航图中的目的地.</p>
+<p>当使用 URI 进行导航的时候,回退栈不会被重置.与其他的 <a href="https://developer.android.google.cn/guide/navigation/navigation-deep-link" target="_blank" rel="external">deep link navigation</a> 不同,</p>
+<p>When navigating using URI, the back stack is <em>not</em> reset. This is unlike other <a href="https://developer.android.google.cn/guide/navigation/navigation-deep-link" target="_blank" rel="external">deep link navigation</a>, where the back stack is replaced when navigating. <code>popUpTo</code> and <code>popUpToInclusive</code>, however, still remove destinations from the back stack just as though you had navigated using an ID.</p>
+<h3><span id="导航还有回退栈">导航还有回退栈</span></h3><p>Android 维护了一个 <a href="https://developer.android.google.cn/guide/components/activities/tasks-and-back-stack" target="_blank" rel="external">back stack</a>  包含了你访问的目的地.你app 的第一个 目的地在用户打开 app 的时候就会放进栈中. 每一次调用 <a href="https://developer.android.google.cn/reference/androidx/navigation/NavController.html#navigate(int" target="_blank" rel="external"><code>navigate()</code></a>) 方法会把另一个目的地放到栈顶. 当调用  <a href="https://developer.android.google.cn/reference/androidx/navigation/NavController.html#navigateUp(" target="_blank" rel="external"><code>NavController.navigateUp()</code></a>) 和 <a href="https://developer.android.google.cn/reference/androidx/navigation/NavController.html#popBackStack(" target="_blank" rel="external"><code>NavController.popBackStack()</code></a>) 来进行向上或向后的操作的时候,会移除栈顶的目的地.</p>
+<h3><span id="popupto-和-popuptoinclusive">popUpTo 和 popUpToInclusive</span></h3><p>当你使用 action 来进行导航的时候,你可以选择从后退栈中弹出额外的目的地.举个例子,如果你的应用有一个登录流程,一旦用户登录了,你应该从回退栈中弹出所有登录相关的目的地,这样可以保证用户回退的时候不会又回到登录流程中.</p>
+<p>为了在一个目的地导航到另一个目的地的时候弹出目的地,可以添加一个 <code>app:popUpTo</code> 属性到关联的 <code>&lt;action&gt;</code> 元素中. <code>app:popUpTo</code> 这个属性告诉 Navigation 在调用 <code>navigate()</code> 的时候从回退栈中弹出一些目的地.这个属性的值是 要在回退中保留的顶层目的地的ID .</p>
+<p>你也可以使用 <code>app:popUpToInclusive=&quot;true&quot;</code> 来声明这个 <code>app:popUpTo</code> 弹出操作包含了这个属性声明的ID 对象.</p>
+<p><strong>popUpTo 示例:循环逻辑</strong></p>
+<p>我们假设你的app拥有3个目的地—A,B,C.还有从 A 到 B ,B 到 C ,以及 C 回到A 的action.对应的导航图如下:</p>
+<p><img src="https://developer.android.google.cn/images/topic/libraries/architecture/navigation-getting-started-pop.png" alt="img"></p>
+<p>当你每一次调用导航action的时候,都会往回退栈中添加一个目的地.如果你按照这个流程重复导航的花,你的回退栈中将会包含很多这个重复的集合目的地(A,B,C,A,B,C,A….) . 要避免这种重复的话,可以在从C 到A 的action中指定 <code>app:popUpTo</code> 还有 <code>app:popUpToInclusive</code> 属性,如下:</p>
+<figure class="highlight xml hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-tag">&lt;<span class="hljs-name">fragment</span></span></div><div class="line"><span class="hljs-tag">    <span class="hljs-attr">android:id</span>=<span class="hljs-string">"@+id/c"</span></span></div><div class="line"><span class="hljs-tag">    <span class="hljs-attr">android:name</span>=<span class="hljs-string">"com.example.myapplication.C"</span></span></div><div class="line"><span class="hljs-tag">    <span class="hljs-attr">android:label</span>=<span class="hljs-string">"fragment_c"</span></span></div><div class="line"><span class="hljs-tag">    <span class="hljs-attr">tools:layout</span>=<span class="hljs-string">"@layout/fragment_c"</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">action</span></span></div><div class="line"><span class="hljs-tag">        <span class="hljs-attr">android:id</span>=<span class="hljs-string">"@+id/action_c_to_a"</span></span></div><div class="line"><span class="hljs-tag">        <span class="hljs-attr">app:destination</span>=<span class="hljs-string">"@id/a"</span></span></div><div class="line"><span class="hljs-tag">        <span class="hljs-attr">app:popUpTo</span>=<span class="hljs-string">"@+id/a"</span></span></div><div class="line"><span class="hljs-tag">        <span class="hljs-attr">app:popUpToInclusive</span>=<span class="hljs-string">"true"</span>/&gt;</span></div><div class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">fragment</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>在到达了目的地 C 之后,回退栈中包含了目的地 A,B,C 的实例.当导航回目的地 A 的时候,我们同时 <code>popUpTo</code> A ,这意味着我们在导航的时候从回退栈中删除了 B,C. 伴随着 <code>app:popUpToInclusive=&quot;true&quot;</code> 我们同时弹出了回退栈中的第一个 A.要注意如果你没有使用 <code>app:popUpToInclusive=&quot;true&quot;</code> 这个属性的话,你的回退栈中将会包含两个A 的实例.</p>
+<p>More information</p>
+<ul>
+<li><a href="https://developer.android.google.cn/guide/navigation" target="_blank" rel="external">Navigation overview</a></li>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-ui" target="_blank" rel="external">Update UI components with NavigationUI</a></li>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-pass-data" target="_blank" rel="external">Pass data between destinations</a></li>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-global-action" target="_blank" rel="external">Global actions</a></li>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-conditional" target="_blank" rel="external">Conditional destinations</a></li>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-add-new" target="_blank" rel="external">Custom destination types</a></li>
+<li><a href="https://www.youtube.com/watch?v=8GCXtCjtg40" target="_blank" rel="external">Android Jetpack: manage UI navigation with Navigation Controller (Google I/O 2018)</a></li>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-migrate" target="_blank" rel="external">Migrate an existing project to the Navigation Architecture Component</a></li>
+<li><a href="https://codelabs.developers.google.com/codelabs/android-navigation/index.html?index=..%2F..%2Findex#0" target="_blank" rel="external">Navigation Codelab</a></li>
+</ul>
+<p>If you encounter any issues with Navigation, please submit feedback via one of the following channels:</p>
+<ul>
+<li><a href="https://issuetracker.google.com/issues/new?component=404706" target="_blank" rel="external">File a Navigation editor bug</a></li>
+<li><a href="https://issuetracker.google.com/issues/new?component=409828" target="_blank" rel="external">File a Navigation library bug</a></li>
+<li><a href="https://stackoverflow.com/tags/android-navigation-component" target="_blank" rel="external">Tag an issue on StackOverflow</a></li>
+</ul>
+<p>For information on how to provide the most helpful information in bug reports, see the following links:</p>
+<ul>
+<li><a href="https://source.android.google.cn/setup/contribute/report-bugs" target="_blank" rel="external">Reporting Bugs (Android platform)</a></li>
+<li><a href="https://developer.android.google.cn/studio/report-bugs" target="_blank" rel="external">Report a bug (Android Studio)</a></li>
+</ul>
+<p># </p>
+<h1><span id="refernce">Refernce</span></h1><p><a href="https://developer.android.google.cn/guide/navigation/navigation-getting-started" target="_blank" rel="external">https://developer.android.google.cn/guide/navigation/navigation-getting-started</a></p>
+<h2><span id="about-me">About Me</span></h2><p>我的博客 <a href="http://leonchen1024.com/" target="_blank" rel="external">leonchen1024.com</a></p>
+<p>我的 GitHub <a href="https://github.com/LeonChen1024" target="_blank" rel="external">https://github.com/LeonChen1024</a></p>
+<p>微信公众号 </p>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/Images/CooderQRcodem.jpg?raw=false" alt="wechat"></p>
+ -->
+            <div class="article-entry">
+                    
+                    
+                        
+                            
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                            
+                                
+                                <p><h1><span id="开始使用-navigation">开始使用 Navigation</span></h1><p>[TOC]</p>
+<p>由于官网暂时没有中文版本,所以在这里根据内容抽空做了一些中文的版本.</p>
+<h1><span id="开始使用">开始使用</span></h1><h2><span id="依赖引入">依赖引入</span></h2><figure class="highlight groovy hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">dependencies &#123;</div><div class="line">    <span class="hljs-keyword">def</span> nav_version = <span class="hljs-string">"2.1.0-alpha05"</span></div><div class="line"></div><div class="line">    implementation <span class="hljs-string">"androidx.navigation:navigation-fragment:$nav_version"</span> <span class="hljs-comment">// For Kotlin use navigation-fragment-ktx</span></div><div class="line">    implementation <span class="hljs-string">"androidx.navigation:navigation-ui:$nav_version"</span> <span class="hljs-comment">// For Kotlin use navigation-ui-ktx</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>最新版本清关注官方版本 <a href="https://developer.android.google.cn/jetpack/androidx/releases/navigation#declaring_dependencies" target="_blank" rel="external">https://developer.android.google.cn/jetpack/androidx/releases/navigation#declaring_dependencies</a></p>
+<h2><span id="创建一个导航图">创建一个导航图</span></h2><p>Navigation 发生在 app 内目的地之间的跳转.这些目的地通过action 进行连接.</p>
+<p>
+                            
+                        
+                    
+                    
+                        </div>   
+                        <div class="article-more-link">
+                            <a href="/2019/07/04/Navigation-Getting-Started/#more">Read More</a>
+                        </div>
+                    
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-image">
         <a href="/2019/06/17/S1ep2-Using-Lint-for-Performance-Tips/" class="image is-7by1">
             <img class="banner" src="/2019/06/17/S1ep2-Using-Lint-for-Performance-Tips/title.jpg" alt="使用 Lint 来获取性能贴士">
         </a>
@@ -1110,231 +1519,25 @@
 
 
 
-    <div class="card">
+
     
-    <div class="card-image">
-        <a href="/2016/08/20/Android-6.0-Change-1/" class="image is-7by1">
-            <img class="banner" src="/2016/08/20/Android-6.0-Change-1/pic.jpg" alt="Android 6.0的变化 （上）">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2016-08-20T12:21:44.000Z">2016-08-20</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Android/版本差异/">版本差异</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    12 minutes read (About 1824 words)
-                </span>
-                
-                
-            </div>
+<div class="card card-transparent">
+    <nav class="pagination is-centered" role="navigation" aria-label="pagination">
+        <div class="pagination-previous is-invisible is-hidden-mobile">
+            <a class="is-flex-grow has-text-black-ter" href="/tags/Android/page/0/">Previous</a>
         </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2016/08/20/Android-6.0-Change-1/">Android 6.0的变化 （上）</a>
-            
-        </h1>
-        <div class="content">
-            <!-- <p>随着一系列新的特性以及功能， Android 6.0 (API level 23)包含了很多的系统变化以及API行为的变化。本文着重介绍了一些你应该理解的和占用APP中重要部分的变化。</p>
-<p>如果你之前已经在Android平台发布过APP，要知道这些平台上的变化将会影响你的APP。</p>
-<h2><span id="目录">目录</span></h2><ul>
-<li><a href="#目录">目录</a></li>
-<li><a href="#运行时权限">运行时权限</a></li>
-<li><a href="#休眠和应用待机模式">休眠和应用待机模式</a></li>
-<li><a href="#移除apache的-http-client">移除Apache的 HTTP Client</a></li>
-<li><a href="#boringssl">BoringSSL</a></li>
-<li><a href="#获取硬件标识符">获取硬件标识符</a></li>
-<li><a href="#通知">通知</a></li>
-<li><a href="#audiomanager-改变">AudioManager 改变</a></li>
-<li><a href="#文本选择">文本选择</a></li>
-</ul>
-<h2><span id="运行时权限">运行时权限</span></h2><p>这个版本引入了一个新的权限模型，使得用户现在可以在运行时直接管理APP权限。这个模型改善了用户对权限管理的可见度和管理程度，并简化了APP开发者对安装和自动升级的流程。用户可以对已安装的APP的权限分别进行授权和取消。</p>
-<p>当你的APP的目标版本在Android 6.0 (API level 23)或者更高的时候， 请确保在运行时检查并申请权限。要确定你的APP是否被授予了某权限，可以通过调用新的checkSelfPermission()方法。为了去申请一个权限，可以通过调用 requestPermissions() 新方法。即使你的APP目标版本不是 Android 6.0 (API level 23)，你也应该在新的权限模型下进行测试。</p>
-<p>想要了解更多的在你的APP里支持新的权限模型的细节，可见 Working with System Permissions。获得更多的评估对你的APP的影响的提示，可见Permissions Best Practices。</p>
-<p>危险权限和普通权限见下链接<br><a href="http://blog.csdn.net/chenlinfeng772885775/article/details/53508204" target="_blank" rel="external">点击打开链接</a></p>
-<h2><span id="休眠和应用待机模式">休眠和应用待机模式</span></h2><p>这个版本将为空闲的设备和APP引入新的节能方式。这些新功能将会影响所有的APP，所以请确保你的APP在新的模式下进行测试。</p>
-<p>休眠：如果用户拔出一个设备并将其屏幕关闭闲置一段时间，设备将会进入休眠模式，尝试使系统进入睡眠状态。在这个模式下，设备周期性的恢复短暂时间的正常操作使得APP可以进行同步，使得系统可以进行一些待执行的操作。</p>
-<p>APP待机：APP待机允许系统判定一个APP是处于待机状态当这个APP没有被用户显式的使用。系统在用户一段时间内并没有触摸这个APP时做出这个决定。如果设备没有连接充电器，系统将会禁止访问网络并暂停APP的同步以及相应的工作当他被认为是闲置的时候。</p>
-<p>学习更多的有关节能方面的改变，详见Optimizing for Doze and App Standby。</p>
-<h2><span id="移除apache的-http-client">移除Apache的 HTTP Client</span></h2><p>Android 6.0 的版本移除了对 Apache HTTP client的支持.如果你的APP正在使用这个client并且目标版本在Android 2.3 (API level 9)或者更高，请使用HttpURLConnection类来替代。这个API是更加高效的，因为他采用了透明压缩和响应缓存来减少网络使用，减少电能消耗。如果仍然想继续使用Apache HTTP APIs，你必须一开始就在你的build.gradle文件里定义以下编译时依赖。</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">android &#123;</div><div class="line">    useLibrary &apos;org.apache.http.legacy&apos;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2><span id="boringssl">BoringSSL</span></h2><p>Android正在将OpenSSL替换为BoringSSL库。如果你的APP使用的是 Android NDK，请不要使用那些不属于NDK API里的库，比如：libcrypto.so 和 libssl.so.这些库不是公开的API,他们的修改和禁用也不会通过文件和设备通知开发者。另外，这样可能还会暴露你APP的安全漏洞。取而代之的是你需要修改你的native代码，通过JNI来调用Java cryptography APIs或者静态连接到你选择的加密库。</p>
-<h2><span id="获取硬件标识符">获取硬件标识符</span></h2><p>从这个版本开始，为了给用户提供更好点数据保护，Android删除了通过编程方式从Wi-Fi 和 Bluetooth APIs来获得硬件本地标识符的方法。现在 WifiInfo.getMacAddress() 和 BluetoothAdapter.getAddress()方法将始终返回一个常量值02:00:00:00:00:00。</p>
-<p>为了通过蓝牙或WiFi扫描获取附近的设备的硬件标识符，你的APP必须拥有ACCESS_FINE_LOCATION 或 ACCESS_COARSE_LOCATION权限。</p>
-<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">WifiManager.getScanResults()</div><div class="line">BluetoothDevice.ACTION_FOUND</div><div class="line">BluetoothLeScanner.startScan()</div></pre></td></tr></table></figure>
-<p>注意：当一个运行Android 6.0 (API level 23)的设备启动WiFi或者蓝牙扫描时，这个操作对外部设备是可见的，并会被初始化一个随机的mac地址。</p>
-<h2><span id="通知">通知</span></h2><p>这个版本删除了 Notification.setLatestEventInfo()方法。使用Notification.Builder来取代它进行构造通知。为了反复更新一个通知，可以重用 Notification.Builder 实例，调用 build() 方法来更新通知实例。</p>
-<p>adb shell dumpsys notification命令不在打印你的通知文本。使用adb shell dumpsys notification –noredact命令来取代它打印你的通知对象文本。</p>
-<h2><span id="audiomanager-改变">AudioManager 改变</span></h2><p>不再支持通过 AudioManager类来对某个音频流进行精确的调音或者静音设置。 setStreamSolo()方法已经被弃用了，你应该使用  requestAudioFocus() 方法来替代它。同样的setStreamMute()方法也被弃用了，调用 adjustStreamVolume() 方法来替代它，传入的参数变为ADJUST_MUTE 或 ADJUST_UNMUTE 。</p>
-<h2><span id="文本选择">文本选择</span></h2><p>当用户在你的APP上选择文本时，你现在可以在浮动工具栏里显示一些文本选择动作比如剪切，复制，和粘贴。和用户的交互界面类似于上下文动作菜单，就像为单独的视图配置的上下文菜单。</p>
-<p>为了实现文本选择的浮动工具栏，需要在你已有的APP里做出以下改变：</p>
-<p>1.在你的view里或者activity里，改变你的 ActionMode 的获取方法，由startActionMode(Callback)变为 startActionMode(Callback, ActionMode.TYPE_FLOATING).</p>
-<p>2.将你已经实现了ActionMode.Callback变为继承自ActionMode.Callback2。</p>
-<p>3.重写 onGetContentRect()方法来提供视图中内容选中框（比如文本选中框）的坐标。</p>
-<p>4.在矩形框作为一个唯一的元素不再有效时，调用 invalidateContentRect() 方法。</p>
-<p>如果你在使用 Android Support Library revision 22.2, 你要知道浮动工具栏并不向后支持并且APP兼容会默认控制 ActionMode。这会阻止悬浮工具栏的显示。为了实现在 AppCompatActivity 里对 ActionMode的支持，调用 getDelegate()方法，并用其得到的 AppCompatDelegate 对象调用setHandleNativeActionModesEnabled()并将传入参数设为false。这个调用返回 ActionMode的控制给框架。在设备运行Android 6.0 (API level 23),这允许框架去支持 ActionBar 或者浮动工具栏模式，而当设备运行早Android 5.1 (API level 22)或更低的版本上时，只有 ActionBar 模式被支持。</p>
- -->
-            <div class="article-entry">
-                    
-                    
-                        
-                            
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                            
-                                
-                                <p><p>随着一系列新的特性以及功能， Android 6.0 (API level 23)包含了很多的系统变化以及API行为的变化。本文着重介绍了一些你应该理解的和占用APP中重要部分的变化。</p>
-<p>如果你之前已经在Android平台发布过APP，要知道这些平台上的变化将会影响你的APP。</p>
-<h2><span id="目录">目录</span></h2><ul>
-<li><a href="#目录">目录</a></li>
-<li><a href="#运行时权限">运行时权限</a></li>
-<p>
-                            
-                        
-                    
-                    
-                        </div>   
-                        <div class="article-more-link">
-                            <a href="/2016/08/20/Android-6.0-Change-1/#more">Read More</a>
-                        </div>
-                    
+        <div class="pagination-next">
+            <a class="is-flex-grow has-text-black-ter" href="/tags/Android/page/2/">Next</a>
         </div>
-        
-        
-        
-    </div>
+        <ul class="pagination-list is-hidden-mobile">
+            
+            <li><a class="pagination-link is-current" href="/tags/Android/">1</a></li>
+            
+            <li><a class="pagination-link has-text-black-ter" href="/tags/Android/page/2/">2</a></li>
+            
+        </ul>
+    </nav>
 </div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-image">
-        <a href="/2016/03/17/Android-declare-styleable-Attribute/" class="image is-7by1">
-            <img class="banner" src="/2016/03/17/Android-declare-styleable-Attribute/pic.jpg" alt="Android declare-styleable自定义属性">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2016-03-17T07:24:26.000Z">2016-03-17</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Android/UI/">UI</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Android/UI/Custom-View/">Custom View</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    3 minutes read (About 479 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2016/03/17/Android-declare-styleable-Attribute/">Android declare-styleable自定义属性</a>
-            
-        </h1>
-        <div class="content">
-            <!-- <p>我们自己定义view，通常继承View，重写构造方法和onDraw等函数，然后具体实现自己定义的复杂view。但是继承这个自定义view的有的属性又各有不同，有的属性在原生属性中没有，这时候就可以使用自定义的属性来便捷的设置相应的属性。</p>
-<p>1、在res/values/下新建一个attrs.xml文件。写入<resources><declare-styleable><attr>这三级标签。并填入相应属性。</attr></declare-styleable></resources></p>
-<figure class="highlight xml hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</div><div class="line"><span class="hljs-tag">&lt;<span class="hljs-name">resources</span>&gt;</span></div><div class="line"></div><div class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">declare-styleable</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"myStyle"</span>&gt;</span></div><div class="line">      <span class="hljs-tag">&lt;<span class="hljs-name">attr</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"textSize"</span> <span class="hljs-attr">format</span>=<span class="hljs-string">"dimension"</span> /&gt;</span></div><div class="line">      <span class="hljs-tag">&lt;<span class="hljs-name">attr</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"backgroud"</span> <span class="hljs-attr">format</span>=<span class="hljs-string">"reference"</span> /&gt;</span></div><div class="line">      <span class="hljs-tag">&lt;<span class="hljs-name">attr</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">format</span>=<span class="hljs-string">"string|reference"</span> /&gt;</span></div><div class="line">      <span class="hljs-tag">&lt;<span class="hljs-name">attr</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"textColor"</span> <span class="hljs-attr">format</span>=<span class="hljs-string">"color"</span> /&gt;</span></div><div class="line">      <span class="hljs-tag">&lt;<span class="hljs-name">attr</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"yesOrNot"</span> <span class="hljs-attr">format</span>=<span class="hljs-string">"boolean"</span> /&gt;</span></div><div class="line">      <span class="hljs-tag">&lt;<span class="hljs-name">attr</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"number"</span>&gt;</span></div><div class="line">          <span class="hljs-tag">&lt;<span class="hljs-name">enum</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"one"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"0"</span> /&gt;</span></div><div class="line">          <span class="hljs-tag">&lt;<span class="hljs-name">enum</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"two"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"1"</span> /&gt;</span></div><div class="line">          <span class="hljs-tag">&lt;<span class="hljs-name">enum</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"leftToRight"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"2"</span> /&gt;</span></div><div class="line">          <span class="hljs-tag">&lt;<span class="hljs-name">enum</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"topToBottom"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"3"</span> /&gt;</span></div><div class="line">      <span class="hljs-tag">&lt;/<span class="hljs-name">attr</span>&gt;</span></div><div class="line">  <span class="hljs-tag">&lt;/<span class="hljs-name">declare-styleable</span>&gt;</span></div><div class="line"></div><div class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">resources</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>2、建立一个自定义视图类，本次偷懒直接继承自textview。然后使用typedarray类来获取控件相应的属性并使用。</p>
-<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-keyword">import</span> android.content.Context;</div><div class="line"><span class="hljs-keyword">import</span> android.content.res.TypedArray;</div><div class="line"><span class="hljs-keyword">import</span> android.graphics.Color;</div><div class="line"><span class="hljs-keyword">import</span> android.graphics.drawable.Drawable;</div><div class="line"><span class="hljs-keyword">import</span> android.util.AttributeSet;</div><div class="line"><span class="hljs-keyword">import</span> android.widget.TextView;</div><div class="line"></div><div class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyView</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">TextView</span></span></div><div class="line"><span class="hljs-class"></span>&#123;</div><div class="line"></div><div class="line"></div><div class="line">  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">MyView</span><span class="hljs-params">(Context context, AttributeSet attrs)</span></span></div><div class="line"><span class="hljs-function">  </span>&#123;</div><div class="line">      <span class="hljs-keyword">super</span>(context, attrs);</div><div class="line">      TypedArray typedArray = context.obtainStyledAttributes(attrs,R.styleable.myStyle);</div><div class="line"></div><div class="line">      <span class="hljs-keyword">float</span> textSize = typedArray.getDimension(R.styleable.myStyle_textSize, <span class="hljs-number">15</span>);</div><div class="line">      Drawable back = typedArray.getDrawable(R.styleable.myStyle_backgroud);</div><div class="line">      String textString = typedArray.getString(R.styleable.myStyle_text);</div><div class="line">      <span class="hljs-keyword">int</span> textColor = typedArray.getInt(R.styleable.myStyle_textColor, Color.BLACK);</div><div class="line">      <span class="hljs-keyword">boolean</span> yesOrNot = typedArray.getBoolean(R.styleable.myStyle_yesOrNot, <span class="hljs-keyword">true</span>);</div><div class="line">      <span class="hljs-keyword">int</span> number = typedArray.getInt(R.styleable.myStyle_number, <span class="hljs-number">0</span>);</div><div class="line"></div><div class="line">      setTextSize(textSize);</div><div class="line">      setText(textString);</div><div class="line">      setBackgroundDrawable(back);</div><div class="line">      setTextColor(textColor);</div><div class="line"></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>3、在布局文件里引用该类，并设定相应的属性。记得要定义xmlns:myapp（后面的名称随意取，但要上下一致。）= “<a href="http://schemas.android.com/apk/res/com.example.declarestyleabletest&quot;（最后是该自定义视图类所在的包名）" target="_blank" rel="external">http://schemas.android.com/apk/res/com.example.declarestyleabletest&quot;（最后是该自定义视图类所在的包名）</a></p>
-<figure class="highlight xml hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-tag">&lt;<span class="hljs-name">LinearLayout</span> <span class="hljs-attr">xmlns:android</span>=<span class="hljs-string">"http://schemas.android.com/apk/res/android"</span></span></div><div class="line"><span class="hljs-tag">  <span class="hljs-attr">xmlns:tools</span>=<span class="hljs-string">"http://schemas.android.com/tools"</span></span></div><div class="line"><span class="hljs-tag">  <span class="hljs-attr">xmlns:myapp</span>=<span class="hljs-string">"http://schemas.android.com/apk/res/com.example.declarestyleabletest"</span></span></div><div class="line"><span class="hljs-tag">  <span class="hljs-attr">android:id</span>=<span class="hljs-string">"@+id/container"</span></span></div><div class="line"><span class="hljs-tag">  <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">"match_parent"</span></span></div><div class="line"><span class="hljs-tag">  <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">"match_parent"</span></span></div><div class="line"><span class="hljs-tag">  <span class="hljs-attr">android:orientation</span>=<span class="hljs-string">"vertical"</span></span></div><div class="line"><span class="hljs-tag">  <span class="hljs-attr">tools:context</span>=<span class="hljs-string">"com.example.declarestyleabletest.MainActivity"</span></span></div><div class="line"><span class="hljs-tag">  <span class="hljs-attr">tools:ignore</span>=<span class="hljs-string">"MergeRootFrame"</span> &gt;</span></div><div class="line"></div><div class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">com.example.declarestyleabletest.MyView</span></span></div><div class="line"><span class="hljs-tag">      <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">"wrap_content"</span></span></div><div class="line"><span class="hljs-tag">      <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">"wrap_content"</span></span></div><div class="line"><span class="hljs-tag">      <span class="hljs-attr">myapp:backgroud</span>=<span class="hljs-string">"@drawable/ic_launcher"</span></span></div><div class="line"><span class="hljs-tag">      <span class="hljs-attr">myapp:number</span>=<span class="hljs-string">"one"</span></span></div><div class="line"><span class="hljs-tag">      <span class="hljs-attr">myapp:text</span>=<span class="hljs-string">"sdfkks"</span></span></div><div class="line"><span class="hljs-tag">      <span class="hljs-attr">myapp:textColor</span>=<span class="hljs-string">"@color/black"</span></span></div><div class="line"><span class="hljs-tag">      <span class="hljs-attr">myapp:textSize</span>=<span class="hljs-string">"15sp"</span> /&gt;</span></div><div class="line"></div><div class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">LinearLayout</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>补充一些常用的format</p>
-<p>reference  指定某资源ID<br>string   字符串<br>dimension   尺寸<br>color   颜色<br>boolean   布尔<br>integer   整型<br>float   浮点型<br>fraction   百分数<br>enum   枚举<br>flag  位运算</p>
-<p>xml 中定义好自己的属性值，在在代码中得到值，或使用默认值</p>
-<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">CText</span><span class="hljs-params">(Context context, AttributeSet set)</span> </span>&#123;</div><div class="line">      <span class="hljs-keyword">super</span>(context, set);</div><div class="line">      <span class="hljs-keyword">this</span>.context  = context;</div><div class="line">      initView();</div><div class="line">      TypedArray array = context.obtainStyledAttributes(set,R.styleable.CEditText);</div><div class="line">      initAttrs(array);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">initAttrs</span><span class="hljs-params">(TypedArray a)</span> </span>&#123;</div><div class="line">      hint = a.getString(R.styleable.CEditText_cHint);</div><div class="line">      text = a.getString(R.styleable.CEditText_cText);</div><div class="line">      setAttrs();</div><div class="line">      a.recycle();</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
- -->
-            <div class="article-entry">
-                    
-                    
-                        
-                            
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                            
-                                
-                                <p><p>我们自己定义view，通常继承View，重写构造方法和onDraw等函数，然后具体实现自己定义的复杂view。但是继承这个自定义view的有的属性又各有不同，有的属性在原生属性中没有，这时候就可以使用自定义的属性来便捷的设置相应的属性。</p>
-<p>1、在res/values/下新建一个attrs.xml文件。写入<resources><declare-styleable><attr>这三级标签。并填入相应属性。</attr></declare-styleable></resources></p>
-<figure class="highlight xml hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</div><div class="line"><span class="hljs-tag">&lt;<span class="hljs-name">resources</span>&gt;</span></div><div class="line"></div><div class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">declare-styleable</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"myStyle"</span>&gt;</span></div><div class="line">      <span class="hljs-tag">&lt;<span class="hljs-name">attr</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"textSize"</span> <span class="hljs-attr">format</span>=<span class="hljs-string">"dimension"</span> /&gt;</span></div><div class="line">      <span class="hljs-tag">&lt;<span class="hljs-name">attr</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"backgroud"</span> <span class="hljs-attr">format</span>=<span class="hljs-string">"reference"</span> /&gt;</span></div><div class="line">      <span class="hljs-tag">&lt;<span class="hljs-name">attr</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">format</span>=<span class="hljs-string">"string|reference"</span> /&gt;</span></div><div class="line">      <span class="hljs-tag">&lt;<span class="hljs-name">attr</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"textColor"</span> <span class="hljs-attr">format</span>=<span class="hljs-string">"color"</span> /&gt;</span></div><div class="line">      <span class="hljs-tag">&lt;<span class="hljs-name">attr</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"yesOrNot"</span> <span class="hljs-attr">format</span>=<span class="hljs-string">"boolean"</span> /&gt;</span></div><div class="line">      <span class="hljs-tag">&lt;<span class="hljs-name">attr</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"number"</span>&gt;</span></div><div class="line">          <span class="hljs-tag">&lt;<span class="hljs-name">enum</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"one"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"0"</span> /&gt;</span></div><div class="line">          <span class="hljs-tag">&lt;<span class="hljs-name">enum</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"two"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"1"</span> /&gt;</span></div><div class="line">          <span class="hljs-tag">&lt;<span class="hljs-name">enum</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"leftToRight"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"2"</span> /&gt;</span></div><div class="line">          <span class="hljs-tag">&lt;<span class="hljs-name">enum</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"topToBottom"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"3"</span> /&gt;</span></div><div class="line">      <span class="hljs-tag">&lt;/<span class="hljs-name">attr</span>&gt;</span></div><div class="line">  <span class="hljs-tag">&lt;/<span class="hljs-name">declare-styleable</span>&gt;</span></div><div class="line"></div><div class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">resources</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>2、建立一个自定义视图类，本次偷懒直接继承自textview。然后使用typedarray类来获取控件相应的属性并使用。</p>
-<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-keyword">import</span> android.content.Context;</div><div class="line"><span class="hljs-keyword">import</span> android.content.res.TypedArray;</div><div class="line"><span class="hljs-keyword">import</span> android.graphics.Color;</div><div class="line"><span class="hljs-keyword">import</span> android.graphics.drawable.Drawable;</div><div class="line"><span class="hljs-keyword">import</span> android.util.AttributeSet;</div><div class="line"><span class="hljs-keyword">import</span> android.widget.TextView;</div><div class="line"></div><div class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyView</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">TextView</span></span></div><div class="line"><span class="hljs-class"></span>&#123;</div><div class="line"></div><div class="line"></div><div class="line">  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">MyView</span><span class="hljs-params">(Context context, AttributeSet attrs)</span></span></div><div class="line"><span class="hljs-function">  </span>&#123;</div><div class="line">      <span class="hljs-keyword">super</span>(context, attrs);</div><div class="line">      TypedArray typedArray = context.obtainStyledAttributes(attrs,R.styleable.myStyle);</div><div class="line"></div><div class="line">      <span class="hljs-keyword">float</span> textSize = typedArray.getDimension(R.styleable.myStyle_textSize, <span class="hljs-number">15</span>);</div><div class="line">      Drawable back = typedArray.getDrawable(R.styleable.myStyle_backgroud);</div><div class="line">      String textString = typedArray.getString(R.styleable.myStyle_text);</div><div class="line">      <span class="hljs-keyword">int</span> textColor = typedArray.getInt(R.styleable.myStyle_textColor, Color.BLACK);</div><div class="line">      <span class="hljs-keyword">boolean</span> yesOrNot = typedArray.getBoolean(R.styleable.myStyle_yesOrNot, <span class="hljs-keyword">true</span>);</div><div class="line">      <span class="hljs-keyword">int</span> number = typedArray.getInt(R.styleable.myStyle_number, <span class="hljs-number">0</span>);</div><div class="line"></div><div class="line">      setTextSize(textSize);</div><div class="line">      setText(textString);</div><div class="line">      setBackgroundDrawable(back);</div><div class="line">      setTextColor(textColor);</div><div class="line"></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>
-                            
-                        
-                    
-                    
-                        </div>   
-                        <div class="article-more-link">
-                            <a href="/2016/03/17/Android-declare-styleable-Attribute/#more">Read More</a>
-                        </div>
-                    
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 </div>
                 
 
@@ -1375,17 +1578,17 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Articles
+                        Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        31
+                        33
                     </p>
                 </div>
             </div>
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Catégories
+                        Categories
                     </p>
                     <p class="title has-text-weight-normal">
                         20
@@ -1398,14 +1601,14 @@
                         Tags
                     </p>
                     <p class="title has-text-weight-normal">
-                        16
+                        17
                     </p>
                 </div>
             </div>
         </nav>
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://github.com/LeonChen1024">
-                SUIVRE</a>
+                Follow</a>
         </div>
         
         
@@ -1434,7 +1637,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Catégories
+                Categories
             </h3>
             <ul class="menu-list">
             <li>
@@ -1443,7 +1646,7 @@
                 <span class="level-item">Chinese</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">23</span>
+                <span class="level-item tag">25</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="undefined">
@@ -1459,7 +1662,7 @@
                 <span class="level-item">Android</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">8</span>
+                <span class="level-item tag">10</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="undefined">
@@ -1511,9 +1714,9 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Nuage de tags
+            Tag Cloud
         </h3>
-        <a href="/tags/Algorithm/" style="font-size: 18.57px;">Algorithm</a> <a href="/tags/Android/" style="font-size: 15.71px;">Android</a> <a href="/tags/Chinese/" style="font-size: 20px;">Chinese</a> <a href="/tags/Custom-View/" style="font-size: 10px;">Custom View</a> <a href="/tags/Data-Structure/" style="font-size: 10px;">Data Structure</a> <a href="/tags/DataStructure/" style="font-size: 10px;">DataStructure</a> <a href="/tags/English/" style="font-size: 14.29px;">English</a> <a href="/tags/Error/" style="font-size: 10px;">Error</a> <a href="/tags/Gradle/" style="font-size: 10px;">Gradle</a> <a href="/tags/Java/" style="font-size: 12.86px;">Java</a> <a href="/tags/LeetCode/" style="font-size: 17.14px;">LeetCode</a> <a href="/tags/Optimize/" style="font-size: 11.43px;">Optimize</a> <a href="/tags/SourceCode/" style="font-size: 10px;">SourceCode</a> <a href="/tags/UI/" style="font-size: 10px;">UI</a> <a href="/tags/版本差异/" style="font-size: 11.43px;">版本差异</a> <a href="/tags/版本管理/" style="font-size: 11.43px;">版本管理</a>
+        <a href="/tags/Algorithm/" style="font-size: 18.57px;">Algorithm</a> <a href="/tags/Android/" style="font-size: 15.71px;">Android</a> <a href="/tags/Chinese/" style="font-size: 20px;">Chinese</a> <a href="/tags/Custom-View/" style="font-size: 10px;">Custom View</a> <a href="/tags/Data-Structure/" style="font-size: 10px;">Data Structure</a> <a href="/tags/DataStructure/" style="font-size: 10px;">DataStructure</a> <a href="/tags/English/" style="font-size: 14.29px;">English</a> <a href="/tags/Error/" style="font-size: 10px;">Error</a> <a href="/tags/Gradle/" style="font-size: 10px;">Gradle</a> <a href="/tags/Java/" style="font-size: 12.86px;">Java</a> <a href="/tags/Jetpack/" style="font-size: 11.43px;">Jetpack</a> <a href="/tags/LeetCode/" style="font-size: 17.14px;">LeetCode</a> <a href="/tags/Optimize/" style="font-size: 11.43px;">Optimize</a> <a href="/tags/SourceCode/" style="font-size: 10px;">SourceCode</a> <a href="/tags/UI/" style="font-size: 10px;">UI</a> <a href="/tags/版本差异/" style="font-size: 11.43px;">版本差异</a> <a href="/tags/版本管理/" style="font-size: 11.43px;">版本管理</a>
     </div>
 </div>
 
@@ -1525,8 +1728,46 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Récents
+            Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/07/04/Navigation/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/2019/07/04/Navigation/titleThumb.jpg" alt="Navigation 指南">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-03T16:00:00.000Z">2019-07-04</time></div>
+                    <a href="/2019/07/04/Navigation/" class="has-link-black-ter is-size-6">Navigation 指南</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/07/04/Navigation-Getting-Started/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/2019/07/04/Navigation-Getting-Started/titleThumb.jpg" alt="开始使用 Navigation">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-03T16:00:00.000Z">2019-07-04</time></div>
+                    <a href="/2019/07/04/Navigation-Getting-Started/" class="has-link-black-ter is-size-6">开始使用 Navigation</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -1585,44 +1826,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/04/20/Java-Debugging-Problems-and-How-to-Solve-Them/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/2019/04/20/Java-Debugging-Problems-and-How-to-Solve-Them/titleThumb.jpg" alt="Java 调试中你可能会遇到的问题以及如何解决他们">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-19T16:00:00.000Z">2019-04-20</time></div>
-                    <a href="/2019/04/20/Java-Debugging-Problems-and-How-to-Solve-Them/" class="has-link-black-ter is-size-6">Java 调试中你可能会遇到的问题以及如何解决他们</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Java/">Java</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/04/09/Key-Value-pair-in-hashtable/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/2019/04/09/Key-Value-pair-in-hashtable/titleThumb.jpg" alt="实现键值对存储 第五部分 Hash table 实现">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-08T16:00:00.000Z">2019-04-09</time></div>
-                    <a href="/2019/04/09/Key-Value-pair-in-hashtable/" class="has-link-black-ter is-size-6">实现键值对存储 第五部分 Hash table 实现</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/DataStructure/">DataStructure</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1634,6 +1837,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/06/">
@@ -1801,14 +2015,14 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Android/">
                         <span class="tag">Android</span>
-                        <span class="tag is-grey">10</span>
+                        <span class="tag is-grey">12</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Chinese/">
                         <span class="tag">Chinese</span>
-                        <span class="tag is-grey">23</span>
+                        <span class="tag is-grey">25</span>
                     </a>
                 </div>
                 
@@ -1858,6 +2072,13 @@
                     <a class="tags has-addons" href="/tags/Java/">
                         <span class="tag">Java</span>
                         <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Jetpack/">
+                        <span class="tag">Jetpack</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -1923,8 +2144,46 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Récents
+            Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/07/04/Navigation/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/2019/07/04/Navigation/titleThumb.jpg" alt="Navigation 指南">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-03T16:00:00.000Z">2019-07-04</time></div>
+                    <a href="/2019/07/04/Navigation/" class="has-link-black-ter is-size-6">Navigation 指南</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/07/04/Navigation-Getting-Started/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/2019/07/04/Navigation-Getting-Started/titleThumb.jpg" alt="开始使用 Navigation">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-03T16:00:00.000Z">2019-07-04</time></div>
+                    <a href="/2019/07/04/Navigation-Getting-Started/" class="has-link-black-ter is-size-6">开始使用 Navigation</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -1983,44 +2242,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/04/20/Java-Debugging-Problems-and-How-to-Solve-Them/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/2019/04/20/Java-Debugging-Problems-and-How-to-Solve-Them/titleThumb.jpg" alt="Java 调试中你可能会遇到的问题以及如何解决他们">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-19T16:00:00.000Z">2019-04-20</time></div>
-                    <a href="/2019/04/20/Java-Debugging-Problems-and-How-to-Solve-Them/" class="has-link-black-ter is-size-6">Java 调试中你可能会遇到的问题以及如何解决他们</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Java/">Java</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/04/09/Key-Value-pair-in-hashtable/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/2019/04/09/Key-Value-pair-in-hashtable/titleThumb.jpg" alt="实现键值对存储 第五部分 Hash table 实现">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-08T16:00:00.000Z">2019-04-09</time></div>
-                    <a href="/2019/04/09/Key-Value-pair-in-hashtable/" class="has-link-black-ter is-size-6">实现键值对存储 第五部分 Hash table 实现</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/DataStructure/">DataStructure</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -2032,6 +2253,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/06/">
@@ -2199,14 +2431,14 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Android/">
                         <span class="tag">Android</span>
-                        <span class="tag is-grey">10</span>
+                        <span class="tag is-grey">12</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Chinese/">
                         <span class="tag">Chinese</span>
-                        <span class="tag is-grey">23</span>
+                        <span class="tag is-grey">25</span>
                     </a>
                 </div>
                 
@@ -2256,6 +2488,13 @@
                     <a class="tags has-addons" href="/tags/Java/">
                         <span class="tag">Java</span>
                         <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Jetpack/">
+                        <span class="tag">Jetpack</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -2415,7 +2654,7 @@ document.addEventListener('DOMContentLoaded', function () {
     
     
 
-<a id="back-to-top" title="Kembali ke atas" href="javascript:;">
+<a id="back-to-top" title="Back to Top" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
 <script src="/js/back-to-top.js" defer></script>
@@ -2461,9 +2700,9 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Articles',
+                POSTS: 'Posts',
                 PAGES: 'Pages',
-                CATEGORIES: 'Catégories',
+                CATEGORIES: 'Categories',
                 TAGS: 'Tags',
                 UNTITLED: '(Untitled)',
             },
