@@ -157,6 +157,127 @@
     <div class="card">
     
     <div class="card-image">
+        <a href="/2018/12/23/S1ep1-The-macgic-of-LRU-Cache/" class="image is-7by1">
+            <img class="banner" src="/2018/12/23/S1ep1-The-macgic-of-LRU-Cache/title.jpg" alt="LRU 缓存的魔力">
+        </a>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2018-12-22T16:00:00.000Z">2018-12-23</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Android/Android-Performance-pattern/">Android Performance pattern</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    6 minutes read (About 930 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2018/12/23/S1ep1-The-macgic-of-LRU-Cache/">LRU 缓存的魔力</a>
+            
+        </h1>
+        <div class="content">
+            <!-- <h1><span id="lru-缓存的魔力">LRU 缓存的魔力</span></h1><h2><span id="场景">场景</span></h2><p>假设这么一个情况,当你需要多次展示同一个图片的时候,如果你重复从硬盘中加载图片的话,那么会造成资源的浪费,甚至可能会OOM.</p>
+<p>这个时候我们可以使用 cache 来避免这种情况,我们只从硬盘中加载一次到内存中,然后在需要的时候反复使用这个照片.</p>
+<p>但是,当这个 cache 里的资源已经装满的时候,那么我们就必须移除cache里面的某些数据,来给要加入的数据腾出空间.</p>
+<h2><span id="解决方案">解决方案</span></h2><p>在这种情况下,我们应该选择移除哪些资源才是最有优的呢?显而易见的,我们应该移除之后不会用到的资源,还有就是间隔最久才会用到的资源.这里有一个详细的最优算法如下:<br>$$<br>T = m * T_m + T_h + E<br>$$<br>其中:</p>
+<p>T = 平均内存引用时间</p>
+<p>m = 没选中的概率 = 1 - (选中的概率)</p>
+<p> T_m  = 当没选中的时候主内存访问的时间(或者,如果是多级缓存的时候,还要算上更低级的缓存内存引用时间的平均值)</p>
+<p> T_h  = 延迟 : 当选中该资源的时候缓存引用的时间</p>
+<p>E = 各种副作用,比如多处理器系统中的 排队效应</p>
+<h3><span id="lru">LRU</span></h3><p>要得到一个完美的方法是很复杂的,这里我们介绍一个常用的算法,叫做 LRU cache (least recently used),它的原理很简单,就是把使用的元素提到队列的开始,这样最近使用的资源将会在开始的地方,而那些长期未被使用的资源将会在后面,然后当空间不够的时候将会从后面开始释放资源.LRU 的思路是最近使用的资源他们就推测他在未来也有更大的可能性会被使用.</p>
+<p>LRU 并不是一个普通的容器.他需要一些策略来实现他的要求.</p>
+<ul>
+<li>LruCache 由键值对组成 , 形如 LruCache<key,value></key,value></li>
+<li><p>它需要有一个最大值,要注意它的取值,太小的话那么缓存不了多少东西,会导致频繁的重新读取,导致失去缓存的意义,太大的话可能会导致 oom.所以最好是根据你的应用当前可用的内存来决定这个大小.</p>
+</li>
+<li><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-comment">//set the max memory used by lru</span></div><div class="line"></div><div class="line">ActivityManager am = (ActivityManager)getSystemService(Context.ACTIVITY_SERVICE);</div><div class="line"><span class="hljs-keyword">int</span> availMemInBytes = am.getMemoryClass() * <span class="hljs-number">1024</span> * <span class="hljs-number">1024</span>;</div><div class="line"><span class="hljs-comment">//8 is a common value , we can twist it by how much memory can we app used,</span></div><div class="line"><span class="hljs-comment">//and what kind of the phone we run on.</span></div><div class="line">LruCache bitmapCache = <span class="hljs-keyword">new</span> LruCache&lt;String,Bitmap&gt;(availMemInBytes / <span class="hljs-number">8</span>);</div></pre></td></tr></table></figure>
+<p>其中 8 是一个比较通用的值,当然你可以根据你的应用所占用的内存来进行调整,还有运行的机型的限制等.</p>
+</li>
+</ul>
+<ul>
+<li><p>我们还需要知道里面存储的每一个对象的值的大小.比如我们可以</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Public <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ThumbnailCache</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">LruCache</span>&lt;<span class="hljs-title">String</span>,<span class="hljs-title">Bitmap</span>&gt;</span>&#123;</div><div class="line">    <span class="hljs-meta">@Override</span></div><div class="line">    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">int</span> <span class="hljs-title">sizeOf</span><span class="hljs-params">(String key,Bitmap value)</span></span>&#123;</div><div class="line">        <span class="hljs-comment">//return the size of the in-memory bitmap,</span></div><div class="line">        <span class="hljs-comment">//counted against maxSizeBytes</span></div><div class="line">        <span class="hljs-keyword">return</span> value.getByteCount();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>当我们从 LruCache 中获取数据的时候,需要对数据已经被回收或者没有进入过缓存的情况做处理.</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-comment">// get data from Lru and put data to Lru</span></div><div class="line"></div><div class="line">Bitmap bmpToDraw = mCache.get(filename);</div><div class="line"><span class="hljs-keyword">if</span>(bmpToDraw == <span class="hljs-keyword">null</span>)&#123;</div><div class="line">    bmpToDraw = BitmapFactory.decodeFile(filename);</div><div class="line">    mCache.put(filename,bmpToDraw);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>还要注意的一点是,当你存进一个较大的对象的时候,有时候 LruCache 会同时清理多个资源来给这个对象腾出位置.</p>
+<h2><span id="resource">Resource</span></h2><p><a href="https://www.youtube.com/playlist?list=PLWz5rJ2EKKc9CBxr3BVjPTPoDPLdPIFCE" target="_blank" rel="external">https://www.youtube.com/playlist?list=PLWz5rJ2EKKc9CBxr3BVjPTPoDPLdPIFCE</a></p>
+<h2><span id="about-me">About Me</span></h2><p>我的博客 <a href="http://leonchen1024.com/" target="_blank" rel="external">leonchen1024.com</a></p>
+<p>我的 GitHub <a href="https://github.com/LeonChen1024" target="_blank" rel="external">https://github.com/LeonChen1024</a></p>
+<p>微信公众号 </p>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/Images/CooderQRcodem.jpg?raw=false" alt="wechat"></p>
+ -->
+            <div class="article-entry">
+                    
+                    
+                        
+                            
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                            
+                                
+                                <p><h1><span id="lru-缓存的魔力">LRU 缓存的魔力</span></h1><h2><span id="场景">场景</span></h2><p>假设这么一个情况,当你需要多次展示同一个图片的时候,如果你重复从硬盘中加载图片的话,那么会造成资源的浪费,甚至可能会OOM.</p>
+<p>这个时候我们可以使用 cache 来避免这种情况,我们只从硬盘中加载一次到内存中,然后在需要的时候反复使用这个照片.</p>
+<p>但是,当这个 cache 里的资源已经装满的时候,那么我们就必须移除cache里面的某些数据,来给要加入的数据腾出空间.</p>
+<h2><span id="解决方案">解决方案</span></h2><p>在这种情况下,我们应该选择移除哪些资源才是最有优的呢?显而易见的,我们应该移除之后不会用到的资源,还有就是间隔最久才会用到的资源.这里有一个详细的最优算法如下:<br>$$<br>T = m * T_m + T_h + E<br>$$<br>其中:</p>
+<p>T = 平均内存引用时间</p>
+<p>
+                            
+                        
+                    
+                    
+                        </div>   
+                        <div class="article-more-link">
+                            <a href="/2018/12/23/S1ep1-The-macgic-of-LRU-Cache/#more">Read More</a>
+                        </div>
+                    
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-image">
         <a href="/2018/12/03/Greedy-Algorithm/" class="image is-7by1">
             <img class="banner" src="/2018/12/03/Greedy-Algorithm/title.jpg" alt="贪婪算法">
         </a>
@@ -1265,101 +1386,6 @@
 
 
 
-    <div class="card">
-    
-    <div class="card-image">
-        <a href="/2018/01/10/Android-Error-And-Solution/" class="image is-7by1">
-            <img class="banner" src="/2018/01/10/Android-Error-And-Solution/error.jpg" alt="Android 相关错误及解决办法">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2018-01-10T14:15:10.000Z">2018-01-10</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Android/Error/">Error</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    a minute read (About 114 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2018/01/10/Android-Error-And-Solution/">Android 相关错误及解决办法</a>
-            
-        </h1>
-        <div class="content">
-            <!-- <h2><span id="目录">目录</span></h2><ul>
-<li><a href="#目录">目录</a></li>
-<li><a href="#问题-unable-to-instantiate-activity-componentinfocomxxxxxxxxcomxxxxxxxxloginactivity">问题 : Unable to instantiate activity ComponentInfo{com.xxxx.xxxx/com.xxxx.xxxx.LoginActivity}</a></li>
-</ul>
-<h2><span id="问题-unable-to-instantiate-activity-componentinfocomxxxxxxxxcomxxxxxxxxloginactivity">问题 : Unable to instantiate activity ComponentInfo{com.xxxx.xxxx/com.xxxx.xxxx.LoginActivity}</span></h2><p>java.lang.RuntimeException: Unable to instantiate activity ComponentInfo{com.xxxx.xxxx/com.xxxx.xxxx.LoginActivity}:</p>
-<p>java.lang.ClassNotFoundException: Didn’t find class “com.xxxx.xxxx.LoginActivity”<br> on path: /data/app/com.xxxx.xxxx-1.</p>
-<p><strong>解决方法</strong> : 原因AndroidManifest.xml文件出错。将问题Activity的name具体到某个包下即可运行。android:name=”.LogoActivity”改为android:name=”.ac.LogoActivity”.</p>
- -->
-            <div class="article-entry">
-                    
-                    
-                        
-                            
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                            
-                                
-                                <p><h2><span id="目录">目录</span></h2><ul>
-<li><a href="#目录">目录</a></li>
-<li><a href="#问题-unable-to-instantiate-activity-componentinfocomxxxxxxxxcomxxxxxxxxloginactivity">问题 : Unable to instantiate activity ComponentInfo{com.xxxx.xxxx/com.xxxx.xxxx.LoginActivity}</a></li>
-</ul>
-<h2><span id="问题-unable-to-instantiate-activity-componentinfocomxxxxxxxxcomxxxxxxxxloginactivity">问题 : Unable to instantiate activity ComponentInfo{com.xxxx.xxxx/com.xxxx.xxxx.LoginActivity}</span></h2><p>java.lang.RuntimeException: Unable to instantiate activity ComponentInfo{com.xxxx.xxxx/com.xxxx.xxxx.LoginActivity}:</p>
-<p>
-                            
-                        
-                    
-                    
-                        </div>   
-                        <div class="article-more-link">
-                            <a href="/2018/01/10/Android-Error-And-Solution/#more">Read More</a>
-                        </div>
-                    
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
@@ -1424,7 +1450,7 @@
                         Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        33
+                        35
                     </p>
                 </div>
             </div>
@@ -1489,7 +1515,7 @@
                 <span class="level-item">Chinese</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">25</span>
+                <span class="level-item tag">26</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="undefined">
@@ -1497,7 +1523,7 @@
                 <span class="level-item">Algorithm</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">10</span>
+                <span class="level-item tag">11</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="undefined">
@@ -1537,7 +1563,7 @@
                 <span class="level-item">English</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">8</span>
+                <span class="level-item tag">9</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="undefined">
@@ -1545,7 +1571,7 @@
                 <span class="level-item">Algorithm</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">8</span>
+                <span class="level-item tag">9</span>
             </span>
         </a></li></ul></li>
             </ul>
@@ -1573,6 +1599,44 @@
         <h3 class="menu-label">
             Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/titleThumb.jpg" alt="LeetCode 9. Palindrome Number">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-27T16:00:00.000Z">2020-01-28</time></div>
+                    <a href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/" class="has-link-black-ter is-size-6">LeetCode 9. Palindrome Number</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-en/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/titleThumb.jpg" alt="LeetCode 9. Palindrome Number">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-27T16:00:00.000Z">2020-01-28</time></div>
+                    <a href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-en/" class="has-link-black-ter is-size-6">LeetCode 9. Palindrome Number</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/English/">English</a> / <a class="has-link-grey -link" href="/categories/English/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -1631,44 +1695,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/05/28/Automatic-Version-Code-Release/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/2019/05/28/Automatic-Version-Code-Release/titleThumb.jpg" alt="自动版本号发布">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-27T16:00:00.000Z">2019-05-28</time></div>
-                    <a href="/2019/05/28/Automatic-Version-Code-Release/" class="has-link-black-ter is-size-6">自动版本号发布</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/05/24/Gradle-Skill/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/2019/05/24/Gradle-Skill/titleThumb.jpg" alt="Gradle 使用技巧 [Chinese ver]">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-23T16:00:00.000Z">2019-05-24</time></div>
-                    <a href="/2019/05/24/Gradle-Skill/" class="has-link-black-ter is-size-6">Gradle 使用技巧 [Chinese ver]</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Gradle/">Gradle</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1680,6 +1706,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/01/">
+                <span class="level-start">
+                    <span class="level-item">January 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/07/">
@@ -1851,7 +1888,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Algorithm/">
                         <span class="tag">Algorithm</span>
-                        <span class="tag is-grey">19</span>
+                        <span class="tag is-grey">21</span>
                     </a>
                 </div>
                 
@@ -1865,7 +1902,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Chinese/">
                         <span class="tag">Chinese</span>
-                        <span class="tag is-grey">25</span>
+                        <span class="tag is-grey">26</span>
                     </a>
                 </div>
                 
@@ -1893,7 +1930,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/English/">
                         <span class="tag">English</span>
-                        <span class="tag is-grey">8</span>
+                        <span class="tag is-grey">9</span>
                     </a>
                 </div>
                 
@@ -1928,7 +1965,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/LeetCode/">
                         <span class="tag">LeetCode</span>
-                        <span class="tag is-grey">16</span>
+                        <span class="tag is-grey">18</span>
                     </a>
                 </div>
                 
@@ -1992,6 +2029,44 @@
         
         <article class="media">
             
+            <a href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/titleThumb.jpg" alt="LeetCode 9. Palindrome Number">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-27T16:00:00.000Z">2020-01-28</time></div>
+                    <a href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/" class="has-link-black-ter is-size-6">LeetCode 9. Palindrome Number</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-en/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/titleThumb.jpg" alt="LeetCode 9. Palindrome Number">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-27T16:00:00.000Z">2020-01-28</time></div>
+                    <a href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-en/" class="has-link-black-ter is-size-6">LeetCode 9. Palindrome Number</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/English/">English</a> / <a class="has-link-grey -link" href="/categories/English/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/07/04/Navigation/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/2019/07/04/Navigation/titleThumb.jpg" alt="Navigation 指南">
@@ -2047,44 +2122,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/05/28/Automatic-Version-Code-Release/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/2019/05/28/Automatic-Version-Code-Release/titleThumb.jpg" alt="自动版本号发布">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-27T16:00:00.000Z">2019-05-28</time></div>
-                    <a href="/2019/05/28/Automatic-Version-Code-Release/" class="has-link-black-ter is-size-6">自动版本号发布</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/05/24/Gradle-Skill/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/2019/05/24/Gradle-Skill/titleThumb.jpg" alt="Gradle 使用技巧 [Chinese ver]">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-23T16:00:00.000Z">2019-05-24</time></div>
-                    <a href="/2019/05/24/Gradle-Skill/" class="has-link-black-ter is-size-6">Gradle 使用技巧 [Chinese ver]</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Gradle/">Gradle</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -2096,6 +2133,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/01/">
+                <span class="level-start">
+                    <span class="level-item">January 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/07/">
@@ -2267,7 +2315,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Algorithm/">
                         <span class="tag">Algorithm</span>
-                        <span class="tag is-grey">19</span>
+                        <span class="tag is-grey">21</span>
                     </a>
                 </div>
                 
@@ -2281,7 +2329,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Chinese/">
                         <span class="tag">Chinese</span>
-                        <span class="tag is-grey">25</span>
+                        <span class="tag is-grey">26</span>
                     </a>
                 </div>
                 
@@ -2309,7 +2357,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/English/">
                         <span class="tag">English</span>
-                        <span class="tag is-grey">8</span>
+                        <span class="tag is-grey">9</span>
                     </a>
                 </div>
                 
@@ -2344,7 +2392,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/LeetCode/">
                         <span class="tag">LeetCode</span>
-                        <span class="tag is-grey">16</span>
+                        <span class="tag is-grey">18</span>
                     </a>
                 </div>
                 
@@ -2404,7 +2452,7 @@
                 
                 </a>
                 <p class="is-size-7">
-                &copy; 2019 LeonChen&nbsp;
+                &copy; 2020 LeonChen&nbsp;
                 Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
                         href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
                 

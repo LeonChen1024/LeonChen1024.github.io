@@ -147,6 +147,285 @@
     <div class="card">
     
     <div class="card-image">
+        <a href="/2018/08/15/4-Median-of-Two-Sorted-Arrays/Record-en/" class="image is-7by1">
+            <img class="banner" src="/2018/08/15/4-Median-of-Two-Sorted-Arrays/Record-cn/title.jpg" alt="LeetCode 4. Median of Two Sorted Arrays [English ver]">
+        </a>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2018-08-14T16:00:00.000Z">2018-08-15</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/English/">English</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/English/Algorithm/">Algorithm</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/English/Algorithm/LeetCode/">LeetCode</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    12 minutes read (About 1855 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2018/08/15/4-Median-of-Two-Sorted-Arrays/Record-en/">LeetCode 4. Median of Two Sorted Arrays [English ver]</a>
+            
+        </h1>
+        <div class="content">
+            <!-- <p>[English ver]</p>
+<h1><span id="4-median-of-two-sorted-arrays">4. Median of Two Sorted Arrays</span></h1><p>There are two sorted arrays nums1 and nums2 of size m and n respectively.</p>
+<p>Find the median of the two sorted arrays. The overall run time complexity should be O(log (m+n)).</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Example 1:</div><div class="line">nums1 = [1, 3]</div><div class="line">nums2 = [2]</div><div class="line"></div><div class="line">The median is 2.0</div></pre></td></tr></table></figure>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Example 2:</div><div class="line">nums1 = [1, 2]</div><div class="line">nums2 = [3, 4]</div><div class="line"></div><div class="line">The median is (2 + 3)/2 = 2.5</div></pre></td></tr></table></figure>
+<h2><span id="approach-1">Approach 1:</span></h2><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</div><div class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">double</span> <span class="hljs-title">findMedianSortedArrays</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums1, <span class="hljs-keyword">int</span>[] nums2)</span> </span>&#123;</div><div class="line">        <span class="hljs-comment">//how many number we need</span></div><div class="line">        <span class="hljs-keyword">int</span> needNum = <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-comment">//the index of the number we need</span></div><div class="line">        <span class="hljs-keyword">int</span> needIndex = <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-comment">//the median value</span></div><div class="line">        <span class="hljs-keyword">double</span> median = <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-keyword">int</span> big = <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-keyword">int</span> stand = <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-comment">//the total array</span></div><div class="line">        <span class="hljs-keyword">int</span>[] insertnum ;</div><div class="line"></div><div class="line">        <span class="hljs-keyword">int</span> m = nums1.length;</div><div class="line">        <span class="hljs-keyword">int</span> n = nums2.length;</div><div class="line"></div><div class="line">        <span class="hljs-keyword">if</span>((m+n)%<span class="hljs-number">2</span>==<span class="hljs-number">0</span>)&#123;</div><div class="line">            needNum = <span class="hljs-number">2</span>;</div><div class="line">            needIndex = (m+n)/<span class="hljs-number">2</span>-<span class="hljs-number">1</span>;</div><div class="line">        &#125;<span class="hljs-keyword">else</span>&#123;</div><div class="line">            needNum=<span class="hljs-number">1</span>;</div><div class="line">            needIndex = (m+n)/<span class="hljs-number">2</span>;</div><div class="line">        &#125;</div><div class="line">        insertnum = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[m+n];</div><div class="line">        <span class="hljs-comment">//nums1 index</span></div><div class="line">        <span class="hljs-keyword">int</span> j =<span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-comment">//nums2 index</span></div><div class="line">        <span class="hljs-keyword">int</span> k = <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i =<span class="hljs-number">0</span>;i&lt;m+n;i++)&#123;</div><div class="line">            <span class="hljs-keyword">if</span>(k==n)&#123;</div><div class="line">                insertnum[i] = nums1[j];</div><div class="line">                j++;</div><div class="line">            &#125;</div><div class="line">            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(j==m)&#123;</div><div class="line">                insertnum[i] = nums2[k];</div><div class="line">                k++;</div><div class="line">            &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(nums1[j]&gt;nums2[k])&#123;</div><div class="line">                insertnum[i] = nums2[k];</div><div class="line">                k++;</div><div class="line">            &#125;<span class="hljs-keyword">else</span>&#123;</div><div class="line">                insertnum[i] = nums1[j];</div><div class="line">                j++;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="hljs-keyword">if</span>(needNum == <span class="hljs-number">1</span>)&#123;</div><div class="line">            median = Double.valueOf(insertnum[needIndex]);</div><div class="line">        &#125;<span class="hljs-keyword">else</span>&#123;</div><div class="line">            median = Double.valueOf(insertnum[needIndex]+insertnum[needIndex+<span class="hljs-number">1</span>]) /<span class="hljs-number">2.0</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="hljs-keyword">return</span> median;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>by the way ,this method often failed , maybe is the complexity is too big.</p>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/4.%20Median%20of%20Two%20Sorted%20Arrays/Images/1SuccessResult.png?raw=true" alt="efficiency"></p>
+<p><strong>Analysis</strong><br>This method is easy,first we figure out how to get the median value and how many number we need for calculate median value when the sum of the two arrays size is odd-lengthed or even-lengthed. And then we put the two arrays together sorted from small to large , and then use the method we got to calculate the median value.</p>
+<p>Time complexity: O(m+n)<br>Space complexity:O(m+n)</p>
+<p>we can have a optmization of this approach,like that</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</div><div class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">double</span> <span class="hljs-title">findMedianSortedArrays</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums1, <span class="hljs-keyword">int</span>[] nums2)</span> </span>&#123;</div><div class="line">        <span class="hljs-keyword">int</span> needNum = <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-keyword">int</span> needIndex = <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-keyword">double</span> median = <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-keyword">int</span> big = <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-keyword">int</span> stand = <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-keyword">int</span>[] insertnum ;</div><div class="line"></div><div class="line">        <span class="hljs-keyword">int</span> m = nums1.length;</div><div class="line">        <span class="hljs-keyword">int</span> n = nums2.length;</div><div class="line"></div><div class="line">        <span class="hljs-keyword">if</span>((m+n)%<span class="hljs-number">2</span>==<span class="hljs-number">0</span>)&#123;</div><div class="line">            needNum = <span class="hljs-number">2</span>;</div><div class="line">            needIndex = (m+n)/<span class="hljs-number">2</span>-<span class="hljs-number">1</span>;</div><div class="line">        &#125;<span class="hljs-keyword">else</span>&#123;</div><div class="line">            needNum=<span class="hljs-number">1</span>;</div><div class="line">            needIndex = (m+n)/<span class="hljs-number">2</span>;</div><div class="line">        &#125;</div><div class="line">        insertnum = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[(m+n)/<span class="hljs-number">2</span>+<span class="hljs-number">1</span>];</div><div class="line">        <span class="hljs-keyword">int</span> j =<span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-keyword">int</span> k = <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i =<span class="hljs-number">0</span>;i&lt;m+n;i++)&#123;</div><div class="line"></div><div class="line">            <span class="hljs-keyword">if</span>(k==n)&#123;</div><div class="line">                insertnum[i] = nums1[j];</div><div class="line">                j++;</div><div class="line">            &#125;</div><div class="line">            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(j==m)&#123;</div><div class="line">                insertnum[i] = nums2[k];</div><div class="line">                k++;</div><div class="line">            &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(nums1[j]&gt;nums2[k])&#123;</div><div class="line">                insertnum[i] = nums2[k];</div><div class="line">                k++;</div><div class="line">            &#125;<span class="hljs-keyword">else</span>&#123;</div><div class="line">                insertnum[i] = nums1[j];</div><div class="line">                j++;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">             <span class="hljs-keyword">if</span> (i &gt;= needIndex )&#123;</div><div class="line">                <span class="hljs-keyword">if</span> (needNum == <span class="hljs-number">1</span>)&#123;</div><div class="line">                    median = Double.valueOf(insertnum[needIndex]);</div><div class="line">                    <span class="hljs-keyword">return</span> median;</div><div class="line">                &#125;<span class="hljs-keyword">else</span>&#123;</div><div class="line">                     <span class="hljs-keyword">if</span> (i == needIndex+<span class="hljs-number">1</span>)&#123;</div><div class="line">                         median = Double.valueOf(insertnum[needIndex]+insertnum[needIndex+<span class="hljs-number">1</span>]) /<span class="hljs-number">2.0</span>;</div><div class="line">                         <span class="hljs-keyword">return</span> median;</div><div class="line">                     &#125;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">        &#125;</div><div class="line">    <span class="hljs-keyword">return</span> median;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>Analysis</strong></p>
+<p>The optmization is we get the index of the median value ,  when we sorted the array to the index , we can calculate the median value and we don’t need to sorted all the number.</p>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/4.%20Median%20of%20Two%20Sorted%20Arrays/Images/1OptimizeSuccessResult.png?raw=true" alt="efficiency"></p>
+<h2><span id="approach-2">Approach 2</span></h2><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</div><div class="line">       <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">double</span> <span class="hljs-title">findMedianSortedArrays</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums1, <span class="hljs-keyword">int</span>[] nums2)</span> </span>&#123;</div><div class="line">           <span class="hljs-keyword">int</span> N1 = nums1.length;</div><div class="line">           <span class="hljs-keyword">int</span> N2 = nums2.length;</div><div class="line">           <span class="hljs-keyword">if</span> (N1 &lt; N2)</div><div class="line">               <span class="hljs-keyword">return</span> findMedianSortedArrays(nums2, nums1);    <span class="hljs-comment">// Make sure A2 is the shorter one.</span></div><div class="line"></div><div class="line">           <span class="hljs-keyword">if</span> (N2 == <span class="hljs-number">0</span>)</div><div class="line">               <span class="hljs-keyword">return</span> ((<span class="hljs-keyword">double</span>) nums1[(N1 - <span class="hljs-number">1</span>) / <span class="hljs-number">2</span>] + (<span class="hljs-keyword">double</span>) nums1[N1 / <span class="hljs-number">2</span>]) / <span class="hljs-number">2</span>;  <span class="hljs-comment">// If A2 is empty</span></div><div class="line"></div><div class="line">           <span class="hljs-keyword">int</span> lo = <span class="hljs-number">0</span>, hi = N2 * <span class="hljs-number">2</span>;</div><div class="line">           <span class="hljs-keyword">while</span> (lo &lt;= hi) &#123;</div><div class="line">               <span class="hljs-keyword">int</span> mid2 = (lo + hi) / <span class="hljs-number">2</span>;   <span class="hljs-comment">// Try Cut 2</span></div><div class="line">               <span class="hljs-keyword">int</span> mid1 = N1 + N2 - mid2;  <span class="hljs-comment">// Calculate Cut 1 accordingly</span></div><div class="line"></div><div class="line">               <span class="hljs-keyword">double</span> L1 = (mid1 == <span class="hljs-number">0</span>) ? Integer.MIN_VALUE : nums1[(mid1 - <span class="hljs-number">1</span>) / <span class="hljs-number">2</span>];    <span class="hljs-comment">// Get L1, R1, L2, R2 respectively</span></div><div class="line">               <span class="hljs-keyword">double</span> L2 = (mid2 == <span class="hljs-number">0</span>) ? Integer.MIN_VALUE : nums2[(mid2 - <span class="hljs-number">1</span>) / <span class="hljs-number">2</span>];</div><div class="line">               <span class="hljs-keyword">double</span> R1 = (mid1 == N1 * <span class="hljs-number">2</span>) ? Integer.MAX_VALUE : nums1[(mid1) / <span class="hljs-number">2</span>];</div><div class="line">               <span class="hljs-keyword">double</span> R2 = (mid2 == N2 * <span class="hljs-number">2</span>) ? Integer.MAX_VALUE : nums2[(mid2) / <span class="hljs-number">2</span>];</div><div class="line"></div><div class="line">               <span class="hljs-keyword">if</span> (L1 &gt; R2)</div><div class="line">                   lo = mid2 + <span class="hljs-number">1</span>;        <span class="hljs-comment">// A1's lower half is too big; need to move C1 left (C2 right)</span></div><div class="line">               <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (L2 &gt; R1)</div><div class="line">                   hi = mid2 - <span class="hljs-number">1</span>;    <span class="hljs-comment">// A2's lower half too big; need to move C2 left.</span></div><div class="line">               <span class="hljs-keyword">else</span></div><div class="line">                   <span class="hljs-keyword">return</span> ((L1 &gt; L2 ? L1 : L2) + (R1 &gt; R2 ? R2 : R1)) / <span class="hljs-number">2</span>;    <span class="hljs-comment">// Otherwise, that's the right cut.</span></div><div class="line">           &#125;</div><div class="line">           <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>;</div><div class="line">       &#125;</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/4.%20Median%20of%20Two%20Sorted%20Arrays/Images/2SeccessResult.png?raw=true" alt="efficiency"></p>
+<p><strong>Analysis</strong></p>
+<p>this method is a little hard to understand,many implementations consider odd-lengthed and even-lengthed arrays as two different cases and treat them separately. In fact , this is a little twist.<br>First, we can define ‘MEDIAN’ i:</p>
+<p>“if we cut the sorted array to two halves of equal length, then median is the average of the max number of the small half and min of larger half , is the number near to the cut .</p>
+<p>For example, for [ 1 2 ], we make the cut between 1 and 2:<br>[1 | 2]<br>the median = (1+2)/2.0 = 1.5 .<br>The same to the two arrays , we only need to make sure numbers in the right side of the cut of the two arrays bigger than the left side of the cut ,and the size of the left is equal to the size of the right .<br>I’ll use ‘|’ to represent a cut, and (number | number) to represent a cut made through a number in this article.</p>
+<p>for example , [1 2 3],the cut is like [1 (2|2) 3].the median = (2+2)/2.0 = 2.</p>
+<p>now we use ‘L’ to represent the number in the left of the cut ,’R’ to represent the number in the right.</p>
+<p>we can found that</p>
+<p>N        Index of L / R<br>1               0 / 0<br>2               0 / 1<br>3               1 / 1<br>4               1 / 2<br>5               2 / 2<br>6               2 / 3<br>7               3 / 3<br>8               3 / 4</p>
+<p>It is not hard to conclude that index of L = (N-1)/2, and R = N/2. the median = (L + R)/2 = (A[(N-1)/2] + A[N/2])/2</p>
+<p>To get ready for the two array situation,we add a few empty number (represented as ‘#’) in between numbers. and use ‘positions’ to represented the position of that .</p>
+<p>[1 2] -&gt; [# 1 # 2 #] (N=2)<br>position  0 1 2 3 4  (N_Position = 5)</p>
+<p>[3 4] -&gt; [# 3 # 4 #] (N=2)<br>position  0 1 2 3 4  (N_Position = 5)</p>
+<p>there are always 2*N+1 ‘positions’ of which array length is N. Therefore, the middle cut should be made on the Nth position (0-based). index(L) = (CutPosition-1)/2, index(R) = (CutPosition)/2.</p>
+<p>notice that, when we cut the two arrays there are 2N1+2N2+2 positions,so,each side of the cut should be N1+N2 positions, the two position lefted is the cut . so when A2’s cut is at C2 = K , than A1’s cut should be C1 = N1 + N2 -K,for example ,C2 = 2, 那么 C1 = 2 + 2 - C2 = 2.</p>
+<p>[# 1 | 2 #]<br>[# 3 | 4 #]</p>
+<p>now we have two L and two R.</p>
+<p>L1 = A1[(C1-1)/2]; R1 = A1[C1/2];<br>L2 = A2[(C2-1)/2]; R2 = A2[C2/2];</p>
+<p>L1 = A1[(2-1)/2] = A1[0] = 1; R1 = A1[2/2] = A1[1] = 2;<br>L2 = A2[(2-1)/2] = A2[0] = 3; R2 = A1[2/2] = A1[1] = 4;</p>
+<p>How can we figure out this cut is the cut we want ?<br>the numbers in left side must be smaller than the numbers in right side .<br>Because A1 and A2 is sorted , L1 &lt;= R1  &amp;&amp; L2 &lt;= R2.so we only need to confirm that L1 &lt;= R2 and L2 &lt;= R1.</p>
+<p>Now we can use binary search to find out the result.</p>
+<p>If L1 &gt; R1, it means there are too many large numbers on the left half of A1, then we must move C1 to the left at the same time move C2 to the right;<br>If L2 &gt; R1, then there are too many large numbers on the left half of A2, and we must move C2 to the left , and move C1 to the right .<br>Otherwise, make it opposite.</p>
+<p>After we find the cut, the medium can be computed as (max(L1, L2) + min(R1, R2)) / 2;</p>
+<ol>
+<li>since C1 and C2 can be mutually determined from each other, we might as well select the shorter array (say A2) and only move C2 around, and calculate C1 accordingly. That way we can achieve a run-time complexity of O(log(min(N1, N2)))</li>
+<li>The only edge case is when a cut falls on the 0th(first) or the 2Nth(last) position. For instance, if C2 = 2N2, then R2 = A2[2*N2/2] = A2[N2], which exceeds the boundary of the array. To solve this problem, we can imagine that both A1 and A2 actually have two extra elements, INT_MAX at A[-1] and INT_MAX at A[N].</li>
+</ol>
+<p>Time complexity ： O(log(min(m,n))) 。m,n is the length of the two arrays.<br>space complexity ： O(1) .</p>
+<h2><span id="approach-3">Approach 3：</span></h2><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</div><div class="line">  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">double</span> <span class="hljs-title">findMedianSortedArrays</span><span class="hljs-params">(<span class="hljs-keyword">int</span> A[], <span class="hljs-keyword">int</span> B[])</span> </span>&#123;</div><div class="line">       <span class="hljs-keyword">int</span> n = A.length;</div><div class="line">       <span class="hljs-keyword">int</span> m = B.length;</div><div class="line">       <span class="hljs-comment">// the following call is to make sure len(A) &lt;= len(B).</span></div><div class="line">       <span class="hljs-comment">// yes, it calls itself, but at most once, shouldn't be</span></div><div class="line">       <span class="hljs-comment">// consider a recursive solution</span></div><div class="line">       <span class="hljs-keyword">if</span> (n &gt; m)</div><div class="line">           <span class="hljs-keyword">return</span> findMedianSortedArrays(B, A);</div><div class="line"></div><div class="line">       <span class="hljs-comment">// now, do binary search</span></div><div class="line">       <span class="hljs-keyword">int</span> k = (n + m - <span class="hljs-number">1</span>) / <span class="hljs-number">2</span>;</div><div class="line">       <span class="hljs-keyword">int</span> l = <span class="hljs-number">0</span>, r = Math.min(k, n); <span class="hljs-comment">// r is n, NOT n-1, this is important!!</span></div><div class="line">       <span class="hljs-keyword">while</span> (l &lt; r) &#123;</div><div class="line">           <span class="hljs-keyword">int</span> midA = (l + r) / <span class="hljs-number">2</span>;</div><div class="line">           <span class="hljs-keyword">int</span> midB = k - midA;</div><div class="line">           <span class="hljs-keyword">if</span> (A[midA] &lt; B[midB])</div><div class="line">               l = midA + <span class="hljs-number">1</span>;</div><div class="line">           <span class="hljs-keyword">else</span></div><div class="line">               r = midA;</div><div class="line">       &#125;</div><div class="line"></div><div class="line">       <span class="hljs-comment">// after binary search, we almost get the median because it must be between</span></div><div class="line">       <span class="hljs-comment">// these 4 numbers: A[l-1], A[l], B[k-l], and B[k-l+1]</span></div><div class="line"></div><div class="line">       <span class="hljs-comment">// if (n+m) is odd, the median is the larger one between A[l-1] and B[k-l].</span></div><div class="line">       <span class="hljs-comment">// and there are some corner cases we need to take care of.</span></div><div class="line">       <span class="hljs-keyword">int</span> a = Math.max(l &gt; <span class="hljs-number">0</span> ? A[l - <span class="hljs-number">1</span>] : Integer.MIN_VALUE, k - l &gt;= <span class="hljs-number">0</span> ? B[k - l] : Integer.MIN_VALUE);</div><div class="line">       <span class="hljs-keyword">if</span> (((n + m) &amp; <span class="hljs-number">1</span>) == <span class="hljs-number">1</span>)</div><div class="line">           <span class="hljs-keyword">return</span> (<span class="hljs-keyword">double</span>) a;</div><div class="line"></div><div class="line">       <span class="hljs-comment">// if (n+m) is even, the median can be calculated by</span></div><div class="line">       <span class="hljs-comment">//      median = (max(A[l-1], B[k-l]) + min(A[l], B[k-l+1]) / 2.0</span></div><div class="line">       <span class="hljs-comment">// also, there are some corner cases to take care of.</span></div><div class="line">       <span class="hljs-keyword">int</span> b = Math.min(l &lt; n ? A[l] : Integer.MAX_VALUE, k - l + <span class="hljs-number">1</span> &lt; m ? B[k - l + <span class="hljs-number">1</span>] : Integer.MAX_VALUE);</div><div class="line">       <span class="hljs-keyword">return</span> (a + b) / <span class="hljs-number">2.0</span>;</div><div class="line">   &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/4.%20Median%20of%20Two%20Sorted%20Arrays/Images/3SuccessResult.png?raw=true" alt="efficiency"></p>
+<p><strong>Analysis</strong><br>this method’s principle is same as the Approach 2.</p>
+<p>Time complexity ： O(log(min(m,n))) 。m,n is the length of the two arrays.<br>space complexity ： O(1) .</p>
+<h2><span id="approach-4">Approach 4:</span></h2><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</div><div class="line">  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">double</span> <span class="hljs-title">findMedianSortedArrays</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] A, <span class="hljs-keyword">int</span>[] B)</span> </span>&#123;</div><div class="line">              <span class="hljs-keyword">int</span> m = A.length, n = B.length;</div><div class="line">              <span class="hljs-keyword">int</span> l = (m + n + <span class="hljs-number">1</span>) / <span class="hljs-number">2</span>;<span class="hljs-comment">//position of l element (not the index)</span></div><div class="line">              <span class="hljs-keyword">int</span> r = (m + n + <span class="hljs-number">2</span>) / <span class="hljs-number">2</span>;<span class="hljs-comment">//position of r element (not the index)</span></div><div class="line">              <span class="hljs-keyword">return</span> (getkth(A, <span class="hljs-number">0</span>, B, <span class="hljs-number">0</span>, l) + getkth(A, <span class="hljs-number">0</span>, B, <span class="hljs-number">0</span>, r)) / <span class="hljs-number">2.0</span>;</div><div class="line">          &#125;</div><div class="line"></div><div class="line">  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">double</span> <span class="hljs-title">getkth</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] A, <span class="hljs-keyword">int</span> aStart, <span class="hljs-keyword">int</span>[] B, <span class="hljs-keyword">int</span> bStart, <span class="hljs-keyword">int</span> k)</span> </span>&#123;</div><div class="line">          <span class="hljs-comment">//when the start position is bigger than A.length -1 ,means the median doesn't in the A.</span></div><div class="line">          <span class="hljs-keyword">if</span> (aStart &gt; A.length - <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> B[bStart + k - <span class="hljs-number">1</span>];</div><div class="line">          <span class="hljs-keyword">if</span> (bStart &gt; B.length - <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> A[aStart + k - <span class="hljs-number">1</span>];</div><div class="line">          <span class="hljs-keyword">if</span> (k == <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> Math.min(A[aStart], B[bStart]);</div><div class="line"></div><div class="line">          <span class="hljs-keyword">int</span> aMid = Integer.MAX_VALUE, bMid = Integer.MAX_VALUE;</div><div class="line">          <span class="hljs-keyword">if</span> (aStart + k/<span class="hljs-number">2</span> - <span class="hljs-number">1</span> &lt; A.length) aMid = A[aStart + k/<span class="hljs-number">2</span> - <span class="hljs-number">1</span>];</div><div class="line">          <span class="hljs-keyword">if</span> (bStart + k/<span class="hljs-number">2</span> - <span class="hljs-number">1</span> &lt; B.length) bMid = B[bStart + k/<span class="hljs-number">2</span> - <span class="hljs-number">1</span>];</div><div class="line"></div><div class="line">          <span class="hljs-keyword">if</span> (aMid &lt; bMid)</div><div class="line">              <span class="hljs-keyword">return</span> getkth(A, aStart + k/<span class="hljs-number">2</span>, B, bStart, k - k/<span class="hljs-number">2</span>);<span class="hljs-comment">// Check: aRight + bLeft</span></div><div class="line">          <span class="hljs-keyword">else</span></div><div class="line">              <span class="hljs-keyword">return</span> getkth(A, aStart, B, bStart + k/<span class="hljs-number">2</span>, k - k/<span class="hljs-number">2</span>);<span class="hljs-comment">// Check: bRight + aLeft</span></div><div class="line">  &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/4.%20Median%20of%20Two%20Sorted%20Arrays/Images/4SuccessResult.png?raw=true" alt="efficiency"></p>
+<p><strong>Analysis</strong><br>this method is like that, compare the two arrays’s median recursively, and every time ignore a half of the two arrays. if A’s median is smaller than B’s median , then we keep A’s right and B’s left.Otherwise opposite. last ,we will get L and R , use (L+R)/2.0 to get the median.notice that L and R is not index, isn’t start from 0 . when the numbers of the sum of two array’s size is odd-lengthed L is the same as R,Otherwise is different.</p>
+<p>Time complexity ： O(log(m + n))<br>Space complexity ： O(1)</p>
+<p>If you have any suggestions to make the logic and implementation more better , or you have some advice on my description. Please let me know!</p>
+<h2><span id="about-me">About Me</span></h2><p>My blog <a href="http://leonchen1024.com/" target="_blank" rel="external">leonchen1024.com</a></p>
+<p>My Github <a href="https://github.com/LeonChen1024" target="_blank" rel="external">https://github.com/LeonChen1024</a></p>
+ -->
+            <div class="article-entry">
+                    
+                    
+                        
+                            
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                            
+                                
+                                <p><p>[English ver]</p>
+<h1><span id="4-median-of-two-sorted-arrays">4. Median of Two Sorted Arrays</span></h1><p>There are two sorted arrays nums1 and nums2 of size m and n respectively.</p>
+<p>Find the median of the two sorted arrays. The overall run time complexity should be O(log (m+n)).</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Example 1:</div><div class="line">nums1 = [1, 3]</div><div class="line">nums2 = [2]</div><div class="line"></div><div class="line">The median is 2.0</div></pre></td></tr></table></figure>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Example 2:</div><div class="line">nums1 = [1, 2]</div><div class="line">nums2 = [3, 4]</div><div class="line"></div><div class="line">The median is (2 + 3)/2 = 2.5</div></pre></td></tr></table></figure>
+<p>
+                            
+                        
+                    
+                    
+                        </div>   
+                        <div class="article-more-link">
+                            <a href="/2018/08/15/4-Median-of-Two-Sorted-Arrays/Record-en/#more">Read More</a>
+                        </div>
+                    
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-image">
+        <a href="/2018/08/15/4-Median-of-Two-Sorted-Arrays/Record-cn/" class="image is-7by1">
+            <img class="banner" src="/2018/08/15/4-Median-of-Two-Sorted-Arrays/Record-cn/title.jpg" alt="LeetCode 4. Median of Two Sorted Arrays [Chinese ver]">
+        </a>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2018-08-14T16:00:00.000Z">2018-08-15</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Algorithm/">Algorithm</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Algorithm/LeetCode/">LeetCode</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    16 minutes read (About 2419 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2018/08/15/4-Median-of-Two-Sorted-Arrays/Record-cn/">LeetCode 4. Median of Two Sorted Arrays [Chinese ver]</a>
+            
+        </h1>
+        <div class="content">
+            <!-- <p>[Chinese ver]</p>
+<h1><span id="4-median-of-two-sorted-arrays">4. Median of Two Sorted Arrays</span></h1><p>这里有两个有序数组nums1和nums2，他们各自的大小为m和n.<br>找到这两个数组的中间值，总的时间复杂度应该为O(log (m+n)).</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Example 1:</div><div class="line">nums1 = [1, 3]</div><div class="line">nums2 = [2]</div><div class="line"> 中间值是 2.0</div></pre></td></tr></table></figure>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Example 2:</div><div class="line">nums1 = [1, 2]</div><div class="line">nums2 = [3, 4]</div><div class="line">中间值是 (2 + 3)/2 = 2.5</div></pre></td></tr></table></figure>
+<h2><span id="方法一">方法一：</span></h2><p>首先尝试了一种比较笨的方法<br><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</div><div class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">double</span> <span class="hljs-title">findMedianSortedArrays</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums1, <span class="hljs-keyword">int</span>[] nums2)</span> </span>&#123;</div><div class="line">        <span class="hljs-comment">//需要几个数值</span></div><div class="line">        <span class="hljs-keyword">int</span> needNum = <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-comment">//数值位置</span></div><div class="line">        <span class="hljs-keyword">int</span> needIndex = <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-comment">//中间值</span></div><div class="line">        <span class="hljs-keyword">double</span> median = <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-keyword">int</span> big = <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-keyword">int</span> stand = <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-comment">//合成的数组</span></div><div class="line">        <span class="hljs-keyword">int</span>[] insertnum ;</div><div class="line"></div><div class="line">        <span class="hljs-keyword">int</span> m = nums1.length;</div><div class="line">        <span class="hljs-keyword">int</span> n = nums2.length;</div><div class="line"></div><div class="line">        <span class="hljs-keyword">if</span>((m+n)%<span class="hljs-number">2</span>==<span class="hljs-number">0</span>)&#123;</div><div class="line">            needNum = <span class="hljs-number">2</span>;</div><div class="line">            needIndex = (m+n)/<span class="hljs-number">2</span>-<span class="hljs-number">1</span>;</div><div class="line">        &#125;<span class="hljs-keyword">else</span>&#123;</div><div class="line">            needNum=<span class="hljs-number">1</span>;</div><div class="line">            needIndex = (m+n)/<span class="hljs-number">2</span>;</div><div class="line">        &#125;</div><div class="line">        insertnum = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[m+n];</div><div class="line">        <span class="hljs-comment">//nums1的下标</span></div><div class="line">        <span class="hljs-keyword">int</span> j =<span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-comment">//nums2的下标</span></div><div class="line">        <span class="hljs-keyword">int</span> k = <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i =<span class="hljs-number">0</span>;i&lt;m+n;i++)&#123;</div><div class="line">            <span class="hljs-keyword">if</span>(k==n)&#123;</div><div class="line">                insertnum[i] = nums1[j];</div><div class="line">                j++;</div><div class="line">            &#125;</div><div class="line">            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(j==m)&#123;</div><div class="line">                insertnum[i] = nums2[k];</div><div class="line">                k++;</div><div class="line">            &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(nums1[j]&gt;nums2[k])&#123;</div><div class="line">                insertnum[i] = nums2[k];</div><div class="line">                k++;</div><div class="line">            &#125;<span class="hljs-keyword">else</span>&#123;</div><div class="line">                insertnum[i] = nums1[j];</div><div class="line">                j++;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="hljs-keyword">if</span>(needNum == <span class="hljs-number">1</span>)&#123;</div><div class="line">            median = Double.valueOf(insertnum[needIndex]);</div><div class="line">        &#125;<span class="hljs-keyword">else</span>&#123;</div><div class="line">            median = Double.valueOf(insertnum[needIndex]+insertnum[needIndex+<span class="hljs-number">1</span>]) /<span class="hljs-number">2.0</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="hljs-keyword">return</span> median;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>顺便提一下，这个方法经常无法通过，应该是时间复杂度过高的原因吧。</p>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/4.%20Median%20of%20Two%20Sorted%20Arrays/Images/1SuccessResult.png?raw=true" alt="效率"></p>
+<p><strong>分析</strong><br>这个方法的原理很简单，首先将两个数组个数和是奇数和偶数的情况所需的取值个数以及中间值计算方法得出。然后将两个数组按照从小到大的顺序合并成一个数组，最后根据前面得到的中间数的计算方法得出中间值。<br>时间复杂度 ： O(m+n) 。<br>空间复杂度 ： O(m+n) .</p>
+<p>这个方法可以在做一个优化，如下：</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</div><div class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">double</span> <span class="hljs-title">findMedianSortedArrays</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums1, <span class="hljs-keyword">int</span>[] nums2)</span> </span>&#123;</div><div class="line">        <span class="hljs-keyword">int</span> needNum = <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-keyword">int</span> needIndex = <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-keyword">double</span> median = <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-keyword">int</span> big = <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-keyword">int</span> stand = <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-keyword">int</span>[] insertnum ;</div><div class="line"></div><div class="line">        <span class="hljs-keyword">int</span> m = nums1.length;</div><div class="line">        <span class="hljs-keyword">int</span> n = nums2.length;</div><div class="line"></div><div class="line">        <span class="hljs-keyword">if</span>((m+n)%<span class="hljs-number">2</span>==<span class="hljs-number">0</span>)&#123;</div><div class="line">            needNum = <span class="hljs-number">2</span>;</div><div class="line">            needIndex = (m+n)/<span class="hljs-number">2</span>-<span class="hljs-number">1</span>;</div><div class="line">        &#125;<span class="hljs-keyword">else</span>&#123;</div><div class="line">            needNum=<span class="hljs-number">1</span>;</div><div class="line">            needIndex = (m+n)/<span class="hljs-number">2</span>;</div><div class="line">        &#125;</div><div class="line">        insertnum = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[(m+n)/<span class="hljs-number">2</span>+<span class="hljs-number">1</span>];</div><div class="line">        <span class="hljs-keyword">int</span> j =<span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-keyword">int</span> k = <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i =<span class="hljs-number">0</span>;i&lt;m+n;i++)&#123;</div><div class="line"></div><div class="line">            <span class="hljs-keyword">if</span>(k==n)&#123;</div><div class="line">                insertnum[i] = nums1[j];</div><div class="line">                j++;</div><div class="line">            &#125;</div><div class="line">            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(j==m)&#123;</div><div class="line">                insertnum[i] = nums2[k];</div><div class="line">                k++;</div><div class="line">            &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(nums1[j]&gt;nums2[k])&#123;</div><div class="line">                insertnum[i] = nums2[k];</div><div class="line">                k++;</div><div class="line">            &#125;<span class="hljs-keyword">else</span>&#123;</div><div class="line">                insertnum[i] = nums1[j];</div><div class="line">                j++;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">             <span class="hljs-keyword">if</span> (i &gt;= needIndex )&#123;</div><div class="line">                <span class="hljs-keyword">if</span> (needNum == <span class="hljs-number">1</span>)&#123;</div><div class="line">                    median = Double.valueOf(insertnum[needIndex]);</div><div class="line">                    <span class="hljs-keyword">return</span> median;</div><div class="line">                &#125;<span class="hljs-keyword">else</span>&#123;</div><div class="line">                     <span class="hljs-keyword">if</span> (i == needIndex+<span class="hljs-number">1</span>)&#123;</div><div class="line">                         median = Double.valueOf(insertnum[needIndex]+insertnum[needIndex+<span class="hljs-number">1</span>]) /<span class="hljs-number">2.0</span>;</div><div class="line">                         <span class="hljs-keyword">return</span> median;</div><div class="line">                     &#125;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">        &#125;</div><div class="line">    <span class="hljs-keyword">return</span> median;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>分析</strong><br>这个方法优化的地方就是通过事先得到中间值的位置，在得到该位置的数值之后就不继续往下走了。</p>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/4.%20Median%20of%20Two%20Sorted%20Arrays/Images/1OptimizeSuccessResult.png?raw=true" alt="效率"></p>
+<h2><span id="方法二">方法二：</span></h2><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</div><div class="line">       <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">double</span> <span class="hljs-title">findMedianSortedArrays</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums1, <span class="hljs-keyword">int</span>[] nums2)</span> </span>&#123;</div><div class="line">           <span class="hljs-keyword">int</span> N1 = nums1.length;</div><div class="line">           <span class="hljs-keyword">int</span> N2 = nums2.length;</div><div class="line">           <span class="hljs-keyword">if</span> (N1 &lt; N2)</div><div class="line">               <span class="hljs-keyword">return</span> findMedianSortedArrays(nums2, nums1);    <span class="hljs-comment">// Make sure A2 is the shorter one.</span></div><div class="line"></div><div class="line">           <span class="hljs-keyword">if</span> (N2 == <span class="hljs-number">0</span>)</div><div class="line">               <span class="hljs-keyword">return</span> ((<span class="hljs-keyword">double</span>) nums1[(N1 - <span class="hljs-number">1</span>) / <span class="hljs-number">2</span>] + (<span class="hljs-keyword">double</span>) nums1[N1 / <span class="hljs-number">2</span>]) / <span class="hljs-number">2</span>;  <span class="hljs-comment">// If A2 is empty</span></div><div class="line"></div><div class="line">           <span class="hljs-keyword">int</span> lo = <span class="hljs-number">0</span>, hi = N2 * <span class="hljs-number">2</span>;</div><div class="line">           <span class="hljs-keyword">while</span> (lo &lt;= hi) &#123;</div><div class="line">               <span class="hljs-keyword">int</span> mid2 = (lo + hi) / <span class="hljs-number">2</span>;   <span class="hljs-comment">// Try Cut 2</span></div><div class="line">               <span class="hljs-keyword">int</span> mid1 = N1 + N2 - mid2;  <span class="hljs-comment">// Calculate Cut 1 accordingly</span></div><div class="line"></div><div class="line">               <span class="hljs-keyword">double</span> L1 = (mid1 == <span class="hljs-number">0</span>) ? Integer.MIN_VALUE : nums1[(mid1 - <span class="hljs-number">1</span>) / <span class="hljs-number">2</span>];    <span class="hljs-comment">// Get L1, R1, L2, R2 respectively</span></div><div class="line">               <span class="hljs-keyword">double</span> L2 = (mid2 == <span class="hljs-number">0</span>) ? Integer.MIN_VALUE : nums2[(mid2 - <span class="hljs-number">1</span>) / <span class="hljs-number">2</span>];</div><div class="line">               <span class="hljs-keyword">double</span> R1 = (mid1 == N1 * <span class="hljs-number">2</span>) ? Integer.MAX_VALUE : nums1[(mid1) / <span class="hljs-number">2</span>];</div><div class="line">               <span class="hljs-keyword">double</span> R2 = (mid2 == N2 * <span class="hljs-number">2</span>) ? Integer.MAX_VALUE : nums2[(mid2) / <span class="hljs-number">2</span>];</div><div class="line"></div><div class="line">               <span class="hljs-keyword">if</span> (L1 &gt; R2)</div><div class="line">                   lo = mid2 + <span class="hljs-number">1</span>;        <span class="hljs-comment">// A1's lower half is too big; need to move C1 left (C2 right)</span></div><div class="line">               <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (L2 &gt; R1)</div><div class="line">                   hi = mid2 - <span class="hljs-number">1</span>;    <span class="hljs-comment">// A2's lower half too big; need to move C2 left.</span></div><div class="line">               <span class="hljs-keyword">else</span></div><div class="line">                   <span class="hljs-keyword">return</span> ((L1 &gt; L2 ? L1 : L2) + (R1 &gt; R2 ? R2 : R1)) / <span class="hljs-number">2</span>;    <span class="hljs-comment">// Otherwise, that's the right cut.</span></div><div class="line">           &#125;</div><div class="line">           <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>;</div><div class="line">       &#125;</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/4.%20Median%20of%20Two%20Sorted%20Arrays/Images/2SeccessResult.png?raw=true" alt="效率"></p>
+<p><strong>分析</strong></p>
+<p>这个问题比较困难，很多方法都是把他分成两种情况，奇数个和偶数个。实际上这样有点复杂，我们可以把这两个情况合并成一种情况。</p>
+<p>首先，我们来重新定义一下’median’的含义：</p>
+<p>“如果我们把一个有序的array分成两个等长的部分，那么median就是比较小的那一部分的最大值和比较大的那一部分的最小值的平均值。即划分线两边的数。”</p>
+<p>比如[1,2],我们的分割线就应该在1，2之间，[1 | 2],结果是(1 + 2)/2.0 = 1.5。<br>同理，如果是两个有序的数组，那么我们只需要保证两个数组划分线右侧的数都大于左侧的数，并且两个数组左侧数字个数的和等于右侧数字个数的和。</p>
+<p>我们使用‘|’来代表分割线，(n|n)来表示分割线正好在某个数字n上。<br>比如[1 2 3],得到的分割后的数组像这样[1 (2|2) 3],z中间值就是(2+2)/2.0 = 2</p>
+<p>我们使用L代表分割线左边的数，R代表分割线右边的数。</p>
+<p>可以观察到左边的数和右边的数有这样的规律。</p>
+<p>N        Index of L / R<br>1               0 / 0<br>2               0 / 1<br>3               1 / 1<br>4               1 / 2<br>5               2 / 2<br>6               2 / 3<br>7               3 / 3<br>8               3 / 4</p>
+<p>可以得到 L = (N-1)/2,  R = N/2. 中间值为(L + R)/2 = (A[(N-1)/2] + A[N/2])/2</p>
+<p>为了更方便的计算两个数组的情况，我们添加一些空位在数字之间。用’#’代表，用’position’来表示增加空格后的位置信息。</p>
+<p>[1 2] -&gt; [# 1 # 2 #] (N=2)<br>position  0 1 2 3 4  (N_Position = 5)</p>
+<p>[3 4] -&gt; [# 3 # 4 #] (N=2)<br>position  0 1 2 3 4  (N_Position = 5)</p>
+<p>可以看出N_Position = 2N+1.所以分割线是在N，index(L) = (CutPosition-1)/2, index(R) = (CutPosition)/2.</p>
+<p>当我们分割这两个数组的时候要注意，总共有2N1+2N2+2的位置，所以，分割线的每一边都要有N1+N2个位置，剩下的2个就是切线的位置，所以当我们A2分割线在 C2 = K  , 那么A1的分割线就必须要在C1 = N1 + N2 - k. 比如,  C2 = 2, 那么 C1 = 2 + 2 - C2 = 2.</p>
+<p>[# 1 | 2 #]<br>[# 3 | 4 #]<br>现在我们有了两个L和两个R。<br>L1 = A1[(C1-1)/2]; R1 = A1[C1/2];<br>L2 = A2[(C2-1)/2]; R2 = A2[C2/2];<br>即<br>    L1 = A1[(2-1)/2] = A1[0] = 1; R1 = A1[2/2] = A1[1] = 2;<br>    L2 = A2[(2-1)/2] = A2[0] = 3; R2 = A1[2/2] = A1[1] = 4;</p>
+<p>那么我们要怎么判断这个分割线是不是符合规则的呢？我们只要左边的数字都小于右边的数字。首先这两个数组都是有序的，所以L1,L2是左半边数组里最大的数，R1,R2是右半边数组里最小的数，L1&lt;=R1.L2&lt;=R2.<br>所以我们只要判断L1&lt;=R2,L2&lt;=R1就可以了。</p>
+<p>现在我们用简单的二分法查找就可以得到答案了。</p>
+<p>如果L1&gt;R2,代表A1左边有过多较大的数字，我们必须把C1往左移，同时需要把C2往右移。<br>如果L2&gt;R1,代表A2左边有过多较大的数字，我们必须把C2往左移，同时需要把C1往右移。<br>反之则相反。</p>
+<p>当我们找到正确的分割线位置的时候，中间值  = (max(L1, L2) + min(R1, R2)) / 2。</p>
+<p>1.因为C1和C2可以根据彼此的值互相推断，我们可以使用较短的数组(设为A2)并且只移动C2，然后计算出C1。这样我们的时间复杂度就是O(log(min(N1, N2)))</p>
+<p>2.只有在极限的条件下分割线会在0,或者2N的index。比如，C2=2N2,R2 = A2[2*N2/2] = A2[N2].这种情况下他有一边是没有数值的，我们可以把它当成是极大或者极小，L = INT_MIN ，R = INT_MAX.</p>
+<p>时间复杂度 ： O(log(min(m,n))) 。m,n是两个数组的长度。<br>空间复杂度 ： O(1) .</p>
+<h2><span id="方法三">方法三：</span></h2><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</div><div class="line">  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">double</span> <span class="hljs-title">findMedianSortedArrays</span><span class="hljs-params">(<span class="hljs-keyword">int</span> A[], <span class="hljs-keyword">int</span> B[])</span> </span>&#123;</div><div class="line">       <span class="hljs-keyword">int</span> n = A.length;</div><div class="line">       <span class="hljs-keyword">int</span> m = B.length;</div><div class="line">       <span class="hljs-comment">// the following call is to make sure len(A) &lt;= len(B).</span></div><div class="line">       <span class="hljs-comment">// yes, it calls itself, but at most once, shouldn't be</span></div><div class="line">       <span class="hljs-comment">// consider a recursive solution</span></div><div class="line">       <span class="hljs-keyword">if</span> (n &gt; m)</div><div class="line">           <span class="hljs-keyword">return</span> findMedianSortedArrays(B, A);</div><div class="line"></div><div class="line">       <span class="hljs-comment">// now, do binary search</span></div><div class="line">       <span class="hljs-keyword">int</span> k = (n + m - <span class="hljs-number">1</span>) / <span class="hljs-number">2</span>;</div><div class="line">       <span class="hljs-keyword">int</span> l = <span class="hljs-number">0</span>, r = Math.min(k, n); <span class="hljs-comment">// r is n, NOT n-1, this is important!!</span></div><div class="line">       <span class="hljs-keyword">while</span> (l &lt; r) &#123;</div><div class="line">           <span class="hljs-keyword">int</span> midA = (l + r) / <span class="hljs-number">2</span>;</div><div class="line">           <span class="hljs-keyword">int</span> midB = k - midA;</div><div class="line">           <span class="hljs-keyword">if</span> (A[midA] &lt; B[midB])</div><div class="line">               l = midA + <span class="hljs-number">1</span>;</div><div class="line">           <span class="hljs-keyword">else</span></div><div class="line">               r = midA;</div><div class="line">       &#125;</div><div class="line"></div><div class="line">       <span class="hljs-comment">// after binary search, we almost get the median because it must be between</span></div><div class="line">       <span class="hljs-comment">// these 4 numbers: A[l-1], A[l], B[k-l], and B[k-l+1]</span></div><div class="line"></div><div class="line">       <span class="hljs-comment">// if (n+m) is odd, the median is the larger one between A[l-1] and B[k-l].</span></div><div class="line">       <span class="hljs-comment">// and there are some corner cases we need to take care of.</span></div><div class="line">       <span class="hljs-keyword">int</span> a = Math.max(l &gt; <span class="hljs-number">0</span> ? A[l - <span class="hljs-number">1</span>] : Integer.MIN_VALUE, k - l &gt;= <span class="hljs-number">0</span> ? B[k - l] : Integer.MIN_VALUE);</div><div class="line">       <span class="hljs-keyword">if</span> (((n + m) &amp; <span class="hljs-number">1</span>) == <span class="hljs-number">1</span>)</div><div class="line">           <span class="hljs-keyword">return</span> (<span class="hljs-keyword">double</span>) a;</div><div class="line"></div><div class="line">       <span class="hljs-comment">// if (n+m) is even, the median can be calculated by</span></div><div class="line">       <span class="hljs-comment">//      median = (max(A[l-1], B[k-l]) + min(A[l], B[k-l+1]) / 2.0</span></div><div class="line">       <span class="hljs-comment">// also, there are some corner cases to take care of.</span></div><div class="line">       <span class="hljs-keyword">int</span> b = Math.min(l &lt; n ? A[l] : Integer.MAX_VALUE, k - l + <span class="hljs-number">1</span> &lt; m ? B[k - l + <span class="hljs-number">1</span>] : Integer.MAX_VALUE);</div><div class="line">       <span class="hljs-keyword">return</span> (a + b) / <span class="hljs-number">2.0</span>;</div><div class="line">   &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/4.%20Median%20of%20Two%20Sorted%20Arrays/Images/3SuccessResult.png?raw=true" alt="效率"></p>
+<p><strong>分析</strong><br>这个方法的原理和上一个方法是大致相同的。<br>时间复杂度 ： O(log(min(m,n))) 。m,n是两个数组的长度。<br>空间复杂度 ： O(1) .</p>
+<h2><span id="方法四">方法四：</span></h2><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</div><div class="line">  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">double</span> <span class="hljs-title">findMedianSortedArrays</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] A, <span class="hljs-keyword">int</span>[] B)</span> </span>&#123;</div><div class="line">              <span class="hljs-keyword">int</span> m = A.length, n = B.length;</div><div class="line">              <span class="hljs-keyword">int</span> l = (m + n + <span class="hljs-number">1</span>) / <span class="hljs-number">2</span>;<span class="hljs-comment">//position of l element (not the index)</span></div><div class="line">              <span class="hljs-keyword">int</span> r = (m + n + <span class="hljs-number">2</span>) / <span class="hljs-number">2</span>;<span class="hljs-comment">//position of r element (not the index)</span></div><div class="line">              <span class="hljs-keyword">return</span> (getkth(A, <span class="hljs-number">0</span>, B, <span class="hljs-number">0</span>, l) + getkth(A, <span class="hljs-number">0</span>, B, <span class="hljs-number">0</span>, r)) / <span class="hljs-number">2.0</span>;</div><div class="line">          &#125;</div><div class="line"></div><div class="line">  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">double</span> <span class="hljs-title">getkth</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] A, <span class="hljs-keyword">int</span> aStart, <span class="hljs-keyword">int</span>[] B, <span class="hljs-keyword">int</span> bStart, <span class="hljs-keyword">int</span> k)</span> </span>&#123;</div><div class="line">          <span class="hljs-comment">//when the start position is bigger than A.length -1 ,means the median doesn't in the A.</span></div><div class="line">          <span class="hljs-keyword">if</span> (aStart &gt; A.length - <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> B[bStart + k - <span class="hljs-number">1</span>];</div><div class="line">          <span class="hljs-keyword">if</span> (bStart &gt; B.length - <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> A[aStart + k - <span class="hljs-number">1</span>];</div><div class="line">          <span class="hljs-keyword">if</span> (k == <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> Math.min(A[aStart], B[bStart]);</div><div class="line"></div><div class="line">          <span class="hljs-keyword">int</span> aMid = Integer.MAX_VALUE, bMid = Integer.MAX_VALUE;</div><div class="line">          <span class="hljs-keyword">if</span> (aStart + k/<span class="hljs-number">2</span> - <span class="hljs-number">1</span> &lt; A.length) aMid = A[aStart + k/<span class="hljs-number">2</span> - <span class="hljs-number">1</span>];</div><div class="line">          <span class="hljs-keyword">if</span> (bStart + k/<span class="hljs-number">2</span> - <span class="hljs-number">1</span> &lt; B.length) bMid = B[bStart + k/<span class="hljs-number">2</span> - <span class="hljs-number">1</span>];</div><div class="line"></div><div class="line">          <span class="hljs-keyword">if</span> (aMid &lt; bMid)</div><div class="line">              <span class="hljs-keyword">return</span> getkth(A, aStart + k/<span class="hljs-number">2</span>, B, bStart, k - k/<span class="hljs-number">2</span>);<span class="hljs-comment">// Check: aRight + bLeft</span></div><div class="line">          <span class="hljs-keyword">else</span></div><div class="line">              <span class="hljs-keyword">return</span> getkth(A, aStart, B, bStart + k/<span class="hljs-number">2</span>, k - k/<span class="hljs-number">2</span>);<span class="hljs-comment">// Check: bRight + aLeft</span></div><div class="line">  &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/4.%20Median%20of%20Two%20Sorted%20Arrays/Images/4SuccessResult.png?raw=true" alt="效率"></p>
+<p><strong>分析</strong><br>这个方法的原理是这样的，从两个数组中间值开始通过递归对比，每次排除一半的选项。如果A的中间值小于B的中间值则保留a的右侧数字和b的左侧数字。反之相反。然后得到l和r位置的数字,再相加除以2即可。需要注意的是这里的l和r不是index，不是从零开始的。如果两个数组的长度的和是奇数的话l和r是相同的，偶数则不同。<br>时间复杂度 ： O(log(m + n))<br>空间复杂度 ： O(1)</p>
+<p>如果你有更好的办法或者对我这里的描述有其他看法，请联系我。谢谢</p>
+<h2><span id="about-me">About Me</span></h2><p>我的博客 <a href="http://leonchen1024.com/" target="_blank" rel="external">leonchen1024.com</a></p>
+<p>我的 GitHub <a href="https://github.com/LeonChen1024" target="_blank" rel="external">https://github.com/LeonChen1024</a></p>
+<p>微信公众号 </p>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/Images/CooderQRcodem.jpg?raw=true" alt="wechat"></p>
+ -->
+            <div class="article-entry">
+                    
+                    
+                        
+                            
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                            
+                                
+                                <p><p>[Chinese ver]</p>
+<h1><span id="4-median-of-two-sorted-arrays">4. Median of Two Sorted Arrays</span></h1><p>这里有两个有序数组nums1和nums2，他们各自的大小为m和n.<br>找到这两个数组的中间值，总的时间复杂度应该为O(log (m+n)).</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Example 1:</div><div class="line">nums1 = [1, 3]</div><div class="line">nums2 = [2]</div><div class="line"> 中间值是 2.0</div></pre></td></tr></table></figure>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Example 2:</div><div class="line">nums1 = [1, 2]</div><div class="line">nums2 = [3, 4]</div><div class="line">中间值是 (2 + 3)/2 = 2.5</div></pre></td></tr></table></figure>
+<h2><span id="方法一">方法一：</span></h2><p>首先尝试了一种比较笨的方法<br><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</div><div class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">double</span> <span class="hljs-title">findMedianSortedArrays</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums1, <span class="hljs-keyword">int</span>[] nums2)</span> </span>&#123;</div><div class="line">        <span class="hljs-comment">//需要几个数值</span></div><div class="line">        <span class="hljs-keyword">int</span> needNum = <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-comment">//数值位置</span></div><div class="line">        <span class="hljs-keyword">int</span> needIndex = <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-comment">//中间值</span></div><div class="line">        <span class="hljs-keyword">double</span> median = <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-keyword">int</span> big = <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-keyword">int</span> stand = <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-comment">//合成的数组</span></div><div class="line">        <span class="hljs-keyword">int</span>[] insertnum ;</div><div class="line"></div><div class="line">        <span class="hljs-keyword">int</span> m = nums1.length;</div><div class="line">        <span class="hljs-keyword">int</span> n = nums2.length;</div><div class="line"></div><div class="line">        <span class="hljs-keyword">if</span>((m+n)%<span class="hljs-number">2</span>==<span class="hljs-number">0</span>)&#123;</div><div class="line">            needNum = <span class="hljs-number">2</span>;</div><div class="line">            needIndex = (m+n)/<span class="hljs-number">2</span>-<span class="hljs-number">1</span>;</div><div class="line">        &#125;<span class="hljs-keyword">else</span>&#123;</div><div class="line">            needNum=<span class="hljs-number">1</span>;</div><div class="line">            needIndex = (m+n)/<span class="hljs-number">2</span>;</div><div class="line">        &#125;</div><div class="line">        insertnum = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[m+n];</div><div class="line">        <span class="hljs-comment">//nums1的下标</span></div><div class="line">        <span class="hljs-keyword">int</span> j =<span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-comment">//nums2的下标</span></div><div class="line">        <span class="hljs-keyword">int</span> k = <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i =<span class="hljs-number">0</span>;i&lt;m+n;i++)&#123;</div><div class="line">            <span class="hljs-keyword">if</span>(k==n)&#123;</div><div class="line">                insertnum[i] = nums1[j];</div><div class="line">                j++;</div><div class="line">            &#125;</div><div class="line">            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(j==m)&#123;</div><div class="line">                insertnum[i] = nums2[k];</div><div class="line">                k++;</div><div class="line">            &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(nums1[j]&gt;nums2[k])&#123;</div><div class="line">                insertnum[i] = nums2[k];</div><div class="line">                k++;</div><div class="line">            &#125;<span class="hljs-keyword">else</span>&#123;</div><div class="line">                insertnum[i] = nums1[j];</div><div class="line">                j++;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="hljs-keyword">if</span>(needNum == <span class="hljs-number">1</span>)&#123;</div><div class="line">            median = Double.valueOf(insertnum[needIndex]);</div><div class="line">        &#125;<span class="hljs-keyword">else</span>&#123;</div><div class="line">            median = Double.valueOf(insertnum[needIndex]+insertnum[needIndex+<span class="hljs-number">1</span>]) /<span class="hljs-number">2.0</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="hljs-keyword">return</span> median;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>
+                            
+                        
+                    
+                    
+                        </div>   
+                        <div class="article-more-link">
+                            <a href="/2018/08/15/4-Median-of-Two-Sorted-Arrays/Record-cn/#more">Read More</a>
+                        </div>
+                    
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-image">
         <a href="/2018/08/14/Binary-Search/" class="image is-7by1">
             <img class="banner" src="/2018/08/14/Binary-Search/title.jpg" alt="Binary Search(二分搜索)">
         </a>
@@ -304,137 +583,6 @@
     <div class="card">
     
     <div class="card-image">
-        <a href="/2018/07/21/3-Longest-Substring-Without-Repeating-Characters/Record[Chinese-ver]/" class="image is-7by1">
-            <img class="banner" src="/2018/07/21/3-Longest-Substring-Without-Repeating-Characters/Record[Chinese-ver]/title.jpg" alt="LeetCode 3.最长的没有重复字符的子字符串 [Chinese ver]">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2018-07-20T16:00:00.000Z">2018-07-21</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Algorithm/">Algorithm</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Algorithm/LeetCode/">LeetCode</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    12 minutes read (About 1854 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2018/07/21/3-Longest-Substring-Without-Repeating-Characters/Record[Chinese-ver]/">LeetCode 3.最长的没有重复字符的子字符串 [Chinese ver]</a>
-            
-        </h1>
-        <div class="content">
-            <!-- <p>[Chinese ver]</p>
-<h2><span id="3最长的没有重复字符的子字符串">3.最长的没有重复字符的子字符串</span></h2><p>给你一个字符串，得出最长的一个没有重复字符的子字符串的长度。</p>
-<p><strong>例子：</strong></p>
-<p>给定“abcabcbb”，答案是“abc”，长度为3。</p>
-<p>给定“bbbbb”，答案是“b”，长度为1。</p>
-<p>给定“pwwkew”，答案是“wke”，长度为3.</p>
-<p>注意答案必须是一个子字符串，“pwke”是一个子序列，而不是一个子字符串。</p>
-<p>先来一个极其繁琐的算法，一开始没有经过太多的思考，导致不断有没考虑到情况发生，不断的修修改改，成了一个极其冗余的代码。。</p>
-<h3><span id="初解">初解</span></h3><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</div><div class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">lengthOfLongestSubstring</span><span class="hljs-params">(String s)</span> </span>&#123;</div><div class="line">        HashMap&lt;String,Integer&gt; map = <span class="hljs-keyword">new</span> HashMap&lt;&gt;();</div><div class="line">        <span class="hljs-keyword">int</span> maxSubLength = <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-keyword">int</span> tempLength = <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-keyword">boolean</span> isFirstRepeat = <span class="hljs-keyword">true</span>;</div><div class="line">        String beginSub = <span class="hljs-string">""</span>;</div><div class="line">        <span class="hljs-keyword">int</span> bigStartNum = <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;s.length();i++)&#123;</div><div class="line">            beginSub = String.valueOf(s.charAt(i));</div><div class="line">            <span class="hljs-keyword">if</span>(map.containsKey(beginSub))&#123;</div><div class="line">                <span class="hljs-keyword">if</span>(map.get(beginSub)&gt;bigStartNum)&#123;</div><div class="line">                    tempLength = i - map.get(beginSub);</div><div class="line">                    bigStartNum = map.get(beginSub);</div><div class="line">                &#125;<span class="hljs-keyword">else</span>&#123;</div><div class="line">                    tempLength = i - bigStartNum;</div><div class="line">                &#125;</div><div class="line">                <span class="hljs-keyword">if</span>(tempLength&gt;maxSubLength)&#123;</div><div class="line">                    maxSubLength = tempLength;</div><div class="line">                &#125;</div><div class="line">                <span class="hljs-keyword">if</span>(isFirstRepeat)&#123;</div><div class="line">                    tempLength = i;</div><div class="line">                    isFirstRepeat =<span class="hljs-keyword">false</span>;</div><div class="line">                    <span class="hljs-keyword">if</span>(tempLength&gt;maxSubLength)&#123;</div><div class="line">                    maxSubLength = tempLength;</div><div class="line">                &#125;</div><div class="line">                &#125;</div><div class="line">            &#125;<span class="hljs-keyword">else</span>&#123;</div><div class="line">                 tempLength = i - bigStartNum;</div><div class="line">                   <span class="hljs-keyword">if</span>(tempLength&gt;maxSubLength)&#123;</div><div class="line">                    maxSubLength = tempLength;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">            map.put(beginSub,i);</div><div class="line">        &#125;</div><div class="line">        <span class="hljs-keyword">if</span>((s.length()-bigStartNum)&gt;maxSubLength)&#123;</div><div class="line">            maxSubLength = (s.length()-bigStartNum-<span class="hljs-number">1</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="hljs-keyword">if</span>(isFirstRepeat)&#123;</div><div class="line">            <span class="hljs-keyword">return</span> s.length();</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="hljs-keyword">return</span> maxSubLength;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/3.%20Longest%20Substring%20Without%20Repeating%20Characters/Images/most_tedious_result.png?raw=true" alt="这代码。。没脸见人"></p>
-<p>痛定思过，惨痛的教训告诉我们要深思熟虑后再写代码，这个代码就不分析了，写出来的东西自己都要看不懂了，我连注释都不好意思写了，只是给自己留个教训。。接下来会对这个方法做一个优化和重新构思。</p>
-<h3><span id="二次解">二次解</span></h3><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</div><div class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">lengthOfLongestSubstring</span><span class="hljs-params">(String s)</span> </span>&#123;</div><div class="line">        HashMap&lt;String,Integer&gt; map = <span class="hljs-keyword">new</span> HashMap&lt;&gt;();</div><div class="line">		<span class="hljs-comment">//max substring's length</span></div><div class="line">        <span class="hljs-keyword">int</span> maxSubLength = <span class="hljs-number">0</span>;</div><div class="line">		<span class="hljs-comment">//the sub character now</span></div><div class="line">        String nowSub = <span class="hljs-string">""</span>;</div><div class="line">		<span class="hljs-comment">//the bigger index which the string can start</span></div><div class="line">        <span class="hljs-keyword">int</span> bigStartNum = -<span class="hljs-number">1</span>;</div><div class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;s.length();i++)&#123;</div><div class="line">            nowSub = String.valueOf(s.charAt(i));</div><div class="line">            <span class="hljs-keyword">if</span>(map.containsKey(nowSub))&#123;</div><div class="line">				<span class="hljs-comment">//if the character repeat,you can start the string from the larger one of the nowSub occur before this time and bigStartNum.</span></div><div class="line">                bigStartNum = Math.max(map.get(nowSub), bigStartNum);</div><div class="line">            &#125;</div><div class="line">			<span class="hljs-comment">//the maxSubLength is the maximum number of the length of bigStartNum to i and old maxSubLength</span></div><div class="line">            maxSubLength = Math.max(i - bigStartNum, maxSubLength);</div><div class="line">            map.put(nowSub,i);</div><div class="line">        &#125;</div><div class="line">        <span class="hljs-keyword">return</span> maxSubLength;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>优化之后的代码就很清晰了。重新构思的时候才想到还有一个Math.max()的方法可以用，对api的敏感度还是不够。</p>
-<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/3.%20Longest%20Substring%20Without%20Repeating%20Characters/Images/promote_self.png?raw=true" alt="效率"></p>
-<p><strong>分析</strong><br>这个方法的原理就是将每一个字符进行遍历，为了避免多重循环嵌套，我们使用了hashmap来将时间成本换成空间成本，通过hashmap来判断前面是否有这个字符，并存储他的序号信息。那怎么得到最长的子字符串呢？其实可以分成以下几种情况：<br>我们在前一个重复的字符加上(p)来表示,后一个重复的字符加上(n)来表示<br>1.这个字符是第一个重复的字符a，长度应该是从开始到a(n)的前一位。<br>2.这个字符不是第一个重复的字符a,上一个重复的字符为b，如果a(p)在b(p)的后面那么长度是两个a之间的长度，如果a(p)在b(p)的前面，那么长度是a(n)到b(p)之间(因为a(n)到a(p)之间包含了两个b，这样的字符串是不合规矩的)<br>3.这个字符没有出现重复的情况，长度就是这个字符到上一个重复字符a(p)出现的位置加一。</p>
-<p>整理一下现在的情况，其实以上的条件都可以整理成一种方式来计算，因为子字符串必须是连续的，所以就是计算当前字符到上一个任意重复字符点的长度，然后取出最大的一个。</p>
-<p>时间复杂度 ： O(n) .<br>空间复杂度 ： O(n) .</p>
-<p>接下来我们看一下这类题目的几类解法。</p>
-<h3><span id="方法一暴力循环">方法一：暴力循环</span></h3><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</div><div class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">lengthOfLongestSubstring</span><span class="hljs-params">(String s)</span> </span>&#123;</div><div class="line">        <span class="hljs-keyword">int</span> n = s.length();</div><div class="line">        <span class="hljs-keyword">int</span> ans = <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++)</div><div class="line">            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = i + <span class="hljs-number">1</span>; j &lt;= n; j++)</div><div class="line">                <span class="hljs-keyword">if</span> (allUnique(s, i, j)) ans = Math.max(ans, j - i);</div><div class="line">        <span class="hljs-keyword">return</span> ans;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">	<span class="hljs-comment">//judge that all the characters in s is unique.</span></div><div class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">allUnique</span><span class="hljs-params">(String s, <span class="hljs-keyword">int</span> start, <span class="hljs-keyword">int</span> end)</span> </span>&#123;</div><div class="line">        Set&lt;Character&gt; set = <span class="hljs-keyword">new</span> HashSet&lt;&gt;();</div><div class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = start; i &lt; end; i++) &#123;</div><div class="line">            Character ch = s.charAt(i);</div><div class="line">            <span class="hljs-keyword">if</span> (set.contains(ch)) <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;</div><div class="line">            set.add(ch);</div><div class="line">        &#125;</div><div class="line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/3.%20Longest%20Substring%20Without%20Repeating%20Characters/Images/brute_result.png?raw=true" alt="扎心了老铁"></p>
-<p><strong>分析</strong><br>这个方法的原理很简单，就是最外层的循环L1遍历每一个字符a，嵌套一个遍历a之后所有字符b的循环L2，在L2中又用了一个循环L3用hashset的方式来遍历a到b间以a为开头的所有字符串，并判断是否是没有重复值的字符串。嵌套了三层的循环！！！直接导致了Time Limit Exceeded 的结果，表示你这个方法太耗时了，不予通过。<br>时间复杂度 ： O(n^3) . 首先是最内层的[i,j)次的循环，时间复杂度为O(j-i)。然后是每一个j的循环[i+1,n),<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">n</div><div class="line">∑ O(j−i)</div><div class="line">i+1</div></pre></td></tr></table></figure></p>
-<p>最后算上最外层的a的循环[0,n).时间复杂度为<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">  n-1   n             n-1   (1+n-i)(n-i)</div><div class="line">O( ∑  ( ∑ (j-i))) = O(∑    —————————————— ) = O(n^3)</div><div class="line">  i=0  j=i+1          i=0         2</div></pre></td></tr></table></figure></p>
-<p>这个转化过程呢其实就是利用的等差数列的n项和公式，太难打公式了，中间步骤就不详细写了。<br><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/Mathematical_Formula/arithmetic%20progression%20_nsum.png?raw=true" alt="等差数列前n项和"></p>
-<p>空间复杂度 ： O(min(n,m)) . n就是字符串的长度，m是字母表的字符集的值。因为我们最多就可能有m个不重复的值，所以hashset的size最大也只会是m.</p>
-<p>这个方法在逻辑上可以稍微做一个优化，主要的思路就是其实如果a到b已经是包含重复的字符了，那么a到b后面的字符也一定是包含重复字符的。可以省略了那些比较。</p>
-<h3><span id="方法二滑窗算法也称k近邻算法">方法二：滑窗算法（也称K近邻算法）</span></h3><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</div><div class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">lengthOfLongestSubstring</span><span class="hljs-params">(String s)</span> </span>&#123;</div><div class="line">        <span class="hljs-keyword">int</span> n = s.length();</div><div class="line">        Set&lt;Character&gt; set = <span class="hljs-keyword">new</span> HashSet&lt;&gt;();</div><div class="line">        <span class="hljs-keyword">int</span> ans = <span class="hljs-number">0</span>, i = <span class="hljs-number">0</span>, j = <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-keyword">while</span> (i &lt; n &amp;&amp; j &lt; n) &#123;</div><div class="line">            <span class="hljs-comment">// try to extend the range [i, j]</span></div><div class="line">            <span class="hljs-keyword">if</span> (!set.contains(s.charAt(j)))&#123;</div><div class="line">                set.add(s.charAt(j++));</div><div class="line">                ans = Math.max(ans, j - i);</div><div class="line">            &#125;</div><div class="line">            <span class="hljs-keyword">else</span> &#123;</div><div class="line">                set.remove(s.charAt(i++));</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="hljs-keyword">return</span> ans;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/3.%20Longest%20Substring%20Without%20Repeating%20Characters/Images/Sliding_Window_result.png?raw=true" alt="效率"></p>
-<p><strong>分析</strong><br>方法一重复检查每一个子字符串是否重复，其实没有必要这样，方法二就是避免了多次重复检查，当i~j没有重复时，我们只需要检测s[j + 1]是否和i~j中的字符重复。直到j+1的字符重复了，我们就得到了i字符的最长不重复字符。当j不小于n时就可以停止计算了，因为此时的[i,j)肯定要长于[i+1,j)。</p>
-<p>时间复杂度 ： O(2n) = O(n)<br>空间复杂度 ： O(min(m,n)) n就是字符串的长度，m是字母表的字符集的值。因为我们最多就可能有m个不重复的值，所以hashset的size最大也只会是m.</p>
-<h3><span id="方法三改良后的滑窗算法">方法三：改良后的滑窗算法</span></h3><p>HashMap<br><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</div><div class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">lengthOfLongestSubstring</span><span class="hljs-params">(String s)</span> </span>&#123;</div><div class="line">        <span class="hljs-keyword">int</span> n = s.length(), ans = <span class="hljs-number">0</span>;</div><div class="line">        Map&lt;Character, Integer&gt; map = <span class="hljs-keyword">new</span> HashMap&lt;&gt;(); <span class="hljs-comment">// current index of character</span></div><div class="line">        <span class="hljs-comment">// try to extend the range [i, j]</span></div><div class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>, i = <span class="hljs-number">0</span>; j &lt; n; j++) &#123;</div><div class="line">            <span class="hljs-keyword">if</span> (map.containsKey(s.charAt(j))) &#123;</div><div class="line">                i = Math.max(map.get(s.charAt(j)), i);</div><div class="line">            &#125;</div><div class="line">            ans = Math.max(ans, j - i + <span class="hljs-number">1</span>);</div><div class="line">            map.put(s.charAt(j), j + <span class="hljs-number">1</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="hljs-keyword">return</span> ans;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/3.%20Longest%20Substring%20Without%20Repeating%20Characters/Images/Sliding_Window_Optimized_hashmap_result.png?raw=true" alt="效率"></p>
-<p><strong>分析</strong><br>这个方法是对方法二的改进，我们使用HashMap来保存出现的字符和他的位置，当出现重复字符时，我们可以直接定位到重复字符的位置(注意这里的位置和程序上的序号是不同的，他的第一位就是1而不是我们程序上的0.)，对比以前的i取较大的值赋值为新的i。为什么取大值可以看上面的二次解</p>
-<p>时间复杂度 ： O(n)<br>空间复杂度 ： O(min(m,n)) 和方法二相同</p>
-<p>ASCII 128<br><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</div><div class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">lengthOfLongestSubstring</span><span class="hljs-params">(String s)</span> </span>&#123;</div><div class="line">        <span class="hljs-keyword">int</span> n = s.length(), ans = <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-keyword">int</span>[] index = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[<span class="hljs-number">128</span>]; <span class="hljs-comment">// current index of character</span></div><div class="line">        <span class="hljs-comment">// try to extend the range [i, j]</span></div><div class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>, i = <span class="hljs-number">0</span>; j &lt; n; j++) &#123;</div><div class="line">            i = Math.max(index[s.charAt(j)], i);</div><div class="line">            ans = Math.max(ans, j - i + <span class="hljs-number">1</span>);</div><div class="line">            index[s.charAt(j)] = j + <span class="hljs-number">1</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="hljs-keyword">return</span> ans;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/3.%20Longest%20Substring%20Without%20Repeating%20Characters/Images/Sliding_Window_Optimized_ascii_result.png?raw=true" alt="效率"></p>
-<p>效率最快的一种，在同样的复杂度上为什么会比上一种hashmap的方法快那么多呢，简单点说，其实集合大部分都是由数组构成的，hashmap其实就是由数组加链表封装而成的，所以在速度上数组查找会优于hashmap查找。</p>
-<p><strong>分析</strong><br>这个方法原理和上一个使用hashmap的方法大致相同，但是它使用的是int[]来存储键值对，使用字符来做下标(是的，字符可以做下标，准确的来说是整型字符常量可以做下标，会被解析为他的ASCII码值)，位置来做值。</p>
-<p>时间复杂度 ： O(n)<br>空间复杂度 ： O(m) m是字符表的大小</p>
-<p>如果你有更好的办法或者对我这里的描述有其他看法，请联系我。谢谢</p>
-<h2><span id="about-me">About Me</span></h2><p>我的博客 <a href="http://leonchen1024.com/" target="_blank" rel="external">leonchen1024.com</a></p>
-<p>我的 GitHub <a href="https://github.com/LeonChen1024" target="_blank" rel="external">https://github.com/LeonChen1024</a></p>
-<p>微信公众号 </p>
-<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/Images/CooderQRcodem.jpg?raw=true" alt="wechat"></p>
- -->
-            <div class="article-entry">
-                    
-                    
-                        
-                            
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                            
-                                
-                                <p><p>[Chinese ver]</p>
-<h2><span id="3最长的没有重复字符的子字符串">3.最长的没有重复字符的子字符串</span></h2><p>给你一个字符串，得出最长的一个没有重复字符的子字符串的长度。</p>
-<p><strong>例子：</strong></p>
-<p>给定“abcabcbb”，答案是“abc”，长度为3。</p>
-<p>给定“bbbbb”，答案是“b”，长度为1。</p>
-<p>
-                            
-                        
-                    
-                    
-                        </div>   
-                        <div class="article-more-link">
-                            <a href="/2018/07/21/3-Longest-Substring-Without-Repeating-Characters/Record[Chinese-ver]/#more">Read More</a>
-                        </div>
-                    
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-image">
         <a href="/2018/07/21/3-Longest-Substring-Without-Repeating-Characters/Record[English-ver]/" class="image is-7by1">
             <img class="banner" src="/2018/07/21/3-Longest-Substring-Without-Repeating-Characters/Record[Chinese-ver]/title.jpg" alt="LeetCode 3. Longest Substring Without Repeating Characters [English ver]">
         </a>
@@ -551,6 +699,137 @@
                         </div>   
                         <div class="article-more-link">
                             <a href="/2018/07/21/3-Longest-Substring-Without-Repeating-Characters/Record[English-ver]/#more">Read More</a>
+                        </div>
+                    
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-image">
+        <a href="/2018/07/21/3-Longest-Substring-Without-Repeating-Characters/Record[Chinese-ver]/" class="image is-7by1">
+            <img class="banner" src="/2018/07/21/3-Longest-Substring-Without-Repeating-Characters/Record[Chinese-ver]/title.jpg" alt="LeetCode 3.最长的没有重复字符的子字符串 [Chinese ver]">
+        </a>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2018-07-20T16:00:00.000Z">2018-07-21</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Algorithm/">Algorithm</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Algorithm/LeetCode/">LeetCode</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    12 minutes read (About 1854 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2018/07/21/3-Longest-Substring-Without-Repeating-Characters/Record[Chinese-ver]/">LeetCode 3.最长的没有重复字符的子字符串 [Chinese ver]</a>
+            
+        </h1>
+        <div class="content">
+            <!-- <p>[Chinese ver]</p>
+<h2><span id="3最长的没有重复字符的子字符串">3.最长的没有重复字符的子字符串</span></h2><p>给你一个字符串，得出最长的一个没有重复字符的子字符串的长度。</p>
+<p><strong>例子：</strong></p>
+<p>给定“abcabcbb”，答案是“abc”，长度为3。</p>
+<p>给定“bbbbb”，答案是“b”，长度为1。</p>
+<p>给定“pwwkew”，答案是“wke”，长度为3.</p>
+<p>注意答案必须是一个子字符串，“pwke”是一个子序列，而不是一个子字符串。</p>
+<p>先来一个极其繁琐的算法，一开始没有经过太多的思考，导致不断有没考虑到情况发生，不断的修修改改，成了一个极其冗余的代码。。</p>
+<h3><span id="初解">初解</span></h3><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</div><div class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">lengthOfLongestSubstring</span><span class="hljs-params">(String s)</span> </span>&#123;</div><div class="line">        HashMap&lt;String,Integer&gt; map = <span class="hljs-keyword">new</span> HashMap&lt;&gt;();</div><div class="line">        <span class="hljs-keyword">int</span> maxSubLength = <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-keyword">int</span> tempLength = <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-keyword">boolean</span> isFirstRepeat = <span class="hljs-keyword">true</span>;</div><div class="line">        String beginSub = <span class="hljs-string">""</span>;</div><div class="line">        <span class="hljs-keyword">int</span> bigStartNum = <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;s.length();i++)&#123;</div><div class="line">            beginSub = String.valueOf(s.charAt(i));</div><div class="line">            <span class="hljs-keyword">if</span>(map.containsKey(beginSub))&#123;</div><div class="line">                <span class="hljs-keyword">if</span>(map.get(beginSub)&gt;bigStartNum)&#123;</div><div class="line">                    tempLength = i - map.get(beginSub);</div><div class="line">                    bigStartNum = map.get(beginSub);</div><div class="line">                &#125;<span class="hljs-keyword">else</span>&#123;</div><div class="line">                    tempLength = i - bigStartNum;</div><div class="line">                &#125;</div><div class="line">                <span class="hljs-keyword">if</span>(tempLength&gt;maxSubLength)&#123;</div><div class="line">                    maxSubLength = tempLength;</div><div class="line">                &#125;</div><div class="line">                <span class="hljs-keyword">if</span>(isFirstRepeat)&#123;</div><div class="line">                    tempLength = i;</div><div class="line">                    isFirstRepeat =<span class="hljs-keyword">false</span>;</div><div class="line">                    <span class="hljs-keyword">if</span>(tempLength&gt;maxSubLength)&#123;</div><div class="line">                    maxSubLength = tempLength;</div><div class="line">                &#125;</div><div class="line">                &#125;</div><div class="line">            &#125;<span class="hljs-keyword">else</span>&#123;</div><div class="line">                 tempLength = i - bigStartNum;</div><div class="line">                   <span class="hljs-keyword">if</span>(tempLength&gt;maxSubLength)&#123;</div><div class="line">                    maxSubLength = tempLength;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">            map.put(beginSub,i);</div><div class="line">        &#125;</div><div class="line">        <span class="hljs-keyword">if</span>((s.length()-bigStartNum)&gt;maxSubLength)&#123;</div><div class="line">            maxSubLength = (s.length()-bigStartNum-<span class="hljs-number">1</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="hljs-keyword">if</span>(isFirstRepeat)&#123;</div><div class="line">            <span class="hljs-keyword">return</span> s.length();</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="hljs-keyword">return</span> maxSubLength;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/3.%20Longest%20Substring%20Without%20Repeating%20Characters/Images/most_tedious_result.png?raw=true" alt="这代码。。没脸见人"></p>
+<p>痛定思过，惨痛的教训告诉我们要深思熟虑后再写代码，这个代码就不分析了，写出来的东西自己都要看不懂了，我连注释都不好意思写了，只是给自己留个教训。。接下来会对这个方法做一个优化和重新构思。</p>
+<h3><span id="二次解">二次解</span></h3><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</div><div class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">lengthOfLongestSubstring</span><span class="hljs-params">(String s)</span> </span>&#123;</div><div class="line">        HashMap&lt;String,Integer&gt; map = <span class="hljs-keyword">new</span> HashMap&lt;&gt;();</div><div class="line">		<span class="hljs-comment">//max substring's length</span></div><div class="line">        <span class="hljs-keyword">int</span> maxSubLength = <span class="hljs-number">0</span>;</div><div class="line">		<span class="hljs-comment">//the sub character now</span></div><div class="line">        String nowSub = <span class="hljs-string">""</span>;</div><div class="line">		<span class="hljs-comment">//the bigger index which the string can start</span></div><div class="line">        <span class="hljs-keyword">int</span> bigStartNum = -<span class="hljs-number">1</span>;</div><div class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;s.length();i++)&#123;</div><div class="line">            nowSub = String.valueOf(s.charAt(i));</div><div class="line">            <span class="hljs-keyword">if</span>(map.containsKey(nowSub))&#123;</div><div class="line">				<span class="hljs-comment">//if the character repeat,you can start the string from the larger one of the nowSub occur before this time and bigStartNum.</span></div><div class="line">                bigStartNum = Math.max(map.get(nowSub), bigStartNum);</div><div class="line">            &#125;</div><div class="line">			<span class="hljs-comment">//the maxSubLength is the maximum number of the length of bigStartNum to i and old maxSubLength</span></div><div class="line">            maxSubLength = Math.max(i - bigStartNum, maxSubLength);</div><div class="line">            map.put(nowSub,i);</div><div class="line">        &#125;</div><div class="line">        <span class="hljs-keyword">return</span> maxSubLength;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>优化之后的代码就很清晰了。重新构思的时候才想到还有一个Math.max()的方法可以用，对api的敏感度还是不够。</p>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/3.%20Longest%20Substring%20Without%20Repeating%20Characters/Images/promote_self.png?raw=true" alt="效率"></p>
+<p><strong>分析</strong><br>这个方法的原理就是将每一个字符进行遍历，为了避免多重循环嵌套，我们使用了hashmap来将时间成本换成空间成本，通过hashmap来判断前面是否有这个字符，并存储他的序号信息。那怎么得到最长的子字符串呢？其实可以分成以下几种情况：<br>我们在前一个重复的字符加上(p)来表示,后一个重复的字符加上(n)来表示<br>1.这个字符是第一个重复的字符a，长度应该是从开始到a(n)的前一位。<br>2.这个字符不是第一个重复的字符a,上一个重复的字符为b，如果a(p)在b(p)的后面那么长度是两个a之间的长度，如果a(p)在b(p)的前面，那么长度是a(n)到b(p)之间(因为a(n)到a(p)之间包含了两个b，这样的字符串是不合规矩的)<br>3.这个字符没有出现重复的情况，长度就是这个字符到上一个重复字符a(p)出现的位置加一。</p>
+<p>整理一下现在的情况，其实以上的条件都可以整理成一种方式来计算，因为子字符串必须是连续的，所以就是计算当前字符到上一个任意重复字符点的长度，然后取出最大的一个。</p>
+<p>时间复杂度 ： O(n) .<br>空间复杂度 ： O(n) .</p>
+<p>接下来我们看一下这类题目的几类解法。</p>
+<h3><span id="方法一暴力循环">方法一：暴力循环</span></h3><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</div><div class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">lengthOfLongestSubstring</span><span class="hljs-params">(String s)</span> </span>&#123;</div><div class="line">        <span class="hljs-keyword">int</span> n = s.length();</div><div class="line">        <span class="hljs-keyword">int</span> ans = <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++)</div><div class="line">            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = i + <span class="hljs-number">1</span>; j &lt;= n; j++)</div><div class="line">                <span class="hljs-keyword">if</span> (allUnique(s, i, j)) ans = Math.max(ans, j - i);</div><div class="line">        <span class="hljs-keyword">return</span> ans;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">	<span class="hljs-comment">//judge that all the characters in s is unique.</span></div><div class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">allUnique</span><span class="hljs-params">(String s, <span class="hljs-keyword">int</span> start, <span class="hljs-keyword">int</span> end)</span> </span>&#123;</div><div class="line">        Set&lt;Character&gt; set = <span class="hljs-keyword">new</span> HashSet&lt;&gt;();</div><div class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = start; i &lt; end; i++) &#123;</div><div class="line">            Character ch = s.charAt(i);</div><div class="line">            <span class="hljs-keyword">if</span> (set.contains(ch)) <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;</div><div class="line">            set.add(ch);</div><div class="line">        &#125;</div><div class="line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/3.%20Longest%20Substring%20Without%20Repeating%20Characters/Images/brute_result.png?raw=true" alt="扎心了老铁"></p>
+<p><strong>分析</strong><br>这个方法的原理很简单，就是最外层的循环L1遍历每一个字符a，嵌套一个遍历a之后所有字符b的循环L2，在L2中又用了一个循环L3用hashset的方式来遍历a到b间以a为开头的所有字符串，并判断是否是没有重复值的字符串。嵌套了三层的循环！！！直接导致了Time Limit Exceeded 的结果，表示你这个方法太耗时了，不予通过。<br>时间复杂度 ： O(n^3) . 首先是最内层的[i,j)次的循环，时间复杂度为O(j-i)。然后是每一个j的循环[i+1,n),<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">n</div><div class="line">∑ O(j−i)</div><div class="line">i+1</div></pre></td></tr></table></figure></p>
+<p>最后算上最外层的a的循环[0,n).时间复杂度为<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">  n-1   n             n-1   (1+n-i)(n-i)</div><div class="line">O( ∑  ( ∑ (j-i))) = O(∑    —————————————— ) = O(n^3)</div><div class="line">  i=0  j=i+1          i=0         2</div></pre></td></tr></table></figure></p>
+<p>这个转化过程呢其实就是利用的等差数列的n项和公式，太难打公式了，中间步骤就不详细写了。<br><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/Mathematical_Formula/arithmetic%20progression%20_nsum.png?raw=true" alt="等差数列前n项和"></p>
+<p>空间复杂度 ： O(min(n,m)) . n就是字符串的长度，m是字母表的字符集的值。因为我们最多就可能有m个不重复的值，所以hashset的size最大也只会是m.</p>
+<p>这个方法在逻辑上可以稍微做一个优化，主要的思路就是其实如果a到b已经是包含重复的字符了，那么a到b后面的字符也一定是包含重复字符的。可以省略了那些比较。</p>
+<h3><span id="方法二滑窗算法也称k近邻算法">方法二：滑窗算法（也称K近邻算法）</span></h3><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</div><div class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">lengthOfLongestSubstring</span><span class="hljs-params">(String s)</span> </span>&#123;</div><div class="line">        <span class="hljs-keyword">int</span> n = s.length();</div><div class="line">        Set&lt;Character&gt; set = <span class="hljs-keyword">new</span> HashSet&lt;&gt;();</div><div class="line">        <span class="hljs-keyword">int</span> ans = <span class="hljs-number">0</span>, i = <span class="hljs-number">0</span>, j = <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-keyword">while</span> (i &lt; n &amp;&amp; j &lt; n) &#123;</div><div class="line">            <span class="hljs-comment">// try to extend the range [i, j]</span></div><div class="line">            <span class="hljs-keyword">if</span> (!set.contains(s.charAt(j)))&#123;</div><div class="line">                set.add(s.charAt(j++));</div><div class="line">                ans = Math.max(ans, j - i);</div><div class="line">            &#125;</div><div class="line">            <span class="hljs-keyword">else</span> &#123;</div><div class="line">                set.remove(s.charAt(i++));</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="hljs-keyword">return</span> ans;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/3.%20Longest%20Substring%20Without%20Repeating%20Characters/Images/Sliding_Window_result.png?raw=true" alt="效率"></p>
+<p><strong>分析</strong><br>方法一重复检查每一个子字符串是否重复，其实没有必要这样，方法二就是避免了多次重复检查，当i~j没有重复时，我们只需要检测s[j + 1]是否和i~j中的字符重复。直到j+1的字符重复了，我们就得到了i字符的最长不重复字符。当j不小于n时就可以停止计算了，因为此时的[i,j)肯定要长于[i+1,j)。</p>
+<p>时间复杂度 ： O(2n) = O(n)<br>空间复杂度 ： O(min(m,n)) n就是字符串的长度，m是字母表的字符集的值。因为我们最多就可能有m个不重复的值，所以hashset的size最大也只会是m.</p>
+<h3><span id="方法三改良后的滑窗算法">方法三：改良后的滑窗算法</span></h3><p>HashMap<br><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</div><div class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">lengthOfLongestSubstring</span><span class="hljs-params">(String s)</span> </span>&#123;</div><div class="line">        <span class="hljs-keyword">int</span> n = s.length(), ans = <span class="hljs-number">0</span>;</div><div class="line">        Map&lt;Character, Integer&gt; map = <span class="hljs-keyword">new</span> HashMap&lt;&gt;(); <span class="hljs-comment">// current index of character</span></div><div class="line">        <span class="hljs-comment">// try to extend the range [i, j]</span></div><div class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>, i = <span class="hljs-number">0</span>; j &lt; n; j++) &#123;</div><div class="line">            <span class="hljs-keyword">if</span> (map.containsKey(s.charAt(j))) &#123;</div><div class="line">                i = Math.max(map.get(s.charAt(j)), i);</div><div class="line">            &#125;</div><div class="line">            ans = Math.max(ans, j - i + <span class="hljs-number">1</span>);</div><div class="line">            map.put(s.charAt(j), j + <span class="hljs-number">1</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="hljs-keyword">return</span> ans;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/3.%20Longest%20Substring%20Without%20Repeating%20Characters/Images/Sliding_Window_Optimized_hashmap_result.png?raw=true" alt="效率"></p>
+<p><strong>分析</strong><br>这个方法是对方法二的改进，我们使用HashMap来保存出现的字符和他的位置，当出现重复字符时，我们可以直接定位到重复字符的位置(注意这里的位置和程序上的序号是不同的，他的第一位就是1而不是我们程序上的0.)，对比以前的i取较大的值赋值为新的i。为什么取大值可以看上面的二次解</p>
+<p>时间复杂度 ： O(n)<br>空间复杂度 ： O(min(m,n)) 和方法二相同</p>
+<p>ASCII 128<br><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</div><div class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">lengthOfLongestSubstring</span><span class="hljs-params">(String s)</span> </span>&#123;</div><div class="line">        <span class="hljs-keyword">int</span> n = s.length(), ans = <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-keyword">int</span>[] index = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[<span class="hljs-number">128</span>]; <span class="hljs-comment">// current index of character</span></div><div class="line">        <span class="hljs-comment">// try to extend the range [i, j]</span></div><div class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>, i = <span class="hljs-number">0</span>; j &lt; n; j++) &#123;</div><div class="line">            i = Math.max(index[s.charAt(j)], i);</div><div class="line">            ans = Math.max(ans, j - i + <span class="hljs-number">1</span>);</div><div class="line">            index[s.charAt(j)] = j + <span class="hljs-number">1</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="hljs-keyword">return</span> ans;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/3.%20Longest%20Substring%20Without%20Repeating%20Characters/Images/Sliding_Window_Optimized_ascii_result.png?raw=true" alt="效率"></p>
+<p>效率最快的一种，在同样的复杂度上为什么会比上一种hashmap的方法快那么多呢，简单点说，其实集合大部分都是由数组构成的，hashmap其实就是由数组加链表封装而成的，所以在速度上数组查找会优于hashmap查找。</p>
+<p><strong>分析</strong><br>这个方法原理和上一个使用hashmap的方法大致相同，但是它使用的是int[]来存储键值对，使用字符来做下标(是的，字符可以做下标，准确的来说是整型字符常量可以做下标，会被解析为他的ASCII码值)，位置来做值。</p>
+<p>时间复杂度 ： O(n)<br>空间复杂度 ： O(m) m是字符表的大小</p>
+<p>如果你有更好的办法或者对我这里的描述有其他看法，请联系我。谢谢</p>
+<h2><span id="about-me">About Me</span></h2><p>我的博客 <a href="http://leonchen1024.com/" target="_blank" rel="external">leonchen1024.com</a></p>
+<p>我的 GitHub <a href="https://github.com/LeonChen1024" target="_blank" rel="external">https://github.com/LeonChen1024</a></p>
+<p>微信公众号 </p>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/Images/CooderQRcodem.jpg?raw=true" alt="wechat"></p>
+ -->
+            <div class="article-entry">
+                    
+                    
+                        
+                            
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                            
+                                
+                                <p><p>[Chinese ver]</p>
+<h2><span id="3最长的没有重复字符的子字符串">3.最长的没有重复字符的子字符串</span></h2><p>给你一个字符串，得出最长的一个没有重复字符的子字符串的长度。</p>
+<p><strong>例子：</strong></p>
+<p>给定“abcabcbb”，答案是“abc”，长度为3。</p>
+<p>给定“bbbbb”，答案是“b”，长度为1。</p>
+<p>
+                            
+                        
+                    
+                    
+                        </div>   
+                        <div class="article-more-link">
+                            <a href="/2018/07/21/3-Longest-Substring-Without-Repeating-Characters/Record[Chinese-ver]/#more">Read More</a>
                         </div>
                     
         </div>
@@ -988,72 +1267,6 @@
                 <time class="level-item has-text-grey" datetime="2017-02-16T16:00:00.000Z">2017-02-17</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Algorithm/">Algorithm</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Algorithm/LeetCode/">LeetCode</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    5 minutes read (About 714 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2017/02/17/1-Two-Sum/Record[Chinese ver]/">LeetCode 1 Two Sum [Chinese ver]</a>
-            
-        </h1>
-        <div class="content">
-            <!-- <h1 id="Chinese-ver-1-Two-Sum"><a href="#Chinese-ver-1-Two-Sum" class="headerlink" title="[Chinese ver]1 Two Sum"></a>[Chinese ver]1 Two Sum</h1><h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p>两数求和 。给定一个整数的数组，返回两个数字的索引使得这两个数字加起来成为一个指定的目标值。<br>你可以假设每个输入都至少有一个解决方案，并且你不能使用相同的元素两次。</p> -->
-            <div class="article-entry">
-                    
-                    
-                        
-                            
-                            <p><h1 id="Chinese-ver-1-Two-Sum"><a href="#Chinese-ver-1-Two-Sum" class="headerlink" title="[Chinese ver]1 Two Sum"></a>[Chinese ver]1 Two Sum</h1><h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p>两数求和 。给定一个整数的数组，返回两个数字的索引使得这两个数字加起来成为一个指定的目标值。<br>你可以假设每个输入都至少有一个解决方案，并且你不能使用相同的元素两次。</p></p>
-                        
-                    
-                    
-                        </div>   
-                        <div class="article-more-link">
-                            <a href="/2017/02/17/1-Two-Sum/Record[Chinese ver]/#more">Read More</a>
-                        </div>
-                    
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2017/02/17/1-Two-Sum/Record[Chinese ver]/#more">Read More</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2017-02-16T16:00:00.000Z">2017-02-17</time>
-                
-                <div class="level-item">
                 <a class="has-link-grey -link" href="/categories/English/">English</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/English/Algorithm/">Algorithm</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/English/Algorithm/LeetCode/">LeetCode</a>
                 </div>
                 
@@ -1099,143 +1312,6 @@
                 </div>
             </div>
         </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-image">
-        <a href="/2016/08/20/Android-6.0-Change-2/" class="image is-7by1">
-            <img class="banner" src="/2016/08/20/Android-6.0-Change-2/pic.jpg" alt="Android 6.0的变化 （下）">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2016-08-20T15:31:40.000Z">2016-08-20</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Android/版本差异/">版本差异</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    18 minutes read (About 2633 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2016/08/20/Android-6.0-Change-2/">Android 6.0的变化 （下）</a>
-            
-        </h1>
-        <div class="content">
-            <!-- <h2><span id="目录">目录</span></h2><ul>
-<li><a href="#目录">目录</a></li>
-<li><a href="#浏览器书签变化">浏览器书签变化</a></li>
-<li><a href="#android密钥库变化">Android密钥库变化</a></li>
-<li><a href="#wifi和网络工作的变化">wifi和网络工作的变化</a></li>
-<li><a href="#照相服务改变">照相服务改变</a></li>
-<li><a href="#运行时">运行时</a></li>
-<li><a href="#apk验证">APK验证</a></li>
-<li><a href="#usb连接">USB连接</a></li>
-<li><a href="#企业级android的变化">企业级Android的变化</a></li>
-<li><a href="#devicepolicymanager-api的变化">DevicePolicyManager api的变化：</a></li>
-<li><a href="#其他api的变化">其他API的变化：</a></li>
-<li><a href="#全局设置的变化">全局设置的变化：</a></li>
-</ul>
-<h2><span id="浏览器书签变化">浏览器书签变化</span></h2><p>这个版本移除了对全局书签的支持。android.provider.Browser.getAllBookmarks()and android.provider.Browser.saveBookmark() 方法现在被移除了。同样的，READ_HISTORY_BOOKMARKS and WRITE_HISTORY_BOOKMARKS 权限也被移除了。如果你的APP目标版本是Android 6.0 (API level 23) 或者更高，不要使用全局书签或使用全局书签的权限，相对应的，你的APP应该使用内部的书签。</p>
-<h2><span id="android密钥库变化">Android密钥库变化</span></h2><p>在这个版本， Android Keystore provider 不在支持DSA.ECDSA仍然被支持。<br>当安全锁屏被禁用或复位时（例如，被用户或设备管理器操作时），那些没加密的密钥将不再被删除，在这些时候那些加密的密钥将被删除。</p>
-<h2><span id="wifi和网络工作的变化">wifi和网络工作的变化</span></h2><p>这个版本介绍了一下几个有关于Wi-Fi 和网络工作的API的行为变化。</p>
-<p>你的APP现在可以改变 WifiConfiguration 对象的状态仅当是你创建了这些对象时。你将不被允许去修改或者删除WifiConfiguration 对象当他是被用户或者别的APP创建的。</p>
-<p>在之前，如果一个APP使用 enableNetwork() 方法并设置disableAllOthers=true 来强制设备连接某个指定的WiFi网络，设备将会拒绝连接其他的网络比如蜂窝数据。在这个版本，设备不在拒绝连接其他的网络。如果你的APP的targetSdkVersion 是20或者更低，他将被固定在所选的WiFi网络。如果你的APP的targetSdkVersion 是21或者更高，使用多网络API（例如 openConnection(), bindSocket(),和新的bindProcessToNetwork() 方法）来确保网络通信是使用被选择的网络。</p>
-<h2><span id="照相服务改变">照相服务改变</span></h2><p>在这个版本中，接收摄像头服务和共享资源的模式已经从原来的“先到先服务”的模式转变为先服务高优先级的进程，服务的行为改变包括：</p>
-<p>获取相机子系统的资源，包括打开和配置相机设备，是基于APP进程的“优先级”来进行授予的。用户可见的或者在最前的activity的APP进程通常给予较高的优先级，来使的相机资源的分配和使用更加的可靠。</p>
-<p>一个低优先级的APP的正在使用相机的用户可能会被“驱逐”当一个高优先级的APP尝试使用相机时。在被弃用的Camera API中，这将导致被驱逐的用户将会调用 onError() 方法，而在Camera2 API中，这将导致被驱逐的用户调用 onDisconnected() 方法。</p>
-<p>当设备拥有合适的照相机硬件时，不同的APP进程可以独立的打开和使用照相机设备。然而，多进程使用的情况下，当同时请求导致对任意的相机设备的性能和能力的降低，现在的相机服务对此进行检测并且禁止改行为。这样的改变可能导致低优先级的用户被“驱逐”即使没有其他的APP明确的尝试访问相同的相机设备。</p>
-<p>改变当前的用户会导致之前的用户中的APP的活动的相机用户被驱逐。访问相机应用将被限制于用户配置文件属于当前设备用户者。在实践中，这就比如说是一个“游客”账户，当用户切换了一个不同的账号时将无法离开正在运行的相机子系统的进程。</p>
-<h2><span id="运行时">运行时</span></h2><p>ART运行时可以正确的实现访问 newInstance()方法的规则。这种改变解决了以前版本中Dalvik 检查访问规则错误的问题。如果你的APP调用了 newInstance()方法并且你想要重写访问检查，应该调用 setAccessible()并将传入参数设为true。如果你的APP使用了v7 appcompat library 或者 v7 recyclerview library 包，你必须在你的APP里更新这些相应的包到最新版。此外，确保你的xml中引用的自定义类已经更新来保证他们的类构造器可用。</p>
-<p>这个版本更新了动态连接器的行为。动态链接器现在可以识别库的soname和他的路径的不同（公共bug6670），并且实现了通过soname来进行查找的功能。在加载的时候那些先前工作在坏的 DT_NEEDED 的项目（在创建机器文件系统时使用绝对路径）可能会失败。</p>
-<p>现在已经支持方法dlopen(3) RTLD_LOCAL模式，需要注意的是RTLD_LOCAL是默认值，当你没有明确使用其他参数时将不会影响到默认值。（除非你的APP明确的使用了 RTLD_GLOBAL）。在使用RTLD_LOCAL的情况下，比较晚使用dlopen(3）进行库加载的标识符将不可用。</p>
-<p>在Android之前的版本里，如果你要求系统加载一个文本重定位的共享库文件，系统会显示警告但是仍然会允许加载该库。从这个版本开始，如果你的APP的目标sdk是23或者更高系统将会拒绝该库。为了帮助你检测到库文件的加载失败，你的APP应该打印有关日志来记录dlopen()失败，包括记录问题的描述以及dlerror返回。为了学习更多的有关文本重定位的内容可见这个指导。</p>
-<h2><span id="apk验证">APK验证</span></h2><p>现在平台执行严格的apk验证。一个在manifest中声明了某文件但是在apk中却没有出现该文件的apk被认为是损坏的。一个apk中的任何内容被修改后必须重新签名。</p>
-<h2><span id="usb连接">USB连接</span></h2><p>设备通过USB端口进行连接现在默认设置为仅充电模式。为了通过USB连接方式访问设备及其内容，用户必须明确的授予这种交互的权限。如果你的应用支持通过USB端口进行交互，请考虑到该交互必须显示的启用。</p>
-<h2><span id="企业级android的变化">企业级Android的变化</span></h2><p>在这个版本包括了以下企业级Android的行为变化。</p>
-<p>个人环境中的企业通讯录。当用户查看过去的通话记录时，google拨号器将会显示企业通讯录。设置setCrossProfileCallerIdDisabled() 为true来使得在google拨号器里隐藏企业联系人记录。当通过蓝牙分享时工作通讯录将会和个人通讯录一起显示，除非你 setBluetoothContactSharingDisabled() 为false。在默认情况下，它是设置为true的。</p>
-<p>WiFi配置清除：通过Profile Owner来添加Wi-Fi配置（例如，调用addNetwork()方法）在它对应的企业配置文件被移除后删除。</p>
-<p>WiFi配置锁定：如果WIFI_DEVICE_OWNER_CONFIGS_LOCKDOWN 不为0时，任何由活动设备拥有者创建的WiFi配置文件将不可以被用户进行修改和删除。用户仍然可以创建和修改他们自己的WiFi配置。活动设备所有者拥有修改和删除包括那些不是由他们创建的WiFi配置的特权。</p>
-<p>通过google账号来下载企业策略控制器：当一个管理环境之外的需要管理的google账号要求通过设备策略控制器app添加到设备时，新增账号流程将会提示用户安装合适的WPC。这一行为同样支持通过设置-账号和初始化设备时添加账号。</p>
-<h2><span id="devicepolicymanager-api的变化">DevicePolicyManager api的变化：</span></h2><p>调用 setCameraDisabled()方法只会影响当前调用相机的用户。从管理文件中调用的话并不影响正在主用户上运行的使用相机的APP。</p>
-<p>此外，现在配置拥有者可以和设备拥有者一样使用setKeyguardDisabledFeatures() 方法。</p>
-<p>配置拥有者可以设置以下锁屏设置：<br>KEYGUARD_DISABLE_TRUST_AGENTS 和 KEYGUARD_DISABLE_FINGERPRINT可以影响配置文件的父用户。<br>KEYGUARD_DISABLE_UNREDACTED_NOTIFICATIONS,会影响APP在管理文件中产生的通知。</p>
-<p>DevicePolicyManager.createAndInitializeUser() 和DevicePolicyManager.createUser()方法被弃用。</p>
-<p> setScreenCaptureDisabled() 方法现在也会阻塞辅助框架当给定的用户在前台活动时。</p>
-<p>EXTRA_PROVISIONING_DEVICE_ADMIN_PACKAGE_CHECKSUM 现在默认SHA-256。SHA-1 现在仍然支持向后兼容但是以后将会被删除。 EXTRA_PROVISIONING_DEVICE_ADMIN_SIGNATURE_CHECKSUM现在只接受SHA-256。</p>
-<p>Android 6.0 (API level 23)中的 Device initializer API 现在被删除了。</p>
-<p>EXTRA_PROVISIONING_RESET_PROTECTION_PARAMETERS 被移除，所以NFC触碰配置不能以编程解锁一个恢复出厂设置保护的设备。</p>
-<p>你现在可以使用EXTRA_PROVISIONING_ADMIN_EXTRAS_BUNDLE在NFC触碰时将管理设备的数据传输给设备拥有者的APP。</p>
-<p>企业Android api 优化了M的运行时权限，包括工作文件，协助层，以及其他等等。新的 DevicePolicyManager 权限API不影响Android M 之前的APP版本。  </p>
-<p>当用户从初始化设置流程中通过ACTION_PROVISION_MANAGED_PROFILE 或 ACTION_PROVISION_MANAGED_DEVICE intent退出同步部分，系统现在会返回一个RESULT_CANCELED返回值。</p>
-<h2><span id="其他api的变化">其他API的变化：</span></h2><p>数据流量统计:android.app.usage.NetworkUsageStats 类被重命名为 NetworkStats.</p>
-<h2><span id="全局设置的变化">全局设置的变化：</span></h2><p>以下属性将不能再通过 setGlobalSettings()来设置：<br>BLUETOOTH_ON<br>DEVELOPMENT_SETTINGS_ENABLED<br>MODE_RINGER<br>NETWORK_PREFERENCE<br>WIFI_ON</p>
-<p>以下全局设置现在可以使用setGlobalSettings()来设置：<br>WIFI_DEVICE_OWNER_CONFIGS_LOCKDOWN</p>
- -->
-            <div class="article-entry">
-                    
-                    
-                        
-                            
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                            
-                                
-                                <p><h2><span id="目录">目录</span></h2><ul>
-<li><a href="#目录">目录</a></li>
-<li><a href="#浏览器书签变化">浏览器书签变化</a></li>
-<li><a href="#android密钥库变化">Android密钥库变化</a></li>
-<li><a href="#wifi和网络工作的变化">wifi和网络工作的变化</a></li>
-<p>
-                            
-                        
-                    
-                    
-                        </div>   
-                        <div class="article-more-link">
-                            <a href="/2016/08/20/Android-6.0-Change-2/#more">Read More</a>
-                        </div>
-                    
-        </div>
-        
         
         
     </div>
@@ -1314,7 +1390,7 @@
                         Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        33
+                        35
                     </p>
                 </div>
             </div>
@@ -1379,7 +1455,7 @@
                 <span class="level-item">Chinese</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">25</span>
+                <span class="level-item tag">26</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="undefined">
@@ -1387,7 +1463,7 @@
                 <span class="level-item">Algorithm</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">10</span>
+                <span class="level-item tag">11</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="undefined">
@@ -1427,7 +1503,7 @@
                 <span class="level-item">English</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">8</span>
+                <span class="level-item tag">9</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="undefined">
@@ -1435,7 +1511,7 @@
                 <span class="level-item">Algorithm</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">8</span>
+                <span class="level-item tag">9</span>
             </span>
         </a></li></ul></li>
             </ul>
@@ -1463,6 +1539,44 @@
         <h3 class="menu-label">
             Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/titleThumb.jpg" alt="LeetCode 9. Palindrome Number">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-27T16:00:00.000Z">2020-01-28</time></div>
+                    <a href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/" class="has-link-black-ter is-size-6">LeetCode 9. Palindrome Number</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-en/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/titleThumb.jpg" alt="LeetCode 9. Palindrome Number">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-27T16:00:00.000Z">2020-01-28</time></div>
+                    <a href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-en/" class="has-link-black-ter is-size-6">LeetCode 9. Palindrome Number</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/English/">English</a> / <a class="has-link-grey -link" href="/categories/English/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -1521,44 +1635,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/05/28/Automatic-Version-Code-Release/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/2019/05/28/Automatic-Version-Code-Release/titleThumb.jpg" alt="自动版本号发布">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-27T16:00:00.000Z">2019-05-28</time></div>
-                    <a href="/2019/05/28/Automatic-Version-Code-Release/" class="has-link-black-ter is-size-6">自动版本号发布</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/05/24/Gradle-Skill/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/2019/05/24/Gradle-Skill/titleThumb.jpg" alt="Gradle 使用技巧 [Chinese ver]">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-23T16:00:00.000Z">2019-05-24</time></div>
-                    <a href="/2019/05/24/Gradle-Skill/" class="has-link-black-ter is-size-6">Gradle 使用技巧 [Chinese ver]</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Gradle/">Gradle</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1570,6 +1646,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/01/">
+                <span class="level-start">
+                    <span class="level-item">January 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/07/">
@@ -1741,7 +1828,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Algorithm/">
                         <span class="tag">Algorithm</span>
-                        <span class="tag is-grey">19</span>
+                        <span class="tag is-grey">21</span>
                     </a>
                 </div>
                 
@@ -1755,7 +1842,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Chinese/">
                         <span class="tag">Chinese</span>
-                        <span class="tag is-grey">25</span>
+                        <span class="tag is-grey">26</span>
                     </a>
                 </div>
                 
@@ -1783,7 +1870,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/English/">
                         <span class="tag">English</span>
-                        <span class="tag is-grey">8</span>
+                        <span class="tag is-grey">9</span>
                     </a>
                 </div>
                 
@@ -1818,7 +1905,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/LeetCode/">
                         <span class="tag">LeetCode</span>
-                        <span class="tag is-grey">16</span>
+                        <span class="tag is-grey">18</span>
                     </a>
                 </div>
                 
@@ -1882,6 +1969,44 @@
         
         <article class="media">
             
+            <a href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/titleThumb.jpg" alt="LeetCode 9. Palindrome Number">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-27T16:00:00.000Z">2020-01-28</time></div>
+                    <a href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/" class="has-link-black-ter is-size-6">LeetCode 9. Palindrome Number</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-en/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/titleThumb.jpg" alt="LeetCode 9. Palindrome Number">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-27T16:00:00.000Z">2020-01-28</time></div>
+                    <a href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-en/" class="has-link-black-ter is-size-6">LeetCode 9. Palindrome Number</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/English/">English</a> / <a class="has-link-grey -link" href="/categories/English/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/07/04/Navigation/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/2019/07/04/Navigation/titleThumb.jpg" alt="Navigation 指南">
@@ -1937,44 +2062,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/05/28/Automatic-Version-Code-Release/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/2019/05/28/Automatic-Version-Code-Release/titleThumb.jpg" alt="自动版本号发布">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-27T16:00:00.000Z">2019-05-28</time></div>
-                    <a href="/2019/05/28/Automatic-Version-Code-Release/" class="has-link-black-ter is-size-6">自动版本号发布</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/05/24/Gradle-Skill/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/2019/05/24/Gradle-Skill/titleThumb.jpg" alt="Gradle 使用技巧 [Chinese ver]">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-23T16:00:00.000Z">2019-05-24</time></div>
-                    <a href="/2019/05/24/Gradle-Skill/" class="has-link-black-ter is-size-6">Gradle 使用技巧 [Chinese ver]</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Gradle/">Gradle</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1986,6 +2073,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/01/">
+                <span class="level-start">
+                    <span class="level-item">January 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/07/">
@@ -2157,7 +2255,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Algorithm/">
                         <span class="tag">Algorithm</span>
-                        <span class="tag is-grey">19</span>
+                        <span class="tag is-grey">21</span>
                     </a>
                 </div>
                 
@@ -2171,7 +2269,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Chinese/">
                         <span class="tag">Chinese</span>
-                        <span class="tag is-grey">25</span>
+                        <span class="tag is-grey">26</span>
                     </a>
                 </div>
                 
@@ -2199,7 +2297,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/English/">
                         <span class="tag">English</span>
-                        <span class="tag is-grey">8</span>
+                        <span class="tag is-grey">9</span>
                     </a>
                 </div>
                 
@@ -2234,7 +2332,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/LeetCode/">
                         <span class="tag">LeetCode</span>
-                        <span class="tag is-grey">16</span>
+                        <span class="tag is-grey">18</span>
                     </a>
                 </div>
                 
@@ -2294,7 +2392,7 @@
                 
                 </a>
                 <p class="is-size-7">
-                &copy; 2019 LeonChen&nbsp;
+                &copy; 2020 LeonChen&nbsp;
                 Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
                         href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
                 

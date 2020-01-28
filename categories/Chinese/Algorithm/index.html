@@ -160,6 +160,119 @@
     <div class="card">
     
     <div class="card-image">
+        <a href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/" class="image is-7by1">
+            <img class="banner" src="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/title.jpg" alt="LeetCode 9. Palindrome Number">
+        </a>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-01-27T16:00:00.000Z">2020-01-28</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Algorithm/">Algorithm</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Algorithm/LeetCode/">LeetCode</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    7 minutes read (About 991 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/">LeetCode 9. Palindrome Number</a>
+            
+        </h1>
+        <div class="content">
+            <!-- <h1><span id="9-palindrome-number">9. Palindrome Number</span></h1><p>判断一个整数是不是一个回文。不要使用额外的空间。</p>
+<hr>
+<p>提示:<br>负整数可以是回文吗？（比如-1）</p>
+<p>如果你想要将整数转换成字符串，注意使用额外的空间的限制。</p>
+<p>你还可以尝试反转整数。然而，如果你已经解决了”Reverse Integer” 这个问题，那你应该知道反转一个整数可能会造成溢出。你要如何处理这种情况？</p>
+<p>这里还有一个更通用的方法来解决这个问题。</p>
+<hr>
+<h3><span id="string前后比较">String前后比较:</span></h3><p>没有认真审题的做法 ，写完才想起来不能使用额外的空间，尽管如此还是留着吧</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</div><div class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isPalindrome</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123;</div><div class="line">        <span class="hljs-keyword">if</span> (x&lt;<span class="hljs-number">0</span>)&#123;</div><div class="line">            <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="hljs-comment">//turn int x to the String</span></div><div class="line">        String xs = String.valueOf(x);</div><div class="line"></div><div class="line">        <span class="hljs-comment">//the index of the number left and right</span></div><div class="line">        <span class="hljs-keyword">int</span> indexL = <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-keyword">int</span> indexR = xs.length()-<span class="hljs-number">1</span>;</div><div class="line"></div><div class="line">        <span class="hljs-comment">//continue to campare the number if the index of left didn't meet the index of right</span></div><div class="line">        <span class="hljs-keyword">while</span> (indexL&lt;indexR)&#123;</div><div class="line">            <span class="hljs-keyword">if</span> (xs.charAt(indexL)!=xs.charAt(indexR))&#123;</div><div class="line">                <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;</div><div class="line">            &#125;<span class="hljs-keyword">else</span>&#123;</div><div class="line">                indexL ++;</div><div class="line">                indexR --;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/9.%20Palindrome%20Number/Images/RevertNumber1Result.png?raw=true" alt="效率"></p>
+<p><strong>分析</strong><br>首先将 int x 转换成 String ，再将这个 String 的首尾对应的位置的值进行比较。</p>
+<p>时间复杂度 ： O(n) 。n是x的位数<br>空间复杂度 ： O(1) .</p>
+<h3><span id="方法一-反转数字">方法一 反转数字:</span></h3><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isPalindrome</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="hljs-keyword">if</span> (x &lt; <span class="hljs-number">0</span>||(x % <span class="hljs-number">10</span> == <span class="hljs-number">0</span> &amp;&amp; x != <span class="hljs-number">0</span>)) <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;</div><div class="line"></div><div class="line">    <span class="hljs-comment">//use to calculate the number we used to revert the number ,and the biggest digit</span></div><div class="line">    <span class="hljs-keyword">int</span> temp = x;</div><div class="line">    <span class="hljs-comment">//the number reverted</span></div><div class="line">    <span class="hljs-keyword">int</span> revertedNumber = <span class="hljs-number">0</span>;</div><div class="line"></div><div class="line">    <span class="hljs-keyword">while</span> (temp &gt;= <span class="hljs-number">10</span>)&#123;</div><div class="line">        revertedNumber *=<span class="hljs-number">10</span>;</div><div class="line">        revertedNumber += temp%<span class="hljs-number">10</span>;</div><div class="line">        temp /=<span class="hljs-number">10</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="hljs-comment">//compare the revertedNumber and x/10,and the temp and x%10.because the case of overflows</span></div><div class="line">    <span class="hljs-keyword">return</span> revertedNumber == x / <span class="hljs-number">10</span> &amp;&amp; temp == x % <span class="hljs-number">10</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/9.%20Palindrome%20Number/Images/RevertNumber1Result.png?raw=true" alt="效率"></p>
+<p><strong>分析</strong><br>因为有可能会发生溢出，所以反转除了最大位以外的x，然后将反转的数字和去除最小一位的x 进行比较，将第一位和最后一位单独再进行比较。</p>
+<p>时间复杂度 ： O($log{_10}n$)<br>空间复杂度 ： O(1) .</p>
+<h3><span id="方法二-反转一半的数字-revert-half-of-the-number">方法二 反转一半的数字 Revert half of the number:</span></h3><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</div><div class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isPalindrome</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123;</div><div class="line">        <span class="hljs-comment">// Special cases:</span></div><div class="line">        <span class="hljs-comment">// As discussed above, when x &lt; 0, x is not a palindrome.</span></div><div class="line">        <span class="hljs-comment">// Also if the last digit of the number is 0, in order to be a palindrome,</span></div><div class="line">        <span class="hljs-comment">// the first digit of the number also needs to be 0.</span></div><div class="line">        <span class="hljs-comment">// Only 0 satisfy this property.</span></div><div class="line">        <span class="hljs-keyword">if</span>(x &lt; <span class="hljs-number">0</span> || (x % <span class="hljs-number">10</span> == <span class="hljs-number">0</span> &amp;&amp; x != <span class="hljs-number">0</span>)) &#123;</div><div class="line">            <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="hljs-keyword">int</span> revertedNumber = <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-keyword">while</span>(x &gt; revertedNumber) &#123;</div><div class="line">            revertedNumber = revertedNumber * <span class="hljs-number">10</span> + x % <span class="hljs-number">10</span>;</div><div class="line">            x /= <span class="hljs-number">10</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="hljs-comment">// When the length is an odd number, we can get rid of the middle digit by revertedNumber/10</span></div><div class="line">        <span class="hljs-comment">// For example when the input is 12321, at the end of the while loop we get x = 12, revertedNumber = 123,</span></div><div class="line">        <span class="hljs-comment">// since the middle digit doesn't matter in palidrome(it will always equal to itself), we can simply get rid of it.</span></div><div class="line">        <span class="hljs-keyword">return</span> x == revertedNumber || x == revertedNumber/<span class="hljs-number">10</span>;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/9.%20Palindrome%20Number/Images/RevertNumberResult.png?raw=true" alt="效率"></p>
+<p><strong>分析</strong><br>首先我们需要注意几个特殊情况：一个是负数是不可能是回文的，还有一个是整十的数也不可能是回文，因为首尾不可能都为0。 然后我们开始反转数字，我们可以用 x%10 获得最后一位数，然后更新 x 为 x/10 去掉已经反转了的最后一位数，然后再用 x%10 再得到现在的最后一位数，将已经得到数乘以10 再加上现在得到的这一位数得到反转的数字，重复这个过程直到我们反转了一半以上的数字。如何知道我们反转了一半以上的数字呢？当x不大于反转的数的时候我们就已经反转了一半以上的数字。<br>因为回文有奇数和偶数两种，所以我们都要处理，当回文是奇数的时候反转的数字将会比x 多一位，但是这一位是不需要考虑的，我们只要去掉这一位进行比较就可以了，当回文是偶数的时候，如果反转了一半的数字x 不等于反转的数字那么它不是回文，即使x比反转的数字大，使得他又反转了一次，反转的数字将会比x多两位，即使去掉一位也不会导致错误的判断。</p>
+<p>时间复杂度 ： O($log{_10}n$)<br>空间复杂度 ： O(1) .</p>
+<p>如果你有更好的办法或者对我这里的描述有其他看法，请联系我。谢谢</p>
+<h1><span id="about-me">About Me</span></h1><p>我的博客 <a href="http://leonchen1024.com/" target="_blank" rel="external">leonchen1024.com</a></p>
+<p>我的 GitHub <a href="https://github.com/LeonChen1024" target="_blank" rel="external">https://github.com/LeonChen1024</a></p>
+<p>微信公众号 </p>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/Images/CooderQRcodem.jpg?raw=true" alt="wechat"></p>
+ -->
+            <div class="article-entry">
+                    
+                    
+                        
+                            
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                            
+                                
+                                <p><h1><span id="9-palindrome-number">9. Palindrome Number</span></h1><p>判断一个整数是不是一个回文。不要使用额外的空间。</p>
+<hr>
+<p>提示:<br>负整数可以是回文吗？（比如-1）</p>
+<p>如果你想要将整数转换成字符串，注意使用额外的空间的限制。</p>
+<p>你还可以尝试反转整数。然而，如果你已经解决了”Reverse Integer” 这个问题，那你应该知道反转一个整数可能会造成溢出。你要如何处理这种情况？</p>
+<p>
+                            
+                        
+                    
+                    
+                        </div>   
+                        <div class="article-more-link">
+                            <a href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/#more">Read More</a>
+                        </div>
+                    
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-image">
         <a href="/2019/01/20/LeetCode-8-String-to-Integer/Record-cn/" class="image is-7by1">
             <img class="banner" src="/2019/01/20/LeetCode-8-String-to-Integer/Record-cn/title.jpg" alt="LeetCode 8. 字符串转整数">
         </a>
@@ -1264,72 +1377,25 @@
 
 
 
-    <div class="card">
+
     
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2017-02-16T16:00:00.000Z">2017-02-17</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Algorithm/">Algorithm</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Algorithm/LeetCode/">LeetCode</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    5 minutes read (About 714 words)
-                </span>
-                
-                
-            </div>
+<div class="card card-transparent">
+    <nav class="pagination is-centered" role="navigation" aria-label="pagination">
+        <div class="pagination-previous is-invisible is-hidden-mobile">
+            <a class="is-flex-grow has-text-black-ter" href="/categories/Chinese/Algorithm/page/0/">Previous</a>
         </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+        <div class="pagination-next">
+            <a class="is-flex-grow has-text-black-ter" href="/categories/Chinese/Algorithm/page/2/">Next</a>
+        </div>
+        <ul class="pagination-list is-hidden-mobile">
             
-                <a class="has-link-black-ter" href="/2017/02/17/1-Two-Sum/Record[Chinese ver]/">LeetCode 1 Two Sum [Chinese ver]</a>
+            <li><a class="pagination-link is-current" href="/categories/Chinese/Algorithm/">1</a></li>
             
-        </h1>
-        <div class="content">
-            <!-- <h1 id="Chinese-ver-1-Two-Sum"><a href="#Chinese-ver-1-Two-Sum" class="headerlink" title="[Chinese ver]1 Two Sum"></a>[Chinese ver]1 Two Sum</h1><h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p>两数求和 。给定一个整数的数组，返回两个数字的索引使得这两个数字加起来成为一个指定的目标值。<br>你可以假设每个输入都至少有一个解决方案，并且你不能使用相同的元素两次。</p> -->
-            <div class="article-entry">
-                    
-                    
-                        
-                            
-                            <p><h1 id="Chinese-ver-1-Two-Sum"><a href="#Chinese-ver-1-Two-Sum" class="headerlink" title="[Chinese ver]1 Two Sum"></a>[Chinese ver]1 Two Sum</h1><h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p>两数求和 。给定一个整数的数组，返回两个数字的索引使得这两个数字加起来成为一个指定的目标值。<br>你可以假设每个输入都至少有一个解决方案，并且你不能使用相同的元素两次。</p></p>
-                        
-                    
-                    
-                        </div>   
-                        <div class="article-more-link">
-                            <a href="/2017/02/17/1-Two-Sum/Record[Chinese ver]/#more">Read More</a>
-                        </div>
-                    
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2017/02/17/1-Two-Sum/Record[Chinese ver]/#more">Read More</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
+            <li><a class="pagination-link has-text-black-ter" href="/categories/Chinese/Algorithm/page/2/">2</a></li>
+            
+        </ul>
+    </nav>
 </div>
-
-
-
-
-
-
-
-
 </div>
                 
 
@@ -1373,7 +1439,7 @@
                         Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        33
+                        35
                     </p>
                 </div>
             </div>
@@ -1438,7 +1504,7 @@
                 <span class="level-item">Chinese</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">25</span>
+                <span class="level-item tag">26</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="undefined">
@@ -1446,7 +1512,7 @@
                 <span class="level-item">Algorithm</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">10</span>
+                <span class="level-item tag">11</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="undefined">
@@ -1486,7 +1552,7 @@
                 <span class="level-item">English</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">8</span>
+                <span class="level-item tag">9</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="undefined">
@@ -1494,7 +1560,7 @@
                 <span class="level-item">Algorithm</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">8</span>
+                <span class="level-item tag">9</span>
             </span>
         </a></li></ul></li>
             </ul>
@@ -1522,6 +1588,44 @@
         <h3 class="menu-label">
             Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/titleThumb.jpg" alt="LeetCode 9. Palindrome Number">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-27T16:00:00.000Z">2020-01-28</time></div>
+                    <a href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/" class="has-link-black-ter is-size-6">LeetCode 9. Palindrome Number</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-en/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/titleThumb.jpg" alt="LeetCode 9. Palindrome Number">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-27T16:00:00.000Z">2020-01-28</time></div>
+                    <a href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-en/" class="has-link-black-ter is-size-6">LeetCode 9. Palindrome Number</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/English/">English</a> / <a class="has-link-grey -link" href="/categories/English/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -1580,44 +1684,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/05/28/Automatic-Version-Code-Release/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/2019/05/28/Automatic-Version-Code-Release/titleThumb.jpg" alt="自动版本号发布">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-27T16:00:00.000Z">2019-05-28</time></div>
-                    <a href="/2019/05/28/Automatic-Version-Code-Release/" class="has-link-black-ter is-size-6">自动版本号发布</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/05/24/Gradle-Skill/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/2019/05/24/Gradle-Skill/titleThumb.jpg" alt="Gradle 使用技巧 [Chinese ver]">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-23T16:00:00.000Z">2019-05-24</time></div>
-                    <a href="/2019/05/24/Gradle-Skill/" class="has-link-black-ter is-size-6">Gradle 使用技巧 [Chinese ver]</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Gradle/">Gradle</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1629,6 +1695,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/01/">
+                <span class="level-start">
+                    <span class="level-item">January 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/07/">
@@ -1800,7 +1877,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Algorithm/">
                         <span class="tag">Algorithm</span>
-                        <span class="tag is-grey">19</span>
+                        <span class="tag is-grey">21</span>
                     </a>
                 </div>
                 
@@ -1814,7 +1891,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Chinese/">
                         <span class="tag">Chinese</span>
-                        <span class="tag is-grey">25</span>
+                        <span class="tag is-grey">26</span>
                     </a>
                 </div>
                 
@@ -1842,7 +1919,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/English/">
                         <span class="tag">English</span>
-                        <span class="tag is-grey">8</span>
+                        <span class="tag is-grey">9</span>
                     </a>
                 </div>
                 
@@ -1877,7 +1954,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/LeetCode/">
                         <span class="tag">LeetCode</span>
-                        <span class="tag is-grey">16</span>
+                        <span class="tag is-grey">18</span>
                     </a>
                 </div>
                 
@@ -1941,6 +2018,44 @@
         
         <article class="media">
             
+            <a href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/titleThumb.jpg" alt="LeetCode 9. Palindrome Number">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-27T16:00:00.000Z">2020-01-28</time></div>
+                    <a href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/" class="has-link-black-ter is-size-6">LeetCode 9. Palindrome Number</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-en/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/titleThumb.jpg" alt="LeetCode 9. Palindrome Number">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-27T16:00:00.000Z">2020-01-28</time></div>
+                    <a href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-en/" class="has-link-black-ter is-size-6">LeetCode 9. Palindrome Number</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/English/">English</a> / <a class="has-link-grey -link" href="/categories/English/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/07/04/Navigation/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/2019/07/04/Navigation/titleThumb.jpg" alt="Navigation 指南">
@@ -1996,44 +2111,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/05/28/Automatic-Version-Code-Release/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/2019/05/28/Automatic-Version-Code-Release/titleThumb.jpg" alt="自动版本号发布">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-27T16:00:00.000Z">2019-05-28</time></div>
-                    <a href="/2019/05/28/Automatic-Version-Code-Release/" class="has-link-black-ter is-size-6">自动版本号发布</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/05/24/Gradle-Skill/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/2019/05/24/Gradle-Skill/titleThumb.jpg" alt="Gradle 使用技巧 [Chinese ver]">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-23T16:00:00.000Z">2019-05-24</time></div>
-                    <a href="/2019/05/24/Gradle-Skill/" class="has-link-black-ter is-size-6">Gradle 使用技巧 [Chinese ver]</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Gradle/">Gradle</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -2045,6 +2122,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/01/">
+                <span class="level-start">
+                    <span class="level-item">January 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/07/">
@@ -2216,7 +2304,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Algorithm/">
                         <span class="tag">Algorithm</span>
-                        <span class="tag is-grey">19</span>
+                        <span class="tag is-grey">21</span>
                     </a>
                 </div>
                 
@@ -2230,7 +2318,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Chinese/">
                         <span class="tag">Chinese</span>
-                        <span class="tag is-grey">25</span>
+                        <span class="tag is-grey">26</span>
                     </a>
                 </div>
                 
@@ -2258,7 +2346,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/English/">
                         <span class="tag">English</span>
-                        <span class="tag is-grey">8</span>
+                        <span class="tag is-grey">9</span>
                     </a>
                 </div>
                 
@@ -2293,7 +2381,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/LeetCode/">
                         <span class="tag">LeetCode</span>
-                        <span class="tag is-grey">16</span>
+                        <span class="tag is-grey">18</span>
                     </a>
                 </div>
                 
@@ -2353,7 +2441,7 @@
                 
                 </a>
                 <p class="is-size-7">
-                &copy; 2019 LeonChen&nbsp;
+                &copy; 2020 LeonChen&nbsp;
                 Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
                         href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
                 

@@ -147,6 +147,231 @@
     <div class="card">
     
     <div class="card-image">
+        <a href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/" class="image is-7by1">
+            <img class="banner" src="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/title.jpg" alt="LeetCode 9. Palindrome Number">
+        </a>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-01-27T16:00:00.000Z">2020-01-28</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Algorithm/">Algorithm</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Algorithm/LeetCode/">LeetCode</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    7 minutes read (About 991 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/">LeetCode 9. Palindrome Number</a>
+            
+        </h1>
+        <div class="content">
+            <!-- <h1><span id="9-palindrome-number">9. Palindrome Number</span></h1><p>判断一个整数是不是一个回文。不要使用额外的空间。</p>
+<hr>
+<p>提示:<br>负整数可以是回文吗？（比如-1）</p>
+<p>如果你想要将整数转换成字符串，注意使用额外的空间的限制。</p>
+<p>你还可以尝试反转整数。然而，如果你已经解决了”Reverse Integer” 这个问题，那你应该知道反转一个整数可能会造成溢出。你要如何处理这种情况？</p>
+<p>这里还有一个更通用的方法来解决这个问题。</p>
+<hr>
+<h3><span id="string前后比较">String前后比较:</span></h3><p>没有认真审题的做法 ，写完才想起来不能使用额外的空间，尽管如此还是留着吧</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</div><div class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isPalindrome</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123;</div><div class="line">        <span class="hljs-keyword">if</span> (x&lt;<span class="hljs-number">0</span>)&#123;</div><div class="line">            <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="hljs-comment">//turn int x to the String</span></div><div class="line">        String xs = String.valueOf(x);</div><div class="line"></div><div class="line">        <span class="hljs-comment">//the index of the number left and right</span></div><div class="line">        <span class="hljs-keyword">int</span> indexL = <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-keyword">int</span> indexR = xs.length()-<span class="hljs-number">1</span>;</div><div class="line"></div><div class="line">        <span class="hljs-comment">//continue to campare the number if the index of left didn't meet the index of right</span></div><div class="line">        <span class="hljs-keyword">while</span> (indexL&lt;indexR)&#123;</div><div class="line">            <span class="hljs-keyword">if</span> (xs.charAt(indexL)!=xs.charAt(indexR))&#123;</div><div class="line">                <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;</div><div class="line">            &#125;<span class="hljs-keyword">else</span>&#123;</div><div class="line">                indexL ++;</div><div class="line">                indexR --;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/9.%20Palindrome%20Number/Images/RevertNumber1Result.png?raw=true" alt="效率"></p>
+<p><strong>分析</strong><br>首先将 int x 转换成 String ，再将这个 String 的首尾对应的位置的值进行比较。</p>
+<p>时间复杂度 ： O(n) 。n是x的位数<br>空间复杂度 ： O(1) .</p>
+<h3><span id="方法一-反转数字">方法一 反转数字:</span></h3><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isPalindrome</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="hljs-keyword">if</span> (x &lt; <span class="hljs-number">0</span>||(x % <span class="hljs-number">10</span> == <span class="hljs-number">0</span> &amp;&amp; x != <span class="hljs-number">0</span>)) <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;</div><div class="line"></div><div class="line">    <span class="hljs-comment">//use to calculate the number we used to revert the number ,and the biggest digit</span></div><div class="line">    <span class="hljs-keyword">int</span> temp = x;</div><div class="line">    <span class="hljs-comment">//the number reverted</span></div><div class="line">    <span class="hljs-keyword">int</span> revertedNumber = <span class="hljs-number">0</span>;</div><div class="line"></div><div class="line">    <span class="hljs-keyword">while</span> (temp &gt;= <span class="hljs-number">10</span>)&#123;</div><div class="line">        revertedNumber *=<span class="hljs-number">10</span>;</div><div class="line">        revertedNumber += temp%<span class="hljs-number">10</span>;</div><div class="line">        temp /=<span class="hljs-number">10</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="hljs-comment">//compare the revertedNumber and x/10,and the temp and x%10.because the case of overflows</span></div><div class="line">    <span class="hljs-keyword">return</span> revertedNumber == x / <span class="hljs-number">10</span> &amp;&amp; temp == x % <span class="hljs-number">10</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/9.%20Palindrome%20Number/Images/RevertNumber1Result.png?raw=true" alt="效率"></p>
+<p><strong>分析</strong><br>因为有可能会发生溢出，所以反转除了最大位以外的x，然后将反转的数字和去除最小一位的x 进行比较，将第一位和最后一位单独再进行比较。</p>
+<p>时间复杂度 ： O($log{_10}n$)<br>空间复杂度 ： O(1) .</p>
+<h3><span id="方法二-反转一半的数字-revert-half-of-the-number">方法二 反转一半的数字 Revert half of the number:</span></h3><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</div><div class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isPalindrome</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123;</div><div class="line">        <span class="hljs-comment">// Special cases:</span></div><div class="line">        <span class="hljs-comment">// As discussed above, when x &lt; 0, x is not a palindrome.</span></div><div class="line">        <span class="hljs-comment">// Also if the last digit of the number is 0, in order to be a palindrome,</span></div><div class="line">        <span class="hljs-comment">// the first digit of the number also needs to be 0.</span></div><div class="line">        <span class="hljs-comment">// Only 0 satisfy this property.</span></div><div class="line">        <span class="hljs-keyword">if</span>(x &lt; <span class="hljs-number">0</span> || (x % <span class="hljs-number">10</span> == <span class="hljs-number">0</span> &amp;&amp; x != <span class="hljs-number">0</span>)) &#123;</div><div class="line">            <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="hljs-keyword">int</span> revertedNumber = <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-keyword">while</span>(x &gt; revertedNumber) &#123;</div><div class="line">            revertedNumber = revertedNumber * <span class="hljs-number">10</span> + x % <span class="hljs-number">10</span>;</div><div class="line">            x /= <span class="hljs-number">10</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="hljs-comment">// When the length is an odd number, we can get rid of the middle digit by revertedNumber/10</span></div><div class="line">        <span class="hljs-comment">// For example when the input is 12321, at the end of the while loop we get x = 12, revertedNumber = 123,</span></div><div class="line">        <span class="hljs-comment">// since the middle digit doesn't matter in palidrome(it will always equal to itself), we can simply get rid of it.</span></div><div class="line">        <span class="hljs-keyword">return</span> x == revertedNumber || x == revertedNumber/<span class="hljs-number">10</span>;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/9.%20Palindrome%20Number/Images/RevertNumberResult.png?raw=true" alt="效率"></p>
+<p><strong>分析</strong><br>首先我们需要注意几个特殊情况：一个是负数是不可能是回文的，还有一个是整十的数也不可能是回文，因为首尾不可能都为0。 然后我们开始反转数字，我们可以用 x%10 获得最后一位数，然后更新 x 为 x/10 去掉已经反转了的最后一位数，然后再用 x%10 再得到现在的最后一位数，将已经得到数乘以10 再加上现在得到的这一位数得到反转的数字，重复这个过程直到我们反转了一半以上的数字。如何知道我们反转了一半以上的数字呢？当x不大于反转的数的时候我们就已经反转了一半以上的数字。<br>因为回文有奇数和偶数两种，所以我们都要处理，当回文是奇数的时候反转的数字将会比x 多一位，但是这一位是不需要考虑的，我们只要去掉这一位进行比较就可以了，当回文是偶数的时候，如果反转了一半的数字x 不等于反转的数字那么它不是回文，即使x比反转的数字大，使得他又反转了一次，反转的数字将会比x多两位，即使去掉一位也不会导致错误的判断。</p>
+<p>时间复杂度 ： O($log{_10}n$)<br>空间复杂度 ： O(1) .</p>
+<p>如果你有更好的办法或者对我这里的描述有其他看法，请联系我。谢谢</p>
+<h1><span id="about-me">About Me</span></h1><p>我的博客 <a href="http://leonchen1024.com/" target="_blank" rel="external">leonchen1024.com</a></p>
+<p>我的 GitHub <a href="https://github.com/LeonChen1024" target="_blank" rel="external">https://github.com/LeonChen1024</a></p>
+<p>微信公众号 </p>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/Images/CooderQRcodem.jpg?raw=true" alt="wechat"></p>
+ -->
+            <div class="article-entry">
+                    
+                    
+                        
+                            
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                            
+                                
+                                <p><h1><span id="9-palindrome-number">9. Palindrome Number</span></h1><p>判断一个整数是不是一个回文。不要使用额外的空间。</p>
+<hr>
+<p>提示:<br>负整数可以是回文吗？（比如-1）</p>
+<p>如果你想要将整数转换成字符串，注意使用额外的空间的限制。</p>
+<p>你还可以尝试反转整数。然而，如果你已经解决了”Reverse Integer” 这个问题，那你应该知道反转一个整数可能会造成溢出。你要如何处理这种情况？</p>
+<p>
+                            
+                        
+                    
+                    
+                        </div>   
+                        <div class="article-more-link">
+                            <a href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/#more">Read More</a>
+                        </div>
+                    
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-image">
+        <a href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-en/" class="image is-7by1">
+            <img class="banner" src="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/title.jpg" alt="LeetCode 9. Palindrome Number">
+        </a>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-01-27T16:00:00.000Z">2020-01-28</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/English/">English</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/English/Algorithm/">Algorithm</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/English/Algorithm/LeetCode/">LeetCode</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    4 minutes read (About 666 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-en/">LeetCode 9. Palindrome Number</a>
+            
+        </h1>
+        <div class="content">
+            <!-- <p>[English ver]</p>
+<h1><span id="9-palindrome-number">9. Palindrome Number</span></h1><p>Determine whether an integer is a palindrome. Do this without extra space.</p>
+<hr>
+<p>click to show spoilers.</p>
+<p>Some hints:<br>Could negative integers be palindromes? (ie, -1)</p>
+<p>If you are thinking of converting the integer to string, note the restriction of using extra space.</p>
+<p>You could also try reversing an integer. However, if you have solved the problem “Reverse Integer”, you know that the reversed integer might overflow. How would you handle such case?</p>
+<p>There is a more generic way of solving this problem.</p>
+<hr>
+<h3><span id="approach-1-revert-the-number">Approach 1 Revert the number:</span></h3><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isPalindrome</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="hljs-keyword">if</span> (x &lt; <span class="hljs-number">0</span>||(x % <span class="hljs-number">10</span> == <span class="hljs-number">0</span> &amp;&amp; x != <span class="hljs-number">0</span>)) <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;</div><div class="line"></div><div class="line">    <span class="hljs-comment">//use to calculate the number we used to revert the number ,and the biggest digit</span></div><div class="line">    <span class="hljs-keyword">int</span> temp = x;</div><div class="line">    <span class="hljs-comment">//the number reverted</span></div><div class="line">    <span class="hljs-keyword">int</span> revertedNumber = <span class="hljs-number">0</span>;</div><div class="line"></div><div class="line">    <span class="hljs-keyword">while</span> (temp &gt;= <span class="hljs-number">10</span>)&#123;</div><div class="line">        revertedNumber *=<span class="hljs-number">10</span>;</div><div class="line">        revertedNumber += temp%<span class="hljs-number">10</span>;</div><div class="line">        temp /=<span class="hljs-number">10</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="hljs-comment">//compare the revertedNumber and x/10,and the temp and x%10.because the case of overflows</span></div><div class="line">    <span class="hljs-keyword">return</span> revertedNumber == x / <span class="hljs-number">10</span> &amp;&amp; temp == x % <span class="hljs-number">10</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/9.%20Palindrome%20Number/Images/RevertNumber1Result.png?raw=true" alt="Efficiency"></p>
+<p><strong>Analysis</strong><br>Because of the case overflows ,so revert the whole x except the largest digit , and then compare reverted Number with x which except the smallest digit , at last campare the biggest digit and the smallest digit.</p>
+<p>Time complexity ： O($log{_10}n$)<br>Space complexity ： O(1) .</p>
+<h3><span id="approach-2-revert-half-of-the-number">Approach 2 Revert half of the number:</span></h3><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</div><div class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isPalindrome</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123;</div><div class="line">        <span class="hljs-comment">// Special cases:</span></div><div class="line">        <span class="hljs-comment">// As discussed above, when x &lt; 0, x is not a palindrome.</span></div><div class="line">        <span class="hljs-comment">// Also if the last digit of the number is 0, in order to be a palindrome,</span></div><div class="line">        <span class="hljs-comment">// the first digit of the number also needs to be 0.</span></div><div class="line">        <span class="hljs-comment">// Only 0 satisfy this property.</span></div><div class="line">        <span class="hljs-keyword">if</span>(x &lt; <span class="hljs-number">0</span> || (x % <span class="hljs-number">10</span> == <span class="hljs-number">0</span> &amp;&amp; x != <span class="hljs-number">0</span>)) &#123;</div><div class="line">            <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="hljs-keyword">int</span> revertedNumber = <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-keyword">while</span>(x &gt; revertedNumber) &#123;</div><div class="line">            revertedNumber = revertedNumber * <span class="hljs-number">10</span> + x % <span class="hljs-number">10</span>;</div><div class="line">            x /= <span class="hljs-number">10</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="hljs-comment">// When the length is an odd number, we can get rid of the middle digit by revertedNumber/10</span></div><div class="line">        <span class="hljs-comment">// For example when the input is 12321, at the end of the while loop we get x = 12, revertedNumber = 123,</span></div><div class="line">        <span class="hljs-comment">// since the middle digit doesn't matter in palidrome(it will always equal to itself), we can simply get rid of it.</span></div><div class="line">        <span class="hljs-keyword">return</span> x == revertedNumber || x == revertedNumber/<span class="hljs-number">10</span>;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/9.%20Palindrome%20Number/Images/RevertNumberResult.png?raw=true" alt="Efficiency"></p>
+<p><strong>Analysis</strong></p>
+<p>First of all we should take care of some edge cases. All negative numbers are not palindrome, and number x which x % 10 == 0 &amp;&amp; x != 0 can not be palindrome ,because the number can’t be both 0 in the first digit and last digit. Then we start to convert number , we can use x%10 to get the last digit of x , update x to x/10 ,it remove the last digit ,and then use x%10 to get the last number of x , use the number we have get before to times 10 plus this number. Continuing this process would give us the reverted number with more digits. when the original number is less than the reversed number, it means we’ve processed half of the number digits.</p>
+<p>Because palindrome has odd and even ,so we need to deal with both of them.When the palindrome is odd the reverted number will have one more digit ,but this digit we don’t need to consider about ,we only need to remove this digit and compare the rest of it ,when palindrome is even ,if we convert the half of number x ,if they don’t equal to each other it is not a palindrome , even x is bigger than reverted number , which make it revert one more time , the reverted number will hava more two digit to x ,remove one digit will nerver make it palindrome.</p>
+<p>Time complexity ：O($log{_10}n$)<br>Space complexity ： O(1) .</p>
+<p>If you have any suggestions to make the logic and implementation more better , or you have some advice on my description. Please let me know!Thanks!</p>
+<h1><span id="about-me">About Me</span></h1><p>我的博客 <a href="http://leonchen1024.com/" target="_blank" rel="external">leonchen1024.com</a></p>
+<p>我的 GitHub <a href="https://github.com/LeonChen1024" target="_blank" rel="external">https://github.com/LeonChen1024</a></p>
+<p>微信公众号 </p>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/Images/CooderQRcodem.jpg?raw=true" alt="wechat"></p>
+ -->
+            <div class="article-entry">
+                    
+                    
+                        
+                            
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                            
+                                
+                                <p><p>[English ver]</p>
+<h1><span id="9-palindrome-number">9. Palindrome Number</span></h1><p>Determine whether an integer is a palindrome. Do this without extra space.</p>
+<hr>
+<p>click to show spoilers.</p>
+<p>Some hints:<br>Could negative integers be palindromes? (ie, -1)</p>
+<p>
+                            
+                        
+                    
+                    
+                        </div>   
+                        <div class="article-more-link">
+                            <a href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-en/#more">Read More</a>
+                        </div>
+                    
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-image">
         <a href="/2019/07/04/Navigation/" class="image is-7by1">
             <img class="banner" src="/2019/07/04/Navigation/title.jpg" alt="Navigation 指南">
         </a>
@@ -1207,116 +1432,6 @@
     <div class="card">
     
     <div class="card-image">
-        <a href="/2019/01/20/LeetCode-8-String-to-Integer/Record-en/" class="image is-7by1">
-            <img class="banner" src="/2019/01/20/LeetCode-8-String-to-Integer/Record-cn/title.jpg" alt="LeetCode 8. String to Integer (atoi)">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-01-19T16:00:00.000Z">2019-01-20</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/English/">English</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/English/Algorithm/">Algorithm</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/English/Algorithm/LeetCode/">LeetCode</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    4 minutes read (About 582 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/01/20/LeetCode-8-String-to-Integer/Record-en/">LeetCode 8. String to Integer (atoi)</a>
-            
-        </h1>
-        <div class="content">
-            <!-- <p>[English ver]</p>
-<h1><span id="8-string-to-integer-atoi">8. String to Integer (atoi)</span></h1><p>Implement atoi to convert a string to an integer.</p>
-<p>Hint: Carefully consider all possible input cases. If you want a challenge, please do not see below and ask yourself what are the possible input cases.</p>
-<p>Notes: It is intended for this problem to be specified vaguely (ie, no given input specs). You are responsible to gather all the input requirements up front.</p>
-<p>Update (2015-02-10):<br>The signature of the C++ function had been updated. If you still see your function signature accepts a const char * argument, please click the reload button  to reset your code definition.</p>
-<hr>
-<p>Requirements for atoi:<br>The function first discards as many whitespace characters as necessary until the first non-whitespace character is found. Then, starting from this character, takes an optional initial plus or minus sign followed by as many numerical digits as possible, and interprets them as a numerical value.</p>
-<p>The string can contain additional characters after those that form the integral number, which are ignored and have no effect on the behavior of this function.</p>
-<p>If the first sequence of non-whitespace characters in str is not a valid integral number, or if no such sequence exists because either str is empty or it contains only whitespace characters, no conversion is performed.</p>
-<p>If no valid conversion could be performed, a zero value is returned. If the correct value is out of the range of representable values, INT_MAX (2147483647) or INT_MIN (-2147483648) is returned.</p>
-<hr>
-<h3><span id="approach-1">Approach 1:</span></h3><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</div><div class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">myAtoi</span><span class="hljs-params">(String str)</span> </span>&#123;</div><div class="line">        <span class="hljs-keyword">int</span> index = <span class="hljs-number">0</span> , sign = <span class="hljs-number">1</span> ;</div><div class="line">        <span class="hljs-keyword">long</span> result = <span class="hljs-number">0</span> ;</div><div class="line"></div><div class="line">				<span class="hljs-comment">//if str is a empty string or null</span></div><div class="line">        <span class="hljs-keyword">if</span> (str.equals(<span class="hljs-keyword">null</span>)||str.length()==<span class="hljs-number">0</span> )&#123;</div><div class="line">            <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">				<span class="hljs-comment">//remove the ' ' in the front</span></div><div class="line">        <span class="hljs-keyword">while</span> (str.charAt(index)==<span class="hljs-string">' '</span>&amp;&amp;index &lt; str.length())&#123;</div><div class="line">            index++;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">				<span class="hljs-comment">//take the sign</span></div><div class="line">        <span class="hljs-keyword">if</span>(str.charAt(index)==<span class="hljs-string">'+'</span>||str.charAt(index)==<span class="hljs-string">'-'</span>)&#123;</div><div class="line">            sign = str.charAt(index)==<span class="hljs-string">'+'</span> ? <span class="hljs-number">1</span> : -<span class="hljs-number">1</span>;</div><div class="line">            index ++;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">				<span class="hljs-comment">//convert number and avoid overflows</span></div><div class="line">        <span class="hljs-keyword">while</span> (index &lt; str.length())&#123;</div><div class="line"></div><div class="line">            <span class="hljs-keyword">if</span>(str.charAt(index)&lt;=<span class="hljs-string">'9'</span>&amp;&amp;str.charAt(index)&gt;=<span class="hljs-string">'0'</span>)&#123;</div><div class="line">                <span class="hljs-keyword">int</span> current = str.charAt(index)-<span class="hljs-string">'0'</span>;</div><div class="line">                result = result * <span class="hljs-number">10</span> + current;</div><div class="line">								<span class="hljs-comment">// check if the str is overflows</span></div><div class="line">                <span class="hljs-keyword">if</span>(result&gt;Integer.MAX_VALUE&amp;&amp;sign==<span class="hljs-number">1</span>)&#123;</div><div class="line">                    <span class="hljs-keyword">return</span> Integer.MAX_VALUE;</div><div class="line">                &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(-result&lt;Integer.MIN_VALUE&amp;&amp;sign==-<span class="hljs-number">1</span>)&#123;</div><div class="line">                    <span class="hljs-keyword">return</span> Integer.MIN_VALUE;</div><div class="line">                &#125;</div><div class="line">                index++;</div><div class="line">            &#125;<span class="hljs-keyword">else</span> &#123;</div><div class="line">                <span class="hljs-keyword">break</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="hljs-keyword">return</span> sign*((<span class="hljs-keyword">int</span>)result);</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>or</p>
-<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution2</span> </span>&#123;</div><div class="line">	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">myAtoi</span><span class="hljs-params">(String str)</span> </span>&#123;</div><div class="line">    <span class="hljs-keyword">int</span> index = <span class="hljs-number">0</span>, sign = <span class="hljs-number">1</span>, total = <span class="hljs-number">0</span>;</div><div class="line">    <span class="hljs-comment">//1. Empty string</span></div><div class="line">    <span class="hljs-keyword">if</span>(str.length() == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</div><div class="line"></div><div class="line">    <span class="hljs-comment">//2. Remove Spaces</span></div><div class="line">    <span class="hljs-keyword">while</span>(str.charAt(index) == <span class="hljs-string">' '</span> &amp;&amp; index &lt; str.length())</div><div class="line">        index ++;</div><div class="line"></div><div class="line">    <span class="hljs-comment">//3. Handle signs</span></div><div class="line">    <span class="hljs-keyword">if</span>(str.charAt(index) == <span class="hljs-string">'+'</span> || str.charAt(index) == <span class="hljs-string">'-'</span>)&#123;</div><div class="line">        sign = str.charAt(index) == <span class="hljs-string">'+'</span> ? <span class="hljs-number">1</span> : -<span class="hljs-number">1</span>;</div><div class="line">        index ++;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="hljs-comment">//4. Convert number and avoid overflow</span></div><div class="line">    <span class="hljs-keyword">while</span>(index &lt; str.length())&#123;</div><div class="line">        <span class="hljs-keyword">int</span> digit = str.charAt(index) - <span class="hljs-string">'0'</span>;</div><div class="line">        <span class="hljs-keyword">if</span>(digit &lt; <span class="hljs-number">0</span> || digit &gt; <span class="hljs-number">9</span>) <span class="hljs-keyword">break</span>;</div><div class="line"></div><div class="line">        <span class="hljs-comment">//check if total will be overflow after 10 times and add digit</span></div><div class="line">        <span class="hljs-keyword">if</span>(Integer.MAX_VALUE/<span class="hljs-number">10</span> &lt; total || Integer.MAX_VALUE/<span class="hljs-number">10</span> == total &amp;&amp; Integer.MAX_VALUE %<span class="hljs-number">10</span> &lt; digit)</div><div class="line">            <span class="hljs-keyword">return</span> sign == <span class="hljs-number">1</span> ? Integer.MAX_VALUE : Integer.MIN_VALUE;</div><div class="line"></div><div class="line">        total = <span class="hljs-number">10</span> * total + digit;</div><div class="line">        index ++;</div><div class="line">    &#125;</div><div class="line">    <span class="hljs-keyword">return</span> total * sign;</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/8.%20String%20to%20Integer%20(atoi" alt="Efficiency">/Images/OneResult.png?raw=true)</p>
-<p><strong>Analysis</strong></p>
-<p>The principle of these two method are similar ,except the judgement of the overflows ,first method use the long value compare to the Integer’s limit value , the another one use Int value , notice that it can’t be compare to the Integer’s limit value , because the int value will be changed if it overflows , it id never be out of the Integer’s range ,  so it use the int value of the last time you get to campare with the Max/10 ,and then use the value you want to connect to the value you get last time to campare with the Max%10 .</p>
-<p>Time complexity ： O(n) 。n is the digit of the    x<br>Space complexity ： O(1) .</p>
-<p>If you have any suggestions to make the logic and implementation more better , or you have some advice on my description. Please let me know!Thanks!</p>
-<h2><span id="about-me">About Me</span></h2><p>My blog <a href="http://leonchen1024.com/" target="_blank" rel="external">leonchen1024.com</a></p>
-<p>My Github  <a href="https://github.com/LeonChen1024" target="_blank" rel="external">https://github.com/LeonChen1024</a></p>
-<p>My twitter <a href="https://twitter.com/LChen1024?lang=en" target="_blank" rel="external">https://twitter.com/LChen1024?lang=en</a></p>
- -->
-            <div class="article-entry">
-                    
-                    
-                        
-                            
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                            
-                                
-                                <p><p>[English ver]</p>
-<h1><span id="8-string-to-integer-atoi">8. String to Integer (atoi)</span></h1><p>Implement atoi to convert a string to an integer.</p>
-<p>Hint: Carefully consider all possible input cases. If you want a challenge, please do not see below and ask yourself what are the possible input cases.</p>
-<p>Notes: It is intended for this problem to be specified vaguely (ie, no given input specs). You are responsible to gather all the input requirements up front.</p>
-<p>Update (2015-02-10):<br>The signature of the C++ function had been updated. If you still see your function signature accepts a const char * argument, please click the reload button  to reset your code definition.</p>
-<p>
-                            
-                        
-                    
-                    
-                        </div>   
-                        <div class="article-more-link">
-                            <a href="/2019/01/20/LeetCode-8-String-to-Integer/Record-en/#more">Read More</a>
-                        </div>
-                    
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-image">
         <a href="/2019/01/20/LeetCode-8-String-to-Integer/Record-cn/" class="image is-7by1">
             <img class="banner" src="/2019/01/20/LeetCode-8-String-to-Integer/Record-cn/title.jpg" alt="LeetCode 8. 字符串转整数">
         </a>
@@ -1424,121 +1539,6 @@
 
 
 
-    <div class="card">
-    
-    <div class="card-image">
-        <a href="/2019/01/02/Serializable/" class="image is-7by1">
-            <img class="banner" src="/2019/01/02/Serializable/title.jpg" alt="Serializable">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-01-01T16:00:00.000Z">2019-01-02</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Java/">Java</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Java/SourceCode/">SourceCode</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    11 minutes read (About 1603 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/01/02/Serializable/">Serializable</a>
-            
-        </h1>
-        <div class="content">
-            <!-- <h1><span id="serializable">Serializable</span></h1><p>通过实现 java.io.Serializable 可以让 class 实现序列化的功能，否则无法使用序列化的功能。一个实现序列化的类的子类都是可以进行序列化的。Serializable 接口没有方法，字段等只是一个标记它是可以序列化的作用。</p>
-<p>序列化是指将数据结构或对象状态转换成可取用格式（例如存成文件，存于缓冲，或在网络中传送），并在需要的时候恢复原先状态的过程。</p>
-<p>当子类实现了 Serializable 接口而父类没有实现的时候，父类要有一个可以访问的无参构造函数。</p>
-<p>在反序列化的时候，没有实现序列化的类字段将会使用 public 或者 protect 的无参构造函数进行初始化。无参构造函数必须是实现序列化的子类可访问的，</p>
-<p>如果需要在序列化和反序列化的时候进行一些特殊操作的话，需要自己实现以下某些方法：</p>
-<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">writeObject</span><span class="hljs-params">(java.io.ObjectOutputStream out)</span></span></div><div class="line"><span class="hljs-function">    <span class="hljs-keyword">throws</span> IOException</span></div><div class="line"><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">readObject</span><span class="hljs-params">(java.io.ObjectInputStream in)</span></span></div><div class="line"><span class="hljs-function">    <span class="hljs-keyword">throws</span> IOException, ClassNotFoundException</span>;</div><div class="line"><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">readObjectNoData</span><span class="hljs-params">()</span></span></div><div class="line"><span class="hljs-function">    <span class="hljs-keyword">throws</span> ObjectStreamException</span>;</div></pre></td></tr></table></figure>
-<p>writeObject 方法负责写入指定的类的对象状态来让 readObject 方法可以读取这些状态。可以通过调用 out.defaultWriteObject 方法来使用默认的保存对象字段的机制。</p>
-<p>readObject 方法负责从流中读取并回复类字段。它可能会调用 in.defaultReadObject 方法来默认恢复非静态和非临时(transient)的字段机制。defaultReadObject 方法使用流中的信息来分配流中保存的对象字段到目前的对象相应名字的字段中。这解决了当类已经添加了新的字段时的问题。</p>
-<p>这两个方法不需要考虑它自己的父类或者子类。状态是通过 writeObject 方法将各自的字段写入到 ObjectOutputStream 中，或者通过 DataOutput 提供的方法将私有的数据类型进行保存。</p>
-<p>readObjectNoData 方法负责在当序列化流没有列出指定的类作为反序列化的对象的父类的时候初始化对象的状态。这可能会发生在接收部分使用了一个和发送部分不同版本的反序列化实例的类的时候，还有接收的版本继承的类不是发送版本继承的类的时候。还可能发生在序列化流发生错误的时候。因此，readObjectNoData 方法在”恶意”的或者不完整的流情况下初始化反序列化对象属性是非常有用的。</p>
-<p>Serializable 类需要在写入一个对象到流的时候指定一个替换的对象的话需要用指定的修饰符实现这个方法</p>
-<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ANY-ACCESS-<span class="hljs-function">MODIFIER Object <span class="hljs-title">writeReplace</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> ObjectStreamException</span>;</div></pre></td></tr></table></figure>
-<p>这个 writeReplace 方法如果存在并且它可以被被序列化的对象中定义的方法调用的话，writeReplace 会在序列化的时候被调用。因此，这个方法可以使用 private , protected 或者 package-private修饰。子类的访问权限遵循 Java 的访问规则。</p>
-<p>如果类的实例从流中读取出来的时候需要指定一个替换的类的话应该使用明确的修饰符实现这个方法。</p>
-<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ANY-ACCESS-<span class="hljs-function">MODIFIER Object <span class="hljs-title">readResolve</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> ObjectStreamException</span>;</div></pre></td></tr></table></figure>
-<p>readResolve 方法的调用规则和访问规则和 writeReplace 相同。</p>
-<p>序列化在运行时会关联每一个可以序列化的类的版本数字，名为 serialVersionUID ， 这个 serialVersionUID 会在反序列化的时候使用，主要作用是验证一个序列化对象的发送方和接收方加载的类是兼容的。如果接收方给对象加载的类的 serialVersionUID 和对应的 发送方的类的 serialVersionUID 不同的话，反序列化的时候会导致一个 <a href="">InvalidClassException</a> . 可序列化的类可以通过定义一个静态 final long 字段名为 “serialVersionUID” 声明它自己的 serialVersionUID :</p>
-<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ANY-ACCESS-MODIFIER <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">long</span> serialVersionUID = <span class="hljs-number">42L</span>;</div></pre></td></tr></table></figure>
-<p>如果可序列化的类没有明确的定义一个 serialVersionUID ，那么运行时序列化将会如Java(TM)对象序列化规范所描述的那样依据类的多个方面计算出一个默认的 serialVersionUID 值。尽管如此，官方还是强烈推荐所有的可序列化类明确的定义 serialVersionUID 值，因为默认的 serialVersionUID 计算对类的细节是高度敏感的，会依据编译器的实现而变动，可能会在反序列化时导致预期之外的 InvalidClassException 异常。因此，为了确保在不同的 Java 编译器实现中保持 serialVersionUID 不变，可序列化的类必须明确定义一个 serialVersionUID 值。官方还强烈推荐尽可能使用 private 来修饰 serialVersionUID  定义，因为这样的声明只适用于当前的类，而不会影响那些继承他的类。Array 类不能显式的声明 serialVersionUID ，所以它们总是使用默认计算的值，但是 Array 类不需要比对 serialVersionUID 。</p>
-<p>Android 实现的 serialVersionUID 计算方式在 Android N 上会有一些轻微的不同。为了保持兼容性，这个改变只有在应用的目标  SDK 版本设置为 24 或者更高的时候才会可用。强烈推荐使用显式的 serialVersionUID 字段来避免兼容性问题。</p>
-<p>谨慎的实现 Serializable<br>参考 《Effective Java》中对于序列化 API 覆盖的章节。书中介绍了如何在不影响应用程序的可维护性的前提下使用这个接口。</p>
-<p>推荐另一个可行的方法<br>JSON 是一种简明，可读性高并且高效的方式。Android 包含了 android.util.JsonReader 流 API 和 org.json.JSONObject 树 API 来对 JSON 进行读写。也可以使用绑定库比如 <a href="http://code.google.com/p/google-gson/" target="_blank" rel="external">GSON</a> 来更直接的读写 Java 对象。</p>
-<h2><span id="reference">Reference</span></h2><p><a href="https://docs.oracle.com/javase/7/docs/api/java/io/Serializable.html" target="_blank" rel="external">https://docs.oracle.com/javase/7/docs/api/java/io/Serializable.html</a></p>
-<h2><span id="about-me">About Me</span></h2><p>我的博客 <a href="http://leonchen1024.com/" target="_blank" rel="external">leonchen1024.com</a></p>
-<p>我的 GitHub <a href="https://github.com/LeonChen1024" target="_blank" rel="external">https://github.com/LeonChen1024</a></p>
-<p>微信公众号 </p>
-<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/Images/CooderQRcodem.jpg?raw=false" alt="wechat"></p>
- -->
-            <div class="article-entry">
-                    
-                    
-                        
-                            
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                            
-                                
-                                <p><h1><span id="serializable">Serializable</span></h1><p>通过实现 java.io.Serializable 可以让 class 实现序列化的功能，否则无法使用序列化的功能。一个实现序列化的类的子类都是可以进行序列化的。Serializable 接口没有方法，字段等只是一个标记它是可以序列化的作用。</p>
-<p>序列化是指将数据结构或对象状态转换成可取用格式（例如存成文件，存于缓冲，或在网络中传送），并在需要的时候恢复原先状态的过程。</p>
-<p>当子类实现了 Serializable 接口而父类没有实现的时候，父类要有一个可以访问的无参构造函数。</p>
-<p>在反序列化的时候，没有实现序列化的类字段将会使用 public 或者 protect 的无参构造函数进行初始化。无参构造函数必须是实现序列化的子类可访问的，</p>
-<p>如果需要在序列化和反序列化的时候进行一些特殊操作的话，需要自己实现以下某些方法：</p>
-<p>
-                            
-                        
-                    
-                    
-                        </div>   
-                        <div class="article-more-link">
-                            <a href="/2019/01/02/Serializable/#more">Read More</a>
-                        </div>
-                    
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
@@ -1605,7 +1605,7 @@
                         Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        33
+                        35
                     </p>
                 </div>
             </div>
@@ -1670,7 +1670,7 @@
                 <span class="level-item">Chinese</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">25</span>
+                <span class="level-item tag">26</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="undefined">
@@ -1678,7 +1678,7 @@
                 <span class="level-item">Algorithm</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">10</span>
+                <span class="level-item tag">11</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="undefined">
@@ -1718,7 +1718,7 @@
                 <span class="level-item">English</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">8</span>
+                <span class="level-item tag">9</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="undefined">
@@ -1726,7 +1726,7 @@
                 <span class="level-item">Algorithm</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">8</span>
+                <span class="level-item tag">9</span>
             </span>
         </a></li></ul></li>
             </ul>
@@ -1754,6 +1754,44 @@
         <h3 class="menu-label">
             Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/titleThumb.jpg" alt="LeetCode 9. Palindrome Number">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-27T16:00:00.000Z">2020-01-28</time></div>
+                    <a href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/" class="has-link-black-ter is-size-6">LeetCode 9. Palindrome Number</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-en/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/titleThumb.jpg" alt="LeetCode 9. Palindrome Number">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-27T16:00:00.000Z">2020-01-28</time></div>
+                    <a href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-en/" class="has-link-black-ter is-size-6">LeetCode 9. Palindrome Number</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/English/">English</a> / <a class="has-link-grey -link" href="/categories/English/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -1812,44 +1850,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/05/28/Automatic-Version-Code-Release/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/2019/05/28/Automatic-Version-Code-Release/titleThumb.jpg" alt="自动版本号发布">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-27T16:00:00.000Z">2019-05-28</time></div>
-                    <a href="/2019/05/28/Automatic-Version-Code-Release/" class="has-link-black-ter is-size-6">自动版本号发布</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/05/24/Gradle-Skill/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/2019/05/24/Gradle-Skill/titleThumb.jpg" alt="Gradle 使用技巧 [Chinese ver]">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-23T16:00:00.000Z">2019-05-24</time></div>
-                    <a href="/2019/05/24/Gradle-Skill/" class="has-link-black-ter is-size-6">Gradle 使用技巧 [Chinese ver]</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Gradle/">Gradle</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1861,6 +1861,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/01/">
+                <span class="level-start">
+                    <span class="level-item">January 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/07/">
@@ -2032,7 +2043,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Algorithm/">
                         <span class="tag">Algorithm</span>
-                        <span class="tag is-grey">19</span>
+                        <span class="tag is-grey">21</span>
                     </a>
                 </div>
                 
@@ -2046,7 +2057,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Chinese/">
                         <span class="tag">Chinese</span>
-                        <span class="tag is-grey">25</span>
+                        <span class="tag is-grey">26</span>
                     </a>
                 </div>
                 
@@ -2074,7 +2085,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/English/">
                         <span class="tag">English</span>
-                        <span class="tag is-grey">8</span>
+                        <span class="tag is-grey">9</span>
                     </a>
                 </div>
                 
@@ -2109,7 +2120,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/LeetCode/">
                         <span class="tag">LeetCode</span>
-                        <span class="tag is-grey">16</span>
+                        <span class="tag is-grey">18</span>
                     </a>
                 </div>
                 
@@ -2173,6 +2184,44 @@
         
         <article class="media">
             
+            <a href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/titleThumb.jpg" alt="LeetCode 9. Palindrome Number">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-27T16:00:00.000Z">2020-01-28</time></div>
+                    <a href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/" class="has-link-black-ter is-size-6">LeetCode 9. Palindrome Number</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-en/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/titleThumb.jpg" alt="LeetCode 9. Palindrome Number">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-27T16:00:00.000Z">2020-01-28</time></div>
+                    <a href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-en/" class="has-link-black-ter is-size-6">LeetCode 9. Palindrome Number</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/English/">English</a> / <a class="has-link-grey -link" href="/categories/English/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/07/04/Navigation/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/2019/07/04/Navigation/titleThumb.jpg" alt="Navigation 指南">
@@ -2228,44 +2277,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/05/28/Automatic-Version-Code-Release/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/2019/05/28/Automatic-Version-Code-Release/titleThumb.jpg" alt="自动版本号发布">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-27T16:00:00.000Z">2019-05-28</time></div>
-                    <a href="/2019/05/28/Automatic-Version-Code-Release/" class="has-link-black-ter is-size-6">自动版本号发布</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/05/24/Gradle-Skill/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/2019/05/24/Gradle-Skill/titleThumb.jpg" alt="Gradle 使用技巧 [Chinese ver]">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-23T16:00:00.000Z">2019-05-24</time></div>
-                    <a href="/2019/05/24/Gradle-Skill/" class="has-link-black-ter is-size-6">Gradle 使用技巧 [Chinese ver]</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Gradle/">Gradle</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -2277,6 +2288,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/01/">
+                <span class="level-start">
+                    <span class="level-item">January 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/07/">
@@ -2448,7 +2470,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Algorithm/">
                         <span class="tag">Algorithm</span>
-                        <span class="tag is-grey">19</span>
+                        <span class="tag is-grey">21</span>
                     </a>
                 </div>
                 
@@ -2462,7 +2484,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Chinese/">
                         <span class="tag">Chinese</span>
-                        <span class="tag is-grey">25</span>
+                        <span class="tag is-grey">26</span>
                     </a>
                 </div>
                 
@@ -2490,7 +2512,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/English/">
                         <span class="tag">English</span>
-                        <span class="tag is-grey">8</span>
+                        <span class="tag is-grey">9</span>
                     </a>
                 </div>
                 
@@ -2525,7 +2547,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/LeetCode/">
                         <span class="tag">LeetCode</span>
-                        <span class="tag is-grey">16</span>
+                        <span class="tag is-grey">18</span>
                     </a>
                 </div>
                 
@@ -2585,7 +2607,7 @@
                 
                 </a>
                 <p class="is-size-7">
-                &copy; 2019 LeonChen&nbsp;
+                &copy; 2020 LeonChen&nbsp;
                 Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
                         href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
                 

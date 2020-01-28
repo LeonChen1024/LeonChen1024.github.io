@@ -157,6 +157,164 @@
     <div class="card">
     
     <div class="card-image">
+        <a href="/2019/07/04/Navigation/" class="image is-7by1">
+            <img class="banner" src="/2019/07/04/Navigation/title.jpg" alt="Navigation 指南">
+        </a>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-07-03T16:00:00.000Z">2019-07-04</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    6 minutes read (About 861 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/07/04/Navigation/">Navigation 指南</a>
+            
+        </h1>
+        <div class="content">
+            <!-- <h1><span id="navigation-指南">Navigation 指南</span></h1><p>[TOC]</p>
+<p>由于官网暂时没有中文版本,所以在这里根据内容抽空做了一些中文的版本.</p>
+<p><code>Navigation</code> 是用来管理你的app中内容的跳转,返回等操作.它主要包含了以下三个部分:</p>
+<ul>
+<li><code>Navigation graph</code> : 一个 xml 资源包含了所有的导航相关的信息. 这些信息包含了你app里所有独立的内容区域,也就是 <code>destinations</code>  .</li>
+<li><code>NavHost</code> : 一个空白的容器用来展示你的  <code>Navigation graph</code> 中的 <code>destinations</code> . <code>Navigation</code> 模块中包含了一个默认的实现 <a href="https://developer.android.com/reference/androidx/navigation/fragment/NavHostFragment.html" target="_blank" rel="external"><code>NavHostFragment</code></a> 用来展示 Fragment 的 <code>destinations</code> .</li>
+<li><code>NavController</code> :  一个管理 NavHost 中的导航的对象. 会在用户使用app的时候管理 NavHost 中的内容.</li>
+</ul>
+<p>当在页面内导航的时候,你可以告诉 NavController 你想要通过Navigation graph 中的某个路径或者直接导航到一个destination .这时候 NavController 就会在 NavHost 中展示合适的 destination.</p>
+<p>Navigation 模块还提供了其他的好处,比如:</p>
+<ul>
+<li>处理了 fragment transactions</li>
+<li>默认情况下正确的处理了向上和返回动作</li>
+<li>为动画和过渡提供了标准化的资源</li>
+<li>实现和处理了深链接</li>
+<li>内置了 Navigation UI 组件,比如 navigation drawers 和 bottom navigation,可以减少附加的工作</li>
+<li><a href="https://developer.android.com/guide/navigation/navigation-pass-data#Safe-args" target="_blank" rel="external">Safe Args</a> - 一个 Gradle 插件当导航并在两个目的地中传递数据的时候提供了类型安全机制</li>
+<li>ViewModel 支持 - 你可以将 ViewModel 的作用域设置为 navigation graph 来在不同的 目的地之间共享 UI 相关连的数据</li>
+</ul>
+<p>并且你还可以使用 Android Studio’s <a href="https://developer.android.com/guide/navigation/navigation-getting-started" target="_blank" rel="external">Navigation Editor</a>  来查看和编辑 navigation graphs.</p>
+<p>Next steps</p>
+<p>For more documentation and resources related to the Navigation component, see the following.</p>
+<p>Getting started</p>
+<ul>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-getting-started" target="_blank" rel="external">Get started with the Navigation component</a></li>
+</ul>
+<p>Further topics</p>
+<ul>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-principles" target="_blank" rel="external">Principles of Navigation</a></li>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-form-factors" target="_blank" rel="external">Design for different form factors</a></li>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-design-graph" target="_blank" rel="external">Design navigation graphs</a></li>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-nested-graphs" target="_blank" rel="external">Nested graphs</a></li>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-global-action" target="_blank" rel="external">Global actions</a></li>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-conditional" target="_blank" rel="external">Conditional navigation</a></li>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-pass-data" target="_blank" rel="external">Pass data between destinations</a></li>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-deep-link" target="_blank" rel="external">Create a deep link for a destination</a></li>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-animate-transitions" target="_blank" rel="external">Animate transitions between destinations</a></li>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-ui" target="_blank" rel="external">Update UI components with NavigationUI</a></li>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-swipe-view" target="_blank" rel="external">Create swipe views with tabs</a></li>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-programmatic" target="_blank" rel="external">Interact programmatically with the Navigation component</a></li>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-testing" target="_blank" rel="external">Test navigation</a></li>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-add-new" target="_blank" rel="external">Add new destination types</a></li>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-custom-back" target="_blank" rel="external">Provide custom back navigation</a></li>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-migrate" target="_blank" rel="external">Migrate to the Navigation component</a></li>
+</ul>
+<p>Additional resources</p>
+<p>To learn more about navigation, see the following additional resources.</p>
+<p>Samples</p>
+<ul>
+<li><a href="https://github.com/googlesamples/android-architecture-components/tree/master/BasicSample" target="_blank" rel="external">Android Architecture Components basic sample</a></li>
+</ul>
+<p>Codelabs</p>
+<ul>
+<li><a href="https://codelabs.developers.google.com/codelabs/android-navigation/index.html?index=..%2F..%2Findex#0" target="_blank" rel="external">Navigation codelab</a></li>
+</ul>
+<p>Blog posts</p>
+<ul>
+<li><a href="https://medium.com/androiddevelopers/livedata-with-snackbar-navigation-and-other-events-the-singleliveevent-case-ac2622673150" target="_blank" rel="external">LiveData with SnackBar, Navigation and other events (the SingleLiveEvent case</a></li>
+</ul>
+<p>Videos</p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=9O1D_Ytk0xg" target="_blank" rel="external">10 Best Practices for Moving to a Single Activity</a></li>
+<li><a href="https://www.youtube.com/watch?v=2k8x8V77CrU" target="_blank" rel="external">Single Activity: Why, When, and How (Android Dev Summit ‘18)</a></li>
+<li><a href="https://www.youtube.com/watch?v=8GCXtCjtg40" target="_blank" rel="external">Android Jetpack: manage UI navigation with Navigation Controller (Google I/O ‘18)</a></li>
+</ul>
+<h1><span id="reference">Reference</span></h1><p><a href="https://developer.android.google.cn/guide/navigation" target="_blank" rel="external">https://developer.android.google.cn/guide/navigation</a></p>
+<h2><span id="about-me">About Me</span></h2><p>我的博客 <a href="http://leonchen1024.com/" target="_blank" rel="external">leonchen1024.com</a></p>
+<p>我的 GitHub <a href="https://github.com/LeonChen1024" target="_blank" rel="external">https://github.com/LeonChen1024</a></p>
+<p>微信公众号 </p>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/Images/CooderQRcodem.jpg?raw=false" alt="wechat"></p>
+ -->
+            <div class="article-entry">
+                    
+                    
+                        
+                            
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                            
+                                
+                                <p><h1><span id="navigation-指南">Navigation 指南</span></h1><p>[TOC]</p>
+<p>由于官网暂时没有中文版本,所以在这里根据内容抽空做了一些中文的版本.</p>
+<p><code>Navigation</code> 是用来管理你的app中内容的跳转,返回等操作.它主要包含了以下三个部分:</p>
+<ul>
+<li><code>Navigation graph</code> : 一个 xml 资源包含了所有的导航相关的信息. 这些信息包含了你app里所有独立的内容区域,也就是 <code>destinations</code>  .</li>
+<p>
+                            
+                        
+                    
+                    
+                        </div>   
+                        <div class="article-more-link">
+                            <a href="/2019/07/04/Navigation/#more">Read More</a>
+                        </div>
+                    
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-image">
         <a href="/2019/07/04/Navigation-Getting-Started/" class="image is-7by1">
             <img class="banner" src="/2019/07/04/Navigation-Getting-Started/title.jpg" alt="开始使用 Navigation">
         </a>
@@ -405,164 +563,6 @@
 
 
 
-    <div class="card">
-    
-    <div class="card-image">
-        <a href="/2019/07/04/Navigation/" class="image is-7by1">
-            <img class="banner" src="/2019/07/04/Navigation/title.jpg" alt="Navigation 指南">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-07-03T16:00:00.000Z">2019-07-04</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    6 minutes read (About 861 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/07/04/Navigation/">Navigation 指南</a>
-            
-        </h1>
-        <div class="content">
-            <!-- <h1><span id="navigation-指南">Navigation 指南</span></h1><p>[TOC]</p>
-<p>由于官网暂时没有中文版本,所以在这里根据内容抽空做了一些中文的版本.</p>
-<p><code>Navigation</code> 是用来管理你的app中内容的跳转,返回等操作.它主要包含了以下三个部分:</p>
-<ul>
-<li><code>Navigation graph</code> : 一个 xml 资源包含了所有的导航相关的信息. 这些信息包含了你app里所有独立的内容区域,也就是 <code>destinations</code>  .</li>
-<li><code>NavHost</code> : 一个空白的容器用来展示你的  <code>Navigation graph</code> 中的 <code>destinations</code> . <code>Navigation</code> 模块中包含了一个默认的实现 <a href="https://developer.android.com/reference/androidx/navigation/fragment/NavHostFragment.html" target="_blank" rel="external"><code>NavHostFragment</code></a> 用来展示 Fragment 的 <code>destinations</code> .</li>
-<li><code>NavController</code> :  一个管理 NavHost 中的导航的对象. 会在用户使用app的时候管理 NavHost 中的内容.</li>
-</ul>
-<p>当在页面内导航的时候,你可以告诉 NavController 你想要通过Navigation graph 中的某个路径或者直接导航到一个destination .这时候 NavController 就会在 NavHost 中展示合适的 destination.</p>
-<p>Navigation 模块还提供了其他的好处,比如:</p>
-<ul>
-<li>处理了 fragment transactions</li>
-<li>默认情况下正确的处理了向上和返回动作</li>
-<li>为动画和过渡提供了标准化的资源</li>
-<li>实现和处理了深链接</li>
-<li>内置了 Navigation UI 组件,比如 navigation drawers 和 bottom navigation,可以减少附加的工作</li>
-<li><a href="https://developer.android.com/guide/navigation/navigation-pass-data#Safe-args" target="_blank" rel="external">Safe Args</a> - 一个 Gradle 插件当导航并在两个目的地中传递数据的时候提供了类型安全机制</li>
-<li>ViewModel 支持 - 你可以将 ViewModel 的作用域设置为 navigation graph 来在不同的 目的地之间共享 UI 相关连的数据</li>
-</ul>
-<p>并且你还可以使用 Android Studio’s <a href="https://developer.android.com/guide/navigation/navigation-getting-started" target="_blank" rel="external">Navigation Editor</a>  来查看和编辑 navigation graphs.</p>
-<p>Next steps</p>
-<p>For more documentation and resources related to the Navigation component, see the following.</p>
-<p>Getting started</p>
-<ul>
-<li><a href="https://developer.android.google.cn/guide/navigation/navigation-getting-started" target="_blank" rel="external">Get started with the Navigation component</a></li>
-</ul>
-<p>Further topics</p>
-<ul>
-<li><a href="https://developer.android.google.cn/guide/navigation/navigation-principles" target="_blank" rel="external">Principles of Navigation</a></li>
-<li><a href="https://developer.android.google.cn/guide/navigation/navigation-form-factors" target="_blank" rel="external">Design for different form factors</a></li>
-<li><a href="https://developer.android.google.cn/guide/navigation/navigation-design-graph" target="_blank" rel="external">Design navigation graphs</a></li>
-<li><a href="https://developer.android.google.cn/guide/navigation/navigation-nested-graphs" target="_blank" rel="external">Nested graphs</a></li>
-<li><a href="https://developer.android.google.cn/guide/navigation/navigation-global-action" target="_blank" rel="external">Global actions</a></li>
-<li><a href="https://developer.android.google.cn/guide/navigation/navigation-conditional" target="_blank" rel="external">Conditional navigation</a></li>
-<li><a href="https://developer.android.google.cn/guide/navigation/navigation-pass-data" target="_blank" rel="external">Pass data between destinations</a></li>
-<li><a href="https://developer.android.google.cn/guide/navigation/navigation-deep-link" target="_blank" rel="external">Create a deep link for a destination</a></li>
-<li><a href="https://developer.android.google.cn/guide/navigation/navigation-animate-transitions" target="_blank" rel="external">Animate transitions between destinations</a></li>
-<li><a href="https://developer.android.google.cn/guide/navigation/navigation-ui" target="_blank" rel="external">Update UI components with NavigationUI</a></li>
-<li><a href="https://developer.android.google.cn/guide/navigation/navigation-swipe-view" target="_blank" rel="external">Create swipe views with tabs</a></li>
-<li><a href="https://developer.android.google.cn/guide/navigation/navigation-programmatic" target="_blank" rel="external">Interact programmatically with the Navigation component</a></li>
-<li><a href="https://developer.android.google.cn/guide/navigation/navigation-testing" target="_blank" rel="external">Test navigation</a></li>
-<li><a href="https://developer.android.google.cn/guide/navigation/navigation-add-new" target="_blank" rel="external">Add new destination types</a></li>
-<li><a href="https://developer.android.google.cn/guide/navigation/navigation-custom-back" target="_blank" rel="external">Provide custom back navigation</a></li>
-<li><a href="https://developer.android.google.cn/guide/navigation/navigation-migrate" target="_blank" rel="external">Migrate to the Navigation component</a></li>
-</ul>
-<p>Additional resources</p>
-<p>To learn more about navigation, see the following additional resources.</p>
-<p>Samples</p>
-<ul>
-<li><a href="https://github.com/googlesamples/android-architecture-components/tree/master/BasicSample" target="_blank" rel="external">Android Architecture Components basic sample</a></li>
-</ul>
-<p>Codelabs</p>
-<ul>
-<li><a href="https://codelabs.developers.google.com/codelabs/android-navigation/index.html?index=..%2F..%2Findex#0" target="_blank" rel="external">Navigation codelab</a></li>
-</ul>
-<p>Blog posts</p>
-<ul>
-<li><a href="https://medium.com/androiddevelopers/livedata-with-snackbar-navigation-and-other-events-the-singleliveevent-case-ac2622673150" target="_blank" rel="external">LiveData with SnackBar, Navigation and other events (the SingleLiveEvent case</a></li>
-</ul>
-<p>Videos</p>
-<ul>
-<li><a href="https://www.youtube.com/watch?v=9O1D_Ytk0xg" target="_blank" rel="external">10 Best Practices for Moving to a Single Activity</a></li>
-<li><a href="https://www.youtube.com/watch?v=2k8x8V77CrU" target="_blank" rel="external">Single Activity: Why, When, and How (Android Dev Summit ‘18)</a></li>
-<li><a href="https://www.youtube.com/watch?v=8GCXtCjtg40" target="_blank" rel="external">Android Jetpack: manage UI navigation with Navigation Controller (Google I/O ‘18)</a></li>
-</ul>
-<h1><span id="reference">Reference</span></h1><p><a href="https://developer.android.google.cn/guide/navigation" target="_blank" rel="external">https://developer.android.google.cn/guide/navigation</a></p>
-<h2><span id="about-me">About Me</span></h2><p>我的博客 <a href="http://leonchen1024.com/" target="_blank" rel="external">leonchen1024.com</a></p>
-<p>我的 GitHub <a href="https://github.com/LeonChen1024" target="_blank" rel="external">https://github.com/LeonChen1024</a></p>
-<p>微信公众号 </p>
-<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/Images/CooderQRcodem.jpg?raw=false" alt="wechat"></p>
- -->
-            <div class="article-entry">
-                    
-                    
-                        
-                            
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                            
-                                
-                                <p><h1><span id="navigation-指南">Navigation 指南</span></h1><p>[TOC]</p>
-<p>由于官网暂时没有中文版本,所以在这里根据内容抽空做了一些中文的版本.</p>
-<p><code>Navigation</code> 是用来管理你的app中内容的跳转,返回等操作.它主要包含了以下三个部分:</p>
-<ul>
-<li><code>Navigation graph</code> : 一个 xml 资源包含了所有的导航相关的信息. 这些信息包含了你app里所有独立的内容区域,也就是 <code>destinations</code>  .</li>
-<p>
-                            
-                        
-                    
-                    
-                        </div>   
-                        <div class="article-more-link">
-                            <a href="/2019/07/04/Navigation/#more">Read More</a>
-                        </div>
-                    
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 </div>
                 
 
@@ -606,7 +606,7 @@
                         Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        33
+                        35
                     </p>
                 </div>
             </div>
@@ -671,7 +671,7 @@
                 <span class="level-item">Chinese</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">25</span>
+                <span class="level-item tag">26</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="undefined">
@@ -679,7 +679,7 @@
                 <span class="level-item">Algorithm</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">10</span>
+                <span class="level-item tag">11</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="undefined">
@@ -719,7 +719,7 @@
                 <span class="level-item">English</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">8</span>
+                <span class="level-item tag">9</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="undefined">
@@ -727,7 +727,7 @@
                 <span class="level-item">Algorithm</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">8</span>
+                <span class="level-item tag">9</span>
             </span>
         </a></li></ul></li>
             </ul>
@@ -755,6 +755,44 @@
         <h3 class="menu-label">
             Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/titleThumb.jpg" alt="LeetCode 9. Palindrome Number">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-27T16:00:00.000Z">2020-01-28</time></div>
+                    <a href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/" class="has-link-black-ter is-size-6">LeetCode 9. Palindrome Number</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-en/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/titleThumb.jpg" alt="LeetCode 9. Palindrome Number">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-27T16:00:00.000Z">2020-01-28</time></div>
+                    <a href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-en/" class="has-link-black-ter is-size-6">LeetCode 9. Palindrome Number</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/English/">English</a> / <a class="has-link-grey -link" href="/categories/English/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -813,44 +851,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/05/28/Automatic-Version-Code-Release/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/2019/05/28/Automatic-Version-Code-Release/titleThumb.jpg" alt="自动版本号发布">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-27T16:00:00.000Z">2019-05-28</time></div>
-                    <a href="/2019/05/28/Automatic-Version-Code-Release/" class="has-link-black-ter is-size-6">自动版本号发布</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/05/24/Gradle-Skill/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/2019/05/24/Gradle-Skill/titleThumb.jpg" alt="Gradle 使用技巧 [Chinese ver]">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-23T16:00:00.000Z">2019-05-24</time></div>
-                    <a href="/2019/05/24/Gradle-Skill/" class="has-link-black-ter is-size-6">Gradle 使用技巧 [Chinese ver]</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Gradle/">Gradle</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -862,6 +862,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/01/">
+                <span class="level-start">
+                    <span class="level-item">January 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/07/">
@@ -1033,7 +1044,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Algorithm/">
                         <span class="tag">Algorithm</span>
-                        <span class="tag is-grey">19</span>
+                        <span class="tag is-grey">21</span>
                     </a>
                 </div>
                 
@@ -1047,7 +1058,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Chinese/">
                         <span class="tag">Chinese</span>
-                        <span class="tag is-grey">25</span>
+                        <span class="tag is-grey">26</span>
                     </a>
                 </div>
                 
@@ -1075,7 +1086,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/English/">
                         <span class="tag">English</span>
-                        <span class="tag is-grey">8</span>
+                        <span class="tag is-grey">9</span>
                     </a>
                 </div>
                 
@@ -1110,7 +1121,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/LeetCode/">
                         <span class="tag">LeetCode</span>
-                        <span class="tag is-grey">16</span>
+                        <span class="tag is-grey">18</span>
                     </a>
                 </div>
                 
@@ -1174,6 +1185,44 @@
         
         <article class="media">
             
+            <a href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/titleThumb.jpg" alt="LeetCode 9. Palindrome Number">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-27T16:00:00.000Z">2020-01-28</time></div>
+                    <a href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/" class="has-link-black-ter is-size-6">LeetCode 9. Palindrome Number</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-en/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/titleThumb.jpg" alt="LeetCode 9. Palindrome Number">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-27T16:00:00.000Z">2020-01-28</time></div>
+                    <a href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-en/" class="has-link-black-ter is-size-6">LeetCode 9. Palindrome Number</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/English/">English</a> / <a class="has-link-grey -link" href="/categories/English/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/07/04/Navigation/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/2019/07/04/Navigation/titleThumb.jpg" alt="Navigation 指南">
@@ -1229,44 +1278,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/05/28/Automatic-Version-Code-Release/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/2019/05/28/Automatic-Version-Code-Release/titleThumb.jpg" alt="自动版本号发布">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-27T16:00:00.000Z">2019-05-28</time></div>
-                    <a href="/2019/05/28/Automatic-Version-Code-Release/" class="has-link-black-ter is-size-6">自动版本号发布</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/05/24/Gradle-Skill/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/2019/05/24/Gradle-Skill/titleThumb.jpg" alt="Gradle 使用技巧 [Chinese ver]">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-23T16:00:00.000Z">2019-05-24</time></div>
-                    <a href="/2019/05/24/Gradle-Skill/" class="has-link-black-ter is-size-6">Gradle 使用技巧 [Chinese ver]</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Gradle/">Gradle</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1278,6 +1289,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/01/">
+                <span class="level-start">
+                    <span class="level-item">January 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/07/">
@@ -1449,7 +1471,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Algorithm/">
                         <span class="tag">Algorithm</span>
-                        <span class="tag is-grey">19</span>
+                        <span class="tag is-grey">21</span>
                     </a>
                 </div>
                 
@@ -1463,7 +1485,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Chinese/">
                         <span class="tag">Chinese</span>
-                        <span class="tag is-grey">25</span>
+                        <span class="tag is-grey">26</span>
                     </a>
                 </div>
                 
@@ -1491,7 +1513,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/English/">
                         <span class="tag">English</span>
-                        <span class="tag is-grey">8</span>
+                        <span class="tag is-grey">9</span>
                     </a>
                 </div>
                 
@@ -1526,7 +1548,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/LeetCode/">
                         <span class="tag">LeetCode</span>
-                        <span class="tag is-grey">16</span>
+                        <span class="tag is-grey">18</span>
                     </a>
                 </div>
                 
@@ -1586,7 +1608,7 @@
                 
                 </a>
                 <p class="is-size-7">
-                &copy; 2019 LeonChen&nbsp;
+                &copy; 2020 LeonChen&nbsp;
                 Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
                         href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
                 
