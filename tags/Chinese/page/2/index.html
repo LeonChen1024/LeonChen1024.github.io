@@ -157,6 +157,231 @@
     <div class="card">
     
     <div class="card-image">
+        <a href="/2019/01/20/LeetCode-8-String-to-Integer/Record-cn/" class="image is-7by1">
+            <img class="banner" src="/2019/01/20/LeetCode-8-String-to-Integer/Record-cn/title.jpg" alt="LeetCode 8. 字符串转整数">
+        </a>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-01-19T16:00:00.000Z">2019-01-20</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Algorithm/">Algorithm</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Algorithm/LeetCode/">LeetCode</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    5 minutes read (About 741 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/01/20/LeetCode-8-String-to-Integer/Record-cn/">LeetCode 8. 字符串转整数</a>
+            
+        </h1>
+        <div class="content">
+            <!-- <p>[Chinese ver]</p>
+<h1><span id="8-字符串转整数-atoi">8. 字符串转整数 (atoi)</span></h1><p>[TOC]</p>
+<p>实现一个 atoi 方法来将一个 string 转换成一个 integer.</p>
+<p>提示：仔细的思考所有可能的输入情况。如果你想要一个挑战，请不要看以下内容并问你自己什么是可能的输入情况。</p>
+<p>注意：模糊的指定输入范围就是这个题目的目的(比如没有给输入规范)。你负责收集前面所有的输入要求。</p>
+<hr>
+<p>atoi 的要求：<br>函数首先丢弃所有首个非空格字符之前的所有空格。然后从这个字符开始，得到一个初始化的加号或减号开始的尽可能多的位数，然后将他们转换成数字值。</p>
+<p>这个字符串在数字形式的子字符串后可以有其他的字符，这些字符将会被忽略而且不会对这个方法有影响。</p>
+<p>如果第一个非空格的字符序列不是一个合法的整数，或者如果并没有符合要求的序列比如字符串是空的或者它只包含了空格字符，不执行转化。</p>
+<p>如果不能执行转换，返回0.如果正确值超出了可以描述的值范围，返回 INT_MAX (2147483647) 或者 INT_MIN (-2147483648).</p>
+<hr>
+<h3><span id="方法一">方法一 :</span></h3><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</div><div class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">myAtoi</span><span class="hljs-params">(String str)</span> </span>&#123;</div><div class="line">        <span class="hljs-keyword">int</span> index = <span class="hljs-number">0</span> , sign = <span class="hljs-number">1</span> ;</div><div class="line">        <span class="hljs-keyword">long</span> result = <span class="hljs-number">0</span> ;</div><div class="line"></div><div class="line">				<span class="hljs-comment">//if str is a empty string or null</span></div><div class="line">        <span class="hljs-keyword">if</span> (str.equals(<span class="hljs-keyword">null</span>)||str.length()==<span class="hljs-number">0</span> )&#123;</div><div class="line">            <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">				<span class="hljs-comment">//remove the ' ' in the front</span></div><div class="line">        <span class="hljs-keyword">while</span> (str.charAt(index)==<span class="hljs-string">' '</span>&amp;&amp;index &lt; str.length())&#123;</div><div class="line">            index++;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">				<span class="hljs-comment">//take the sign</span></div><div class="line">        <span class="hljs-keyword">if</span>(str.charAt(index)==<span class="hljs-string">'+'</span>||str.charAt(index)==<span class="hljs-string">'-'</span>)&#123;</div><div class="line">            sign = str.charAt(index)==<span class="hljs-string">'+'</span> ? <span class="hljs-number">1</span> : -<span class="hljs-number">1</span>;</div><div class="line">            index ++;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">				<span class="hljs-comment">//convert number and avoid overflows</span></div><div class="line">        <span class="hljs-keyword">while</span> (index &lt; str.length())&#123;</div><div class="line"></div><div class="line">            <span class="hljs-keyword">if</span>(str.charAt(index)&lt;=<span class="hljs-string">'9'</span>&amp;&amp;str.charAt(index)&gt;=<span class="hljs-string">'0'</span>)&#123;</div><div class="line">                <span class="hljs-keyword">int</span> current = str.charAt(index)-<span class="hljs-string">'0'</span>;</div><div class="line">                result = result * <span class="hljs-number">10</span> + current;</div><div class="line">								<span class="hljs-comment">// check if the str is overflows</span></div><div class="line">                <span class="hljs-keyword">if</span>(result&gt;Integer.MAX_VALUE&amp;&amp;sign==<span class="hljs-number">1</span>)&#123;</div><div class="line">                    <span class="hljs-keyword">return</span> Integer.MAX_VALUE;</div><div class="line">                &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(-result&lt;Integer.MIN_VALUE&amp;&amp;sign==-<span class="hljs-number">1</span>)&#123;</div><div class="line">                    <span class="hljs-keyword">return</span> Integer.MIN_VALUE;</div><div class="line">                &#125;</div><div class="line">                index++;</div><div class="line">            &#125;<span class="hljs-keyword">else</span> &#123;</div><div class="line">                <span class="hljs-keyword">break</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="hljs-keyword">return</span> sign*((<span class="hljs-keyword">int</span>)result);</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>或者</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution2</span> </span>&#123;</div><div class="line">	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">myAtoi</span><span class="hljs-params">(String str)</span> </span>&#123;</div><div class="line">    <span class="hljs-keyword">int</span> index = <span class="hljs-number">0</span>, sign = <span class="hljs-number">1</span>, total = <span class="hljs-number">0</span>;</div><div class="line">    <span class="hljs-comment">//1. Empty string</span></div><div class="line">    <span class="hljs-keyword">if</span>(str.length() == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</div><div class="line"></div><div class="line">    <span class="hljs-comment">//2. Remove Spaces</span></div><div class="line">    <span class="hljs-keyword">while</span>(str.charAt(index) == <span class="hljs-string">' '</span> &amp;&amp; index &lt; str.length())</div><div class="line">        index ++;</div><div class="line"></div><div class="line">    <span class="hljs-comment">//3. Handle signs</span></div><div class="line">    <span class="hljs-keyword">if</span>(str.charAt(index) == <span class="hljs-string">'+'</span> || str.charAt(index) == <span class="hljs-string">'-'</span>)&#123;</div><div class="line">        sign = str.charAt(index) == <span class="hljs-string">'+'</span> ? <span class="hljs-number">1</span> : -<span class="hljs-number">1</span>;</div><div class="line">        index ++;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="hljs-comment">//4. Convert number and avoid overflow</span></div><div class="line">    <span class="hljs-keyword">while</span>(index &lt; str.length())&#123;</div><div class="line">        <span class="hljs-keyword">int</span> digit = str.charAt(index) - <span class="hljs-string">'0'</span>;</div><div class="line">        <span class="hljs-keyword">if</span>(digit &lt; <span class="hljs-number">0</span> || digit &gt; <span class="hljs-number">9</span>) <span class="hljs-keyword">break</span>;</div><div class="line"></div><div class="line">        <span class="hljs-comment">//check if total will be overflow after 10 times and add digit</span></div><div class="line">        <span class="hljs-keyword">if</span>(Integer.MAX_VALUE/<span class="hljs-number">10</span> &lt; total || Integer.MAX_VALUE/<span class="hljs-number">10</span> == total &amp;&amp; Integer.MAX_VALUE %<span class="hljs-number">10</span> &lt; digit)</div><div class="line">            <span class="hljs-keyword">return</span> sign == <span class="hljs-number">1</span> ? Integer.MAX_VALUE : Integer.MIN_VALUE;</div><div class="line"></div><div class="line">        total = <span class="hljs-number">10</span> * total + digit;</div><div class="line">        index ++;</div><div class="line">    &#125;</div><div class="line">    <span class="hljs-keyword">return</span> total * sign;</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/8.%20String%20to%20Integer%20(atoi" alt="效率">/Images/OneResult.png?raw=true)</p>
+<p><strong>分析</strong><br>这两段代码的原理是大致相同的，主要区别就是判断溢出的方式，第一个使用的 long 和 Integer 的区间进行比较来判断是否溢出；第二个使用的是 Int ，但是不能直接和 Integer 的区间进行比较，因为Int 的数据一旦溢出会被处理掉，不会出现区间外的值，所以是将前一次得到的 Int 值和 Max／10 比较，然后将这次取得的数值和 Max%10进行比较</p>
+<p>时间复杂度 ： O(n) 。n是输入的位数<br>空间复杂度 ： O(1) .</p>
+<p>如果你有更好的办法或者对我这里的描述有其他看法，请联系我。谢谢</p>
+<h2><span id="about-me">About Me</span></h2><p>我的博客 <a href="http://leonchen1024.com/" target="_blank" rel="external">leonchen1024.com</a></p>
+<p>我的 GitHub <a href="https://github.com/LeonChen1024" target="_blank" rel="external">https://github.com/LeonChen1024</a></p>
+<p>微信公众号 </p>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/Images/CooderQRcodem.jpg?raw=false" alt="wechat"></p>
+ -->
+            <div class="article-entry">
+                    
+                    
+                        
+                            
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                            
+                                
+                                <p><p>[Chinese ver]</p>
+<h1><span id="8-字符串转整数-atoi">8. 字符串转整数 (atoi)</span></h1><p>[TOC]</p>
+<p>实现一个 atoi 方法来将一个 string 转换成一个 integer.</p>
+<p>提示：仔细的思考所有可能的输入情况。如果你想要一个挑战，请不要看以下内容并问你自己什么是可能的输入情况。</p>
+<p>注意：模糊的指定输入范围就是这个题目的目的(比如没有给输入规范)。你负责收集前面所有的输入要求。</p>
+<p>
+                            
+                        
+                    
+                    
+                        </div>   
+                        <div class="article-more-link">
+                            <a href="/2019/01/20/LeetCode-8-String-to-Integer/Record-cn/#more">Read More</a>
+                        </div>
+                    
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-image">
+        <a href="/2019/01/02/Serializable/" class="image is-7by1">
+            <img class="banner" src="/2019/01/02/Serializable/title.jpg" alt="Serializable">
+        </a>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-01-01T16:00:00.000Z">2019-01-02</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Java/">Java</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Java/SourceCode/">SourceCode</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    11 minutes read (About 1603 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/01/02/Serializable/">Serializable</a>
+            
+        </h1>
+        <div class="content">
+            <!-- <h1><span id="serializable">Serializable</span></h1><p>通过实现 java.io.Serializable 可以让 class 实现序列化的功能，否则无法使用序列化的功能。一个实现序列化的类的子类都是可以进行序列化的。Serializable 接口没有方法，字段等只是一个标记它是可以序列化的作用。</p>
+<p>序列化是指将数据结构或对象状态转换成可取用格式（例如存成文件，存于缓冲，或在网络中传送），并在需要的时候恢复原先状态的过程。</p>
+<p>当子类实现了 Serializable 接口而父类没有实现的时候，父类要有一个可以访问的无参构造函数。</p>
+<p>在反序列化的时候，没有实现序列化的类字段将会使用 public 或者 protect 的无参构造函数进行初始化。无参构造函数必须是实现序列化的子类可访问的，</p>
+<p>如果需要在序列化和反序列化的时候进行一些特殊操作的话，需要自己实现以下某些方法：</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">writeObject</span><span class="hljs-params">(java.io.ObjectOutputStream out)</span></span></div><div class="line"><span class="hljs-function">    <span class="hljs-keyword">throws</span> IOException</span></div><div class="line"><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">readObject</span><span class="hljs-params">(java.io.ObjectInputStream in)</span></span></div><div class="line"><span class="hljs-function">    <span class="hljs-keyword">throws</span> IOException, ClassNotFoundException</span>;</div><div class="line"><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">readObjectNoData</span><span class="hljs-params">()</span></span></div><div class="line"><span class="hljs-function">    <span class="hljs-keyword">throws</span> ObjectStreamException</span>;</div></pre></td></tr></table></figure>
+<p>writeObject 方法负责写入指定的类的对象状态来让 readObject 方法可以读取这些状态。可以通过调用 out.defaultWriteObject 方法来使用默认的保存对象字段的机制。</p>
+<p>readObject 方法负责从流中读取并回复类字段。它可能会调用 in.defaultReadObject 方法来默认恢复非静态和非临时(transient)的字段机制。defaultReadObject 方法使用流中的信息来分配流中保存的对象字段到目前的对象相应名字的字段中。这解决了当类已经添加了新的字段时的问题。</p>
+<p>这两个方法不需要考虑它自己的父类或者子类。状态是通过 writeObject 方法将各自的字段写入到 ObjectOutputStream 中，或者通过 DataOutput 提供的方法将私有的数据类型进行保存。</p>
+<p>readObjectNoData 方法负责在当序列化流没有列出指定的类作为反序列化的对象的父类的时候初始化对象的状态。这可能会发生在接收部分使用了一个和发送部分不同版本的反序列化实例的类的时候，还有接收的版本继承的类不是发送版本继承的类的时候。还可能发生在序列化流发生错误的时候。因此，readObjectNoData 方法在”恶意”的或者不完整的流情况下初始化反序列化对象属性是非常有用的。</p>
+<p>Serializable 类需要在写入一个对象到流的时候指定一个替换的对象的话需要用指定的修饰符实现这个方法</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ANY-ACCESS-<span class="hljs-function">MODIFIER Object <span class="hljs-title">writeReplace</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> ObjectStreamException</span>;</div></pre></td></tr></table></figure>
+<p>这个 writeReplace 方法如果存在并且它可以被被序列化的对象中定义的方法调用的话，writeReplace 会在序列化的时候被调用。因此，这个方法可以使用 private , protected 或者 package-private修饰。子类的访问权限遵循 Java 的访问规则。</p>
+<p>如果类的实例从流中读取出来的时候需要指定一个替换的类的话应该使用明确的修饰符实现这个方法。</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ANY-ACCESS-<span class="hljs-function">MODIFIER Object <span class="hljs-title">readResolve</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> ObjectStreamException</span>;</div></pre></td></tr></table></figure>
+<p>readResolve 方法的调用规则和访问规则和 writeReplace 相同。</p>
+<p>序列化在运行时会关联每一个可以序列化的类的版本数字，名为 serialVersionUID ， 这个 serialVersionUID 会在反序列化的时候使用，主要作用是验证一个序列化对象的发送方和接收方加载的类是兼容的。如果接收方给对象加载的类的 serialVersionUID 和对应的 发送方的类的 serialVersionUID 不同的话，反序列化的时候会导致一个 <a href="">InvalidClassException</a> . 可序列化的类可以通过定义一个静态 final long 字段名为 “serialVersionUID” 声明它自己的 serialVersionUID :</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ANY-ACCESS-MODIFIER <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">long</span> serialVersionUID = <span class="hljs-number">42L</span>;</div></pre></td></tr></table></figure>
+<p>如果可序列化的类没有明确的定义一个 serialVersionUID ，那么运行时序列化将会如Java(TM)对象序列化规范所描述的那样依据类的多个方面计算出一个默认的 serialVersionUID 值。尽管如此，官方还是强烈推荐所有的可序列化类明确的定义 serialVersionUID 值，因为默认的 serialVersionUID 计算对类的细节是高度敏感的，会依据编译器的实现而变动，可能会在反序列化时导致预期之外的 InvalidClassException 异常。因此，为了确保在不同的 Java 编译器实现中保持 serialVersionUID 不变，可序列化的类必须明确定义一个 serialVersionUID 值。官方还强烈推荐尽可能使用 private 来修饰 serialVersionUID  定义，因为这样的声明只适用于当前的类，而不会影响那些继承他的类。Array 类不能显式的声明 serialVersionUID ，所以它们总是使用默认计算的值，但是 Array 类不需要比对 serialVersionUID 。</p>
+<p>Android 实现的 serialVersionUID 计算方式在 Android N 上会有一些轻微的不同。为了保持兼容性，这个改变只有在应用的目标  SDK 版本设置为 24 或者更高的时候才会可用。强烈推荐使用显式的 serialVersionUID 字段来避免兼容性问题。</p>
+<p>谨慎的实现 Serializable<br>参考 《Effective Java》中对于序列化 API 覆盖的章节。书中介绍了如何在不影响应用程序的可维护性的前提下使用这个接口。</p>
+<p>推荐另一个可行的方法<br>JSON 是一种简明，可读性高并且高效的方式。Android 包含了 android.util.JsonReader 流 API 和 org.json.JSONObject 树 API 来对 JSON 进行读写。也可以使用绑定库比如 <a href="http://code.google.com/p/google-gson/" target="_blank" rel="external">GSON</a> 来更直接的读写 Java 对象。</p>
+<h2><span id="reference">Reference</span></h2><p><a href="https://docs.oracle.com/javase/7/docs/api/java/io/Serializable.html" target="_blank" rel="external">https://docs.oracle.com/javase/7/docs/api/java/io/Serializable.html</a></p>
+<h2><span id="about-me">About Me</span></h2><p>我的博客 <a href="http://leonchen1024.com/" target="_blank" rel="external">leonchen1024.com</a></p>
+<p>我的 GitHub <a href="https://github.com/LeonChen1024" target="_blank" rel="external">https://github.com/LeonChen1024</a></p>
+<p>微信公众号 </p>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/Images/CooderQRcodem.jpg?raw=false" alt="wechat"></p>
+ -->
+            <div class="article-entry">
+                    
+                    
+                        
+                            
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                            
+                                
+                                <p><h1><span id="serializable">Serializable</span></h1><p>通过实现 java.io.Serializable 可以让 class 实现序列化的功能，否则无法使用序列化的功能。一个实现序列化的类的子类都是可以进行序列化的。Serializable 接口没有方法，字段等只是一个标记它是可以序列化的作用。</p>
+<p>序列化是指将数据结构或对象状态转换成可取用格式（例如存成文件，存于缓冲，或在网络中传送），并在需要的时候恢复原先状态的过程。</p>
+<p>当子类实现了 Serializable 接口而父类没有实现的时候，父类要有一个可以访问的无参构造函数。</p>
+<p>在反序列化的时候，没有实现序列化的类字段将会使用 public 或者 protect 的无参构造函数进行初始化。无参构造函数必须是实现序列化的子类可访问的，</p>
+<p>如果需要在序列化和反序列化的时候进行一些特殊操作的话，需要自己实现以下某些方法：</p>
+<p>
+                            
+                        
+                    
+                    
+                        </div>   
+                        <div class="article-more-link">
+                            <a href="/2019/01/02/Serializable/#more">Read More</a>
+                        </div>
+                    
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-image">
         <a href="/2018/12/23/S1ep1-The-macgic-of-LRU-Cache/" class="image is-7by1">
             <img class="banner" src="/2018/12/23/S1ep1-The-macgic-of-LRU-Cache/title.jpg" alt="LRU 缓存的魔力">
         </a>
@@ -1169,223 +1394,6 @@
 
 
 
-    <div class="card">
-    
-    <div class="card-image">
-        <a href="/2018/07/15/2-Add-Two-Num/Record[Chinese-ver]/" class="image is-7by1">
-            <img class="banner" src="/2018/07/15/2-Add-Two-Num/Record[Chinese-ver]/title.jpg" alt="LeetCode 2. Add Two Numbers [Chinese ver]">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2018-07-14T16:00:00.000Z">2018-07-15</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Algorithm/">Algorithm</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Algorithm/LeetCode/">LeetCode</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    5 minutes read (About 801 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2018/07/15/2-Add-Two-Num/Record[Chinese-ver]/">LeetCode 2. Add Two Numbers [Chinese ver]</a>
-            
-        </h1>
-        <div class="content">
-            <!-- <p>[Chinese ver]</p>
-<h2><span id="2-add-two-numbers">2. Add Two Numbers</span></h2><p>问题：你将获得两个非空 linked lists来表示两个非负整数。 数字以反向的顺序存储，并且它们的每个节点包含一位数字。 将两个数字相加并将其以 linked list的形式返回。</p>
-<p>你可以假定这两个数字不包含任何前导零（即不存在首位出现0的情况），除了数字0本身。</p>
-<p>输入 ：(2 -&gt; 4 -&gt; 3) + (5 -&gt; 6 -&gt; 4)<br>输出 ： 7 -&gt; 0 -&gt; 8</p>
-<h3><span id="方法一">方法一：</span></h3><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title">addTwoNumbers</span><span class="hljs-params">(ListNode l1, ListNode l2)</span> </span>&#123;</div><div class="line">    ListNode dummyHead = <span class="hljs-keyword">new</span> ListNode(<span class="hljs-number">0</span>);</div><div class="line">    ListNode p = l1, q = l2, curr = dummyHead;</div><div class="line">    <span class="hljs-keyword">int</span> carry = <span class="hljs-number">0</span>;</div><div class="line">    <span class="hljs-keyword">while</span> (p != <span class="hljs-keyword">null</span> || q != <span class="hljs-keyword">null</span>) &#123;</div><div class="line">        <span class="hljs-keyword">int</span> x = (p != <span class="hljs-keyword">null</span>) ? p.val : <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-keyword">int</span> y = (q != <span class="hljs-keyword">null</span>) ? q.val : <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-keyword">int</span> sum = carry + x + y;</div><div class="line">        carry = sum / <span class="hljs-number">10</span>;</div><div class="line">        curr.next = <span class="hljs-keyword">new</span> ListNode(sum % <span class="hljs-number">10</span>);</div><div class="line">        curr = curr.next;</div><div class="line">        <span class="hljs-keyword">if</span> (p != <span class="hljs-keyword">null</span>) p = p.next;</div><div class="line">        <span class="hljs-keyword">if</span> (q != <span class="hljs-keyword">null</span>) q = q.next;</div><div class="line">    &#125;</div><div class="line">    <span class="hljs-keyword">if</span> (carry &gt; <span class="hljs-number">0</span>) &#123;</div><div class="line">        curr.next = <span class="hljs-keyword">new</span> ListNode(carry);</div><div class="line">    &#125;</div><div class="line">    <span class="hljs-keyword">return</span> dummyHead.next;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/2%20Add%20Two%20Num/Images/method1result.png?raw=true" alt="效率"></p>
-<h4><span id="分析">分析</span></h4><p>其实这个问题熟悉一下链表的使用和算术的逻辑就可以解决了。按位加过十进一，注意，加法的进位只会是0或者1，因为就算你用两个最大的数9+9最后也只是进一，进一之后再9+9+1也只会得到19，还是进一。所以主要的逻辑就是两个数的和sum/10得到的是进位，sum%10得到的是本位的数。dummyHead是一个假的数据头，用来做一个初始化，不使用也是可以的，但是在内部逻辑中就需要自己在处理第一位和后续的位数的逻辑区别。<br>注意有几种特殊情况。1.其中一个list的长度比另一个要长。2.其中一个list为空。3.加到最后一位时仍然还有进位</p>
-<p>时间复杂度： O(max(m,n)).总共循环m和n中的最大次数。<br>空间复杂度 :   O(max(m,n)).我们得到的新的list 的长度是m,n中最大长度，加上一个假数据头。</p>
-<h3><span id="方法二">方法二</span></h3><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-comment">/**</span></div><div class="line"><span class="hljs-comment"> * Definition for singly-linked list.</span></div><div class="line"><span class="hljs-comment"> * public class ListNode &#123;</span></div><div class="line"><span class="hljs-comment"> *     int val;</span></div><div class="line"><span class="hljs-comment"> *     ListNode next;</span></div><div class="line"><span class="hljs-comment"> *     ListNode(int x) &#123; val = x; &#125;</span></div><div class="line"><span class="hljs-comment"> * &#125;</span></div><div class="line"><span class="hljs-comment"> */</span></div><div class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</div><div class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title">addTwoNumbers</span><span class="hljs-params">(ListNode l1, ListNode l2)</span> </span>&#123;</div><div class="line">        ListNode ln1 = l1, ln2 = l2, head = <span class="hljs-keyword">null</span>, node = <span class="hljs-keyword">null</span>;</div><div class="line">        <span class="hljs-keyword">int</span> carry = <span class="hljs-number">0</span>, remainder = <span class="hljs-number">0</span>, sum = <span class="hljs-number">0</span>;</div><div class="line">        head = node = <span class="hljs-keyword">new</span> ListNode(<span class="hljs-number">0</span>);</div><div class="line"></div><div class="line">        <span class="hljs-keyword">while</span>(ln1 != <span class="hljs-keyword">null</span> || ln2 != <span class="hljs-keyword">null</span> || carry != <span class="hljs-number">0</span>) &#123;</div><div class="line">            sum = (ln1 != <span class="hljs-keyword">null</span> ? ln1.val : <span class="hljs-number">0</span>) + (ln2 != <span class="hljs-keyword">null</span> ? ln2.val : <span class="hljs-number">0</span>) + carry;</div><div class="line">            carry = sum / <span class="hljs-number">10</span>;</div><div class="line">            remainder = sum % <span class="hljs-number">10</span>;</div><div class="line">            node = node.next = <span class="hljs-keyword">new</span> ListNode(remainder);</div><div class="line">            ln1 = (ln1 != <span class="hljs-keyword">null</span> ? ln1.next : <span class="hljs-keyword">null</span>);</div><div class="line">            ln2 = (ln2 != <span class="hljs-keyword">null</span> ? ln2.next : <span class="hljs-keyword">null</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="hljs-keyword">return</span> head.next;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/2%20Add%20Two%20Num/Images/method2result.png?raw=true" alt="效率"></p>
-<p>这个是别人的做法，居然能够比方法一快了许多，说实话，其实这两个方法在整体思路上是差不多的，至于为什么会比前者快那么多我觉的是方法一在循环中不断新建了x,y等对象，由于计时时用了成千上百的例子验证所以导致了20ms左右的差距。以上纯属个人看法，如果你有更正确的想法，或者哪里有有关这种差距的论证，请告诉我。谢谢。</p>
-<h2><span id="about-me">About Me</span></h2><p>我的博客 <a href="http://leonchen1024.com/" target="_blank" rel="external">leonchen1024.com</a></p>
-<p>我的 GitHub <a href="https://github.com/LeonChen1024" target="_blank" rel="external">https://github.com/LeonChen1024</a></p>
-<p>微信公众号 </p>
-<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/Images/CooderQRcodem.jpg?raw=false" alt="wechat"></p>
- -->
-            <div class="article-entry">
-                    
-                    
-                        
-                            
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                            
-                                
-                                <p><p>[Chinese ver]</p>
-<h2><span id="2-add-two-numbers">2. Add Two Numbers</span></h2><p>问题：你将获得两个非空 linked lists来表示两个非负整数。 数字以反向的顺序存储，并且它们的每个节点包含一位数字。 将两个数字相加并将其以 linked list的形式返回。</p>
-<p>你可以假定这两个数字不包含任何前导零（即不存在首位出现0的情况），除了数字0本身。</p>
-<p>输入 ：(2 -&gt; 4 -&gt; 3) + (5 -&gt; 6 -&gt; 4)<br>输出 ： 7 -&gt; 0 -&gt; 8</p>
-<h3><span id="方法一">方法一：</span></h3><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title">addTwoNumbers</span><span class="hljs-params">(ListNode l1, ListNode l2)</span> </span>&#123;</div><div class="line">    ListNode dummyHead = <span class="hljs-keyword">new</span> ListNode(<span class="hljs-number">0</span>);</div><div class="line">    ListNode p = l1, q = l2, curr = dummyHead;</div><div class="line">    <span class="hljs-keyword">int</span> carry = <span class="hljs-number">0</span>;</div><div class="line">    <span class="hljs-keyword">while</span> (p != <span class="hljs-keyword">null</span> || q != <span class="hljs-keyword">null</span>) &#123;</div><div class="line">        <span class="hljs-keyword">int</span> x = (p != <span class="hljs-keyword">null</span>) ? p.val : <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-keyword">int</span> y = (q != <span class="hljs-keyword">null</span>) ? q.val : <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-keyword">int</span> sum = carry + x + y;</div><div class="line">        carry = sum / <span class="hljs-number">10</span>;</div><div class="line">        curr.next = <span class="hljs-keyword">new</span> ListNode(sum % <span class="hljs-number">10</span>);</div><div class="line">        curr = curr.next;</div><div class="line">        <span class="hljs-keyword">if</span> (p != <span class="hljs-keyword">null</span>) p = p.next;</div><div class="line">        <span class="hljs-keyword">if</span> (q != <span class="hljs-keyword">null</span>) q = q.next;</div><div class="line">    &#125;</div><div class="line">    <span class="hljs-keyword">if</span> (carry &gt; <span class="hljs-number">0</span>) &#123;</div><div class="line">        curr.next = <span class="hljs-keyword">new</span> ListNode(carry);</div><div class="line">    &#125;</div><div class="line">    <span class="hljs-keyword">return</span> dummyHead.next;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>
-                            
-                        
-                    
-                    
-                        </div>   
-                        <div class="article-more-link">
-                            <a href="/2018/07/15/2-Add-Two-Num/Record[Chinese-ver]/#more">Read More</a>
-                        </div>
-                    
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-image">
-        <a href="/2018/04/13/APP-Version-Control/" class="image is-7by1">
-            <img class="banner" src="/2018/04/13/APP-Version-Control/VersionControl.jpg" alt="APP 版本控制">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2018-04-12T16:00:00.000Z">2018-04-13</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Android/版本管理/">版本管理</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    5 minutes read (About 717 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2018/04/13/APP-Version-Control/">APP 版本控制</a>
-            
-        </h1>
-        <div class="content">
-            <!-- <p>版本管理是app的一个重要部分，他主要的用途有：</p>
-<ul>
-<li>让用户了解当前的版本信息，了解升级或者降级信息等</li>
-<li>不同的版本可能提供的服务和功能有所差别，版本信息可以给我们一个标志来识别当前版本可提供的服务和功能。</li>
-</ul>
-<h2><span id="设置版本信息">设置版本信息</span></h2><p>官方推荐是在Gradle中进行版本设置，因为Gradle中设置的版本信息会在构建的时候合并到manifest文件中，并会替换掉manifest中有关版本信息的设置。并且在Gradle中进行设置的话还可以根据应用不同的Flavor进行不同的设置。</p>
-<p>版本控制主要有这么两个属性：</p>
-<ul>
-<li><p><code>android:versionCode</code> ： 整数，是内部版本号，用于判断一个版本是否比另一个版本新，用户并不需要看到。通常是跟随着发布版本增加该code。如果安装的app 的 versionCode 比当前该 app 的 versionCode 小的话会导致安装失败,提示无法降级安装.</p>
-</li>
-<li><p><code>android:versionName</code> : 字符串，用户能看到的版本号。如 <code>1.0.0</code> .系统不关心这个值.</p>
-</li>
-</ul>
-<p>通常我们将这些设置放在gradle下的android {} 块内部使用defaultConfig {} 包裹它。要注意，如果你在productFlavors中定义了这些属性，他们会覆盖defaultConfig中的值。</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">android &#123;</div><div class="line">  ...</div><div class="line">  defaultConfig &#123;</div><div class="line">    ...</div><div class="line">    versionCode 1</div><div class="line">    versionName &quot;1.0.0&quot;</div><div class="line">  &#125;</div><div class="line">  productFlavors &#123;</div><div class="line">    a &#123;</div><div class="line">      ...</div><div class="line">      versionName &quot;1.0.0&quot;</div><div class="line">    &#125;</div><div class="line">    b &#123;</div><div class="line">      ...</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>在android中使用 PackageManager 的 getPackageInfo(java.lang.String, int) 方法可以获取版本信息。</p>
-<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> String <span class="hljs-title">getVersion</span><span class="hljs-params">(Context context)</span><span class="hljs-comment">//获取版本号</span></span></div><div class="line"><span class="hljs-function">	</span>&#123;</div><div class="line">		<span class="hljs-keyword">try</span> &#123;</div><div class="line">			PackageInfo pi=context.getPackageManager().getPackageInfo</div><div class="line">      (context.getPackageName(), <span class="hljs-number">0</span>);</div><div class="line">			<span class="hljs-keyword">return</span> pi.versionName;</div><div class="line">		&#125; <span class="hljs-keyword">catch</span> (NameNotFoundException e) &#123;</div><div class="line">			<span class="hljs-comment">// TODO Auto-generated catch block</span></div><div class="line">			e.printStackTrace();</div><div class="line">			<span class="hljs-keyword">return</span> context.getString(R.string.version_unknown);</div><div class="line">		&#125;</div><div class="line">	&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getVersionCode</span><span class="hljs-params">(Context context)</span><span class="hljs-comment">//获取版本号(内部识别号)</span></span></div><div class="line"><span class="hljs-function"></span>&#123;</div><div class="line">  <span class="hljs-keyword">try</span> &#123;</div><div class="line">    PackageInfo pi=context.getPackageManager().getPackageInfo</div><div class="line">    (context.getPackageName(), <span class="hljs-number">0</span>);</div><div class="line">    <span class="hljs-keyword">return</span> pi.versionCode;</div><div class="line">  &#125; <span class="hljs-keyword">catch</span> (NameNotFoundException e) &#123;</div><div class="line">    <span class="hljs-comment">// TODO Auto-generated catch block</span></div><div class="line">    e.printStackTrace();</div><div class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>如果使用 Instant Run，Android Studio 会自动将 versionCode 设置为 MAXINT，将 versionName 设置为 INSTANTRUN。</p>
-<h2><span id="统一配置">统一配置</span></h2><p>顺便说一下一个可以统一所有的配置在一个地方的方法，这样可以便于我们管理版本。<br>首先在主工程的build.gradle里增加一个配置区</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">ext &#123;</div><div class="line">    // Sdk and tools</div><div class="line">    minSdkVersion = 17</div><div class="line">    targetSdkVersion = 21</div><div class="line">    compileSdkVersion = 23</div><div class="line">    buildToolsVersion = &quot;23.0.3&quot;</div><div class="line"></div><div class="line">    // App dependencies</div><div class="line">    supportLibraryVersion = &apos;23.3.0&apos;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>然后在module的build.gradle里使用<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">targetSdkVersion rootProject.ext.targetSdkVersion</div><div class="line"></div><div class="line">compile &quot;com.android.support:appcompat-v7:$rootProject.supportLibraryVersion&quot;</div></pre></td></tr></table></figure></p>
-<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-comment">/**</span></div><div class="line"><span class="hljs-comment"> * 判断当前应用是否是debug状态</span></div><div class="line"><span class="hljs-comment"> */</span></div><div class="line"></div><div class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isApkInDebug</span><span class="hljs-params">(Context context)</span> </span>&#123;</div><div class="line">    <span class="hljs-keyword">try</span> &#123;</div><div class="line">        ApplicationInfo info = context.getApplicationInfo();</div><div class="line">        <span class="hljs-keyword">return</span> (info.flags &amp; ApplicationInfo.FLAG_DEBUGGABLE) != <span class="hljs-number">0</span>;</div><div class="line">    &#125; <span class="hljs-keyword">catch</span> (Exception e) &#123;</div><div class="line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-comment">/**</span></div><div class="line"><span class="hljs-comment">*检测其他应用是否处于debug模式。</span></div><div class="line"><span class="hljs-comment">*/</span></div><div class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isApkDebugable</span><span class="hljs-params">(Context context,String packageName)</span> </span>&#123;</div><div class="line">        <span class="hljs-keyword">try</span> &#123;</div><div class="line">            PackageInfo pkginfo = context.getPackageManager().getPackageInfo(</div><div class="line">                    packageName, <span class="hljs-number">1</span>);</div><div class="line">            <span class="hljs-keyword">if</span> (pkginfo != <span class="hljs-keyword">null</span> ) &#123;</div><div class="line">                ApplicationInfo info= pkginfo.applicationInfo;</div><div class="line">                <span class="hljs-keyword">return</span> (info.flags&amp;ApplicationInfo.FLAG_DEBUGGABLE)!=<span class="hljs-number">0</span>;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">        &#125; <span class="hljs-keyword">catch</span> (Exception e) &#123;</div><div class="line"></div><div class="line">        &#125;</div><div class="line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
-<p>关于 自动命名和生成版本号等可以看 <a href="https://leonchen1024.com/2019/05/28/Automatic-Version-Code-Release/" target="_blank" rel="external">这篇博客</a></p>
-<h2><span id="reference">Reference</span></h2><p><a href="https://developer.android.com/studio/publish/versioning.html" target="_blank" rel="external">https://developer.android.com/studio/publish/versioning.html</a></p>
- -->
-            <div class="article-entry">
-                    
-                    
-                        
-                            
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                            
-                                
-                                <p><p>版本管理是app的一个重要部分，他主要的用途有：</p>
-<ul>
-<li>让用户了解当前的版本信息，了解升级或者降级信息等</li>
-<li>不同的版本可能提供的服务和功能有所差别，版本信息可以给我们一个标志来识别当前版本可提供的服务和功能。</li>
-</ul>
-<p>
-                            
-                        
-                    
-                    
-                        </div>   
-                        <div class="article-more-link">
-                            <a href="/2018/04/13/APP-Version-Control/#more">Read More</a>
-                        </div>
-                    
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
@@ -1450,7 +1458,7 @@
                         Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        35
+                        37
                     </p>
                 </div>
             </div>
@@ -1515,7 +1523,7 @@
                 <span class="level-item">Chinese</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">26</span>
+                <span class="level-item tag">28</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="undefined">
@@ -1531,7 +1539,7 @@
                 <span class="level-item">Android</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">10</span>
+                <span class="level-item tag">12</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="undefined">
@@ -1585,7 +1593,7 @@
         <h3 class="menu-label">
             Tag Cloud
         </h3>
-        <a href="/tags/Algorithm/" style="font-size: 18.57px;">Algorithm</a> <a href="/tags/Android/" style="font-size: 15.71px;">Android</a> <a href="/tags/Chinese/" style="font-size: 20px;">Chinese</a> <a href="/tags/Custom-View/" style="font-size: 10px;">Custom View</a> <a href="/tags/Data-Structure/" style="font-size: 10px;">Data Structure</a> <a href="/tags/DataStructure/" style="font-size: 10px;">DataStructure</a> <a href="/tags/English/" style="font-size: 14.29px;">English</a> <a href="/tags/Error/" style="font-size: 10px;">Error</a> <a href="/tags/Gradle/" style="font-size: 10px;">Gradle</a> <a href="/tags/Java/" style="font-size: 12.86px;">Java</a> <a href="/tags/Jetpack/" style="font-size: 11.43px;">Jetpack</a> <a href="/tags/LeetCode/" style="font-size: 17.14px;">LeetCode</a> <a href="/tags/Optimize/" style="font-size: 11.43px;">Optimize</a> <a href="/tags/SourceCode/" style="font-size: 10px;">SourceCode</a> <a href="/tags/UI/" style="font-size: 10px;">UI</a> <a href="/tags/版本差异/" style="font-size: 11.43px;">版本差异</a> <a href="/tags/版本管理/" style="font-size: 11.43px;">版本管理</a>
+        <a href="/tags/Algorithm/" style="font-size: 18.75px;">Algorithm</a> <a href="/tags/Android/" style="font-size: 16.25px;">Android</a> <a href="/tags/Chinese/" style="font-size: 20px;">Chinese</a> <a href="/tags/Custom-View/" style="font-size: 10px;">Custom View</a> <a href="/tags/Data-Structure/" style="font-size: 10px;">Data Structure</a> <a href="/tags/DataStructure/" style="font-size: 10px;">DataStructure</a> <a href="/tags/English/" style="font-size: 15px;">English</a> <a href="/tags/Error/" style="font-size: 10px;">Error</a> <a href="/tags/Gradle/" style="font-size: 10px;">Gradle</a> <a href="/tags/Java/" style="font-size: 12.5px;">Java</a> <a href="/tags/Jetpack/" style="font-size: 11.25px;">Jetpack</a> <a href="/tags/LeetCode/" style="font-size: 17.5px;">LeetCode</a> <a href="/tags/Optimize/" style="font-size: 13.75px;">Optimize</a> <a href="/tags/SourceCode/" style="font-size: 10px;">SourceCode</a> <a href="/tags/UI/" style="font-size: 10px;">UI</a> <a href="/tags/版本差异/" style="font-size: 11.25px;">版本差异</a> <a href="/tags/版本管理/" style="font-size: 11.25px;">版本管理</a>
     </div>
 </div>
 
@@ -1599,6 +1607,44 @@
         <h3 class="menu-label">
             Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/02/26/S1ep5-Tool-Strict-Mode/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/2020/02/26/S1ep5-Tool-Strict-Mode/titleThumb.jpg" alt="工具 严格模式">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-25T16:00:00.000Z">2020-02-26</time></div>
+                    <a href="/2020/02/26/S1ep5-Tool-Strict-Mode/" class="has-link-black-ter is-size-6">工具 严格模式</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/02/26/S1ep6-Custom-Views-and-Performance/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/2020/02/26/S1ep6-Custom-Views-and-Performance/titleThumb.jpg" alt="自定义视图及其性能">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-25T16:00:00.000Z">2020-02-26</time></div>
+                    <a href="/2020/02/26/S1ep6-Custom-Views-and-Performance/" class="has-link-black-ter is-size-6">自定义视图及其性能</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -1640,25 +1686,6 @@
         
         <article class="media">
             
-            <a href="/2019/07/04/Navigation/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/2019/07/04/Navigation/titleThumb.jpg" alt="Navigation 指南">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-03T16:00:00.000Z">2019-07-04</time></div>
-                    <a href="/2019/07/04/Navigation/" class="has-link-black-ter is-size-6">Navigation 指南</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
             <a href="/2019/07/04/Navigation-Getting-Started/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/2019/07/04/Navigation-Getting-Started/titleThumb.jpg" alt="开始使用 Navigation">
@@ -1669,25 +1696,6 @@
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-03T16:00:00.000Z">2019-07-04</time></div>
                     <a href="/2019/07/04/Navigation-Getting-Started/" class="has-link-black-ter is-size-6">开始使用 Navigation</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/06/17/S1ep2-Using-Lint-for-Performance-Tips/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/2019/06/17/S1ep2-Using-Lint-for-Performance-Tips/titleThumb.jpg" alt="使用 Lint 来获取性能贴士">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-16T16:00:00.000Z">2019-06-17</time></div>
-                    <a href="/2019/06/17/S1ep2-Using-Lint-for-Performance-Tips/" class="has-link-black-ter is-size-6">使用 Lint 来获取性能贴士</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
                     </p>
@@ -1706,6 +1714,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/02/">
+                <span class="level-start">
+                    <span class="level-item">February 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2020/01/">
@@ -1895,14 +1914,14 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Android/">
                         <span class="tag">Android</span>
-                        <span class="tag is-grey">12</span>
+                        <span class="tag is-grey">14</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Chinese/">
                         <span class="tag">Chinese</span>
-                        <span class="tag is-grey">26</span>
+                        <span class="tag is-grey">28</span>
                     </a>
                 </div>
                 
@@ -1972,7 +1991,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Optimize/">
                         <span class="tag">Optimize</span>
-                        <span class="tag is-grey">2</span>
+                        <span class="tag is-grey">4</span>
                     </a>
                 </div>
                 
@@ -2029,6 +2048,44 @@
         
         <article class="media">
             
+            <a href="/2020/02/26/S1ep5-Tool-Strict-Mode/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/2020/02/26/S1ep5-Tool-Strict-Mode/titleThumb.jpg" alt="工具 严格模式">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-25T16:00:00.000Z">2020-02-26</time></div>
+                    <a href="/2020/02/26/S1ep5-Tool-Strict-Mode/" class="has-link-black-ter is-size-6">工具 严格模式</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/02/26/S1ep6-Custom-Views-and-Performance/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/2020/02/26/S1ep6-Custom-Views-and-Performance/titleThumb.jpg" alt="自定义视图及其性能">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-25T16:00:00.000Z">2020-02-26</time></div>
+                    <a href="/2020/02/26/S1ep6-Custom-Views-and-Performance/" class="has-link-black-ter is-size-6">自定义视图及其性能</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/titleThumb.jpg" alt="LeetCode 9. Palindrome Number">
@@ -2067,25 +2124,6 @@
         
         <article class="media">
             
-            <a href="/2019/07/04/Navigation/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/2019/07/04/Navigation/titleThumb.jpg" alt="Navigation 指南">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-03T16:00:00.000Z">2019-07-04</time></div>
-                    <a href="/2019/07/04/Navigation/" class="has-link-black-ter is-size-6">Navigation 指南</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
             <a href="/2019/07/04/Navigation-Getting-Started/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/2019/07/04/Navigation-Getting-Started/titleThumb.jpg" alt="开始使用 Navigation">
@@ -2096,25 +2134,6 @@
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-03T16:00:00.000Z">2019-07-04</time></div>
                     <a href="/2019/07/04/Navigation-Getting-Started/" class="has-link-black-ter is-size-6">开始使用 Navigation</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/06/17/S1ep2-Using-Lint-for-Performance-Tips/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/2019/06/17/S1ep2-Using-Lint-for-Performance-Tips/titleThumb.jpg" alt="使用 Lint 来获取性能贴士">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-16T16:00:00.000Z">2019-06-17</time></div>
-                    <a href="/2019/06/17/S1ep2-Using-Lint-for-Performance-Tips/" class="has-link-black-ter is-size-6">使用 Lint 来获取性能贴士</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
                     </p>
@@ -2133,6 +2152,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/02/">
+                <span class="level-start">
+                    <span class="level-item">February 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2020/01/">
@@ -2322,14 +2352,14 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Android/">
                         <span class="tag">Android</span>
-                        <span class="tag is-grey">12</span>
+                        <span class="tag is-grey">14</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Chinese/">
                         <span class="tag">Chinese</span>
-                        <span class="tag is-grey">26</span>
+                        <span class="tag is-grey">28</span>
                     </a>
                 </div>
                 
@@ -2399,7 +2429,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Optimize/">
                         <span class="tag">Optimize</span>
-                        <span class="tag is-grey">2</span>
+                        <span class="tag is-grey">4</span>
                     </a>
                 </div>
                 

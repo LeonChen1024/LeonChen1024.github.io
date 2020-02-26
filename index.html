@@ -147,6 +147,219 @@
     <div class="card">
     
     <div class="card-image">
+        <a href="/2020/02/26/S1ep5-Tool-Strict-Mode/" class="image is-7by1">
+            <img class="banner" src="/2020/02/26/S1ep5-Tool-Strict-Mode/title.jpg" alt="工具 严格模式">
+        </a>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-02-25T16:00:00.000Z">2020-02-26</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Android/Android-Performance-pattern/">Android Performance pattern</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    5 minutes read (About 808 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2020/02/26/S1ep5-Tool-Strict-Mode/">工具 严格模式</a>
+            
+        </h1>
+        <div class="content">
+            <!-- <h1><span id="tool-strict-mode">Tool: Strict Mode</span></h1><p>[TOC]</p>
+<h1><span id="背景">背景</span></h1><p>当你的应用中的事件处理超过了 5 秒钟没有响应的时候,Android 会弹出一个 ANR 弹窗. 这是因为 UI 线程被阻塞了,它在等待某些事情的完成.因为 UI 线程是唯一一个可以处理输入和绘制的线程,当它停止响应的时候,你的 app 也停止了响应. </p>
+<p>那么什么会导致 UI 线程像这样停止呢?通常情况下系统调用可以无期限的阻塞它,就像磁盘或者网络获取.这些阻塞调用是你应用中的定时炸弹.在正常情况下,它们运行的非常快,你甚至无法注意到他们.但在某些软件和硬件条件以及一些运气的情况下,他们爆炸了.</p>
+<h1><span id="方案">方案</span></h1><p>接下来我们来介绍一下如何找到这些隐藏的问题.这个工具的名字叫 Strict Mode ,你可以在 开发者模式中勾选上 <code>Strict Mode Enabled</code> 来启动它.当它是启动的时候,在你的应用中如果有在 UI 线程中的耗时操作的时候屏幕的边框会变成红色的.</p>
+<p>Strict Mode 实际上定义了你在什么线程中可以做什么事,它有点像一个运行时的 Lint . 它是对你的线程策略做了一个规定,策略是由两个部分呢组成的</p>
+<ul>
+<li>检测 : 用来检测某些操作,如网络请求等</li>
+<li>处罚 : 当检测到符合条件的行为的时候的响应,如前面的红框,或者记录 log,甚至崩溃.</li>
+</ul>
+<p>我们也可以使用 Strict mode 来响应一些自定义的条件.比如: 当你要监听自定义的方法的时候,在方法的开始调用 <code>StrictMode.noteSlowCall();</code>  确保你在 UI 线程的策略中启用了 <code>detectCustomSlowCalls</code> . 这时候调用noteSlowCall 将会导致一个异常,然后策略会触发你为该线程设置的 处罚.   如果禁用了  <code>detectCustomSlowCalls</code>  的话 , noteSlowCall 将会是一个空调用.</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">StrictMode.noteSlowCall();</div><div class="line"></div><div class="line">StrictMode.setThreadPolicy(</div><div class="line">          <span class="hljs-keyword">new</span> StrictMode.ThreadPolicy.Builder()</div><div class="line">                  .detectCustomSlowCalls()</div><div class="line">                  .penaltyFlashScreen()</div><div class="line">                  .build());</div></pre></td></tr></table></figure>
+<p>这里有一个窍门,无论何时你要获取一个锁的时候调用 noteSlowCall . </p>
+<p>这是为什么呢? 锁是一个隐式的阻塞调用.它们通常立马就返回了,快到你甚至没有注意到它们在那.但是当他被别人获取的时候,你的线程将会被阻塞,而且没人知道它什么时候可以恢复运行.锁通常不会知道导致 ANR , 但是如果你在 UI 线程中获取锁的话,马上或者以后你将会出现丢帧的情况.</p>
+<p>Strict Mode 同时也有给虚拟机设置策略的 API .这就是 VM 策略. VM 策略给了你一个检测内存泄露的方式.要记得,如果你缺少内存的话那么即使是一个小的分配操作也会导致几百毫秒的停顿.</p>
+<h1><span id="resource">Resource</span></h1><p><a href="https://www.youtube.com/watch?v=oGrXdxpWgyY&amp;list=PLWz5rJ2EKKc9CBxr3BVjPTPoDPLdPIFCE&amp;index=48" target="_blank" rel="external">https://www.youtube.com/watch?v=oGrXdxpWgyY&amp;list=PLWz5rJ2EKKc9CBxr3BVjPTPoDPLdPIFCE&amp;index=48</a></p>
+<h1><span id="about-me">About Me</span></h1><p>我的博客 <a href="http://leonchen1024.com/" target="_blank" rel="external">leonchen1024.com</a></p>
+<p>我的 GitHub <a href="https://github.com/LeonChen1024" target="_blank" rel="external">https://github.com/LeonChen1024</a></p>
+<p>微信公众号 </p>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/Images/CooderQRcodem.jpg?raw=true" alt="wechat"></p>
+ -->
+            <div class="article-entry">
+                    
+                    
+                        
+                            
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                            
+                                
+                                <p><h1><span id="tool-strict-mode">Tool: Strict Mode</span></h1><p>[TOC]</p>
+<h1><span id="背景">背景</span></h1><p>当你的应用中的事件处理超过了 5 秒钟没有响应的时候,Android 会弹出一个 ANR 弹窗. 这是因为 UI 线程被阻塞了,它在等待某些事情的完成.因为 UI 线程是唯一一个可以处理输入和绘制的线程,当它停止响应的时候,你的 app 也停止了响应. </p>
+<p>那么什么会导致 UI 线程像这样停止呢?通常情况下系统调用可以无期限的阻塞它,就像磁盘或者网络获取.这些阻塞调用是你应用中的定时炸弹.在正常情况下,它们运行的非常快,你甚至无法注意到他们.但在某些软件和硬件条件以及一些运气的情况下,他们爆炸了.</p>
+<h1><span id="方案">方案</span></h1><p>接下来我们来介绍一下如何找到这些隐藏的问题.这个工具的名字叫 Strict Mode ,你可以在 开发者模式中勾选上 <code>Strict Mode Enabled</code> 来启动它.当它是启动的时候,在你的应用中如果有在 UI 线程中的耗时操作的时候屏幕的边框会变成红色的.</p>
+<p>Strict Mode 实际上定义了你在什么线程中可以做什么事,它有点像一个运行时的 Lint . 它是对你的线程策略做了一个规定,策略是由两个部分呢组成的</p>
+<p>
+                            
+                        
+                    
+                    
+                        </div>   
+                        <div class="article-more-link">
+                            <a href="/2020/02/26/S1ep5-Tool-Strict-Mode/#more">Read More</a>
+                        </div>
+                    
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-image">
+        <a href="/2020/02/26/S1ep6-Custom-Views-and-Performance/" class="image is-7by1">
+            <img class="banner" src="/2020/02/26/S1ep6-Custom-Views-and-Performance/title.jpg" alt="自定义视图及其性能">
+        </a>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-02-25T16:00:00.000Z">2020-02-26</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Android/Android-Performance-pattern/">Android Performance pattern</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    7 minutes read (About 1039 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2020/02/26/S1ep6-Custom-Views-and-Performance/">自定义视图及其性能</a>
+            
+        </h1>
+        <div class="content">
+            <!-- <h1><span id="custom-views-and-performance">Custom Views and Performance</span></h1><p>Android 平台自带了很多标准控件,但是你总会发现有无法满足你的需求的时候,这时候你可以使用自定义控件.自定义控件是很容易的,困难的是怎么让自定义控件的性能表现良好.这里将会介绍一些会导致自定义控件表现变差的原因.</p>
+<ul>
+<li>在没有改变的时候仍然调用了 onDraw()</li>
+<li>耗费时间和资源绘制根本不会再界面上展示的像素.比如被遮挡住的部分</li>
+<li>我们还可以在 onDraw 中花很长的时间</li>
+</ul>
+<p>首先介绍在没有改变的时候仍然执行了绘制流程,要记住,所有的绘制都始于 View.invalidate() . 第一个原则是自定义控件不要调用 invalidate 除非你必须这么做.如果没有东西被改变了,那就不需要重新绘制.第二个原则是传入一个块内容给 invalidate.这会帮助系统决定哪些内容需要被重绘以及什么时候调用 onDraw.如下:</p>
+<p><img src="res/view-invalidation.png" alt=""></p>
+<p>大致流程是这样的,首先它会判断块内容是否被修改了,如果被修改了,那么就判断这个内容是否在屏幕上,如果在屏幕上,再判断这个内容是否可见,如果可见,才进行重绘.</p>
+<p>可见 onDraw 是非常重要的,你的视图是流畅,性能优异的还是差劲的它占了很大的作用.</p>
+<p>我们写一个不太理想的 onDraw 是非常容易,其中一个方式就是过度绘制.比如你绘制了一些根本就看不到的内容,这是一个无用功.</p>
+<p>那我们如何处理那些看不到的内容呢?我们可以通过设置clip rectangle来达到这个目的.这个裁剪的目的就是使得范围外的内容不会去触碰和绘制,保证他们不会消耗任何东西.调用这个功能的方法是 Canvas.clipRect().当你调用这个方法的时候会保证 GPU 只处理这个方块内的内容.这个效果会持续到下一次调用  Canvas.clipRect().这个在低端的 GPU 上效果明显,但是在高端的 GPU 上的效果就没那么明显了.甚至在一些硬件条件下,可能你花费在 CPU 计算这个裁剪的内容的时间,比你在 GPU 绘制上节省的时间还多.这意味着我们还有一个需要优化的部分就是 CPU 消耗,这个消耗基本上都在 onDraw 上.我们有以下几个建议:</p>
+<ol>
+<li>不要绘制任何你没必要绘制的东西.可以通过调用 Canvas.quickReject 来定义那些元素并不在屏幕上.如果它返回 true 那么不要绘制这个元素.如果一个元素有一部分仍然在屏幕内容,它依然会返回 false,只有完全不在屏幕上的才会返回 true.</li>
+<li>不要使用没有硬件加速的绘制.硬件加速意味着这些操作发生在 GPU 上.如果不是硬件加速的话,它意味着需要 CPU 来处理绘,然后他要把这个结果发送给 GPU 来和剩余的视图部分做组合.对比硬件加速来说,这简直就是让人发指的慢.如果你使用的方法并没有硬件加速,那么考虑是不是有其他的方式来绘制.</li>
+<li>不要再 onDraw 方法中分配内存,以及在 onDraw 中调用的方法.分配会消耗两种东西,首先是直接消耗了分配和初始化对象的性能,然后在垃圾回收的时候还有一次消耗.这两种中的每一种都可能会造成丢帧的现象.</li>
+</ol>
+<p>也许这些建议看起来都很不起眼,但是记住,onDraw 在一秒内会调用 60 次左右.而且不像其他的代码,它必须在 UI 线程上执行.你绘制一次屏幕只有 16 毫秒的时间.</p>
+ -->
+            <div class="article-entry">
+                    
+                    
+                        
+                            
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                            
+                                
+                                <p><h1><span id="custom-views-and-performance">Custom Views and Performance</span></h1><p>Android 平台自带了很多标准控件,但是你总会发现有无法满足你的需求的时候,这时候你可以使用自定义控件.自定义控件是很容易的,困难的是怎么让自定义控件的性能表现良好.这里将会介绍一些会导致自定义控件表现变差的原因.</p>
+<ul>
+<li>在没有改变的时候仍然调用了 onDraw()</li>
+<li>耗费时间和资源绘制根本不会再界面上展示的像素.比如被遮挡住的部分</li>
+<li>我们还可以在 onDraw 中花很长的时间</li>
+<p>
+                            
+                        
+                    
+                    
+                        </div>   
+                        <div class="article-more-link">
+                            <a href="/2020/02/26/S1ep6-Custom-Views-and-Performance/#more">Read More</a>
+                        </div>
+                    
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-image">
         <a href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/" class="image is-7by1">
             <img class="banner" src="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/title.jpg" alt="LeetCode 9. Palindrome Number">
         </a>
@@ -353,164 +566,6 @@
                         </div>   
                         <div class="article-more-link">
                             <a href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-en/#more">Read More</a>
-                        </div>
-                    
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-image">
-        <a href="/2019/07/04/Navigation/" class="image is-7by1">
-            <img class="banner" src="/2019/07/04/Navigation/title.jpg" alt="Navigation 指南">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-07-03T16:00:00.000Z">2019-07-04</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    6 minutes read (About 861 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/07/04/Navigation/">Navigation 指南</a>
-            
-        </h1>
-        <div class="content">
-            <!-- <h1><span id="navigation-指南">Navigation 指南</span></h1><p>[TOC]</p>
-<p>由于官网暂时没有中文版本,所以在这里根据内容抽空做了一些中文的版本.</p>
-<p><code>Navigation</code> 是用来管理你的app中内容的跳转,返回等操作.它主要包含了以下三个部分:</p>
-<ul>
-<li><code>Navigation graph</code> : 一个 xml 资源包含了所有的导航相关的信息. 这些信息包含了你app里所有独立的内容区域,也就是 <code>destinations</code>  .</li>
-<li><code>NavHost</code> : 一个空白的容器用来展示你的  <code>Navigation graph</code> 中的 <code>destinations</code> . <code>Navigation</code> 模块中包含了一个默认的实现 <a href="https://developer.android.com/reference/androidx/navigation/fragment/NavHostFragment.html" target="_blank" rel="external"><code>NavHostFragment</code></a> 用来展示 Fragment 的 <code>destinations</code> .</li>
-<li><code>NavController</code> :  一个管理 NavHost 中的导航的对象. 会在用户使用app的时候管理 NavHost 中的内容.</li>
-</ul>
-<p>当在页面内导航的时候,你可以告诉 NavController 你想要通过Navigation graph 中的某个路径或者直接导航到一个destination .这时候 NavController 就会在 NavHost 中展示合适的 destination.</p>
-<p>Navigation 模块还提供了其他的好处,比如:</p>
-<ul>
-<li>处理了 fragment transactions</li>
-<li>默认情况下正确的处理了向上和返回动作</li>
-<li>为动画和过渡提供了标准化的资源</li>
-<li>实现和处理了深链接</li>
-<li>内置了 Navigation UI 组件,比如 navigation drawers 和 bottom navigation,可以减少附加的工作</li>
-<li><a href="https://developer.android.com/guide/navigation/navigation-pass-data#Safe-args" target="_blank" rel="external">Safe Args</a> - 一个 Gradle 插件当导航并在两个目的地中传递数据的时候提供了类型安全机制</li>
-<li>ViewModel 支持 - 你可以将 ViewModel 的作用域设置为 navigation graph 来在不同的 目的地之间共享 UI 相关连的数据</li>
-</ul>
-<p>并且你还可以使用 Android Studio’s <a href="https://developer.android.com/guide/navigation/navigation-getting-started" target="_blank" rel="external">Navigation Editor</a>  来查看和编辑 navigation graphs.</p>
-<p>Next steps</p>
-<p>For more documentation and resources related to the Navigation component, see the following.</p>
-<p>Getting started</p>
-<ul>
-<li><a href="https://developer.android.google.cn/guide/navigation/navigation-getting-started" target="_blank" rel="external">Get started with the Navigation component</a></li>
-</ul>
-<p>Further topics</p>
-<ul>
-<li><a href="https://developer.android.google.cn/guide/navigation/navigation-principles" target="_blank" rel="external">Principles of Navigation</a></li>
-<li><a href="https://developer.android.google.cn/guide/navigation/navigation-form-factors" target="_blank" rel="external">Design for different form factors</a></li>
-<li><a href="https://developer.android.google.cn/guide/navigation/navigation-design-graph" target="_blank" rel="external">Design navigation graphs</a></li>
-<li><a href="https://developer.android.google.cn/guide/navigation/navigation-nested-graphs" target="_blank" rel="external">Nested graphs</a></li>
-<li><a href="https://developer.android.google.cn/guide/navigation/navigation-global-action" target="_blank" rel="external">Global actions</a></li>
-<li><a href="https://developer.android.google.cn/guide/navigation/navigation-conditional" target="_blank" rel="external">Conditional navigation</a></li>
-<li><a href="https://developer.android.google.cn/guide/navigation/navigation-pass-data" target="_blank" rel="external">Pass data between destinations</a></li>
-<li><a href="https://developer.android.google.cn/guide/navigation/navigation-deep-link" target="_blank" rel="external">Create a deep link for a destination</a></li>
-<li><a href="https://developer.android.google.cn/guide/navigation/navigation-animate-transitions" target="_blank" rel="external">Animate transitions between destinations</a></li>
-<li><a href="https://developer.android.google.cn/guide/navigation/navigation-ui" target="_blank" rel="external">Update UI components with NavigationUI</a></li>
-<li><a href="https://developer.android.google.cn/guide/navigation/navigation-swipe-view" target="_blank" rel="external">Create swipe views with tabs</a></li>
-<li><a href="https://developer.android.google.cn/guide/navigation/navigation-programmatic" target="_blank" rel="external">Interact programmatically with the Navigation component</a></li>
-<li><a href="https://developer.android.google.cn/guide/navigation/navigation-testing" target="_blank" rel="external">Test navigation</a></li>
-<li><a href="https://developer.android.google.cn/guide/navigation/navigation-add-new" target="_blank" rel="external">Add new destination types</a></li>
-<li><a href="https://developer.android.google.cn/guide/navigation/navigation-custom-back" target="_blank" rel="external">Provide custom back navigation</a></li>
-<li><a href="https://developer.android.google.cn/guide/navigation/navigation-migrate" target="_blank" rel="external">Migrate to the Navigation component</a></li>
-</ul>
-<p>Additional resources</p>
-<p>To learn more about navigation, see the following additional resources.</p>
-<p>Samples</p>
-<ul>
-<li><a href="https://github.com/googlesamples/android-architecture-components/tree/master/BasicSample" target="_blank" rel="external">Android Architecture Components basic sample</a></li>
-</ul>
-<p>Codelabs</p>
-<ul>
-<li><a href="https://codelabs.developers.google.com/codelabs/android-navigation/index.html?index=..%2F..%2Findex#0" target="_blank" rel="external">Navigation codelab</a></li>
-</ul>
-<p>Blog posts</p>
-<ul>
-<li><a href="https://medium.com/androiddevelopers/livedata-with-snackbar-navigation-and-other-events-the-singleliveevent-case-ac2622673150" target="_blank" rel="external">LiveData with SnackBar, Navigation and other events (the SingleLiveEvent case</a></li>
-</ul>
-<p>Videos</p>
-<ul>
-<li><a href="https://www.youtube.com/watch?v=9O1D_Ytk0xg" target="_blank" rel="external">10 Best Practices for Moving to a Single Activity</a></li>
-<li><a href="https://www.youtube.com/watch?v=2k8x8V77CrU" target="_blank" rel="external">Single Activity: Why, When, and How (Android Dev Summit ‘18)</a></li>
-<li><a href="https://www.youtube.com/watch?v=8GCXtCjtg40" target="_blank" rel="external">Android Jetpack: manage UI navigation with Navigation Controller (Google I/O ‘18)</a></li>
-</ul>
-<h1><span id="reference">Reference</span></h1><p><a href="https://developer.android.google.cn/guide/navigation" target="_blank" rel="external">https://developer.android.google.cn/guide/navigation</a></p>
-<h2><span id="about-me">About Me</span></h2><p>我的博客 <a href="http://leonchen1024.com/" target="_blank" rel="external">leonchen1024.com</a></p>
-<p>我的 GitHub <a href="https://github.com/LeonChen1024" target="_blank" rel="external">https://github.com/LeonChen1024</a></p>
-<p>微信公众号 </p>
-<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/Images/CooderQRcodem.jpg?raw=false" alt="wechat"></p>
- -->
-            <div class="article-entry">
-                    
-                    
-                        
-                            
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                            
-                                
-                                <p><h1><span id="navigation-指南">Navigation 指南</span></h1><p>[TOC]</p>
-<p>由于官网暂时没有中文版本,所以在这里根据内容抽空做了一些中文的版本.</p>
-<p><code>Navigation</code> 是用来管理你的app中内容的跳转,返回等操作.它主要包含了以下三个部分:</p>
-<ul>
-<li><code>Navigation graph</code> : 一个 xml 资源包含了所有的导航相关的信息. 这些信息包含了你app里所有独立的内容区域,也就是 <code>destinations</code>  .</li>
-<p>
-                            
-                        
-                    
-                    
-                        </div>   
-                        <div class="article-more-link">
-                            <a href="/2019/07/04/Navigation/#more">Read More</a>
                         </div>
                     
         </div>
@@ -762,6 +817,164 @@
                         </div>   
                         <div class="article-more-link">
                             <a href="/2019/07/04/Navigation-Getting-Started/#more">Read More</a>
+                        </div>
+                    
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-image">
+        <a href="/2019/07/04/Navigation/" class="image is-7by1">
+            <img class="banner" src="/2019/07/04/Navigation/title.jpg" alt="Navigation 指南">
+        </a>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-07-03T16:00:00.000Z">2019-07-04</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    6 minutes read (About 861 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/07/04/Navigation/">Navigation 指南</a>
+            
+        </h1>
+        <div class="content">
+            <!-- <h1><span id="navigation-指南">Navigation 指南</span></h1><p>[TOC]</p>
+<p>由于官网暂时没有中文版本,所以在这里根据内容抽空做了一些中文的版本.</p>
+<p><code>Navigation</code> 是用来管理你的app中内容的跳转,返回等操作.它主要包含了以下三个部分:</p>
+<ul>
+<li><code>Navigation graph</code> : 一个 xml 资源包含了所有的导航相关的信息. 这些信息包含了你app里所有独立的内容区域,也就是 <code>destinations</code>  .</li>
+<li><code>NavHost</code> : 一个空白的容器用来展示你的  <code>Navigation graph</code> 中的 <code>destinations</code> . <code>Navigation</code> 模块中包含了一个默认的实现 <a href="https://developer.android.com/reference/androidx/navigation/fragment/NavHostFragment.html" target="_blank" rel="external"><code>NavHostFragment</code></a> 用来展示 Fragment 的 <code>destinations</code> .</li>
+<li><code>NavController</code> :  一个管理 NavHost 中的导航的对象. 会在用户使用app的时候管理 NavHost 中的内容.</li>
+</ul>
+<p>当在页面内导航的时候,你可以告诉 NavController 你想要通过Navigation graph 中的某个路径或者直接导航到一个destination .这时候 NavController 就会在 NavHost 中展示合适的 destination.</p>
+<p>Navigation 模块还提供了其他的好处,比如:</p>
+<ul>
+<li>处理了 fragment transactions</li>
+<li>默认情况下正确的处理了向上和返回动作</li>
+<li>为动画和过渡提供了标准化的资源</li>
+<li>实现和处理了深链接</li>
+<li>内置了 Navigation UI 组件,比如 navigation drawers 和 bottom navigation,可以减少附加的工作</li>
+<li><a href="https://developer.android.com/guide/navigation/navigation-pass-data#Safe-args" target="_blank" rel="external">Safe Args</a> - 一个 Gradle 插件当导航并在两个目的地中传递数据的时候提供了类型安全机制</li>
+<li>ViewModel 支持 - 你可以将 ViewModel 的作用域设置为 navigation graph 来在不同的 目的地之间共享 UI 相关连的数据</li>
+</ul>
+<p>并且你还可以使用 Android Studio’s <a href="https://developer.android.com/guide/navigation/navigation-getting-started" target="_blank" rel="external">Navigation Editor</a>  来查看和编辑 navigation graphs.</p>
+<p>Next steps</p>
+<p>For more documentation and resources related to the Navigation component, see the following.</p>
+<p>Getting started</p>
+<ul>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-getting-started" target="_blank" rel="external">Get started with the Navigation component</a></li>
+</ul>
+<p>Further topics</p>
+<ul>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-principles" target="_blank" rel="external">Principles of Navigation</a></li>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-form-factors" target="_blank" rel="external">Design for different form factors</a></li>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-design-graph" target="_blank" rel="external">Design navigation graphs</a></li>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-nested-graphs" target="_blank" rel="external">Nested graphs</a></li>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-global-action" target="_blank" rel="external">Global actions</a></li>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-conditional" target="_blank" rel="external">Conditional navigation</a></li>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-pass-data" target="_blank" rel="external">Pass data between destinations</a></li>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-deep-link" target="_blank" rel="external">Create a deep link for a destination</a></li>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-animate-transitions" target="_blank" rel="external">Animate transitions between destinations</a></li>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-ui" target="_blank" rel="external">Update UI components with NavigationUI</a></li>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-swipe-view" target="_blank" rel="external">Create swipe views with tabs</a></li>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-programmatic" target="_blank" rel="external">Interact programmatically with the Navigation component</a></li>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-testing" target="_blank" rel="external">Test navigation</a></li>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-add-new" target="_blank" rel="external">Add new destination types</a></li>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-custom-back" target="_blank" rel="external">Provide custom back navigation</a></li>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-migrate" target="_blank" rel="external">Migrate to the Navigation component</a></li>
+</ul>
+<p>Additional resources</p>
+<p>To learn more about navigation, see the following additional resources.</p>
+<p>Samples</p>
+<ul>
+<li><a href="https://github.com/googlesamples/android-architecture-components/tree/master/BasicSample" target="_blank" rel="external">Android Architecture Components basic sample</a></li>
+</ul>
+<p>Codelabs</p>
+<ul>
+<li><a href="https://codelabs.developers.google.com/codelabs/android-navigation/index.html?index=..%2F..%2Findex#0" target="_blank" rel="external">Navigation codelab</a></li>
+</ul>
+<p>Blog posts</p>
+<ul>
+<li><a href="https://medium.com/androiddevelopers/livedata-with-snackbar-navigation-and-other-events-the-singleliveevent-case-ac2622673150" target="_blank" rel="external">LiveData with SnackBar, Navigation and other events (the SingleLiveEvent case</a></li>
+</ul>
+<p>Videos</p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=9O1D_Ytk0xg" target="_blank" rel="external">10 Best Practices for Moving to a Single Activity</a></li>
+<li><a href="https://www.youtube.com/watch?v=2k8x8V77CrU" target="_blank" rel="external">Single Activity: Why, When, and How (Android Dev Summit ‘18)</a></li>
+<li><a href="https://www.youtube.com/watch?v=8GCXtCjtg40" target="_blank" rel="external">Android Jetpack: manage UI navigation with Navigation Controller (Google I/O ‘18)</a></li>
+</ul>
+<h1><span id="reference">Reference</span></h1><p><a href="https://developer.android.google.cn/guide/navigation" target="_blank" rel="external">https://developer.android.google.cn/guide/navigation</a></p>
+<h2><span id="about-me">About Me</span></h2><p>我的博客 <a href="http://leonchen1024.com/" target="_blank" rel="external">leonchen1024.com</a></p>
+<p>我的 GitHub <a href="https://github.com/LeonChen1024" target="_blank" rel="external">https://github.com/LeonChen1024</a></p>
+<p>微信公众号 </p>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/Images/CooderQRcodem.jpg?raw=false" alt="wechat"></p>
+ -->
+            <div class="article-entry">
+                    
+                    
+                        
+                            
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                            
+                                
+                                <p><h1><span id="navigation-指南">Navigation 指南</span></h1><p>[TOC]</p>
+<p>由于官网暂时没有中文版本,所以在这里根据内容抽空做了一些中文的版本.</p>
+<p><code>Navigation</code> 是用来管理你的app中内容的跳转,返回等操作.它主要包含了以下三个部分:</p>
+<ul>
+<li><code>Navigation graph</code> : 一个 xml 资源包含了所有的导航相关的信息. 这些信息包含了你app里所有独立的内容区域,也就是 <code>destinations</code>  .</li>
+<p>
+                            
+                        
+                    
+                    
+                        </div>   
+                        <div class="article-more-link">
+                            <a href="/2019/07/04/Navigation/#more">Read More</a>
                         </div>
                     
         </div>
@@ -1280,265 +1493,6 @@
 
 
 
-    <div class="card">
-    
-    <div class="card-image">
-        <a href="/2019/04/09/Key-Value-pair-in-hashtable/" class="image is-7by1">
-            <img class="banner" src="/2019/04/09/Key-Value-pair-in-hashtable/title.jpg" alt="实现键值对存储 第五部分 Hash table 实现">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-04-08T16:00:00.000Z">2019-04-09</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/DataStructure/">DataStructure</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/DataStructure/Common/">Common</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    34 minutes read (About 5083 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/04/09/Key-Value-pair-in-hashtable/">实现键值对存储 第五部分 Hash table 实现</a>
-            
-        </h1>
-        <div class="content">
-            <!-- <h1><span id="实现键值对存储-第五部分-hash-table-实现">实现键值对存储-第五部分: Hash table 实现</span></h1><p><a href="http://codecapsule.com/2013/05/13/implementing-a-key-value-store-part-5-hash-table-implementations/" target="_blank" rel="external">原文链接</a></p>
-<p>这篇文章是 IKVS 系列的第五部分,”实现一个键值对存储”.你也可以查看 <a href="http://codecapsule.com/2012/11/07/ikvs-implementing-a-key-value-store-table-of-contents/" target="_blank" rel="external">Table of Contents</a>  来查看其他部分.</p>
-<p>在这篇文章中,我将会学习C++中实际的 hash table 来理解它的瓶颈在哪里.Hash 函数是 CPU-密集型的操作应该要进行优化.然而,大多数的 hash table 的机制都只是关注于高效的内存和I/O读取,这也是这篇文章主要的焦点.我将会学习三种不同的 C++中的hash table 的实现,同时包含内存中的和硬盘中的,并且会观察这些数据都是怎么组织和访问的.这篇文章将会包含以下内容.</p>
-<p>[TOC]</p>
-<p><img src="/2019/04/09/Key-Value-pair-in-hashtable/kvstore-part5-intro.jpg" alt="kvstore-part5-intro"></p>
-<h2><span id="1-hash-tables">1. Hash tables</span></h2><h3><span id="11-对-hash-tables-的一个快速介绍">1.1 对 hash tables 的一个快速介绍</span></h3><blockquote>
-<p>Hashtable 按理说是一个对人类来说最重要的数据结构.</p>
-<p>— Steve Yegge</p>
-</blockquote>
-<p>一个hash table 允许高效的访问关联数据.每一个条目都是一个键值对,只需要知道它的key就可以快速的检索或者分配.为了实现这个效果,key是使用hash函数来计算的,达到将这个key从它原始的表达转换为一个整数.然后使用这个整数作为索引来识别在存储条目值的数组中哪个位置是被访问的.很多key可以被hash到一个相同的值里,这意味着这些key会在这个数组位置碰撞.为了解决冲突问题,有很多中技术可以使用,比如在这个桶里使用 链表 或者 自平衡树等,或者使用 线性探查或者二次探查的开放式寻址.</p>
-<p>从现在开始,我会假设你知道hash table 是什么.如果你觉得你需要复习一下相关知识,有一些好的资源是 Wikipidia[1] 上的 “Hash table” 这篇文章(还有页面底部的那些链接部分),还有就是 Cormen et. al [2] 的”Introduction to Algorithms” 这本书中的 Hash table 这个章节.</p>
-<h3><span id="12-hash-函数">1.2 Hash 函数</span></h3><p>hash 函数的选择是特别重要的.一个好的 hash 函数最基础的要求就是输出的hash 值应该要分布均匀.这样,发生碰撞的概率就最小化了,同时也缩小了bucket 中碰撞的条目的数量.</p>
-<p>这里有很多可以用的hash函数,并且除非你准确的知道这些存储的数据会是什么,否则最安全的做法是使用一个平均情况下分配随机数据最均匀的那个,如果可以的话要适用于”雪崩效应”<a href="http://codecapsule.com/2013/05/13/implementing-a-key-value-store-part-5-hash-table-implementations/#ref_3" target="_blank" rel="external">[3]</a>的情况.有一部分人已经在对比hash函数的效率了 <a href="http://codecapsule.com/2013/05/13/implementing-a-key-value-store-part-5-hash-table-implementations/#ref_4" target="_blank" rel="external">[4]</a> <a href="http://codecapsule.com/2013/05/13/implementing-a-key-value-store-part-5-hash-table-implementations/#ref_5" target="_blank" rel="external">[5]</a> <a href="http://codecapsule.com/2013/05/13/implementing-a-key-value-store-part-5-hash-table-implementations/#ref_6" target="_blank" rel="external">[6]</a> <a href="http://codecapsule.com/2013/05/13/implementing-a-key-value-store-part-5-hash-table-implementations/#ref_7" target="_blank" rel="external">[7]</a>,从他们的结论得知,MurmurHash3 <a href="http://codecapsule.com/2013/05/13/implementing-a-key-value-store-part-5-hash-table-implementations/#ref_8" target="_blank" rel="external">[8]</a> 和 CityHash <a href="http://codecapsule.com/2013/05/13/implementing-a-key-value-store-part-5-hash-table-implementations/#ref_9" target="_blank" rel="external">[9]</a> 在这篇文章写完的时候是最好的hash函数.</p>
-<h2><span id="2-实现">2. 实现</span></h2><p>如同对比 hash 函数一样,现在也已经有一些博客和文章已经对比了 使用内存的 C++ hash table 库.我看过最值得注意的是 Nick Welch的 “<em>Hash Table Benchmarks</em>”  <a href="http://codecapsule.com/2013/05/13/implementing-a-key-value-store-part-5-hash-table-implementations/#ref_10" target="_blank" rel="external">[10]</a> 和 Jeff Preshing 的 “<em>Hash Table Performance Tests</em>”  <a href="http://codecapsule.com/2013/05/13/implementing-a-key-value-store-part-5-hash-table-implementations/#ref_11" target="_blank" rel="external">[11]</a>, 但是还是有一些其他的文章也值得一看 <a href="http://codecapsule.com/2013/05/13/implementing-a-key-value-store-part-5-hash-table-implementations/#ref_12" target="_blank" rel="external">[12]</a> <a href="http://codecapsule.com/2013/05/13/implementing-a-key-value-store-part-5-hash-table-implementations/#ref_13" target="_blank" rel="external">[13]</a> <a href="http://codecapsule.com/2013/05/13/implementing-a-key-value-store-part-5-hash-table-implementations/#ref_14" target="_blank" rel="external">[14]</a>. 通过这些对比,我从 GCC 中的 TR1 派生出了 unordered_map 同时从 SparseHash 库中派生了 dense_hash_map — 之前被叫做 Google SparseHash —这是两个很值得学习的模块,并且下面我也会介绍到.此外,我还会介绍 Kyoto Cabinet 中的 HashDB 里的数据结构.当然  unordered_map 和 dense_hash_map 不会像 HashDB 那样和我的 key-value 存储项目关联性那么大,因为它们是内存内的 hash table . 虽然这样,对它们的内部数据结构的组织和它们的内存模式做一个简单的了解也是很有趣的.</p>
-<p>对于这三个 hash table 库的介绍,我将会使用一个通用的例子,将一组城市的名字作为key,将它们的 GPS 坐标作为 value . unordered_map 的源码可以在 GCC 的源码中找到,它是在 libstdc++-v3 中. 我介绍的是基于 GCC v4.8.0中的 libstdc++-v3 release 6.0.18  <a href="http://codecapsule.com/2013/05/13/implementing-a-key-value-store-part-5-hash-table-implementations/#ref_15" target="_blank" rel="external">[15]</a>,以及 SparseHash v2.0.2 <a href="http://codecapsule.com/2013/05/13/implementing-a-key-value-store-part-5-hash-table-implementations/#ref_16" target="_blank" rel="external">[16]</a> 中的 dense_hash_map , 还有 Kyoto Cabinet v1.2.76 <a href="http://codecapsule.com/2013/05/13/implementing-a-key-value-store-part-5-hash-table-implementations/#ref_17" target="_blank" rel="external">[17]</a> 中的 HashDB.</p>
-<p>在 Matthew Austern 写的 “<em>A Proposal to Add Hash Tables to the Standard Library (revision 4)</em>”  <a href="http://codecapsule.com/2013/05/13/implementing-a-key-value-store-part-5-hash-table-implementations/#ref_18" target="_blank" rel="external">[18]</a> 还有 SparseHash 中的  “<em>Implementation notes</em>” 页面 <a href="http://codecapsule.com/2013/05/13/implementing-a-key-value-store-part-5-hash-table-implementations/#ref_19" target="_blank" rel="external">[19]</a> 中也可以找到关于实现的有意思的讨论.</p>
-<h3><span id="21-tr1-的-unordered_map">2.1  TR1 的 unordered_map</span></h3><p>TR1 中的 unordered_map 提供了一个使用链表(单独链路)方式处理碰撞的问题的 hash table . 数组的位置分配是在堆上的,并且根据负载因子来进行扩大或者缩小.一个叫做 <code>_Hash_node</code> 的节点结构是用来创建桶的链表.</p>
-<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-comment">/* from gcc-4.8.0/libstdc++-v3/include/tr1/hashtable_policy.h */</span> </div><div class="line"><span class="hljs-keyword">template</span></div><div class="line">  <span class="hljs-class"><span class="hljs-keyword">struct</span> _<span class="hljs-title">Hash_node</span>&lt;_Value, false&gt;</span></div><div class="line"><span class="hljs-class">  &#123;</span></div><div class="line">    _Value       _M_v;</div><div class="line">    _Hash_node*  _M_next;</div><div class="line">  &#125;;</div></pre></td></tr></table></figure>
-<p>如果 key 和 value 都是整数类型的,它们可以被直接存储到这个结构的 <code>_M_v</code> 里.否则指针将会被使用并且需要一些额外的内存.桶数组在堆上就会被分配,但这并不影响 节点,它们使用的是 C++ 内存分配器中独立的调用:</p>
-<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-comment">/* from gcc-4.8.0/libstdc++-v3/include/tr1/hashtable.h */</span> </div><div class="line">Node* _M_allocate_node(<span class="hljs-keyword">const</span> value_type&amp; __v)</div><div class="line">    &#123;</div><div class="line">      _Node* __n = _M_node_allocator.allocate(<span class="hljs-number">1</span>);</div><div class="line">      __try</div><div class="line">	&#123;</div><div class="line">	  _M_get_Value_allocator().construct(&amp;__n-&gt;_M_v, __v);</div><div class="line">	  __n-&gt;_M_next = <span class="hljs-number">0</span>;</div><div class="line">	  <span class="hljs-keyword">return</span> __n;</div><div class="line">	&#125;</div><div class="line">      __catch(...)</div><div class="line">	&#123;</div><div class="line">	  _M_node_allocator.deallocate(__n, <span class="hljs-number">1</span>);</div><div class="line">	  __throw_exception_again;</div><div class="line">	&#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
-<p>因为节点是独立分配的,每个节点的分配可能会造成大量的内存浪费.这当然也取决于编译器和使用的操作系统的内存分配器.而且我甚至不讨论每种分配器的所有的系统调用.最原始的 SGI hash table 的实现会对节点进行资源预分配,但是这种策略在  TR1 的 unordered_map 实现中没有被保留.</p>
-<p>下面的 图 5.1  提供了一个对于 TR1 的  unordered_map 的内存和访问模式.让我们来看看当我们根据key “johannesburg” 来查找关联的 GPS 坐标的时候会发生什么事.这个key 将会被 hash 然后映射到 bucket #0 .从那里我们跳转到这个bucket 对应的链表的第一个节点(bucket #0 左边橙色的箭头),并且我们可以访问堆里持有key “johannesburg” 数据的内存区域(Node 右边黑色的箭头).如果key 在第一个节点是无效的,我们可以指向到其他的节点.</p>
-<p>至于CPU 的性能,人们不能指望将所有的数据都放在处理器同一个缓存行里.的确,给定了 bucket 数组的大小,初始化的 bucket 和初始化的节点将不会在同一个缓存行里,并且节点关联的额外的数据也不会在同一个缓存行中.子序列节点和关联的数据也不会在相同的缓存行里并且必须从 RAM 中检索.如果你并不熟悉CPU 优化和缓存行, 这篇 Wikipedia 上的  “<em>CPU Cache</em>”  文章将会是一个很好的介绍 <a href="http://codecapsule.com/2013/05/13/implementing-a-key-value-store-part-5-hash-table-implementations/#ref_20" target="_blank" rel="external">[20]</a>.</p>
-<p><img src="/2019/04/09/Key-Value-pair-in-hashtable/kvstore_unordered_map_web.jpg" alt="Figure 5.1"></p>
-<h3><span id="22-sparsehash-的-dense_hash_map">2.2  SparseHash 的 dense_hash_map</span></h3><p>SparseHash 库提供了两种 hash table 的实现, sparse_hash_map 和 dense_hash_map. sparse_hash_map 通过降低了速度提供了惊人的内存占用,并且使用制定的数据结构来获取结果,这就是 sparsetable. 想要了解更多的关于 sparsetables 和 sparse_hash_map 的信息可以去SparseHash  的 “<em>Implementation notes</em>” 页 <a href="http://codecapsule.com/2013/05/13/implementing-a-key-value-store-part-5-hash-table-implementations/#ref_19" target="_blank" rel="external">[19]</a>.在这里我只会介绍 dense_hash_map.</p>
-<p>dense_hash_map 使用二次内部探查处理碰撞问题.如同 unordered_map ,bucket 数组在一开始就在堆里分配了,并且会根据 hash table 的负载因子进行放大或者缩小. bucket 数组的元素是 <code>std::pair</code>  的实例,其中 <code>Key</code> 和 <code>T</code> 分别是 键和值的模板参数.在一个 64-位体系架构中保存字符串, 每一对的实例将会占用 16字节.</p>
-<p>下图 5.2  提供了一个对于 dense_hash_map 的内存和访问模式的示意图.如果我们查找 “johannesburg” 的 GPS 坐标,我们一开始会在 bucket #0 中查找失败,因为它的数据是 “Paris” 的(bucket #0 右边的黑色箭头).所以我们会继续探查并跳转到 bucket  (i + 1) = (0 + 1) = 1 (bucket #0 左边橙色的箭头),然后我们会在 bucket #1 中查找 “johannesburg” 对应的数据(bucket #1 右边黑色的箭头).这看起来和 unordered_map 很相似,但实际上是非常不同的.当然,就像 unordered_map 一样键和值将会被存储在堆内存中,这意味着键和值的查找将无法使用缓存行.但是bucket 中的碰撞条目的导航将会变得非常快.的确,在大多数的处理器中缓存行是 64byte , 而我们指定每一对占用16byte的容量,这将会显著的提高我们的速度,和 unordered_map 中的链表相反,它需要在RAM中跳转来得到接下去的节点.</p>
-<p>通过二次内部探查提供的缓存行优化使得 dense_hash_map 在 使用内存的 hash table 中的性能测试成为胜利者(至少是我了解的那些).你应该花点时间看一看 Nick Welch  写的 “Hash Table Benchmarks”  <a href="http://codecapsule.com/2013/05/13/implementing-a-key-value-store-part-5-hash-table-implementations/#ref_10" target="_blank" rel="external">[10]</a>.</p>
-<p><img src="../../../Code/Way%20To%20Google/Foundations/Resource/kvstore_hash_dense_hash_map_web.jpg" alt=""></p>
-<h3><span id="23-kyoto-cabinet-的-hashdb">2.3  Kyoto Cabinet 的 HashDB</span></h3><p>Kyoto Cabinet 实现了许多的数据结构,其中也包括 hash table . 比如这个 hash table , HashDB ,是用来在硬盘上持久化的,尽管这里有一个可选方案可以将他作为  <code>std::map</code> 的替代品. hash table 的元数据还有用户数据都是通过文件系统按顺序保存在唯一的一个硬盘文件中.</p>
-<p>Kyoto Cabinet 通过在每一个 bucket 上使用独立的二分查找树来处理碰撞问题.bucket 数组有一个固定的大小并且永远不会调整大小,不管负载因子的状态是什么.这是它主要的缺陷.确实,如果在数据库的创建的时候定义的 bucket 数组的大小比实际的需求要小的花,那么当条目开始碰撞的时候性能将会变得很差.</p>
-<p>对于一个使用 硬盘的 hash table 实现来说,要让 bucket 数组的大小可以调整是非常困难的.首先,这会要求 bucket 数组还有条目要存储在两个独立的文件里.这样子它们就可以分别增长了.第二,因为需要重新调整 bucket 数组的大小所以需要重新对 key 进行hash操作来对应到它们在新的bucket 数组中位置,这会需要从硬盘中读取所有的条目对应的key,这会非常的消耗性能或者可以说在数量大的数据库情况下来说是不可能的.一个可以避免重新hash的方法是存储 hash 后的key,但是这意味着每一个条目都需要额外 4 或 8 byte 的数据(根据 hash 是 32 还是 64 bit 长的).因为这些种种的复杂性,使用一个定长的 bucket 数组是更简单的,并且这也是 Kyoto Cabinet 中的 HashDB 采用的方法.</p>
-<p>图 5.3 展示了存储在文件中的 HashDB 的结构.我从 <code>clac_meta()</code> 方法还有 kchashdb.h 文件底部中的 HashDB 类的代码属性的注释中中派生了这个内部结构.这个文件由以下的部分构成:</p>
-<ul>
-<li>数据库所有元数据的头部.</li>
-<li>FreeBlock pool 用来持有数据区域中的可用空间</li>
-<li>bucket 数组</li>
-<li>记录(数据区域)</li>
-</ul>
-<p>一条记录会持有一个条目(键/值对),使用了一个单独连接的二叉搜索树的节点.下面是 Record 的结构:</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">/* from kyotocabinet-1.2.76/kchashdb.h */ </div><div class="line">  /**</div><div class="line">   * Record data.</div><div class="line">   */</div><div class="line">  struct Record &#123;</div><div class="line">    int64_t off;                         ///&lt; offset</div><div class="line">    size_t rsiz;                         ///&lt; whole size</div><div class="line">    size_t psiz;                         ///&lt; size of the padding</div><div class="line">    size_t ksiz;                         ///&lt; size of the key</div><div class="line">    size_t vsiz;                         ///&lt; size of the value</div><div class="line">    int64_t left;                        ///&lt; address of the left child record</div><div class="line">    int64_t right;                       ///&lt; address of the right child record</div><div class="line">    const char* kbuf;                    ///&lt; pointer to the key</div><div class="line">    const char* vbuf;                    ///&lt; pointer to the value</div><div class="line">    int64_t boff;                        ///&lt; offset of the body</div><div class="line">    char* bbuf;                          ///&lt; buffer of the body</div><div class="line">  &#125;;</div></pre></td></tr></table></figure>
-<p>观察图 5.4 可以知道硬盘上的记录的组织.我从 kchashdb.h 中的 <code>write_record()</code> 方法中派生了这个结构. 注意它和 Record 的结构是不一样的: 使用硬盘的方式的目标是要最小化占用的空间,同时这个结构的目的还要让它在程序上能够便于使用.所有在 图 5.4 中的字段都是固定长度的,除了 <code>key</code> ,<code>value</code> ,还有 <code>padding</code> ,这些数据当然是根据条目里的数据大小来决定的. <code>left</code> 还有 <code>right</code> 字段是这个二叉搜索树节点的一部分,并在文件中保存了其他记录的偏移量.</p>
-<p><img src="../../../Code/Way%20To%20Google/Foundations/Resource/kvstore_hash_kyoto_cabinet_web.jpg" alt="Figure 5.3"></p>
-<p>​                        <strong>Figure 5.3</strong></p>
-<p><img src="../../../Code/Way%20To%20Google/Foundations/Resource/kvstore_hash_kyoto_cabinet_record_web.jpg" alt=""></p>
-<p>​                        <strong>Figure 5.4</strong></p>
-<p>如果我们想要访问key “Paris” 的值,我们将会从获取关联 bucket 初始记录的偏移开始,也就是 bucket #0.接下来我们会跳转到这个bucket 的二叉搜索树的头节点(bucket #0 左边的橙色的箭头),它持有了key “Johannesburg” 的数据. key “Paris” 的数据可以通过这个节点的右子节点来访问(“Johannesburg” 记录右边的黑色箭头).二分查找树需要一个 “可对比” 类型以此来对节点进行分类.这里使用的可以对比的类型是将hash 后的key 通过 <code>fold_hash()</code> 方法简化成一个更小的表示.</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">/* from kyotocabinet-1.2.76/kchashdb.h */ </div><div class="line">uint32_t fold_hash(uint64_t hash) &#123;</div><div class="line">  _assert_(true);</div><div class="line">  return (((hash &amp; 0xffff000000000000ULL) &gt;&gt; 48) | ((hash &amp; 0x0000ffff00000000ULL) &gt;&gt; 16)) ^</div><div class="line">      (((hash &amp; 0x000000000000ffffULL) &lt;&lt; 16) | ((hash &amp; 0x00000000ffff0000ULL) &gt;&gt; 16));</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>将条目和节点存储在一个记录中在一开始可能会看起来像一个设计错误,但是实际上是非常聪明的.为了存储一个条目的数据,通常需要管理3个不同的数据:bucket , 碰撞 ,还有条目.在给定的 bucket 数组中的bucket 必须按照定义顺序存储,它们只能这么存储并且没有什么可以提升的地方.然后假设我们不存储整数类型而是存储字符串或者可变长 byte 的数组之类的无法被存储在 bucket 自身的东西,另一个内存访问将会需要存储到 bucket 数组之外的区域.因此,在添加新的条目的时候,需要存储碰撞的数据结构和条目的键值.</p>
-<p>如果碰撞数据和条目数据是独立存储的,除了需要访问bucket 之外,还需要访问两次硬盘,如果是设置值的情况,这会导致在硬盘上写入3次,可能还是在相隔很远的地方.这意味着磁盘上的随机写入模式,这对于I/O而言是最糟糕的事.现在因为 Kyoto Cabinet 的 HashDB 节点数据和条目数据被存储在了一起,它们可以仅通过一次写入磁盘而不用两次.的确,bucket 还是需要被访问的,但是如果 bucket 数组足够小,它将会被操作系统从磁盘中缓存到 RAM 中,这是 Kyoto Cabinet 最主要的假设,正如 specs 中 “Effective Implementation of Hash Database” 这一章节描述的那样<a href="http://codecapsule.com/2013/05/13/implementing-a-key-value-store-part-5-hash-table-implementations/#ref_" target="_blank" rel="external">[17]</a>.</p>
-<p>然而这里还有一个需要关心的是将二分查找树节点和条目一起保存到磁盘上,这会降低读取的速度,至少是在碰撞开始发生的时候.的确,因为节点和条目存储在了一起,要解决 bucket 中的碰撞就意味着要找到记录中持有有效条目的二分查找树,这会需要在磁盘上进行许多随机的读取.这样就可以更好的理解为什么 Kyoto Cabinet 在条目的数量超过 bucket 的时候会出现这样的性能下降的原因.</p>
-<p>最后,因为所有的东西都被存储在一个文件中,内存管理都是由 Kyoto Cabinet 自己来处理的,并不是像 unordered_map 还有 dense_hash_map 那样交给操作系统来管理.FreeBlock 结构持有了关于文件中空闲空间的信息,基本上是有关与偏移和大小,可以看下面的介绍:</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">/* from kyotocabinet-1.2.76/kchashdb.h */ </div><div class="line">  /**</div><div class="line">   * Free block data.</div><div class="line">   */</div><div class="line">  struct FreeBlock &#123;</div><div class="line">    int64_t off;                         ///&lt; offset</div><div class="line">    size_t rsiz;                         ///&lt; record size</div><div class="line">    /** comparing operator */</div><div class="line">    bool operator &lt;(const FreeBlock&amp; obj) const &#123;</div><div class="line">      _assert_(true);</div><div class="line">      if (rsiz &lt; obj.rsiz) return true;</div><div class="line">      if (rsiz == obj.rsiz &amp;&amp; off &gt; obj.off) return true;</div><div class="line">      return false;</div><div class="line">    &#125;</div><div class="line">  &#125;;</div></pre></td></tr></table></figure>
-<p>所有的 FreeBlock 实例都是在 std::set 中加载的,允许使用 std::set 中的 upper_bound() 方法来检索空闲内存块,就像 <code>fetch_free_block()</code> 方法中那样,调整一个”最适合” 的内存分配策略.当空闲内存块的分布太过碎片化或者在 FreeBlock 池中没有剩余的空间的时候,文件会进行碎片整理.这个碎片整理的过程会移动记录来减小 数据库文件的大小.</p>
-<h2><span id="3-结论">3. 结论</span></h2><p>在这篇文章中,我介绍了三种不同的 hash table 库的数据组织和内存访问模式.  TR1 中的 unordered_map   和 SparseHash 中的 dense_hash_map 是在内存中的,   Kyoto Cabinet  中的 HashDB 是在磁盘上的.这三个实现使用了不同的方式来处理碰撞问题,在性能上也有不同的表现.分离 bucket 数据,碰撞数据还有条目数据将会影响性能,这就是  unordered_map 使用的方法.通过将碰撞数据和bucket 存储到一起可以有效的提高速度,就像dense_hash_map 使用的方式 二次内部探查, 或者像 HashDB 使用的方式一样.这些方案都可以提高写入的速度,但是将碰撞数据和bucket 存储到一起还会提高读取速度.</p>
-<p>还有一件事是我从学习这些哈希表的库的时候明白的,当设计一个哈希表的数据结构的时候,应该优先考虑将碰撞数据和bucket 数据保存在一起,而不是和条目保存在一起.这是因为就算哈希表是在磁盘上的,bucket 数组和碰撞数据也会小到可以存储在RAM中,这样子随机读取会比在磁盘上的消耗少很多.</p>
-<h2><span id="4-references">4. References</span></h2><p>[1] <a href="http://en.wikipedia.org/wiki/Hash_table" target="_blank" rel="external">http://en.wikipedia.org/wiki/Hash_table</a><br>[2] <a href="http://www.amazon.com/Introduction-Algorithms-Thomas-H-Cormen/dp/0262033844/" target="_blank" rel="external">http://www.amazon.com/Introduction-Algorithms-Thomas-H-Cormen/dp/0262033844/</a><br>[3] <a href="http://en.wikipedia.org/wiki/Avalanche_effect" target="_blank" rel="external">http://en.wikipedia.org/wiki/Avalanche_effect</a><br>[4] <a href="http://blog.reverberate.org/2012/01/state-of-hash-functions-2012.html" target="_blank" rel="external">http://blog.reverberate.org/2012/01/state-of-hash-functions-2012.html</a><br>[5] <a href="http://www.strchr.com/hash_functions" target="_blank" rel="external">http://www.strchr.com/hash_functions</a><br>[6] <a href="http://programmers.stackexchange.com/questions/49550/which-hashing-algorithm-is-best-for-uniqueness-and-speed/145633#145633" target="_blank" rel="external">http://programmers.stackexchange.com/questions/49550/which-hashing-algorithm-is-best-for-uniqueness-and-speed/145633#145633</a><br>[7] <a href="http://blog.aggregateknowledge.com/2012/02/02/choosing-a-good-hash-function-part-3/" target="_blank" rel="external">http://blog.aggregateknowledge.com/2012/02/02/choosing-a-good-hash-function-part-3/</a><br>[8] <a href="https://sites.google.com/site/murmurhash/" target="_blank" rel="external">https://sites.google.com/site/murmurhash/</a><br>[9] <a href="http://google-opensource.blogspot.fr/2011/04/introducing-cityhash.html" target="_blank" rel="external">http://google-opensource.blogspot.fr/2011/04/introducing-cityhash.html</a><br>[10] <a href="http://incise.org/hash-table-benchmarks.html" target="_blank" rel="external">http://incise.org/hash-table-benchmarks.html</a><br>[11] <a href="http://preshing.com/20110603/hash-table-performance-tests" target="_blank" rel="external">http://preshing.com/20110603/hash-table-performance-tests</a><br>[12] <a href="http://attractivechaos.wordpress.com/2008/08/28/comparison-of-hash-table-libraries/" target="_blank" rel="external">http://attractivechaos.wordpress.com/2008/08/28/comparison-of-hash-table-libraries/</a><br>[13] <a href="http://attractivechaos.wordpress.com/2008/10/07/another-look-at-my-old-benchmark/" target="_blank" rel="external">http://attractivechaos.wordpress.com/2008/10/07/another-look-at-my-old-benchmark/</a><br>[14] <a href="http://blog.aggregateknowledge.com/2011/11/27/big-memory-part-3-5-google-sparsehash/" target="_blank" rel="external">http://blog.aggregateknowledge.com/2011/11/27/big-memory-part-3-5-google-sparsehash/</a><br>[15] <a href="http://gcc.gnu.org/" target="_blank" rel="external">http://gcc.gnu.org/</a><br>[16] <a href="https://code.google.com/p/sparsehash/" target="_blank" rel="external">https://code.google.com/p/sparsehash/</a><br>[17] <a href="http://fallabs.com/kyotocabinet/spex.html" target="_blank" rel="external">http://fallabs.com/kyotocabinet/spex.html</a><br>[18] <a href="http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2003/n1456.html" target="_blank" rel="external">http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2003/n1456.html</a><br>[19] <a href="http://sparsehash.googlecode.com/svn/trunk/doc/implementation.html" target="_blank" rel="external">http://sparsehash.googlecode.com/svn/trunk/doc/implementation.html</a><br>[20] <a href="http://en.wikipedia.org/wiki/CPU_cache" target="_blank" rel="external">http://en.wikipedia.org/wiki/CPU_cache</a></p>
-<h2><span id="about-me">About Me</span></h2><p>我的博客 <a href="http://leonchen1024.com/" target="_blank" rel="external">leonchen1024.com</a></p>
-<p>我的 GitHub <a href="https://github.com/LeonChen1024" target="_blank" rel="external">https://github.com/LeonChen1024</a></p>
-<p>微信公众号 </p>
-<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/Images/CooderQRcodem.jpg?raw=false" alt="wechat"></p>
- -->
-            <div class="article-entry">
-                    
-                    
-                        
-                            
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                            
-                                
-                                <p><h1><span id="实现键值对存储-第五部分-hash-table-实现">实现键值对存储-第五部分: Hash table 实现</span></h1><p><a href="http://codecapsule.com/2013/05/13/implementing-a-key-value-store-part-5-hash-table-implementations/" target="_blank" rel="external">原文链接</a></p>
-<p>这篇文章是 IKVS 系列的第五部分,”实现一个键值对存储”.你也可以查看 <a href="http://codecapsule.com/2012/11/07/ikvs-implementing-a-key-value-store-table-of-contents/" target="_blank" rel="external">Table of Contents</a>  来查看其他部分.</p>
-<p>在这篇文章中,我将会学习C++中实际的 hash table 来理解它的瓶颈在哪里.Hash 函数是 CPU-密集型的操作应该要进行优化.然而,大多数的 hash table 的机制都只是关注于高效的内存和I/O读取,这也是这篇文章主要的焦点.我将会学习三种不同的 C++中的hash table 的实现,同时包含内存中的和硬盘中的,并且会观察这些数据都是怎么组织和访问的.这篇文章将会包含以下内容.</p>
-<p>[TOC]</p>
-<p><img src="/2019/04/09/Key-Value-pair-in-hashtable/kvstore-part5-intro.jpg" alt="kvstore-part5-intro"></p>
-<p>
-                            
-                        
-                    
-                    
-                        </div>   
-                        <div class="article-more-link">
-                            <a href="/2019/04/09/Key-Value-pair-in-hashtable/#more">Read More</a>
-                        </div>
-                    
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-image">
-        <a href="/2019/01/20/LeetCode-8-String-to-Integer/Record-cn/" class="image is-7by1">
-            <img class="banner" src="/2019/01/20/LeetCode-8-String-to-Integer/Record-cn/title.jpg" alt="LeetCode 8. 字符串转整数">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-01-19T16:00:00.000Z">2019-01-20</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Algorithm/">Algorithm</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Algorithm/LeetCode/">LeetCode</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    5 minutes read (About 741 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/01/20/LeetCode-8-String-to-Integer/Record-cn/">LeetCode 8. 字符串转整数</a>
-            
-        </h1>
-        <div class="content">
-            <!-- <p>[Chinese ver]</p>
-<h1><span id="8-字符串转整数-atoi">8. 字符串转整数 (atoi)</span></h1><p>[TOC]</p>
-<p>实现一个 atoi 方法来将一个 string 转换成一个 integer.</p>
-<p>提示：仔细的思考所有可能的输入情况。如果你想要一个挑战，请不要看以下内容并问你自己什么是可能的输入情况。</p>
-<p>注意：模糊的指定输入范围就是这个题目的目的(比如没有给输入规范)。你负责收集前面所有的输入要求。</p>
-<hr>
-<p>atoi 的要求：<br>函数首先丢弃所有首个非空格字符之前的所有空格。然后从这个字符开始，得到一个初始化的加号或减号开始的尽可能多的位数，然后将他们转换成数字值。</p>
-<p>这个字符串在数字形式的子字符串后可以有其他的字符，这些字符将会被忽略而且不会对这个方法有影响。</p>
-<p>如果第一个非空格的字符序列不是一个合法的整数，或者如果并没有符合要求的序列比如字符串是空的或者它只包含了空格字符，不执行转化。</p>
-<p>如果不能执行转换，返回0.如果正确值超出了可以描述的值范围，返回 INT_MAX (2147483647) 或者 INT_MIN (-2147483648).</p>
-<hr>
-<h3><span id="方法一">方法一 :</span></h3><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</div><div class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">myAtoi</span><span class="hljs-params">(String str)</span> </span>&#123;</div><div class="line">        <span class="hljs-keyword">int</span> index = <span class="hljs-number">0</span> , sign = <span class="hljs-number">1</span> ;</div><div class="line">        <span class="hljs-keyword">long</span> result = <span class="hljs-number">0</span> ;</div><div class="line"></div><div class="line">				<span class="hljs-comment">//if str is a empty string or null</span></div><div class="line">        <span class="hljs-keyword">if</span> (str.equals(<span class="hljs-keyword">null</span>)||str.length()==<span class="hljs-number">0</span> )&#123;</div><div class="line">            <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">				<span class="hljs-comment">//remove the ' ' in the front</span></div><div class="line">        <span class="hljs-keyword">while</span> (str.charAt(index)==<span class="hljs-string">' '</span>&amp;&amp;index &lt; str.length())&#123;</div><div class="line">            index++;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">				<span class="hljs-comment">//take the sign</span></div><div class="line">        <span class="hljs-keyword">if</span>(str.charAt(index)==<span class="hljs-string">'+'</span>||str.charAt(index)==<span class="hljs-string">'-'</span>)&#123;</div><div class="line">            sign = str.charAt(index)==<span class="hljs-string">'+'</span> ? <span class="hljs-number">1</span> : -<span class="hljs-number">1</span>;</div><div class="line">            index ++;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">				<span class="hljs-comment">//convert number and avoid overflows</span></div><div class="line">        <span class="hljs-keyword">while</span> (index &lt; str.length())&#123;</div><div class="line"></div><div class="line">            <span class="hljs-keyword">if</span>(str.charAt(index)&lt;=<span class="hljs-string">'9'</span>&amp;&amp;str.charAt(index)&gt;=<span class="hljs-string">'0'</span>)&#123;</div><div class="line">                <span class="hljs-keyword">int</span> current = str.charAt(index)-<span class="hljs-string">'0'</span>;</div><div class="line">                result = result * <span class="hljs-number">10</span> + current;</div><div class="line">								<span class="hljs-comment">// check if the str is overflows</span></div><div class="line">                <span class="hljs-keyword">if</span>(result&gt;Integer.MAX_VALUE&amp;&amp;sign==<span class="hljs-number">1</span>)&#123;</div><div class="line">                    <span class="hljs-keyword">return</span> Integer.MAX_VALUE;</div><div class="line">                &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(-result&lt;Integer.MIN_VALUE&amp;&amp;sign==-<span class="hljs-number">1</span>)&#123;</div><div class="line">                    <span class="hljs-keyword">return</span> Integer.MIN_VALUE;</div><div class="line">                &#125;</div><div class="line">                index++;</div><div class="line">            &#125;<span class="hljs-keyword">else</span> &#123;</div><div class="line">                <span class="hljs-keyword">break</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="hljs-keyword">return</span> sign*((<span class="hljs-keyword">int</span>)result);</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>或者</p>
-<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution2</span> </span>&#123;</div><div class="line">	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">myAtoi</span><span class="hljs-params">(String str)</span> </span>&#123;</div><div class="line">    <span class="hljs-keyword">int</span> index = <span class="hljs-number">0</span>, sign = <span class="hljs-number">1</span>, total = <span class="hljs-number">0</span>;</div><div class="line">    <span class="hljs-comment">//1. Empty string</span></div><div class="line">    <span class="hljs-keyword">if</span>(str.length() == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</div><div class="line"></div><div class="line">    <span class="hljs-comment">//2. Remove Spaces</span></div><div class="line">    <span class="hljs-keyword">while</span>(str.charAt(index) == <span class="hljs-string">' '</span> &amp;&amp; index &lt; str.length())</div><div class="line">        index ++;</div><div class="line"></div><div class="line">    <span class="hljs-comment">//3. Handle signs</span></div><div class="line">    <span class="hljs-keyword">if</span>(str.charAt(index) == <span class="hljs-string">'+'</span> || str.charAt(index) == <span class="hljs-string">'-'</span>)&#123;</div><div class="line">        sign = str.charAt(index) == <span class="hljs-string">'+'</span> ? <span class="hljs-number">1</span> : -<span class="hljs-number">1</span>;</div><div class="line">        index ++;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="hljs-comment">//4. Convert number and avoid overflow</span></div><div class="line">    <span class="hljs-keyword">while</span>(index &lt; str.length())&#123;</div><div class="line">        <span class="hljs-keyword">int</span> digit = str.charAt(index) - <span class="hljs-string">'0'</span>;</div><div class="line">        <span class="hljs-keyword">if</span>(digit &lt; <span class="hljs-number">0</span> || digit &gt; <span class="hljs-number">9</span>) <span class="hljs-keyword">break</span>;</div><div class="line"></div><div class="line">        <span class="hljs-comment">//check if total will be overflow after 10 times and add digit</span></div><div class="line">        <span class="hljs-keyword">if</span>(Integer.MAX_VALUE/<span class="hljs-number">10</span> &lt; total || Integer.MAX_VALUE/<span class="hljs-number">10</span> == total &amp;&amp; Integer.MAX_VALUE %<span class="hljs-number">10</span> &lt; digit)</div><div class="line">            <span class="hljs-keyword">return</span> sign == <span class="hljs-number">1</span> ? Integer.MAX_VALUE : Integer.MIN_VALUE;</div><div class="line"></div><div class="line">        total = <span class="hljs-number">10</span> * total + digit;</div><div class="line">        index ++;</div><div class="line">    &#125;</div><div class="line">    <span class="hljs-keyword">return</span> total * sign;</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/8.%20String%20to%20Integer%20(atoi" alt="效率">/Images/OneResult.png?raw=true)</p>
-<p><strong>分析</strong><br>这两段代码的原理是大致相同的，主要区别就是判断溢出的方式，第一个使用的 long 和 Integer 的区间进行比较来判断是否溢出；第二个使用的是 Int ，但是不能直接和 Integer 的区间进行比较，因为Int 的数据一旦溢出会被处理掉，不会出现区间外的值，所以是将前一次得到的 Int 值和 Max／10 比较，然后将这次取得的数值和 Max%10进行比较</p>
-<p>时间复杂度 ： O(n) 。n是输入的位数<br>空间复杂度 ： O(1) .</p>
-<p>如果你有更好的办法或者对我这里的描述有其他看法，请联系我。谢谢</p>
-<h2><span id="about-me">About Me</span></h2><p>我的博客 <a href="http://leonchen1024.com/" target="_blank" rel="external">leonchen1024.com</a></p>
-<p>我的 GitHub <a href="https://github.com/LeonChen1024" target="_blank" rel="external">https://github.com/LeonChen1024</a></p>
-<p>微信公众号 </p>
-<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/Images/CooderQRcodem.jpg?raw=false" alt="wechat"></p>
- -->
-            <div class="article-entry">
-                    
-                    
-                        
-                            
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                            
-                                
-                                <p><p>[Chinese ver]</p>
-<h1><span id="8-字符串转整数-atoi">8. 字符串转整数 (atoi)</span></h1><p>[TOC]</p>
-<p>实现一个 atoi 方法来将一个 string 转换成一个 integer.</p>
-<p>提示：仔细的思考所有可能的输入情况。如果你想要一个挑战，请不要看以下内容并问你自己什么是可能的输入情况。</p>
-<p>注意：模糊的指定输入范围就是这个题目的目的(比如没有给输入规范)。你负责收集前面所有的输入要求。</p>
-<p>
-                            
-                        
-                    
-                    
-                        </div>   
-                        <div class="article-more-link">
-                            <a href="/2019/01/20/LeetCode-8-String-to-Integer/Record-cn/#more">Read More</a>
-                        </div>
-                    
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
@@ -1605,7 +1559,7 @@
                         Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        35
+                        37
                     </p>
                 </div>
             </div>
@@ -1670,7 +1624,7 @@
                 <span class="level-item">Chinese</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">26</span>
+                <span class="level-item tag">28</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="undefined">
@@ -1686,7 +1640,7 @@
                 <span class="level-item">Android</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">10</span>
+                <span class="level-item tag">12</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="undefined">
@@ -1740,7 +1694,7 @@
         <h3 class="menu-label">
             Tag Cloud
         </h3>
-        <a href="/tags/Algorithm/" style="font-size: 18.57px;">Algorithm</a> <a href="/tags/Android/" style="font-size: 15.71px;">Android</a> <a href="/tags/Chinese/" style="font-size: 20px;">Chinese</a> <a href="/tags/Custom-View/" style="font-size: 10px;">Custom View</a> <a href="/tags/Data-Structure/" style="font-size: 10px;">Data Structure</a> <a href="/tags/DataStructure/" style="font-size: 10px;">DataStructure</a> <a href="/tags/English/" style="font-size: 14.29px;">English</a> <a href="/tags/Error/" style="font-size: 10px;">Error</a> <a href="/tags/Gradle/" style="font-size: 10px;">Gradle</a> <a href="/tags/Java/" style="font-size: 12.86px;">Java</a> <a href="/tags/Jetpack/" style="font-size: 11.43px;">Jetpack</a> <a href="/tags/LeetCode/" style="font-size: 17.14px;">LeetCode</a> <a href="/tags/Optimize/" style="font-size: 11.43px;">Optimize</a> <a href="/tags/SourceCode/" style="font-size: 10px;">SourceCode</a> <a href="/tags/UI/" style="font-size: 10px;">UI</a> <a href="/tags/版本差异/" style="font-size: 11.43px;">版本差异</a> <a href="/tags/版本管理/" style="font-size: 11.43px;">版本管理</a>
+        <a href="/tags/Algorithm/" style="font-size: 18.75px;">Algorithm</a> <a href="/tags/Android/" style="font-size: 16.25px;">Android</a> <a href="/tags/Chinese/" style="font-size: 20px;">Chinese</a> <a href="/tags/Custom-View/" style="font-size: 10px;">Custom View</a> <a href="/tags/Data-Structure/" style="font-size: 10px;">Data Structure</a> <a href="/tags/DataStructure/" style="font-size: 10px;">DataStructure</a> <a href="/tags/English/" style="font-size: 15px;">English</a> <a href="/tags/Error/" style="font-size: 10px;">Error</a> <a href="/tags/Gradle/" style="font-size: 10px;">Gradle</a> <a href="/tags/Java/" style="font-size: 12.5px;">Java</a> <a href="/tags/Jetpack/" style="font-size: 11.25px;">Jetpack</a> <a href="/tags/LeetCode/" style="font-size: 17.5px;">LeetCode</a> <a href="/tags/Optimize/" style="font-size: 13.75px;">Optimize</a> <a href="/tags/SourceCode/" style="font-size: 10px;">SourceCode</a> <a href="/tags/UI/" style="font-size: 10px;">UI</a> <a href="/tags/版本差异/" style="font-size: 11.25px;">版本差异</a> <a href="/tags/版本管理/" style="font-size: 11.25px;">版本管理</a>
     </div>
 </div>
 
@@ -1754,6 +1708,44 @@
         <h3 class="menu-label">
             Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/02/26/S1ep5-Tool-Strict-Mode/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/2020/02/26/S1ep5-Tool-Strict-Mode/titleThumb.jpg" alt="工具 严格模式">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-25T16:00:00.000Z">2020-02-26</time></div>
+                    <a href="/2020/02/26/S1ep5-Tool-Strict-Mode/" class="has-link-black-ter is-size-6">工具 严格模式</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/02/26/S1ep6-Custom-Views-and-Performance/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/2020/02/26/S1ep6-Custom-Views-and-Performance/titleThumb.jpg" alt="自定义视图及其性能">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-25T16:00:00.000Z">2020-02-26</time></div>
+                    <a href="/2020/02/26/S1ep6-Custom-Views-and-Performance/" class="has-link-black-ter is-size-6">自定义视图及其性能</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -1795,25 +1787,6 @@
         
         <article class="media">
             
-            <a href="/2019/07/04/Navigation/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/2019/07/04/Navigation/titleThumb.jpg" alt="Navigation 指南">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-03T16:00:00.000Z">2019-07-04</time></div>
-                    <a href="/2019/07/04/Navigation/" class="has-link-black-ter is-size-6">Navigation 指南</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
             <a href="/2019/07/04/Navigation-Getting-Started/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/2019/07/04/Navigation-Getting-Started/titleThumb.jpg" alt="开始使用 Navigation">
@@ -1824,25 +1797,6 @@
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-03T16:00:00.000Z">2019-07-04</time></div>
                     <a href="/2019/07/04/Navigation-Getting-Started/" class="has-link-black-ter is-size-6">开始使用 Navigation</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/06/17/S1ep2-Using-Lint-for-Performance-Tips/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/2019/06/17/S1ep2-Using-Lint-for-Performance-Tips/titleThumb.jpg" alt="使用 Lint 来获取性能贴士">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-16T16:00:00.000Z">2019-06-17</time></div>
-                    <a href="/2019/06/17/S1ep2-Using-Lint-for-Performance-Tips/" class="has-link-black-ter is-size-6">使用 Lint 来获取性能贴士</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
                     </p>
@@ -1861,6 +1815,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/02/">
+                <span class="level-start">
+                    <span class="level-item">February 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2020/01/">
@@ -2050,14 +2015,14 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Android/">
                         <span class="tag">Android</span>
-                        <span class="tag is-grey">12</span>
+                        <span class="tag is-grey">14</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Chinese/">
                         <span class="tag">Chinese</span>
-                        <span class="tag is-grey">26</span>
+                        <span class="tag is-grey">28</span>
                     </a>
                 </div>
                 
@@ -2127,7 +2092,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Optimize/">
                         <span class="tag">Optimize</span>
-                        <span class="tag is-grey">2</span>
+                        <span class="tag is-grey">4</span>
                     </a>
                 </div>
                 
@@ -2184,6 +2149,44 @@
         
         <article class="media">
             
+            <a href="/2020/02/26/S1ep5-Tool-Strict-Mode/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/2020/02/26/S1ep5-Tool-Strict-Mode/titleThumb.jpg" alt="工具 严格模式">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-25T16:00:00.000Z">2020-02-26</time></div>
+                    <a href="/2020/02/26/S1ep5-Tool-Strict-Mode/" class="has-link-black-ter is-size-6">工具 严格模式</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/02/26/S1ep6-Custom-Views-and-Performance/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/2020/02/26/S1ep6-Custom-Views-and-Performance/titleThumb.jpg" alt="自定义视图及其性能">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-25T16:00:00.000Z">2020-02-26</time></div>
+                    <a href="/2020/02/26/S1ep6-Custom-Views-and-Performance/" class="has-link-black-ter is-size-6">自定义视图及其性能</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/titleThumb.jpg" alt="LeetCode 9. Palindrome Number">
@@ -2222,25 +2225,6 @@
         
         <article class="media">
             
-            <a href="/2019/07/04/Navigation/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/2019/07/04/Navigation/titleThumb.jpg" alt="Navigation 指南">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-03T16:00:00.000Z">2019-07-04</time></div>
-                    <a href="/2019/07/04/Navigation/" class="has-link-black-ter is-size-6">Navigation 指南</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
             <a href="/2019/07/04/Navigation-Getting-Started/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/2019/07/04/Navigation-Getting-Started/titleThumb.jpg" alt="开始使用 Navigation">
@@ -2251,25 +2235,6 @@
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-03T16:00:00.000Z">2019-07-04</time></div>
                     <a href="/2019/07/04/Navigation-Getting-Started/" class="has-link-black-ter is-size-6">开始使用 Navigation</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/06/17/S1ep2-Using-Lint-for-Performance-Tips/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/2019/06/17/S1ep2-Using-Lint-for-Performance-Tips/titleThumb.jpg" alt="使用 Lint 来获取性能贴士">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-16T16:00:00.000Z">2019-06-17</time></div>
-                    <a href="/2019/06/17/S1ep2-Using-Lint-for-Performance-Tips/" class="has-link-black-ter is-size-6">使用 Lint 来获取性能贴士</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
                     </p>
@@ -2288,6 +2253,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/02/">
+                <span class="level-start">
+                    <span class="level-item">February 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2020/01/">
@@ -2477,14 +2453,14 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Android/">
                         <span class="tag">Android</span>
-                        <span class="tag is-grey">12</span>
+                        <span class="tag is-grey">14</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Chinese/">
                         <span class="tag">Chinese</span>
-                        <span class="tag is-grey">26</span>
+                        <span class="tag is-grey">28</span>
                     </a>
                 </div>
                 
@@ -2554,7 +2530,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Optimize/">
                         <span class="tag">Optimize</span>
-                        <span class="tag is-grey">2</span>
+                        <span class="tag is-grey">4</span>
                     </a>
                 </div>
                 
