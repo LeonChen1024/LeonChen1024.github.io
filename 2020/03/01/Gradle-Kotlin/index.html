@@ -2,17 +2,22 @@
 <html >
 <head>
     <meta charset="utf-8">
-<title>Archives: 2019/1 - LeonChen&#39;s Blog</title>
+<title>Gradle Kotlin DSL - LeonChen&#39;s Blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
 
 
-    <meta property="og:type" content="website">
-<meta property="og:title" content="LeonChen&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/archives/2019/01/index.html">
+    <meta name="description" content="Gradle Kotlin DSL[TOC] 我觉得你们可以先看最后的彩蛋再决定是不是要看强烈推荐先看文章最后的彩蛋!!!   为什么选择 Gradle Kotlin DSL首先我们要先明确我们这么做的原因有哪些?是否值的我们从 groovy 迁移到 kotlin. Kotlin 相比于 Groovy 有这么几个好处:  可以更好的支持自动补全和内容提示 源码导航 重构等支持 语言和Android">
+<meta name="keywords" content="Chinese,Android,Gradle">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Gradle Kotlin DSL">
+<meta property="og:url" content="http://yoursite.com/2020/03/01/Gradle-Kotlin/index.html">
 <meta property="og:site_name" content="LeonChen&#39;s Blog">
+<meta property="og:description" content="Gradle Kotlin DSL[TOC] 我觉得你们可以先看最后的彩蛋再决定是不是要看强烈推荐先看文章最后的彩蛋!!!   为什么选择 Gradle Kotlin DSL首先我们要先明确我们这么做的原因有哪些?是否值的我们从 groovy 迁移到 kotlin. Kotlin 相比于 Groovy 有这么几个好处:  可以更好的支持自动补全和内容提示 源码导航 重构等支持 语言和Android">
+<meta property="og:updated_time" content="2020-03-12T23:39:29.372Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LeonChen&#39;s Blog">
+<meta name="twitter:title" content="Gradle Kotlin DSL">
+<meta name="twitter:description" content="Gradle Kotlin DSL[TOC] 我觉得你们可以先看最后的彩蛋再决定是不是要看强烈推荐先看文章最后的彩蛋!!!   为什么选择 Gradle Kotlin DSL首先我们要先明确我们这么做的原因有哪些?是否值的我们从 groovy 迁移到 kotlin. Kotlin 相比于 Groovy 有这么几个好处:  可以更好的支持自动补全和内容提示 源码导航 重构等支持 语言和Android">
 
 
 
@@ -93,7 +98,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.png" alt="LeonChen&#39;s Blog" height="28">
+                <img src="/images/logo.png" alt="Gradle Kotlin DSL" height="28">
             
             </a>
         </div>
@@ -130,6 +135,10 @@
                     
                 
                 
+                <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
                 
                 <a class="navbar-item search" title="Search" href="javascript:;">
                     <i class="fas fa-search"></i>
@@ -143,91 +152,190 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
-
-<div class="card widget">
-    <div class="card-content">
-        <h3 class="tag is-link">
-        January 2019
-        </h3>
-        <div class="timeline">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-image">
+        <span  class="image is-7by1">
+            <img class="banner" src="/2020/03/01/Gradle-Kotlin/title.jpg" alt="Gradle Kotlin DSL">
+        </span>
+    </div>
+    
+    <div class="card-content article ">
         
-            <article class="media">
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-02-29T16:00:00.000Z">2020-03-01</time>
                 
-                <a href="/2019/01/20/LeetCode-8-String-to-Integer/Record-cn/" class="media-left">
-                    <p class="image is-64x64">
-                        <img class="thumbnail" src="/2019/01/20/LeetCode-8-String-to-Integer/Record-cn/titleThumb.jpg" alt="LeetCode 8. 字符串转整数">
-                    </p>
-                </a>
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-01-19T16:00:00.000Z">2019-01-20</time>
-                        <a href="/2019/01/20/LeetCode-8-String-to-Integer/Record-cn/" class="has-link-black-ter is-size-6">LeetCode 8. 字符串转整数</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Algorithm/">Algorithm</a> / <a class="has-link-grey -link" href="/categories/Chinese/Algorithm/LeetCode/">LeetCode</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Gradle/">Gradle</a>
                 </div>
-            </article>
-        
-            <article class="media">
                 
-                <a href="/2019/01/20/LeetCode-8-String-to-Integer/Record-en/" class="media-left">
-                    <p class="image is-64x64">
-                        <img class="thumbnail" src="/2019/01/20/LeetCode-8-String-to-Integer/Record-cn/titleThumb.jpg" alt="LeetCode 8. String to Integer (atoi)">
-                    </p>
-                </a>
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-01-19T16:00:00.000Z">2019-01-20</time>
-                        <a href="/2019/01/20/LeetCode-8-String-to-Integer/Record-en/" class="has-link-black-ter is-size-6">LeetCode 8. String to Integer (atoi)</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/English/">English</a> / <a class="has-link-grey -link" href="/categories/English/Algorithm/">Algorithm</a> / <a class="has-link-grey -link" href="/categories/English/Algorithm/LeetCode/">LeetCode</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
+                <span class="level-item has-text-grey">
+                    
+                    
+                    5 minutes read (About 684 words)
+                </span>
                 
-                <a href="/2019/01/02/Serializable/" class="media-left">
-                    <p class="image is-64x64">
-                        <img class="thumbnail" src="/2019/01/02/Serializable/titleThumb.jpg" alt="Serializable">
-                    </p>
-                </a>
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-01-01T16:00:00.000Z">2019-01-02</time>
-                        <a href="/2019/01/02/Serializable/" class="has-link-black-ter is-size-6">Serializable</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Java/">Java</a> / <a class="has-link-grey -link" href="/categories/Chinese/Java/SourceCode/">SourceCode</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
+            </div>
         </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                Gradle Kotlin DSL
+            
+        </h1>
+        <div class="content">
+            <!-- <h1><span id="gradle-kotlin-dsl">Gradle Kotlin DSL</span></h1><p>[TOC]</p>
+<h1><span id="我觉得你们可以先看最后的彩蛋再决定是不是要看">我觉得你们可以先看最后的彩蛋再决定是不是要看</span></h1><p>强烈推荐先看文章最后的彩蛋!!!  </p>
+<h1><span id="为什么选择-gradle-kotlin-dsl">为什么选择 Gradle Kotlin DSL</span></h1><p>首先我们要先明确我们这么做的原因有哪些?是否值的我们从 groovy 迁移到 kotlin.</p>
+<p>Kotlin 相比于 Groovy 有这么几个好处:</p>
+<ul>
+<li>可以更好的支持自动补全和内容提示</li>
+<li>源码导航</li>
+<li>重构等支持</li>
+<li>语言和Android开发一致,更加舒适</li>
+</ul>
+<h1><span id="开始">开始</span></h1><p>首先将所有的 <code>build.gradle</code> 修改为 <code>build.gradle.kts</code> .这个时候运行会报语法错误的.</p>
+<p>接下来开始修改,基本上就是使用kotlin的语法替代了原来的groovy语法(虽然我一直没有很了解groovy的语法 )</p>
+<p>如果整个过程还不是很了解,下面是一个手把手替换步骤,按照下面步骤就可以了</p>
+<h2><span id="1-修改settingsgradle">1. 修改settings.gradle</span></h2><p>更换名字为 <code>settings.gradle.kts</code></p>
+<p>将内容 </p>
+<figure class="highlight groovy hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">rootProject.name=<span class="hljs-string">'qc'</span></div><div class="line">include <span class="hljs-string">':app'</span></div></pre></td></tr></table></figure>
+<p>替换为</p>
+<figure class="highlight kotlin hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-comment">//声明使用build.gradle.kts来构建项目</span></div><div class="line">rootProject.buildFileName = <span class="hljs-string">"build.gradle.kts"</span></div><div class="line">include(<span class="hljs-string">":app"</span>)</div></pre></td></tr></table></figure>
+<h2><span id="2-修改项目-buildgradle">2. 修改项目 build.gradle</span></h2><p>一样的,先重命名加上 <code>.kts</code> 后缀为 <code>build.gradle</code></p>
+<p>接着将</p>
+<figure class="highlight groovy hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-comment">// Top-level build file where you can add configuration options common to all sub-projects/modules.</span></div><div class="line"></div><div class="line">buildscript &#123;</div><div class="line">    ext.kotlin_version = <span class="hljs-string">'1.3.70'</span></div><div class="line">    repositories &#123;</div><div class="line">        google()</div><div class="line">        jcenter()</div><div class="line">    &#125;</div><div class="line">    dependencies &#123;</div><div class="line">        classpath <span class="hljs-string">'com.android.tools.build:gradle:3.6.1'</span></div><div class="line">        classpath <span class="hljs-string">"org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"</span></div><div class="line"></div><div class="line">        <span class="hljs-comment">// <span class="hljs-doctag">NOTE:</span> Do not place your application dependencies here; they belong</span></div><div class="line">        <span class="hljs-comment">// in the individual module build.gradle files</span></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">allprojects &#123;</div><div class="line">    repositories &#123;</div><div class="line">        google()</div><div class="line">        jcenter()</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">task clean(<span class="hljs-string">type:</span> Delete) &#123;</div><div class="line">    delete rootProject.buildDir</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>替换为</p>
+<figure class="highlight kotlin hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-comment">// Top-level build file where you can add configuration options common to all sub-projects/modules.</span></div><div class="line"></div><div class="line">buildscript &#123;</div><div class="line">    repositories &#123;</div><div class="line">        google()</div><div class="line">        jcenter()</div><div class="line">    &#125;</div><div class="line">    dependencies &#123;</div><div class="line">        classpath(<span class="hljs-string">"com.android.tools.build:gradle:3.6.1"</span>)</div><div class="line">        classpath(kotlin(<span class="hljs-string">"gradle-plugin"</span>, version = <span class="hljs-string">"1.3.70"</span>))</div><div class="line"></div><div class="line">        <span class="hljs-comment">// <span class="hljs-doctag">NOTE:</span> Do not place your application dependencies here; they belong</span></div><div class="line">        <span class="hljs-comment">// in the individual module build.gradle files</span></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">allprojects &#123;</div><div class="line">    repositories &#123;</div><div class="line">        google()</div><div class="line">        jcenter()</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">tasks.register(<span class="hljs-string">"clean"</span>, Delete::<span class="hljs-class"><span class="hljs-keyword">class</span>) </span>&#123;</div><div class="line">    delete(rootProject.buildDir)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2><span id="3-修改module-的-buildgradle">3. 修改module 的 build.gradle</span></h2><p>老配方,加上<code>.kts</code> 后缀</p>
+<p>然后将</p>
+<figure class="highlight groovy hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">apply <span class="hljs-string">plugin:</span> <span class="hljs-string">'com.android.application'</span></div><div class="line">apply <span class="hljs-string">plugin:</span> <span class="hljs-string">'kotlin-android'</span></div><div class="line">apply <span class="hljs-string">plugin:</span> <span class="hljs-string">'kotlin-android-extensions'</span></div><div class="line"></div><div class="line">android &#123;</div><div class="line">    compileSdkVersion <span class="hljs-number">29</span></div><div class="line">    buildToolsVersion <span class="hljs-string">"29.0.2"</span></div><div class="line"></div><div class="line">    defaultConfig &#123;</div><div class="line">        applicationId <span class="hljs-string">"com.darenscm.www.qc"</span></div><div class="line">        minSdkVersion <span class="hljs-number">21</span></div><div class="line">        targetSdkVersion <span class="hljs-number">29</span></div><div class="line">        versionCode <span class="hljs-number">1</span></div><div class="line">        versionName <span class="hljs-string">"1.0"</span></div><div class="line"></div><div class="line">        testInstrumentationRunner <span class="hljs-string">"androidx.test.runner.AndroidJUnitRunner"</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    buildTypes &#123;</div><div class="line">       release &#123;</div><div class="line">           minifyEnabled <span class="hljs-literal">false</span></div><div class="line">           proguardFiles getDefaultProguardFile(<span class="hljs-string">'proguard-android-optimize.txt'</span>), <span class="hljs-string">'proguard-rules.pro'</span></div><div class="line">       &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">dependencies &#123;</div><div class="line">    implementation fileTree(<span class="hljs-string">dir:</span> <span class="hljs-string">'libs'</span>, <span class="hljs-string">include:</span> [<span class="hljs-string">'*.jar'</span>])</div><div class="line">implementation <span class="hljs-string">"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"</span></div><div class="line">    implementation <span class="hljs-string">'androidx.appcompat:appcompat:1.1.0'</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>替换为</p>
+<figure class="highlight kotlin hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-keyword">import</span> org.jetbrains.kotlin.config.KotlinCompilerVersion</div><div class="line"></div><div class="line">plugins &#123;</div><div class="line">    id(<span class="hljs-string">"com.android.application"</span>)</div><div class="line">    kotlin(<span class="hljs-string">"android"</span>)</div><div class="line">    kotlin(<span class="hljs-string">"android.extensions"</span>)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="hljs-comment">//apply plugin: 'com.android.application'</span></div><div class="line"><span class="hljs-comment">//apply plugin: 'kotlin-android'</span></div><div class="line"><span class="hljs-comment">//apply plugin: 'kotlin-android-extensions'</span></div><div class="line"></div><div class="line">android &#123;</div><div class="line">    compileSdkVersion(<span class="hljs-number">29</span>)</div><div class="line"></div><div class="line">    defaultConfig &#123;</div><div class="line">        applicationId= <span class="hljs-string">"com.darenscm.www.qc"</span></div><div class="line">        minSdkVersion(<span class="hljs-number">21</span>)</div><div class="line">        targetSdkVersion(<span class="hljs-number">29</span>)</div><div class="line">        versionCode = <span class="hljs-number">1</span></div><div class="line">        versionName = <span class="hljs-string">"1.0"</span></div><div class="line">        testInstrumentationRunner= <span class="hljs-string">"androidx.test.runner.AndroidJUnitRunner"</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    buildTypes &#123;</div><div class="line">        getByName(<span class="hljs-string">"release"</span>) &#123;</div><div class="line">            isMinifyEnabled = <span class="hljs-literal">false</span></div><div class="line">            proguardFiles(getDefaultProguardFile(<span class="hljs-string">"proguard-android.txt"</span>), <span class="hljs-string">"proguard-rules.pro"</span>)</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">dependencies &#123;</div><div class="line">    implementation(fileTree(mapOf(<span class="hljs-string">"dir"</span> to <span class="hljs-string">"libs"</span>, <span class="hljs-string">"include"</span> to listOf(<span class="hljs-string">"*.jar"</span>))))</div><div class="line">    implementation(kotlin(<span class="hljs-string">"stdlib-jdk7"</span>, KotlinCompilerVersion.VERSION))</div><div class="line">    implementation(<span class="hljs-string">"androidx.appcompat:appcompat:1.1.0"</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>至此就可以运行成功了</p>
+<h1><span id="彩蛋">彩蛋!!!!!!!!</span></h1><p>成功运行后,IDE还是全部<strong>报红</strong>!!!</p>
+<p>全部报红…很好…..很好… #%^$@%^#&amp;^%&amp;^#%#&amp;^%^@&amp;^</p>
+<p>IDE 暂时还不能很好的支持…… 很好…</p>
+<p>我撤回前面说的好处,请暂时不要入坑…强迫症表示想死….建议等到工具链完善之后再使用</p>
+<p>再见!!</p>
+ -->
+            <div class="article-entry">
+                    
+                    
+                    
+                        <h1><span id="gradle-kotlin-dsl">Gradle Kotlin DSL</span></h1><p>[TOC]</p>
+<h1><span id="我觉得你们可以先看最后的彩蛋再决定是不是要看">我觉得你们可以先看最后的彩蛋再决定是不是要看</span></h1><p>强烈推荐先看文章最后的彩蛋!!!  </p>
+<h1><span id="为什么选择-gradle-kotlin-dsl">为什么选择 Gradle Kotlin DSL</span></h1><p>首先我们要先明确我们这么做的原因有哪些?是否值的我们从 groovy 迁移到 kotlin.</p>
+<p>Kotlin 相比于 Groovy 有这么几个好处:</p>
+<ul>
+<li>可以更好的支持自动补全和内容提示</li>
+<li>源码导航</li>
+<li>重构等支持</li>
+<li>语言和Android开发一致,更加舒适</li>
+</ul>
+<h1><span id="开始">开始</span></h1><p>首先将所有的 <code>build.gradle</code> 修改为 <code>build.gradle.kts</code> .这个时候运行会报语法错误的.</p>
+<p>接下来开始修改,基本上就是使用kotlin的语法替代了原来的groovy语法(虽然我一直没有很了解groovy的语法 )</p>
+<p>如果整个过程还不是很了解,下面是一个手把手替换步骤,按照下面步骤就可以了</p>
+<h2><span id="1-修改settingsgradle">1. 修改settings.gradle</span></h2><p>更换名字为 <code>settings.gradle.kts</code></p>
+<p>将内容 </p>
+<figure class="highlight groovy hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">rootProject.name=<span class="hljs-string">'qc'</span></div><div class="line">include <span class="hljs-string">':app'</span></div></pre></td></tr></table></figure>
+<p>替换为</p>
+<figure class="highlight kotlin hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-comment">//声明使用build.gradle.kts来构建项目</span></div><div class="line">rootProject.buildFileName = <span class="hljs-string">"build.gradle.kts"</span></div><div class="line">include(<span class="hljs-string">":app"</span>)</div></pre></td></tr></table></figure>
+<h2><span id="2-修改项目-buildgradle">2. 修改项目 build.gradle</span></h2><p>一样的,先重命名加上 <code>.kts</code> 后缀为 <code>build.gradle</code></p>
+<p>接着将</p>
+<figure class="highlight groovy hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-comment">// Top-level build file where you can add configuration options common to all sub-projects/modules.</span></div><div class="line"></div><div class="line">buildscript &#123;</div><div class="line">    ext.kotlin_version = <span class="hljs-string">'1.3.70'</span></div><div class="line">    repositories &#123;</div><div class="line">        google()</div><div class="line">        jcenter()</div><div class="line">    &#125;</div><div class="line">    dependencies &#123;</div><div class="line">        classpath <span class="hljs-string">'com.android.tools.build:gradle:3.6.1'</span></div><div class="line">        classpath <span class="hljs-string">"org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"</span></div><div class="line"></div><div class="line">        <span class="hljs-comment">// <span class="hljs-doctag">NOTE:</span> Do not place your application dependencies here; they belong</span></div><div class="line">        <span class="hljs-comment">// in the individual module build.gradle files</span></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">allprojects &#123;</div><div class="line">    repositories &#123;</div><div class="line">        google()</div><div class="line">        jcenter()</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">task clean(<span class="hljs-string">type:</span> Delete) &#123;</div><div class="line">    delete rootProject.buildDir</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>替换为</p>
+<figure class="highlight kotlin hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-comment">// Top-level build file where you can add configuration options common to all sub-projects/modules.</span></div><div class="line"></div><div class="line">buildscript &#123;</div><div class="line">    repositories &#123;</div><div class="line">        google()</div><div class="line">        jcenter()</div><div class="line">    &#125;</div><div class="line">    dependencies &#123;</div><div class="line">        classpath(<span class="hljs-string">"com.android.tools.build:gradle:3.6.1"</span>)</div><div class="line">        classpath(kotlin(<span class="hljs-string">"gradle-plugin"</span>, version = <span class="hljs-string">"1.3.70"</span>))</div><div class="line"></div><div class="line">        <span class="hljs-comment">// <span class="hljs-doctag">NOTE:</span> Do not place your application dependencies here; they belong</span></div><div class="line">        <span class="hljs-comment">// in the individual module build.gradle files</span></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">allprojects &#123;</div><div class="line">    repositories &#123;</div><div class="line">        google()</div><div class="line">        jcenter()</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">tasks.register(<span class="hljs-string">"clean"</span>, Delete::<span class="hljs-class"><span class="hljs-keyword">class</span>) </span>&#123;</div><div class="line">    delete(rootProject.buildDir)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2><span id="3-修改module-的-buildgradle">3. 修改module 的 build.gradle</span></h2><p>老配方,加上<code>.kts</code> 后缀</p>
+<p>然后将</p>
+<figure class="highlight groovy hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">apply <span class="hljs-string">plugin:</span> <span class="hljs-string">'com.android.application'</span></div><div class="line">apply <span class="hljs-string">plugin:</span> <span class="hljs-string">'kotlin-android'</span></div><div class="line">apply <span class="hljs-string">plugin:</span> <span class="hljs-string">'kotlin-android-extensions'</span></div><div class="line"></div><div class="line">android &#123;</div><div class="line">    compileSdkVersion <span class="hljs-number">29</span></div><div class="line">    buildToolsVersion <span class="hljs-string">"29.0.2"</span></div><div class="line"></div><div class="line">    defaultConfig &#123;</div><div class="line">        applicationId <span class="hljs-string">"com.darenscm.www.qc"</span></div><div class="line">        minSdkVersion <span class="hljs-number">21</span></div><div class="line">        targetSdkVersion <span class="hljs-number">29</span></div><div class="line">        versionCode <span class="hljs-number">1</span></div><div class="line">        versionName <span class="hljs-string">"1.0"</span></div><div class="line"></div><div class="line">        testInstrumentationRunner <span class="hljs-string">"androidx.test.runner.AndroidJUnitRunner"</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    buildTypes &#123;</div><div class="line">       release &#123;</div><div class="line">           minifyEnabled <span class="hljs-literal">false</span></div><div class="line">           proguardFiles getDefaultProguardFile(<span class="hljs-string">'proguard-android-optimize.txt'</span>), <span class="hljs-string">'proguard-rules.pro'</span></div><div class="line">       &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">dependencies &#123;</div><div class="line">    implementation fileTree(<span class="hljs-string">dir:</span> <span class="hljs-string">'libs'</span>, <span class="hljs-string">include:</span> [<span class="hljs-string">'*.jar'</span>])</div><div class="line">implementation <span class="hljs-string">"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"</span></div><div class="line">    implementation <span class="hljs-string">'androidx.appcompat:appcompat:1.1.0'</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>替换为</p>
+<figure class="highlight kotlin hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-keyword">import</span> org.jetbrains.kotlin.config.KotlinCompilerVersion</div><div class="line"></div><div class="line">plugins &#123;</div><div class="line">    id(<span class="hljs-string">"com.android.application"</span>)</div><div class="line">    kotlin(<span class="hljs-string">"android"</span>)</div><div class="line">    kotlin(<span class="hljs-string">"android.extensions"</span>)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="hljs-comment">//apply plugin: 'com.android.application'</span></div><div class="line"><span class="hljs-comment">//apply plugin: 'kotlin-android'</span></div><div class="line"><span class="hljs-comment">//apply plugin: 'kotlin-android-extensions'</span></div><div class="line"></div><div class="line">android &#123;</div><div class="line">    compileSdkVersion(<span class="hljs-number">29</span>)</div><div class="line"></div><div class="line">    defaultConfig &#123;</div><div class="line">        applicationId= <span class="hljs-string">"com.darenscm.www.qc"</span></div><div class="line">        minSdkVersion(<span class="hljs-number">21</span>)</div><div class="line">        targetSdkVersion(<span class="hljs-number">29</span>)</div><div class="line">        versionCode = <span class="hljs-number">1</span></div><div class="line">        versionName = <span class="hljs-string">"1.0"</span></div><div class="line">        testInstrumentationRunner= <span class="hljs-string">"androidx.test.runner.AndroidJUnitRunner"</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    buildTypes &#123;</div><div class="line">        getByName(<span class="hljs-string">"release"</span>) &#123;</div><div class="line">            isMinifyEnabled = <span class="hljs-literal">false</span></div><div class="line">            proguardFiles(getDefaultProguardFile(<span class="hljs-string">"proguard-android.txt"</span>), <span class="hljs-string">"proguard-rules.pro"</span>)</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">dependencies &#123;</div><div class="line">    implementation(fileTree(mapOf(<span class="hljs-string">"dir"</span> to <span class="hljs-string">"libs"</span>, <span class="hljs-string">"include"</span> to listOf(<span class="hljs-string">"*.jar"</span>))))</div><div class="line">    implementation(kotlin(<span class="hljs-string">"stdlib-jdk7"</span>, KotlinCompilerVersion.VERSION))</div><div class="line">    implementation(<span class="hljs-string">"androidx.appcompat:appcompat:1.1.0"</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>至此就可以运行成功了</p>
+<h1><span id="彩蛋">彩蛋!!!!!!!!</span></h1><p>成功运行后,IDE还是全部<strong>报红</strong>!!!</p>
+<p>全部报红…很好…..很好… #%^$@%^#&amp;^%&amp;^#%#&amp;^%^@&amp;^</p>
+<p>IDE 暂时还不能很好的支持…… 很好…</p>
+<p>我撤回前面说的好处,请暂时不要入坑…强迫症表示想死….建议等到工具链完善之后再使用</p>
+<p>再见!!</p>
+
+                        </div>
+                    
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/Android/">Android</a>, <a class="has-link-grey -link" href="/tags/Chinese/">Chinese</a>, <a class="has-link-grey -link" href="/tags/Gradle/">Gradle</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">Like this article? Support the author with</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>Alipay</span>
+    <div class="qrcode"><img src="/images/Alipay.jpg" alt="Alipay"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>Wechat</span>
+    <div class="qrcode"><img src="/images/Wepay.jpg" alt="Wechat"></div>
+</a>
+
+                
+                <!-- Visit https://www.paypal.com/donate/buttons/ to get your donate button -->
+
+<div class="notification is-danger">
+    You forgot to set the <code>business</code> and <code>currency_code</code> for Paypal. Please set it in <code>_config.yml</code>.
+</div>
+
+                
+                
+<div class="notification is-danger">
+    You forgot to set the <code>url</code> Patreon. Please set it in <code>_config.yml</code>.
+</div>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/02/26/S1ep5-Tool-Strict-Mode/">
+                <span class="level-item">工具 严格模式</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
     </div>
 </div>
 
@@ -321,6 +429,57 @@
 </div>
     
         
+<div class="card widget" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Catalogue
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#gradle-kotlin-dsl">
+            <!-- number of title -->
+        <!-- <span class="has-mr-6">1</span> -->
+        <span>Gradle Kotlin DSL</span>
+        </a></li><li>
+        <a class="is-flex" href="#我觉得你们可以先看最后的彩蛋再决定是不是要看">
+            <!-- number of title -->
+        <!-- <span class="has-mr-6">2</span> -->
+        <span>我觉得你们可以先看最后的彩蛋再决定是不是要看</span>
+        </a></li><li>
+        <a class="is-flex" href="#为什么选择-gradle-kotlin-dsl">
+            <!-- number of title -->
+        <!-- <span class="has-mr-6">3</span> -->
+        <span>为什么选择 Gradle Kotlin DSL</span>
+        </a></li><li>
+        <a class="is-flex" href="#开始">
+            <!-- number of title -->
+        <!-- <span class="has-mr-6">4</span> -->
+        <span>开始</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#1-修改settingsgradle">
+            <!-- number of title -->
+        <!-- <span class="has-mr-6">4.1</span> -->
+        <span>1. 修改settings.gradle</span>
+        </a></li><li>
+        <a class="is-flex" href="#2-修改项目-buildgradle">
+            <!-- number of title -->
+        <!-- <span class="has-mr-6">4.2</span> -->
+        <span>2. 修改项目 build.gradle</span>
+        </a></li><li>
+        <a class="is-flex" href="#3-修改module-的-buildgradle">
+            <!-- number of title -->
+        <!-- <span class="has-mr-6">4.3</span> -->
+        <span>3. 修改module 的 build.gradle</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#彩蛋">
+            <!-- number of title -->
+        <!-- <span class="has-mr-6">5</span> -->
+        <span>彩蛋!!!!!!!!</span>
+        </a></li></ul>
+        </div>
+    </div>
+</div>
+
     
         
 
@@ -1317,7 +1476,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.png" alt="LeonChen&#39;s Blog" height="28">
+                    <img src="/images/logo.png" alt="Gradle Kotlin DSL" height="28">
                 
                 </a>
                 <p class="is-size-7">

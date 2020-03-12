@@ -157,6 +157,120 @@
     <div class="card">
     
     <div class="card-image">
+        <a href="/2018/04/13/APP-Version-Control/" class="image is-7by1">
+            <img class="banner" src="/2018/04/13/APP-Version-Control/VersionControl.jpg" alt="APP 版本控制">
+        </a>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2018-04-12T16:00:00.000Z">2018-04-13</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Android/版本管理/">版本管理</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    5 minutes read (About 717 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2018/04/13/APP-Version-Control/">APP 版本控制</a>
+            
+        </h1>
+        <div class="content">
+            <!-- <p>版本管理是app的一个重要部分，他主要的用途有：</p>
+<ul>
+<li>让用户了解当前的版本信息，了解升级或者降级信息等</li>
+<li>不同的版本可能提供的服务和功能有所差别，版本信息可以给我们一个标志来识别当前版本可提供的服务和功能。</li>
+</ul>
+<h2><span id="设置版本信息">设置版本信息</span></h2><p>官方推荐是在Gradle中进行版本设置，因为Gradle中设置的版本信息会在构建的时候合并到manifest文件中，并会替换掉manifest中有关版本信息的设置。并且在Gradle中进行设置的话还可以根据应用不同的Flavor进行不同的设置。</p>
+<p>版本控制主要有这么两个属性：</p>
+<ul>
+<li><p><code>android:versionCode</code> ： 整数，是内部版本号，用于判断一个版本是否比另一个版本新，用户并不需要看到。通常是跟随着发布版本增加该code。如果安装的app 的 versionCode 比当前该 app 的 versionCode 小的话会导致安装失败,提示无法降级安装.</p>
+</li>
+<li><p><code>android:versionName</code> : 字符串，用户能看到的版本号。如 <code>1.0.0</code> .系统不关心这个值.</p>
+</li>
+</ul>
+<p>通常我们将这些设置放在gradle下的android {} 块内部使用defaultConfig {} 包裹它。要注意，如果你在productFlavors中定义了这些属性，他们会覆盖defaultConfig中的值。</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">android &#123;</div><div class="line">  ...</div><div class="line">  defaultConfig &#123;</div><div class="line">    ...</div><div class="line">    versionCode 1</div><div class="line">    versionName &quot;1.0.0&quot;</div><div class="line">  &#125;</div><div class="line">  productFlavors &#123;</div><div class="line">    a &#123;</div><div class="line">      ...</div><div class="line">      versionName &quot;1.0.0&quot;</div><div class="line">    &#125;</div><div class="line">    b &#123;</div><div class="line">      ...</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在android中使用 PackageManager 的 getPackageInfo(java.lang.String, int) 方法可以获取版本信息。</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> String <span class="hljs-title">getVersion</span><span class="hljs-params">(Context context)</span><span class="hljs-comment">//获取版本号</span></span></div><div class="line"><span class="hljs-function">	</span>&#123;</div><div class="line">		<span class="hljs-keyword">try</span> &#123;</div><div class="line">			PackageInfo pi=context.getPackageManager().getPackageInfo</div><div class="line">      (context.getPackageName(), <span class="hljs-number">0</span>);</div><div class="line">			<span class="hljs-keyword">return</span> pi.versionName;</div><div class="line">		&#125; <span class="hljs-keyword">catch</span> (NameNotFoundException e) &#123;</div><div class="line">			<span class="hljs-comment">// TODO Auto-generated catch block</span></div><div class="line">			e.printStackTrace();</div><div class="line">			<span class="hljs-keyword">return</span> context.getString(R.string.version_unknown);</div><div class="line">		&#125;</div><div class="line">	&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getVersionCode</span><span class="hljs-params">(Context context)</span><span class="hljs-comment">//获取版本号(内部识别号)</span></span></div><div class="line"><span class="hljs-function"></span>&#123;</div><div class="line">  <span class="hljs-keyword">try</span> &#123;</div><div class="line">    PackageInfo pi=context.getPackageManager().getPackageInfo</div><div class="line">    (context.getPackageName(), <span class="hljs-number">0</span>);</div><div class="line">    <span class="hljs-keyword">return</span> pi.versionCode;</div><div class="line">  &#125; <span class="hljs-keyword">catch</span> (NameNotFoundException e) &#123;</div><div class="line">    <span class="hljs-comment">// TODO Auto-generated catch block</span></div><div class="line">    e.printStackTrace();</div><div class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>如果使用 Instant Run，Android Studio 会自动将 versionCode 设置为 MAXINT，将 versionName 设置为 INSTANTRUN。</p>
+<h2><span id="统一配置">统一配置</span></h2><p>顺便说一下一个可以统一所有的配置在一个地方的方法，这样可以便于我们管理版本。<br>首先在主工程的build.gradle里增加一个配置区</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">ext &#123;</div><div class="line">    // Sdk and tools</div><div class="line">    minSdkVersion = 17</div><div class="line">    targetSdkVersion = 21</div><div class="line">    compileSdkVersion = 23</div><div class="line">    buildToolsVersion = &quot;23.0.3&quot;</div><div class="line"></div><div class="line">    // App dependencies</div><div class="line">    supportLibraryVersion = &apos;23.3.0&apos;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>然后在module的build.gradle里使用<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">targetSdkVersion rootProject.ext.targetSdkVersion</div><div class="line"></div><div class="line">compile &quot;com.android.support:appcompat-v7:$rootProject.supportLibraryVersion&quot;</div></pre></td></tr></table></figure></p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-comment">/**</span></div><div class="line"><span class="hljs-comment"> * 判断当前应用是否是debug状态</span></div><div class="line"><span class="hljs-comment"> */</span></div><div class="line"></div><div class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isApkInDebug</span><span class="hljs-params">(Context context)</span> </span>&#123;</div><div class="line">    <span class="hljs-keyword">try</span> &#123;</div><div class="line">        ApplicationInfo info = context.getApplicationInfo();</div><div class="line">        <span class="hljs-keyword">return</span> (info.flags &amp; ApplicationInfo.FLAG_DEBUGGABLE) != <span class="hljs-number">0</span>;</div><div class="line">    &#125; <span class="hljs-keyword">catch</span> (Exception e) &#123;</div><div class="line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-comment">/**</span></div><div class="line"><span class="hljs-comment">*检测其他应用是否处于debug模式。</span></div><div class="line"><span class="hljs-comment">*/</span></div><div class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isApkDebugable</span><span class="hljs-params">(Context context,String packageName)</span> </span>&#123;</div><div class="line">        <span class="hljs-keyword">try</span> &#123;</div><div class="line">            PackageInfo pkginfo = context.getPackageManager().getPackageInfo(</div><div class="line">                    packageName, <span class="hljs-number">1</span>);</div><div class="line">            <span class="hljs-keyword">if</span> (pkginfo != <span class="hljs-keyword">null</span> ) &#123;</div><div class="line">                ApplicationInfo info= pkginfo.applicationInfo;</div><div class="line">                <span class="hljs-keyword">return</span> (info.flags&amp;ApplicationInfo.FLAG_DEBUGGABLE)!=<span class="hljs-number">0</span>;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">        &#125; <span class="hljs-keyword">catch</span> (Exception e) &#123;</div><div class="line"></div><div class="line">        &#125;</div><div class="line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p>关于 自动命名和生成版本号等可以看 <a href="https://leonchen1024.com/2019/05/28/Automatic-Version-Code-Release/" target="_blank" rel="external">这篇博客</a></p>
+<h2><span id="reference">Reference</span></h2><p><a href="https://developer.android.com/studio/publish/versioning.html" target="_blank" rel="external">https://developer.android.com/studio/publish/versioning.html</a></p>
+ -->
+            <div class="article-entry">
+                    
+                    
+                        
+                            
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                            
+                                
+                                <p><p>版本管理是app的一个重要部分，他主要的用途有：</p>
+<ul>
+<li>让用户了解当前的版本信息，了解升级或者降级信息等</li>
+<li>不同的版本可能提供的服务和功能有所差别，版本信息可以给我们一个标志来识别当前版本可提供的服务和功能。</li>
+</ul>
+<p>
+                            
+                        
+                    
+                    
+                        </div>   
+                        <div class="article-more-link">
+                            <a href="/2018/04/13/APP-Version-Control/#more">Read More</a>
+                        </div>
+                    
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-image">
         <a href="/2018/01/10/Android-Error-And-Solution/" class="image is-7by1">
             <img class="banner" src="/2018/01/10/Android-Error-And-Solution/error.jpg" alt="Android 相关错误及解决办法">
         </a>
@@ -673,7 +787,7 @@
                         Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        37
+                        38
                     </p>
                 </div>
             </div>
@@ -738,7 +852,7 @@
                 <span class="level-item">Chinese</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">28</span>
+                <span class="level-item tag">29</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="undefined">
@@ -770,7 +884,7 @@
                 <span class="level-item">Gradle</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">1</span>
+                <span class="level-item tag">2</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="undefined">
@@ -808,7 +922,7 @@
         <h3 class="menu-label">
             Tag Cloud
         </h3>
-        <a href="/tags/Algorithm/" style="font-size: 18.75px;">Algorithm</a> <a href="/tags/Android/" style="font-size: 16.25px;">Android</a> <a href="/tags/Chinese/" style="font-size: 20px;">Chinese</a> <a href="/tags/Custom-View/" style="font-size: 10px;">Custom View</a> <a href="/tags/Data-Structure/" style="font-size: 10px;">Data Structure</a> <a href="/tags/DataStructure/" style="font-size: 10px;">DataStructure</a> <a href="/tags/English/" style="font-size: 15px;">English</a> <a href="/tags/Error/" style="font-size: 10px;">Error</a> <a href="/tags/Gradle/" style="font-size: 10px;">Gradle</a> <a href="/tags/Java/" style="font-size: 12.5px;">Java</a> <a href="/tags/Jetpack/" style="font-size: 11.25px;">Jetpack</a> <a href="/tags/LeetCode/" style="font-size: 17.5px;">LeetCode</a> <a href="/tags/Optimize/" style="font-size: 13.75px;">Optimize</a> <a href="/tags/SourceCode/" style="font-size: 10px;">SourceCode</a> <a href="/tags/UI/" style="font-size: 10px;">UI</a> <a href="/tags/版本差异/" style="font-size: 11.25px;">版本差异</a> <a href="/tags/版本管理/" style="font-size: 11.25px;">版本管理</a>
+        <a href="/tags/Algorithm/" style="font-size: 18.75px;">Algorithm</a> <a href="/tags/Android/" style="font-size: 16.25px;">Android</a> <a href="/tags/Chinese/" style="font-size: 20px;">Chinese</a> <a href="/tags/Custom-View/" style="font-size: 10px;">Custom View</a> <a href="/tags/Data-Structure/" style="font-size: 10px;">Data Structure</a> <a href="/tags/DataStructure/" style="font-size: 10px;">DataStructure</a> <a href="/tags/English/" style="font-size: 15px;">English</a> <a href="/tags/Error/" style="font-size: 10px;">Error</a> <a href="/tags/Gradle/" style="font-size: 11.25px;">Gradle</a> <a href="/tags/Java/" style="font-size: 12.5px;">Java</a> <a href="/tags/Jetpack/" style="font-size: 11.25px;">Jetpack</a> <a href="/tags/LeetCode/" style="font-size: 17.5px;">LeetCode</a> <a href="/tags/Optimize/" style="font-size: 13.75px;">Optimize</a> <a href="/tags/SourceCode/" style="font-size: 10px;">SourceCode</a> <a href="/tags/UI/" style="font-size: 10px;">UI</a> <a href="/tags/版本差异/" style="font-size: 11.25px;">版本差异</a> <a href="/tags/版本管理/" style="font-size: 11.25px;">版本管理</a>
     </div>
 </div>
 
@@ -822,6 +936,25 @@
         <h3 class="menu-label">
             Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/03/01/Gradle-Kotlin/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/2020/03/01/Gradle-Kotlin/titleThumb.jpg" alt="Gradle Kotlin DSL">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-29T16:00:00.000Z">2020-03-01</time></div>
+                    <a href="/2020/03/01/Gradle-Kotlin/" class="has-link-black-ter is-size-6">Gradle Kotlin DSL</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Gradle/">Gradle</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -899,25 +1032,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/07/04/Navigation-Getting-Started/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/2019/07/04/Navigation-Getting-Started/titleThumb.jpg" alt="开始使用 Navigation">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-03T16:00:00.000Z">2019-07-04</time></div>
-                    <a href="/2019/07/04/Navigation-Getting-Started/" class="has-link-black-ter is-size-6">开始使用 Navigation</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -929,6 +1043,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/03/">
+                <span class="level-start">
+                    <span class="level-item">March 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2020/02/">
@@ -1129,14 +1254,14 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Android/">
                         <span class="tag">Android</span>
-                        <span class="tag is-grey">14</span>
+                        <span class="tag is-grey">15</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Chinese/">
                         <span class="tag">Chinese</span>
-                        <span class="tag is-grey">28</span>
+                        <span class="tag is-grey">29</span>
                     </a>
                 </div>
                 
@@ -1178,7 +1303,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Gradle/">
                         <span class="tag">Gradle</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -1263,6 +1388,25 @@
         
         <article class="media">
             
+            <a href="/2020/03/01/Gradle-Kotlin/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/2020/03/01/Gradle-Kotlin/titleThumb.jpg" alt="Gradle Kotlin DSL">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-29T16:00:00.000Z">2020-03-01</time></div>
+                    <a href="/2020/03/01/Gradle-Kotlin/" class="has-link-black-ter is-size-6">Gradle Kotlin DSL</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Gradle/">Gradle</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2020/02/26/S1ep5-Tool-Strict-Mode/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/2020/02/26/S1ep5-Tool-Strict-Mode/titleThumb.jpg" alt="工具 严格模式">
@@ -1337,25 +1481,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/07/04/Navigation-Getting-Started/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/2019/07/04/Navigation-Getting-Started/titleThumb.jpg" alt="开始使用 Navigation">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-03T16:00:00.000Z">2019-07-04</time></div>
-                    <a href="/2019/07/04/Navigation-Getting-Started/" class="has-link-black-ter is-size-6">开始使用 Navigation</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1367,6 +1492,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/03/">
+                <span class="level-start">
+                    <span class="level-item">March 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2020/02/">
@@ -1567,14 +1703,14 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Android/">
                         <span class="tag">Android</span>
-                        <span class="tag is-grey">14</span>
+                        <span class="tag is-grey">15</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Chinese/">
                         <span class="tag">Chinese</span>
-                        <span class="tag is-grey">28</span>
+                        <span class="tag is-grey">29</span>
                     </a>
                 </div>
                 
@@ -1616,7 +1752,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Gradle/">
                         <span class="tag">Gradle</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
