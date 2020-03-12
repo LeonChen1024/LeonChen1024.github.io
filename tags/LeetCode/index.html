@@ -828,119 +828,6 @@
     <div class="card">
     
     <div class="card-image">
-        <a href="/2018/09/12/6-ZigZag-Conversion/Record-en/" class="image is-7by1">
-            <img class="banner" src="/2018/09/12/6-ZigZag-Conversion/Record-cn/title.jpg" alt="LeetCode 6. ZigZag Conversion">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2018-09-11T16:00:00.000Z">2018-09-12</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/English/">English</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/English/Algorithm/">Algorithm</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/English/Algorithm/LeetCode/">LeetCode</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    2 minutes read (About 346 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2018/09/12/6-ZigZag-Conversion/Record-en/">LeetCode 6. ZigZag Conversion</a>
-            
-        </h1>
-        <div class="content">
-            <!-- <p>[English ver]</p>
-<h1><span id="6-zigzag-conversion">6. ZigZag Conversion</span></h1><p>The string “PAYPALISHIRING” is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">P   A   H   N</div><div class="line">A P L S I I G</div><div class="line">Y   I   R</div></pre></td></tr></table></figure></p>
-<p>And then read line by line: “PAHNAPLSIIGYIR”<br>Write the code that will take a string and make this conversion given a number of rows:<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">string convert(string text, int nRows);</div></pre></td></tr></table></figure></p>
-<p>convert(“PAYPALISHIRING”, 3) should return “PAHNAPLSIIGYIR”.</p>
-<hr>
-<p>First we need to know the meaning about the zigzag pattern, it means a pattern made up of small corners at variable angles, though constant within the zigzag, tracing a path between two parallel lines; it can be described as both jagged and fairly regular. In the begining i think it’s one line in the middle and then some symmetry verticle line between the middle horizontal line,when the number of rows is 4(use number to represent the index of the String)it would look like that:</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">1   7    13</div><div class="line">2   8    14</div><div class="line">3 6 9 12 15</div><div class="line">4   10   16</div><div class="line">5   11   17</div></pre></td></tr></table></figure>
-<p>but the trueth is not , it should be looked like that:<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">1     7        13</div><div class="line">2   6 8     12 14</div><div class="line">3 5   9  11    15</div><div class="line">4     10       16</div></pre></td></tr></table></figure></p>
-<h3><span id="approach-1-use-string">Approach 1 use String[]:</span></h3><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</div><div class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">convert</span><span class="hljs-params">(String s, <span class="hljs-keyword">int</span> numRows)</span> </span>&#123;</div><div class="line">        String result = <span class="hljs-string">""</span>;</div><div class="line">        String[] strings = <span class="hljs-keyword">new</span> String[numRows];</div><div class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i =<span class="hljs-number">0</span>;i&lt;numRows;i++)&#123;</div><div class="line">            strings[i] = <span class="hljs-string">""</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="hljs-keyword">int</span> position = <span class="hljs-number">0</span> ;</div><div class="line">        <span class="hljs-keyword">int</span> numRowsIndex = numRows-<span class="hljs-number">1</span>;</div><div class="line">        <span class="hljs-keyword">int</span> step = <span class="hljs-number">1</span>;</div><div class="line">        <span class="hljs-comment">//if the numRows is one ,or the s's length is less than numRows ,return s .</span></div><div class="line">        <span class="hljs-keyword">if</span> (numRows ==<span class="hljs-number">1</span> || s.length()&lt;numRows)&#123;</div><div class="line">            <span class="hljs-keyword">return</span> s;</div><div class="line">        &#125;</div><div class="line">        <span class="hljs-comment">//loop the every char in the String, when the position is 0,the step is one ,is the position is numRowsIndex,the step is negative one</span></div><div class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i =<span class="hljs-number">0</span>;i&lt;s.length();i++)&#123;</div><div class="line">            strings[position] += s.charAt(i);</div><div class="line">            <span class="hljs-keyword">if</span> (position ==<span class="hljs-number">0</span>)&#123;</div><div class="line">               step = <span class="hljs-number">1</span>;</div><div class="line">            &#125;</div><div class="line">            <span class="hljs-keyword">if</span> (position == numRowsIndex )&#123;</div><div class="line">                step = -<span class="hljs-number">1</span>;</div><div class="line">            &#125;</div><div class="line">            position = position+step;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i =<span class="hljs-number">0</span>;i&lt;numRows;i++)&#123;</div><div class="line">            result += strings[i];</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="hljs-keyword">return</span> result;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/6.%20ZigZag%20Conversion/Images/StringsResult.png?raw=true" alt="Efficiency"></p>
-<p><strong>Analysis</strong><br>This method put every line’s String into the String[i] accordingly,in the last concate it together and then we get the result we want . When the position is in the first row , next time the position should move down,so step = 1.When the position is in the last Row , next time the position should move up , so the step = -1.</p>
-<p>Time complexity ： O(n) 。n is the length of the string.<br>Space complexity ： O(n) .</p>
-<h3><span id="approach-2-stringbuilder">Approach 2 StringBuilder[]:</span></h3><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</div><div class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">convert</span><span class="hljs-params">(String s, <span class="hljs-keyword">int</span> numRows)</span> </span>&#123;</div><div class="line">        StringBuilder result = <span class="hljs-keyword">new</span> StringBuilder(<span class="hljs-string">""</span>);</div><div class="line">        StringBuilder[] strings = <span class="hljs-keyword">new</span> StringBuilder[numRows];</div><div class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i =<span class="hljs-number">0</span>;i&lt;numRows;i++)&#123;</div><div class="line">            strings[i] = <span class="hljs-keyword">new</span> StringBuilder(<span class="hljs-string">""</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="hljs-keyword">int</span> position = <span class="hljs-number">0</span> ;</div><div class="line">        <span class="hljs-keyword">int</span> numRowsIndex = numRows-<span class="hljs-number">1</span>;</div><div class="line">        <span class="hljs-keyword">int</span> step = <span class="hljs-number">1</span>;</div><div class="line">          <span class="hljs-comment">//if the numRows is one ,or the s's length is less than numRows ,return s .</span></div><div class="line">        <span class="hljs-keyword">if</span> (numRows ==<span class="hljs-number">1</span> || s.length()&lt;numRows)&#123;</div><div class="line">            <span class="hljs-keyword">return</span> s;</div><div class="line">        &#125;</div><div class="line">          <span class="hljs-comment">//loop the every char in the String, when the position is 0,the step is one ,is the position is numRowsIndex,the step is negative one</span></div><div class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i =<span class="hljs-number">0</span>;i&lt;s.length();i++)&#123;</div><div class="line">            strings[position].append(s.charAt(i));</div><div class="line">            <span class="hljs-keyword">if</span> (position ==<span class="hljs-number">0</span>)&#123;</div><div class="line">               step = <span class="hljs-number">1</span>;</div><div class="line">            &#125;</div><div class="line">            <span class="hljs-keyword">if</span> (position == numRowsIndex )&#123;</div><div class="line">                step = -<span class="hljs-number">1</span>;</div><div class="line">            &#125;</div><div class="line">            position = position+step;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i =<span class="hljs-number">0</span>;i&lt;numRows;i++)&#123;</div><div class="line">            result.append(strings[i]);</div><div class="line">        &#125;</div><div class="line">        <span class="hljs-keyword">return</span> result.toString();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/6.%20ZigZag%20Conversion/Images/StringBuilderResult.png?raw=true" alt="Efficiency"></p>
-<p><strong>Analysis</strong><br>This method’s principle is the same as the Approach 1 , it just replace the String into StringBuilder,it has a big optimization.</p>
-<p>Time complexity ： O(n) 。n is the length of the string.<br>Space complexity ： O(n) .</p>
-<h3><span id="approach-3-use-interval">Approach 3 use interval</span></h3><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</div><div class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">convert</span><span class="hljs-params">(String s, <span class="hljs-keyword">int</span> numRows)</span> </span>&#123;</div><div class="line"></div><div class="line">        String result=<span class="hljs-string">""</span>;</div><div class="line">        <span class="hljs-keyword">if</span>(numRows==<span class="hljs-number">1</span>)</div><div class="line">            <span class="hljs-keyword">return</span> s;</div><div class="line">        <span class="hljs-keyword">int</span> step1,step2;</div><div class="line">        <span class="hljs-keyword">int</span> len=s.length();</div><div class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;numRows;++i)&#123;</div><div class="line">            step1=(numRows-i-<span class="hljs-number">1</span>)*<span class="hljs-number">2</span>;</div><div class="line">            step2=(i)*<span class="hljs-number">2</span>;</div><div class="line">            <span class="hljs-keyword">int</span> pos=i;</div><div class="line">            <span class="hljs-keyword">if</span>(pos&lt;len)</div><div class="line">                result+=s.charAt(pos);</div><div class="line">            <span class="hljs-keyword">while</span>(<span class="hljs-keyword">true</span>)&#123;</div><div class="line">                pos+=step1;</div><div class="line">                <span class="hljs-keyword">if</span>(pos&gt;=len)</div><div class="line">                    <span class="hljs-keyword">break</span>;</div><div class="line">                <span class="hljs-keyword">if</span>(step1&gt;<span class="hljs-number">0</span>)</div><div class="line">                    result+=s.charAt(pos);</div><div class="line">                pos+=step2;</div><div class="line">                <span class="hljs-keyword">if</span>(pos&gt;=len)</div><div class="line">                    <span class="hljs-keyword">break</span>;</div><div class="line">                <span class="hljs-keyword">if</span>(step2&gt;<span class="hljs-number">0</span>)</div><div class="line">                    result+=s.charAt(pos);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="hljs-keyword">return</span> result;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><strong>Analysis</strong></p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">/*n=numRows</div><div class="line">Δ=2n-2    1                           2n-1                         4n-3</div><div class="line">Δ=        2                     2n-2  2n                    4n-4   4n-2</div><div class="line">Δ=        3               2n-3        2n+1              4n-5       .</div><div class="line">Δ=        .           .               .               .            .</div><div class="line">Δ=        .       n+2                 .           3n               .</div><div class="line">Δ=        n-1 n+1                     3n-3    3n-1                 5n-5</div><div class="line">Δ=2n-2    n                           3n-2                         5n-4</div><div class="line">*/</div></pre></td></tr></table></figure>
-<p>This method used regular interval to calculate position .</p>
-<p>Time complexity ： O(n) 。n is the length of the string.<br>Space complexity ： O(n) .</p>
-<p>If you have any suggestions to make the logic and implementation more better , or you have some advice on my description. Please let me know!Thanks!</p>
-<h2><span id="about-me">About Me</span></h2><p>My blog <a href="http://leonchen1024.com/" target="_blank" rel="external">leonchen1024.com</a></p>
-<p>My Github  <a href="https://github.com/LeonChen1024" target="_blank" rel="external">https://github.com/LeonChen1024</a></p>
-<p>My twitter <a href="https://twitter.com/LChen1024?lang=en" target="_blank" rel="external">https://twitter.com/LChen1024?lang=en</a></p>
- -->
-            <div class="article-entry">
-                    
-                    
-                        
-                            
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                            
-                                
-                                <p><p>[English ver]</p>
-<h1><span id="6-zigzag-conversion">6. ZigZag Conversion</span></h1><p>The string “PAYPALISHIRING” is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">P   A   H   N</div><div class="line">A P L S I I G</div><div class="line">Y   I   R</div></pre></td></tr></table></figure></p>
-<p>And then read line by line: “PAHNAPLSIIGYIR”<br>Write the code that will take a string and make this conversion given a number of rows:<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">string convert(string text, int nRows);</div></pre></td></tr></table></figure></p>
-<p>convert(“PAYPALISHIRING”, 3) should return “PAHNAPLSIIGYIR”.</p>
-<hr>
-<p>
-                            
-                        
-                    
-                    
-                        </div>   
-                        <div class="article-more-link">
-                            <a href="/2018/09/12/6-ZigZag-Conversion/Record-en/#more">Read More</a>
-                        </div>
-                    
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-image">
         <a href="/2018/09/12/6-ZigZag-Conversion/Record-cn/" class="image is-7by1">
             <img class="banner" src="/2018/09/12/6-ZigZag-Conversion/Record-cn/title.jpg" alt="LeetCode 6. 锯齿形转换">
         </a>
@@ -1036,6 +923,119 @@
                         </div>   
                         <div class="article-more-link">
                             <a href="/2018/09/12/6-ZigZag-Conversion/Record-cn/#more">Read More</a>
+                        </div>
+                    
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-image">
+        <a href="/2018/09/12/6-ZigZag-Conversion/Record-en/" class="image is-7by1">
+            <img class="banner" src="/2018/09/12/6-ZigZag-Conversion/Record-cn/title.jpg" alt="LeetCode 6. ZigZag Conversion">
+        </a>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2018-09-11T16:00:00.000Z">2018-09-12</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/English/">English</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/English/Algorithm/">Algorithm</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/English/Algorithm/LeetCode/">LeetCode</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    2 minutes read (About 346 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2018/09/12/6-ZigZag-Conversion/Record-en/">LeetCode 6. ZigZag Conversion</a>
+            
+        </h1>
+        <div class="content">
+            <!-- <p>[English ver]</p>
+<h1><span id="6-zigzag-conversion">6. ZigZag Conversion</span></h1><p>The string “PAYPALISHIRING” is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">P   A   H   N</div><div class="line">A P L S I I G</div><div class="line">Y   I   R</div></pre></td></tr></table></figure></p>
+<p>And then read line by line: “PAHNAPLSIIGYIR”<br>Write the code that will take a string and make this conversion given a number of rows:<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">string convert(string text, int nRows);</div></pre></td></tr></table></figure></p>
+<p>convert(“PAYPALISHIRING”, 3) should return “PAHNAPLSIIGYIR”.</p>
+<hr>
+<p>First we need to know the meaning about the zigzag pattern, it means a pattern made up of small corners at variable angles, though constant within the zigzag, tracing a path between two parallel lines; it can be described as both jagged and fairly regular. In the begining i think it’s one line in the middle and then some symmetry verticle line between the middle horizontal line,when the number of rows is 4(use number to represent the index of the String)it would look like that:</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">1   7    13</div><div class="line">2   8    14</div><div class="line">3 6 9 12 15</div><div class="line">4   10   16</div><div class="line">5   11   17</div></pre></td></tr></table></figure>
+<p>but the trueth is not , it should be looked like that:<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">1     7        13</div><div class="line">2   6 8     12 14</div><div class="line">3 5   9  11    15</div><div class="line">4     10       16</div></pre></td></tr></table></figure></p>
+<h3><span id="approach-1-use-string">Approach 1 use String[]:</span></h3><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</div><div class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">convert</span><span class="hljs-params">(String s, <span class="hljs-keyword">int</span> numRows)</span> </span>&#123;</div><div class="line">        String result = <span class="hljs-string">""</span>;</div><div class="line">        String[] strings = <span class="hljs-keyword">new</span> String[numRows];</div><div class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i =<span class="hljs-number">0</span>;i&lt;numRows;i++)&#123;</div><div class="line">            strings[i] = <span class="hljs-string">""</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="hljs-keyword">int</span> position = <span class="hljs-number">0</span> ;</div><div class="line">        <span class="hljs-keyword">int</span> numRowsIndex = numRows-<span class="hljs-number">1</span>;</div><div class="line">        <span class="hljs-keyword">int</span> step = <span class="hljs-number">1</span>;</div><div class="line">        <span class="hljs-comment">//if the numRows is one ,or the s's length is less than numRows ,return s .</span></div><div class="line">        <span class="hljs-keyword">if</span> (numRows ==<span class="hljs-number">1</span> || s.length()&lt;numRows)&#123;</div><div class="line">            <span class="hljs-keyword">return</span> s;</div><div class="line">        &#125;</div><div class="line">        <span class="hljs-comment">//loop the every char in the String, when the position is 0,the step is one ,is the position is numRowsIndex,the step is negative one</span></div><div class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i =<span class="hljs-number">0</span>;i&lt;s.length();i++)&#123;</div><div class="line">            strings[position] += s.charAt(i);</div><div class="line">            <span class="hljs-keyword">if</span> (position ==<span class="hljs-number">0</span>)&#123;</div><div class="line">               step = <span class="hljs-number">1</span>;</div><div class="line">            &#125;</div><div class="line">            <span class="hljs-keyword">if</span> (position == numRowsIndex )&#123;</div><div class="line">                step = -<span class="hljs-number">1</span>;</div><div class="line">            &#125;</div><div class="line">            position = position+step;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i =<span class="hljs-number">0</span>;i&lt;numRows;i++)&#123;</div><div class="line">            result += strings[i];</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="hljs-keyword">return</span> result;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/6.%20ZigZag%20Conversion/Images/StringsResult.png?raw=true" alt="Efficiency"></p>
+<p><strong>Analysis</strong><br>This method put every line’s String into the String[i] accordingly,in the last concate it together and then we get the result we want . When the position is in the first row , next time the position should move down,so step = 1.When the position is in the last Row , next time the position should move up , so the step = -1.</p>
+<p>Time complexity ： O(n) 。n is the length of the string.<br>Space complexity ： O(n) .</p>
+<h3><span id="approach-2-stringbuilder">Approach 2 StringBuilder[]:</span></h3><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</div><div class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">convert</span><span class="hljs-params">(String s, <span class="hljs-keyword">int</span> numRows)</span> </span>&#123;</div><div class="line">        StringBuilder result = <span class="hljs-keyword">new</span> StringBuilder(<span class="hljs-string">""</span>);</div><div class="line">        StringBuilder[] strings = <span class="hljs-keyword">new</span> StringBuilder[numRows];</div><div class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i =<span class="hljs-number">0</span>;i&lt;numRows;i++)&#123;</div><div class="line">            strings[i] = <span class="hljs-keyword">new</span> StringBuilder(<span class="hljs-string">""</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="hljs-keyword">int</span> position = <span class="hljs-number">0</span> ;</div><div class="line">        <span class="hljs-keyword">int</span> numRowsIndex = numRows-<span class="hljs-number">1</span>;</div><div class="line">        <span class="hljs-keyword">int</span> step = <span class="hljs-number">1</span>;</div><div class="line">          <span class="hljs-comment">//if the numRows is one ,or the s's length is less than numRows ,return s .</span></div><div class="line">        <span class="hljs-keyword">if</span> (numRows ==<span class="hljs-number">1</span> || s.length()&lt;numRows)&#123;</div><div class="line">            <span class="hljs-keyword">return</span> s;</div><div class="line">        &#125;</div><div class="line">          <span class="hljs-comment">//loop the every char in the String, when the position is 0,the step is one ,is the position is numRowsIndex,the step is negative one</span></div><div class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i =<span class="hljs-number">0</span>;i&lt;s.length();i++)&#123;</div><div class="line">            strings[position].append(s.charAt(i));</div><div class="line">            <span class="hljs-keyword">if</span> (position ==<span class="hljs-number">0</span>)&#123;</div><div class="line">               step = <span class="hljs-number">1</span>;</div><div class="line">            &#125;</div><div class="line">            <span class="hljs-keyword">if</span> (position == numRowsIndex )&#123;</div><div class="line">                step = -<span class="hljs-number">1</span>;</div><div class="line">            &#125;</div><div class="line">            position = position+step;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i =<span class="hljs-number">0</span>;i&lt;numRows;i++)&#123;</div><div class="line">            result.append(strings[i]);</div><div class="line">        &#125;</div><div class="line">        <span class="hljs-keyword">return</span> result.toString();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/6.%20ZigZag%20Conversion/Images/StringBuilderResult.png?raw=true" alt="Efficiency"></p>
+<p><strong>Analysis</strong><br>This method’s principle is the same as the Approach 1 , it just replace the String into StringBuilder,it has a big optimization.</p>
+<p>Time complexity ： O(n) 。n is the length of the string.<br>Space complexity ： O(n) .</p>
+<h3><span id="approach-3-use-interval">Approach 3 use interval</span></h3><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</div><div class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">convert</span><span class="hljs-params">(String s, <span class="hljs-keyword">int</span> numRows)</span> </span>&#123;</div><div class="line"></div><div class="line">        String result=<span class="hljs-string">""</span>;</div><div class="line">        <span class="hljs-keyword">if</span>(numRows==<span class="hljs-number">1</span>)</div><div class="line">            <span class="hljs-keyword">return</span> s;</div><div class="line">        <span class="hljs-keyword">int</span> step1,step2;</div><div class="line">        <span class="hljs-keyword">int</span> len=s.length();</div><div class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;numRows;++i)&#123;</div><div class="line">            step1=(numRows-i-<span class="hljs-number">1</span>)*<span class="hljs-number">2</span>;</div><div class="line">            step2=(i)*<span class="hljs-number">2</span>;</div><div class="line">            <span class="hljs-keyword">int</span> pos=i;</div><div class="line">            <span class="hljs-keyword">if</span>(pos&lt;len)</div><div class="line">                result+=s.charAt(pos);</div><div class="line">            <span class="hljs-keyword">while</span>(<span class="hljs-keyword">true</span>)&#123;</div><div class="line">                pos+=step1;</div><div class="line">                <span class="hljs-keyword">if</span>(pos&gt;=len)</div><div class="line">                    <span class="hljs-keyword">break</span>;</div><div class="line">                <span class="hljs-keyword">if</span>(step1&gt;<span class="hljs-number">0</span>)</div><div class="line">                    result+=s.charAt(pos);</div><div class="line">                pos+=step2;</div><div class="line">                <span class="hljs-keyword">if</span>(pos&gt;=len)</div><div class="line">                    <span class="hljs-keyword">break</span>;</div><div class="line">                <span class="hljs-keyword">if</span>(step2&gt;<span class="hljs-number">0</span>)</div><div class="line">                    result+=s.charAt(pos);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="hljs-keyword">return</span> result;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>Analysis</strong></p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">/*n=numRows</div><div class="line">Δ=2n-2    1                           2n-1                         4n-3</div><div class="line">Δ=        2                     2n-2  2n                    4n-4   4n-2</div><div class="line">Δ=        3               2n-3        2n+1              4n-5       .</div><div class="line">Δ=        .           .               .               .            .</div><div class="line">Δ=        .       n+2                 .           3n               .</div><div class="line">Δ=        n-1 n+1                     3n-3    3n-1                 5n-5</div><div class="line">Δ=2n-2    n                           3n-2                         5n-4</div><div class="line">*/</div></pre></td></tr></table></figure>
+<p>This method used regular interval to calculate position .</p>
+<p>Time complexity ： O(n) 。n is the length of the string.<br>Space complexity ： O(n) .</p>
+<p>If you have any suggestions to make the logic and implementation more better , or you have some advice on my description. Please let me know!Thanks!</p>
+<h2><span id="about-me">About Me</span></h2><p>My blog <a href="http://leonchen1024.com/" target="_blank" rel="external">leonchen1024.com</a></p>
+<p>My Github  <a href="https://github.com/LeonChen1024" target="_blank" rel="external">https://github.com/LeonChen1024</a></p>
+<p>My twitter <a href="https://twitter.com/LChen1024?lang=en" target="_blank" rel="external">https://twitter.com/LChen1024?lang=en</a></p>
+ -->
+            <div class="article-entry">
+                    
+                    
+                        
+                            
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                            
+                                
+                                <p><p>[English ver]</p>
+<h1><span id="6-zigzag-conversion">6. ZigZag Conversion</span></h1><p>The string “PAYPALISHIRING” is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">P   A   H   N</div><div class="line">A P L S I I G</div><div class="line">Y   I   R</div></pre></td></tr></table></figure></p>
+<p>And then read line by line: “PAHNAPLSIIGYIR”<br>Write the code that will take a string and make this conversion given a number of rows:<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">string convert(string text, int nRows);</div></pre></td></tr></table></figure></p>
+<p>convert(“PAYPALISHIRING”, 3) should return “PAHNAPLSIIGYIR”.</p>
+<hr>
+<p>
+                            
+                        
+                    
+                    
+                        </div>   
+                        <div class="article-more-link">
+                            <a href="/2018/09/12/6-ZigZag-Conversion/Record-en/#more">Read More</a>
                         </div>
                     
         </div>
@@ -1519,25 +1519,6 @@
         
         <article class="media">
             
-            <a href="/2020/02/26/S1ep5-Tool-Strict-Mode/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/2020/02/26/S1ep5-Tool-Strict-Mode/titleThumb.jpg" alt="工具 严格模式">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-25T16:00:00.000Z">2020-02-26</time></div>
-                    <a href="/2020/02/26/S1ep5-Tool-Strict-Mode/" class="has-link-black-ter is-size-6">工具 严格模式</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
             <a href="/2020/02/26/S1ep6-Custom-Views-and-Performance/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/2020/02/26/S1ep6-Custom-Views-and-Performance/titleThumb.jpg" alt="自定义视图及其性能">
@@ -1548,6 +1529,25 @@
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-25T16:00:00.000Z">2020-02-26</time></div>
                     <a href="/2020/02/26/S1ep6-Custom-Views-and-Performance/" class="has-link-black-ter is-size-6">自定义视图及其性能</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/02/26/S1ep5-Tool-Strict-Mode/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/2020/02/26/S1ep5-Tool-Strict-Mode/titleThumb.jpg" alt="工具 严格模式">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-25T16:00:00.000Z">2020-02-26</time></div>
+                    <a href="/2020/02/26/S1ep5-Tool-Strict-Mode/" class="has-link-black-ter is-size-6">工具 严格模式</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
                     </p>
@@ -1968,25 +1968,6 @@
         
         <article class="media">
             
-            <a href="/2020/02/26/S1ep5-Tool-Strict-Mode/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/2020/02/26/S1ep5-Tool-Strict-Mode/titleThumb.jpg" alt="工具 严格模式">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-25T16:00:00.000Z">2020-02-26</time></div>
-                    <a href="/2020/02/26/S1ep5-Tool-Strict-Mode/" class="has-link-black-ter is-size-6">工具 严格模式</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
             <a href="/2020/02/26/S1ep6-Custom-Views-and-Performance/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/2020/02/26/S1ep6-Custom-Views-and-Performance/titleThumb.jpg" alt="自定义视图及其性能">
@@ -1997,6 +1978,25 @@
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-25T16:00:00.000Z">2020-02-26</time></div>
                     <a href="/2020/02/26/S1ep6-Custom-Views-and-Performance/" class="has-link-black-ter is-size-6">自定义视图及其性能</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/02/26/S1ep5-Tool-Strict-Mode/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/2020/02/26/S1ep5-Tool-Strict-Mode/titleThumb.jpg" alt="工具 严格模式">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-25T16:00:00.000Z">2020-02-26</time></div>
+                    <a href="/2020/02/26/S1ep5-Tool-Strict-Mode/" class="has-link-black-ter is-size-6">工具 严格模式</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
                     </p>

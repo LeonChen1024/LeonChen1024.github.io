@@ -166,7 +166,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    5 minutes read (About 684 words)
+                    5 minutes read (About 724 words)
                 </span>
                 
                 
@@ -213,6 +213,10 @@
 <p>IDE 暂时还不能很好的支持…… 很好…</p>
 <p>我撤回前面说的好处,请暂时不要入坑…强迫症表示想死….建议等到工具链完善之后再使用</p>
 <p>再见!!</p>
+<h2><span id="about-me">About Me</span></h2><p>我的博客 <a href="http://leonchen1024.com/" target="_blank" rel="external">leonchen1024.com</a></p>
+<p>我的 GitHub <a href="https://github.com/LeonChen1024" target="_blank" rel="external">https://github.com/LeonChen1024</a></p>
+<p>微信公众号 </p>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/Images/CooderQRcodem.jpg?raw=true" alt="wechat"></p>
  -->
             <div class="article-entry">
                     
@@ -250,6 +254,112 @@
                         </div>   
                         <div class="article-more-link">
                             <a href="/2020/03/01/Gradle-Kotlin/#more">Read More</a>
+                        </div>
+                    
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-image">
+        <a href="/2020/02/26/S1ep6-Custom-Views-and-Performance/" class="image is-7by1">
+            <img class="banner" src="/2020/02/26/S1ep6-Custom-Views-and-Performance/title.jpg" alt="自定义视图及其性能">
+        </a>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-02-25T16:00:00.000Z">2020-02-26</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Android/Android-Performance-pattern/">Android Performance pattern</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    7 minutes read (About 1039 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2020/02/26/S1ep6-Custom-Views-and-Performance/">自定义视图及其性能</a>
+            
+        </h1>
+        <div class="content">
+            <!-- <h1><span id="custom-views-and-performance">Custom Views and Performance</span></h1><p>Android 平台自带了很多标准控件,但是你总会发现有无法满足你的需求的时候,这时候你可以使用自定义控件.自定义控件是很容易的,困难的是怎么让自定义控件的性能表现良好.这里将会介绍一些会导致自定义控件表现变差的原因.</p>
+<ul>
+<li>在没有改变的时候仍然调用了 onDraw()</li>
+<li>耗费时间和资源绘制根本不会再界面上展示的像素.比如被遮挡住的部分</li>
+<li>我们还可以在 onDraw 中花很长的时间</li>
+</ul>
+<p>首先介绍在没有改变的时候仍然执行了绘制流程,要记住,所有的绘制都始于 View.invalidate() . 第一个原则是自定义控件不要调用 invalidate 除非你必须这么做.如果没有东西被改变了,那就不需要重新绘制.第二个原则是传入一个块内容给 invalidate.这会帮助系统决定哪些内容需要被重绘以及什么时候调用 onDraw.如下:</p>
+<p><img src="res/view-invalidation.png" alt=""></p>
+<p>大致流程是这样的,首先它会判断块内容是否被修改了,如果被修改了,那么就判断这个内容是否在屏幕上,如果在屏幕上,再判断这个内容是否可见,如果可见,才进行重绘.</p>
+<p>可见 onDraw 是非常重要的,你的视图是流畅,性能优异的还是差劲的它占了很大的作用.</p>
+<p>我们写一个不太理想的 onDraw 是非常容易,其中一个方式就是过度绘制.比如你绘制了一些根本就看不到的内容,这是一个无用功.</p>
+<p>那我们如何处理那些看不到的内容呢?我们可以通过设置clip rectangle来达到这个目的.这个裁剪的目的就是使得范围外的内容不会去触碰和绘制,保证他们不会消耗任何东西.调用这个功能的方法是 Canvas.clipRect().当你调用这个方法的时候会保证 GPU 只处理这个方块内的内容.这个效果会持续到下一次调用  Canvas.clipRect().这个在低端的 GPU 上效果明显,但是在高端的 GPU 上的效果就没那么明显了.甚至在一些硬件条件下,可能你花费在 CPU 计算这个裁剪的内容的时间,比你在 GPU 绘制上节省的时间还多.这意味着我们还有一个需要优化的部分就是 CPU 消耗,这个消耗基本上都在 onDraw 上.我们有以下几个建议:</p>
+<ol>
+<li>不要绘制任何你没必要绘制的东西.可以通过调用 Canvas.quickReject 来定义那些元素并不在屏幕上.如果它返回 true 那么不要绘制这个元素.如果一个元素有一部分仍然在屏幕内容,它依然会返回 false,只有完全不在屏幕上的才会返回 true.</li>
+<li>不要使用没有硬件加速的绘制.硬件加速意味着这些操作发生在 GPU 上.如果不是硬件加速的话,它意味着需要 CPU 来处理绘,然后他要把这个结果发送给 GPU 来和剩余的视图部分做组合.对比硬件加速来说,这简直就是让人发指的慢.如果你使用的方法并没有硬件加速,那么考虑是不是有其他的方式来绘制.</li>
+<li>不要再 onDraw 方法中分配内存,以及在 onDraw 中调用的方法.分配会消耗两种东西,首先是直接消耗了分配和初始化对象的性能,然后在垃圾回收的时候还有一次消耗.这两种中的每一种都可能会造成丢帧的现象.</li>
+</ol>
+<p>也许这些建议看起来都很不起眼,但是记住,onDraw 在一秒内会调用 60 次左右.而且不像其他的代码,它必须在 UI 线程上执行.你绘制一次屏幕只有 16 毫秒的时间.</p>
+ -->
+            <div class="article-entry">
+                    
+                    
+                        
+                            
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                            
+                                
+                                <p><h1><span id="custom-views-and-performance">Custom Views and Performance</span></h1><p>Android 平台自带了很多标准控件,但是你总会发现有无法满足你的需求的时候,这时候你可以使用自定义控件.自定义控件是很容易的,困难的是怎么让自定义控件的性能表现良好.这里将会介绍一些会导致自定义控件表现变差的原因.</p>
+<ul>
+<li>在没有改变的时候仍然调用了 onDraw()</li>
+<li>耗费时间和资源绘制根本不会再界面上展示的像素.比如被遮挡住的部分</li>
+<li>我们还可以在 onDraw 中花很长的时间</li>
+<p>
+                            
+                        
+                    
+                    
+                        </div>   
+                        <div class="article-more-link">
+                            <a href="/2020/02/26/S1ep6-Custom-Views-and-Performance/#more">Read More</a>
                         </div>
                     
         </div>
@@ -357,112 +467,6 @@
                         </div>   
                         <div class="article-more-link">
                             <a href="/2020/02/26/S1ep5-Tool-Strict-Mode/#more">Read More</a>
-                        </div>
-                    
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-image">
-        <a href="/2020/02/26/S1ep6-Custom-Views-and-Performance/" class="image is-7by1">
-            <img class="banner" src="/2020/02/26/S1ep6-Custom-Views-and-Performance/title.jpg" alt="自定义视图及其性能">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-02-25T16:00:00.000Z">2020-02-26</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Android/Android-Performance-pattern/">Android Performance pattern</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    7 minutes read (About 1039 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2020/02/26/S1ep6-Custom-Views-and-Performance/">自定义视图及其性能</a>
-            
-        </h1>
-        <div class="content">
-            <!-- <h1><span id="custom-views-and-performance">Custom Views and Performance</span></h1><p>Android 平台自带了很多标准控件,但是你总会发现有无法满足你的需求的时候,这时候你可以使用自定义控件.自定义控件是很容易的,困难的是怎么让自定义控件的性能表现良好.这里将会介绍一些会导致自定义控件表现变差的原因.</p>
-<ul>
-<li>在没有改变的时候仍然调用了 onDraw()</li>
-<li>耗费时间和资源绘制根本不会再界面上展示的像素.比如被遮挡住的部分</li>
-<li>我们还可以在 onDraw 中花很长的时间</li>
-</ul>
-<p>首先介绍在没有改变的时候仍然执行了绘制流程,要记住,所有的绘制都始于 View.invalidate() . 第一个原则是自定义控件不要调用 invalidate 除非你必须这么做.如果没有东西被改变了,那就不需要重新绘制.第二个原则是传入一个块内容给 invalidate.这会帮助系统决定哪些内容需要被重绘以及什么时候调用 onDraw.如下:</p>
-<p><img src="res/view-invalidation.png" alt=""></p>
-<p>大致流程是这样的,首先它会判断块内容是否被修改了,如果被修改了,那么就判断这个内容是否在屏幕上,如果在屏幕上,再判断这个内容是否可见,如果可见,才进行重绘.</p>
-<p>可见 onDraw 是非常重要的,你的视图是流畅,性能优异的还是差劲的它占了很大的作用.</p>
-<p>我们写一个不太理想的 onDraw 是非常容易,其中一个方式就是过度绘制.比如你绘制了一些根本就看不到的内容,这是一个无用功.</p>
-<p>那我们如何处理那些看不到的内容呢?我们可以通过设置clip rectangle来达到这个目的.这个裁剪的目的就是使得范围外的内容不会去触碰和绘制,保证他们不会消耗任何东西.调用这个功能的方法是 Canvas.clipRect().当你调用这个方法的时候会保证 GPU 只处理这个方块内的内容.这个效果会持续到下一次调用  Canvas.clipRect().这个在低端的 GPU 上效果明显,但是在高端的 GPU 上的效果就没那么明显了.甚至在一些硬件条件下,可能你花费在 CPU 计算这个裁剪的内容的时间,比你在 GPU 绘制上节省的时间还多.这意味着我们还有一个需要优化的部分就是 CPU 消耗,这个消耗基本上都在 onDraw 上.我们有以下几个建议:</p>
-<ol>
-<li>不要绘制任何你没必要绘制的东西.可以通过调用 Canvas.quickReject 来定义那些元素并不在屏幕上.如果它返回 true 那么不要绘制这个元素.如果一个元素有一部分仍然在屏幕内容,它依然会返回 false,只有完全不在屏幕上的才会返回 true.</li>
-<li>不要使用没有硬件加速的绘制.硬件加速意味着这些操作发生在 GPU 上.如果不是硬件加速的话,它意味着需要 CPU 来处理绘,然后他要把这个结果发送给 GPU 来和剩余的视图部分做组合.对比硬件加速来说,这简直就是让人发指的慢.如果你使用的方法并没有硬件加速,那么考虑是不是有其他的方式来绘制.</li>
-<li>不要再 onDraw 方法中分配内存,以及在 onDraw 中调用的方法.分配会消耗两种东西,首先是直接消耗了分配和初始化对象的性能,然后在垃圾回收的时候还有一次消耗.这两种中的每一种都可能会造成丢帧的现象.</li>
-</ol>
-<p>也许这些建议看起来都很不起眼,但是记住,onDraw 在一秒内会调用 60 次左右.而且不像其他的代码,它必须在 UI 线程上执行.你绘制一次屏幕只有 16 毫秒的时间.</p>
- -->
-            <div class="article-entry">
-                    
-                    
-                        
-                            
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                            
-                                
-                                <p><h1><span id="custom-views-and-performance">Custom Views and Performance</span></h1><p>Android 平台自带了很多标准控件,但是你总会发现有无法满足你的需求的时候,这时候你可以使用自定义控件.自定义控件是很容易的,困难的是怎么让自定义控件的性能表现良好.这里将会介绍一些会导致自定义控件表现变差的原因.</p>
-<ul>
-<li>在没有改变的时候仍然调用了 onDraw()</li>
-<li>耗费时间和资源绘制根本不会再界面上展示的像素.比如被遮挡住的部分</li>
-<li>我们还可以在 onDraw 中花很长的时间</li>
-<p>
-                            
-                        
-                    
-                    
-                        </div>   
-                        <div class="article-more-link">
-                            <a href="/2020/02/26/S1ep6-Custom-Views-and-Performance/#more">Read More</a>
                         </div>
                     
         </div>
@@ -688,6 +692,164 @@
                         </div>   
                         <div class="article-more-link">
                             <a href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-en/#more">Read More</a>
+                        </div>
+                    
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-image">
+        <a href="/2019/07/04/Navigation/" class="image is-7by1">
+            <img class="banner" src="/2019/07/04/Navigation/title.jpg" alt="Navigation 指南">
+        </a>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-07-03T16:00:00.000Z">2019-07-04</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    6 minutes read (About 861 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/07/04/Navigation/">Navigation 指南</a>
+            
+        </h1>
+        <div class="content">
+            <!-- <h1><span id="navigation-指南">Navigation 指南</span></h1><p>[TOC]</p>
+<p>由于官网暂时没有中文版本,所以在这里根据内容抽空做了一些中文的版本.</p>
+<p><code>Navigation</code> 是用来管理你的app中内容的跳转,返回等操作.它主要包含了以下三个部分:</p>
+<ul>
+<li><code>Navigation graph</code> : 一个 xml 资源包含了所有的导航相关的信息. 这些信息包含了你app里所有独立的内容区域,也就是 <code>destinations</code>  .</li>
+<li><code>NavHost</code> : 一个空白的容器用来展示你的  <code>Navigation graph</code> 中的 <code>destinations</code> . <code>Navigation</code> 模块中包含了一个默认的实现 <a href="https://developer.android.com/reference/androidx/navigation/fragment/NavHostFragment.html" target="_blank" rel="external"><code>NavHostFragment</code></a> 用来展示 Fragment 的 <code>destinations</code> .</li>
+<li><code>NavController</code> :  一个管理 NavHost 中的导航的对象. 会在用户使用app的时候管理 NavHost 中的内容.</li>
+</ul>
+<p>当在页面内导航的时候,你可以告诉 NavController 你想要通过Navigation graph 中的某个路径或者直接导航到一个destination .这时候 NavController 就会在 NavHost 中展示合适的 destination.</p>
+<p>Navigation 模块还提供了其他的好处,比如:</p>
+<ul>
+<li>处理了 fragment transactions</li>
+<li>默认情况下正确的处理了向上和返回动作</li>
+<li>为动画和过渡提供了标准化的资源</li>
+<li>实现和处理了深链接</li>
+<li>内置了 Navigation UI 组件,比如 navigation drawers 和 bottom navigation,可以减少附加的工作</li>
+<li><a href="https://developer.android.com/guide/navigation/navigation-pass-data#Safe-args" target="_blank" rel="external">Safe Args</a> - 一个 Gradle 插件当导航并在两个目的地中传递数据的时候提供了类型安全机制</li>
+<li>ViewModel 支持 - 你可以将 ViewModel 的作用域设置为 navigation graph 来在不同的 目的地之间共享 UI 相关连的数据</li>
+</ul>
+<p>并且你还可以使用 Android Studio’s <a href="https://developer.android.com/guide/navigation/navigation-getting-started" target="_blank" rel="external">Navigation Editor</a>  来查看和编辑 navigation graphs.</p>
+<p>Next steps</p>
+<p>For more documentation and resources related to the Navigation component, see the following.</p>
+<p>Getting started</p>
+<ul>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-getting-started" target="_blank" rel="external">Get started with the Navigation component</a></li>
+</ul>
+<p>Further topics</p>
+<ul>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-principles" target="_blank" rel="external">Principles of Navigation</a></li>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-form-factors" target="_blank" rel="external">Design for different form factors</a></li>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-design-graph" target="_blank" rel="external">Design navigation graphs</a></li>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-nested-graphs" target="_blank" rel="external">Nested graphs</a></li>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-global-action" target="_blank" rel="external">Global actions</a></li>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-conditional" target="_blank" rel="external">Conditional navigation</a></li>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-pass-data" target="_blank" rel="external">Pass data between destinations</a></li>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-deep-link" target="_blank" rel="external">Create a deep link for a destination</a></li>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-animate-transitions" target="_blank" rel="external">Animate transitions between destinations</a></li>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-ui" target="_blank" rel="external">Update UI components with NavigationUI</a></li>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-swipe-view" target="_blank" rel="external">Create swipe views with tabs</a></li>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-programmatic" target="_blank" rel="external">Interact programmatically with the Navigation component</a></li>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-testing" target="_blank" rel="external">Test navigation</a></li>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-add-new" target="_blank" rel="external">Add new destination types</a></li>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-custom-back" target="_blank" rel="external">Provide custom back navigation</a></li>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-migrate" target="_blank" rel="external">Migrate to the Navigation component</a></li>
+</ul>
+<p>Additional resources</p>
+<p>To learn more about navigation, see the following additional resources.</p>
+<p>Samples</p>
+<ul>
+<li><a href="https://github.com/googlesamples/android-architecture-components/tree/master/BasicSample" target="_blank" rel="external">Android Architecture Components basic sample</a></li>
+</ul>
+<p>Codelabs</p>
+<ul>
+<li><a href="https://codelabs.developers.google.com/codelabs/android-navigation/index.html?index=..%2F..%2Findex#0" target="_blank" rel="external">Navigation codelab</a></li>
+</ul>
+<p>Blog posts</p>
+<ul>
+<li><a href="https://medium.com/androiddevelopers/livedata-with-snackbar-navigation-and-other-events-the-singleliveevent-case-ac2622673150" target="_blank" rel="external">LiveData with SnackBar, Navigation and other events (the SingleLiveEvent case</a></li>
+</ul>
+<p>Videos</p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=9O1D_Ytk0xg" target="_blank" rel="external">10 Best Practices for Moving to a Single Activity</a></li>
+<li><a href="https://www.youtube.com/watch?v=2k8x8V77CrU" target="_blank" rel="external">Single Activity: Why, When, and How (Android Dev Summit ‘18)</a></li>
+<li><a href="https://www.youtube.com/watch?v=8GCXtCjtg40" target="_blank" rel="external">Android Jetpack: manage UI navigation with Navigation Controller (Google I/O ‘18)</a></li>
+</ul>
+<h1><span id="reference">Reference</span></h1><p><a href="https://developer.android.google.cn/guide/navigation" target="_blank" rel="external">https://developer.android.google.cn/guide/navigation</a></p>
+<h2><span id="about-me">About Me</span></h2><p>我的博客 <a href="http://leonchen1024.com/" target="_blank" rel="external">leonchen1024.com</a></p>
+<p>我的 GitHub <a href="https://github.com/LeonChen1024" target="_blank" rel="external">https://github.com/LeonChen1024</a></p>
+<p>微信公众号 </p>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/Images/CooderQRcodem.jpg?raw=false" alt="wechat"></p>
+ -->
+            <div class="article-entry">
+                    
+                    
+                        
+                            
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                            
+                                
+                                <p><h1><span id="navigation-指南">Navigation 指南</span></h1><p>[TOC]</p>
+<p>由于官网暂时没有中文版本,所以在这里根据内容抽空做了一些中文的版本.</p>
+<p><code>Navigation</code> 是用来管理你的app中内容的跳转,返回等操作.它主要包含了以下三个部分:</p>
+<ul>
+<li><code>Navigation graph</code> : 一个 xml 资源包含了所有的导航相关的信息. 这些信息包含了你app里所有独立的内容区域,也就是 <code>destinations</code>  .</li>
+<p>
+                            
+                        
+                    
+                    
+                        </div>   
+                        <div class="article-more-link">
+                            <a href="/2019/07/04/Navigation/#more">Read More</a>
                         </div>
                     
         </div>
@@ -939,164 +1101,6 @@
                         </div>   
                         <div class="article-more-link">
                             <a href="/2019/07/04/Navigation-Getting-Started/#more">Read More</a>
-                        </div>
-                    
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-image">
-        <a href="/2019/07/04/Navigation/" class="image is-7by1">
-            <img class="banner" src="/2019/07/04/Navigation/title.jpg" alt="Navigation 指南">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-07-03T16:00:00.000Z">2019-07-04</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    6 minutes read (About 861 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/07/04/Navigation/">Navigation 指南</a>
-            
-        </h1>
-        <div class="content">
-            <!-- <h1><span id="navigation-指南">Navigation 指南</span></h1><p>[TOC]</p>
-<p>由于官网暂时没有中文版本,所以在这里根据内容抽空做了一些中文的版本.</p>
-<p><code>Navigation</code> 是用来管理你的app中内容的跳转,返回等操作.它主要包含了以下三个部分:</p>
-<ul>
-<li><code>Navigation graph</code> : 一个 xml 资源包含了所有的导航相关的信息. 这些信息包含了你app里所有独立的内容区域,也就是 <code>destinations</code>  .</li>
-<li><code>NavHost</code> : 一个空白的容器用来展示你的  <code>Navigation graph</code> 中的 <code>destinations</code> . <code>Navigation</code> 模块中包含了一个默认的实现 <a href="https://developer.android.com/reference/androidx/navigation/fragment/NavHostFragment.html" target="_blank" rel="external"><code>NavHostFragment</code></a> 用来展示 Fragment 的 <code>destinations</code> .</li>
-<li><code>NavController</code> :  一个管理 NavHost 中的导航的对象. 会在用户使用app的时候管理 NavHost 中的内容.</li>
-</ul>
-<p>当在页面内导航的时候,你可以告诉 NavController 你想要通过Navigation graph 中的某个路径或者直接导航到一个destination .这时候 NavController 就会在 NavHost 中展示合适的 destination.</p>
-<p>Navigation 模块还提供了其他的好处,比如:</p>
-<ul>
-<li>处理了 fragment transactions</li>
-<li>默认情况下正确的处理了向上和返回动作</li>
-<li>为动画和过渡提供了标准化的资源</li>
-<li>实现和处理了深链接</li>
-<li>内置了 Navigation UI 组件,比如 navigation drawers 和 bottom navigation,可以减少附加的工作</li>
-<li><a href="https://developer.android.com/guide/navigation/navigation-pass-data#Safe-args" target="_blank" rel="external">Safe Args</a> - 一个 Gradle 插件当导航并在两个目的地中传递数据的时候提供了类型安全机制</li>
-<li>ViewModel 支持 - 你可以将 ViewModel 的作用域设置为 navigation graph 来在不同的 目的地之间共享 UI 相关连的数据</li>
-</ul>
-<p>并且你还可以使用 Android Studio’s <a href="https://developer.android.com/guide/navigation/navigation-getting-started" target="_blank" rel="external">Navigation Editor</a>  来查看和编辑 navigation graphs.</p>
-<p>Next steps</p>
-<p>For more documentation and resources related to the Navigation component, see the following.</p>
-<p>Getting started</p>
-<ul>
-<li><a href="https://developer.android.google.cn/guide/navigation/navigation-getting-started" target="_blank" rel="external">Get started with the Navigation component</a></li>
-</ul>
-<p>Further topics</p>
-<ul>
-<li><a href="https://developer.android.google.cn/guide/navigation/navigation-principles" target="_blank" rel="external">Principles of Navigation</a></li>
-<li><a href="https://developer.android.google.cn/guide/navigation/navigation-form-factors" target="_blank" rel="external">Design for different form factors</a></li>
-<li><a href="https://developer.android.google.cn/guide/navigation/navigation-design-graph" target="_blank" rel="external">Design navigation graphs</a></li>
-<li><a href="https://developer.android.google.cn/guide/navigation/navigation-nested-graphs" target="_blank" rel="external">Nested graphs</a></li>
-<li><a href="https://developer.android.google.cn/guide/navigation/navigation-global-action" target="_blank" rel="external">Global actions</a></li>
-<li><a href="https://developer.android.google.cn/guide/navigation/navigation-conditional" target="_blank" rel="external">Conditional navigation</a></li>
-<li><a href="https://developer.android.google.cn/guide/navigation/navigation-pass-data" target="_blank" rel="external">Pass data between destinations</a></li>
-<li><a href="https://developer.android.google.cn/guide/navigation/navigation-deep-link" target="_blank" rel="external">Create a deep link for a destination</a></li>
-<li><a href="https://developer.android.google.cn/guide/navigation/navigation-animate-transitions" target="_blank" rel="external">Animate transitions between destinations</a></li>
-<li><a href="https://developer.android.google.cn/guide/navigation/navigation-ui" target="_blank" rel="external">Update UI components with NavigationUI</a></li>
-<li><a href="https://developer.android.google.cn/guide/navigation/navigation-swipe-view" target="_blank" rel="external">Create swipe views with tabs</a></li>
-<li><a href="https://developer.android.google.cn/guide/navigation/navigation-programmatic" target="_blank" rel="external">Interact programmatically with the Navigation component</a></li>
-<li><a href="https://developer.android.google.cn/guide/navigation/navigation-testing" target="_blank" rel="external">Test navigation</a></li>
-<li><a href="https://developer.android.google.cn/guide/navigation/navigation-add-new" target="_blank" rel="external">Add new destination types</a></li>
-<li><a href="https://developer.android.google.cn/guide/navigation/navigation-custom-back" target="_blank" rel="external">Provide custom back navigation</a></li>
-<li><a href="https://developer.android.google.cn/guide/navigation/navigation-migrate" target="_blank" rel="external">Migrate to the Navigation component</a></li>
-</ul>
-<p>Additional resources</p>
-<p>To learn more about navigation, see the following additional resources.</p>
-<p>Samples</p>
-<ul>
-<li><a href="https://github.com/googlesamples/android-architecture-components/tree/master/BasicSample" target="_blank" rel="external">Android Architecture Components basic sample</a></li>
-</ul>
-<p>Codelabs</p>
-<ul>
-<li><a href="https://codelabs.developers.google.com/codelabs/android-navigation/index.html?index=..%2F..%2Findex#0" target="_blank" rel="external">Navigation codelab</a></li>
-</ul>
-<p>Blog posts</p>
-<ul>
-<li><a href="https://medium.com/androiddevelopers/livedata-with-snackbar-navigation-and-other-events-the-singleliveevent-case-ac2622673150" target="_blank" rel="external">LiveData with SnackBar, Navigation and other events (the SingleLiveEvent case</a></li>
-</ul>
-<p>Videos</p>
-<ul>
-<li><a href="https://www.youtube.com/watch?v=9O1D_Ytk0xg" target="_blank" rel="external">10 Best Practices for Moving to a Single Activity</a></li>
-<li><a href="https://www.youtube.com/watch?v=2k8x8V77CrU" target="_blank" rel="external">Single Activity: Why, When, and How (Android Dev Summit ‘18)</a></li>
-<li><a href="https://www.youtube.com/watch?v=8GCXtCjtg40" target="_blank" rel="external">Android Jetpack: manage UI navigation with Navigation Controller (Google I/O ‘18)</a></li>
-</ul>
-<h1><span id="reference">Reference</span></h1><p><a href="https://developer.android.google.cn/guide/navigation" target="_blank" rel="external">https://developer.android.google.cn/guide/navigation</a></p>
-<h2><span id="about-me">About Me</span></h2><p>我的博客 <a href="http://leonchen1024.com/" target="_blank" rel="external">leonchen1024.com</a></p>
-<p>我的 GitHub <a href="https://github.com/LeonChen1024" target="_blank" rel="external">https://github.com/LeonChen1024</a></p>
-<p>微信公众号 </p>
-<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/Images/CooderQRcodem.jpg?raw=false" alt="wechat"></p>
- -->
-            <div class="article-entry">
-                    
-                    
-                        
-                            
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                            
-                                
-                                <p><h1><span id="navigation-指南">Navigation 指南</span></h1><p>[TOC]</p>
-<p>由于官网暂时没有中文版本,所以在这里根据内容抽空做了一些中文的版本.</p>
-<p><code>Navigation</code> 是用来管理你的app中内容的跳转,返回等操作.它主要包含了以下三个部分:</p>
-<ul>
-<li><code>Navigation graph</code> : 一个 xml 资源包含了所有的导航相关的信息. 这些信息包含了你app里所有独立的内容区域,也就是 <code>destinations</code>  .</li>
-<p>
-                            
-                        
-                    
-                    
-                        </div>   
-                        <div class="article-more-link">
-                            <a href="/2019/07/04/Navigation/#more">Read More</a>
                         </div>
                     
         </div>
@@ -1724,25 +1728,6 @@
         
         <article class="media">
             
-            <a href="/2020/02/26/S1ep5-Tool-Strict-Mode/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/2020/02/26/S1ep5-Tool-Strict-Mode/titleThumb.jpg" alt="工具 严格模式">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-25T16:00:00.000Z">2020-02-26</time></div>
-                    <a href="/2020/02/26/S1ep5-Tool-Strict-Mode/" class="has-link-black-ter is-size-6">工具 严格模式</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
             <a href="/2020/02/26/S1ep6-Custom-Views-and-Performance/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/2020/02/26/S1ep6-Custom-Views-and-Performance/titleThumb.jpg" alt="自定义视图及其性能">
@@ -1753,6 +1738,25 @@
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-25T16:00:00.000Z">2020-02-26</time></div>
                     <a href="/2020/02/26/S1ep6-Custom-Views-and-Performance/" class="has-link-black-ter is-size-6">自定义视图及其性能</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/02/26/S1ep5-Tool-Strict-Mode/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/2020/02/26/S1ep5-Tool-Strict-Mode/titleThumb.jpg" alt="工具 严格模式">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-25T16:00:00.000Z">2020-02-26</time></div>
+                    <a href="/2020/02/26/S1ep5-Tool-Strict-Mode/" class="has-link-black-ter is-size-6">工具 严格模式</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
                     </p>
@@ -2173,25 +2177,6 @@
         
         <article class="media">
             
-            <a href="/2020/02/26/S1ep5-Tool-Strict-Mode/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/2020/02/26/S1ep5-Tool-Strict-Mode/titleThumb.jpg" alt="工具 严格模式">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-25T16:00:00.000Z">2020-02-26</time></div>
-                    <a href="/2020/02/26/S1ep5-Tool-Strict-Mode/" class="has-link-black-ter is-size-6">工具 严格模式</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
             <a href="/2020/02/26/S1ep6-Custom-Views-and-Performance/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/2020/02/26/S1ep6-Custom-Views-and-Performance/titleThumb.jpg" alt="自定义视图及其性能">
@@ -2202,6 +2187,25 @@
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-25T16:00:00.000Z">2020-02-26</time></div>
                     <a href="/2020/02/26/S1ep6-Custom-Views-and-Performance/" class="has-link-black-ter is-size-6">自定义视图及其性能</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/02/26/S1ep5-Tool-Strict-Mode/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/2020/02/26/S1ep5-Tool-Strict-Mode/titleThumb.jpg" alt="工具 严格模式">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-25T16:00:00.000Z">2020-02-26</time></div>
+                    <a href="/2020/02/26/S1ep5-Tool-Strict-Mode/" class="has-link-black-ter is-size-6">工具 严格模式</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
                     </p>
