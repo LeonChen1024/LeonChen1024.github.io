@@ -2,7 +2,7 @@
 <html >
 <head>
     <meta charset="utf-8">
-<title>Tag: Android - LeonChen&#39;s Blog</title>
+<title>タグ: Android - LeonChen&#39;s Blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
 
@@ -147,12 +147,117 @@
     <div class="card-content">
         <nav class="breadcrumb" aria-label="breadcrumbs">
         <ul>
-            <li><a href="/tags">Tags</a></li>
+            <li><a href="/tags">タグ</a></li>
             <li class="is-active"><a href="#" aria-current="page">Android</a></li>
         </ul>
         </nav>
     </div>
 </div>
+
+    <div class="card">
+    
+    <div class="card-image">
+        <a href="/2020/03/31/Module-dependency-manage/" class="image is-7by1">
+            <img class="banner" src="/2020/03/31/Module-dependency-manage/title.jpg" alt="Android 模块依赖版本管理">
+        </a>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-03-30T16:00:00.000Z">2020-03-31</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Android/版本管理/">版本管理</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    4 minutes read (About 593 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2020/03/31/Module-dependency-manage/">Android 模块依赖版本管理</a>
+            
+        </h1>
+        <div class="content">
+            <!-- <h1><span id="android-模块依赖版本管理">Android 模块依赖版本管理</span></h1><p>由于 Android 模块化的需要,依赖库要保持统一,但是每次一旦某个模块版本变动,就要手动修改所有模块的版本号未免显得有些繁琐,而且有一些共用的模块可能在不同的项目中要使用不同的版本.所以需要一个统一管理版本模块的方法.</p>
+<h1><span id="步骤">步骤</span></h1><h3><span id="1-在项目主目录下新建一个名为-dependencygradle-的文件">1. 在项目主目录下新建一个名为 <code>dependency.gradle</code> 的文件</span></h3><h3><span id="2-在该文件写入配置信息">2. 在该文件写入配置信息</span></h3><figure class="highlight groovy hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line">ext &#123;</div><div class="line">    </div><div class="line">    ext.deps = [:]</div><div class="line">    <span class="hljs-keyword">def</span> deps = [:]</div><div class="line"></div><div class="line">    <span class="hljs-comment">// 统一的版本号管理</span></div><div class="line">    <span class="hljs-keyword">def</span> versions = [:]</div><div class="line">    versions.kotlin = <span class="hljs-string">"1.3.70"</span></div><div class="line">    versions.android_gradle_plugin = <span class="hljs-string">"3.5.2"</span></div><div class="line">    versions.appcompat = <span class="hljs-string">"1.1.0"</span></div><div class="line">    versions.dagger = <span class="hljs-string">"2.16"</span></div><div class="line">    versions.material = <span class="hljs-string">"1.2.0-alpha03"</span></div><div class="line">    versions.work = <span class="hljs-string">"2.3.0-alpha01"</span></div><div class="line">    versions.retrofit = <span class="hljs-string">"2.3.0"</span></div><div class="line">    versions.recyclerview = <span class="hljs-string">"1.1.0"</span></div><div class="line">    versions.okhttp = <span class="hljs-string">"3.0.1"</span></div><div class="line">    versions.guava = <span class="hljs-string">"20.0"</span></div><div class="line">    versions.navigation = <span class="hljs-string">"2.3.0-alpha01"</span></div><div class="line">    versions.multidex = <span class="hljs-string">"1.0.0"</span></div><div class="line"></div><div class="line"><span class="hljs-comment">//------------------------------------------------------------------------------</span></div><div class="line"></div><div class="line">    <span class="hljs-comment">// 一组依赖可以使用这个方式</span></div><div class="line">    <span class="hljs-keyword">def</span> navigation = [:]</div><div class="line">    navigation.runtime = <span class="hljs-string">"androidx.navigation:navigation-runtime:$versions.navigation"</span></div><div class="line">    navigation.runtime_ktx = <span class="hljs-string">"androidx.navigation:navigation-runtime-ktx:$versions.navigation"</span></div><div class="line">    navigation.fragment = <span class="hljs-string">"androidx.navigation:navigation-fragment:$versions.navigation"</span></div><div class="line">    <span class="hljs-comment">// 这句要记得</span></div><div class="line">    deps.navigation = navigation</div><div class="line">    ...</div><div class="line">    </div><div class="line">    <span class="hljs-comment">// 单个依赖可以使用这中方式</span></div><div class="line">    deps.app_compat = <span class="hljs-string">"androidx.appcompat:appcompat:$versions.appcompat"</span>    </div><div class="line">        </div><div class="line">    <span class="hljs-comment">// app 本身的版本管理也可以放进来</span></div><div class="line">    <span class="hljs-keyword">def</span> build_versions = [:]</div><div class="line">    build_versions.min_sdk = <span class="hljs-number">19</span></div><div class="line">    build_versions.compile_sdk = <span class="hljs-number">29</span></div><div class="line">    build_versions.target_sdk = <span class="hljs-number">29</span></div><div class="line">    build_versions.build_tools = <span class="hljs-string">"29.0.3"</span></div><div class="line">    ext.build_versions = build_versions</div><div class="line">    </div><div class="line">    ext.deps = deps</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>如上图所示,配置文件就完成了</p>
+<h3><span id="3-使用">3. 使用</span></h3><p>在 root 目录下的 <code>build.gradle</code> 中加上 <code>apply from: &quot;dependency.gradle&quot;</code></p>
+<p>在需要添加依赖的 Module 中使用,如下</p>
+<figure class="highlight groovy hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">android &#123;</div><div class="line">    compileSdkVersion build_versions.compile_sdk</div><div class="line">    buildToolsVersion build_versions.buildToolsVersion</div><div class="line"></div><div class="line">    defaultConfig &#123;</div><div class="line">        minSdkVersion build_versions.minSdkVersion</div><div class="line">        ...</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight groovy hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">dependencies &#123;</div><div class="line">    compile fileTree(<span class="hljs-string">dir:</span> <span class="hljs-string">'libs'</span>, <span class="hljs-string">include:</span> [<span class="hljs-string">'*.jar'</span>])</div><div class="line">    implementation deps.app_compat</div><div class="line">    implementation deps.navigation.runtime</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3><span id="tip">tip</span></h3><p>在多应用的情况下,最好是有一个统一的文档对所有的依赖名等做一个规范,避免出现不同项目使用了不同的命名.</p>
+<h1><span id="进阶">进阶</span></h1><p>当我们有多个项目的时候,使用同样的一份依赖可以免去大量的重复工作,和版本适配问题.这个时候其实也很简单</p>
+<h3><span id="本地版">本地版</span></h3><figure class="highlight gradle hljs"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">apply <span class="hljs-keyword">from</span>: <span class="hljs-string">"../../AndroidShareLib/gradle/dependency.gradle"</span></div></pre></td></tr></table></figure>
+<p>我们只需要放在一个共有目录下进行索引即可,这样两个项目都可以复用这个依赖文件</p>
+<h3><span id="网络版">网络版</span></h3><p>将这个gradle 放在网上,比如git仓库中,然后这里使用连接引用即可</p>
+<h1><span id="reference">Reference</span></h1><p><a href="http://leonchen1024.com/2018/04/13/APP-Version-Control/" target="_blank" rel="external">APP 版本控制</a></p>
+<h2><span id="about-me">About Me</span></h2><p>我的博客 <a href="http://leonchen1024.com/" target="_blank" rel="external">leonchen1024.com</a></p>
+<p>我的 GitHub <a href="https://github.com/LeonChen1024" target="_blank" rel="external">https://github.com/LeonChen1024</a></p>
+<p>微信公众号 </p>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/Images/CooderQRcodem.jpg?raw=false" alt="wechat"></p>
+ -->
+            <div class="article-entry">
+                    
+                    
+                        
+                            
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                            
+                                
+                                <p><h1><span id="android-模块依赖版本管理">Android 模块依赖版本管理</span></h1><p>由于 Android 模块化的需要,依赖库要保持统一,但是每次一旦某个模块版本变动,就要手动修改所有模块的版本号未免显得有些繁琐,而且有一些共用的模块可能在不同的项目中要使用不同的版本.所以需要一个统一管理版本模块的方法.</p>
+<h1><span id="步骤">步骤</span></h1><h3><span id="1-在项目主目录下新建一个名为-dependencygradle-的文件">1. 在项目主目录下新建一个名为 <code>dependency.gradle</code> 的文件</span></h3><h3><span id="2-在该文件写入配置信息">2. 在该文件写入配置信息</span></h3><figure class="highlight groovy hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line">ext &#123;</div><div class="line">    </div><div class="line">    ext.deps = [:]</div><div class="line">    <span class="hljs-keyword">def</span> deps = [:]</div><div class="line"></div><div class="line">    <span class="hljs-comment">// 统一的版本号管理</span></div><div class="line">    <span class="hljs-keyword">def</span> versions = [:]</div><div class="line">    versions.kotlin = <span class="hljs-string">"1.3.70"</span></div><div class="line">    versions.android_gradle_plugin = <span class="hljs-string">"3.5.2"</span></div><div class="line">    versions.appcompat = <span class="hljs-string">"1.1.0"</span></div><div class="line">    versions.dagger = <span class="hljs-string">"2.16"</span></div><div class="line">    versions.material = <span class="hljs-string">"1.2.0-alpha03"</span></div><div class="line">    versions.work = <span class="hljs-string">"2.3.0-alpha01"</span></div><div class="line">    versions.retrofit = <span class="hljs-string">"2.3.0"</span></div><div class="line">    versions.recyclerview = <span class="hljs-string">"1.1.0"</span></div><div class="line">    versions.okhttp = <span class="hljs-string">"3.0.1"</span></div><div class="line">    versions.guava = <span class="hljs-string">"20.0"</span></div><div class="line">    versions.navigation = <span class="hljs-string">"2.3.0-alpha01"</span></div><div class="line">    versions.multidex = <span class="hljs-string">"1.0.0"</span></div><div class="line"></div><div class="line"><span class="hljs-comment">//------------------------------------------------------------------------------</span></div><div class="line"></div><div class="line">    <span class="hljs-comment">// 一组依赖可以使用这个方式</span></div><div class="line">    <span class="hljs-keyword">def</span> navigation = [:]</div><div class="line">    navigation.runtime = <span class="hljs-string">"androidx.navigation:navigation-runtime:$versions.navigation"</span></div><div class="line">    navigation.runtime_ktx = <span class="hljs-string">"androidx.navigation:navigation-runtime-ktx:$versions.navigation"</span></div><div class="line">    navigation.fragment = <span class="hljs-string">"androidx.navigation:navigation-fragment:$versions.navigation"</span></div><div class="line">    <span class="hljs-comment">// 这句要记得</span></div><div class="line">    deps.navigation = navigation</div><div class="line">    ...</div><div class="line">    </div><div class="line">    <span class="hljs-comment">// 单个依赖可以使用这中方式</span></div><div class="line">    deps.app_compat = <span class="hljs-string">"androidx.appcompat:appcompat:$versions.appcompat"</span>    </div><div class="line">        </div><div class="line">    <span class="hljs-comment">// app 本身的版本管理也可以放进来</span></div><div class="line">    <span class="hljs-keyword">def</span> build_versions = [:]</div><div class="line">    build_versions.min_sdk = <span class="hljs-number">19</span></div><div class="line">    build_versions.compile_sdk = <span class="hljs-number">29</span></div><div class="line">    build_versions.target_sdk = <span class="hljs-number">29</span></div><div class="line">    build_versions.build_tools = <span class="hljs-string">"29.0.3"</span></div><div class="line">    ext.build_versions = build_versions</div><div class="line">    </div><div class="line">    ext.deps = deps</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>如上图所示,配置文件就完成了</p>
+<h3><span id="3-使用">3. 使用</span></h3><p>在 root 目录下的 <code>build.gradle</code> 中加上 <code>apply from: &quot;dependency.gradle&quot;</code></p>
+<p>在需要添加依赖的 Module 中使用,如下</p>
+<p>
+                            
+                        
+                    
+                    
+                        </div>   
+                        <div class="article-more-link">
+                            <a href="/2020/03/31/Module-dependency-manage/#more">Read More</a>
+                        </div>
+                    
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
 
     <div class="card">
     
@@ -283,112 +388,6 @@
     <div class="card">
     
     <div class="card-image">
-        <a href="/2020/02/26/S1ep6-Custom-Views-and-Performance/" class="image is-7by1">
-            <img class="banner" src="/2020/02/26/S1ep6-Custom-Views-and-Performance/title.jpg" alt="自定义视图及其性能">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-02-25T16:00:00.000Z">2020-02-26</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Android/Android-Performance-pattern/">Android Performance pattern</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    7 minutes read (About 1039 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2020/02/26/S1ep6-Custom-Views-and-Performance/">自定义视图及其性能</a>
-            
-        </h1>
-        <div class="content">
-            <!-- <h1><span id="custom-views-and-performance">Custom Views and Performance</span></h1><p>Android 平台自带了很多标准控件,但是你总会发现有无法满足你的需求的时候,这时候你可以使用自定义控件.自定义控件是很容易的,困难的是怎么让自定义控件的性能表现良好.这里将会介绍一些会导致自定义控件表现变差的原因.</p>
-<ul>
-<li>在没有改变的时候仍然调用了 onDraw()</li>
-<li>耗费时间和资源绘制根本不会再界面上展示的像素.比如被遮挡住的部分</li>
-<li>我们还可以在 onDraw 中花很长的时间</li>
-</ul>
-<p>首先介绍在没有改变的时候仍然执行了绘制流程,要记住,所有的绘制都始于 View.invalidate() . 第一个原则是自定义控件不要调用 invalidate 除非你必须这么做.如果没有东西被改变了,那就不需要重新绘制.第二个原则是传入一个块内容给 invalidate.这会帮助系统决定哪些内容需要被重绘以及什么时候调用 onDraw.如下:</p>
-<p><img src="res/view-invalidation.png" alt=""></p>
-<p>大致流程是这样的,首先它会判断块内容是否被修改了,如果被修改了,那么就判断这个内容是否在屏幕上,如果在屏幕上,再判断这个内容是否可见,如果可见,才进行重绘.</p>
-<p>可见 onDraw 是非常重要的,你的视图是流畅,性能优异的还是差劲的它占了很大的作用.</p>
-<p>我们写一个不太理想的 onDraw 是非常容易,其中一个方式就是过度绘制.比如你绘制了一些根本就看不到的内容,这是一个无用功.</p>
-<p>那我们如何处理那些看不到的内容呢?我们可以通过设置clip rectangle来达到这个目的.这个裁剪的目的就是使得范围外的内容不会去触碰和绘制,保证他们不会消耗任何东西.调用这个功能的方法是 Canvas.clipRect().当你调用这个方法的时候会保证 GPU 只处理这个方块内的内容.这个效果会持续到下一次调用  Canvas.clipRect().这个在低端的 GPU 上效果明显,但是在高端的 GPU 上的效果就没那么明显了.甚至在一些硬件条件下,可能你花费在 CPU 计算这个裁剪的内容的时间,比你在 GPU 绘制上节省的时间还多.这意味着我们还有一个需要优化的部分就是 CPU 消耗,这个消耗基本上都在 onDraw 上.我们有以下几个建议:</p>
-<ol>
-<li>不要绘制任何你没必要绘制的东西.可以通过调用 Canvas.quickReject 来定义那些元素并不在屏幕上.如果它返回 true 那么不要绘制这个元素.如果一个元素有一部分仍然在屏幕内容,它依然会返回 false,只有完全不在屏幕上的才会返回 true.</li>
-<li>不要使用没有硬件加速的绘制.硬件加速意味着这些操作发生在 GPU 上.如果不是硬件加速的话,它意味着需要 CPU 来处理绘,然后他要把这个结果发送给 GPU 来和剩余的视图部分做组合.对比硬件加速来说,这简直就是让人发指的慢.如果你使用的方法并没有硬件加速,那么考虑是不是有其他的方式来绘制.</li>
-<li>不要再 onDraw 方法中分配内存,以及在 onDraw 中调用的方法.分配会消耗两种东西,首先是直接消耗了分配和初始化对象的性能,然后在垃圾回收的时候还有一次消耗.这两种中的每一种都可能会造成丢帧的现象.</li>
-</ol>
-<p>也许这些建议看起来都很不起眼,但是记住,onDraw 在一秒内会调用 60 次左右.而且不像其他的代码,它必须在 UI 线程上执行.你绘制一次屏幕只有 16 毫秒的时间.</p>
- -->
-            <div class="article-entry">
-                    
-                    
-                        
-                            
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                            
-                                
-                                <p><h1><span id="custom-views-and-performance">Custom Views and Performance</span></h1><p>Android 平台自带了很多标准控件,但是你总会发现有无法满足你的需求的时候,这时候你可以使用自定义控件.自定义控件是很容易的,困难的是怎么让自定义控件的性能表现良好.这里将会介绍一些会导致自定义控件表现变差的原因.</p>
-<ul>
-<li>在没有改变的时候仍然调用了 onDraw()</li>
-<li>耗费时间和资源绘制根本不会再界面上展示的像素.比如被遮挡住的部分</li>
-<li>我们还可以在 onDraw 中花很长的时间</li>
-<p>
-                            
-                        
-                    
-                    
-                        </div>   
-                        <div class="article-more-link">
-                            <a href="/2020/02/26/S1ep6-Custom-Views-and-Performance/#more">Read More</a>
-                        </div>
-                    
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-image">
         <a href="/2020/02/26/S1ep5-Tool-Strict-Mode/" class="image is-7by1">
             <img class="banner" src="/2020/02/26/S1ep5-Tool-Strict-Mode/title.jpg" alt="工具 严格模式">
         </a>
@@ -477,6 +476,112 @@
                         </div>   
                         <div class="article-more-link">
                             <a href="/2020/02/26/S1ep5-Tool-Strict-Mode/#more">Read More</a>
+                        </div>
+                    
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-image">
+        <a href="/2020/02/26/S1ep6-Custom-Views-and-Performance/" class="image is-7by1">
+            <img class="banner" src="/2020/02/26/S1ep6-Custom-Views-and-Performance/title.jpg" alt="自定义视图及其性能">
+        </a>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-02-25T16:00:00.000Z">2020-02-26</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Android/Android-Performance-pattern/">Android Performance pattern</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    7 minutes read (About 1039 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2020/02/26/S1ep6-Custom-Views-and-Performance/">自定义视图及其性能</a>
+            
+        </h1>
+        <div class="content">
+            <!-- <h1><span id="custom-views-and-performance">Custom Views and Performance</span></h1><p>Android 平台自带了很多标准控件,但是你总会发现有无法满足你的需求的时候,这时候你可以使用自定义控件.自定义控件是很容易的,困难的是怎么让自定义控件的性能表现良好.这里将会介绍一些会导致自定义控件表现变差的原因.</p>
+<ul>
+<li>在没有改变的时候仍然调用了 onDraw()</li>
+<li>耗费时间和资源绘制根本不会再界面上展示的像素.比如被遮挡住的部分</li>
+<li>我们还可以在 onDraw 中花很长的时间</li>
+</ul>
+<p>首先介绍在没有改变的时候仍然执行了绘制流程,要记住,所有的绘制都始于 View.invalidate() . 第一个原则是自定义控件不要调用 invalidate 除非你必须这么做.如果没有东西被改变了,那就不需要重新绘制.第二个原则是传入一个块内容给 invalidate.这会帮助系统决定哪些内容需要被重绘以及什么时候调用 onDraw.如下:</p>
+<p><img src="res/view-invalidation.png" alt=""></p>
+<p>大致流程是这样的,首先它会判断块内容是否被修改了,如果被修改了,那么就判断这个内容是否在屏幕上,如果在屏幕上,再判断这个内容是否可见,如果可见,才进行重绘.</p>
+<p>可见 onDraw 是非常重要的,你的视图是流畅,性能优异的还是差劲的它占了很大的作用.</p>
+<p>我们写一个不太理想的 onDraw 是非常容易,其中一个方式就是过度绘制.比如你绘制了一些根本就看不到的内容,这是一个无用功.</p>
+<p>那我们如何处理那些看不到的内容呢?我们可以通过设置clip rectangle来达到这个目的.这个裁剪的目的就是使得范围外的内容不会去触碰和绘制,保证他们不会消耗任何东西.调用这个功能的方法是 Canvas.clipRect().当你调用这个方法的时候会保证 GPU 只处理这个方块内的内容.这个效果会持续到下一次调用  Canvas.clipRect().这个在低端的 GPU 上效果明显,但是在高端的 GPU 上的效果就没那么明显了.甚至在一些硬件条件下,可能你花费在 CPU 计算这个裁剪的内容的时间,比你在 GPU 绘制上节省的时间还多.这意味着我们还有一个需要优化的部分就是 CPU 消耗,这个消耗基本上都在 onDraw 上.我们有以下几个建议:</p>
+<ol>
+<li>不要绘制任何你没必要绘制的东西.可以通过调用 Canvas.quickReject 来定义那些元素并不在屏幕上.如果它返回 true 那么不要绘制这个元素.如果一个元素有一部分仍然在屏幕内容,它依然会返回 false,只有完全不在屏幕上的才会返回 true.</li>
+<li>不要使用没有硬件加速的绘制.硬件加速意味着这些操作发生在 GPU 上.如果不是硬件加速的话,它意味着需要 CPU 来处理绘,然后他要把这个结果发送给 GPU 来和剩余的视图部分做组合.对比硬件加速来说,这简直就是让人发指的慢.如果你使用的方法并没有硬件加速,那么考虑是不是有其他的方式来绘制.</li>
+<li>不要再 onDraw 方法中分配内存,以及在 onDraw 中调用的方法.分配会消耗两种东西,首先是直接消耗了分配和初始化对象的性能,然后在垃圾回收的时候还有一次消耗.这两种中的每一种都可能会造成丢帧的现象.</li>
+</ol>
+<p>也许这些建议看起来都很不起眼,但是记住,onDraw 在一秒内会调用 60 次左右.而且不像其他的代码,它必须在 UI 线程上执行.你绘制一次屏幕只有 16 毫秒的时间.</p>
+ -->
+            <div class="article-entry">
+                    
+                    
+                        
+                            
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                            
+                                
+                                <p><h1><span id="custom-views-and-performance">Custom Views and Performance</span></h1><p>Android 平台自带了很多标准控件,但是你总会发现有无法满足你的需求的时候,这时候你可以使用自定义控件.自定义控件是很容易的,困难的是怎么让自定义控件的性能表现良好.这里将会介绍一些会导致自定义控件表现变差的原因.</p>
+<ul>
+<li>在没有改变的时候仍然调用了 onDraw()</li>
+<li>耗费时间和资源绘制根本不会再界面上展示的像素.比如被遮挡住的部分</li>
+<li>我们还可以在 onDraw 中花很长的时间</li>
+<p>
+                            
+                        
+                    
+                    
+                        </div>   
+                        <div class="article-more-link">
+                            <a href="/2020/02/26/S1ep6-Custom-Views-and-Performance/#more">Read More</a>
                         </div>
                     
         </div>
@@ -1391,136 +1496,15 @@
 
 
 
-    <div class="card">
-    
-    <div class="card-image">
-        <a href="/2018/12/23/S1ep1-The-macgic-of-LRU-Cache/" class="image is-7by1">
-            <img class="banner" src="/2018/12/23/S1ep1-The-macgic-of-LRU-Cache/title.jpg" alt="LRU 缓存的魔力">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2018-12-22T16:00:00.000Z">2018-12-23</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Android/Android-Performance-pattern/">Android Performance pattern</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    6 minutes read (About 930 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2018/12/23/S1ep1-The-macgic-of-LRU-Cache/">LRU 缓存的魔力</a>
-            
-        </h1>
-        <div class="content">
-            <!-- <h1><span id="lru-缓存的魔力">LRU 缓存的魔力</span></h1><h2><span id="场景">场景</span></h2><p>假设这么一个情况,当你需要多次展示同一个图片的时候,如果你重复从硬盘中加载图片的话,那么会造成资源的浪费,甚至可能会OOM.</p>
-<p>这个时候我们可以使用 cache 来避免这种情况,我们只从硬盘中加载一次到内存中,然后在需要的时候反复使用这个照片.</p>
-<p>但是,当这个 cache 里的资源已经装满的时候,那么我们就必须移除cache里面的某些数据,来给要加入的数据腾出空间.</p>
-<h2><span id="解决方案">解决方案</span></h2><p>在这种情况下,我们应该选择移除哪些资源才是最有优的呢?显而易见的,我们应该移除之后不会用到的资源,还有就是间隔最久才会用到的资源.这里有一个详细的最优算法如下:<br>$$<br>T = m * T_m + T_h + E<br>$$<br>其中:</p>
-<p>T = 平均内存引用时间</p>
-<p>m = 没选中的概率 = 1 - (选中的概率)</p>
-<p> T_m  = 当没选中的时候主内存访问的时间(或者,如果是多级缓存的时候,还要算上更低级的缓存内存引用时间的平均值)</p>
-<p> T_h  = 延迟 : 当选中该资源的时候缓存引用的时间</p>
-<p>E = 各种副作用,比如多处理器系统中的 排队效应</p>
-<h3><span id="lru">LRU</span></h3><p>要得到一个完美的方法是很复杂的,这里我们介绍一个常用的算法,叫做 LRU cache (least recently used),它的原理很简单,就是把使用的元素提到队列的开始,这样最近使用的资源将会在开始的地方,而那些长期未被使用的资源将会在后面,然后当空间不够的时候将会从后面开始释放资源.LRU 的思路是最近使用的资源他们就推测他在未来也有更大的可能性会被使用.</p>
-<p>LRU 并不是一个普通的容器.他需要一些策略来实现他的要求.</p>
-<ul>
-<li>LruCache 由键值对组成 , 形如 LruCache<key,value></key,value></li>
-<li><p>它需要有一个最大值,要注意它的取值,太小的话那么缓存不了多少东西,会导致频繁的重新读取,导致失去缓存的意义,太大的话可能会导致 oom.所以最好是根据你的应用当前可用的内存来决定这个大小.</p>
-</li>
-<li><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-comment">//set the max memory used by lru</span></div><div class="line"></div><div class="line">ActivityManager am = (ActivityManager)getSystemService(Context.ACTIVITY_SERVICE);</div><div class="line"><span class="hljs-keyword">int</span> availMemInBytes = am.getMemoryClass() * <span class="hljs-number">1024</span> * <span class="hljs-number">1024</span>;</div><div class="line"><span class="hljs-comment">//8 is a common value , we can twist it by how much memory can we app used,</span></div><div class="line"><span class="hljs-comment">//and what kind of the phone we run on.</span></div><div class="line">LruCache bitmapCache = <span class="hljs-keyword">new</span> LruCache&lt;String,Bitmap&gt;(availMemInBytes / <span class="hljs-number">8</span>);</div></pre></td></tr></table></figure>
-<p>其中 8 是一个比较通用的值,当然你可以根据你的应用所占用的内存来进行调整,还有运行的机型的限制等.</p>
-</li>
-</ul>
-<ul>
-<li><p>我们还需要知道里面存储的每一个对象的值的大小.比如我们可以</p>
-<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Public <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ThumbnailCache</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">LruCache</span>&lt;<span class="hljs-title">String</span>,<span class="hljs-title">Bitmap</span>&gt;</span>&#123;</div><div class="line">    <span class="hljs-meta">@Override</span></div><div class="line">    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">int</span> <span class="hljs-title">sizeOf</span><span class="hljs-params">(String key,Bitmap value)</span></span>&#123;</div><div class="line">        <span class="hljs-comment">//return the size of the in-memory bitmap,</span></div><div class="line">        <span class="hljs-comment">//counted against maxSizeBytes</span></div><div class="line">        <span class="hljs-keyword">return</span> value.getByteCount();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>当我们从 LruCache 中获取数据的时候,需要对数据已经被回收或者没有进入过缓存的情况做处理.</p>
-<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-comment">// get data from Lru and put data to Lru</span></div><div class="line"></div><div class="line">Bitmap bmpToDraw = mCache.get(filename);</div><div class="line"><span class="hljs-keyword">if</span>(bmpToDraw == <span class="hljs-keyword">null</span>)&#123;</div><div class="line">    bmpToDraw = BitmapFactory.decodeFile(filename);</div><div class="line">    mCache.put(filename,bmpToDraw);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>还要注意的一点是,当你存进一个较大的对象的时候,有时候 LruCache 会同时清理多个资源来给这个对象腾出位置.</p>
-<h2><span id="resource">Resource</span></h2><p><a href="https://www.youtube.com/playlist?list=PLWz5rJ2EKKc9CBxr3BVjPTPoDPLdPIFCE" target="_blank" rel="external">https://www.youtube.com/playlist?list=PLWz5rJ2EKKc9CBxr3BVjPTPoDPLdPIFCE</a></p>
-<h2><span id="about-me">About Me</span></h2><p>我的博客 <a href="http://leonchen1024.com/" target="_blank" rel="external">leonchen1024.com</a></p>
-<p>我的 GitHub <a href="https://github.com/LeonChen1024" target="_blank" rel="external">https://github.com/LeonChen1024</a></p>
-<p>微信公众号 </p>
-<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/Images/CooderQRcodem.jpg?raw=false" alt="wechat"></p>
- -->
-            <div class="article-entry">
-                    
-                    
-                        
-                            
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                            
-                                
-                                <p><h1><span id="lru-缓存的魔力">LRU 缓存的魔力</span></h1><h2><span id="场景">场景</span></h2><p>假设这么一个情况,当你需要多次展示同一个图片的时候,如果你重复从硬盘中加载图片的话,那么会造成资源的浪费,甚至可能会OOM.</p>
-<p>这个时候我们可以使用 cache 来避免这种情况,我们只从硬盘中加载一次到内存中,然后在需要的时候反复使用这个照片.</p>
-<p>但是,当这个 cache 里的资源已经装满的时候,那么我们就必须移除cache里面的某些数据,来给要加入的数据腾出空间.</p>
-<h2><span id="解决方案">解决方案</span></h2><p>在这种情况下,我们应该选择移除哪些资源才是最有优的呢?显而易见的,我们应该移除之后不会用到的资源,还有就是间隔最久才会用到的资源.这里有一个详细的最优算法如下:<br>$$<br>T = m * T_m + T_h + E<br>$$<br>其中:</p>
-<p>T = 平均内存引用时间</p>
-<p>
-                            
-                        
-                    
-                    
-                        </div>   
-                        <div class="article-more-link">
-                            <a href="/2018/12/23/S1ep1-The-macgic-of-LRU-Cache/#more">Read More</a>
-                        </div>
-                    
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
     <nav class="pagination is-centered" role="navigation" aria-label="pagination">
         <div class="pagination-previous is-invisible is-hidden-mobile">
-            <a class="is-flex-grow has-text-black-ter" href="/tags/Android/page/0/">Previous</a>
+            <a class="is-flex-grow has-text-black-ter" href="/tags/Android/page/0/">前</a>
         </div>
         <div class="pagination-next">
-            <a class="is-flex-grow has-text-black-ter" href="/tags/Android/page/2/">Next</a>
+            <a class="is-flex-grow has-text-black-ter" href="/tags/Android/page/2/">次</a>
         </div>
         <ul class="pagination-list is-hidden-mobile">
             
@@ -1571,17 +1555,17 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Posts
+                        投稿
                     </p>
                     <p class="title has-text-weight-normal">
-                        38
+                        39
                     </p>
                 </div>
             </div>
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categories
+                        カテゴリ
                     </p>
                     <p class="title has-text-weight-normal">
                         20
@@ -1591,7 +1575,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Tags
+                        タグ
                     </p>
                     <p class="title has-text-weight-normal">
                         17
@@ -1601,7 +1585,7 @@
         </nav>
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://github.com/LeonChen1024">
-                Follow</a>
+                フォローする</a>
         </div>
         
         
@@ -1630,7 +1614,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categories
+                カテゴリ
             </h3>
             <ul class="menu-list">
             <li>
@@ -1639,7 +1623,7 @@
                 <span class="level-item">Chinese</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">29</span>
+                <span class="level-item tag">30</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="undefined">
@@ -1655,7 +1639,7 @@
                 <span class="level-item">Android</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">12</span>
+                <span class="level-item tag">13</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="undefined">
@@ -1707,9 +1691,9 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Tag Cloud
+            タグクラウド
         </h3>
-        <a href="/tags/Algorithm/" style="font-size: 18.75px;">Algorithm</a> <a href="/tags/Android/" style="font-size: 16.25px;">Android</a> <a href="/tags/Chinese/" style="font-size: 20px;">Chinese</a> <a href="/tags/Custom-View/" style="font-size: 10px;">Custom View</a> <a href="/tags/Data-Structure/" style="font-size: 10px;">Data Structure</a> <a href="/tags/DataStructure/" style="font-size: 10px;">DataStructure</a> <a href="/tags/English/" style="font-size: 15px;">English</a> <a href="/tags/Error/" style="font-size: 10px;">Error</a> <a href="/tags/Gradle/" style="font-size: 11.25px;">Gradle</a> <a href="/tags/Java/" style="font-size: 12.5px;">Java</a> <a href="/tags/Jetpack/" style="font-size: 11.25px;">Jetpack</a> <a href="/tags/LeetCode/" style="font-size: 17.5px;">LeetCode</a> <a href="/tags/Optimize/" style="font-size: 13.75px;">Optimize</a> <a href="/tags/SourceCode/" style="font-size: 10px;">SourceCode</a> <a href="/tags/UI/" style="font-size: 10px;">UI</a> <a href="/tags/版本差异/" style="font-size: 11.25px;">版本差异</a> <a href="/tags/版本管理/" style="font-size: 11.25px;">版本管理</a>
+        <a href="/tags/Algorithm/" style="font-size: 18.75px;">Algorithm</a> <a href="/tags/Android/" style="font-size: 16.25px;">Android</a> <a href="/tags/Chinese/" style="font-size: 20px;">Chinese</a> <a href="/tags/Custom-View/" style="font-size: 10px;">Custom View</a> <a href="/tags/Data-Structure/" style="font-size: 10px;">Data Structure</a> <a href="/tags/DataStructure/" style="font-size: 10px;">DataStructure</a> <a href="/tags/English/" style="font-size: 15px;">English</a> <a href="/tags/Error/" style="font-size: 10px;">Error</a> <a href="/tags/Gradle/" style="font-size: 11.25px;">Gradle</a> <a href="/tags/Java/" style="font-size: 12.5px;">Java</a> <a href="/tags/Jetpack/" style="font-size: 11.25px;">Jetpack</a> <a href="/tags/LeetCode/" style="font-size: 17.5px;">LeetCode</a> <a href="/tags/Optimize/" style="font-size: 13.75px;">Optimize</a> <a href="/tags/SourceCode/" style="font-size: 10px;">SourceCode</a> <a href="/tags/UI/" style="font-size: 10px;">UI</a> <a href="/tags/版本差异/" style="font-size: 11.25px;">版本差异</a> <a href="/tags/版本管理/" style="font-size: 12.5px;">版本管理</a>
     </div>
 </div>
 
@@ -1721,8 +1705,27 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            最近の記事
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/03/31/Module-dependency-manage/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/2020/03/31/Module-dependency-manage/titleThumb.jpg" alt="Android 模块依赖版本管理">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-30T16:00:00.000Z">2020-03-31</time></div>
+                    <a href="/2020/03/31/Module-dependency-manage/" class="has-link-black-ter is-size-6">Android 模块依赖版本管理</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -1738,25 +1741,6 @@
                     <a href="/2020/03/01/Gradle-Kotlin/" class="has-link-black-ter is-size-6">Gradle Kotlin DSL</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Gradle/">Gradle</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2020/02/26/S1ep6-Custom-Views-and-Performance/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/2020/02/26/S1ep6-Custom-Views-and-Performance/titleThumb.jpg" alt="自定义视图及其性能">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-25T16:00:00.000Z">2020-02-26</time></div>
-                    <a href="/2020/02/26/S1ep6-Custom-Views-and-Performance/" class="has-link-black-ter is-size-6">自定义视图及其性能</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
                     </p>
                 </div>
             </div>
@@ -1783,6 +1767,25 @@
         
         <article class="media">
             
+            <a href="/2020/02/26/S1ep6-Custom-Views-and-Performance/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/2020/02/26/S1ep6-Custom-Views-and-Performance/titleThumb.jpg" alt="自定义视图及其性能">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-25T16:00:00.000Z">2020-02-26</time></div>
+                    <a href="/2020/02/26/S1ep6-Custom-Views-and-Performance/" class="has-link-black-ter is-size-6">自定义视图及其性能</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/titleThumb.jpg" alt="LeetCode 9. Palindrome Number">
@@ -1800,25 +1803,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-en/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/titleThumb.jpg" alt="LeetCode 9. Palindrome Number">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-27T16:00:00.000Z">2020-01-28</time></div>
-                    <a href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-en/" class="has-link-black-ter is-size-6">LeetCode 9. Palindrome Number</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/English/">English</a> / <a class="has-link-grey -link" href="/categories/English/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1827,7 +1811,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            アーカイブ
         </h3>
         <ul class="menu-list">
         
@@ -1837,7 +1821,7 @@
                     <span class="level-item">March 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -2027,7 +2011,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Tags
+                タグ
             </h3>
             <div class="field is-grouped is-grouped-multiline">
                 
@@ -2041,14 +2025,14 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Android/">
                         <span class="tag">Android</span>
-                        <span class="tag is-grey">15</span>
+                        <span class="tag is-grey">16</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Chinese/">
                         <span class="tag">Chinese</span>
-                        <span class="tag is-grey">29</span>
+                        <span class="tag is-grey">30</span>
                     </a>
                 </div>
                 
@@ -2146,7 +2130,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/版本管理/">
                         <span class="tag">版本管理</span>
-                        <span class="tag is-grey">2</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 
@@ -2170,8 +2154,27 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            最近の記事
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/03/31/Module-dependency-manage/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/2020/03/31/Module-dependency-manage/titleThumb.jpg" alt="Android 模块依赖版本管理">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-30T16:00:00.000Z">2020-03-31</time></div>
+                    <a href="/2020/03/31/Module-dependency-manage/" class="has-link-black-ter is-size-6">Android 模块依赖版本管理</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -2187,25 +2190,6 @@
                     <a href="/2020/03/01/Gradle-Kotlin/" class="has-link-black-ter is-size-6">Gradle Kotlin DSL</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Gradle/">Gradle</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2020/02/26/S1ep6-Custom-Views-and-Performance/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/2020/02/26/S1ep6-Custom-Views-and-Performance/titleThumb.jpg" alt="自定义视图及其性能">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-25T16:00:00.000Z">2020-02-26</time></div>
-                    <a href="/2020/02/26/S1ep6-Custom-Views-and-Performance/" class="has-link-black-ter is-size-6">自定义视图及其性能</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
                     </p>
                 </div>
             </div>
@@ -2232,6 +2216,25 @@
         
         <article class="media">
             
+            <a href="/2020/02/26/S1ep6-Custom-Views-and-Performance/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/2020/02/26/S1ep6-Custom-Views-and-Performance/titleThumb.jpg" alt="自定义视图及其性能">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-25T16:00:00.000Z">2020-02-26</time></div>
+                    <a href="/2020/02/26/S1ep6-Custom-Views-and-Performance/" class="has-link-black-ter is-size-6">自定义视图及其性能</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/titleThumb.jpg" alt="LeetCode 9. Palindrome Number">
@@ -2249,25 +2252,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-en/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/titleThumb.jpg" alt="LeetCode 9. Palindrome Number">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-27T16:00:00.000Z">2020-01-28</time></div>
-                    <a href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-en/" class="has-link-black-ter is-size-6">LeetCode 9. Palindrome Number</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/English/">English</a> / <a class="has-link-grey -link" href="/categories/English/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -2276,7 +2260,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            アーカイブ
         </h3>
         <ul class="menu-list">
         
@@ -2286,7 +2270,7 @@
                     <span class="level-item">March 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -2476,7 +2460,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Tags
+                タグ
             </h3>
             <div class="field is-grouped is-grouped-multiline">
                 
@@ -2490,14 +2474,14 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Android/">
                         <span class="tag">Android</span>
-                        <span class="tag is-grey">15</span>
+                        <span class="tag is-grey">16</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Chinese/">
                         <span class="tag">Chinese</span>
-                        <span class="tag is-grey">29</span>
+                        <span class="tag is-grey">30</span>
                     </a>
                 </div>
                 
@@ -2595,7 +2579,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/版本管理/">
                         <span class="tag">版本管理</span>
-                        <span class="tag is-grey">2</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 
@@ -2759,10 +2743,10 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Posts',
+                POSTS: '投稿',
                 PAGES: 'Pages',
-                CATEGORIES: 'Categories',
-                TAGS: 'Tags',
+                CATEGORIES: 'カテゴリ',
+                TAGS: 'タグ',
                 UNTITLED: '(Untitled)',
             },
             CONTENT_URL: '/content.json',

@@ -2,7 +2,7 @@
 <html >
 <head>
     <meta charset="utf-8">
-<title>Tag: Chinese - LeonChen&#39;s Blog</title>
+<title>タグ: Chinese - LeonChen&#39;s Blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
 
@@ -147,12 +147,117 @@
     <div class="card-content">
         <nav class="breadcrumb" aria-label="breadcrumbs">
         <ul>
-            <li><a href="/tags">Tags</a></li>
+            <li><a href="/tags">タグ</a></li>
             <li class="is-active"><a href="#" aria-current="page">Chinese</a></li>
         </ul>
         </nav>
     </div>
 </div>
+
+    <div class="card">
+    
+    <div class="card-image">
+        <a href="/2020/03/31/Module-dependency-manage/" class="image is-7by1">
+            <img class="banner" src="/2020/03/31/Module-dependency-manage/title.jpg" alt="Android 模块依赖版本管理">
+        </a>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-03-30T16:00:00.000Z">2020-03-31</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Android/版本管理/">版本管理</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    4 minutes read (About 593 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2020/03/31/Module-dependency-manage/">Android 模块依赖版本管理</a>
+            
+        </h1>
+        <div class="content">
+            <!-- <h1><span id="android-模块依赖版本管理">Android 模块依赖版本管理</span></h1><p>由于 Android 模块化的需要,依赖库要保持统一,但是每次一旦某个模块版本变动,就要手动修改所有模块的版本号未免显得有些繁琐,而且有一些共用的模块可能在不同的项目中要使用不同的版本.所以需要一个统一管理版本模块的方法.</p>
+<h1><span id="步骤">步骤</span></h1><h3><span id="1-在项目主目录下新建一个名为-dependencygradle-的文件">1. 在项目主目录下新建一个名为 <code>dependency.gradle</code> 的文件</span></h3><h3><span id="2-在该文件写入配置信息">2. 在该文件写入配置信息</span></h3><figure class="highlight groovy hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line">ext &#123;</div><div class="line">    </div><div class="line">    ext.deps = [:]</div><div class="line">    <span class="hljs-keyword">def</span> deps = [:]</div><div class="line"></div><div class="line">    <span class="hljs-comment">// 统一的版本号管理</span></div><div class="line">    <span class="hljs-keyword">def</span> versions = [:]</div><div class="line">    versions.kotlin = <span class="hljs-string">"1.3.70"</span></div><div class="line">    versions.android_gradle_plugin = <span class="hljs-string">"3.5.2"</span></div><div class="line">    versions.appcompat = <span class="hljs-string">"1.1.0"</span></div><div class="line">    versions.dagger = <span class="hljs-string">"2.16"</span></div><div class="line">    versions.material = <span class="hljs-string">"1.2.0-alpha03"</span></div><div class="line">    versions.work = <span class="hljs-string">"2.3.0-alpha01"</span></div><div class="line">    versions.retrofit = <span class="hljs-string">"2.3.0"</span></div><div class="line">    versions.recyclerview = <span class="hljs-string">"1.1.0"</span></div><div class="line">    versions.okhttp = <span class="hljs-string">"3.0.1"</span></div><div class="line">    versions.guava = <span class="hljs-string">"20.0"</span></div><div class="line">    versions.navigation = <span class="hljs-string">"2.3.0-alpha01"</span></div><div class="line">    versions.multidex = <span class="hljs-string">"1.0.0"</span></div><div class="line"></div><div class="line"><span class="hljs-comment">//------------------------------------------------------------------------------</span></div><div class="line"></div><div class="line">    <span class="hljs-comment">// 一组依赖可以使用这个方式</span></div><div class="line">    <span class="hljs-keyword">def</span> navigation = [:]</div><div class="line">    navigation.runtime = <span class="hljs-string">"androidx.navigation:navigation-runtime:$versions.navigation"</span></div><div class="line">    navigation.runtime_ktx = <span class="hljs-string">"androidx.navigation:navigation-runtime-ktx:$versions.navigation"</span></div><div class="line">    navigation.fragment = <span class="hljs-string">"androidx.navigation:navigation-fragment:$versions.navigation"</span></div><div class="line">    <span class="hljs-comment">// 这句要记得</span></div><div class="line">    deps.navigation = navigation</div><div class="line">    ...</div><div class="line">    </div><div class="line">    <span class="hljs-comment">// 单个依赖可以使用这中方式</span></div><div class="line">    deps.app_compat = <span class="hljs-string">"androidx.appcompat:appcompat:$versions.appcompat"</span>    </div><div class="line">        </div><div class="line">    <span class="hljs-comment">// app 本身的版本管理也可以放进来</span></div><div class="line">    <span class="hljs-keyword">def</span> build_versions = [:]</div><div class="line">    build_versions.min_sdk = <span class="hljs-number">19</span></div><div class="line">    build_versions.compile_sdk = <span class="hljs-number">29</span></div><div class="line">    build_versions.target_sdk = <span class="hljs-number">29</span></div><div class="line">    build_versions.build_tools = <span class="hljs-string">"29.0.3"</span></div><div class="line">    ext.build_versions = build_versions</div><div class="line">    </div><div class="line">    ext.deps = deps</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>如上图所示,配置文件就完成了</p>
+<h3><span id="3-使用">3. 使用</span></h3><p>在 root 目录下的 <code>build.gradle</code> 中加上 <code>apply from: &quot;dependency.gradle&quot;</code></p>
+<p>在需要添加依赖的 Module 中使用,如下</p>
+<figure class="highlight groovy hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">android &#123;</div><div class="line">    compileSdkVersion build_versions.compile_sdk</div><div class="line">    buildToolsVersion build_versions.buildToolsVersion</div><div class="line"></div><div class="line">    defaultConfig &#123;</div><div class="line">        minSdkVersion build_versions.minSdkVersion</div><div class="line">        ...</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight groovy hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">dependencies &#123;</div><div class="line">    compile fileTree(<span class="hljs-string">dir:</span> <span class="hljs-string">'libs'</span>, <span class="hljs-string">include:</span> [<span class="hljs-string">'*.jar'</span>])</div><div class="line">    implementation deps.app_compat</div><div class="line">    implementation deps.navigation.runtime</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3><span id="tip">tip</span></h3><p>在多应用的情况下,最好是有一个统一的文档对所有的依赖名等做一个规范,避免出现不同项目使用了不同的命名.</p>
+<h1><span id="进阶">进阶</span></h1><p>当我们有多个项目的时候,使用同样的一份依赖可以免去大量的重复工作,和版本适配问题.这个时候其实也很简单</p>
+<h3><span id="本地版">本地版</span></h3><figure class="highlight gradle hljs"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">apply <span class="hljs-keyword">from</span>: <span class="hljs-string">"../../AndroidShareLib/gradle/dependency.gradle"</span></div></pre></td></tr></table></figure>
+<p>我们只需要放在一个共有目录下进行索引即可,这样两个项目都可以复用这个依赖文件</p>
+<h3><span id="网络版">网络版</span></h3><p>将这个gradle 放在网上,比如git仓库中,然后这里使用连接引用即可</p>
+<h1><span id="reference">Reference</span></h1><p><a href="http://leonchen1024.com/2018/04/13/APP-Version-Control/" target="_blank" rel="external">APP 版本控制</a></p>
+<h2><span id="about-me">About Me</span></h2><p>我的博客 <a href="http://leonchen1024.com/" target="_blank" rel="external">leonchen1024.com</a></p>
+<p>我的 GitHub <a href="https://github.com/LeonChen1024" target="_blank" rel="external">https://github.com/LeonChen1024</a></p>
+<p>微信公众号 </p>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/Images/CooderQRcodem.jpg?raw=false" alt="wechat"></p>
+ -->
+            <div class="article-entry">
+                    
+                    
+                        
+                            
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                            
+                                
+                                <p><h1><span id="android-模块依赖版本管理">Android 模块依赖版本管理</span></h1><p>由于 Android 模块化的需要,依赖库要保持统一,但是每次一旦某个模块版本变动,就要手动修改所有模块的版本号未免显得有些繁琐,而且有一些共用的模块可能在不同的项目中要使用不同的版本.所以需要一个统一管理版本模块的方法.</p>
+<h1><span id="步骤">步骤</span></h1><h3><span id="1-在项目主目录下新建一个名为-dependencygradle-的文件">1. 在项目主目录下新建一个名为 <code>dependency.gradle</code> 的文件</span></h3><h3><span id="2-在该文件写入配置信息">2. 在该文件写入配置信息</span></h3><figure class="highlight groovy hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line">ext &#123;</div><div class="line">    </div><div class="line">    ext.deps = [:]</div><div class="line">    <span class="hljs-keyword">def</span> deps = [:]</div><div class="line"></div><div class="line">    <span class="hljs-comment">// 统一的版本号管理</span></div><div class="line">    <span class="hljs-keyword">def</span> versions = [:]</div><div class="line">    versions.kotlin = <span class="hljs-string">"1.3.70"</span></div><div class="line">    versions.android_gradle_plugin = <span class="hljs-string">"3.5.2"</span></div><div class="line">    versions.appcompat = <span class="hljs-string">"1.1.0"</span></div><div class="line">    versions.dagger = <span class="hljs-string">"2.16"</span></div><div class="line">    versions.material = <span class="hljs-string">"1.2.0-alpha03"</span></div><div class="line">    versions.work = <span class="hljs-string">"2.3.0-alpha01"</span></div><div class="line">    versions.retrofit = <span class="hljs-string">"2.3.0"</span></div><div class="line">    versions.recyclerview = <span class="hljs-string">"1.1.0"</span></div><div class="line">    versions.okhttp = <span class="hljs-string">"3.0.1"</span></div><div class="line">    versions.guava = <span class="hljs-string">"20.0"</span></div><div class="line">    versions.navigation = <span class="hljs-string">"2.3.0-alpha01"</span></div><div class="line">    versions.multidex = <span class="hljs-string">"1.0.0"</span></div><div class="line"></div><div class="line"><span class="hljs-comment">//------------------------------------------------------------------------------</span></div><div class="line"></div><div class="line">    <span class="hljs-comment">// 一组依赖可以使用这个方式</span></div><div class="line">    <span class="hljs-keyword">def</span> navigation = [:]</div><div class="line">    navigation.runtime = <span class="hljs-string">"androidx.navigation:navigation-runtime:$versions.navigation"</span></div><div class="line">    navigation.runtime_ktx = <span class="hljs-string">"androidx.navigation:navigation-runtime-ktx:$versions.navigation"</span></div><div class="line">    navigation.fragment = <span class="hljs-string">"androidx.navigation:navigation-fragment:$versions.navigation"</span></div><div class="line">    <span class="hljs-comment">// 这句要记得</span></div><div class="line">    deps.navigation = navigation</div><div class="line">    ...</div><div class="line">    </div><div class="line">    <span class="hljs-comment">// 单个依赖可以使用这中方式</span></div><div class="line">    deps.app_compat = <span class="hljs-string">"androidx.appcompat:appcompat:$versions.appcompat"</span>    </div><div class="line">        </div><div class="line">    <span class="hljs-comment">// app 本身的版本管理也可以放进来</span></div><div class="line">    <span class="hljs-keyword">def</span> build_versions = [:]</div><div class="line">    build_versions.min_sdk = <span class="hljs-number">19</span></div><div class="line">    build_versions.compile_sdk = <span class="hljs-number">29</span></div><div class="line">    build_versions.target_sdk = <span class="hljs-number">29</span></div><div class="line">    build_versions.build_tools = <span class="hljs-string">"29.0.3"</span></div><div class="line">    ext.build_versions = build_versions</div><div class="line">    </div><div class="line">    ext.deps = deps</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>如上图所示,配置文件就完成了</p>
+<h3><span id="3-使用">3. 使用</span></h3><p>在 root 目录下的 <code>build.gradle</code> 中加上 <code>apply from: &quot;dependency.gradle&quot;</code></p>
+<p>在需要添加依赖的 Module 中使用,如下</p>
+<p>
+                            
+                        
+                    
+                    
+                        </div>   
+                        <div class="article-more-link">
+                            <a href="/2020/03/31/Module-dependency-manage/#more">Read More</a>
+                        </div>
+                    
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
 
     <div class="card">
     
@@ -283,112 +388,6 @@
     <div class="card">
     
     <div class="card-image">
-        <a href="/2020/02/26/S1ep6-Custom-Views-and-Performance/" class="image is-7by1">
-            <img class="banner" src="/2020/02/26/S1ep6-Custom-Views-and-Performance/title.jpg" alt="自定义视图及其性能">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-02-25T16:00:00.000Z">2020-02-26</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Android/Android-Performance-pattern/">Android Performance pattern</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    7 minutes read (About 1039 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2020/02/26/S1ep6-Custom-Views-and-Performance/">自定义视图及其性能</a>
-            
-        </h1>
-        <div class="content">
-            <!-- <h1><span id="custom-views-and-performance">Custom Views and Performance</span></h1><p>Android 平台自带了很多标准控件,但是你总会发现有无法满足你的需求的时候,这时候你可以使用自定义控件.自定义控件是很容易的,困难的是怎么让自定义控件的性能表现良好.这里将会介绍一些会导致自定义控件表现变差的原因.</p>
-<ul>
-<li>在没有改变的时候仍然调用了 onDraw()</li>
-<li>耗费时间和资源绘制根本不会再界面上展示的像素.比如被遮挡住的部分</li>
-<li>我们还可以在 onDraw 中花很长的时间</li>
-</ul>
-<p>首先介绍在没有改变的时候仍然执行了绘制流程,要记住,所有的绘制都始于 View.invalidate() . 第一个原则是自定义控件不要调用 invalidate 除非你必须这么做.如果没有东西被改变了,那就不需要重新绘制.第二个原则是传入一个块内容给 invalidate.这会帮助系统决定哪些内容需要被重绘以及什么时候调用 onDraw.如下:</p>
-<p><img src="res/view-invalidation.png" alt=""></p>
-<p>大致流程是这样的,首先它会判断块内容是否被修改了,如果被修改了,那么就判断这个内容是否在屏幕上,如果在屏幕上,再判断这个内容是否可见,如果可见,才进行重绘.</p>
-<p>可见 onDraw 是非常重要的,你的视图是流畅,性能优异的还是差劲的它占了很大的作用.</p>
-<p>我们写一个不太理想的 onDraw 是非常容易,其中一个方式就是过度绘制.比如你绘制了一些根本就看不到的内容,这是一个无用功.</p>
-<p>那我们如何处理那些看不到的内容呢?我们可以通过设置clip rectangle来达到这个目的.这个裁剪的目的就是使得范围外的内容不会去触碰和绘制,保证他们不会消耗任何东西.调用这个功能的方法是 Canvas.clipRect().当你调用这个方法的时候会保证 GPU 只处理这个方块内的内容.这个效果会持续到下一次调用  Canvas.clipRect().这个在低端的 GPU 上效果明显,但是在高端的 GPU 上的效果就没那么明显了.甚至在一些硬件条件下,可能你花费在 CPU 计算这个裁剪的内容的时间,比你在 GPU 绘制上节省的时间还多.这意味着我们还有一个需要优化的部分就是 CPU 消耗,这个消耗基本上都在 onDraw 上.我们有以下几个建议:</p>
-<ol>
-<li>不要绘制任何你没必要绘制的东西.可以通过调用 Canvas.quickReject 来定义那些元素并不在屏幕上.如果它返回 true 那么不要绘制这个元素.如果一个元素有一部分仍然在屏幕内容,它依然会返回 false,只有完全不在屏幕上的才会返回 true.</li>
-<li>不要使用没有硬件加速的绘制.硬件加速意味着这些操作发生在 GPU 上.如果不是硬件加速的话,它意味着需要 CPU 来处理绘,然后他要把这个结果发送给 GPU 来和剩余的视图部分做组合.对比硬件加速来说,这简直就是让人发指的慢.如果你使用的方法并没有硬件加速,那么考虑是不是有其他的方式来绘制.</li>
-<li>不要再 onDraw 方法中分配内存,以及在 onDraw 中调用的方法.分配会消耗两种东西,首先是直接消耗了分配和初始化对象的性能,然后在垃圾回收的时候还有一次消耗.这两种中的每一种都可能会造成丢帧的现象.</li>
-</ol>
-<p>也许这些建议看起来都很不起眼,但是记住,onDraw 在一秒内会调用 60 次左右.而且不像其他的代码,它必须在 UI 线程上执行.你绘制一次屏幕只有 16 毫秒的时间.</p>
- -->
-            <div class="article-entry">
-                    
-                    
-                        
-                            
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                            
-                                
-                                <p><h1><span id="custom-views-and-performance">Custom Views and Performance</span></h1><p>Android 平台自带了很多标准控件,但是你总会发现有无法满足你的需求的时候,这时候你可以使用自定义控件.自定义控件是很容易的,困难的是怎么让自定义控件的性能表现良好.这里将会介绍一些会导致自定义控件表现变差的原因.</p>
-<ul>
-<li>在没有改变的时候仍然调用了 onDraw()</li>
-<li>耗费时间和资源绘制根本不会再界面上展示的像素.比如被遮挡住的部分</li>
-<li>我们还可以在 onDraw 中花很长的时间</li>
-<p>
-                            
-                        
-                    
-                    
-                        </div>   
-                        <div class="article-more-link">
-                            <a href="/2020/02/26/S1ep6-Custom-Views-and-Performance/#more">Read More</a>
-                        </div>
-                    
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-image">
         <a href="/2020/02/26/S1ep5-Tool-Strict-Mode/" class="image is-7by1">
             <img class="banner" src="/2020/02/26/S1ep5-Tool-Strict-Mode/title.jpg" alt="工具 严格模式">
         </a>
@@ -477,6 +476,112 @@
                         </div>   
                         <div class="article-more-link">
                             <a href="/2020/02/26/S1ep5-Tool-Strict-Mode/#more">Read More</a>
+                        </div>
+                    
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-image">
+        <a href="/2020/02/26/S1ep6-Custom-Views-and-Performance/" class="image is-7by1">
+            <img class="banner" src="/2020/02/26/S1ep6-Custom-Views-and-Performance/title.jpg" alt="自定义视图及其性能">
+        </a>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-02-25T16:00:00.000Z">2020-02-26</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Android/Android-Performance-pattern/">Android Performance pattern</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    7 minutes read (About 1039 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2020/02/26/S1ep6-Custom-Views-and-Performance/">自定义视图及其性能</a>
+            
+        </h1>
+        <div class="content">
+            <!-- <h1><span id="custom-views-and-performance">Custom Views and Performance</span></h1><p>Android 平台自带了很多标准控件,但是你总会发现有无法满足你的需求的时候,这时候你可以使用自定义控件.自定义控件是很容易的,困难的是怎么让自定义控件的性能表现良好.这里将会介绍一些会导致自定义控件表现变差的原因.</p>
+<ul>
+<li>在没有改变的时候仍然调用了 onDraw()</li>
+<li>耗费时间和资源绘制根本不会再界面上展示的像素.比如被遮挡住的部分</li>
+<li>我们还可以在 onDraw 中花很长的时间</li>
+</ul>
+<p>首先介绍在没有改变的时候仍然执行了绘制流程,要记住,所有的绘制都始于 View.invalidate() . 第一个原则是自定义控件不要调用 invalidate 除非你必须这么做.如果没有东西被改变了,那就不需要重新绘制.第二个原则是传入一个块内容给 invalidate.这会帮助系统决定哪些内容需要被重绘以及什么时候调用 onDraw.如下:</p>
+<p><img src="res/view-invalidation.png" alt=""></p>
+<p>大致流程是这样的,首先它会判断块内容是否被修改了,如果被修改了,那么就判断这个内容是否在屏幕上,如果在屏幕上,再判断这个内容是否可见,如果可见,才进行重绘.</p>
+<p>可见 onDraw 是非常重要的,你的视图是流畅,性能优异的还是差劲的它占了很大的作用.</p>
+<p>我们写一个不太理想的 onDraw 是非常容易,其中一个方式就是过度绘制.比如你绘制了一些根本就看不到的内容,这是一个无用功.</p>
+<p>那我们如何处理那些看不到的内容呢?我们可以通过设置clip rectangle来达到这个目的.这个裁剪的目的就是使得范围外的内容不会去触碰和绘制,保证他们不会消耗任何东西.调用这个功能的方法是 Canvas.clipRect().当你调用这个方法的时候会保证 GPU 只处理这个方块内的内容.这个效果会持续到下一次调用  Canvas.clipRect().这个在低端的 GPU 上效果明显,但是在高端的 GPU 上的效果就没那么明显了.甚至在一些硬件条件下,可能你花费在 CPU 计算这个裁剪的内容的时间,比你在 GPU 绘制上节省的时间还多.这意味着我们还有一个需要优化的部分就是 CPU 消耗,这个消耗基本上都在 onDraw 上.我们有以下几个建议:</p>
+<ol>
+<li>不要绘制任何你没必要绘制的东西.可以通过调用 Canvas.quickReject 来定义那些元素并不在屏幕上.如果它返回 true 那么不要绘制这个元素.如果一个元素有一部分仍然在屏幕内容,它依然会返回 false,只有完全不在屏幕上的才会返回 true.</li>
+<li>不要使用没有硬件加速的绘制.硬件加速意味着这些操作发生在 GPU 上.如果不是硬件加速的话,它意味着需要 CPU 来处理绘,然后他要把这个结果发送给 GPU 来和剩余的视图部分做组合.对比硬件加速来说,这简直就是让人发指的慢.如果你使用的方法并没有硬件加速,那么考虑是不是有其他的方式来绘制.</li>
+<li>不要再 onDraw 方法中分配内存,以及在 onDraw 中调用的方法.分配会消耗两种东西,首先是直接消耗了分配和初始化对象的性能,然后在垃圾回收的时候还有一次消耗.这两种中的每一种都可能会造成丢帧的现象.</li>
+</ol>
+<p>也许这些建议看起来都很不起眼,但是记住,onDraw 在一秒内会调用 60 次左右.而且不像其他的代码,它必须在 UI 线程上执行.你绘制一次屏幕只有 16 毫秒的时间.</p>
+ -->
+            <div class="article-entry">
+                    
+                    
+                        
+                            
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                            
+                                
+                                <p><h1><span id="custom-views-and-performance">Custom Views and Performance</span></h1><p>Android 平台自带了很多标准控件,但是你总会发现有无法满足你的需求的时候,这时候你可以使用自定义控件.自定义控件是很容易的,困难的是怎么让自定义控件的性能表现良好.这里将会介绍一些会导致自定义控件表现变差的原因.</p>
+<ul>
+<li>在没有改变的时候仍然调用了 onDraw()</li>
+<li>耗费时间和资源绘制根本不会再界面上展示的像素.比如被遮挡住的部分</li>
+<li>我们还可以在 onDraw 中花很长的时间</li>
+<p>
+                            
+                        
+                    
+                    
+                        </div>   
+                        <div class="article-more-link">
+                            <a href="/2020/02/26/S1ep6-Custom-Views-and-Performance/#more">Read More</a>
                         </div>
                     
         </div>
@@ -1389,143 +1494,15 @@
 
 
 
-    <div class="card">
-    
-    <div class="card-image">
-        <a href="/2019/04/20/Java-Debugging-Problems-and-How-to-Solve-Them/" class="image is-7by1">
-            <img class="banner" src="/2019/04/20/Java-Debugging-Problems-and-How-to-Solve-Them/title.jpg" alt="Java 调试中你可能会遇到的问题以及如何解决他们">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-04-19T16:00:00.000Z">2019-04-20</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Java/">Java</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    19 minutes read (About 2891 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/04/20/Java-Debugging-Problems-and-How-to-Solve-Them/">Java 调试中你可能会遇到的问题以及如何解决他们</a>
-            
-        </h1>
-        <div class="content">
-            <!-- <h1><span id="5-java-debugging-problems-you-probably-have-and-how-to-solve-them"></span></h1><p>[TOC]</p>
-<p><a href="https://zeroturnaround.com/rebellabs/how-to-turn-the-light-on-in-your-production-environment-and-scare-the-bugs-out/" target="_blank" rel="external">原文链接</a></p>
-<p>当你的生产环境发生了异常的时候,事情变得艰难.Made Up Stats™ 的科学研究表明开发者团队会收到比平时更大的压力,咖啡杯脏的比平时快3倍而且上帝杀死了两只小猫因为一只是不够的(嗯…. 这个猫的梗有点污,原文是 god kills 2 kittens because one is just not enough.  查了一下取自一个梗…每当你手淫的时候,上帝会杀死一只猫).在下面的内容中我们将会分析你在调试生产环境的代码面对的主要的问题.接下来让我们用一个正直的警告来开始,这是我们的法律部门强迫我们放在这里的.</p>
-<blockquote>
-<p><strong>警告:</strong> 下面的内容包含一些开发者会觉得困扰的生产环境的 bug 的准确描述. </p>
-</blockquote>
-<h2><span id="问题-0-你的生产环境里有-bug">问题 #0 : 你的生产环境里有 bug</span></h2><p>第一步是承认你是有部分问题的,无论你的代码经过了多少次的测试 bug 总是会找到出现在产品的路.不管你的展示环境是多么漂亮并且不管你的负载测试多么精确.在生产环境中现实生活中经过你系统的数据流动是完全不同的.你也不是在 Intellij 或者 Eclipse 中,你身边也没有 <a href="https://zeroturnaround.com/software/xrebel/" target="_blank" rel="external">XRebel</a> ,除非你做了一些事: 你和 bugs 都在一篇黑暗中.但是不要担心,你并不是唯一处在这种环境里的 - 让我们来看看如何打开灯,测试可能的解决方案并一劳永逸的解决这个问题.</p>
-<p>为了解决 bug 你通常需要一个东西,导致错误的变量值还要知道他们是怎么进入到调用栈的.让我们来分解这个问题并看看我们如何从每个情况中获得最多的数据.</p>
-<p><strong>解决方案:</strong> 继续阅读并跟紧了,马上就要来了</p>
-<h2><span id="问题-1一个错误发生了但是你不知道它是从哪里来的">问题 #1:一个错误发生了但是你不知道它是从哪里来的</span></h2><p>某些不好的情况发生了,现在让我们将它保持在 日志异常/未捕获异常的等级.所以你查找你的 log 只看到了有关于错误空白的声明.它通常看起来像这样:</p>
-<p><em>05-04-2015 11:52:32 ERROR – Problem parsing input for servlet. [http-nio-8080-exec-62]</em></p>
-<p>但是,哇,哇,哇,等一下,除了这个异常我还知道什么呢,很好,有一些不好的东西发生在了 http-nio 中?当我检查代码并看到它运行的很好那么异常很可能是从其他机器,微服务,进程,或者甚至另一个线程产生的,事情变得棘手了.这就是在日志中迷失的全部.如果这个场景听起来很熟悉那么你大概在日志中丢失了一个事务 ID.这是一个唯一的 ID来帮助你跟踪它是从哪里开始的到它变成一个日志错误的全部过程.</p>
-<p> 除了事务 ID,你需要记住其他有关于错误的数据也是会丢失的除非你将它打印出来.关键是要尽你的可能绘制出足够的上下文,比如你进入的线程,类,甚至在关键路径上的特定方法.理想情况下我们在这里还拥有变量值,但是这个对于这种类型的问题来说太多了. <a href="http://blog.takipi.com/how-to-instantly-improve-your-java-logging-with-7-logback-tweaks/" target="_blank" rel="external">在 Takipi blog 的这篇文章中</a> 我们测试了使用 Logback 的不同类型的样式,如果你想要了解更多的内容就去看看吧.</p>
-<p><strong>解决方案:</strong> 在每个线程的实例里生成一个 UUID 指向你的应用并且将它添加到每一个日志条目 -  在整个机器上保持一致来保存他的原始上下文.同样的,如果你想要摆脱 console 可以考虑使用一些  <a href="http://blog.takipi.com/the-7-log-management-tools-you-need-to-know/" target="_blank" rel="external">日志管理工具</a> .</p>
-<h2><span id="问题-2-未捕获并异常没有关于错误的信息">问题 #2: 未捕获并异常没有关于错误的信息</span></h2><p>当我们逃离了日志错误并且捕获到了异常,我们进入了一个更黑暗的地方.未捕获异常会在线程死亡的地方出现.但是并不是所有的都这么残酷,我们有一个最后的防线: <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Thread.html#getDefaultUncaughtExceptionHandler--" target="_blank" rel="external">默认未捕获异常处理器</a>. 一旦我们在这里有了一个未捕获异常处理器,我们实际上可以对他们做一些事并且绘制出一些变量数据.问题是当他们到达调用栈上的未捕获异常处理器的时候,大部分我们可以得到的关于错误的上下文已经丢失了.再说一次,我们在这里还有另一个机会并且不是所有的都丢失了:  <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/ThreadLocal.html" target="_blank" rel="external">Thread Local Storage</a> (TLS) 还有线程名称.</p>
-<p>Thread Local Storage 让我们可以再这个线程上存储变量,不会被限制在任何的栈帧上.实际上,线程可以做很酷的事情,想要知道更多的使用线程的技巧你可以查看 <a href="http://blog.takipi.com/java-thread-magic-tricks/" target="_blank" rel="external">这个技巧</a>.所以通过 TLS 我们可以在这个异常被抛出的时候存储更多有关于这个状态的数据.另一件很酷的技巧是使用有意义的线程名字,取代像这样的名字:</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pool-1-thread-1</div></pre></td></tr></table></figure>
-<p>我们可以这么做:<br><code>Thread.currentThread().setName(Context + TID + Params + current Time, ...);</code></p>
-<p>然后可以得到:</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Queue Processing Thread, MessageID: AB5CAD, type: AnalyzeGraph, queue: ACTIVE_PROD, Transaction_ID: 5678956, Start Time: 02/04/2015 17:37</div></pre></td></tr></table></figure>
-<p><strong>解决方案:</strong> 设置一个未捕获异常处理器,记住线程的名字并且让你的 Thread Local Storage 工作.</p>
-<h2><span id="问题-3-你的进程被挂起了而你还不知道为什么">问题 #3: 你的进程被挂起了而你还不知道为什么</span></h2><p>一个进程被卡住了可能你知道有一些奇怪的东西在你的应用中流动?从你的 JDK 中构建的工具来看这可能是一个很好的任务.它可以连接到任何一个 Java 进程,只需要指向一个 PID ,然后对所有的输出进行分类,包括现在运行的所有线程的堆栈跟踪,切面,他们持有的锁还有所有其他的元数据.使用 jstack 你还可以分析哪些已经不存在的进程的堆输出或者核心输出.</p>
-<p>要获得更多实践的概述还有在特定条件下自动开启它的方法,可以查看 <a href="http://blog.takipi.com/supercharged-jstack-how-to-debug-your-servers-at-100mph/" target="_blank" rel="external">这篇文章</a>,还有 <a href="https://github.com/takipi/jstack" target="_blank" rel="external">Github</a> 上的示例,它可以完成这个功能.为了从中提取出最大的价值,你同事还需要做一些手动工作来理解你得到的结果.</p>
-<p><strong>解决方案:</strong>  了解如何处理 jstack 并用它来解决棘手的问题.</p>
-<h2><span id="问题-4-所有的这些解决方案都需要改动代码">问题 #4: 所有的这些解决方案都需要改动代码</span></h2><p>介绍你的应用的改变并且在你的服务器重构你的日志系统是一个非常困难的任务.如果这里有一种方式可以再不影响代码的内部结构的情况下提取出调试应用程序所需的信息呢?如果你设置没有访问某些部分的权限但是错误就产生在那些地方呢?使用 Java 代理.</p>
-<p>Java 代理可以挂载到一个运行的 JVM 中并且提取出它里面所有的信息. 其中有一个叫  <a href="https://kenai.com/projects/btrace" target="_blank" rel="external">BTrace</a> 的 Java 代理你可以看看. 通过 JVM 参数将它绑定上之后,你可以通过 BTrace 脚本语言将它绑定. 你可以测试自己的代码并且获取运行它的数据而不需要改变实际的应用. 让我们看看如何通过使用 BTrace 脚本语言激活 jstack 来使用这个技巧.</p>
-<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-meta">@BTrace</span> <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Classload</span> </span>&#123;</div><div class="line">   <span class="hljs-meta">@OnMethod</span>(</div><div class="line">       Clazz=”+java.lang.ClassLoader”,</div><div class="line">       method=”defineClass”,</div><div class="line">       location=<span class="hljs-meta">@Location</span>(Kind.RETURN)</div><div class="line">    )</div><div class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">defineClass</span><span class="hljs-params">(@Return class cl)</span> </span>&#123;</div><div class="line">       println(Strings.strcat(“loaded ”, Reflective.name(cl)));</div><div class="line">       Threads.jstack();</div><div class="line">      println(“==============================”);</div><div class="line">   &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>在这里我们获取了所有的 ClassLoader 还有他们的子类.不管什么时候返回了 “defineClass” ,这个脚本都会打印出加载的类并且运行 jstack.这个方法的缺点是不推荐在生产环境中持续使用它,只适合于指出特定的问题.它也有一些限制,比如不能创建新的对象,捕捉异常或包含循环.</p>
-<p>如果你想要更冒险一点,你可以自己自定义一个 Java 代理,就像 BTrace一样.比如,当我们有一个类出现了问题,它在到处产生了数百万个新的对象,一个简单的 Java 代理帮助我们解决了这个问题.我们会挂载到这个对象的构造器上,并且不管它在什么时候被分配了一个实例,我们可以获得它的堆栈记录并可以知道这个加载是从哪里来的.这个代理的代码可以在 Github 上得到,欢迎你来 <a href="https://github.com/takipi/debugAgent" target="_blank" rel="external">查看</a>.</p>
-<p><strong>解决方案:</strong>  学习更多关于 Java 代理的知识并且使用他们来解决真正棘手的问题.</p>
-<h2><span id="问题-5-没有关于错误的根本原因的数据">问题 #5: 没有关于错误的根本原因的数据</span></h2><p>再更深入一点,与自定义 Java 代理不同,本地代理在处理的时候拥有一个更加强大的功能.你可以在 <a href="http://blog.takipi.com/double-agent-java-vs-native-agents/" target="_blank" rel="external">这里</a> 了解更多具体的不同.通常来说,Java 代理拥有代码检测功能,然而本机代理拥有访问 JVM 底层的 API 的权限(<a href="http://docs.oracle.com/javase/8/docs/platform/jvmti/jvmti.html" target="_blank" rel="external">JVMTI</a>). 这意味着他们可以越过基础的栈追踪数据并且获得真正的根本原因,包含导致错误的变量值.</p>
-<p><a href="http://takipi.com/" target="_blank" rel="external"><img src="https://zeroturnaround.com/wp-content/uploads/2015/04/takipi-error-analysis-screen-640x410.png" alt="Takipi&#39;s error analysis screen"></a></p>
-<p><em>Takipi 的错误分析屏</em></p>
-<p><a href="https://www.takipi.com/" target="_blank" rel="external">Takipi 的本地代理</a> 专门用于监控大规模的生产环境中的服务器.它工作在 JVM 层来捕获有关于你错误的完整的代码和变量,而不需要依赖日志文件.在配置方面,它只需要你在服务器上使用一个 JVM 参数启动就会立刻开始反馈并分析所有你的异常和日志错误.</p>
-<p><strong>解决方案:</strong> 尝试于是用一个可以访问底层并且得到真正的根本原因的本地代理.</p>
-<h2><span id="结论">结论</span></h2><p>希望这个演练可以帮助你以无痛的方式来解决生产环境的错误,而不需要浪费很多小时甚至是很多天的时间.你有更多的调试生产环境的方法吗?或者你想要分享你和 bug 斗争的故事吗?通过下面的评论模块让我们知道.</p>
-<h2><span id="about-me">About Me</span></h2><p>我的博客 <a href="http://leonchen1024.com/" target="_blank" rel="external">leonchen1024.com</a></p>
-<p>我的 GitHub <a href="https://github.com/LeonChen1024" target="_blank" rel="external">https://github.com/LeonChen1024</a></p>
-<p>微信公众号 </p>
-<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/Images/CooderQRcodem.jpg?raw=false" alt="wechat"></p>
- -->
-            <div class="article-entry">
-                    
-                    
-                        
-                            
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                            
-                                
-                                <p><h1><span id="5-java-debugging-problems-you-probably-have-and-how-to-solve-them"></span></h1><p>[TOC]</p>
-<p><a href="https://zeroturnaround.com/rebellabs/how-to-turn-the-light-on-in-your-production-environment-and-scare-the-bugs-out/" target="_blank" rel="external">原文链接</a></p>
-<p>当你的生产环境发生了异常的时候,事情变得艰难.Made Up Stats™ 的科学研究表明开发者团队会收到比平时更大的压力,咖啡杯脏的比平时快3倍而且上帝杀死了两只小猫因为一只是不够的(嗯…. 这个猫的梗有点污,原文是 god kills 2 kittens because one is just not enough.  查了一下取自一个梗…每当你手淫的时候,上帝会杀死一只猫).在下面的内容中我们将会分析你在调试生产环境的代码面对的主要的问题.接下来让我们用一个正直的警告来开始,这是我们的法律部门强迫我们放在这里的.</p>
-<blockquote>
-<p><strong>警告:</strong> 下面的内容包含一些开发者会觉得困扰的生产环境的 bug 的准确描述. </p>
-<p>
-                            
-                        
-                    
-                    
-                        </div>   
-                        <div class="article-more-link">
-                            <a href="/2019/04/20/Java-Debugging-Problems-and-How-to-Solve-Them/#more">Read More</a>
-                        </div>
-                    
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
     <nav class="pagination is-centered" role="navigation" aria-label="pagination">
         <div class="pagination-previous is-invisible is-hidden-mobile">
-            <a class="is-flex-grow has-text-black-ter" href="/tags/Chinese/page/0/">Previous</a>
+            <a class="is-flex-grow has-text-black-ter" href="/tags/Chinese/page/0/">前</a>
         </div>
         <div class="pagination-next">
-            <a class="is-flex-grow has-text-black-ter" href="/tags/Chinese/page/2/">Next</a>
+            <a class="is-flex-grow has-text-black-ter" href="/tags/Chinese/page/2/">次</a>
         </div>
         <ul class="pagination-list is-hidden-mobile">
             
@@ -1578,17 +1555,17 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Posts
+                        投稿
                     </p>
                     <p class="title has-text-weight-normal">
-                        38
+                        39
                     </p>
                 </div>
             </div>
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categories
+                        カテゴリ
                     </p>
                     <p class="title has-text-weight-normal">
                         20
@@ -1598,7 +1575,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Tags
+                        タグ
                     </p>
                     <p class="title has-text-weight-normal">
                         17
@@ -1608,7 +1585,7 @@
         </nav>
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://github.com/LeonChen1024">
-                Follow</a>
+                フォローする</a>
         </div>
         
         
@@ -1637,7 +1614,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categories
+                カテゴリ
             </h3>
             <ul class="menu-list">
             <li>
@@ -1646,7 +1623,7 @@
                 <span class="level-item">Chinese</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">29</span>
+                <span class="level-item tag">30</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="undefined">
@@ -1662,7 +1639,7 @@
                 <span class="level-item">Android</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">12</span>
+                <span class="level-item tag">13</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="undefined">
@@ -1714,9 +1691,9 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Tag Cloud
+            タグクラウド
         </h3>
-        <a href="/tags/Algorithm/" style="font-size: 18.75px;">Algorithm</a> <a href="/tags/Android/" style="font-size: 16.25px;">Android</a> <a href="/tags/Chinese/" style="font-size: 20px;">Chinese</a> <a href="/tags/Custom-View/" style="font-size: 10px;">Custom View</a> <a href="/tags/Data-Structure/" style="font-size: 10px;">Data Structure</a> <a href="/tags/DataStructure/" style="font-size: 10px;">DataStructure</a> <a href="/tags/English/" style="font-size: 15px;">English</a> <a href="/tags/Error/" style="font-size: 10px;">Error</a> <a href="/tags/Gradle/" style="font-size: 11.25px;">Gradle</a> <a href="/tags/Java/" style="font-size: 12.5px;">Java</a> <a href="/tags/Jetpack/" style="font-size: 11.25px;">Jetpack</a> <a href="/tags/LeetCode/" style="font-size: 17.5px;">LeetCode</a> <a href="/tags/Optimize/" style="font-size: 13.75px;">Optimize</a> <a href="/tags/SourceCode/" style="font-size: 10px;">SourceCode</a> <a href="/tags/UI/" style="font-size: 10px;">UI</a> <a href="/tags/版本差异/" style="font-size: 11.25px;">版本差异</a> <a href="/tags/版本管理/" style="font-size: 11.25px;">版本管理</a>
+        <a href="/tags/Algorithm/" style="font-size: 18.75px;">Algorithm</a> <a href="/tags/Android/" style="font-size: 16.25px;">Android</a> <a href="/tags/Chinese/" style="font-size: 20px;">Chinese</a> <a href="/tags/Custom-View/" style="font-size: 10px;">Custom View</a> <a href="/tags/Data-Structure/" style="font-size: 10px;">Data Structure</a> <a href="/tags/DataStructure/" style="font-size: 10px;">DataStructure</a> <a href="/tags/English/" style="font-size: 15px;">English</a> <a href="/tags/Error/" style="font-size: 10px;">Error</a> <a href="/tags/Gradle/" style="font-size: 11.25px;">Gradle</a> <a href="/tags/Java/" style="font-size: 12.5px;">Java</a> <a href="/tags/Jetpack/" style="font-size: 11.25px;">Jetpack</a> <a href="/tags/LeetCode/" style="font-size: 17.5px;">LeetCode</a> <a href="/tags/Optimize/" style="font-size: 13.75px;">Optimize</a> <a href="/tags/SourceCode/" style="font-size: 10px;">SourceCode</a> <a href="/tags/UI/" style="font-size: 10px;">UI</a> <a href="/tags/版本差异/" style="font-size: 11.25px;">版本差异</a> <a href="/tags/版本管理/" style="font-size: 12.5px;">版本管理</a>
     </div>
 </div>
 
@@ -1728,8 +1705,27 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            最近の記事
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/03/31/Module-dependency-manage/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/2020/03/31/Module-dependency-manage/titleThumb.jpg" alt="Android 模块依赖版本管理">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-30T16:00:00.000Z">2020-03-31</time></div>
+                    <a href="/2020/03/31/Module-dependency-manage/" class="has-link-black-ter is-size-6">Android 模块依赖版本管理</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -1745,25 +1741,6 @@
                     <a href="/2020/03/01/Gradle-Kotlin/" class="has-link-black-ter is-size-6">Gradle Kotlin DSL</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Gradle/">Gradle</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2020/02/26/S1ep6-Custom-Views-and-Performance/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/2020/02/26/S1ep6-Custom-Views-and-Performance/titleThumb.jpg" alt="自定义视图及其性能">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-25T16:00:00.000Z">2020-02-26</time></div>
-                    <a href="/2020/02/26/S1ep6-Custom-Views-and-Performance/" class="has-link-black-ter is-size-6">自定义视图及其性能</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
                     </p>
                 </div>
             </div>
@@ -1790,6 +1767,25 @@
         
         <article class="media">
             
+            <a href="/2020/02/26/S1ep6-Custom-Views-and-Performance/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/2020/02/26/S1ep6-Custom-Views-and-Performance/titleThumb.jpg" alt="自定义视图及其性能">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-25T16:00:00.000Z">2020-02-26</time></div>
+                    <a href="/2020/02/26/S1ep6-Custom-Views-and-Performance/" class="has-link-black-ter is-size-6">自定义视图及其性能</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/titleThumb.jpg" alt="LeetCode 9. Palindrome Number">
@@ -1807,25 +1803,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-en/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/titleThumb.jpg" alt="LeetCode 9. Palindrome Number">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-27T16:00:00.000Z">2020-01-28</time></div>
-                    <a href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-en/" class="has-link-black-ter is-size-6">LeetCode 9. Palindrome Number</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/English/">English</a> / <a class="has-link-grey -link" href="/categories/English/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1834,7 +1811,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            アーカイブ
         </h3>
         <ul class="menu-list">
         
@@ -1844,7 +1821,7 @@
                     <span class="level-item">March 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -2034,7 +2011,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Tags
+                タグ
             </h3>
             <div class="field is-grouped is-grouped-multiline">
                 
@@ -2048,14 +2025,14 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Android/">
                         <span class="tag">Android</span>
-                        <span class="tag is-grey">15</span>
+                        <span class="tag is-grey">16</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Chinese/">
                         <span class="tag">Chinese</span>
-                        <span class="tag is-grey">29</span>
+                        <span class="tag is-grey">30</span>
                     </a>
                 </div>
                 
@@ -2153,7 +2130,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/版本管理/">
                         <span class="tag">版本管理</span>
-                        <span class="tag is-grey">2</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 
@@ -2177,8 +2154,27 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            最近の記事
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/03/31/Module-dependency-manage/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/2020/03/31/Module-dependency-manage/titleThumb.jpg" alt="Android 模块依赖版本管理">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-30T16:00:00.000Z">2020-03-31</time></div>
+                    <a href="/2020/03/31/Module-dependency-manage/" class="has-link-black-ter is-size-6">Android 模块依赖版本管理</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -2194,25 +2190,6 @@
                     <a href="/2020/03/01/Gradle-Kotlin/" class="has-link-black-ter is-size-6">Gradle Kotlin DSL</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Gradle/">Gradle</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2020/02/26/S1ep6-Custom-Views-and-Performance/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/2020/02/26/S1ep6-Custom-Views-and-Performance/titleThumb.jpg" alt="自定义视图及其性能">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-25T16:00:00.000Z">2020-02-26</time></div>
-                    <a href="/2020/02/26/S1ep6-Custom-Views-and-Performance/" class="has-link-black-ter is-size-6">自定义视图及其性能</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
                     </p>
                 </div>
             </div>
@@ -2239,6 +2216,25 @@
         
         <article class="media">
             
+            <a href="/2020/02/26/S1ep6-Custom-Views-and-Performance/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/2020/02/26/S1ep6-Custom-Views-and-Performance/titleThumb.jpg" alt="自定义视图及其性能">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-25T16:00:00.000Z">2020-02-26</time></div>
+                    <a href="/2020/02/26/S1ep6-Custom-Views-and-Performance/" class="has-link-black-ter is-size-6">自定义视图及其性能</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/titleThumb.jpg" alt="LeetCode 9. Palindrome Number">
@@ -2256,25 +2252,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-en/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/titleThumb.jpg" alt="LeetCode 9. Palindrome Number">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-27T16:00:00.000Z">2020-01-28</time></div>
-                    <a href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-en/" class="has-link-black-ter is-size-6">LeetCode 9. Palindrome Number</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/English/">English</a> / <a class="has-link-grey -link" href="/categories/English/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -2283,7 +2260,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            アーカイブ
         </h3>
         <ul class="menu-list">
         
@@ -2293,7 +2270,7 @@
                     <span class="level-item">March 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -2483,7 +2460,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Tags
+                タグ
             </h3>
             <div class="field is-grouped is-grouped-multiline">
                 
@@ -2497,14 +2474,14 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Android/">
                         <span class="tag">Android</span>
-                        <span class="tag is-grey">15</span>
+                        <span class="tag is-grey">16</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Chinese/">
                         <span class="tag">Chinese</span>
-                        <span class="tag is-grey">29</span>
+                        <span class="tag is-grey">30</span>
                     </a>
                 </div>
                 
@@ -2602,7 +2579,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/版本管理/">
                         <span class="tag">版本管理</span>
-                        <span class="tag is-grey">2</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 
@@ -2766,10 +2743,10 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Posts',
+                POSTS: '投稿',
                 PAGES: 'Pages',
-                CATEGORIES: 'Categories',
-                TAGS: 'Tags',
+                CATEGORIES: 'カテゴリ',
+                TAGS: 'タグ',
                 UNTITLED: '(Untitled)',
             },
             CONTENT_URL: '/content.json',

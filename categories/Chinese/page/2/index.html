@@ -2,7 +2,7 @@
 <html >
 <head>
     <meta charset="utf-8">
-<title>Category: Chinese - LeonChen&#39;s Blog</title>
+<title>カテゴリ: Chinese - LeonChen&#39;s Blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
 
@@ -147,13 +147,141 @@
     <div class="card-content">
         <nav class="breadcrumb" aria-label="breadcrumbs">
         <ul>
-            <li><a href="/categories">Categories</a></li>
+            <li><a href="/categories">カテゴリ</a></li>
             
             <li class="is-active"><a href="#" aria-current="page">Chinese</a></li>
         </ul>
         </nav>
     </div>
 </div>
+
+    <div class="card">
+    
+    <div class="card-image">
+        <a href="/2019/04/20/Java-Debugging-Problems-and-How-to-Solve-Them/" class="image is-7by1">
+            <img class="banner" src="/2019/04/20/Java-Debugging-Problems-and-How-to-Solve-Them/title.jpg" alt="Java 调试中你可能会遇到的问题以及如何解决他们">
+        </a>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-04-19T16:00:00.000Z">2019-04-20</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Java/">Java</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    19 minutes read (About 2891 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/04/20/Java-Debugging-Problems-and-How-to-Solve-Them/">Java 调试中你可能会遇到的问题以及如何解决他们</a>
+            
+        </h1>
+        <div class="content">
+            <!-- <h1><span id="5-java-debugging-problems-you-probably-have-and-how-to-solve-them"></span></h1><p>[TOC]</p>
+<p><a href="https://zeroturnaround.com/rebellabs/how-to-turn-the-light-on-in-your-production-environment-and-scare-the-bugs-out/" target="_blank" rel="external">原文链接</a></p>
+<p>当你的生产环境发生了异常的时候,事情变得艰难.Made Up Stats™ 的科学研究表明开发者团队会收到比平时更大的压力,咖啡杯脏的比平时快3倍而且上帝杀死了两只小猫因为一只是不够的(嗯…. 这个猫的梗有点污,原文是 god kills 2 kittens because one is just not enough.  查了一下取自一个梗…每当你手淫的时候,上帝会杀死一只猫).在下面的内容中我们将会分析你在调试生产环境的代码面对的主要的问题.接下来让我们用一个正直的警告来开始,这是我们的法律部门强迫我们放在这里的.</p>
+<blockquote>
+<p><strong>警告:</strong> 下面的内容包含一些开发者会觉得困扰的生产环境的 bug 的准确描述. </p>
+</blockquote>
+<h2><span id="问题-0-你的生产环境里有-bug">问题 #0 : 你的生产环境里有 bug</span></h2><p>第一步是承认你是有部分问题的,无论你的代码经过了多少次的测试 bug 总是会找到出现在产品的路.不管你的展示环境是多么漂亮并且不管你的负载测试多么精确.在生产环境中现实生活中经过你系统的数据流动是完全不同的.你也不是在 Intellij 或者 Eclipse 中,你身边也没有 <a href="https://zeroturnaround.com/software/xrebel/" target="_blank" rel="external">XRebel</a> ,除非你做了一些事: 你和 bugs 都在一篇黑暗中.但是不要担心,你并不是唯一处在这种环境里的 - 让我们来看看如何打开灯,测试可能的解决方案并一劳永逸的解决这个问题.</p>
+<p>为了解决 bug 你通常需要一个东西,导致错误的变量值还要知道他们是怎么进入到调用栈的.让我们来分解这个问题并看看我们如何从每个情况中获得最多的数据.</p>
+<p><strong>解决方案:</strong> 继续阅读并跟紧了,马上就要来了</p>
+<h2><span id="问题-1一个错误发生了但是你不知道它是从哪里来的">问题 #1:一个错误发生了但是你不知道它是从哪里来的</span></h2><p>某些不好的情况发生了,现在让我们将它保持在 日志异常/未捕获异常的等级.所以你查找你的 log 只看到了有关于错误空白的声明.它通常看起来像这样:</p>
+<p><em>05-04-2015 11:52:32 ERROR – Problem parsing input for servlet. [http-nio-8080-exec-62]</em></p>
+<p>但是,哇,哇,哇,等一下,除了这个异常我还知道什么呢,很好,有一些不好的东西发生在了 http-nio 中?当我检查代码并看到它运行的很好那么异常很可能是从其他机器,微服务,进程,或者甚至另一个线程产生的,事情变得棘手了.这就是在日志中迷失的全部.如果这个场景听起来很熟悉那么你大概在日志中丢失了一个事务 ID.这是一个唯一的 ID来帮助你跟踪它是从哪里开始的到它变成一个日志错误的全部过程.</p>
+<p> 除了事务 ID,你需要记住其他有关于错误的数据也是会丢失的除非你将它打印出来.关键是要尽你的可能绘制出足够的上下文,比如你进入的线程,类,甚至在关键路径上的特定方法.理想情况下我们在这里还拥有变量值,但是这个对于这种类型的问题来说太多了. <a href="http://blog.takipi.com/how-to-instantly-improve-your-java-logging-with-7-logback-tweaks/" target="_blank" rel="external">在 Takipi blog 的这篇文章中</a> 我们测试了使用 Logback 的不同类型的样式,如果你想要了解更多的内容就去看看吧.</p>
+<p><strong>解决方案:</strong> 在每个线程的实例里生成一个 UUID 指向你的应用并且将它添加到每一个日志条目 -  在整个机器上保持一致来保存他的原始上下文.同样的,如果你想要摆脱 console 可以考虑使用一些  <a href="http://blog.takipi.com/the-7-log-management-tools-you-need-to-know/" target="_blank" rel="external">日志管理工具</a> .</p>
+<h2><span id="问题-2-未捕获并异常没有关于错误的信息">问题 #2: 未捕获并异常没有关于错误的信息</span></h2><p>当我们逃离了日志错误并且捕获到了异常,我们进入了一个更黑暗的地方.未捕获异常会在线程死亡的地方出现.但是并不是所有的都这么残酷,我们有一个最后的防线: <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Thread.html#getDefaultUncaughtExceptionHandler--" target="_blank" rel="external">默认未捕获异常处理器</a>. 一旦我们在这里有了一个未捕获异常处理器,我们实际上可以对他们做一些事并且绘制出一些变量数据.问题是当他们到达调用栈上的未捕获异常处理器的时候,大部分我们可以得到的关于错误的上下文已经丢失了.再说一次,我们在这里还有另一个机会并且不是所有的都丢失了:  <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/ThreadLocal.html" target="_blank" rel="external">Thread Local Storage</a> (TLS) 还有线程名称.</p>
+<p>Thread Local Storage 让我们可以再这个线程上存储变量,不会被限制在任何的栈帧上.实际上,线程可以做很酷的事情,想要知道更多的使用线程的技巧你可以查看 <a href="http://blog.takipi.com/java-thread-magic-tricks/" target="_blank" rel="external">这个技巧</a>.所以通过 TLS 我们可以在这个异常被抛出的时候存储更多有关于这个状态的数据.另一件很酷的技巧是使用有意义的线程名字,取代像这样的名字:</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pool-1-thread-1</div></pre></td></tr></table></figure>
+<p>我们可以这么做:<br><code>Thread.currentThread().setName(Context + TID + Params + current Time, ...);</code></p>
+<p>然后可以得到:</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Queue Processing Thread, MessageID: AB5CAD, type: AnalyzeGraph, queue: ACTIVE_PROD, Transaction_ID: 5678956, Start Time: 02/04/2015 17:37</div></pre></td></tr></table></figure>
+<p><strong>解决方案:</strong> 设置一个未捕获异常处理器,记住线程的名字并且让你的 Thread Local Storage 工作.</p>
+<h2><span id="问题-3-你的进程被挂起了而你还不知道为什么">问题 #3: 你的进程被挂起了而你还不知道为什么</span></h2><p>一个进程被卡住了可能你知道有一些奇怪的东西在你的应用中流动?从你的 JDK 中构建的工具来看这可能是一个很好的任务.它可以连接到任何一个 Java 进程,只需要指向一个 PID ,然后对所有的输出进行分类,包括现在运行的所有线程的堆栈跟踪,切面,他们持有的锁还有所有其他的元数据.使用 jstack 你还可以分析哪些已经不存在的进程的堆输出或者核心输出.</p>
+<p>要获得更多实践的概述还有在特定条件下自动开启它的方法,可以查看 <a href="http://blog.takipi.com/supercharged-jstack-how-to-debug-your-servers-at-100mph/" target="_blank" rel="external">这篇文章</a>,还有 <a href="https://github.com/takipi/jstack" target="_blank" rel="external">Github</a> 上的示例,它可以完成这个功能.为了从中提取出最大的价值,你同事还需要做一些手动工作来理解你得到的结果.</p>
+<p><strong>解决方案:</strong>  了解如何处理 jstack 并用它来解决棘手的问题.</p>
+<h2><span id="问题-4-所有的这些解决方案都需要改动代码">问题 #4: 所有的这些解决方案都需要改动代码</span></h2><p>介绍你的应用的改变并且在你的服务器重构你的日志系统是一个非常困难的任务.如果这里有一种方式可以再不影响代码的内部结构的情况下提取出调试应用程序所需的信息呢?如果你设置没有访问某些部分的权限但是错误就产生在那些地方呢?使用 Java 代理.</p>
+<p>Java 代理可以挂载到一个运行的 JVM 中并且提取出它里面所有的信息. 其中有一个叫  <a href="https://kenai.com/projects/btrace" target="_blank" rel="external">BTrace</a> 的 Java 代理你可以看看. 通过 JVM 参数将它绑定上之后,你可以通过 BTrace 脚本语言将它绑定. 你可以测试自己的代码并且获取运行它的数据而不需要改变实际的应用. 让我们看看如何通过使用 BTrace 脚本语言激活 jstack 来使用这个技巧.</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-meta">@BTrace</span> <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Classload</span> </span>&#123;</div><div class="line">   <span class="hljs-meta">@OnMethod</span>(</div><div class="line">       Clazz=”+java.lang.ClassLoader”,</div><div class="line">       method=”defineClass”,</div><div class="line">       location=<span class="hljs-meta">@Location</span>(Kind.RETURN)</div><div class="line">    )</div><div class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">defineClass</span><span class="hljs-params">(@Return class cl)</span> </span>&#123;</div><div class="line">       println(Strings.strcat(“loaded ”, Reflective.name(cl)));</div><div class="line">       Threads.jstack();</div><div class="line">      println(“==============================”);</div><div class="line">   &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在这里我们获取了所有的 ClassLoader 还有他们的子类.不管什么时候返回了 “defineClass” ,这个脚本都会打印出加载的类并且运行 jstack.这个方法的缺点是不推荐在生产环境中持续使用它,只适合于指出特定的问题.它也有一些限制,比如不能创建新的对象,捕捉异常或包含循环.</p>
+<p>如果你想要更冒险一点,你可以自己自定义一个 Java 代理,就像 BTrace一样.比如,当我们有一个类出现了问题,它在到处产生了数百万个新的对象,一个简单的 Java 代理帮助我们解决了这个问题.我们会挂载到这个对象的构造器上,并且不管它在什么时候被分配了一个实例,我们可以获得它的堆栈记录并可以知道这个加载是从哪里来的.这个代理的代码可以在 Github 上得到,欢迎你来 <a href="https://github.com/takipi/debugAgent" target="_blank" rel="external">查看</a>.</p>
+<p><strong>解决方案:</strong>  学习更多关于 Java 代理的知识并且使用他们来解决真正棘手的问题.</p>
+<h2><span id="问题-5-没有关于错误的根本原因的数据">问题 #5: 没有关于错误的根本原因的数据</span></h2><p>再更深入一点,与自定义 Java 代理不同,本地代理在处理的时候拥有一个更加强大的功能.你可以在 <a href="http://blog.takipi.com/double-agent-java-vs-native-agents/" target="_blank" rel="external">这里</a> 了解更多具体的不同.通常来说,Java 代理拥有代码检测功能,然而本机代理拥有访问 JVM 底层的 API 的权限(<a href="http://docs.oracle.com/javase/8/docs/platform/jvmti/jvmti.html" target="_blank" rel="external">JVMTI</a>). 这意味着他们可以越过基础的栈追踪数据并且获得真正的根本原因,包含导致错误的变量值.</p>
+<p><a href="http://takipi.com/" target="_blank" rel="external"><img src="https://zeroturnaround.com/wp-content/uploads/2015/04/takipi-error-analysis-screen-640x410.png" alt="Takipi&#39;s error analysis screen"></a></p>
+<p><em>Takipi 的错误分析屏</em></p>
+<p><a href="https://www.takipi.com/" target="_blank" rel="external">Takipi 的本地代理</a> 专门用于监控大规模的生产环境中的服务器.它工作在 JVM 层来捕获有关于你错误的完整的代码和变量,而不需要依赖日志文件.在配置方面,它只需要你在服务器上使用一个 JVM 参数启动就会立刻开始反馈并分析所有你的异常和日志错误.</p>
+<p><strong>解决方案:</strong> 尝试于是用一个可以访问底层并且得到真正的根本原因的本地代理.</p>
+<h2><span id="结论">结论</span></h2><p>希望这个演练可以帮助你以无痛的方式来解决生产环境的错误,而不需要浪费很多小时甚至是很多天的时间.你有更多的调试生产环境的方法吗?或者你想要分享你和 bug 斗争的故事吗?通过下面的评论模块让我们知道.</p>
+<h2><span id="about-me">About Me</span></h2><p>我的博客 <a href="http://leonchen1024.com/" target="_blank" rel="external">leonchen1024.com</a></p>
+<p>我的 GitHub <a href="https://github.com/LeonChen1024" target="_blank" rel="external">https://github.com/LeonChen1024</a></p>
+<p>微信公众号 </p>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/Images/CooderQRcodem.jpg?raw=false" alt="wechat"></p>
+ -->
+            <div class="article-entry">
+                    
+                    
+                        
+                            
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                            
+                                
+                                <p><h1><span id="5-java-debugging-problems-you-probably-have-and-how-to-solve-them"></span></h1><p>[TOC]</p>
+<p><a href="https://zeroturnaround.com/rebellabs/how-to-turn-the-light-on-in-your-production-environment-and-scare-the-bugs-out/" target="_blank" rel="external">原文链接</a></p>
+<p>当你的生产环境发生了异常的时候,事情变得艰难.Made Up Stats™ 的科学研究表明开发者团队会收到比平时更大的压力,咖啡杯脏的比平时快3倍而且上帝杀死了两只小猫因为一只是不够的(嗯…. 这个猫的梗有点污,原文是 god kills 2 kittens because one is just not enough.  查了一下取自一个梗…每当你手淫的时候,上帝会杀死一只猫).在下面的内容中我们将会分析你在调试生产环境的代码面对的主要的问题.接下来让我们用一个正直的警告来开始,这是我们的法律部门强迫我们放在这里的.</p>
+<blockquote>
+<p><strong>警告:</strong> 下面的内容包含一些开发者会觉得困扰的生产环境的 bug 的准确描述. </p>
+<p>
+                            
+                        
+                    
+                    
+                        </div>   
+                        <div class="article-more-link">
+                            <a href="/2019/04/20/Java-Debugging-Problems-and-How-to-Solve-Them/#more">Read More</a>
+                        </div>
+                    
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
 
     <div class="card">
     
@@ -1256,172 +1384,15 @@
 
 
 
-    <div class="card">
-    
-    <div class="card-image">
-        <a href="/2018/08/14/Binary-Search/" class="image is-7by1">
-            <img class="banner" src="/2018/08/14/Binary-Search/title.jpg" alt="Binary Search(二分搜索)">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2018-08-13T16:00:00.000Z">2018-08-14</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Algorithm/">Algorithm</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Algorithm/Common/">Common</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    25 minutes read (About 3751 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2018/08/14/Binary-Search/">Binary Search(二分搜索)</a>
-            
-        </h1>
-        <div class="content">
-            <!-- <h1><span id="binary-search二分搜索">Binary Search(二分搜索)</span></h1><p>二分搜索(binary search),也叫做 折半搜索(half-interval search),对数搜索(logarithmic search),对半搜索(binary chop),是一种在有序数组中查找某一特定元素的搜索算法.</p>
-<p>二分搜索有几个变体.特别是,分散层叠(<a href="https://en.wikipedia.org/wiki/Fractional_cascading" target="_blank" rel="external">fractional cascading</a>)(将每个数组里的值集合成一个数组,元素为11[0,3,2,0] 的形式,括号内的数字是该值在对应数组中应该返回的数字)提高了在多个数组中查找相同值的效率,高效的解决了一系列计算几何和其他领域的查找问题).指数查找(<a href="https://en.wikipedia.org/wiki/Exponential_search" target="_blank" rel="external">Exponential search</a>)延伸了二分查找到一个没有边界的 list.<a href="https://en.wikipedia.org/wiki/Binary_search_tree" target="_blank" rel="external">binary search tree</a>和<a href="https://en.wikipedia.org/wiki/B-tree" target="_blank" rel="external">B-tree</a>是基于 binary search 延伸的.</p>
-<h2><span id="原理">原理</span></h2><p>搜索时从数组中间元素开始,如果中间元素正好是要查找的元素,则搜索过程结束;如果中间元素大于或者小于要查找的元素,则在数组中大于或者小于查找元素的一半中继续查找,重复这个过程直到找到这个元素,或者这一半的大小为空时则代表找不到.这样子每一次比较都使得搜索范围缩小一半.</p>
-<h3><span id="步骤">步骤</span></h3><p>给定一个有序数组 A 是 A0,…,An-1并保证 A0&lt;=…&lt;=An-1,以及目标值 T.</p>
-<ol>
-<li>令 L 为0,R 为 n-1.</li>
-<li>如果 L&gt;R 则搜索失败</li>
-<li>令m(中间值元素索引)为最大的小于(L+R)/2的整数</li>
-<li>如果 Am&lt;T ,令 L=m+1并回到第2步;</li>
-<li>如果 Am&gt;T ,令 R=m-1并回到第2步;</li>
-<li>当 Am=T,搜索结束;T 所在的索引位置为m.</li>
-</ol>
-<p><code>变体</code></p>
-<ol>
-<li>令 L 为0,R 为 n-1.</li>
-<li>令 m(中间元素索引) 为上限,也就是最小的大于(L+R)/2的值.</li>
-<li>如果 Am&gt;T ,设置 R 为 m-1并且返回第2步</li>
-<li>如果 Am&lt;=T ,设置 L 为m 并且返回第2步.</li>
-<li>直到 L=R ,搜索完成.这时候如果T=Am,返回 m,否则,搜索失败.</li>
-</ol>
-<p>在 Am&lt;=T 的时候,这个变体将 L 设置为 m 而不是 m+1.这个方式的比较是更快速的,因为它在每个循环里省略了一次比较.但是平均就会多出来一次循环.在数组包含重复的元素的时候这个变体总是会返回最右侧的元素索引.比如 A 是[1,2,3,4,4,5,6,7]查找的对象是4,那么这个方法会返回 index 4,而不是 index 3.</p>
-<h3><span id="大致匹配">大致匹配</span></h3><p>由于有序数组的顺序性,可以将二分搜索扩展到大致匹配.可以用来计算赋值的排名(或称秩,比它更小的元素的数量),前趋(下一个最小元素),后继(下一个最大元素)以及最近邻.还可以使用两个排名查询来执行范围查询.</p>
-<ul>
-<li>排名查询可以使用调整后的二分搜索来进行.成功时返回m,失败时返回 L, 这样就等于返回了比目标值小的元素数目.</li>
-<li>前趋和后继可以使用排名查询来进行.当知道目标值的排名,成功时前趋是排名位置的上一个元素,失败时则是排名位置的元素.它的后继是排名位置的后一个元素,或是前趋的下一个元素.目标值的最近领可能是前趋或后继,取决于哪个更接近目标值.</li>
-<li>范围查询,一旦知道范围两边的值的排名,那么大于边界最小值且小于边界最大值的元素排名就是他们的范围,是否包含边界值根据需要处理.</li>
-</ul>
-<h2><span id="性能分析">性能分析</span></h2><p><strong>时间复杂度</strong><br>二分查找每次把搜索区域减少一半,时间复杂度为<br>$$<br>O(log_2 n)<br>$$<br>(n 是集合中元素的个数)<br>最差的情况是 遍历到最后一层,或者是没有找到该元素的时候,复杂度为 $O(\lfloor log_2 n + 1 \rfloor)$ .</p>
-<p>综合复杂度为 $O(log_2 n)$</p>
-<p>分散层叠(fractional cascading) 可以提高在多数组中查询相同值的效率. k 是数组的数量,在每个数组中查询目标值消耗 $O(k log n)$ 的时间.分散层叠可以将它降低到 $O(k+log n)$.</p>
-<p><code>变体效率分析</code><br>相对于正常的二分搜索,它减少了每次循环的比对次数,但是它必须做完完整的循环,而不会在中间就得到答案.但是在 n 很大的情况下减少了对比次数的提升不能够抵消多余的循环的消耗.</p>
-<p><strong>空间复杂度</strong><br>O(1).尾递归,可以改写为循环.</p>
-<h2><span id="应用">应用</span></h2><p>查找数组中的元素,或用于插入排序.</p>
-<h2><span id="二分搜索和其他的方案对比">二分搜索和其他的方案对比</span></h2><p>使用二分搜索的有序数组在插入和删除操作效率很低,每个操作消耗 O(n) 的时间.其他的数据结构提供了更高效的插入和删除,并且提供了同样高效的完全匹配.然而,二分搜索适用于很多的搜索问题,只消耗 $O(log n)$ 的时间.</p>
-<h3><span id="hashing">Hashing</span></h3><p>对于<a href="https://en.wikipedia.org/wiki/Associative_arrays" target="_blank" rel="external">关联数组 (associative arrays)</a>,<a href="https://en.wikipedia.org/wiki/Hash_table" target="_blank" rel="external">哈希表 (hash tables)</a>,他们是通过hash 函数将键映射到记录上的数据结构,通常情况下比在有序数组的情况下使用二分查找要更快.大部分的实现平均开销都是常量级的.然而, hashing 并不适用于模糊匹配,比如计算前趋,后继,以及最近的键,它在失败的查询情况下能给我们的唯一信息就是目标在记录中不存在.二分查找是这种匹配的理想模式,消耗对数级别的时间.</p>
-<h3><span id="trees">Trees</span></h3><p><a href="todo">二叉搜索树(binary search tree)</a> 是一个基于二叉搜索原理的<a href="todo">二叉树(binary tree)</a>数据结构.树的记录按照顺序排列,并且每个树里的每个记录都可以使用类似二叉搜索的方法来搜索,平均耗费对数级的时间.插入和删除的平均时间也是对数级的.这会比有序数组消耗的线性时间要快,并且二叉树拥有所有有序数组可以执行的操作,包含范围和模糊查找.</p>
-<p>然而二叉搜索通常情况下比二叉搜索树的搜索更有效率,因为二叉搜索树很可能会完全不平衡,导致性能稍差.这同样适用于 <a href="todo">平衡二叉搜索树( balanced binary search trees)</a> , 它平衡了它自己的节点稍微向完全平衡树靠拢.虽然不太可能,但是树有可能只有少数节点有两个子节点导致严重不平衡,这种情况下平均时间损耗和最差的情况差不多都是 O(n) .二叉搜索树比有序数组占用更多的空间.</p>
-<p>二叉搜索树因为可以高效的在文件系统中结构化,所以他们可以在硬盘中进行快速搜索.B-tree 泛化了这种树结构的方法.B-tree 常用于组织长时间的存储比如<a href="todo">数据库(databases)</a>和<a href="todo">文件系统(filesystems)</a>.</p>
-<h3><span id="linear-search">Linear search</span></h3><p><a href="todo">线性搜索( Linear Search)</a>是一种简单的搜索算法,它查找每一个记录直到找到目标值.线性搜索可以在 链表(linked list) 上使用,它的插入和删除会比在数组上要快.二分搜索比线性搜索要快除非数组很短.如果数组必须先被排序,这个消耗必须在搜索中平摊.对数组进行排序还可以进行有效的近似匹配和其他操作.</p>
-<h3><span id="set-membership-algorithms">Set membership algorithms</span></h3><p>一个和搜索相关的问题是<a href="todo">集合成员(set membership)</a>.所有有关查找的算法,比如二分搜索,都可以用于集合成员.还有一些更适用于集合成员的算法,<a href="todo">位数组(bit array)</a>是最简单的一个,在键的范围是有限的时候非常有用.它非常快,是需要O(1)的时间.<a href="todo">朱迪矩阵(Judy array)</a>可以高效的处理64位键.</p>
-<p>对于近似结果,<a href="todo">布隆过滤器(Bloom filters)</a>是另外一个基于哈希的概率性数据结构,通过存储使用bit array 和多重 hash 函数编码的键集合. Bloom filters 在大多数情况下空间效率比bit arrays 要高而不会慢太多:使用了 k 重hash 函数,成员查找只需要 O(k) 的时间.然而, Bloom filters 有一定的误判性.</p>
-<h3><span id="其他的数据结构">其他的数据结构</span></h3><p>这里存在一些数据结构在某些情况下比在有序数组上使用二分搜索进行查找或其他的操作更加高效.比如,在<a href="todo">van Emde Boas trees</a>, <a href="todo">fusion trees</a>, <a href="todo">前缀树(tries)</a>, 和<a href="todo">位数组</a> 上进行查找,近似匹配,以及其他可用的操作可以比在有序数组上进行二分搜索更加的高效.然而,尽管这些操作可以比在无视键的情况下比有序数组上使用更高效,这样的数据结构通常是因为利用了某些键的属性(键通常是一些小整数),因此如果键缺乏那些属性将会消耗更多的空间或时间.一些结构如朱迪矩阵,使用了多种方式的组合来保证效率和执行近似匹配的能力.</p>
-<h2><span id="变体">变体</span></h2><h3><span id="uniform-binary-search">Uniform binary search</span></h3><p>Uniform binary search 不是存储下限和上限的边界值,而是中间元素的索引,和从这次循环的中间元素到下次循环的中间元素的变化.每一步的变化减少一半.比如,要搜索的数组是[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],中间元素是6.Uniform binary search 同时对左边和右边的子数组进行操作.在这个情况下,左边的子数组([1, 2, 3, 4, 5]) 的中间元素 3 而右边的子数组 ([7, 8, 9, 10, 11]) 的中间元素是 9.然后存储3 作为两个中间元素和 6 的差别.为了减少搜索的空间使用,算法同时加上或减去这个和中间元素的改变.这个算法的好处是可以将每次循环的索引的差别存储到一个表里,在某些系统里可以提高算法的性能.</p>
-<p><img src="/2018/08/14/Binary-Search/Uniform_binary_search.svg.png" alt=""></p>
-<h3><span id="exponential-search">Exponential search</span></h3><p>指数查找(Exponential Search)将二分搜索拓展到无边界数组.它最开始寻找第一个索引是2的幂次方并且要比目标值大的元素的索引.然后,它将这个元素索引设置为上边界,然后开始二分搜索.指数查找消耗 $\lfloor log_2 x =1 \rfloor$ 次循环 ,然后二分搜索消耗 $\lfloor log_2 x \rfloor$ 次循环, x 是目标值的位置.指数查找适用于有界列表,在目标值接近数组开始的位置的时候比二分查找性能有所提高.</p>
-<p><img src="/2018/08/14/Binary-Search/Exponential_search.svg.png" alt=""></p>
-<h3><span id="interpolation-search">Interpolation search</span></h3><p>内插搜索(Interpolation search)忽略了目标值的位置,计算数组的最低和最高元素的距离即数组的长度.这只有在数组元素是数字的时候才能使用.它适用于中间值不是最好的猜测选择的情况.比如,如果目标值接近数组的最高元素,最好是定位在数组的末端.如果数组的分布是均匀的或者接近均匀的,它消耗 $O(log log n)$ 次比较.</p>
-<p>实际上,内插搜索在数组元素较少的情况下是比二分搜索更慢的,因为内插搜索需要额外的计算.尽管它的时间复杂度增长是小于二分搜索的,只有在在大数组的情况下这个计算的损耗可以被弥补.</p>
-<p><img src="/2018/08/14/Binary-Search/Interpolation_search.svg.png" alt=""></p>
-<h3><span id="fractional-cascading">Fractional cascading</span></h3><p>分散层叠(Fractional cascading) 可以提高在多个有序数组里查找相同的元素或近似匹配的效率,分别在每个数组里查找总共需要 $O(klogn)$的时间, k 是数组的数量.分散层叠通过将每个数组的信息按指定的方式存储起来将这个时间降低到 $O(k+logn)$ .</p>
-<p>它将每个数组里的值集合成一个数组,元素为 11[0,3,2,0] 的形式,括号内的数字是该值在对应数组中应该返回的数字)提高了在多个数组中查找相同值的效率,高效的解决了一系列计算几何和其他领域的查找问题</p>
-<p>分散层叠被发明的时候是为了高效的解决各种<a href="todo">计算几何学(computational geometry)</a> 问题,但是它同样适用于其他地方,例如 <a href="todo">数据挖掘(data mining)</a> 和 <a href="todo">互联网协议(Internet Protocal)</a> 等.</p>
-<h2><span id="实现时的问题">实现时的问题</span></h2><p>要注意中间值的取值方法,如果使用 (L+R)/2 当数组的元素数量很大的时候回造成计算溢出.所以要使用L+(R-L)/2.</p>
-<h2><span id="示例">示例</span></h2><p>C 版本- 递归<br><figure class="highlight c hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">binary_search</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> arr[], <span class="hljs-keyword">int</span> start , <span class="hljs-keyword">int</span> end , <span class="hljs-keyword">int</span> khey)</span></span>&#123;</div><div class="line">    <span class="hljs-keyword">if</span> (start &gt; end)</div><div class="line">      <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;</div><div class="line"></div><div class="line">    <span class="hljs-keyword">int</span> mid = start +(end - start)/<span class="hljs-number">2</span>;   <span class="hljs-comment">//直接平均可能会溢位,所以用此算法</span></div><div class="line">    <span class="hljs-keyword">if</span> (arr[mid] &gt; khey)</div><div class="line">        <span class="hljs-keyword">return</span> binary_search(arr , start , mid - <span class="hljs-number">1</span> , khey);</div><div class="line">    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (arr[mid] &lt; khey)</div><div class="line">        <span class="hljs-keyword">return</span> binary_search(arr , mid + <span class="hljs-number">1</span> , end , khey);</div><div class="line">    <span class="hljs-keyword">else</span></div><div class="line">        <span class="hljs-keyword">return</span> mid;    <span class="hljs-comment">//最后才检测相等的情况是因为大多数搜寻情况不是大于就是小于</span></div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>C 版本- while 循环</p>
-<figure class="highlight c hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">binary_search</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> arr[], <span class="hljs-keyword">int</span> start, <span class="hljs-keyword">int</span> end, <span class="hljs-keyword">int</span> khey)</span></span>&#123;</div><div class="line">    <span class="hljs-keyword">int</span> result = <span class="hljs-number">-1</span>;    <span class="hljs-comment">//如果没有搜索到数据返回 -1</span></div><div class="line"></div><div class="line">    <span class="hljs-keyword">int</span> mid;</div><div class="line">    <span class="hljs-keyword">while</span> (start &lt;= end)&#123;</div><div class="line">      mid = start + (end - start)/<span class="hljs-number">2</span> ;    <span class="hljs-comment">//直接平均可能会溢位,所以用此算法</span></div><div class="line">      <span class="hljs-keyword">if</span> (arr[mid] &gt; khey)</div><div class="line">          end = mid<span class="hljs-number">-1</span>;</div><div class="line">      <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (arr[mid] &lt; khey)</div><div class="line">          start = mid + <span class="hljs-number">1</span>;</div><div class="line">      <span class="hljs-keyword">else</span>&#123;    <span class="hljs-comment">//最后才检测相等的情况是因为大多数搜寻情况不是大于就是小于</span></div><div class="line">          result = mid;</div><div class="line">          <span class="hljs-keyword">break</span>;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="hljs-keyword">return</span> result;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>Python3 递归</p>
-<figure class="highlight python hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">binary_search</span><span class="hljs-params">(arr, start, end, hkey)</span>:</span></div><div class="line">    <span class="hljs-keyword">if</span> start &gt; end:</div><div class="line">        <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span></div><div class="line"></div><div class="line">    mid = start + (end - start) / <span class="hljs-number">2</span></div><div class="line">    <span class="hljs-keyword">if</span> arr[mid] &gt; hkey:</div><div class="line">        <span class="hljs-keyword">return</span> binary_search(arr, start , mid - <span class="hljs-number">1</span>,hkey)</div><div class="line">    <span class="hljs-keyword">if</span> arr[mid] &lt; hkey:</div><div class="line">        <span class="hljs-keyword">return</span> binary_search(arr, mid + <span class="hljs-number">1</span>, end, hkey)</div><div class="line">    <span class="hljs-keyword">return</span> mid</div></pre></td></tr></table></figure>
-<p>Python3 while 循环</p>
-<figure class="highlight python hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">binary_search</span><span class="hljs-params">(arr, start, end, hkey)</span>:</span></div><div class="line">    result = <span class="hljs-number">-1</span></div><div class="line"></div><div class="line">    <span class="hljs-keyword">while</span> start &lt;= end:</div><div class="line">        mid = start + (end - start) / <span class="hljs-number">2</span></div><div class="line">        <span class="hljs-keyword">if</span> arr[mid] &gt; hkey :</div><div class="line">            end = mid - <span class="hljs-number">1</span></div><div class="line">        <span class="hljs-keyword">elif</span> arr[mid] &lt; hkey :</div><div class="line">            start = mid + <span class="hljs-number">1</span></div><div class="line">        <span class="hljs-keyword">else</span> :</div><div class="line">            result = mid</div><div class="line">            <span class="hljs-keyword">break</span></div><div class="line"></div><div class="line">    <span class="hljs-keyword">return</span> result</div></pre></td></tr></table></figure>
-<p>Java 递归</p>
-<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> <span class="hljs-title">binarySearch</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] arr, <span class="hljs-keyword">int</span> start, <span class="hljs-keyword">int</span> end, <span class="hljs-keyword">int</span> hkey)</span></span>&#123;</div><div class="line">    <span class="hljs-keyword">if</span> (start &gt; end)</div><div class="line">        <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>;</div><div class="line"></div><div class="line">    <span class="hljs-keyword">int</span> mid = start + (end - start)/<span class="hljs-number">2</span>;    <span class="hljs-comment">//防止溢位</span></div><div class="line">    <span class="hljs-keyword">if</span> (arr[mid] &gt; hkey)</div><div class="line">        <span class="hljs-keyword">return</span> binarySearch(arr, start, mid - <span class="hljs-number">1</span>, hkey);</div><div class="line">    <span class="hljs-keyword">if</span> (arr[mid] &lt; hkey)</div><div class="line">        <span class="hljs-keyword">return</span> binarySearch(arr, mid + <span class="hljs-number">1</span>, end, hkey);</div><div class="line">    <span class="hljs-keyword">return</span> mid;  </div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>Java while 循环</p>
-<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> <span class="hljs-title">binarySearch</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] arr, <span class="hljs-keyword">int</span> start, <span class="hljs-keyword">int</span> end, <span class="hljs-keyword">int</span> hkey)</span></span>&#123;</div><div class="line">    <span class="hljs-keyword">int</span> result = -<span class="hljs-number">1</span>;</div><div class="line"></div><div class="line">    <span class="hljs-keyword">while</span> (start &lt;= end)&#123;</div><div class="line">        <span class="hljs-keyword">int</span> mid = start + (end - start)/<span class="hljs-number">2</span>;    <span class="hljs-comment">//防止溢位</span></div><div class="line">        <span class="hljs-keyword">if</span> (arr[mid] &gt; hkey)</div><div class="line">            end = mid - <span class="hljs-number">1</span>;</div><div class="line">        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (arr[mid] &lt; hkey)</div><div class="line">            start = mid + <span class="hljs-number">1</span>;</div><div class="line">        <span class="hljs-keyword">else</span> &#123;</div><div class="line">            result = mid ;  </div><div class="line">            <span class="hljs-keyword">break</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="hljs-keyword">return</span> result;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2><span id="about-me">About Me</span></h2><p>我的博客 <a href="http://leonchen1024.com/" target="_blank" rel="external">leonchen1024.com</a></p>
-<p>我的 GitHub <a href="https://github.com/LeonChen1024" target="_blank" rel="external">https://github.com/LeonChen1024</a></p>
-<p>微信公众号 </p>
-<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/Images/CooderQRcodem.jpg?raw=false" alt="wechat"></p>
-<h2><span id="references">References</span></h2><p><a href="https://en.wikipedia.org/wiki/Binary_search_algorithm" target="_blank" rel="external">https://en.wikipedia.org/wiki/Binary_search_algorithm</a></p>
- -->
-            <div class="article-entry">
-                    
-                    
-                        
-                            
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                            
-                                
-                                <p><h1><span id="binary-search二分搜索">Binary Search(二分搜索)</span></h1><p>二分搜索(binary search),也叫做 折半搜索(half-interval search),对数搜索(logarithmic search),对半搜索(binary chop),是一种在有序数组中查找某一特定元素的搜索算法.</p>
-<p>二分搜索有几个变体.特别是,分散层叠(<a href="https://en.wikipedia.org/wiki/Fractional_cascading" target="_blank" rel="external">fractional cascading</a>)(将每个数组里的值集合成一个数组,元素为11[0,3,2,0] 的形式,括号内的数字是该值在对应数组中应该返回的数字)提高了在多个数组中查找相同值的效率,高效的解决了一系列计算几何和其他领域的查找问题).指数查找(<a href="https://en.wikipedia.org/wiki/Exponential_search" target="_blank" rel="external">Exponential search</a>)延伸了二分查找到一个没有边界的 list.<a href="https://en.wikipedia.org/wiki/Binary_search_tree" target="_blank" rel="external">binary search tree</a>和<a href="https://en.wikipedia.org/wiki/B-tree" target="_blank" rel="external">B-tree</a>是基于 binary search 延伸的.</p>
-<h2><span id="原理">原理</span></h2><p>搜索时从数组中间元素开始,如果中间元素正好是要查找的元素,则搜索过程结束;如果中间元素大于或者小于要查找的元素,则在数组中大于或者小于查找元素的一半中继续查找,重复这个过程直到找到这个元素,或者这一半的大小为空时则代表找不到.这样子每一次比较都使得搜索范围缩小一半.</p>
-<h3><span id="步骤">步骤</span></h3><p>给定一个有序数组 A 是 A0,…,An-1并保证 A0&lt;=…&lt;=An-1,以及目标值 T.</p>
-<ol>
-<p>
-                            
-                        
-                    
-                    
-                        </div>   
-                        <div class="article-more-link">
-                            <a href="/2018/08/14/Binary-Search/#more">Read More</a>
-                        </div>
-                    
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
     <nav class="pagination is-centered" role="navigation" aria-label="pagination">
         <div class="pagination-previous">
-            <a class="is-flex-grow has-text-black-ter" href="/categories/Chinese/">Previous</a>
+            <a class="is-flex-grow has-text-black-ter" href="/categories/Chinese/">前</a>
         </div>
         <div class="pagination-next">
-            <a class="is-flex-grow has-text-black-ter" href="/categories/Chinese/page/3/">Next</a>
+            <a class="is-flex-grow has-text-black-ter" href="/categories/Chinese/page/3/">次</a>
         </div>
         <ul class="pagination-list is-hidden-mobile">
             
@@ -1474,17 +1445,17 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Posts
+                        投稿
                     </p>
                     <p class="title has-text-weight-normal">
-                        38
+                        39
                     </p>
                 </div>
             </div>
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categories
+                        カテゴリ
                     </p>
                     <p class="title has-text-weight-normal">
                         20
@@ -1494,7 +1465,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Tags
+                        タグ
                     </p>
                     <p class="title has-text-weight-normal">
                         17
@@ -1504,7 +1475,7 @@
         </nav>
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://github.com/LeonChen1024">
-                Follow</a>
+                フォローする</a>
         </div>
         
         
@@ -1533,7 +1504,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categories
+                カテゴリ
             </h3>
             <ul class="menu-list">
             <li>
@@ -1542,7 +1513,7 @@
                 <span class="level-item">Chinese</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">29</span>
+                <span class="level-item tag">30</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="undefined">
@@ -1558,7 +1529,7 @@
                 <span class="level-item">Android</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">12</span>
+                <span class="level-item tag">13</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="undefined">
@@ -1610,9 +1581,9 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Tag Cloud
+            タグクラウド
         </h3>
-        <a href="/tags/Algorithm/" style="font-size: 18.75px;">Algorithm</a> <a href="/tags/Android/" style="font-size: 16.25px;">Android</a> <a href="/tags/Chinese/" style="font-size: 20px;">Chinese</a> <a href="/tags/Custom-View/" style="font-size: 10px;">Custom View</a> <a href="/tags/Data-Structure/" style="font-size: 10px;">Data Structure</a> <a href="/tags/DataStructure/" style="font-size: 10px;">DataStructure</a> <a href="/tags/English/" style="font-size: 15px;">English</a> <a href="/tags/Error/" style="font-size: 10px;">Error</a> <a href="/tags/Gradle/" style="font-size: 11.25px;">Gradle</a> <a href="/tags/Java/" style="font-size: 12.5px;">Java</a> <a href="/tags/Jetpack/" style="font-size: 11.25px;">Jetpack</a> <a href="/tags/LeetCode/" style="font-size: 17.5px;">LeetCode</a> <a href="/tags/Optimize/" style="font-size: 13.75px;">Optimize</a> <a href="/tags/SourceCode/" style="font-size: 10px;">SourceCode</a> <a href="/tags/UI/" style="font-size: 10px;">UI</a> <a href="/tags/版本差异/" style="font-size: 11.25px;">版本差异</a> <a href="/tags/版本管理/" style="font-size: 11.25px;">版本管理</a>
+        <a href="/tags/Algorithm/" style="font-size: 18.75px;">Algorithm</a> <a href="/tags/Android/" style="font-size: 16.25px;">Android</a> <a href="/tags/Chinese/" style="font-size: 20px;">Chinese</a> <a href="/tags/Custom-View/" style="font-size: 10px;">Custom View</a> <a href="/tags/Data-Structure/" style="font-size: 10px;">Data Structure</a> <a href="/tags/DataStructure/" style="font-size: 10px;">DataStructure</a> <a href="/tags/English/" style="font-size: 15px;">English</a> <a href="/tags/Error/" style="font-size: 10px;">Error</a> <a href="/tags/Gradle/" style="font-size: 11.25px;">Gradle</a> <a href="/tags/Java/" style="font-size: 12.5px;">Java</a> <a href="/tags/Jetpack/" style="font-size: 11.25px;">Jetpack</a> <a href="/tags/LeetCode/" style="font-size: 17.5px;">LeetCode</a> <a href="/tags/Optimize/" style="font-size: 13.75px;">Optimize</a> <a href="/tags/SourceCode/" style="font-size: 10px;">SourceCode</a> <a href="/tags/UI/" style="font-size: 10px;">UI</a> <a href="/tags/版本差异/" style="font-size: 11.25px;">版本差异</a> <a href="/tags/版本管理/" style="font-size: 12.5px;">版本管理</a>
     </div>
 </div>
 
@@ -1624,8 +1595,27 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            最近の記事
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/03/31/Module-dependency-manage/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/2020/03/31/Module-dependency-manage/titleThumb.jpg" alt="Android 模块依赖版本管理">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-30T16:00:00.000Z">2020-03-31</time></div>
+                    <a href="/2020/03/31/Module-dependency-manage/" class="has-link-black-ter is-size-6">Android 模块依赖版本管理</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -1641,25 +1631,6 @@
                     <a href="/2020/03/01/Gradle-Kotlin/" class="has-link-black-ter is-size-6">Gradle Kotlin DSL</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Gradle/">Gradle</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2020/02/26/S1ep6-Custom-Views-and-Performance/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/2020/02/26/S1ep6-Custom-Views-and-Performance/titleThumb.jpg" alt="自定义视图及其性能">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-25T16:00:00.000Z">2020-02-26</time></div>
-                    <a href="/2020/02/26/S1ep6-Custom-Views-and-Performance/" class="has-link-black-ter is-size-6">自定义视图及其性能</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
                     </p>
                 </div>
             </div>
@@ -1686,6 +1657,25 @@
         
         <article class="media">
             
+            <a href="/2020/02/26/S1ep6-Custom-Views-and-Performance/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/2020/02/26/S1ep6-Custom-Views-and-Performance/titleThumb.jpg" alt="自定义视图及其性能">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-25T16:00:00.000Z">2020-02-26</time></div>
+                    <a href="/2020/02/26/S1ep6-Custom-Views-and-Performance/" class="has-link-black-ter is-size-6">自定义视图及其性能</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/titleThumb.jpg" alt="LeetCode 9. Palindrome Number">
@@ -1703,25 +1693,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-en/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/titleThumb.jpg" alt="LeetCode 9. Palindrome Number">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-27T16:00:00.000Z">2020-01-28</time></div>
-                    <a href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-en/" class="has-link-black-ter is-size-6">LeetCode 9. Palindrome Number</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/English/">English</a> / <a class="has-link-grey -link" href="/categories/English/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1730,7 +1701,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            アーカイブ
         </h3>
         <ul class="menu-list">
         
@@ -1740,7 +1711,7 @@
                     <span class="level-item">March 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -1930,7 +1901,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Tags
+                タグ
             </h3>
             <div class="field is-grouped is-grouped-multiline">
                 
@@ -1944,14 +1915,14 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Android/">
                         <span class="tag">Android</span>
-                        <span class="tag is-grey">15</span>
+                        <span class="tag is-grey">16</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Chinese/">
                         <span class="tag">Chinese</span>
-                        <span class="tag is-grey">29</span>
+                        <span class="tag is-grey">30</span>
                     </a>
                 </div>
                 
@@ -2049,7 +2020,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/版本管理/">
                         <span class="tag">版本管理</span>
-                        <span class="tag is-grey">2</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 
@@ -2073,8 +2044,27 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            最近の記事
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/03/31/Module-dependency-manage/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/2020/03/31/Module-dependency-manage/titleThumb.jpg" alt="Android 模块依赖版本管理">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-30T16:00:00.000Z">2020-03-31</time></div>
+                    <a href="/2020/03/31/Module-dependency-manage/" class="has-link-black-ter is-size-6">Android 模块依赖版本管理</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -2090,25 +2080,6 @@
                     <a href="/2020/03/01/Gradle-Kotlin/" class="has-link-black-ter is-size-6">Gradle Kotlin DSL</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Gradle/">Gradle</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2020/02/26/S1ep6-Custom-Views-and-Performance/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/2020/02/26/S1ep6-Custom-Views-and-Performance/titleThumb.jpg" alt="自定义视图及其性能">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-25T16:00:00.000Z">2020-02-26</time></div>
-                    <a href="/2020/02/26/S1ep6-Custom-Views-and-Performance/" class="has-link-black-ter is-size-6">自定义视图及其性能</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
                     </p>
                 </div>
             </div>
@@ -2135,6 +2106,25 @@
         
         <article class="media">
             
+            <a href="/2020/02/26/S1ep6-Custom-Views-and-Performance/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/2020/02/26/S1ep6-Custom-Views-and-Performance/titleThumb.jpg" alt="自定义视图及其性能">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-25T16:00:00.000Z">2020-02-26</time></div>
+                    <a href="/2020/02/26/S1ep6-Custom-Views-and-Performance/" class="has-link-black-ter is-size-6">自定义视图及其性能</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/titleThumb.jpg" alt="LeetCode 9. Palindrome Number">
@@ -2152,25 +2142,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-en/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/titleThumb.jpg" alt="LeetCode 9. Palindrome Number">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-27T16:00:00.000Z">2020-01-28</time></div>
-                    <a href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-en/" class="has-link-black-ter is-size-6">LeetCode 9. Palindrome Number</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/English/">English</a> / <a class="has-link-grey -link" href="/categories/English/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -2179,7 +2150,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            アーカイブ
         </h3>
         <ul class="menu-list">
         
@@ -2189,7 +2160,7 @@
                     <span class="level-item">March 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -2379,7 +2350,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Tags
+                タグ
             </h3>
             <div class="field is-grouped is-grouped-multiline">
                 
@@ -2393,14 +2364,14 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Android/">
                         <span class="tag">Android</span>
-                        <span class="tag is-grey">15</span>
+                        <span class="tag is-grey">16</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Chinese/">
                         <span class="tag">Chinese</span>
-                        <span class="tag is-grey">29</span>
+                        <span class="tag is-grey">30</span>
                     </a>
                 </div>
                 
@@ -2498,7 +2469,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/版本管理/">
                         <span class="tag">版本管理</span>
-                        <span class="tag is-grey">2</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 
@@ -2662,10 +2633,10 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Posts',
+                POSTS: '投稿',
                 PAGES: 'Pages',
-                CATEGORIES: 'Categories',
-                TAGS: 'Tags',
+                CATEGORIES: 'カテゴリ',
+                TAGS: 'タグ',
                 UNTITLED: '(Untitled)',
             },
             CONTENT_URL: '/content.json',
