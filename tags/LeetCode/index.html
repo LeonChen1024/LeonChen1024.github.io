@@ -2,7 +2,7 @@
 <html >
 <head>
     <meta charset="utf-8">
-<title>タグ: LeetCode - LeonChen&#39;s Blog</title>
+<title>Etiqueta: LeetCode - LeonChen&#39;s Blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
 
@@ -147,12 +147,124 @@
     <div class="card-content">
         <nav class="breadcrumb" aria-label="breadcrumbs">
         <ul>
-            <li><a href="/tags">タグ</a></li>
+            <li><a href="/tags">Etiquetas</a></li>
             <li class="is-active"><a href="#" aria-current="page">LeetCode</a></li>
         </ul>
         </nav>
     </div>
 </div>
+
+    <div class="card">
+    
+    <div class="card-image">
+        <a href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-en/" class="image is-7by1">
+            <img class="banner" src="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/title.jpg" alt="LeetCode 9. Palindrome Number">
+        </a>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-01-27T16:00:00.000Z">2020-01-28</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/English/">English</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/English/Algorithm/">Algorithm</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/English/Algorithm/LeetCode/">LeetCode</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    4 minutes read (About 666 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-en/">LeetCode 9. Palindrome Number</a>
+            
+        </h1>
+        <div class="content">
+            <!-- <p>[English ver]</p>
+<h1><span id="9-palindrome-number">9. Palindrome Number</span></h1><p>Determine whether an integer is a palindrome. Do this without extra space.</p>
+<hr>
+<p>click to show spoilers.</p>
+<p>Some hints:<br>Could negative integers be palindromes? (ie, -1)</p>
+<p>If you are thinking of converting the integer to string, note the restriction of using extra space.</p>
+<p>You could also try reversing an integer. However, if you have solved the problem “Reverse Integer”, you know that the reversed integer might overflow. How would you handle such case?</p>
+<p>There is a more generic way of solving this problem.</p>
+<hr>
+<h3><span id="approach-1-revert-the-number">Approach 1 Revert the number:</span></h3><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isPalindrome</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="hljs-keyword">if</span> (x &lt; <span class="hljs-number">0</span>||(x % <span class="hljs-number">10</span> == <span class="hljs-number">0</span> &amp;&amp; x != <span class="hljs-number">0</span>)) <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;</div><div class="line"></div><div class="line">    <span class="hljs-comment">//use to calculate the number we used to revert the number ,and the biggest digit</span></div><div class="line">    <span class="hljs-keyword">int</span> temp = x;</div><div class="line">    <span class="hljs-comment">//the number reverted</span></div><div class="line">    <span class="hljs-keyword">int</span> revertedNumber = <span class="hljs-number">0</span>;</div><div class="line"></div><div class="line">    <span class="hljs-keyword">while</span> (temp &gt;= <span class="hljs-number">10</span>)&#123;</div><div class="line">        revertedNumber *=<span class="hljs-number">10</span>;</div><div class="line">        revertedNumber += temp%<span class="hljs-number">10</span>;</div><div class="line">        temp /=<span class="hljs-number">10</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="hljs-comment">//compare the revertedNumber and x/10,and the temp and x%10.because the case of overflows</span></div><div class="line">    <span class="hljs-keyword">return</span> revertedNumber == x / <span class="hljs-number">10</span> &amp;&amp; temp == x % <span class="hljs-number">10</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/9.%20Palindrome%20Number/Images/RevertNumber1Result.png?raw=true" alt="Efficiency"></p>
+<p><strong>Analysis</strong><br>Because of the case overflows ,so revert the whole x except the largest digit , and then compare reverted Number with x which except the smallest digit , at last campare the biggest digit and the smallest digit.</p>
+<p>Time complexity ： O($log{_10}n$)<br>Space complexity ： O(1) .</p>
+<h3><span id="approach-2-revert-half-of-the-number">Approach 2 Revert half of the number:</span></h3><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</div><div class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isPalindrome</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123;</div><div class="line">        <span class="hljs-comment">// Special cases:</span></div><div class="line">        <span class="hljs-comment">// As discussed above, when x &lt; 0, x is not a palindrome.</span></div><div class="line">        <span class="hljs-comment">// Also if the last digit of the number is 0, in order to be a palindrome,</span></div><div class="line">        <span class="hljs-comment">// the first digit of the number also needs to be 0.</span></div><div class="line">        <span class="hljs-comment">// Only 0 satisfy this property.</span></div><div class="line">        <span class="hljs-keyword">if</span>(x &lt; <span class="hljs-number">0</span> || (x % <span class="hljs-number">10</span> == <span class="hljs-number">0</span> &amp;&amp; x != <span class="hljs-number">0</span>)) &#123;</div><div class="line">            <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="hljs-keyword">int</span> revertedNumber = <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-keyword">while</span>(x &gt; revertedNumber) &#123;</div><div class="line">            revertedNumber = revertedNumber * <span class="hljs-number">10</span> + x % <span class="hljs-number">10</span>;</div><div class="line">            x /= <span class="hljs-number">10</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="hljs-comment">// When the length is an odd number, we can get rid of the middle digit by revertedNumber/10</span></div><div class="line">        <span class="hljs-comment">// For example when the input is 12321, at the end of the while loop we get x = 12, revertedNumber = 123,</span></div><div class="line">        <span class="hljs-comment">// since the middle digit doesn't matter in palidrome(it will always equal to itself), we can simply get rid of it.</span></div><div class="line">        <span class="hljs-keyword">return</span> x == revertedNumber || x == revertedNumber/<span class="hljs-number">10</span>;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/9.%20Palindrome%20Number/Images/RevertNumberResult.png?raw=true" alt="Efficiency"></p>
+<p><strong>Analysis</strong></p>
+<p>First of all we should take care of some edge cases. All negative numbers are not palindrome, and number x which x % 10 == 0 &amp;&amp; x != 0 can not be palindrome ,because the number can’t be both 0 in the first digit and last digit. Then we start to convert number , we can use x%10 to get the last digit of x , update x to x/10 ,it remove the last digit ,and then use x%10 to get the last number of x , use the number we have get before to times 10 plus this number. Continuing this process would give us the reverted number with more digits. when the original number is less than the reversed number, it means we’ve processed half of the number digits.</p>
+<p>Because palindrome has odd and even ,so we need to deal with both of them.When the palindrome is odd the reverted number will have one more digit ,but this digit we don’t need to consider about ,we only need to remove this digit and compare the rest of it ,when palindrome is even ,if we convert the half of number x ,if they don’t equal to each other it is not a palindrome , even x is bigger than reverted number , which make it revert one more time , the reverted number will hava more two digit to x ,remove one digit will nerver make it palindrome.</p>
+<p>Time complexity ：O($log{_10}n$)<br>Space complexity ： O(1) .</p>
+<p>If you have any suggestions to make the logic and implementation more better , or you have some advice on my description. Please let me know!Thanks!</p>
+<h1><span id="about-me">About Me</span></h1><p>我的博客 <a href="http://leonchen1024.com/" target="_blank" rel="external">leonchen1024.com</a></p>
+<p>我的 GitHub <a href="https://github.com/LeonChen1024" target="_blank" rel="external">https://github.com/LeonChen1024</a></p>
+<p>微信公众号 </p>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/Images/CooderQRcodem.jpg?raw=true" alt="wechat"></p>
+ -->
+            <div class="article-entry">
+                    
+                    
+                        
+                            
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                            
+                                
+                                <p><p>[English ver]</p>
+<h1><span id="9-palindrome-number">9. Palindrome Number</span></h1><p>Determine whether an integer is a palindrome. Do this without extra space.</p>
+<hr>
+<p>click to show spoilers.</p>
+<p>Some hints:<br>Could negative integers be palindromes? (ie, -1)</p>
+<p>
+                            
+                        
+                    
+                    
+                        </div>   
+                        <div class="article-more-link">
+                            <a href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-en/#more">Read More</a>
+                        </div>
+                    
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
 
     <div class="card">
     
@@ -251,118 +363,6 @@
                         </div>   
                         <div class="article-more-link">
                             <a href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/#more">Read More</a>
-                        </div>
-                    
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-image">
-        <a href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-en/" class="image is-7by1">
-            <img class="banner" src="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/title.jpg" alt="LeetCode 9. Palindrome Number">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-01-27T16:00:00.000Z">2020-01-28</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/English/">English</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/English/Algorithm/">Algorithm</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/English/Algorithm/LeetCode/">LeetCode</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    4 minutes read (About 666 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-en/">LeetCode 9. Palindrome Number</a>
-            
-        </h1>
-        <div class="content">
-            <!-- <p>[English ver]</p>
-<h1><span id="9-palindrome-number">9. Palindrome Number</span></h1><p>Determine whether an integer is a palindrome. Do this without extra space.</p>
-<hr>
-<p>click to show spoilers.</p>
-<p>Some hints:<br>Could negative integers be palindromes? (ie, -1)</p>
-<p>If you are thinking of converting the integer to string, note the restriction of using extra space.</p>
-<p>You could also try reversing an integer. However, if you have solved the problem “Reverse Integer”, you know that the reversed integer might overflow. How would you handle such case?</p>
-<p>There is a more generic way of solving this problem.</p>
-<hr>
-<h3><span id="approach-1-revert-the-number">Approach 1 Revert the number:</span></h3><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isPalindrome</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="hljs-keyword">if</span> (x &lt; <span class="hljs-number">0</span>||(x % <span class="hljs-number">10</span> == <span class="hljs-number">0</span> &amp;&amp; x != <span class="hljs-number">0</span>)) <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;</div><div class="line"></div><div class="line">    <span class="hljs-comment">//use to calculate the number we used to revert the number ,and the biggest digit</span></div><div class="line">    <span class="hljs-keyword">int</span> temp = x;</div><div class="line">    <span class="hljs-comment">//the number reverted</span></div><div class="line">    <span class="hljs-keyword">int</span> revertedNumber = <span class="hljs-number">0</span>;</div><div class="line"></div><div class="line">    <span class="hljs-keyword">while</span> (temp &gt;= <span class="hljs-number">10</span>)&#123;</div><div class="line">        revertedNumber *=<span class="hljs-number">10</span>;</div><div class="line">        revertedNumber += temp%<span class="hljs-number">10</span>;</div><div class="line">        temp /=<span class="hljs-number">10</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="hljs-comment">//compare the revertedNumber and x/10,and the temp and x%10.because the case of overflows</span></div><div class="line">    <span class="hljs-keyword">return</span> revertedNumber == x / <span class="hljs-number">10</span> &amp;&amp; temp == x % <span class="hljs-number">10</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/9.%20Palindrome%20Number/Images/RevertNumber1Result.png?raw=true" alt="Efficiency"></p>
-<p><strong>Analysis</strong><br>Because of the case overflows ,so revert the whole x except the largest digit , and then compare reverted Number with x which except the smallest digit , at last campare the biggest digit and the smallest digit.</p>
-<p>Time complexity ： O($log{_10}n$)<br>Space complexity ： O(1) .</p>
-<h3><span id="approach-2-revert-half-of-the-number">Approach 2 Revert half of the number:</span></h3><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</div><div class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isPalindrome</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123;</div><div class="line">        <span class="hljs-comment">// Special cases:</span></div><div class="line">        <span class="hljs-comment">// As discussed above, when x &lt; 0, x is not a palindrome.</span></div><div class="line">        <span class="hljs-comment">// Also if the last digit of the number is 0, in order to be a palindrome,</span></div><div class="line">        <span class="hljs-comment">// the first digit of the number also needs to be 0.</span></div><div class="line">        <span class="hljs-comment">// Only 0 satisfy this property.</span></div><div class="line">        <span class="hljs-keyword">if</span>(x &lt; <span class="hljs-number">0</span> || (x % <span class="hljs-number">10</span> == <span class="hljs-number">0</span> &amp;&amp; x != <span class="hljs-number">0</span>)) &#123;</div><div class="line">            <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="hljs-keyword">int</span> revertedNumber = <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-keyword">while</span>(x &gt; revertedNumber) &#123;</div><div class="line">            revertedNumber = revertedNumber * <span class="hljs-number">10</span> + x % <span class="hljs-number">10</span>;</div><div class="line">            x /= <span class="hljs-number">10</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="hljs-comment">// When the length is an odd number, we can get rid of the middle digit by revertedNumber/10</span></div><div class="line">        <span class="hljs-comment">// For example when the input is 12321, at the end of the while loop we get x = 12, revertedNumber = 123,</span></div><div class="line">        <span class="hljs-comment">// since the middle digit doesn't matter in palidrome(it will always equal to itself), we can simply get rid of it.</span></div><div class="line">        <span class="hljs-keyword">return</span> x == revertedNumber || x == revertedNumber/<span class="hljs-number">10</span>;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/9.%20Palindrome%20Number/Images/RevertNumberResult.png?raw=true" alt="Efficiency"></p>
-<p><strong>Analysis</strong></p>
-<p>First of all we should take care of some edge cases. All negative numbers are not palindrome, and number x which x % 10 == 0 &amp;&amp; x != 0 can not be palindrome ,because the number can’t be both 0 in the first digit and last digit. Then we start to convert number , we can use x%10 to get the last digit of x , update x to x/10 ,it remove the last digit ,and then use x%10 to get the last number of x , use the number we have get before to times 10 plus this number. Continuing this process would give us the reverted number with more digits. when the original number is less than the reversed number, it means we’ve processed half of the number digits.</p>
-<p>Because palindrome has odd and even ,so we need to deal with both of them.When the palindrome is odd the reverted number will have one more digit ,but this digit we don’t need to consider about ,we only need to remove this digit and compare the rest of it ,when palindrome is even ,if we convert the half of number x ,if they don’t equal to each other it is not a palindrome , even x is bigger than reverted number , which make it revert one more time , the reverted number will hava more two digit to x ,remove one digit will nerver make it palindrome.</p>
-<p>Time complexity ：O($log{_10}n$)<br>Space complexity ： O(1) .</p>
-<p>If you have any suggestions to make the logic and implementation more better , or you have some advice on my description. Please let me know!Thanks!</p>
-<h1><span id="about-me">About Me</span></h1><p>我的博客 <a href="http://leonchen1024.com/" target="_blank" rel="external">leonchen1024.com</a></p>
-<p>我的 GitHub <a href="https://github.com/LeonChen1024" target="_blank" rel="external">https://github.com/LeonChen1024</a></p>
-<p>微信公众号 </p>
-<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/Images/CooderQRcodem.jpg?raw=true" alt="wechat"></p>
- -->
-            <div class="article-entry">
-                    
-                    
-                        
-                            
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                            
-                                
-                                <p><p>[English ver]</p>
-<h1><span id="9-palindrome-number">9. Palindrome Number</span></h1><p>Determine whether an integer is a palindrome. Do this without extra space.</p>
-<hr>
-<p>click to show spoilers.</p>
-<p>Some hints:<br>Could negative integers be palindromes? (ie, -1)</p>
-<p>
-                            
-                        
-                    
-                    
-                        </div>   
-                        <div class="article-more-link">
-                            <a href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-en/#more">Read More</a>
                         </div>
                     
         </div>
@@ -1055,122 +1055,6 @@
     <div class="card">
     
     <div class="card-image">
-        <a href="/2018/08/31/5-Longest-Palindromic-Substring/Record-cn/" class="image is-7by1">
-            <img class="banner" src="/2018/08/31/5-Longest-Palindromic-Substring/Record-cn/title.jpg" alt="LeetCode 5.最长的回文字符串">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2018-08-30T16:00:00.000Z">2018-08-31</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Algorithm/">Algorithm</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Algorithm/LeetCode/">LeetCode</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    9 minutes read (About 1418 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2018/08/31/5-Longest-Palindromic-Substring/Record-cn/">LeetCode 5.最长的回文字符串</a>
-            
-        </h1>
-        <div class="content">
-            <!-- <h1><span id="5-longest-palindromic-substring">5. Longest Palindromic Substring</span></h1><p>给定一个字符串s,找出其中最长的回文格式的子字符串。你可以假设长度的最大值为1000.</p>
-<p>Example:<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Input: &quot;babad&quot;</div><div class="line"></div><div class="line">Output: &quot;bab&quot;</div></pre></td></tr></table></figure></p>
-<p>Note: “aba” is also a valid answer.</p>
-<p>Example:<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Input: &quot;cbbd&quot;</div><div class="line"></div><div class="line">Output: &quot;bb&quot;</div></pre></td></tr></table></figure></p>
-<p>一开始以为palindrome是重复的意思，走了很大的弯路，后来才知道指的是回文格式，就是一个顺着读和反过来读都一样的字符串。<br>由此可知他有两种情况，一种是奇数的情况，中间的一个字符独立，其余的字符以中间为轴两两对应。另一种是偶数的情况，所有的字符都以中间为轴两两对应。</p>
-<h4><span id="方法一">方法一：</span></h4><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</div><div class="line">       <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> lo, maxLen;</div><div class="line"></div><div class="line">       <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">longestPalindrome</span><span class="hljs-params">(String s)</span> </span>&#123;</div><div class="line">           <span class="hljs-keyword">int</span> len = s.length();</div><div class="line">           <span class="hljs-keyword">if</span> (len &lt; <span class="hljs-number">2</span>)</div><div class="line">               <span class="hljs-keyword">return</span> s;</div><div class="line"></div><div class="line">           <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; len - <span class="hljs-number">1</span>; i++) &#123;</div><div class="line">               extendPalindrome(s, i, i);  <span class="hljs-comment">//assume odd length, try to extend Palindrome as possible</span></div><div class="line">               extendPalindrome(s, i, i + <span class="hljs-number">1</span>); <span class="hljs-comment">//assume even length.</span></div><div class="line">           &#125;</div><div class="line">           <span class="hljs-keyword">return</span> s.substring(lo, lo + maxLen);</div><div class="line">       &#125;</div><div class="line"></div><div class="line">       <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">extendPalindrome</span><span class="hljs-params">(String s, <span class="hljs-keyword">int</span> j, <span class="hljs-keyword">int</span> k)</span> </span>&#123;</div><div class="line">           <span class="hljs-keyword">while</span> (j &gt;= <span class="hljs-number">0</span> &amp;&amp; k &lt; s.length() &amp;&amp; s.charAt(j) == s.charAt(k)) &#123;</div><div class="line">               j--;</div><div class="line">               k++;</div><div class="line">           &#125;</div><div class="line">           <span class="hljs-keyword">if</span> (maxLen &lt; k - j - <span class="hljs-number">1</span>) &#123;</div><div class="line">               lo = j + <span class="hljs-number">1</span>;</div><div class="line">               maxLen = k - j - <span class="hljs-number">1</span>;</div><div class="line">           &#125;</div><div class="line">       &#125;</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
-<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/5.%20Longest%20Palindromic%20Substring/Images/SuccessResult1.png?raw=true" alt="效率"></p>
-<p><strong>分析</strong><br>这个方法分为奇偶两种情况进行计算。首先对每一个字符串里的字符进行两种情况的计算，extendPalindrome方法的原理就是当对应的位置的字符相同时，就将左侧字符向左一位，右侧字符向右一位，然后再重复进行这个比较过程。<br>时间复杂度 ： O(n^2) 。n是字符串的长度<br>空间复杂度 ： O(n) .</p>
-<h4><span id="方法二">方法二：</span></h4><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</div><div class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">longestPalindrome</span><span class="hljs-params">(String s)</span> </span>&#123;</div><div class="line">        String res = <span class="hljs-string">""</span>;</div><div class="line">        <span class="hljs-keyword">int</span> currLength = <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;s.length();i++)&#123;</div><div class="line">            <span class="hljs-keyword">if</span>(isPalindrome(s,i-currLength-<span class="hljs-number">1</span>,i))&#123;</div><div class="line">                res = s.substring(i-currLength-<span class="hljs-number">1</span>,i+<span class="hljs-number">1</span>);</div><div class="line">                currLength = currLength+<span class="hljs-number">2</span>;</div><div class="line">            &#125;</div><div class="line">            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(isPalindrome(s,i-currLength,i))&#123;</div><div class="line">                res = s.substring(i-currLength,i+<span class="hljs-number">1</span>);</div><div class="line">                currLength = currLength+<span class="hljs-number">1</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="hljs-keyword">return</span> res;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isPalindrome</span><span class="hljs-params">(String s, <span class="hljs-keyword">int</span> begin, <span class="hljs-keyword">int</span> end)</span></span>&#123;</div><div class="line">        <span class="hljs-keyword">if</span>(begin&lt;<span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;</div><div class="line">        <span class="hljs-keyword">while</span>(begin&lt;end)&#123;</div><div class="line">        	<span class="hljs-keyword">if</span>(s.charAt(begin++)!=s.charAt(end--)) <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/5.%20Longest%20Palindromic%20Substring/Images/SuccessResult2.png?raw=true" alt="效率"></p>
-<p><strong>分析</strong><br>这个方法主要是每当指针向右移时，我们都以这个位置的字符为结尾看是否能有新的长度为length(current length +1 或者 current length +2)的回文字符串。</p>
-<p>时间复杂度 ： O(n^2) 。n是字符串长度。<br>空间复杂度 ： O(n) .</p>
-<h4><span id="方法三-manacher算法">方法三 Manacher算法</span></h4><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</div><div class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">longestPalindrome</span><span class="hljs-params">(String s)</span> </span>&#123;</div><div class="line">      <span class="hljs-keyword">char</span>[] str = changeString(s);</div><div class="line">		  String result = manacher(str,s);</div><div class="line"></div><div class="line">		  <span class="hljs-keyword">return</span> result;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="hljs-comment">/**</span></div><div class="line"><span class="hljs-comment">	 * 返回例如 #a#c#b#c#a#a#c#b#c#d#形式的字符串数组</span></div><div class="line"><span class="hljs-comment">	 *</span></div><div class="line"><span class="hljs-comment">	 * <span class="hljs-doctag">@param</span> s</span></div><div class="line"><span class="hljs-comment">	 * <span class="hljs-doctag">@return</span></span></div><div class="line"><span class="hljs-comment">	 */</span></div><div class="line">	<span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">char</span>[] changeString(String s)</div><div class="line">	&#123;</div><div class="line">	    <span class="hljs-keyword">char</span>[] str = <span class="hljs-keyword">new</span> <span class="hljs-keyword">char</span>[s.length() * <span class="hljs-number">2</span> + <span class="hljs-number">1</span>];</div><div class="line"></div><div class="line">	    <span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;</div><div class="line">	    <span class="hljs-keyword">for</span> (; i &lt; s.length(); i++)</div><div class="line">	    &#123;</div><div class="line">	        str[<span class="hljs-number">2</span> * i] = <span class="hljs-string">'#'</span>;</div><div class="line">	        str[<span class="hljs-number">2</span> * i + <span class="hljs-number">1</span>] = s.charAt(i);</div><div class="line">	    &#125;</div><div class="line">	    str[<span class="hljs-number">2</span> * i] = <span class="hljs-string">'#'</span>;</div><div class="line"></div><div class="line">	    <span class="hljs-keyword">return</span> str;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="hljs-comment">/**</span></div><div class="line"><span class="hljs-comment">	 * manacher 算法实现找到回文字符串最长的一个</span></div><div class="line"><span class="hljs-comment">	 */</span></div><div class="line">	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> String <span class="hljs-title">manacher</span><span class="hljs-params">(<span class="hljs-keyword">char</span>[] s,String olds)</span></span></div><div class="line"><span class="hljs-function">	</span>&#123;</div><div class="line">		  String result = <span class="hljs-string">""</span>;</div><div class="line">	    <span class="hljs-keyword">int</span> rad[] = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[s.length];</div><div class="line">	    <span class="hljs-keyword">int</span> start = <span class="hljs-number">0</span>;</div><div class="line">	    <span class="hljs-keyword">int</span> end = <span class="hljs-number">0</span>;</div><div class="line">	    <span class="hljs-comment">//i index,j 回文半径，k</span></div><div class="line">	    <span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>, j = <span class="hljs-number">0</span>, k;</div><div class="line"></div><div class="line">	    <span class="hljs-comment">// 记录最长的回文串的长度</span></div><div class="line">	    <span class="hljs-keyword">int</span> maxLen = <span class="hljs-number">0</span>;</div><div class="line">	    <span class="hljs-keyword">while</span> (i &lt; s.length)</div><div class="line">	    &#123;</div><div class="line">	        <span class="hljs-comment">// 扫描得出rad值</span></div><div class="line">	        <span class="hljs-keyword">while</span> (i - j - <span class="hljs-number">1</span> &gt; -<span class="hljs-number">1</span> &amp;&amp; i + j + <span class="hljs-number">1</span> &lt; s.length</div><div class="line">	                &amp;&amp; s[i - j - <span class="hljs-number">1</span>] == s[i + j + <span class="hljs-number">1</span>]) &#123;</div><div class="line">	        	  j++;</div><div class="line">	        &#125;</div><div class="line"></div><div class="line">	        <span class="hljs-keyword">if</span> (maxLen &lt; j ) &#123;</div><div class="line">				        maxLen =j;</div><div class="line">				        start = i - j  ;</div><div class="line">				        end =i + j ;</div><div class="line"></div><div class="line">			       &#125;</div><div class="line">	        rad[i] = j;</div><div class="line">	        maxLen = maxLen &gt; j ? maxLen : j;</div><div class="line"></div><div class="line">	        k = <span class="hljs-number">1</span>;</div><div class="line">          <span class="hljs-comment">//当回文中包含子回文，看子回文是否超出父回文边界。 分三种情况。</span></div><div class="line">	        <span class="hljs-keyword">while</span> (k &lt;= rad[i] &amp;&amp; rad[i - k] != rad[i] - k)</div><div class="line">	        &#123;</div><div class="line">	            rad[i + k] = Math.min(rad[i - k], rad[i] - k);</div><div class="line">	            k++;</div><div class="line">	        &#125;</div><div class="line">	        i = i + k;</div><div class="line">	        j = Math.max(j - k, <span class="hljs-number">0</span>);</div><div class="line">	    &#125;</div><div class="line"></div><div class="line">	    result = olds.substring(start/<span class="hljs-number">2</span>,end/<span class="hljs-number">2</span>);</div><div class="line">	    <span class="hljs-keyword">return</span> result;</div><div class="line"></div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><strong>分析</strong><br>在这个问题中，回文的情况一共有两种，一种是奇数回文，一种是偶数回文，为了将他们合并成一种情况，我们可以在首尾和每两个字符中间加上一个特殊字符，如‘#’，形如”#a#b#b#c#a#”.这样我们就将所有的回文情况合并成奇数回文的情况。</p>
-<p>在字符串s中，我们用rad[i]表示第i个字符的回文半径，可以得到s[i-rad[i],i-1] = s[i+1,i+rad[i]]，只要求出了所有的rad，就求出了所有奇数长度的回文子串。</p>
-<p>当我们得到了rad[1..i-1]的值，并通过比较对称字符得到当前字符i的rad值至少为j，求出了rad[i]。现在我们设一个指针k，从1循环到rad[i]，以此来求出[i+1,i+rad[i]]的rad值。</p>
-<p>根据定义，黑色的部分是一个回文子串，两段红色的区间全等。<br>因为之前已经求出了rad[i-k]，所以直接用它.有3种情况：<br>（1）rad[i]-k &lt; rad[i-k]<br><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/5.%20Longest%20Palindromic%20Substring/Images/Situation1.jpg?raw=true" alt="Situation1.jpg"></p>
-<p>如图,rad[i-k]的范围为墨绿色。因为黑色的部分是回文的，且墨绿色的部分超过了黑色的部分，所以rad[i+k]至少为rad[i]-k，即橙色的部分。有没有可能rad[i+k]的值大于rad[i]-k呢？这是不可能发生的，根据回文的特性我们知道，如果橙色部分以外也是回文，那么黑色的回文部分就可以向外拓展。与假设冲突。因此rad[i+k] = rad[i]-k。</p>
-<p>（2）rad[i]-k &gt; rad[i-k]<br><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/5.%20Longest%20Palindromic%20Substring/Images/Situation2.jpg?raw=true" alt="Situation2.jpg"></p>
-<p>如图,rad[i-k]的范围为墨绿色。因为黑色的部分是回文的，且墨绿色的部分在黑色的部分里面，根据回文特性，很容易得出：rad[i+k] = rad[i-k]。</p>
-<p>根据上面两种情况，可以得出结论：当rad[i]-k != rad[i-k]的时候，rad[i+k] = min(rad[i]-k,rad[i-k])。</p>
-<p>（3）rad[i]-k = rad[i-k]<br><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/5.%20Longest%20Palindromic%20Substring/Images/Situation3.jpg?raw=true" alt="Situation3.jpg"><br>如图，通过和第一种情况对比之后会发现，因为墨绿色的部分没有超出黑色的部分，所以即使橙色的部分全等，也无法像第一种情况一样引出矛盾，因此橙色的部分是有可能全等的。但是，根据已知的信息，我们不知道橙色的部分是多长，因此就把i指针移到i+k的位置，j=rad[i-k](因为它的rad值至少为rad[i-k])，是否可以向外拓展等下个循环再做。</p>
-<p>时间复杂度 ： O(n) 。看起来程序里用到了循环嵌套，但是实际上他只对没有计量过的i进行计量。<br>空间复杂度 ： O(n) .</p>
-<p>如果你有更好的办法或者对我这里的描述有其他看法，请联系我。谢谢</p>
-<h2><span id="about-me">About Me</span></h2><p>我的博客 <a href="http://leonchen1024.com/" target="_blank" rel="external">leonchen1024.com</a></p>
-<p>我的 GitHub <a href="https://github.com/LeonChen1024" target="_blank" rel="external">https://github.com/LeonChen1024</a></p>
-<p>微信公众号 </p>
-<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/Images/CooderQRcodem.jpg?raw=false" alt="wechat"></p>
- -->
-            <div class="article-entry">
-                    
-                    
-                        
-                            
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                            
-                                
-                                <p><h1><span id="5-longest-palindromic-substring">5. Longest Palindromic Substring</span></h1><p>给定一个字符串s,找出其中最长的回文格式的子字符串。你可以假设长度的最大值为1000.</p>
-<p>Example:<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Input: &quot;babad&quot;</div><div class="line"></div><div class="line">Output: &quot;bab&quot;</div></pre></td></tr></table></figure></p>
-<p>Note: “aba” is also a valid answer.</p>
-<p>Example:<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Input: &quot;cbbd&quot;</div><div class="line"></div><div class="line">Output: &quot;bb&quot;</div></pre></td></tr></table></figure></p>
-<p>一开始以为palindrome是重复的意思，走了很大的弯路，后来才知道指的是回文格式，就是一个顺着读和反过来读都一样的字符串。<br>由此可知他有两种情况，一种是奇数的情况，中间的一个字符独立，其余的字符以中间为轴两两对应。另一种是偶数的情况，所有的字符都以中间为轴两两对应。</p>
-<p>
-                            
-                        
-                    
-                    
-                        </div>   
-                        <div class="article-more-link">
-                            <a href="/2018/08/31/5-Longest-Palindromic-Substring/Record-cn/#more">Read More</a>
-                        </div>
-                    
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-image">
         <a href="/2018/08/31/5-Longest-Palindromic-Substring/Record-en/" class="image is-7by1">
             <img class="banner" src="/2018/08/31/5-Longest-Palindromic-Substring/Record-cn/title.jpg" alt="LeetCode 5.Longest Palindromic Substring">
         </a>
@@ -1286,15 +1170,131 @@
 
 
 
+    <div class="card">
+    
+    <div class="card-image">
+        <a href="/2018/08/31/5-Longest-Palindromic-Substring/Record-cn/" class="image is-7by1">
+            <img class="banner" src="/2018/08/31/5-Longest-Palindromic-Substring/Record-cn/title.jpg" alt="LeetCode 5.最长的回文字符串">
+        </a>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2018-08-30T16:00:00.000Z">2018-08-31</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Algorithm/">Algorithm</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Algorithm/LeetCode/">LeetCode</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    9 minutes read (About 1418 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2018/08/31/5-Longest-Palindromic-Substring/Record-cn/">LeetCode 5.最长的回文字符串</a>
+            
+        </h1>
+        <div class="content">
+            <!-- <h1><span id="5-longest-palindromic-substring">5. Longest Palindromic Substring</span></h1><p>给定一个字符串s,找出其中最长的回文格式的子字符串。你可以假设长度的最大值为1000.</p>
+<p>Example:<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Input: &quot;babad&quot;</div><div class="line"></div><div class="line">Output: &quot;bab&quot;</div></pre></td></tr></table></figure></p>
+<p>Note: “aba” is also a valid answer.</p>
+<p>Example:<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Input: &quot;cbbd&quot;</div><div class="line"></div><div class="line">Output: &quot;bb&quot;</div></pre></td></tr></table></figure></p>
+<p>一开始以为palindrome是重复的意思，走了很大的弯路，后来才知道指的是回文格式，就是一个顺着读和反过来读都一样的字符串。<br>由此可知他有两种情况，一种是奇数的情况，中间的一个字符独立，其余的字符以中间为轴两两对应。另一种是偶数的情况，所有的字符都以中间为轴两两对应。</p>
+<h4><span id="方法一">方法一：</span></h4><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</div><div class="line">       <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> lo, maxLen;</div><div class="line"></div><div class="line">       <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">longestPalindrome</span><span class="hljs-params">(String s)</span> </span>&#123;</div><div class="line">           <span class="hljs-keyword">int</span> len = s.length();</div><div class="line">           <span class="hljs-keyword">if</span> (len &lt; <span class="hljs-number">2</span>)</div><div class="line">               <span class="hljs-keyword">return</span> s;</div><div class="line"></div><div class="line">           <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; len - <span class="hljs-number">1</span>; i++) &#123;</div><div class="line">               extendPalindrome(s, i, i);  <span class="hljs-comment">//assume odd length, try to extend Palindrome as possible</span></div><div class="line">               extendPalindrome(s, i, i + <span class="hljs-number">1</span>); <span class="hljs-comment">//assume even length.</span></div><div class="line">           &#125;</div><div class="line">           <span class="hljs-keyword">return</span> s.substring(lo, lo + maxLen);</div><div class="line">       &#125;</div><div class="line"></div><div class="line">       <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">extendPalindrome</span><span class="hljs-params">(String s, <span class="hljs-keyword">int</span> j, <span class="hljs-keyword">int</span> k)</span> </span>&#123;</div><div class="line">           <span class="hljs-keyword">while</span> (j &gt;= <span class="hljs-number">0</span> &amp;&amp; k &lt; s.length() &amp;&amp; s.charAt(j) == s.charAt(k)) &#123;</div><div class="line">               j--;</div><div class="line">               k++;</div><div class="line">           &#125;</div><div class="line">           <span class="hljs-keyword">if</span> (maxLen &lt; k - j - <span class="hljs-number">1</span>) &#123;</div><div class="line">               lo = j + <span class="hljs-number">1</span>;</div><div class="line">               maxLen = k - j - <span class="hljs-number">1</span>;</div><div class="line">           &#125;</div><div class="line">       &#125;</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/5.%20Longest%20Palindromic%20Substring/Images/SuccessResult1.png?raw=true" alt="效率"></p>
+<p><strong>分析</strong><br>这个方法分为奇偶两种情况进行计算。首先对每一个字符串里的字符进行两种情况的计算，extendPalindrome方法的原理就是当对应的位置的字符相同时，就将左侧字符向左一位，右侧字符向右一位，然后再重复进行这个比较过程。<br>时间复杂度 ： O(n^2) 。n是字符串的长度<br>空间复杂度 ： O(n) .</p>
+<h4><span id="方法二">方法二：</span></h4><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</div><div class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">longestPalindrome</span><span class="hljs-params">(String s)</span> </span>&#123;</div><div class="line">        String res = <span class="hljs-string">""</span>;</div><div class="line">        <span class="hljs-keyword">int</span> currLength = <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;s.length();i++)&#123;</div><div class="line">            <span class="hljs-keyword">if</span>(isPalindrome(s,i-currLength-<span class="hljs-number">1</span>,i))&#123;</div><div class="line">                res = s.substring(i-currLength-<span class="hljs-number">1</span>,i+<span class="hljs-number">1</span>);</div><div class="line">                currLength = currLength+<span class="hljs-number">2</span>;</div><div class="line">            &#125;</div><div class="line">            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(isPalindrome(s,i-currLength,i))&#123;</div><div class="line">                res = s.substring(i-currLength,i+<span class="hljs-number">1</span>);</div><div class="line">                currLength = currLength+<span class="hljs-number">1</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="hljs-keyword">return</span> res;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isPalindrome</span><span class="hljs-params">(String s, <span class="hljs-keyword">int</span> begin, <span class="hljs-keyword">int</span> end)</span></span>&#123;</div><div class="line">        <span class="hljs-keyword">if</span>(begin&lt;<span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;</div><div class="line">        <span class="hljs-keyword">while</span>(begin&lt;end)&#123;</div><div class="line">        	<span class="hljs-keyword">if</span>(s.charAt(begin++)!=s.charAt(end--)) <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/5.%20Longest%20Palindromic%20Substring/Images/SuccessResult2.png?raw=true" alt="效率"></p>
+<p><strong>分析</strong><br>这个方法主要是每当指针向右移时，我们都以这个位置的字符为结尾看是否能有新的长度为length(current length +1 或者 current length +2)的回文字符串。</p>
+<p>时间复杂度 ： O(n^2) 。n是字符串长度。<br>空间复杂度 ： O(n) .</p>
+<h4><span id="方法三-manacher算法">方法三 Manacher算法</span></h4><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</div><div class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">longestPalindrome</span><span class="hljs-params">(String s)</span> </span>&#123;</div><div class="line">      <span class="hljs-keyword">char</span>[] str = changeString(s);</div><div class="line">		  String result = manacher(str,s);</div><div class="line"></div><div class="line">		  <span class="hljs-keyword">return</span> result;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="hljs-comment">/**</span></div><div class="line"><span class="hljs-comment">	 * 返回例如 #a#c#b#c#a#a#c#b#c#d#形式的字符串数组</span></div><div class="line"><span class="hljs-comment">	 *</span></div><div class="line"><span class="hljs-comment">	 * <span class="hljs-doctag">@param</span> s</span></div><div class="line"><span class="hljs-comment">	 * <span class="hljs-doctag">@return</span></span></div><div class="line"><span class="hljs-comment">	 */</span></div><div class="line">	<span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">char</span>[] changeString(String s)</div><div class="line">	&#123;</div><div class="line">	    <span class="hljs-keyword">char</span>[] str = <span class="hljs-keyword">new</span> <span class="hljs-keyword">char</span>[s.length() * <span class="hljs-number">2</span> + <span class="hljs-number">1</span>];</div><div class="line"></div><div class="line">	    <span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;</div><div class="line">	    <span class="hljs-keyword">for</span> (; i &lt; s.length(); i++)</div><div class="line">	    &#123;</div><div class="line">	        str[<span class="hljs-number">2</span> * i] = <span class="hljs-string">'#'</span>;</div><div class="line">	        str[<span class="hljs-number">2</span> * i + <span class="hljs-number">1</span>] = s.charAt(i);</div><div class="line">	    &#125;</div><div class="line">	    str[<span class="hljs-number">2</span> * i] = <span class="hljs-string">'#'</span>;</div><div class="line"></div><div class="line">	    <span class="hljs-keyword">return</span> str;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="hljs-comment">/**</span></div><div class="line"><span class="hljs-comment">	 * manacher 算法实现找到回文字符串最长的一个</span></div><div class="line"><span class="hljs-comment">	 */</span></div><div class="line">	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> String <span class="hljs-title">manacher</span><span class="hljs-params">(<span class="hljs-keyword">char</span>[] s,String olds)</span></span></div><div class="line"><span class="hljs-function">	</span>&#123;</div><div class="line">		  String result = <span class="hljs-string">""</span>;</div><div class="line">	    <span class="hljs-keyword">int</span> rad[] = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[s.length];</div><div class="line">	    <span class="hljs-keyword">int</span> start = <span class="hljs-number">0</span>;</div><div class="line">	    <span class="hljs-keyword">int</span> end = <span class="hljs-number">0</span>;</div><div class="line">	    <span class="hljs-comment">//i index,j 回文半径，k</span></div><div class="line">	    <span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>, j = <span class="hljs-number">0</span>, k;</div><div class="line"></div><div class="line">	    <span class="hljs-comment">// 记录最长的回文串的长度</span></div><div class="line">	    <span class="hljs-keyword">int</span> maxLen = <span class="hljs-number">0</span>;</div><div class="line">	    <span class="hljs-keyword">while</span> (i &lt; s.length)</div><div class="line">	    &#123;</div><div class="line">	        <span class="hljs-comment">// 扫描得出rad值</span></div><div class="line">	        <span class="hljs-keyword">while</span> (i - j - <span class="hljs-number">1</span> &gt; -<span class="hljs-number">1</span> &amp;&amp; i + j + <span class="hljs-number">1</span> &lt; s.length</div><div class="line">	                &amp;&amp; s[i - j - <span class="hljs-number">1</span>] == s[i + j + <span class="hljs-number">1</span>]) &#123;</div><div class="line">	        	  j++;</div><div class="line">	        &#125;</div><div class="line"></div><div class="line">	        <span class="hljs-keyword">if</span> (maxLen &lt; j ) &#123;</div><div class="line">				        maxLen =j;</div><div class="line">				        start = i - j  ;</div><div class="line">				        end =i + j ;</div><div class="line"></div><div class="line">			       &#125;</div><div class="line">	        rad[i] = j;</div><div class="line">	        maxLen = maxLen &gt; j ? maxLen : j;</div><div class="line"></div><div class="line">	        k = <span class="hljs-number">1</span>;</div><div class="line">          <span class="hljs-comment">//当回文中包含子回文，看子回文是否超出父回文边界。 分三种情况。</span></div><div class="line">	        <span class="hljs-keyword">while</span> (k &lt;= rad[i] &amp;&amp; rad[i - k] != rad[i] - k)</div><div class="line">	        &#123;</div><div class="line">	            rad[i + k] = Math.min(rad[i - k], rad[i] - k);</div><div class="line">	            k++;</div><div class="line">	        &#125;</div><div class="line">	        i = i + k;</div><div class="line">	        j = Math.max(j - k, <span class="hljs-number">0</span>);</div><div class="line">	    &#125;</div><div class="line"></div><div class="line">	    result = olds.substring(start/<span class="hljs-number">2</span>,end/<span class="hljs-number">2</span>);</div><div class="line">	    <span class="hljs-keyword">return</span> result;</div><div class="line"></div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>分析</strong><br>在这个问题中，回文的情况一共有两种，一种是奇数回文，一种是偶数回文，为了将他们合并成一种情况，我们可以在首尾和每两个字符中间加上一个特殊字符，如‘#’，形如”#a#b#b#c#a#”.这样我们就将所有的回文情况合并成奇数回文的情况。</p>
+<p>在字符串s中，我们用rad[i]表示第i个字符的回文半径，可以得到s[i-rad[i],i-1] = s[i+1,i+rad[i]]，只要求出了所有的rad，就求出了所有奇数长度的回文子串。</p>
+<p>当我们得到了rad[1..i-1]的值，并通过比较对称字符得到当前字符i的rad值至少为j，求出了rad[i]。现在我们设一个指针k，从1循环到rad[i]，以此来求出[i+1,i+rad[i]]的rad值。</p>
+<p>根据定义，黑色的部分是一个回文子串，两段红色的区间全等。<br>因为之前已经求出了rad[i-k]，所以直接用它.有3种情况：<br>（1）rad[i]-k &lt; rad[i-k]<br><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/5.%20Longest%20Palindromic%20Substring/Images/Situation1.jpg?raw=true" alt="Situation1.jpg"></p>
+<p>如图,rad[i-k]的范围为墨绿色。因为黑色的部分是回文的，且墨绿色的部分超过了黑色的部分，所以rad[i+k]至少为rad[i]-k，即橙色的部分。有没有可能rad[i+k]的值大于rad[i]-k呢？这是不可能发生的，根据回文的特性我们知道，如果橙色部分以外也是回文，那么黑色的回文部分就可以向外拓展。与假设冲突。因此rad[i+k] = rad[i]-k。</p>
+<p>（2）rad[i]-k &gt; rad[i-k]<br><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/5.%20Longest%20Palindromic%20Substring/Images/Situation2.jpg?raw=true" alt="Situation2.jpg"></p>
+<p>如图,rad[i-k]的范围为墨绿色。因为黑色的部分是回文的，且墨绿色的部分在黑色的部分里面，根据回文特性，很容易得出：rad[i+k] = rad[i-k]。</p>
+<p>根据上面两种情况，可以得出结论：当rad[i]-k != rad[i-k]的时候，rad[i+k] = min(rad[i]-k,rad[i-k])。</p>
+<p>（3）rad[i]-k = rad[i-k]<br><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/5.%20Longest%20Palindromic%20Substring/Images/Situation3.jpg?raw=true" alt="Situation3.jpg"><br>如图，通过和第一种情况对比之后会发现，因为墨绿色的部分没有超出黑色的部分，所以即使橙色的部分全等，也无法像第一种情况一样引出矛盾，因此橙色的部分是有可能全等的。但是，根据已知的信息，我们不知道橙色的部分是多长，因此就把i指针移到i+k的位置，j=rad[i-k](因为它的rad值至少为rad[i-k])，是否可以向外拓展等下个循环再做。</p>
+<p>时间复杂度 ： O(n) 。看起来程序里用到了循环嵌套，但是实际上他只对没有计量过的i进行计量。<br>空间复杂度 ： O(n) .</p>
+<p>如果你有更好的办法或者对我这里的描述有其他看法，请联系我。谢谢</p>
+<h2><span id="about-me">About Me</span></h2><p>我的博客 <a href="http://leonchen1024.com/" target="_blank" rel="external">leonchen1024.com</a></p>
+<p>我的 GitHub <a href="https://github.com/LeonChen1024" target="_blank" rel="external">https://github.com/LeonChen1024</a></p>
+<p>微信公众号 </p>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/Images/CooderQRcodem.jpg?raw=false" alt="wechat"></p>
+ -->
+            <div class="article-entry">
+                    
+                    
+                        
+                            
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                            
+                                
+                                <p><h1><span id="5-longest-palindromic-substring">5. Longest Palindromic Substring</span></h1><p>给定一个字符串s,找出其中最长的回文格式的子字符串。你可以假设长度的最大值为1000.</p>
+<p>Example:<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Input: &quot;babad&quot;</div><div class="line"></div><div class="line">Output: &quot;bab&quot;</div></pre></td></tr></table></figure></p>
+<p>Note: “aba” is also a valid answer.</p>
+<p>Example:<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Input: &quot;cbbd&quot;</div><div class="line"></div><div class="line">Output: &quot;bb&quot;</div></pre></td></tr></table></figure></p>
+<p>一开始以为palindrome是重复的意思，走了很大的弯路，后来才知道指的是回文格式，就是一个顺着读和反过来读都一样的字符串。<br>由此可知他有两种情况，一种是奇数的情况，中间的一个字符独立，其余的字符以中间为轴两两对应。另一种是偶数的情况，所有的字符都以中间为轴两两对应。</p>
+<p>
+                            
+                        
+                    
+                    
+                        </div>   
+                        <div class="article-more-link">
+                            <a href="/2018/08/31/5-Longest-Palindromic-Substring/Record-cn/#more">Read More</a>
+                        </div>
+                    
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
 
     
 <div class="card card-transparent">
     <nav class="pagination is-centered" role="navigation" aria-label="pagination">
         <div class="pagination-previous is-invisible is-hidden-mobile">
-            <a class="is-flex-grow has-text-black-ter" href="/tags/LeetCode/page/0/">前</a>
+            <a class="is-flex-grow has-text-black-ter" href="/tags/LeetCode/page/0/">Anterior</a>
         </div>
         <div class="pagination-next">
-            <a class="is-flex-grow has-text-black-ter" href="/tags/LeetCode/page/2/">次</a>
+            <a class="is-flex-grow has-text-black-ter" href="/tags/LeetCode/page/2/">Siguiente</a>
         </div>
         <ul class="pagination-list is-hidden-mobile">
             
@@ -1345,17 +1345,17 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        投稿
+                        Entradas
                     </p>
                     <p class="title has-text-weight-normal">
-                        39
+                        40
                     </p>
                 </div>
             </div>
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        カテゴリ
+                        Categorias
                     </p>
                     <p class="title has-text-weight-normal">
                         20
@@ -1365,7 +1365,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        タグ
+                        Etiquetas
                     </p>
                     <p class="title has-text-weight-normal">
                         17
@@ -1375,7 +1375,7 @@
         </nav>
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://github.com/LeonChen1024">
-                フォローする</a>
+                SEGUIR</a>
         </div>
         
         
@@ -1404,7 +1404,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                カテゴリ
+                Categorias
             </h3>
             <ul class="menu-list">
             <li>
@@ -1413,7 +1413,7 @@
                 <span class="level-item">Chinese</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">30</span>
+                <span class="level-item tag">31</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="undefined">
@@ -1429,7 +1429,7 @@
                 <span class="level-item">Android</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">13</span>
+                <span class="level-item tag">14</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="undefined">
@@ -1481,7 +1481,7 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            タグクラウド
+            Nube de etiquetas
         </h3>
         <a href="/tags/Algorithm/" style="font-size: 18.75px;">Algorithm</a> <a href="/tags/Android/" style="font-size: 16.25px;">Android</a> <a href="/tags/Chinese/" style="font-size: 20px;">Chinese</a> <a href="/tags/Custom-View/" style="font-size: 10px;">Custom View</a> <a href="/tags/Data-Structure/" style="font-size: 10px;">Data Structure</a> <a href="/tags/DataStructure/" style="font-size: 10px;">DataStructure</a> <a href="/tags/English/" style="font-size: 15px;">English</a> <a href="/tags/Error/" style="font-size: 10px;">Error</a> <a href="/tags/Gradle/" style="font-size: 11.25px;">Gradle</a> <a href="/tags/Java/" style="font-size: 12.5px;">Java</a> <a href="/tags/Jetpack/" style="font-size: 11.25px;">Jetpack</a> <a href="/tags/LeetCode/" style="font-size: 17.5px;">LeetCode</a> <a href="/tags/Optimize/" style="font-size: 13.75px;">Optimize</a> <a href="/tags/SourceCode/" style="font-size: 10px;">SourceCode</a> <a href="/tags/UI/" style="font-size: 10px;">UI</a> <a href="/tags/版本差异/" style="font-size: 11.25px;">版本差异</a> <a href="/tags/版本管理/" style="font-size: 12.5px;">版本管理</a>
     </div>
@@ -1495,8 +1495,27 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            最近の記事
+            Recientes
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/04/16/S5ep1-Threading-Performance-101/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/2020/04/16/S5ep1-Threading-Performance-101/titleThumb.jpg" alt="自定义视图及其性能">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-15T16:00:00.000Z">2020-04-16</time></div>
+                    <a href="/2020/04/16/S5ep1-Threading-Performance-101/" class="has-link-black-ter is-size-6">自定义视图及其性能</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -1574,25 +1593,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/titleThumb.jpg" alt="LeetCode 9. Palindrome Number">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-27T16:00:00.000Z">2020-01-28</time></div>
-                    <a href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/" class="has-link-black-ter is-size-6">LeetCode 9. Palindrome Number</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1601,9 +1601,20 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            アーカイブ
+            Archivos
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2020/03/">
@@ -1801,7 +1812,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                タグ
+                Etiquetas
             </h3>
             <div class="field is-grouped is-grouped-multiline">
                 
@@ -1815,14 +1826,14 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Android/">
                         <span class="tag">Android</span>
-                        <span class="tag is-grey">16</span>
+                        <span class="tag is-grey">17</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Chinese/">
                         <span class="tag">Chinese</span>
-                        <span class="tag is-grey">30</span>
+                        <span class="tag is-grey">31</span>
                     </a>
                 </div>
                 
@@ -1892,7 +1903,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Optimize/">
                         <span class="tag">Optimize</span>
-                        <span class="tag is-grey">4</span>
+                        <span class="tag is-grey">5</span>
                     </a>
                 </div>
                 
@@ -1944,8 +1955,27 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            最近の記事
+            Recientes
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/04/16/S5ep1-Threading-Performance-101/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/2020/04/16/S5ep1-Threading-Performance-101/titleThumb.jpg" alt="自定义视图及其性能">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-15T16:00:00.000Z">2020-04-16</time></div>
+                    <a href="/2020/04/16/S5ep1-Threading-Performance-101/" class="has-link-black-ter is-size-6">自定义视图及其性能</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -2023,25 +2053,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/titleThumb.jpg" alt="LeetCode 9. Palindrome Number">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-27T16:00:00.000Z">2020-01-28</time></div>
-                    <a href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/" class="has-link-black-ter is-size-6">LeetCode 9. Palindrome Number</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -2050,9 +2061,20 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            アーカイブ
+            Archivos
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2020/03/">
@@ -2250,7 +2272,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                タグ
+                Etiquetas
             </h3>
             <div class="field is-grouped is-grouped-multiline">
                 
@@ -2264,14 +2286,14 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Android/">
                         <span class="tag">Android</span>
-                        <span class="tag is-grey">16</span>
+                        <span class="tag is-grey">17</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Chinese/">
                         <span class="tag">Chinese</span>
-                        <span class="tag is-grey">30</span>
+                        <span class="tag is-grey">31</span>
                     </a>
                 </div>
                 
@@ -2341,7 +2363,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Optimize/">
                         <span class="tag">Optimize</span>
-                        <span class="tag is-grey">4</span>
+                        <span class="tag is-grey">5</span>
                     </a>
                 </div>
                 
@@ -2533,10 +2555,10 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: '投稿',
+                POSTS: 'Entradas',
                 PAGES: 'Pages',
-                CATEGORIES: 'カテゴリ',
-                TAGS: 'タグ',
+                CATEGORIES: 'Categorias',
+                TAGS: 'Etiquetas',
                 UNTITLED: '(Untitled)',
             },
             CONTENT_URL: '/content.json',

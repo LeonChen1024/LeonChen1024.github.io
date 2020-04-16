@@ -2,7 +2,7 @@
 <html >
 <head>
     <meta charset="utf-8">
-<title>カテゴリ: Android - LeonChen&#39;s Blog</title>
+<title>Categoria: Android - LeonChen&#39;s Blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
 
@@ -147,7 +147,7 @@
     <div class="card-content">
         <nav class="breadcrumb" aria-label="breadcrumbs">
         <ul>
-            <li><a href="/categories">カテゴリ</a></li>
+            <li><a href="/categories">Categorias</a></li>
             
             <li><a href="/categories/Chinese/">Chinese</a></li>
             
@@ -156,6 +156,108 @@
         </nav>
     </div>
 </div>
+
+    <div class="card">
+    
+    <div class="card-image">
+        <a href="/2020/04/16/S5ep1-Threading-Performance-101/" class="image is-7by1">
+            <img class="banner" src="/2020/04/16/S5ep1-Threading-Performance-101/title.jpg" alt="自定义视图及其性能">
+        </a>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-04-15T16:00:00.000Z">2020-04-16</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Android/Android-Performance-pattern/">Android Performance pattern</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    3 minutes read (About 382 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2020/04/16/S5ep1-Threading-Performance-101/">自定义视图及其性能</a>
+            
+        </h1>
+        <div class="content">
+            <!-- <h1><span id="线程性能">线程性能</span></h1><p>性能中很关键的一点就是多线程的使用.Android 中很多事件只能在主线程中执行,比如 输入事件,应用程序回调服务,警报等等.</p>
+<p>这意味着这些事件会形成一个阻塞队列,这些任务会依次按顺序执行.然而UI 渲染也是在主线程中的,而他们每 16ms 就会渲染一次,来达到一个平滑的过渡,但是如果有大量的其他任务堆积在主线程中,可能会导致你错过某一个 16ms 的渲染机会,导致丢帧的情况.</p>
+<p>为了处理这种情况,我们可以把一些耗时较长的任务转移到其他线程处理,这样主线程就能够更快的响应了.Android 中提供了一些有助于这个目的的类.</p>
+<ul>
+<li>AsyncTask : 帮助你区分 UI 线程和非 UI 线程的工作</li>
+<li>HandlerThread : 需要一个 API 回调来指定线程</li>
+<li>ThreadPool : 管理大量的并行工作</li>
+<li>IntentService : 适合用于后台任务</li>
+</ul>
+<p>这里没有什么银弹,要注意的是,当你在一个 Activity 中声明了一个内部类(比如 AsyncTask)的时候,它会隐式的持有外部 Activity 的引用,在 Activity 销毁的时候如果线程还在运行会导致内存泄露的情况.</p>
+<h1><span id="about-me">About Me</span></h1><p>我的博客 <a href="http://leonchen1024.com/" target="_blank" rel="external">leonchen1024.com</a></p>
+<p>我的 GitHub <a href="https://github.com/LeonChen1024" target="_blank" rel="external">https://github.com/LeonChen1024</a></p>
+<p>微信公众号 </p>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/Images/CooderQRcodem.jpg?raw=true" alt="wechat"></p>
+ -->
+            <div class="article-entry">
+                    
+                    
+                        
+                            
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                            
+                                
+                                <p><h1><span id="线程性能">线程性能</span></h1><p>性能中很关键的一点就是多线程的使用.Android 中很多事件只能在主线程中执行,比如 输入事件,应用程序回调服务,警报等等.</p>
+<p>这意味着这些事件会形成一个阻塞队列,这些任务会依次按顺序执行.然而UI 渲染也是在主线程中的,而他们每 16ms 就会渲染一次,来达到一个平滑的过渡,但是如果有大量的其他任务堆积在主线程中,可能会导致你错过某一个 16ms 的渲染机会,导致丢帧的情况.</p>
+<p>为了处理这种情况,我们可以把一些耗时较长的任务转移到其他线程处理,这样主线程就能够更快的响应了.Android 中提供了一些有助于这个目的的类.</p>
+<ul>
+<li>AsyncTask : 帮助你区分 UI 线程和非 UI 线程的工作</li>
+<p>
+                            
+                        
+                    
+                    
+                        </div>   
+                        <div class="article-more-link">
+                            <a href="/2020/04/16/S5ep1-Threading-Performance-101/#more">Read More</a>
+                        </div>
+                    
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
 
     <div class="card">
     
@@ -1342,110 +1444,15 @@
 
 
 
-    <div class="card">
-    
-    <div class="card-image">
-        <a href="/2018/01/10/Android-Error-And-Solution/" class="image is-7by1">
-            <img class="banner" src="/2018/01/10/Android-Error-And-Solution/error.jpg" alt="Android 相关错误及解决办法">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2018-01-10T14:15:10.000Z">2018-01-10</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Android/Error/">Error</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    a minute read (About 114 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2018/01/10/Android-Error-And-Solution/">Android 相关错误及解决办法</a>
-            
-        </h1>
-        <div class="content">
-            <!-- <h2><span id="目录">目录</span></h2><ul>
-<li><a href="#目录">目录</a></li>
-<li><a href="#问题-unable-to-instantiate-activity-componentinfocomxxxxxxxxcomxxxxxxxxloginactivity">问题 : Unable to instantiate activity ComponentInfo{com.xxxx.xxxx/com.xxxx.xxxx.LoginActivity}</a></li>
-</ul>
-<h2><span id="问题-unable-to-instantiate-activity-componentinfocomxxxxxxxxcomxxxxxxxxloginactivity">问题 : Unable to instantiate activity ComponentInfo{com.xxxx.xxxx/com.xxxx.xxxx.LoginActivity}</span></h2><p>java.lang.RuntimeException: Unable to instantiate activity ComponentInfo{com.xxxx.xxxx/com.xxxx.xxxx.LoginActivity}:</p>
-<p>java.lang.ClassNotFoundException: Didn’t find class “com.xxxx.xxxx.LoginActivity”<br> on path: /data/app/com.xxxx.xxxx-1.</p>
-<p><strong>解决方法</strong> : 原因AndroidManifest.xml文件出错。将问题Activity的name具体到某个包下即可运行。android:name=”.LogoActivity”改为android:name=”.ac.LogoActivity”.</p>
- -->
-            <div class="article-entry">
-                    
-                    
-                        
-                            
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                            
-                                
-                                <p><h2><span id="目录">目录</span></h2><ul>
-<li><a href="#目录">目录</a></li>
-<li><a href="#问题-unable-to-instantiate-activity-componentinfocomxxxxxxxxcomxxxxxxxxloginactivity">问题 : Unable to instantiate activity ComponentInfo{com.xxxx.xxxx/com.xxxx.xxxx.LoginActivity}</a></li>
-</ul>
-<h2><span id="问题-unable-to-instantiate-activity-componentinfocomxxxxxxxxcomxxxxxxxxloginactivity">问题 : Unable to instantiate activity ComponentInfo{com.xxxx.xxxx/com.xxxx.xxxx.LoginActivity}</span></h2><p>java.lang.RuntimeException: Unable to instantiate activity ComponentInfo{com.xxxx.xxxx/com.xxxx.xxxx.LoginActivity}:</p>
-<p>
-                            
-                        
-                    
-                    
-                        </div>   
-                        <div class="article-more-link">
-                            <a href="/2018/01/10/Android-Error-And-Solution/#more">Read More</a>
-                        </div>
-                    
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
     <nav class="pagination is-centered" role="navigation" aria-label="pagination">
         <div class="pagination-previous is-invisible is-hidden-mobile">
-            <a class="is-flex-grow has-text-black-ter" href="/categories/Chinese/Android/page/0/">前</a>
+            <a class="is-flex-grow has-text-black-ter" href="/categories/Chinese/Android/page/0/">Anterior</a>
         </div>
         <div class="pagination-next">
-            <a class="is-flex-grow has-text-black-ter" href="/categories/Chinese/Android/page/2/">次</a>
+            <a class="is-flex-grow has-text-black-ter" href="/categories/Chinese/Android/page/2/">Siguiente</a>
         </div>
         <ul class="pagination-list is-hidden-mobile">
             
@@ -1496,17 +1503,17 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        投稿
+                        Entradas
                     </p>
                     <p class="title has-text-weight-normal">
-                        39
+                        40
                     </p>
                 </div>
             </div>
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        カテゴリ
+                        Categorias
                     </p>
                     <p class="title has-text-weight-normal">
                         20
@@ -1516,7 +1523,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        タグ
+                        Etiquetas
                     </p>
                     <p class="title has-text-weight-normal">
                         17
@@ -1526,7 +1533,7 @@
         </nav>
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://github.com/LeonChen1024">
-                フォローする</a>
+                SEGUIR</a>
         </div>
         
         
@@ -1555,7 +1562,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                カテゴリ
+                Categorias
             </h3>
             <ul class="menu-list">
             <li>
@@ -1564,7 +1571,7 @@
                 <span class="level-item">Chinese</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">30</span>
+                <span class="level-item tag">31</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="undefined">
@@ -1580,7 +1587,7 @@
                 <span class="level-item">Android</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">13</span>
+                <span class="level-item tag">14</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="undefined">
@@ -1632,7 +1639,7 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            タグクラウド
+            Nube de etiquetas
         </h3>
         <a href="/tags/Algorithm/" style="font-size: 18.75px;">Algorithm</a> <a href="/tags/Android/" style="font-size: 16.25px;">Android</a> <a href="/tags/Chinese/" style="font-size: 20px;">Chinese</a> <a href="/tags/Custom-View/" style="font-size: 10px;">Custom View</a> <a href="/tags/Data-Structure/" style="font-size: 10px;">Data Structure</a> <a href="/tags/DataStructure/" style="font-size: 10px;">DataStructure</a> <a href="/tags/English/" style="font-size: 15px;">English</a> <a href="/tags/Error/" style="font-size: 10px;">Error</a> <a href="/tags/Gradle/" style="font-size: 11.25px;">Gradle</a> <a href="/tags/Java/" style="font-size: 12.5px;">Java</a> <a href="/tags/Jetpack/" style="font-size: 11.25px;">Jetpack</a> <a href="/tags/LeetCode/" style="font-size: 17.5px;">LeetCode</a> <a href="/tags/Optimize/" style="font-size: 13.75px;">Optimize</a> <a href="/tags/SourceCode/" style="font-size: 10px;">SourceCode</a> <a href="/tags/UI/" style="font-size: 10px;">UI</a> <a href="/tags/版本差异/" style="font-size: 11.25px;">版本差异</a> <a href="/tags/版本管理/" style="font-size: 12.5px;">版本管理</a>
     </div>
@@ -1646,8 +1653,27 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            最近の記事
+            Recientes
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/04/16/S5ep1-Threading-Performance-101/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/2020/04/16/S5ep1-Threading-Performance-101/titleThumb.jpg" alt="自定义视图及其性能">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-15T16:00:00.000Z">2020-04-16</time></div>
+                    <a href="/2020/04/16/S5ep1-Threading-Performance-101/" class="has-link-black-ter is-size-6">自定义视图及其性能</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -1725,25 +1751,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/titleThumb.jpg" alt="LeetCode 9. Palindrome Number">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-27T16:00:00.000Z">2020-01-28</time></div>
-                    <a href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/" class="has-link-black-ter is-size-6">LeetCode 9. Palindrome Number</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1752,9 +1759,20 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            アーカイブ
+            Archivos
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2020/03/">
@@ -1952,7 +1970,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                タグ
+                Etiquetas
             </h3>
             <div class="field is-grouped is-grouped-multiline">
                 
@@ -1966,14 +1984,14 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Android/">
                         <span class="tag">Android</span>
-                        <span class="tag is-grey">16</span>
+                        <span class="tag is-grey">17</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Chinese/">
                         <span class="tag">Chinese</span>
-                        <span class="tag is-grey">30</span>
+                        <span class="tag is-grey">31</span>
                     </a>
                 </div>
                 
@@ -2043,7 +2061,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Optimize/">
                         <span class="tag">Optimize</span>
-                        <span class="tag is-grey">4</span>
+                        <span class="tag is-grey">5</span>
                     </a>
                 </div>
                 
@@ -2095,8 +2113,27 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            最近の記事
+            Recientes
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/04/16/S5ep1-Threading-Performance-101/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/2020/04/16/S5ep1-Threading-Performance-101/titleThumb.jpg" alt="自定义视图及其性能">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-15T16:00:00.000Z">2020-04-16</time></div>
+                    <a href="/2020/04/16/S5ep1-Threading-Performance-101/" class="has-link-black-ter is-size-6">自定义视图及其性能</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -2174,25 +2211,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/titleThumb.jpg" alt="LeetCode 9. Palindrome Number">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-27T16:00:00.000Z">2020-01-28</time></div>
-                    <a href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/" class="has-link-black-ter is-size-6">LeetCode 9. Palindrome Number</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -2201,9 +2219,20 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            アーカイブ
+            Archivos
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2020/03/">
@@ -2401,7 +2430,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                タグ
+                Etiquetas
             </h3>
             <div class="field is-grouped is-grouped-multiline">
                 
@@ -2415,14 +2444,14 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Android/">
                         <span class="tag">Android</span>
-                        <span class="tag is-grey">16</span>
+                        <span class="tag is-grey">17</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Chinese/">
                         <span class="tag">Chinese</span>
-                        <span class="tag is-grey">30</span>
+                        <span class="tag is-grey">31</span>
                     </a>
                 </div>
                 
@@ -2492,7 +2521,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Optimize/">
                         <span class="tag">Optimize</span>
-                        <span class="tag is-grey">4</span>
+                        <span class="tag is-grey">5</span>
                     </a>
                 </div>
                 
@@ -2684,10 +2713,10 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: '投稿',
+                POSTS: 'Entradas',
                 PAGES: 'Pages',
-                CATEGORIES: 'カテゴリ',
-                TAGS: 'タグ',
+                CATEGORIES: 'Categorias',
+                TAGS: 'Etiquetas',
                 UNTITLED: '(Untitled)',
             },
             CONTENT_URL: '/content.json',

@@ -147,6 +147,108 @@
     <div class="card">
     
     <div class="card-image">
+        <a href="/2020/04/16/S5ep1-Threading-Performance-101/" class="image is-7by1">
+            <img class="banner" src="/2020/04/16/S5ep1-Threading-Performance-101/title.jpg" alt="自定义视图及其性能">
+        </a>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-04-15T16:00:00.000Z">2020-04-16</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Android/Android-Performance-pattern/">Android Performance pattern</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    3 minutes read (About 382 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2020/04/16/S5ep1-Threading-Performance-101/">自定义视图及其性能</a>
+            
+        </h1>
+        <div class="content">
+            <!-- <h1><span id="线程性能">线程性能</span></h1><p>性能中很关键的一点就是多线程的使用.Android 中很多事件只能在主线程中执行,比如 输入事件,应用程序回调服务,警报等等.</p>
+<p>这意味着这些事件会形成一个阻塞队列,这些任务会依次按顺序执行.然而UI 渲染也是在主线程中的,而他们每 16ms 就会渲染一次,来达到一个平滑的过渡,但是如果有大量的其他任务堆积在主线程中,可能会导致你错过某一个 16ms 的渲染机会,导致丢帧的情况.</p>
+<p>为了处理这种情况,我们可以把一些耗时较长的任务转移到其他线程处理,这样主线程就能够更快的响应了.Android 中提供了一些有助于这个目的的类.</p>
+<ul>
+<li>AsyncTask : 帮助你区分 UI 线程和非 UI 线程的工作</li>
+<li>HandlerThread : 需要一个 API 回调来指定线程</li>
+<li>ThreadPool : 管理大量的并行工作</li>
+<li>IntentService : 适合用于后台任务</li>
+</ul>
+<p>这里没有什么银弹,要注意的是,当你在一个 Activity 中声明了一个内部类(比如 AsyncTask)的时候,它会隐式的持有外部 Activity 的引用,在 Activity 销毁的时候如果线程还在运行会导致内存泄露的情况.</p>
+<h1><span id="about-me">About Me</span></h1><p>我的博客 <a href="http://leonchen1024.com/" target="_blank" rel="external">leonchen1024.com</a></p>
+<p>我的 GitHub <a href="https://github.com/LeonChen1024" target="_blank" rel="external">https://github.com/LeonChen1024</a></p>
+<p>微信公众号 </p>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/Images/CooderQRcodem.jpg?raw=true" alt="wechat"></p>
+ -->
+            <div class="article-entry">
+                    
+                    
+                        
+                            
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                            
+                                
+                                <p><h1><span id="线程性能">线程性能</span></h1><p>性能中很关键的一点就是多线程的使用.Android 中很多事件只能在主线程中执行,比如 输入事件,应用程序回调服务,警报等等.</p>
+<p>这意味着这些事件会形成一个阻塞队列,这些任务会依次按顺序执行.然而UI 渲染也是在主线程中的,而他们每 16ms 就会渲染一次,来达到一个平滑的过渡,但是如果有大量的其他任务堆积在主线程中,可能会导致你错过某一个 16ms 的渲染机会,导致丢帧的情况.</p>
+<p>为了处理这种情况,我们可以把一些耗时较长的任务转移到其他线程处理,这样主线程就能够更快的响应了.Android 中提供了一些有助于这个目的的类.</p>
+<ul>
+<li>AsyncTask : 帮助你区分 UI 线程和非 UI 线程的工作</li>
+<p>
+                            
+                        
+                    
+                    
+                        </div>   
+                        <div class="article-more-link">
+                            <a href="/2020/04/16/S5ep1-Threading-Performance-101/#more">Read More</a>
+                        </div>
+                    
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-image">
         <a href="/2020/03/31/Module-dependency-manage/" class="image is-7by1">
             <img class="banner" src="/2020/03/31/Module-dependency-manage/title.jpg" alt="Android 模块依赖版本管理">
         </a>
@@ -591,6 +693,118 @@
     <div class="card">
     
     <div class="card-image">
+        <a href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-en/" class="image is-7by1">
+            <img class="banner" src="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/title.jpg" alt="LeetCode 9. Palindrome Number">
+        </a>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-01-27T16:00:00.000Z">2020-01-28</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/English/">English</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/English/Algorithm/">Algorithm</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/English/Algorithm/LeetCode/">LeetCode</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    4 minutes read (About 666 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-en/">LeetCode 9. Palindrome Number</a>
+            
+        </h1>
+        <div class="content">
+            <!-- <p>[English ver]</p>
+<h1><span id="9-palindrome-number">9. Palindrome Number</span></h1><p>Determine whether an integer is a palindrome. Do this without extra space.</p>
+<hr>
+<p>click to show spoilers.</p>
+<p>Some hints:<br>Could negative integers be palindromes? (ie, -1)</p>
+<p>If you are thinking of converting the integer to string, note the restriction of using extra space.</p>
+<p>You could also try reversing an integer. However, if you have solved the problem “Reverse Integer”, you know that the reversed integer might overflow. How would you handle such case?</p>
+<p>There is a more generic way of solving this problem.</p>
+<hr>
+<h3><span id="approach-1-revert-the-number">Approach 1 Revert the number:</span></h3><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isPalindrome</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="hljs-keyword">if</span> (x &lt; <span class="hljs-number">0</span>||(x % <span class="hljs-number">10</span> == <span class="hljs-number">0</span> &amp;&amp; x != <span class="hljs-number">0</span>)) <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;</div><div class="line"></div><div class="line">    <span class="hljs-comment">//use to calculate the number we used to revert the number ,and the biggest digit</span></div><div class="line">    <span class="hljs-keyword">int</span> temp = x;</div><div class="line">    <span class="hljs-comment">//the number reverted</span></div><div class="line">    <span class="hljs-keyword">int</span> revertedNumber = <span class="hljs-number">0</span>;</div><div class="line"></div><div class="line">    <span class="hljs-keyword">while</span> (temp &gt;= <span class="hljs-number">10</span>)&#123;</div><div class="line">        revertedNumber *=<span class="hljs-number">10</span>;</div><div class="line">        revertedNumber += temp%<span class="hljs-number">10</span>;</div><div class="line">        temp /=<span class="hljs-number">10</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="hljs-comment">//compare the revertedNumber and x/10,and the temp and x%10.because the case of overflows</span></div><div class="line">    <span class="hljs-keyword">return</span> revertedNumber == x / <span class="hljs-number">10</span> &amp;&amp; temp == x % <span class="hljs-number">10</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/9.%20Palindrome%20Number/Images/RevertNumber1Result.png?raw=true" alt="Efficiency"></p>
+<p><strong>Analysis</strong><br>Because of the case overflows ,so revert the whole x except the largest digit , and then compare reverted Number with x which except the smallest digit , at last campare the biggest digit and the smallest digit.</p>
+<p>Time complexity ： O($log{_10}n$)<br>Space complexity ： O(1) .</p>
+<h3><span id="approach-2-revert-half-of-the-number">Approach 2 Revert half of the number:</span></h3><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</div><div class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isPalindrome</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123;</div><div class="line">        <span class="hljs-comment">// Special cases:</span></div><div class="line">        <span class="hljs-comment">// As discussed above, when x &lt; 0, x is not a palindrome.</span></div><div class="line">        <span class="hljs-comment">// Also if the last digit of the number is 0, in order to be a palindrome,</span></div><div class="line">        <span class="hljs-comment">// the first digit of the number also needs to be 0.</span></div><div class="line">        <span class="hljs-comment">// Only 0 satisfy this property.</span></div><div class="line">        <span class="hljs-keyword">if</span>(x &lt; <span class="hljs-number">0</span> || (x % <span class="hljs-number">10</span> == <span class="hljs-number">0</span> &amp;&amp; x != <span class="hljs-number">0</span>)) &#123;</div><div class="line">            <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="hljs-keyword">int</span> revertedNumber = <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-keyword">while</span>(x &gt; revertedNumber) &#123;</div><div class="line">            revertedNumber = revertedNumber * <span class="hljs-number">10</span> + x % <span class="hljs-number">10</span>;</div><div class="line">            x /= <span class="hljs-number">10</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="hljs-comment">// When the length is an odd number, we can get rid of the middle digit by revertedNumber/10</span></div><div class="line">        <span class="hljs-comment">// For example when the input is 12321, at the end of the while loop we get x = 12, revertedNumber = 123,</span></div><div class="line">        <span class="hljs-comment">// since the middle digit doesn't matter in palidrome(it will always equal to itself), we can simply get rid of it.</span></div><div class="line">        <span class="hljs-keyword">return</span> x == revertedNumber || x == revertedNumber/<span class="hljs-number">10</span>;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/9.%20Palindrome%20Number/Images/RevertNumberResult.png?raw=true" alt="Efficiency"></p>
+<p><strong>Analysis</strong></p>
+<p>First of all we should take care of some edge cases. All negative numbers are not palindrome, and number x which x % 10 == 0 &amp;&amp; x != 0 can not be palindrome ,because the number can’t be both 0 in the first digit and last digit. Then we start to convert number , we can use x%10 to get the last digit of x , update x to x/10 ,it remove the last digit ,and then use x%10 to get the last number of x , use the number we have get before to times 10 plus this number. Continuing this process would give us the reverted number with more digits. when the original number is less than the reversed number, it means we’ve processed half of the number digits.</p>
+<p>Because palindrome has odd and even ,so we need to deal with both of them.When the palindrome is odd the reverted number will have one more digit ,but this digit we don’t need to consider about ,we only need to remove this digit and compare the rest of it ,when palindrome is even ,if we convert the half of number x ,if they don’t equal to each other it is not a palindrome , even x is bigger than reverted number , which make it revert one more time , the reverted number will hava more two digit to x ,remove one digit will nerver make it palindrome.</p>
+<p>Time complexity ：O($log{_10}n$)<br>Space complexity ： O(1) .</p>
+<p>If you have any suggestions to make the logic and implementation more better , or you have some advice on my description. Please let me know!Thanks!</p>
+<h1><span id="about-me">About Me</span></h1><p>我的博客 <a href="http://leonchen1024.com/" target="_blank" rel="external">leonchen1024.com</a></p>
+<p>我的 GitHub <a href="https://github.com/LeonChen1024" target="_blank" rel="external">https://github.com/LeonChen1024</a></p>
+<p>微信公众号 </p>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/Images/CooderQRcodem.jpg?raw=true" alt="wechat"></p>
+ -->
+            <div class="article-entry">
+                    
+                    
+                        
+                            
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                            
+                                
+                                <p><p>[English ver]</p>
+<h1><span id="9-palindrome-number">9. Palindrome Number</span></h1><p>Determine whether an integer is a palindrome. Do this without extra space.</p>
+<hr>
+<p>click to show spoilers.</p>
+<p>Some hints:<br>Could negative integers be palindromes? (ie, -1)</p>
+<p>
+                            
+                        
+                    
+                    
+                        </div>   
+                        <div class="article-more-link">
+                            <a href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-en/#more">Read More</a>
+                        </div>
+                    
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-image">
         <a href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/" class="image is-7by1">
             <img class="banner" src="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/title.jpg" alt="LeetCode 9. Palindrome Number">
         </a>
@@ -685,118 +899,6 @@
                         </div>   
                         <div class="article-more-link">
                             <a href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/#more">Read More</a>
-                        </div>
-                    
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-image">
-        <a href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-en/" class="image is-7by1">
-            <img class="banner" src="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/title.jpg" alt="LeetCode 9. Palindrome Number">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-01-27T16:00:00.000Z">2020-01-28</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/English/">English</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/English/Algorithm/">Algorithm</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/English/Algorithm/LeetCode/">LeetCode</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    4 minutes read (About 666 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-en/">LeetCode 9. Palindrome Number</a>
-            
-        </h1>
-        <div class="content">
-            <!-- <p>[English ver]</p>
-<h1><span id="9-palindrome-number">9. Palindrome Number</span></h1><p>Determine whether an integer is a palindrome. Do this without extra space.</p>
-<hr>
-<p>click to show spoilers.</p>
-<p>Some hints:<br>Could negative integers be palindromes? (ie, -1)</p>
-<p>If you are thinking of converting the integer to string, note the restriction of using extra space.</p>
-<p>You could also try reversing an integer. However, if you have solved the problem “Reverse Integer”, you know that the reversed integer might overflow. How would you handle such case?</p>
-<p>There is a more generic way of solving this problem.</p>
-<hr>
-<h3><span id="approach-1-revert-the-number">Approach 1 Revert the number:</span></h3><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isPalindrome</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="hljs-keyword">if</span> (x &lt; <span class="hljs-number">0</span>||(x % <span class="hljs-number">10</span> == <span class="hljs-number">0</span> &amp;&amp; x != <span class="hljs-number">0</span>)) <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;</div><div class="line"></div><div class="line">    <span class="hljs-comment">//use to calculate the number we used to revert the number ,and the biggest digit</span></div><div class="line">    <span class="hljs-keyword">int</span> temp = x;</div><div class="line">    <span class="hljs-comment">//the number reverted</span></div><div class="line">    <span class="hljs-keyword">int</span> revertedNumber = <span class="hljs-number">0</span>;</div><div class="line"></div><div class="line">    <span class="hljs-keyword">while</span> (temp &gt;= <span class="hljs-number">10</span>)&#123;</div><div class="line">        revertedNumber *=<span class="hljs-number">10</span>;</div><div class="line">        revertedNumber += temp%<span class="hljs-number">10</span>;</div><div class="line">        temp /=<span class="hljs-number">10</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="hljs-comment">//compare the revertedNumber and x/10,and the temp and x%10.because the case of overflows</span></div><div class="line">    <span class="hljs-keyword">return</span> revertedNumber == x / <span class="hljs-number">10</span> &amp;&amp; temp == x % <span class="hljs-number">10</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/9.%20Palindrome%20Number/Images/RevertNumber1Result.png?raw=true" alt="Efficiency"></p>
-<p><strong>Analysis</strong><br>Because of the case overflows ,so revert the whole x except the largest digit , and then compare reverted Number with x which except the smallest digit , at last campare the biggest digit and the smallest digit.</p>
-<p>Time complexity ： O($log{_10}n$)<br>Space complexity ： O(1) .</p>
-<h3><span id="approach-2-revert-half-of-the-number">Approach 2 Revert half of the number:</span></h3><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</div><div class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isPalindrome</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123;</div><div class="line">        <span class="hljs-comment">// Special cases:</span></div><div class="line">        <span class="hljs-comment">// As discussed above, when x &lt; 0, x is not a palindrome.</span></div><div class="line">        <span class="hljs-comment">// Also if the last digit of the number is 0, in order to be a palindrome,</span></div><div class="line">        <span class="hljs-comment">// the first digit of the number also needs to be 0.</span></div><div class="line">        <span class="hljs-comment">// Only 0 satisfy this property.</span></div><div class="line">        <span class="hljs-keyword">if</span>(x &lt; <span class="hljs-number">0</span> || (x % <span class="hljs-number">10</span> == <span class="hljs-number">0</span> &amp;&amp; x != <span class="hljs-number">0</span>)) &#123;</div><div class="line">            <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="hljs-keyword">int</span> revertedNumber = <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-keyword">while</span>(x &gt; revertedNumber) &#123;</div><div class="line">            revertedNumber = revertedNumber * <span class="hljs-number">10</span> + x % <span class="hljs-number">10</span>;</div><div class="line">            x /= <span class="hljs-number">10</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="hljs-comment">// When the length is an odd number, we can get rid of the middle digit by revertedNumber/10</span></div><div class="line">        <span class="hljs-comment">// For example when the input is 12321, at the end of the while loop we get x = 12, revertedNumber = 123,</span></div><div class="line">        <span class="hljs-comment">// since the middle digit doesn't matter in palidrome(it will always equal to itself), we can simply get rid of it.</span></div><div class="line">        <span class="hljs-keyword">return</span> x == revertedNumber || x == revertedNumber/<span class="hljs-number">10</span>;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/9.%20Palindrome%20Number/Images/RevertNumberResult.png?raw=true" alt="Efficiency"></p>
-<p><strong>Analysis</strong></p>
-<p>First of all we should take care of some edge cases. All negative numbers are not palindrome, and number x which x % 10 == 0 &amp;&amp; x != 0 can not be palindrome ,because the number can’t be both 0 in the first digit and last digit. Then we start to convert number , we can use x%10 to get the last digit of x , update x to x/10 ,it remove the last digit ,and then use x%10 to get the last number of x , use the number we have get before to times 10 plus this number. Continuing this process would give us the reverted number with more digits. when the original number is less than the reversed number, it means we’ve processed half of the number digits.</p>
-<p>Because palindrome has odd and even ,so we need to deal with both of them.When the palindrome is odd the reverted number will have one more digit ,but this digit we don’t need to consider about ,we only need to remove this digit and compare the rest of it ,when palindrome is even ,if we convert the half of number x ,if they don’t equal to each other it is not a palindrome , even x is bigger than reverted number , which make it revert one more time , the reverted number will hava more two digit to x ,remove one digit will nerver make it palindrome.</p>
-<p>Time complexity ：O($log{_10}n$)<br>Space complexity ： O(1) .</p>
-<p>If you have any suggestions to make the logic and implementation more better , or you have some advice on my description. Please let me know!Thanks!</p>
-<h1><span id="about-me">About Me</span></h1><p>我的博客 <a href="http://leonchen1024.com/" target="_blank" rel="external">leonchen1024.com</a></p>
-<p>我的 GitHub <a href="https://github.com/LeonChen1024" target="_blank" rel="external">https://github.com/LeonChen1024</a></p>
-<p>微信公众号 </p>
-<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/Images/CooderQRcodem.jpg?raw=true" alt="wechat"></p>
- -->
-            <div class="article-entry">
-                    
-                    
-                        
-                            
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                            
-                                
-                                <p><p>[English ver]</p>
-<h1><span id="9-palindrome-number">9. Palindrome Number</span></h1><p>Determine whether an integer is a palindrome. Do this without extra space.</p>
-<hr>
-<p>click to show spoilers.</p>
-<p>Some hints:<br>Could negative integers be palindromes? (ie, -1)</p>
-<p>
-                            
-                        
-                    
-                    
-                        </div>   
-                        <div class="article-more-link">
-                            <a href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-en/#more">Read More</a>
                         </div>
                     
         </div>
@@ -1320,140 +1422,15 @@
 
 
 
-    <div class="card">
-    
-    <div class="card-image">
-        <a href="/2019/05/28/Automatic-Version-Code-Release/" class="image is-7by1">
-            <img class="banner" src="/2019/05/28/Automatic-Version-Code-Release/title.jpg" alt="自动版本号发布">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-05-27T16:00:00.000Z">2019-05-28</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Android/版本管理/">版本管理</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    10 minutes read (About 1487 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/05/28/Automatic-Version-Code-Release/">自动版本号发布</a>
-            
-        </h1>
-        <div class="content">
-            <!-- <h1><span id="自动版本号发布">自动版本号发布</span></h1><p>[TOC]</p>
-<h1><span id="背景">背景</span></h1><p>由于手动升级版本号等操作容易被遗忘和操作错误,,所以要找到一个可以自动管理版本号的方式.</p>
-<h1><span id="内容">内容</span></h1><p>版本控制主要有这么两个属性：</p>
-<ul>
-<li><p><code>android:versionCode</code> ： 整数，是内部版本号，用于判断一个版本是否比另一个版本新，用户并不需要看到。通常是跟随着发布版本增加该code。如果安装的app 的 versionCode 比当前该 app 的 versionCode 小的话会导致安装失败,提示无法降级安装.</p>
-</li>
-<li><p><code>android:versionName</code> : 字符串，用户能看到的版本号。如 <code>1.0.0</code> .系统不关心这个值.</p>
-</li>
-</ul>
-<h1><span id="方案">方案</span></h1><h2><span id="方案1-使用-git-提交记录来生成">方案1 使用 Git 提交记录来生成</span></h2><h3><span id="自动化版本号代码">自动化版本号代码</span></h3><p>用 Git 的话,我们可以使用 Git 中的 commit 数量作为 versionCode . 如下 :</p>
-<figure class="highlight groovy hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-comment">// 获取当前分支的 commit 数量.</span></div><div class="line"><span class="hljs-keyword">def</span> cmdVersionCode = <span class="hljs-string">'git rev-list HEAD --count'</span></div><div class="line"><span class="hljs-keyword">def</span> versionCodeValue = cmdVersionCode.execute().text.trim().toInteger()</div><div class="line"></div><div class="line">android &#123;  </div><div class="line">  defaultConfig &#123;</div><div class="line">    versionCode versionCodeValue</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>这个方案要求开发者要及时提交代码,否则会出现版本号不增加的情况,不利于维护.</p>
-<p>有些开发者会担心一次版本发布中会有很多次 commit 的情况.首先这个 versionCode 的类型是 int 类型的,最大值是 <code>2^31-1</code> , 大约可以达到 21亿. </p>
-<h3><span id="自动化版本名">自动化版本名</span></h3><p>使用该方法的话需要在 Git 中标记 <code>tag</code> , tag 就是版本名.这样也有利于后期追溯版本.</p>
-<figure class="highlight groovy hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-comment">// 获取当前 commit 到距离他最近的 tag 描述.</span></div><div class="line"><span class="hljs-keyword">def</span> cmdVersionName = <span class="hljs-string">'git describe --tags'</span></div><div class="line"><span class="hljs-keyword">def</span> versionNameValue  = cmdVersionName.execute().text.trim()</div><div class="line"></div><div class="line">android &#123;  </div><div class="line">  defaultConfig &#123;</div><div class="line">    versionName versionNameValue</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>这个时候版本名的后面可能会带上 <code>g.....</code> 的一串字符串,我们可以针对这个情况做一个修改,让版本名更加通俗易懂.</p>
-<figure class="highlight groovy hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-comment">// 获取tag 后面跟上的 距离上个 tag 提交次数,以及提交码.</span></div><div class="line"><span class="hljs-keyword">def</span> pattern = <span class="hljs-string">"-(\\d+)-g"</span></div><div class="line"><span class="hljs-keyword">def</span> matcher = versionNameValue =~ pattern</div><div class="line"></div><div class="line"><span class="hljs-keyword">if</span> (matcher) &#123;</div><div class="line">    <span class="hljs-comment">// 将距离上个 tag 的提交次数变为版本名.</span></div><div class="line"></div><div class="line">    <span class="hljs-comment">// 以多少为基数.</span></div><div class="line">    <span class="hljs-keyword">def</span> baseNum = <span class="hljs-number">20</span></div><div class="line">    <span class="hljs-keyword">def</span> thirdNum = matcher[<span class="hljs-number">0</span>][<span class="hljs-number">1</span>].toInteger().intdiv(baseNum)</div><div class="line">    <span class="hljs-keyword">def</span> fourthNum = matcher[<span class="hljs-number">0</span>][<span class="hljs-number">1</span>].toInteger() % baseNum</div><div class="line"></div><div class="line">    versionNameValue = versionNameValue.substring(<span class="hljs-number">0</span>, matcher.start()) + <span class="hljs-string">"."</span> + thirdNum + <span class="hljs-string">"."</span>+fourthNum</div><div class="line"><span class="hljs-comment">// 直接以距离上个 tag 的提交次数为第三个版本号.</span></div><div class="line"><span class="hljs-comment">//    versionNameValue = versionNameValue.substring(0, matcher.start()) + "." + matcher[0][1]</span></div><div class="line">&#125; <span class="hljs-keyword">else</span> &#123;</div><div class="line">    versionNameValue = versionNameValue + <span class="hljs-string">".0"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>由于直接把距离上个tag 的提交次数作为版本号会导致版本号增长过快,所以将他拆分为两部分.上面的例子以20为基数,比如此时距离上个提交次数为 32 , 上一个版本为 v1.0 , 那么生成的版本名就是 v1.0.1.12 ,而不是 1.0.32</p>
-<p>还要注意一点,这样写的画每次调试的debug版本也会生成不同的版本名,可能会导致有接入线上统计的版本出现繁杂冗余的情况.所以可以加上一个判断版本的方式,如下:</p>
-<p>现在项目的总 build.gradle 文件中添加</p>
-<figure class="highlight groovy hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-comment">// 通过taskName判断当前操作是否是在打release包</span></div><div class="line"><span class="hljs-keyword">def</span> checkRelease() &#123;</div><div class="line">    <span class="hljs-keyword">def</span> runTasks = gradle.startParameter.taskNames</div><div class="line">    <span class="hljs-keyword">for</span> (String <span class="hljs-string">task :</span> runTasks) &#123;</div><div class="line">        <span class="hljs-comment">// 执行“assemble”并且非“debug”的任务就是执行“release”的任务</span></div><div class="line">        <span class="hljs-keyword">if</span> (task.contains(<span class="hljs-string">"assemble"</span>) &amp;&amp; !task.contains(<span class="hljs-string">"Debug"</span>)) &#123;</div><div class="line">			<span class="hljs-comment">// targetTask = task</span></div><div class="line">            <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span></div><div class="line">&#125;</div><div class="line"></div><div class="line">ext &#123;</div><div class="line">    <span class="hljs-comment">// 定义当前gradle文件的全局变量, 是否是release版本</span></div><div class="line">    isRelease = checkRelease()</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>然后在 module 的 build.gradle 中修改之前的方法为</p>
-<figure class="highlight groovy hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-keyword">if</span> (matcher) &#123;</div><div class="line">    <span class="hljs-keyword">if</span> (isRelease) &#123;</div><div class="line">        <span class="hljs-comment">// 将距离上个 tag 的提交次数变为版本名.</span></div><div class="line"></div><div class="line">        <span class="hljs-comment">// 以多少为基数.</span></div><div class="line">        <span class="hljs-keyword">def</span> baseNum = <span class="hljs-number">20</span></div><div class="line">        <span class="hljs-keyword">def</span> thirdNum = matcher[<span class="hljs-number">0</span>][<span class="hljs-number">1</span>].toInteger().intdiv(baseNum)</div><div class="line">        <span class="hljs-keyword">def</span> fourthNum = matcher[<span class="hljs-number">0</span>][<span class="hljs-number">1</span>].toInteger().mod(baseNum)</div><div class="line">        versionNameValue = versionNameValue.substring(<span class="hljs-number">0</span>, matcher.start()) + <span class="hljs-string">"."</span> + thirdNum + <span class="hljs-string">"."</span> + fourthNum</div><div class="line">    &#125;<span class="hljs-keyword">else</span> &#123;</div><div class="line">        versionNameValue = <span class="hljs-string">"0.0.0"</span></div><div class="line">    &#125;</div><div class="line">&#125; <span class="hljs-keyword">else</span> &#123;</div><div class="line">    versionNameValue = versionNameValue + <span class="hljs-string">".0"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>这样debug 的时候版本名称就都是0.0.0了.</p>
-<h2><span id="方案2-使用配置文件叠加">方案2 使用配置文件叠加</span></h2><p>该方法的思路是利用 property 文件进行保存版本号等信息,然后在每次生成 release 的时候进行叠加.</p>
-<p>以下是 <code>autoversion.gradle</code> 文件. 在你的 module 的 gradle 文件中引入该文件就可以了.</p>
-<figure class="highlight groovy hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div></pre></td><td class="code"><pre><div class="line">apply <span class="hljs-string">from:</span> <span class="hljs-string">"util.gradle"</span></div><div class="line"></div><div class="line">ext &#123;</div><div class="line">    versionFile = <span class="hljs-keyword">new</span> File(project.rootDir, <span class="hljs-string">'version.properties'</span>)</div><div class="line">    calculateVersionName = &#123;</div><div class="line">        <span class="hljs-keyword">if</span> (checkRelease()) &#123;</div><div class="line">            incrementVersionNumber()</div><div class="line">        &#125;</div><div class="line">        <span class="hljs-keyword">def</span> version = readVersion()</div><div class="line">        <span class="hljs-keyword">return</span> <span class="hljs-string">"$&#123;version['major']&#125;.$&#123;version['minor']&#125;.$&#123;version['build']&#125;"</span></div><div class="line">    &#125;</div><div class="line">    calculateVersionCode = &#123;</div><div class="line">        <span class="hljs-keyword">def</span> version = readVersion()</div><div class="line">        <span class="hljs-keyword">def</span> major = version[<span class="hljs-string">'major'</span>] <span class="hljs-keyword">as</span> <span class="hljs-keyword">int</span> <span class="hljs-comment">// 1..∞</span></div><div class="line">        <span class="hljs-keyword">def</span> minor = version[<span class="hljs-string">'minor'</span>] <span class="hljs-keyword">as</span> <span class="hljs-keyword">int</span> <span class="hljs-comment">// 0..99</span></div><div class="line">        <span class="hljs-keyword">def</span> build = version[<span class="hljs-string">'build'</span>] <span class="hljs-keyword">as</span> <span class="hljs-keyword">int</span> <span class="hljs-comment">// 0..999</span></div><div class="line">        <span class="hljs-keyword">return</span> (major * <span class="hljs-number">100</span> + minor) * <span class="hljs-number">1000</span> + build</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Properties readVersion() &#123;</div><div class="line">    <span class="hljs-keyword">def</span> version = <span class="hljs-keyword">new</span> Properties()</div><div class="line">    <span class="hljs-keyword">def</span> stream</div><div class="line">    <span class="hljs-keyword">try</span> &#123;</div><div class="line">        stream = <span class="hljs-keyword">new</span> FileInputStream(versionFile)</div><div class="line">        version.load(stream)</div><div class="line"></div><div class="line">    &#125; <span class="hljs-keyword">catch</span> (FileNotFoundException ignore) &#123;</div><div class="line">    &#125; <span class="hljs-keyword">finally</span> &#123;</div><div class="line">        <span class="hljs-keyword">if</span> (stream != <span class="hljs-literal">null</span>) stream.close()</div><div class="line">    &#125;</div><div class="line">    <span class="hljs-comment">// safety defaults in case file is missing</span></div><div class="line">    <span class="hljs-keyword">if</span> (!version[<span class="hljs-string">'major'</span>]) version[<span class="hljs-string">'major'</span>] = <span class="hljs-string">"1"</span></div><div class="line">    <span class="hljs-keyword">if</span> (!version[<span class="hljs-string">'minor'</span>]) version[<span class="hljs-string">'minor'</span>] = <span class="hljs-string">"0"</span></div><div class="line">    <span class="hljs-keyword">if</span> (!version[<span class="hljs-string">'build'</span>]) version[<span class="hljs-string">'build'</span>] = <span class="hljs-string">"0"</span></div><div class="line">    <span class="hljs-keyword">return</span> version</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="hljs-keyword">void</span> incrementVersionNumber() &#123;</div><div class="line">    <span class="hljs-keyword">def</span> version = readVersion()</div><div class="line"></div><div class="line">    <span class="hljs-comment">// careful with the types, culprits: "9"++ = ":", "9" + 1 = "91"</span></div><div class="line">    <span class="hljs-keyword">def</span> build = version[<span class="hljs-string">'build'</span>] <span class="hljs-keyword">as</span> <span class="hljs-keyword">int</span></div><div class="line">    build++</div><div class="line">    version[<span class="hljs-string">'build'</span>] = build.toString()</div><div class="line"></div><div class="line">    <span class="hljs-keyword">def</span> stream = <span class="hljs-keyword">new</span> FileOutputStream(versionFile)</div><div class="line">    <span class="hljs-keyword">try</span> &#123;</div><div class="line">        version.store(stream, <span class="hljs-literal">null</span>)</div><div class="line">    &#125; <span class="hljs-keyword">finally</span> &#123;</div><div class="line">        stream.close()</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="hljs-keyword">if</span> (plugins.hasPlugin(<span class="hljs-string">'android'</span>) || plugins.hasPlugin(<span class="hljs-string">'android-library'</span>)) &#123;</div><div class="line">    android &#123;</div><div class="line">        defaultConfig &#123;</div><div class="line">            versionName = calculateVersionName()</div><div class="line">            versionCode = calculateVersionCode()</div><div class="line">        &#125;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>以下是 <code>autoversion.gradle</code> 引用的 工具类</p>
-<figure class="highlight groovy hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">ext &#123;</div><div class="line"></div><div class="line">    checkRelease = <span class="hljs-keyword">this</span>.&amp;checkRelease</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="hljs-comment">// 通过taskName判断当前操作是否是在打release包</span></div><div class="line"><span class="hljs-keyword">def</span> checkRelease() &#123;</div><div class="line">    <span class="hljs-keyword">def</span> runTasks = gradle.startParameter.taskNames</div><div class="line">    <span class="hljs-keyword">for</span> (String <span class="hljs-string">task :</span> runTasks) &#123;</div><div class="line">        <span class="hljs-comment">// 执行“assemble”并且非“debug”的任务就是执行“release”的任务</span></div><div class="line">        <span class="hljs-keyword">if</span> (task.contains(<span class="hljs-string">"assemble"</span>) &amp;&amp; !task.contains(<span class="hljs-string">"Debug"</span>)) &#123;</div><div class="line">            <span class="hljs-comment">// targetTask = task</span></div><div class="line">            <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>这样子有一些不太理想的是,它是使用 版本名来生成版本号的,有可能出现同一份代码多次打包后出现多个不同的版本.所以可以考虑和第一种Git 版本的方式结合.</p>
-<p>修改后的版本</p>
-<figure class="highlight groovy hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div></pre></td><td class="code"><pre><div class="line">apply <span class="hljs-string">from:</span> <span class="hljs-string">"../../AndroidShareLib/gradle/util.gradle"</span></div><div class="line"></div><div class="line">ext &#123;</div><div class="line">    versionFile = <span class="hljs-keyword">new</span> File(project.rootDir, <span class="hljs-string">'version.properties'</span>)</div><div class="line">    calculateVersionName = &#123;</div><div class="line">        <span class="hljs-keyword">def</span> version = readVersion()</div><div class="line">        <span class="hljs-keyword">def</span> code = version[<span class="hljs-string">'versioncode'</span>] <span class="hljs-keyword">as</span> <span class="hljs-keyword">int</span></div><div class="line">        <span class="hljs-keyword">if</span> ((code &lt; versionCode)) &#123;</div><div class="line">            incrementVersionNumber()</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="hljs-keyword">return</span> <span class="hljs-string">"$&#123;version['major']&#125;.$&#123;version['minor']&#125;.$&#123;version['build']&#125;"</span></div><div class="line">    &#125;</div><div class="line">    calculateVersionCode = &#123;</div><div class="line">        <span class="hljs-comment">// 获取当前分支的 commit 数量.</span></div><div class="line">        <span class="hljs-keyword">def</span> cmdVersionCode = <span class="hljs-string">'git rev-list HEAD --count'</span></div><div class="line">        <span class="hljs-keyword">return</span> cmdVersionCode.execute().text.trim().toInteger()</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Properties readVersion() &#123;</div><div class="line">    <span class="hljs-keyword">def</span> version = <span class="hljs-keyword">new</span> Properties()</div><div class="line">    <span class="hljs-keyword">def</span> stream</div><div class="line">    <span class="hljs-keyword">try</span> &#123;</div><div class="line">        stream = <span class="hljs-keyword">new</span> FileInputStream(versionFile)</div><div class="line">        version.load(stream)</div><div class="line"></div><div class="line">    &#125; <span class="hljs-keyword">catch</span> (FileNotFoundException ignore) &#123;</div><div class="line">    &#125; <span class="hljs-keyword">finally</span> &#123;</div><div class="line">        <span class="hljs-keyword">if</span> (stream != <span class="hljs-literal">null</span>) stream.close()</div><div class="line">    &#125;</div><div class="line">    <span class="hljs-comment">// safety defaults in case file is missing</span></div><div class="line">    <span class="hljs-keyword">if</span> (!version[<span class="hljs-string">'major'</span>]) version[<span class="hljs-string">'major'</span>] = <span class="hljs-string">"1"</span></div><div class="line">    <span class="hljs-keyword">if</span> (!version[<span class="hljs-string">'minor'</span>]) version[<span class="hljs-string">'minor'</span>] = <span class="hljs-string">"0"</span></div><div class="line">    <span class="hljs-keyword">if</span> (!version[<span class="hljs-string">'build'</span>]) version[<span class="hljs-string">'build'</span>] = <span class="hljs-string">"0"</span></div><div class="line">    <span class="hljs-keyword">if</span> (!version[<span class="hljs-string">'versioncode'</span>]) version[<span class="hljs-string">'versioncode'</span>] = <span class="hljs-string">"0"</span></div><div class="line">    <span class="hljs-keyword">return</span> version</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="hljs-keyword">void</span> incrementVersionNumber() &#123;</div><div class="line">    <span class="hljs-keyword">def</span> version = readVersion()</div><div class="line"></div><div class="line">    <span class="hljs-comment">// careful with the types, culprits: "9"++ = ":", "9" + 1 = "91"</span></div><div class="line">    <span class="hljs-keyword">def</span> build = version[<span class="hljs-string">'build'</span>] <span class="hljs-keyword">as</span> <span class="hljs-keyword">int</span></div><div class="line">    build++</div><div class="line">    version[<span class="hljs-string">'build'</span>] = build.toString()</div><div class="line">    version[<span class="hljs-string">'versioncode'</span>] = versionCode <span class="hljs-keyword">as</span> String</div><div class="line"></div><div class="line">    <span class="hljs-keyword">def</span> stream = <span class="hljs-keyword">new</span> FileOutputStream(versionFile)</div><div class="line">    <span class="hljs-keyword">try</span> &#123;</div><div class="line">        version.store(stream, <span class="hljs-literal">null</span>)</div><div class="line">    &#125; <span class="hljs-keyword">finally</span> &#123;</div><div class="line">        stream.close()</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="hljs-keyword">if</span> (plugins.hasPlugin(<span class="hljs-string">'android'</span>) || plugins.hasPlugin(<span class="hljs-string">'android-library'</span>)) &#123;</div><div class="line">    android &#123;</div><div class="line">        defaultConfig &#123;</div><div class="line">            versionName = calculateVersionName()</div><div class="line">            versionCode = calculateVersionCode()</div><div class="line">        &#125;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h1><span id="reference">Reference</span></h1><p><a href="http://leonchen1024.com/2018/04/13/APP-Version-Control/" target="_blank" rel="external">APP 版本控制</a></p>
-<h2><span id="about-me">About Me</span></h2><p>我的博客 <a href="http://leonchen1024.com/" target="_blank" rel="external">leonchen1024.com</a></p>
-<p>我的 GitHub <a href="https://github.com/LeonChen1024" target="_blank" rel="external">https://github.com/LeonChen1024</a></p>
-<p>微信公众号 </p>
-<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/Images/CooderQRcodem.jpg?raw=false" alt="wechat"></p>
- -->
-            <div class="article-entry">
-                    
-                    
-                        
-                            
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                            
-                                
-                                <p><h1><span id="自动版本号发布">自动版本号发布</span></h1><p>[TOC]</p>
-<h1><span id="背景">背景</span></h1><p>由于手动升级版本号等操作容易被遗忘和操作错误,,所以要找到一个可以自动管理版本号的方式.</p>
-<h1><span id="内容">内容</span></h1><p>版本控制主要有这么两个属性：</p>
-<ul>
-<li><p><code>android:versionCode</code> ： 整数，是内部版本号，用于判断一个版本是否比另一个版本新，用户并不需要看到。通常是跟随着发布版本增加该code。如果安装的app 的 versionCode 比当前该 app 的 versionCode 小的话会导致安装失败,提示无法降级安装.</p>
-<p>
-                            
-                        
-                    
-                    
-                        </div>   
-                        <div class="article-more-link">
-                            <a href="/2019/05/28/Automatic-Version-Code-Release/#more">Read More</a>
-                        </div>
-                    
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
     <nav class="pagination is-centered" role="navigation" aria-label="pagination">
         <div class="pagination-previous is-invisible is-hidden-mobile">
-            <a class="is-flex-grow has-text-black-ter" href="/page/0/">前</a>
+            <a class="is-flex-grow has-text-black-ter" href="/page/0/">Anterior</a>
         </div>
         <div class="pagination-next">
-            <a class="is-flex-grow has-text-black-ter" href="/page/2/">次</a>
+            <a class="is-flex-grow has-text-black-ter" href="/page/2/">Siguiente</a>
         </div>
         <ul class="pagination-list is-hidden-mobile">
             
@@ -1508,17 +1485,17 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        投稿
+                        Entradas
                     </p>
                     <p class="title has-text-weight-normal">
-                        39
+                        40
                     </p>
                 </div>
             </div>
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        カテゴリ
+                        Categorias
                     </p>
                     <p class="title has-text-weight-normal">
                         20
@@ -1528,7 +1505,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        タグ
+                        Etiquetas
                     </p>
                     <p class="title has-text-weight-normal">
                         17
@@ -1538,7 +1515,7 @@
         </nav>
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://github.com/LeonChen1024">
-                フォローする</a>
+                SEGUIR</a>
         </div>
         
         
@@ -1567,7 +1544,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                カテゴリ
+                Categorias
             </h3>
             <ul class="menu-list">
             <li>
@@ -1576,7 +1553,7 @@
                 <span class="level-item">Chinese</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">30</span>
+                <span class="level-item tag">31</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="undefined">
@@ -1592,7 +1569,7 @@
                 <span class="level-item">Android</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">13</span>
+                <span class="level-item tag">14</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="undefined">
@@ -1644,7 +1621,7 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            タグクラウド
+            Nube de etiquetas
         </h3>
         <a href="/tags/Algorithm/" style="font-size: 18.75px;">Algorithm</a> <a href="/tags/Android/" style="font-size: 16.25px;">Android</a> <a href="/tags/Chinese/" style="font-size: 20px;">Chinese</a> <a href="/tags/Custom-View/" style="font-size: 10px;">Custom View</a> <a href="/tags/Data-Structure/" style="font-size: 10px;">Data Structure</a> <a href="/tags/DataStructure/" style="font-size: 10px;">DataStructure</a> <a href="/tags/English/" style="font-size: 15px;">English</a> <a href="/tags/Error/" style="font-size: 10px;">Error</a> <a href="/tags/Gradle/" style="font-size: 11.25px;">Gradle</a> <a href="/tags/Java/" style="font-size: 12.5px;">Java</a> <a href="/tags/Jetpack/" style="font-size: 11.25px;">Jetpack</a> <a href="/tags/LeetCode/" style="font-size: 17.5px;">LeetCode</a> <a href="/tags/Optimize/" style="font-size: 13.75px;">Optimize</a> <a href="/tags/SourceCode/" style="font-size: 10px;">SourceCode</a> <a href="/tags/UI/" style="font-size: 10px;">UI</a> <a href="/tags/版本差异/" style="font-size: 11.25px;">版本差异</a> <a href="/tags/版本管理/" style="font-size: 12.5px;">版本管理</a>
     </div>
@@ -1658,8 +1635,27 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            最近の記事
+            Recientes
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/04/16/S5ep1-Threading-Performance-101/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/2020/04/16/S5ep1-Threading-Performance-101/titleThumb.jpg" alt="自定义视图及其性能">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-15T16:00:00.000Z">2020-04-16</time></div>
+                    <a href="/2020/04/16/S5ep1-Threading-Performance-101/" class="has-link-black-ter is-size-6">自定义视图及其性能</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -1737,25 +1733,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/titleThumb.jpg" alt="LeetCode 9. Palindrome Number">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-27T16:00:00.000Z">2020-01-28</time></div>
-                    <a href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/" class="has-link-black-ter is-size-6">LeetCode 9. Palindrome Number</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1764,9 +1741,20 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            アーカイブ
+            Archivos
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2020/03/">
@@ -1964,7 +1952,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                タグ
+                Etiquetas
             </h3>
             <div class="field is-grouped is-grouped-multiline">
                 
@@ -1978,14 +1966,14 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Android/">
                         <span class="tag">Android</span>
-                        <span class="tag is-grey">16</span>
+                        <span class="tag is-grey">17</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Chinese/">
                         <span class="tag">Chinese</span>
-                        <span class="tag is-grey">30</span>
+                        <span class="tag is-grey">31</span>
                     </a>
                 </div>
                 
@@ -2055,7 +2043,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Optimize/">
                         <span class="tag">Optimize</span>
-                        <span class="tag is-grey">4</span>
+                        <span class="tag is-grey">5</span>
                     </a>
                 </div>
                 
@@ -2107,8 +2095,27 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            最近の記事
+            Recientes
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/04/16/S5ep1-Threading-Performance-101/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/2020/04/16/S5ep1-Threading-Performance-101/titleThumb.jpg" alt="自定义视图及其性能">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-15T16:00:00.000Z">2020-04-16</time></div>
+                    <a href="/2020/04/16/S5ep1-Threading-Performance-101/" class="has-link-black-ter is-size-6">自定义视图及其性能</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -2186,25 +2193,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/titleThumb.jpg" alt="LeetCode 9. Palindrome Number">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-27T16:00:00.000Z">2020-01-28</time></div>
-                    <a href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/" class="has-link-black-ter is-size-6">LeetCode 9. Palindrome Number</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -2213,9 +2201,20 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            アーカイブ
+            Archivos
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2020/03/">
@@ -2413,7 +2412,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                タグ
+                Etiquetas
             </h3>
             <div class="field is-grouped is-grouped-multiline">
                 
@@ -2427,14 +2426,14 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Android/">
                         <span class="tag">Android</span>
-                        <span class="tag is-grey">16</span>
+                        <span class="tag is-grey">17</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Chinese/">
                         <span class="tag">Chinese</span>
-                        <span class="tag is-grey">30</span>
+                        <span class="tag is-grey">31</span>
                     </a>
                 </div>
                 
@@ -2504,7 +2503,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Optimize/">
                         <span class="tag">Optimize</span>
-                        <span class="tag is-grey">4</span>
+                        <span class="tag is-grey">5</span>
                     </a>
                 </div>
                 
@@ -2696,10 +2695,10 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: '投稿',
+                POSTS: 'Entradas',
                 PAGES: 'Pages',
-                CATEGORIES: 'カテゴリ',
-                TAGS: 'タグ',
+                CATEGORIES: 'Categorias',
+                TAGS: 'Etiquetas',
                 UNTITLED: '(Untitled)',
             },
             CONTENT_URL: '/content.json',
