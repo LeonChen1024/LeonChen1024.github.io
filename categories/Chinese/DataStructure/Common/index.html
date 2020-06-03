@@ -2,7 +2,7 @@
 <html >
 <head>
     <meta charset="utf-8">
-<title>Categoria: Common - LeonChen&#39;s Blog</title>
+<title>Category: Common - LeonChen&#39;s Blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
 
@@ -147,7 +147,7 @@
     <div class="card-content">
         <nav class="breadcrumb" aria-label="breadcrumbs">
         <ul>
-            <li><a href="/categories">Categorias</a></li>
+            <li><a href="/categories">Categories</a></li>
             
             <li><a href="/categories/Chinese/DataStructure/">DataStructure</a></li>
             
@@ -162,8 +162,8 @@
     <div class="card">
     
     <div class="card-image">
-        <a href="/2019/04/09/Key-Value-pair-in-hashtable/" class="image is-7by1">
-            <img class="banner" src="/2019/04/09/Key-Value-pair-in-hashtable/title.jpg" alt="实现键值对存储 第五部分 Hash table 实现">
+        <a href="/2020/04/30/Key-Value-pair-in-hashtable/" class="image is-7by1">
+            <img class="banner" src="/2020/04/30/Key-Value-pair-in-hashtable/title.jpg" alt="实现键值对存储 第五部分 Hash table 实现">
         </a>
     </div>
     
@@ -171,7 +171,7 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-04-08T16:00:00.000Z">2019-04-09</time>
+                <time class="level-item has-text-grey" datetime="2020-04-29T16:00:00.000Z">2020-04-30</time>
                 
                 <div class="level-item">
                 <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/DataStructure/">DataStructure</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/DataStructure/Common/">Common</a>
@@ -190,7 +190,7 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2019/04/09/Key-Value-pair-in-hashtable/">实现键值对存储 第五部分 Hash table 实现</a>
+                <a class="has-link-black-ter" href="/2020/04/30/Key-Value-pair-in-hashtable/">实现键值对存储 第五部分 Hash table 实现</a>
             
         </h1>
         <div class="content">
@@ -198,7 +198,7 @@
 <p>这篇文章是 IKVS 系列的第五部分,”实现一个键值对存储”.你也可以查看 <a href="http://codecapsule.com/2012/11/07/ikvs-implementing-a-key-value-store-table-of-contents/" target="_blank" rel="external">Table of Contents</a>  来查看其他部分.</p>
 <p>在这篇文章中,我将会学习C++中实际的 hash table 来理解它的瓶颈在哪里.Hash 函数是 CPU-密集型的操作应该要进行优化.然而,大多数的 hash table 的机制都只是关注于高效的内存和I/O读取,这也是这篇文章主要的焦点.我将会学习三种不同的 C++中的hash table 的实现,同时包含内存中的和硬盘中的,并且会观察这些数据都是怎么组织和访问的.这篇文章将会包含以下内容.</p>
 <p>[TOC]</p>
-<p><img src="/2019/04/09/Key-Value-pair-in-hashtable/kvstore-part5-intro.jpg" alt="kvstore-part5-intro"></p>
+<p><img src="/2020/04/30/Key-Value-pair-in-hashtable/kvstore-part5-intro.jpg" alt="kvstore-part5-intro"></p>
 <h2><span id="1-hash-tables">1. Hash tables</span></h2><h3><span id="11-对-hash-tables-的一个快速介绍">1.1 对 hash tables 的一个快速介绍</span></h3><blockquote>
 <p>Hashtable 按理说是一个对人类来说最重要的数据结构.</p>
 <p>— Steve Yegge</p>
@@ -217,7 +217,7 @@
 <p>因为节点是独立分配的,每个节点的分配可能会造成大量的内存浪费.这当然也取决于编译器和使用的操作系统的内存分配器.而且我甚至不讨论每种分配器的所有的系统调用.最原始的 SGI hash table 的实现会对节点进行资源预分配,但是这种策略在  TR1 的 unordered_map 实现中没有被保留.</p>
 <p>下面的 图 5.1  提供了一个对于 TR1 的  unordered_map 的内存和访问模式.让我们来看看当我们根据key “johannesburg” 来查找关联的 GPS 坐标的时候会发生什么事.这个key 将会被 hash 然后映射到 bucket #0 .从那里我们跳转到这个bucket 对应的链表的第一个节点(bucket #0 左边橙色的箭头),并且我们可以访问堆里持有key “johannesburg” 数据的内存区域(Node 右边黑色的箭头).如果key 在第一个节点是无效的,我们可以指向到其他的节点.</p>
 <p>至于CPU 的性能,人们不能指望将所有的数据都放在处理器同一个缓存行里.的确,给定了 bucket 数组的大小,初始化的 bucket 和初始化的节点将不会在同一个缓存行里,并且节点关联的额外的数据也不会在同一个缓存行中.子序列节点和关联的数据也不会在相同的缓存行里并且必须从 RAM 中检索.如果你并不熟悉CPU 优化和缓存行, 这篇 Wikipedia 上的  “<em>CPU Cache</em>”  文章将会是一个很好的介绍 <a href="http://codecapsule.com/2013/05/13/implementing-a-key-value-store-part-5-hash-table-implementations/#ref_20" target="_blank" rel="external">[20]</a>.</p>
-<p><img src="/2019/04/09/Key-Value-pair-in-hashtable/kvstore_unordered_map_web.jpg" alt="Figure 5.1"></p>
+<p><img src="/2020/04/30/Key-Value-pair-in-hashtable/kvstore_unordered_map_web.jpg" alt="Figure 5.1"></p>
 <h3><span id="22-sparsehash-的-dense_hash_map">2.2  SparseHash 的 dense_hash_map</span></h3><p>SparseHash 库提供了两种 hash table 的实现, sparse_hash_map 和 dense_hash_map. sparse_hash_map 通过降低了速度提供了惊人的内存占用,并且使用制定的数据结构来获取结果,这就是 sparsetable. 想要了解更多的关于 sparsetables 和 sparse_hash_map 的信息可以去SparseHash  的 “<em>Implementation notes</em>” 页 <a href="http://codecapsule.com/2013/05/13/implementing-a-key-value-store-part-5-hash-table-implementations/#ref_19" target="_blank" rel="external">[19]</a>.在这里我只会介绍 dense_hash_map.</p>
 <p>dense_hash_map 使用二次内部探查处理碰撞问题.如同 unordered_map ,bucket 数组在一开始就在堆里分配了,并且会根据 hash table 的负载因子进行放大或者缩小. bucket 数组的元素是 <code>std::pair</code>  的实例,其中 <code>Key</code> 和 <code>T</code> 分别是 键和值的模板参数.在一个 64-位体系架构中保存字符串, 每一对的实例将会占用 16字节.</p>
 <p>下图 5.2  提供了一个对于 dense_hash_map 的内存和访问模式的示意图.如果我们查找 “johannesburg” 的 GPS 坐标,我们一开始会在 bucket #0 中查找失败,因为它的数据是 “Paris” 的(bucket #0 右边的黑色箭头).所以我们会继续探查并跳转到 bucket  (i + 1) = (0 + 1) = 1 (bucket #0 左边橙色的箭头),然后我们会在 bucket #1 中查找 “johannesburg” 对应的数据(bucket #1 右边黑色的箭头).这看起来和 unordered_map 很相似,但实际上是非常不同的.当然,就像 unordered_map 一样键和值将会被存储在堆内存中,这意味着键和值的查找将无法使用缓存行.但是bucket 中的碰撞条目的导航将会变得非常快.的确,在大多数的处理器中缓存行是 64byte , 而我们指定每一对占用16byte的容量,这将会显著的提高我们的速度,和 unordered_map 中的链表相反,它需要在RAM中跳转来得到接下去的节点.</p>
@@ -283,7 +283,7 @@
 <p>这篇文章是 IKVS 系列的第五部分,”实现一个键值对存储”.你也可以查看 <a href="http://codecapsule.com/2012/11/07/ikvs-implementing-a-key-value-store-table-of-contents/" target="_blank" rel="external">Table of Contents</a>  来查看其他部分.</p>
 <p>在这篇文章中,我将会学习C++中实际的 hash table 来理解它的瓶颈在哪里.Hash 函数是 CPU-密集型的操作应该要进行优化.然而,大多数的 hash table 的机制都只是关注于高效的内存和I/O读取,这也是这篇文章主要的焦点.我将会学习三种不同的 C++中的hash table 的实现,同时包含内存中的和硬盘中的,并且会观察这些数据都是怎么组织和访问的.这篇文章将会包含以下内容.</p>
 <p>[TOC]</p>
-<p><img src="/2019/04/09/Key-Value-pair-in-hashtable/kvstore-part5-intro.jpg" alt="kvstore-part5-intro"></p>
+<p><img src="/2020/04/30/Key-Value-pair-in-hashtable/kvstore-part5-intro.jpg" alt="kvstore-part5-intro"></p>
 <p>
                             
                         
@@ -291,7 +291,7 @@
                     
                         </div>   
                         <div class="article-more-link">
-                            <a href="/2019/04/09/Key-Value-pair-in-hashtable/#more">Read More</a>
+                            <a href="/2020/04/30/Key-Value-pair-in-hashtable/#more">Read More</a>
                         </div>
                     
         </div>
@@ -348,37 +348,37 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Entradas
+                        Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        40
+                        42
                     </p>
                 </div>
             </div>
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categorias
+                        Categories
                     </p>
                     <p class="title has-text-weight-normal">
-                        20
+                        22
                     </p>
                 </div>
             </div>
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Etiquetas
+                        Tags
                     </p>
                     <p class="title has-text-weight-normal">
-                        17
+                        18
                     </p>
                 </div>
             </div>
         </nav>
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://github.com/LeonChen1024">
-                SEGUIR</a>
+                Follow</a>
         </div>
         
         
@@ -407,7 +407,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categorias
+                Categories
             </h3>
             <ul class="menu-list">
             <li>
@@ -416,7 +416,7 @@
                 <span class="level-item">Chinese</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">31</span>
+                <span class="level-item tag">33</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="undefined">
@@ -441,6 +441,14 @@
             </span>
             <span class="level-end">
                 <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="undefined">
+            <span class="level-start">
+                <span class="level-item">DesignPattern</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="undefined">
@@ -484,9 +492,9 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Nube de etiquetas
+            Tag Cloud
         </h3>
-        <a href="/tags/Algorithm/" style="font-size: 18.75px;">Algorithm</a> <a href="/tags/Android/" style="font-size: 16.25px;">Android</a> <a href="/tags/Chinese/" style="font-size: 20px;">Chinese</a> <a href="/tags/Custom-View/" style="font-size: 10px;">Custom View</a> <a href="/tags/Data-Structure/" style="font-size: 10px;">Data Structure</a> <a href="/tags/DataStructure/" style="font-size: 10px;">DataStructure</a> <a href="/tags/English/" style="font-size: 15px;">English</a> <a href="/tags/Error/" style="font-size: 10px;">Error</a> <a href="/tags/Gradle/" style="font-size: 11.25px;">Gradle</a> <a href="/tags/Java/" style="font-size: 12.5px;">Java</a> <a href="/tags/Jetpack/" style="font-size: 11.25px;">Jetpack</a> <a href="/tags/LeetCode/" style="font-size: 17.5px;">LeetCode</a> <a href="/tags/Optimize/" style="font-size: 13.75px;">Optimize</a> <a href="/tags/SourceCode/" style="font-size: 10px;">SourceCode</a> <a href="/tags/UI/" style="font-size: 10px;">UI</a> <a href="/tags/版本差异/" style="font-size: 11.25px;">版本差异</a> <a href="/tags/版本管理/" style="font-size: 12.5px;">版本管理</a>
+        <a href="/tags/Algorithm/" style="font-size: 18.75px;">Algorithm</a> <a href="/tags/Android/" style="font-size: 16.25px;">Android</a> <a href="/tags/Chinese/" style="font-size: 20px;">Chinese</a> <a href="/tags/Custom-View/" style="font-size: 10px;">Custom View</a> <a href="/tags/Data-Structure/" style="font-size: 10px;">Data Structure</a> <a href="/tags/DataStructure/" style="font-size: 10px;">DataStructure</a> <a href="/tags/DesignPattern/" style="font-size: 11.25px;">DesignPattern</a> <a href="/tags/English/" style="font-size: 15px;">English</a> <a href="/tags/Error/" style="font-size: 10px;">Error</a> <a href="/tags/Gradle/" style="font-size: 11.25px;">Gradle</a> <a href="/tags/Java/" style="font-size: 13.75px;">Java</a> <a href="/tags/Jetpack/" style="font-size: 11.25px;">Jetpack</a> <a href="/tags/LeetCode/" style="font-size: 17.5px;">LeetCode</a> <a href="/tags/Optimize/" style="font-size: 13.75px;">Optimize</a> <a href="/tags/SourceCode/" style="font-size: 10px;">SourceCode</a> <a href="/tags/UI/" style="font-size: 10px;">UI</a> <a href="/tags/版本差异/" style="font-size: 11.25px;">版本差异</a> <a href="/tags/版本管理/" style="font-size: 12.5px;">版本管理</a>
     </div>
 </div>
 
@@ -498,23 +506,23 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recientes
+            Recent
         </h3>
         
         <article class="media">
             
-            <a href="/2020/04/16/S5ep1-Threading-Performance-101/" class="media-left">
+            <a href="/2020/06/03/dependency-injection/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/2020/04/16/S5ep1-Threading-Performance-101/titleThumb.jpg" alt="自定义视图及其性能">
+                    <img class="thumbnail" src="/2020/06/03/dependency-injection/titleThumb.jpg" alt="依赖注入">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-15T16:00:00.000Z">2020-04-16</time></div>
-                    <a href="/2020/04/16/S5ep1-Threading-Performance-101/" class="has-link-black-ter is-size-6">自定义视图及其性能</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-06-02T16:00:00.000Z">2020-06-03</time></div>
+                    <a href="/2020/06/03/dependency-injection/" class="has-link-black-ter is-size-6">依赖注入</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/DesignPattern/">DesignPattern</a>
                     </p>
                 </div>
             </div>
@@ -522,18 +530,18 @@
         
         <article class="media">
             
-            <a href="/2020/03/31/Module-dependency-manage/" class="media-left">
+            <a href="/2020/06/03/ioc/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/2020/03/31/Module-dependency-manage/titleThumb.jpg" alt="Android 模块依赖版本管理">
+                    <img class="thumbnail" src="/2020/06/03/ioc/titleThumb.jpg" alt="IoC 控制反转">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-30T16:00:00.000Z">2020-03-31</time></div>
-                    <a href="/2020/03/31/Module-dependency-manage/" class="has-link-black-ter is-size-6">Android 模块依赖版本管理</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-06-02T16:00:00.000Z">2020-06-03</time></div>
+                    <a href="/2020/06/03/ioc/" class="has-link-black-ter is-size-6">IoC 控制反转</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/DesignPattern/">DesignPattern</a>
                     </p>
                 </div>
             </div>
@@ -541,18 +549,18 @@
         
         <article class="media">
             
-            <a href="/2020/03/01/Gradle-Kotlin/" class="media-left">
+            <a href="/2020/05/02/Serializable/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/2020/03/01/Gradle-Kotlin/titleThumb.jpg" alt="Gradle Kotlin DSL">
+                    <img class="thumbnail" src="/2020/05/02/Serializable/titleThumb.jpg" alt="Serializable">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-29T16:00:00.000Z">2020-03-01</time></div>
-                    <a href="/2020/03/01/Gradle-Kotlin/" class="has-link-black-ter is-size-6">Gradle Kotlin DSL</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-01T16:00:00.000Z">2020-05-02</time></div>
+                    <a href="/2020/05/02/Serializable/" class="has-link-black-ter is-size-6">Serializable</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Gradle/">Gradle</a>
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Java/">Java</a>
                     </p>
                 </div>
             </div>
@@ -560,18 +568,18 @@
         
         <article class="media">
             
-            <a href="/2020/02/26/S1ep5-Tool-Strict-Mode/" class="media-left">
+            <a href="/2020/04/30/Key-Value-pair-in-hashtable/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/2020/02/26/S1ep5-Tool-Strict-Mode/titleThumb.jpg" alt="工具 严格模式">
+                    <img class="thumbnail" src="/2020/04/30/Key-Value-pair-in-hashtable/titleThumb.jpg" alt="实现键值对存储 第五部分 Hash table 实现">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-25T16:00:00.000Z">2020-02-26</time></div>
-                    <a href="/2020/02/26/S1ep5-Tool-Strict-Mode/" class="has-link-black-ter is-size-6">工具 严格模式</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-29T16:00:00.000Z">2020-04-30</time></div>
+                    <a href="/2020/04/30/Key-Value-pair-in-hashtable/" class="has-link-black-ter is-size-6">实现键值对存储 第五部分 Hash table 实现</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/DataStructure/">DataStructure</a>
                     </p>
                 </div>
             </div>
@@ -579,18 +587,18 @@
         
         <article class="media">
             
-            <a href="/2020/02/26/S1ep6-Custom-Views-and-Performance/" class="media-left">
+            <a href="/2020/04/20/Binary-Search/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/2020/02/26/S1ep6-Custom-Views-and-Performance/titleThumb.jpg" alt="自定义视图及其性能">
+                    <img class="thumbnail" src="/2020/04/20/Binary-Search/titleThumb.jpg" alt="Binary Search(二分搜索)">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-25T16:00:00.000Z">2020-02-26</time></div>
-                    <a href="/2020/02/26/S1ep6-Custom-Views-and-Performance/" class="has-link-black-ter is-size-6">自定义视图及其性能</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-19T16:00:00.000Z">2020-04-20</time></div>
+                    <a href="/2020/04/20/Binary-Search/" class="has-link-black-ter is-size-6">Binary Search(二分搜索)</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Algorithm/">Algorithm</a>
                     </p>
                 </div>
             </div>
@@ -604,9 +612,31 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archivos
+            Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/06/">
+                <span class="level-start">
+                    <span class="level-item">June 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/05/">
+                <span class="level-start">
+                    <span class="level-item">May 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2020/04/">
@@ -614,7 +644,7 @@
                     <span class="level-item">April 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">3</span>
                 </span>
             </a>
         </li>
@@ -691,7 +721,7 @@
                     <span class="level-item">April 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">2</span>
+                    <span class="level-item tag">1</span>
                 </span>
             </a>
         </li>
@@ -702,7 +732,7 @@
                     <span class="level-item">January 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">3</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -735,7 +765,7 @@
                     <span class="level-item">August 2018</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">5</span>
+                    <span class="level-item tag">4</span>
                 </span>
             </a>
         </li>
@@ -815,7 +845,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Etiquetas
+                Tags
             </h3>
             <div class="field is-grouped is-grouped-multiline">
                 
@@ -836,7 +866,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Chinese/">
                         <span class="tag">Chinese</span>
-                        <span class="tag is-grey">31</span>
+                        <span class="tag is-grey">33</span>
                     </a>
                 </div>
                 
@@ -858,6 +888,13 @@
                     <a class="tags has-addons" href="/tags/DataStructure/">
                         <span class="tag">DataStructure</span>
                         <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/DesignPattern/">
+                        <span class="tag">DesignPattern</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -885,7 +922,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Java/">
                         <span class="tag">Java</span>
-                        <span class="tag is-grey">3</span>
+                        <span class="tag is-grey">5</span>
                     </a>
                 </div>
                 
@@ -958,23 +995,23 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recientes
+            Recent
         </h3>
         
         <article class="media">
             
-            <a href="/2020/04/16/S5ep1-Threading-Performance-101/" class="media-left">
+            <a href="/2020/06/03/dependency-injection/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/2020/04/16/S5ep1-Threading-Performance-101/titleThumb.jpg" alt="自定义视图及其性能">
+                    <img class="thumbnail" src="/2020/06/03/dependency-injection/titleThumb.jpg" alt="依赖注入">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-15T16:00:00.000Z">2020-04-16</time></div>
-                    <a href="/2020/04/16/S5ep1-Threading-Performance-101/" class="has-link-black-ter is-size-6">自定义视图及其性能</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-06-02T16:00:00.000Z">2020-06-03</time></div>
+                    <a href="/2020/06/03/dependency-injection/" class="has-link-black-ter is-size-6">依赖注入</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/DesignPattern/">DesignPattern</a>
                     </p>
                 </div>
             </div>
@@ -982,18 +1019,18 @@
         
         <article class="media">
             
-            <a href="/2020/03/31/Module-dependency-manage/" class="media-left">
+            <a href="/2020/06/03/ioc/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/2020/03/31/Module-dependency-manage/titleThumb.jpg" alt="Android 模块依赖版本管理">
+                    <img class="thumbnail" src="/2020/06/03/ioc/titleThumb.jpg" alt="IoC 控制反转">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-30T16:00:00.000Z">2020-03-31</time></div>
-                    <a href="/2020/03/31/Module-dependency-manage/" class="has-link-black-ter is-size-6">Android 模块依赖版本管理</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-06-02T16:00:00.000Z">2020-06-03</time></div>
+                    <a href="/2020/06/03/ioc/" class="has-link-black-ter is-size-6">IoC 控制反转</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/DesignPattern/">DesignPattern</a>
                     </p>
                 </div>
             </div>
@@ -1001,18 +1038,18 @@
         
         <article class="media">
             
-            <a href="/2020/03/01/Gradle-Kotlin/" class="media-left">
+            <a href="/2020/05/02/Serializable/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/2020/03/01/Gradle-Kotlin/titleThumb.jpg" alt="Gradle Kotlin DSL">
+                    <img class="thumbnail" src="/2020/05/02/Serializable/titleThumb.jpg" alt="Serializable">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-29T16:00:00.000Z">2020-03-01</time></div>
-                    <a href="/2020/03/01/Gradle-Kotlin/" class="has-link-black-ter is-size-6">Gradle Kotlin DSL</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-01T16:00:00.000Z">2020-05-02</time></div>
+                    <a href="/2020/05/02/Serializable/" class="has-link-black-ter is-size-6">Serializable</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Gradle/">Gradle</a>
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Java/">Java</a>
                     </p>
                 </div>
             </div>
@@ -1020,18 +1057,18 @@
         
         <article class="media">
             
-            <a href="/2020/02/26/S1ep5-Tool-Strict-Mode/" class="media-left">
+            <a href="/2020/04/30/Key-Value-pair-in-hashtable/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/2020/02/26/S1ep5-Tool-Strict-Mode/titleThumb.jpg" alt="工具 严格模式">
+                    <img class="thumbnail" src="/2020/04/30/Key-Value-pair-in-hashtable/titleThumb.jpg" alt="实现键值对存储 第五部分 Hash table 实现">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-25T16:00:00.000Z">2020-02-26</time></div>
-                    <a href="/2020/02/26/S1ep5-Tool-Strict-Mode/" class="has-link-black-ter is-size-6">工具 严格模式</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-29T16:00:00.000Z">2020-04-30</time></div>
+                    <a href="/2020/04/30/Key-Value-pair-in-hashtable/" class="has-link-black-ter is-size-6">实现键值对存储 第五部分 Hash table 实现</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/DataStructure/">DataStructure</a>
                     </p>
                 </div>
             </div>
@@ -1039,18 +1076,18 @@
         
         <article class="media">
             
-            <a href="/2020/02/26/S1ep6-Custom-Views-and-Performance/" class="media-left">
+            <a href="/2020/04/20/Binary-Search/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/2020/02/26/S1ep6-Custom-Views-and-Performance/titleThumb.jpg" alt="自定义视图及其性能">
+                    <img class="thumbnail" src="/2020/04/20/Binary-Search/titleThumb.jpg" alt="Binary Search(二分搜索)">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-25T16:00:00.000Z">2020-02-26</time></div>
-                    <a href="/2020/02/26/S1ep6-Custom-Views-and-Performance/" class="has-link-black-ter is-size-6">自定义视图及其性能</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-19T16:00:00.000Z">2020-04-20</time></div>
+                    <a href="/2020/04/20/Binary-Search/" class="has-link-black-ter is-size-6">Binary Search(二分搜索)</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Algorithm/">Algorithm</a>
                     </p>
                 </div>
             </div>
@@ -1064,9 +1101,31 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archivos
+            Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/06/">
+                <span class="level-start">
+                    <span class="level-item">June 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/05/">
+                <span class="level-start">
+                    <span class="level-item">May 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2020/04/">
@@ -1074,7 +1133,7 @@
                     <span class="level-item">April 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">3</span>
                 </span>
             </a>
         </li>
@@ -1151,7 +1210,7 @@
                     <span class="level-item">April 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">2</span>
+                    <span class="level-item tag">1</span>
                 </span>
             </a>
         </li>
@@ -1162,7 +1221,7 @@
                     <span class="level-item">January 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">3</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -1195,7 +1254,7 @@
                     <span class="level-item">August 2018</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">5</span>
+                    <span class="level-item tag">4</span>
                 </span>
             </a>
         </li>
@@ -1275,7 +1334,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Etiquetas
+                Tags
             </h3>
             <div class="field is-grouped is-grouped-multiline">
                 
@@ -1296,7 +1355,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Chinese/">
                         <span class="tag">Chinese</span>
-                        <span class="tag is-grey">31</span>
+                        <span class="tag is-grey">33</span>
                     </a>
                 </div>
                 
@@ -1318,6 +1377,13 @@
                     <a class="tags has-addons" href="/tags/DataStructure/">
                         <span class="tag">DataStructure</span>
                         <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/DesignPattern/">
+                        <span class="tag">DesignPattern</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -1345,7 +1411,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Java/">
                         <span class="tag">Java</span>
-                        <span class="tag is-grey">3</span>
+                        <span class="tag is-grey">5</span>
                     </a>
                 </div>
                 
@@ -1558,10 +1624,10 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Entradas',
+                POSTS: 'Posts',
                 PAGES: 'Pages',
-                CATEGORIES: 'Categorias',
-                TAGS: 'Etiquetas',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
                 UNTITLED: '(Untitled)',
             },
             CONTENT_URL: '/content.json',

@@ -2,7 +2,7 @@
 <html >
 <head>
     <meta charset="utf-8">
-<title>Categoria: Android - LeonChen&#39;s Blog</title>
+<title>Category: Android - LeonChen&#39;s Blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
 
@@ -147,7 +147,7 @@
     <div class="card-content">
         <nav class="breadcrumb" aria-label="breadcrumbs">
         <ul>
-            <li><a href="/categories">Categorias</a></li>
+            <li><a href="/categories">Categories</a></li>
             
             <li><a href="/categories/Chinese/">Chinese</a></li>
             
@@ -580,164 +580,6 @@
     <div class="card">
     
     <div class="card-image">
-        <a href="/2019/07/04/Navigation/" class="image is-7by1">
-            <img class="banner" src="/2019/07/04/Navigation/title.jpg" alt="Navigation 指南">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-07-03T16:00:00.000Z">2019-07-04</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    6 minutes read (About 861 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/07/04/Navigation/">Navigation 指南</a>
-            
-        </h1>
-        <div class="content">
-            <!-- <h1><span id="navigation-指南">Navigation 指南</span></h1><p>[TOC]</p>
-<p>由于官网暂时没有中文版本,所以在这里根据内容抽空做了一些中文的版本.</p>
-<p><code>Navigation</code> 是用来管理你的app中内容的跳转,返回等操作.它主要包含了以下三个部分:</p>
-<ul>
-<li><code>Navigation graph</code> : 一个 xml 资源包含了所有的导航相关的信息. 这些信息包含了你app里所有独立的内容区域,也就是 <code>destinations</code>  .</li>
-<li><code>NavHost</code> : 一个空白的容器用来展示你的  <code>Navigation graph</code> 中的 <code>destinations</code> . <code>Navigation</code> 模块中包含了一个默认的实现 <a href="https://developer.android.com/reference/androidx/navigation/fragment/NavHostFragment.html" target="_blank" rel="external"><code>NavHostFragment</code></a> 用来展示 Fragment 的 <code>destinations</code> .</li>
-<li><code>NavController</code> :  一个管理 NavHost 中的导航的对象. 会在用户使用app的时候管理 NavHost 中的内容.</li>
-</ul>
-<p>当在页面内导航的时候,你可以告诉 NavController 你想要通过Navigation graph 中的某个路径或者直接导航到一个destination .这时候 NavController 就会在 NavHost 中展示合适的 destination.</p>
-<p>Navigation 模块还提供了其他的好处,比如:</p>
-<ul>
-<li>处理了 fragment transactions</li>
-<li>默认情况下正确的处理了向上和返回动作</li>
-<li>为动画和过渡提供了标准化的资源</li>
-<li>实现和处理了深链接</li>
-<li>内置了 Navigation UI 组件,比如 navigation drawers 和 bottom navigation,可以减少附加的工作</li>
-<li><a href="https://developer.android.com/guide/navigation/navigation-pass-data#Safe-args" target="_blank" rel="external">Safe Args</a> - 一个 Gradle 插件当导航并在两个目的地中传递数据的时候提供了类型安全机制</li>
-<li>ViewModel 支持 - 你可以将 ViewModel 的作用域设置为 navigation graph 来在不同的 目的地之间共享 UI 相关连的数据</li>
-</ul>
-<p>并且你还可以使用 Android Studio’s <a href="https://developer.android.com/guide/navigation/navigation-getting-started" target="_blank" rel="external">Navigation Editor</a>  来查看和编辑 navigation graphs.</p>
-<p>Next steps</p>
-<p>For more documentation and resources related to the Navigation component, see the following.</p>
-<p>Getting started</p>
-<ul>
-<li><a href="https://developer.android.google.cn/guide/navigation/navigation-getting-started" target="_blank" rel="external">Get started with the Navigation component</a></li>
-</ul>
-<p>Further topics</p>
-<ul>
-<li><a href="https://developer.android.google.cn/guide/navigation/navigation-principles" target="_blank" rel="external">Principles of Navigation</a></li>
-<li><a href="https://developer.android.google.cn/guide/navigation/navigation-form-factors" target="_blank" rel="external">Design for different form factors</a></li>
-<li><a href="https://developer.android.google.cn/guide/navigation/navigation-design-graph" target="_blank" rel="external">Design navigation graphs</a></li>
-<li><a href="https://developer.android.google.cn/guide/navigation/navigation-nested-graphs" target="_blank" rel="external">Nested graphs</a></li>
-<li><a href="https://developer.android.google.cn/guide/navigation/navigation-global-action" target="_blank" rel="external">Global actions</a></li>
-<li><a href="https://developer.android.google.cn/guide/navigation/navigation-conditional" target="_blank" rel="external">Conditional navigation</a></li>
-<li><a href="https://developer.android.google.cn/guide/navigation/navigation-pass-data" target="_blank" rel="external">Pass data between destinations</a></li>
-<li><a href="https://developer.android.google.cn/guide/navigation/navigation-deep-link" target="_blank" rel="external">Create a deep link for a destination</a></li>
-<li><a href="https://developer.android.google.cn/guide/navigation/navigation-animate-transitions" target="_blank" rel="external">Animate transitions between destinations</a></li>
-<li><a href="https://developer.android.google.cn/guide/navigation/navigation-ui" target="_blank" rel="external">Update UI components with NavigationUI</a></li>
-<li><a href="https://developer.android.google.cn/guide/navigation/navigation-swipe-view" target="_blank" rel="external">Create swipe views with tabs</a></li>
-<li><a href="https://developer.android.google.cn/guide/navigation/navigation-programmatic" target="_blank" rel="external">Interact programmatically with the Navigation component</a></li>
-<li><a href="https://developer.android.google.cn/guide/navigation/navigation-testing" target="_blank" rel="external">Test navigation</a></li>
-<li><a href="https://developer.android.google.cn/guide/navigation/navigation-add-new" target="_blank" rel="external">Add new destination types</a></li>
-<li><a href="https://developer.android.google.cn/guide/navigation/navigation-custom-back" target="_blank" rel="external">Provide custom back navigation</a></li>
-<li><a href="https://developer.android.google.cn/guide/navigation/navigation-migrate" target="_blank" rel="external">Migrate to the Navigation component</a></li>
-</ul>
-<p>Additional resources</p>
-<p>To learn more about navigation, see the following additional resources.</p>
-<p>Samples</p>
-<ul>
-<li><a href="https://github.com/googlesamples/android-architecture-components/tree/master/BasicSample" target="_blank" rel="external">Android Architecture Components basic sample</a></li>
-</ul>
-<p>Codelabs</p>
-<ul>
-<li><a href="https://codelabs.developers.google.com/codelabs/android-navigation/index.html?index=..%2F..%2Findex#0" target="_blank" rel="external">Navigation codelab</a></li>
-</ul>
-<p>Blog posts</p>
-<ul>
-<li><a href="https://medium.com/androiddevelopers/livedata-with-snackbar-navigation-and-other-events-the-singleliveevent-case-ac2622673150" target="_blank" rel="external">LiveData with SnackBar, Navigation and other events (the SingleLiveEvent case</a></li>
-</ul>
-<p>Videos</p>
-<ul>
-<li><a href="https://www.youtube.com/watch?v=9O1D_Ytk0xg" target="_blank" rel="external">10 Best Practices for Moving to a Single Activity</a></li>
-<li><a href="https://www.youtube.com/watch?v=2k8x8V77CrU" target="_blank" rel="external">Single Activity: Why, When, and How (Android Dev Summit ‘18)</a></li>
-<li><a href="https://www.youtube.com/watch?v=8GCXtCjtg40" target="_blank" rel="external">Android Jetpack: manage UI navigation with Navigation Controller (Google I/O ‘18)</a></li>
-</ul>
-<h1><span id="reference">Reference</span></h1><p><a href="https://developer.android.google.cn/guide/navigation" target="_blank" rel="external">https://developer.android.google.cn/guide/navigation</a></p>
-<h2><span id="about-me">About Me</span></h2><p>我的博客 <a href="http://leonchen1024.com/" target="_blank" rel="external">leonchen1024.com</a></p>
-<p>我的 GitHub <a href="https://github.com/LeonChen1024" target="_blank" rel="external">https://github.com/LeonChen1024</a></p>
-<p>微信公众号 </p>
-<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/Images/CooderQRcodem.jpg?raw=false" alt="wechat"></p>
- -->
-            <div class="article-entry">
-                    
-                    
-                        
-                            
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                            
-                                
-                                <p><h1><span id="navigation-指南">Navigation 指南</span></h1><p>[TOC]</p>
-<p>由于官网暂时没有中文版本,所以在这里根据内容抽空做了一些中文的版本.</p>
-<p><code>Navigation</code> 是用来管理你的app中内容的跳转,返回等操作.它主要包含了以下三个部分:</p>
-<ul>
-<li><code>Navigation graph</code> : 一个 xml 资源包含了所有的导航相关的信息. 这些信息包含了你app里所有独立的内容区域,也就是 <code>destinations</code>  .</li>
-<p>
-                            
-                        
-                    
-                    
-                        </div>   
-                        <div class="article-more-link">
-                            <a href="/2019/07/04/Navigation/#more">Read More</a>
-                        </div>
-                    
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-image">
         <a href="/2019/07/04/Navigation-Getting-Started/" class="image is-7by1">
             <img class="banner" src="/2019/07/04/Navigation-Getting-Started/title.jpg" alt="开始使用 Navigation">
         </a>
@@ -970,6 +812,164 @@
                         </div>   
                         <div class="article-more-link">
                             <a href="/2019/07/04/Navigation-Getting-Started/#more">Read More</a>
+                        </div>
+                    
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-image">
+        <a href="/2019/07/04/Navigation/" class="image is-7by1">
+            <img class="banner" src="/2019/07/04/Navigation/title.jpg" alt="Navigation 指南">
+        </a>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-07-03T16:00:00.000Z">2019-07-04</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    6 minutes read (About 861 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/07/04/Navigation/">Navigation 指南</a>
+            
+        </h1>
+        <div class="content">
+            <!-- <h1><span id="navigation-指南">Navigation 指南</span></h1><p>[TOC]</p>
+<p>由于官网暂时没有中文版本,所以在这里根据内容抽空做了一些中文的版本.</p>
+<p><code>Navigation</code> 是用来管理你的app中内容的跳转,返回等操作.它主要包含了以下三个部分:</p>
+<ul>
+<li><code>Navigation graph</code> : 一个 xml 资源包含了所有的导航相关的信息. 这些信息包含了你app里所有独立的内容区域,也就是 <code>destinations</code>  .</li>
+<li><code>NavHost</code> : 一个空白的容器用来展示你的  <code>Navigation graph</code> 中的 <code>destinations</code> . <code>Navigation</code> 模块中包含了一个默认的实现 <a href="https://developer.android.com/reference/androidx/navigation/fragment/NavHostFragment.html" target="_blank" rel="external"><code>NavHostFragment</code></a> 用来展示 Fragment 的 <code>destinations</code> .</li>
+<li><code>NavController</code> :  一个管理 NavHost 中的导航的对象. 会在用户使用app的时候管理 NavHost 中的内容.</li>
+</ul>
+<p>当在页面内导航的时候,你可以告诉 NavController 你想要通过Navigation graph 中的某个路径或者直接导航到一个destination .这时候 NavController 就会在 NavHost 中展示合适的 destination.</p>
+<p>Navigation 模块还提供了其他的好处,比如:</p>
+<ul>
+<li>处理了 fragment transactions</li>
+<li>默认情况下正确的处理了向上和返回动作</li>
+<li>为动画和过渡提供了标准化的资源</li>
+<li>实现和处理了深链接</li>
+<li>内置了 Navigation UI 组件,比如 navigation drawers 和 bottom navigation,可以减少附加的工作</li>
+<li><a href="https://developer.android.com/guide/navigation/navigation-pass-data#Safe-args" target="_blank" rel="external">Safe Args</a> - 一个 Gradle 插件当导航并在两个目的地中传递数据的时候提供了类型安全机制</li>
+<li>ViewModel 支持 - 你可以将 ViewModel 的作用域设置为 navigation graph 来在不同的 目的地之间共享 UI 相关连的数据</li>
+</ul>
+<p>并且你还可以使用 Android Studio’s <a href="https://developer.android.com/guide/navigation/navigation-getting-started" target="_blank" rel="external">Navigation Editor</a>  来查看和编辑 navigation graphs.</p>
+<p>Next steps</p>
+<p>For more documentation and resources related to the Navigation component, see the following.</p>
+<p>Getting started</p>
+<ul>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-getting-started" target="_blank" rel="external">Get started with the Navigation component</a></li>
+</ul>
+<p>Further topics</p>
+<ul>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-principles" target="_blank" rel="external">Principles of Navigation</a></li>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-form-factors" target="_blank" rel="external">Design for different form factors</a></li>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-design-graph" target="_blank" rel="external">Design navigation graphs</a></li>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-nested-graphs" target="_blank" rel="external">Nested graphs</a></li>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-global-action" target="_blank" rel="external">Global actions</a></li>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-conditional" target="_blank" rel="external">Conditional navigation</a></li>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-pass-data" target="_blank" rel="external">Pass data between destinations</a></li>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-deep-link" target="_blank" rel="external">Create a deep link for a destination</a></li>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-animate-transitions" target="_blank" rel="external">Animate transitions between destinations</a></li>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-ui" target="_blank" rel="external">Update UI components with NavigationUI</a></li>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-swipe-view" target="_blank" rel="external">Create swipe views with tabs</a></li>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-programmatic" target="_blank" rel="external">Interact programmatically with the Navigation component</a></li>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-testing" target="_blank" rel="external">Test navigation</a></li>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-add-new" target="_blank" rel="external">Add new destination types</a></li>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-custom-back" target="_blank" rel="external">Provide custom back navigation</a></li>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-migrate" target="_blank" rel="external">Migrate to the Navigation component</a></li>
+</ul>
+<p>Additional resources</p>
+<p>To learn more about navigation, see the following additional resources.</p>
+<p>Samples</p>
+<ul>
+<li><a href="https://github.com/googlesamples/android-architecture-components/tree/master/BasicSample" target="_blank" rel="external">Android Architecture Components basic sample</a></li>
+</ul>
+<p>Codelabs</p>
+<ul>
+<li><a href="https://codelabs.developers.google.com/codelabs/android-navigation/index.html?index=..%2F..%2Findex#0" target="_blank" rel="external">Navigation codelab</a></li>
+</ul>
+<p>Blog posts</p>
+<ul>
+<li><a href="https://medium.com/androiddevelopers/livedata-with-snackbar-navigation-and-other-events-the-singleliveevent-case-ac2622673150" target="_blank" rel="external">LiveData with SnackBar, Navigation and other events (the SingleLiveEvent case</a></li>
+</ul>
+<p>Videos</p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=9O1D_Ytk0xg" target="_blank" rel="external">10 Best Practices for Moving to a Single Activity</a></li>
+<li><a href="https://www.youtube.com/watch?v=2k8x8V77CrU" target="_blank" rel="external">Single Activity: Why, When, and How (Android Dev Summit ‘18)</a></li>
+<li><a href="https://www.youtube.com/watch?v=8GCXtCjtg40" target="_blank" rel="external">Android Jetpack: manage UI navigation with Navigation Controller (Google I/O ‘18)</a></li>
+</ul>
+<h1><span id="reference">Reference</span></h1><p><a href="https://developer.android.google.cn/guide/navigation" target="_blank" rel="external">https://developer.android.google.cn/guide/navigation</a></p>
+<h2><span id="about-me">About Me</span></h2><p>我的博客 <a href="http://leonchen1024.com/" target="_blank" rel="external">leonchen1024.com</a></p>
+<p>我的 GitHub <a href="https://github.com/LeonChen1024" target="_blank" rel="external">https://github.com/LeonChen1024</a></p>
+<p>微信公众号 </p>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/Images/CooderQRcodem.jpg?raw=false" alt="wechat"></p>
+ -->
+            <div class="article-entry">
+                    
+                    
+                        
+                            
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                            
+                                
+                                <p><h1><span id="navigation-指南">Navigation 指南</span></h1><p>[TOC]</p>
+<p>由于官网暂时没有中文版本,所以在这里根据内容抽空做了一些中文的版本.</p>
+<p><code>Navigation</code> 是用来管理你的app中内容的跳转,返回等操作.它主要包含了以下三个部分:</p>
+<ul>
+<li><code>Navigation graph</code> : 一个 xml 资源包含了所有的导航相关的信息. 这些信息包含了你app里所有独立的内容区域,也就是 <code>destinations</code>  .</li>
+<p>
+                            
+                        
+                    
+                    
+                        </div>   
+                        <div class="article-more-link">
+                            <a href="/2019/07/04/Navigation/#more">Read More</a>
                         </div>
                     
         </div>
@@ -1449,10 +1449,10 @@
 <div class="card card-transparent">
     <nav class="pagination is-centered" role="navigation" aria-label="pagination">
         <div class="pagination-previous is-invisible is-hidden-mobile">
-            <a class="is-flex-grow has-text-black-ter" href="/categories/Chinese/Android/page/0/">Anterior</a>
+            <a class="is-flex-grow has-text-black-ter" href="/categories/Chinese/Android/page/0/">Previous</a>
         </div>
         <div class="pagination-next">
-            <a class="is-flex-grow has-text-black-ter" href="/categories/Chinese/Android/page/2/">Siguiente</a>
+            <a class="is-flex-grow has-text-black-ter" href="/categories/Chinese/Android/page/2/">Next</a>
         </div>
         <ul class="pagination-list is-hidden-mobile">
             
@@ -1503,37 +1503,37 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Entradas
+                        Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        40
+                        42
                     </p>
                 </div>
             </div>
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categorias
+                        Categories
                     </p>
                     <p class="title has-text-weight-normal">
-                        20
+                        22
                     </p>
                 </div>
             </div>
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Etiquetas
+                        Tags
                     </p>
                     <p class="title has-text-weight-normal">
-                        17
+                        18
                     </p>
                 </div>
             </div>
         </nav>
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://github.com/LeonChen1024">
-                SEGUIR</a>
+                Follow</a>
         </div>
         
         
@@ -1562,7 +1562,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categorias
+                Categories
             </h3>
             <ul class="menu-list">
             <li>
@@ -1571,7 +1571,7 @@
                 <span class="level-item">Chinese</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">31</span>
+                <span class="level-item tag">33</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="undefined">
@@ -1596,6 +1596,14 @@
             </span>
             <span class="level-end">
                 <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="undefined">
+            <span class="level-start">
+                <span class="level-item">DesignPattern</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="undefined">
@@ -1639,9 +1647,9 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Nube de etiquetas
+            Tag Cloud
         </h3>
-        <a href="/tags/Algorithm/" style="font-size: 18.75px;">Algorithm</a> <a href="/tags/Android/" style="font-size: 16.25px;">Android</a> <a href="/tags/Chinese/" style="font-size: 20px;">Chinese</a> <a href="/tags/Custom-View/" style="font-size: 10px;">Custom View</a> <a href="/tags/Data-Structure/" style="font-size: 10px;">Data Structure</a> <a href="/tags/DataStructure/" style="font-size: 10px;">DataStructure</a> <a href="/tags/English/" style="font-size: 15px;">English</a> <a href="/tags/Error/" style="font-size: 10px;">Error</a> <a href="/tags/Gradle/" style="font-size: 11.25px;">Gradle</a> <a href="/tags/Java/" style="font-size: 12.5px;">Java</a> <a href="/tags/Jetpack/" style="font-size: 11.25px;">Jetpack</a> <a href="/tags/LeetCode/" style="font-size: 17.5px;">LeetCode</a> <a href="/tags/Optimize/" style="font-size: 13.75px;">Optimize</a> <a href="/tags/SourceCode/" style="font-size: 10px;">SourceCode</a> <a href="/tags/UI/" style="font-size: 10px;">UI</a> <a href="/tags/版本差异/" style="font-size: 11.25px;">版本差异</a> <a href="/tags/版本管理/" style="font-size: 12.5px;">版本管理</a>
+        <a href="/tags/Algorithm/" style="font-size: 18.75px;">Algorithm</a> <a href="/tags/Android/" style="font-size: 16.25px;">Android</a> <a href="/tags/Chinese/" style="font-size: 20px;">Chinese</a> <a href="/tags/Custom-View/" style="font-size: 10px;">Custom View</a> <a href="/tags/Data-Structure/" style="font-size: 10px;">Data Structure</a> <a href="/tags/DataStructure/" style="font-size: 10px;">DataStructure</a> <a href="/tags/DesignPattern/" style="font-size: 11.25px;">DesignPattern</a> <a href="/tags/English/" style="font-size: 15px;">English</a> <a href="/tags/Error/" style="font-size: 10px;">Error</a> <a href="/tags/Gradle/" style="font-size: 11.25px;">Gradle</a> <a href="/tags/Java/" style="font-size: 13.75px;">Java</a> <a href="/tags/Jetpack/" style="font-size: 11.25px;">Jetpack</a> <a href="/tags/LeetCode/" style="font-size: 17.5px;">LeetCode</a> <a href="/tags/Optimize/" style="font-size: 13.75px;">Optimize</a> <a href="/tags/SourceCode/" style="font-size: 10px;">SourceCode</a> <a href="/tags/UI/" style="font-size: 10px;">UI</a> <a href="/tags/版本差异/" style="font-size: 11.25px;">版本差异</a> <a href="/tags/版本管理/" style="font-size: 12.5px;">版本管理</a>
     </div>
 </div>
 
@@ -1653,23 +1661,23 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recientes
+            Recent
         </h3>
         
         <article class="media">
             
-            <a href="/2020/04/16/S5ep1-Threading-Performance-101/" class="media-left">
+            <a href="/2020/06/03/dependency-injection/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/2020/04/16/S5ep1-Threading-Performance-101/titleThumb.jpg" alt="自定义视图及其性能">
+                    <img class="thumbnail" src="/2020/06/03/dependency-injection/titleThumb.jpg" alt="依赖注入">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-15T16:00:00.000Z">2020-04-16</time></div>
-                    <a href="/2020/04/16/S5ep1-Threading-Performance-101/" class="has-link-black-ter is-size-6">自定义视图及其性能</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-06-02T16:00:00.000Z">2020-06-03</time></div>
+                    <a href="/2020/06/03/dependency-injection/" class="has-link-black-ter is-size-6">依赖注入</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/DesignPattern/">DesignPattern</a>
                     </p>
                 </div>
             </div>
@@ -1677,18 +1685,18 @@
         
         <article class="media">
             
-            <a href="/2020/03/31/Module-dependency-manage/" class="media-left">
+            <a href="/2020/06/03/ioc/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/2020/03/31/Module-dependency-manage/titleThumb.jpg" alt="Android 模块依赖版本管理">
+                    <img class="thumbnail" src="/2020/06/03/ioc/titleThumb.jpg" alt="IoC 控制反转">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-30T16:00:00.000Z">2020-03-31</time></div>
-                    <a href="/2020/03/31/Module-dependency-manage/" class="has-link-black-ter is-size-6">Android 模块依赖版本管理</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-06-02T16:00:00.000Z">2020-06-03</time></div>
+                    <a href="/2020/06/03/ioc/" class="has-link-black-ter is-size-6">IoC 控制反转</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/DesignPattern/">DesignPattern</a>
                     </p>
                 </div>
             </div>
@@ -1696,18 +1704,18 @@
         
         <article class="media">
             
-            <a href="/2020/03/01/Gradle-Kotlin/" class="media-left">
+            <a href="/2020/05/02/Serializable/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/2020/03/01/Gradle-Kotlin/titleThumb.jpg" alt="Gradle Kotlin DSL">
+                    <img class="thumbnail" src="/2020/05/02/Serializable/titleThumb.jpg" alt="Serializable">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-29T16:00:00.000Z">2020-03-01</time></div>
-                    <a href="/2020/03/01/Gradle-Kotlin/" class="has-link-black-ter is-size-6">Gradle Kotlin DSL</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-01T16:00:00.000Z">2020-05-02</time></div>
+                    <a href="/2020/05/02/Serializable/" class="has-link-black-ter is-size-6">Serializable</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Gradle/">Gradle</a>
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Java/">Java</a>
                     </p>
                 </div>
             </div>
@@ -1715,18 +1723,18 @@
         
         <article class="media">
             
-            <a href="/2020/02/26/S1ep5-Tool-Strict-Mode/" class="media-left">
+            <a href="/2020/04/30/Key-Value-pair-in-hashtable/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/2020/02/26/S1ep5-Tool-Strict-Mode/titleThumb.jpg" alt="工具 严格模式">
+                    <img class="thumbnail" src="/2020/04/30/Key-Value-pair-in-hashtable/titleThumb.jpg" alt="实现键值对存储 第五部分 Hash table 实现">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-25T16:00:00.000Z">2020-02-26</time></div>
-                    <a href="/2020/02/26/S1ep5-Tool-Strict-Mode/" class="has-link-black-ter is-size-6">工具 严格模式</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-29T16:00:00.000Z">2020-04-30</time></div>
+                    <a href="/2020/04/30/Key-Value-pair-in-hashtable/" class="has-link-black-ter is-size-6">实现键值对存储 第五部分 Hash table 实现</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/DataStructure/">DataStructure</a>
                     </p>
                 </div>
             </div>
@@ -1734,18 +1742,18 @@
         
         <article class="media">
             
-            <a href="/2020/02/26/S1ep6-Custom-Views-and-Performance/" class="media-left">
+            <a href="/2020/04/20/Binary-Search/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/2020/02/26/S1ep6-Custom-Views-and-Performance/titleThumb.jpg" alt="自定义视图及其性能">
+                    <img class="thumbnail" src="/2020/04/20/Binary-Search/titleThumb.jpg" alt="Binary Search(二分搜索)">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-25T16:00:00.000Z">2020-02-26</time></div>
-                    <a href="/2020/02/26/S1ep6-Custom-Views-and-Performance/" class="has-link-black-ter is-size-6">自定义视图及其性能</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-19T16:00:00.000Z">2020-04-20</time></div>
+                    <a href="/2020/04/20/Binary-Search/" class="has-link-black-ter is-size-6">Binary Search(二分搜索)</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Algorithm/">Algorithm</a>
                     </p>
                 </div>
             </div>
@@ -1759,9 +1767,31 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archivos
+            Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/06/">
+                <span class="level-start">
+                    <span class="level-item">June 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/05/">
+                <span class="level-start">
+                    <span class="level-item">May 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2020/04/">
@@ -1769,7 +1799,7 @@
                     <span class="level-item">April 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">3</span>
                 </span>
             </a>
         </li>
@@ -1846,7 +1876,7 @@
                     <span class="level-item">April 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">2</span>
+                    <span class="level-item tag">1</span>
                 </span>
             </a>
         </li>
@@ -1857,7 +1887,7 @@
                     <span class="level-item">January 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">3</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -1890,7 +1920,7 @@
                     <span class="level-item">August 2018</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">5</span>
+                    <span class="level-item tag">4</span>
                 </span>
             </a>
         </li>
@@ -1970,7 +2000,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Etiquetas
+                Tags
             </h3>
             <div class="field is-grouped is-grouped-multiline">
                 
@@ -1991,7 +2021,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Chinese/">
                         <span class="tag">Chinese</span>
-                        <span class="tag is-grey">31</span>
+                        <span class="tag is-grey">33</span>
                     </a>
                 </div>
                 
@@ -2013,6 +2043,13 @@
                     <a class="tags has-addons" href="/tags/DataStructure/">
                         <span class="tag">DataStructure</span>
                         <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/DesignPattern/">
+                        <span class="tag">DesignPattern</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -2040,7 +2077,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Java/">
                         <span class="tag">Java</span>
-                        <span class="tag is-grey">3</span>
+                        <span class="tag is-grey">5</span>
                     </a>
                 </div>
                 
@@ -2113,23 +2150,23 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recientes
+            Recent
         </h3>
         
         <article class="media">
             
-            <a href="/2020/04/16/S5ep1-Threading-Performance-101/" class="media-left">
+            <a href="/2020/06/03/dependency-injection/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/2020/04/16/S5ep1-Threading-Performance-101/titleThumb.jpg" alt="自定义视图及其性能">
+                    <img class="thumbnail" src="/2020/06/03/dependency-injection/titleThumb.jpg" alt="依赖注入">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-15T16:00:00.000Z">2020-04-16</time></div>
-                    <a href="/2020/04/16/S5ep1-Threading-Performance-101/" class="has-link-black-ter is-size-6">自定义视图及其性能</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-06-02T16:00:00.000Z">2020-06-03</time></div>
+                    <a href="/2020/06/03/dependency-injection/" class="has-link-black-ter is-size-6">依赖注入</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/DesignPattern/">DesignPattern</a>
                     </p>
                 </div>
             </div>
@@ -2137,18 +2174,18 @@
         
         <article class="media">
             
-            <a href="/2020/03/31/Module-dependency-manage/" class="media-left">
+            <a href="/2020/06/03/ioc/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/2020/03/31/Module-dependency-manage/titleThumb.jpg" alt="Android 模块依赖版本管理">
+                    <img class="thumbnail" src="/2020/06/03/ioc/titleThumb.jpg" alt="IoC 控制反转">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-30T16:00:00.000Z">2020-03-31</time></div>
-                    <a href="/2020/03/31/Module-dependency-manage/" class="has-link-black-ter is-size-6">Android 模块依赖版本管理</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-06-02T16:00:00.000Z">2020-06-03</time></div>
+                    <a href="/2020/06/03/ioc/" class="has-link-black-ter is-size-6">IoC 控制反转</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/DesignPattern/">DesignPattern</a>
                     </p>
                 </div>
             </div>
@@ -2156,18 +2193,18 @@
         
         <article class="media">
             
-            <a href="/2020/03/01/Gradle-Kotlin/" class="media-left">
+            <a href="/2020/05/02/Serializable/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/2020/03/01/Gradle-Kotlin/titleThumb.jpg" alt="Gradle Kotlin DSL">
+                    <img class="thumbnail" src="/2020/05/02/Serializable/titleThumb.jpg" alt="Serializable">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-29T16:00:00.000Z">2020-03-01</time></div>
-                    <a href="/2020/03/01/Gradle-Kotlin/" class="has-link-black-ter is-size-6">Gradle Kotlin DSL</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-01T16:00:00.000Z">2020-05-02</time></div>
+                    <a href="/2020/05/02/Serializable/" class="has-link-black-ter is-size-6">Serializable</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Gradle/">Gradle</a>
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Java/">Java</a>
                     </p>
                 </div>
             </div>
@@ -2175,18 +2212,18 @@
         
         <article class="media">
             
-            <a href="/2020/02/26/S1ep5-Tool-Strict-Mode/" class="media-left">
+            <a href="/2020/04/30/Key-Value-pair-in-hashtable/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/2020/02/26/S1ep5-Tool-Strict-Mode/titleThumb.jpg" alt="工具 严格模式">
+                    <img class="thumbnail" src="/2020/04/30/Key-Value-pair-in-hashtable/titleThumb.jpg" alt="实现键值对存储 第五部分 Hash table 实现">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-25T16:00:00.000Z">2020-02-26</time></div>
-                    <a href="/2020/02/26/S1ep5-Tool-Strict-Mode/" class="has-link-black-ter is-size-6">工具 严格模式</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-29T16:00:00.000Z">2020-04-30</time></div>
+                    <a href="/2020/04/30/Key-Value-pair-in-hashtable/" class="has-link-black-ter is-size-6">实现键值对存储 第五部分 Hash table 实现</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/DataStructure/">DataStructure</a>
                     </p>
                 </div>
             </div>
@@ -2194,18 +2231,18 @@
         
         <article class="media">
             
-            <a href="/2020/02/26/S1ep6-Custom-Views-and-Performance/" class="media-left">
+            <a href="/2020/04/20/Binary-Search/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/2020/02/26/S1ep6-Custom-Views-and-Performance/titleThumb.jpg" alt="自定义视图及其性能">
+                    <img class="thumbnail" src="/2020/04/20/Binary-Search/titleThumb.jpg" alt="Binary Search(二分搜索)">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-25T16:00:00.000Z">2020-02-26</time></div>
-                    <a href="/2020/02/26/S1ep6-Custom-Views-and-Performance/" class="has-link-black-ter is-size-6">自定义视图及其性能</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-19T16:00:00.000Z">2020-04-20</time></div>
+                    <a href="/2020/04/20/Binary-Search/" class="has-link-black-ter is-size-6">Binary Search(二分搜索)</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Algorithm/">Algorithm</a>
                     </p>
                 </div>
             </div>
@@ -2219,9 +2256,31 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archivos
+            Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/06/">
+                <span class="level-start">
+                    <span class="level-item">June 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/05/">
+                <span class="level-start">
+                    <span class="level-item">May 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2020/04/">
@@ -2229,7 +2288,7 @@
                     <span class="level-item">April 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">3</span>
                 </span>
             </a>
         </li>
@@ -2306,7 +2365,7 @@
                     <span class="level-item">April 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">2</span>
+                    <span class="level-item tag">1</span>
                 </span>
             </a>
         </li>
@@ -2317,7 +2376,7 @@
                     <span class="level-item">January 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">3</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -2350,7 +2409,7 @@
                     <span class="level-item">August 2018</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">5</span>
+                    <span class="level-item tag">4</span>
                 </span>
             </a>
         </li>
@@ -2430,7 +2489,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Etiquetas
+                Tags
             </h3>
             <div class="field is-grouped is-grouped-multiline">
                 
@@ -2451,7 +2510,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Chinese/">
                         <span class="tag">Chinese</span>
-                        <span class="tag is-grey">31</span>
+                        <span class="tag is-grey">33</span>
                     </a>
                 </div>
                 
@@ -2473,6 +2532,13 @@
                     <a class="tags has-addons" href="/tags/DataStructure/">
                         <span class="tag">DataStructure</span>
                         <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/DesignPattern/">
+                        <span class="tag">DesignPattern</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -2500,7 +2566,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Java/">
                         <span class="tag">Java</span>
-                        <span class="tag is-grey">3</span>
+                        <span class="tag is-grey">5</span>
                     </a>
                 </div>
                 
@@ -2713,10 +2779,10 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Entradas',
+                POSTS: 'Posts',
                 PAGES: 'Pages',
-                CATEGORIES: 'Categorias',
-                TAGS: 'Etiquetas',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
                 UNTITLED: '(Untitled)',
             },
             CONTENT_URL: '/content.json',

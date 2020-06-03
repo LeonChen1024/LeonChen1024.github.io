@@ -147,6 +147,738 @@
     <div class="card">
     
     <div class="card-image">
+        <a href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/" class="image is-7by1">
+            <img class="banner" src="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/title.jpg" alt="LeetCode 9. Palindrome Number">
+        </a>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-01-27T16:00:00.000Z">2020-01-28</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Algorithm/">Algorithm</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Algorithm/LeetCode/">LeetCode</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    7 minutes read (About 991 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/">LeetCode 9. Palindrome Number</a>
+            
+        </h1>
+        <div class="content">
+            <!-- <h1><span id="9-palindrome-number">9. Palindrome Number</span></h1><p>判断一个整数是不是一个回文。不要使用额外的空间。</p>
+<hr>
+<p>提示:<br>负整数可以是回文吗？（比如-1）</p>
+<p>如果你想要将整数转换成字符串，注意使用额外的空间的限制。</p>
+<p>你还可以尝试反转整数。然而，如果你已经解决了”Reverse Integer” 这个问题，那你应该知道反转一个整数可能会造成溢出。你要如何处理这种情况？</p>
+<p>这里还有一个更通用的方法来解决这个问题。</p>
+<hr>
+<h3><span id="string前后比较">String前后比较:</span></h3><p>没有认真审题的做法 ，写完才想起来不能使用额外的空间，尽管如此还是留着吧</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</div><div class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isPalindrome</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123;</div><div class="line">        <span class="hljs-keyword">if</span> (x&lt;<span class="hljs-number">0</span>)&#123;</div><div class="line">            <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="hljs-comment">//turn int x to the String</span></div><div class="line">        String xs = String.valueOf(x);</div><div class="line"></div><div class="line">        <span class="hljs-comment">//the index of the number left and right</span></div><div class="line">        <span class="hljs-keyword">int</span> indexL = <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-keyword">int</span> indexR = xs.length()-<span class="hljs-number">1</span>;</div><div class="line"></div><div class="line">        <span class="hljs-comment">//continue to campare the number if the index of left didn't meet the index of right</span></div><div class="line">        <span class="hljs-keyword">while</span> (indexL&lt;indexR)&#123;</div><div class="line">            <span class="hljs-keyword">if</span> (xs.charAt(indexL)!=xs.charAt(indexR))&#123;</div><div class="line">                <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;</div><div class="line">            &#125;<span class="hljs-keyword">else</span>&#123;</div><div class="line">                indexL ++;</div><div class="line">                indexR --;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/9.%20Palindrome%20Number/Images/RevertNumber1Result.png?raw=true" alt="效率"></p>
+<p><strong>分析</strong><br>首先将 int x 转换成 String ，再将这个 String 的首尾对应的位置的值进行比较。</p>
+<p>时间复杂度 ： O(n) 。n是x的位数<br>空间复杂度 ： O(1) .</p>
+<h3><span id="方法一-反转数字">方法一 反转数字:</span></h3><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isPalindrome</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="hljs-keyword">if</span> (x &lt; <span class="hljs-number">0</span>||(x % <span class="hljs-number">10</span> == <span class="hljs-number">0</span> &amp;&amp; x != <span class="hljs-number">0</span>)) <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;</div><div class="line"></div><div class="line">    <span class="hljs-comment">//use to calculate the number we used to revert the number ,and the biggest digit</span></div><div class="line">    <span class="hljs-keyword">int</span> temp = x;</div><div class="line">    <span class="hljs-comment">//the number reverted</span></div><div class="line">    <span class="hljs-keyword">int</span> revertedNumber = <span class="hljs-number">0</span>;</div><div class="line"></div><div class="line">    <span class="hljs-keyword">while</span> (temp &gt;= <span class="hljs-number">10</span>)&#123;</div><div class="line">        revertedNumber *=<span class="hljs-number">10</span>;</div><div class="line">        revertedNumber += temp%<span class="hljs-number">10</span>;</div><div class="line">        temp /=<span class="hljs-number">10</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="hljs-comment">//compare the revertedNumber and x/10,and the temp and x%10.because the case of overflows</span></div><div class="line">    <span class="hljs-keyword">return</span> revertedNumber == x / <span class="hljs-number">10</span> &amp;&amp; temp == x % <span class="hljs-number">10</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/9.%20Palindrome%20Number/Images/RevertNumber1Result.png?raw=true" alt="效率"></p>
+<p><strong>分析</strong><br>因为有可能会发生溢出，所以反转除了最大位以外的x，然后将反转的数字和去除最小一位的x 进行比较，将第一位和最后一位单独再进行比较。</p>
+<p>时间复杂度 ： O($log{_10}n$)<br>空间复杂度 ： O(1) .</p>
+<h3><span id="方法二-反转一半的数字-revert-half-of-the-number">方法二 反转一半的数字 Revert half of the number:</span></h3><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</div><div class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isPalindrome</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123;</div><div class="line">        <span class="hljs-comment">// Special cases:</span></div><div class="line">        <span class="hljs-comment">// As discussed above, when x &lt; 0, x is not a palindrome.</span></div><div class="line">        <span class="hljs-comment">// Also if the last digit of the number is 0, in order to be a palindrome,</span></div><div class="line">        <span class="hljs-comment">// the first digit of the number also needs to be 0.</span></div><div class="line">        <span class="hljs-comment">// Only 0 satisfy this property.</span></div><div class="line">        <span class="hljs-keyword">if</span>(x &lt; <span class="hljs-number">0</span> || (x % <span class="hljs-number">10</span> == <span class="hljs-number">0</span> &amp;&amp; x != <span class="hljs-number">0</span>)) &#123;</div><div class="line">            <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="hljs-keyword">int</span> revertedNumber = <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-keyword">while</span>(x &gt; revertedNumber) &#123;</div><div class="line">            revertedNumber = revertedNumber * <span class="hljs-number">10</span> + x % <span class="hljs-number">10</span>;</div><div class="line">            x /= <span class="hljs-number">10</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="hljs-comment">// When the length is an odd number, we can get rid of the middle digit by revertedNumber/10</span></div><div class="line">        <span class="hljs-comment">// For example when the input is 12321, at the end of the while loop we get x = 12, revertedNumber = 123,</span></div><div class="line">        <span class="hljs-comment">// since the middle digit doesn't matter in palidrome(it will always equal to itself), we can simply get rid of it.</span></div><div class="line">        <span class="hljs-keyword">return</span> x == revertedNumber || x == revertedNumber/<span class="hljs-number">10</span>;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/9.%20Palindrome%20Number/Images/RevertNumberResult.png?raw=true" alt="效率"></p>
+<p><strong>分析</strong><br>首先我们需要注意几个特殊情况：一个是负数是不可能是回文的，还有一个是整十的数也不可能是回文，因为首尾不可能都为0。 然后我们开始反转数字，我们可以用 x%10 获得最后一位数，然后更新 x 为 x/10 去掉已经反转了的最后一位数，然后再用 x%10 再得到现在的最后一位数，将已经得到数乘以10 再加上现在得到的这一位数得到反转的数字，重复这个过程直到我们反转了一半以上的数字。如何知道我们反转了一半以上的数字呢？当x不大于反转的数的时候我们就已经反转了一半以上的数字。<br>因为回文有奇数和偶数两种，所以我们都要处理，当回文是奇数的时候反转的数字将会比x 多一位，但是这一位是不需要考虑的，我们只要去掉这一位进行比较就可以了，当回文是偶数的时候，如果反转了一半的数字x 不等于反转的数字那么它不是回文，即使x比反转的数字大，使得他又反转了一次，反转的数字将会比x多两位，即使去掉一位也不会导致错误的判断。</p>
+<p>时间复杂度 ： O($log{_10}n$)<br>空间复杂度 ： O(1) .</p>
+<p>如果你有更好的办法或者对我这里的描述有其他看法，请联系我。谢谢</p>
+<h1><span id="about-me">About Me</span></h1><p>我的博客 <a href="http://leonchen1024.com/" target="_blank" rel="external">leonchen1024.com</a></p>
+<p>我的 GitHub <a href="https://github.com/LeonChen1024" target="_blank" rel="external">https://github.com/LeonChen1024</a></p>
+<p>微信公众号 </p>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/Images/CooderQRcodem.jpg?raw=true" alt="wechat"></p>
+ -->
+            <div class="article-entry">
+                    
+                    
+                        
+                            
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                            
+                                
+                                <p><h1><span id="9-palindrome-number">9. Palindrome Number</span></h1><p>判断一个整数是不是一个回文。不要使用额外的空间。</p>
+<hr>
+<p>提示:<br>负整数可以是回文吗？（比如-1）</p>
+<p>如果你想要将整数转换成字符串，注意使用额外的空间的限制。</p>
+<p>你还可以尝试反转整数。然而，如果你已经解决了”Reverse Integer” 这个问题，那你应该知道反转一个整数可能会造成溢出。你要如何处理这种情况？</p>
+<p>
+                            
+                        
+                    
+                    
+                        </div>   
+                        <div class="article-more-link">
+                            <a href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/#more">Read More</a>
+                        </div>
+                    
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-image">
+        <a href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-en/" class="image is-7by1">
+            <img class="banner" src="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/title.jpg" alt="LeetCode 9. Palindrome Number">
+        </a>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-01-27T16:00:00.000Z">2020-01-28</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/English/">English</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/English/Algorithm/">Algorithm</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/English/Algorithm/LeetCode/">LeetCode</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    4 minutes read (About 666 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-en/">LeetCode 9. Palindrome Number</a>
+            
+        </h1>
+        <div class="content">
+            <!-- <p>[English ver]</p>
+<h1><span id="9-palindrome-number">9. Palindrome Number</span></h1><p>Determine whether an integer is a palindrome. Do this without extra space.</p>
+<hr>
+<p>click to show spoilers.</p>
+<p>Some hints:<br>Could negative integers be palindromes? (ie, -1)</p>
+<p>If you are thinking of converting the integer to string, note the restriction of using extra space.</p>
+<p>You could also try reversing an integer. However, if you have solved the problem “Reverse Integer”, you know that the reversed integer might overflow. How would you handle such case?</p>
+<p>There is a more generic way of solving this problem.</p>
+<hr>
+<h3><span id="approach-1-revert-the-number">Approach 1 Revert the number:</span></h3><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isPalindrome</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="hljs-keyword">if</span> (x &lt; <span class="hljs-number">0</span>||(x % <span class="hljs-number">10</span> == <span class="hljs-number">0</span> &amp;&amp; x != <span class="hljs-number">0</span>)) <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;</div><div class="line"></div><div class="line">    <span class="hljs-comment">//use to calculate the number we used to revert the number ,and the biggest digit</span></div><div class="line">    <span class="hljs-keyword">int</span> temp = x;</div><div class="line">    <span class="hljs-comment">//the number reverted</span></div><div class="line">    <span class="hljs-keyword">int</span> revertedNumber = <span class="hljs-number">0</span>;</div><div class="line"></div><div class="line">    <span class="hljs-keyword">while</span> (temp &gt;= <span class="hljs-number">10</span>)&#123;</div><div class="line">        revertedNumber *=<span class="hljs-number">10</span>;</div><div class="line">        revertedNumber += temp%<span class="hljs-number">10</span>;</div><div class="line">        temp /=<span class="hljs-number">10</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="hljs-comment">//compare the revertedNumber and x/10,and the temp and x%10.because the case of overflows</span></div><div class="line">    <span class="hljs-keyword">return</span> revertedNumber == x / <span class="hljs-number">10</span> &amp;&amp; temp == x % <span class="hljs-number">10</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/9.%20Palindrome%20Number/Images/RevertNumber1Result.png?raw=true" alt="Efficiency"></p>
+<p><strong>Analysis</strong><br>Because of the case overflows ,so revert the whole x except the largest digit , and then compare reverted Number with x which except the smallest digit , at last campare the biggest digit and the smallest digit.</p>
+<p>Time complexity ： O($log{_10}n$)<br>Space complexity ： O(1) .</p>
+<h3><span id="approach-2-revert-half-of-the-number">Approach 2 Revert half of the number:</span></h3><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</div><div class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isPalindrome</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123;</div><div class="line">        <span class="hljs-comment">// Special cases:</span></div><div class="line">        <span class="hljs-comment">// As discussed above, when x &lt; 0, x is not a palindrome.</span></div><div class="line">        <span class="hljs-comment">// Also if the last digit of the number is 0, in order to be a palindrome,</span></div><div class="line">        <span class="hljs-comment">// the first digit of the number also needs to be 0.</span></div><div class="line">        <span class="hljs-comment">// Only 0 satisfy this property.</span></div><div class="line">        <span class="hljs-keyword">if</span>(x &lt; <span class="hljs-number">0</span> || (x % <span class="hljs-number">10</span> == <span class="hljs-number">0</span> &amp;&amp; x != <span class="hljs-number">0</span>)) &#123;</div><div class="line">            <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="hljs-keyword">int</span> revertedNumber = <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-keyword">while</span>(x &gt; revertedNumber) &#123;</div><div class="line">            revertedNumber = revertedNumber * <span class="hljs-number">10</span> + x % <span class="hljs-number">10</span>;</div><div class="line">            x /= <span class="hljs-number">10</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="hljs-comment">// When the length is an odd number, we can get rid of the middle digit by revertedNumber/10</span></div><div class="line">        <span class="hljs-comment">// For example when the input is 12321, at the end of the while loop we get x = 12, revertedNumber = 123,</span></div><div class="line">        <span class="hljs-comment">// since the middle digit doesn't matter in palidrome(it will always equal to itself), we can simply get rid of it.</span></div><div class="line">        <span class="hljs-keyword">return</span> x == revertedNumber || x == revertedNumber/<span class="hljs-number">10</span>;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/9.%20Palindrome%20Number/Images/RevertNumberResult.png?raw=true" alt="Efficiency"></p>
+<p><strong>Analysis</strong></p>
+<p>First of all we should take care of some edge cases. All negative numbers are not palindrome, and number x which x % 10 == 0 &amp;&amp; x != 0 can not be palindrome ,because the number can’t be both 0 in the first digit and last digit. Then we start to convert number , we can use x%10 to get the last digit of x , update x to x/10 ,it remove the last digit ,and then use x%10 to get the last number of x , use the number we have get before to times 10 plus this number. Continuing this process would give us the reverted number with more digits. when the original number is less than the reversed number, it means we’ve processed half of the number digits.</p>
+<p>Because palindrome has odd and even ,so we need to deal with both of them.When the palindrome is odd the reverted number will have one more digit ,but this digit we don’t need to consider about ,we only need to remove this digit and compare the rest of it ,when palindrome is even ,if we convert the half of number x ,if they don’t equal to each other it is not a palindrome , even x is bigger than reverted number , which make it revert one more time , the reverted number will hava more two digit to x ,remove one digit will nerver make it palindrome.</p>
+<p>Time complexity ：O($log{_10}n$)<br>Space complexity ： O(1) .</p>
+<p>If you have any suggestions to make the logic and implementation more better , or you have some advice on my description. Please let me know!Thanks!</p>
+<h1><span id="about-me">About Me</span></h1><p>我的博客 <a href="http://leonchen1024.com/" target="_blank" rel="external">leonchen1024.com</a></p>
+<p>我的 GitHub <a href="https://github.com/LeonChen1024" target="_blank" rel="external">https://github.com/LeonChen1024</a></p>
+<p>微信公众号 </p>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/Images/CooderQRcodem.jpg?raw=true" alt="wechat"></p>
+ -->
+            <div class="article-entry">
+                    
+                    
+                        
+                            
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                            
+                                
+                                <p><p>[English ver]</p>
+<h1><span id="9-palindrome-number">9. Palindrome Number</span></h1><p>Determine whether an integer is a palindrome. Do this without extra space.</p>
+<hr>
+<p>click to show spoilers.</p>
+<p>Some hints:<br>Could negative integers be palindromes? (ie, -1)</p>
+<p>
+                            
+                        
+                    
+                    
+                        </div>   
+                        <div class="article-more-link">
+                            <a href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-en/#more">Read More</a>
+                        </div>
+                    
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-image">
+        <a href="/2019/07/04/Navigation-Getting-Started/" class="image is-7by1">
+            <img class="banner" src="/2019/07/04/Navigation-Getting-Started/title.jpg" alt="开始使用 Navigation">
+        </a>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-07-03T16:00:00.000Z">2019-07-04</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    25 minutes read (About 3724 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/07/04/Navigation-Getting-Started/">开始使用 Navigation</a>
+            
+        </h1>
+        <div class="content">
+            <!-- <h1><span id="开始使用-navigation">开始使用 Navigation</span></h1><p>[TOC]</p>
+<p>由于官网暂时没有中文版本,所以在这里根据内容抽空做了一些中文的版本.</p>
+<h1><span id="开始使用">开始使用</span></h1><h2><span id="依赖引入">依赖引入</span></h2><figure class="highlight groovy hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">dependencies &#123;</div><div class="line">    <span class="hljs-keyword">def</span> nav_version = <span class="hljs-string">"2.1.0-alpha05"</span></div><div class="line"></div><div class="line">    implementation <span class="hljs-string">"androidx.navigation:navigation-fragment:$nav_version"</span> <span class="hljs-comment">// For Kotlin use navigation-fragment-ktx</span></div><div class="line">    implementation <span class="hljs-string">"androidx.navigation:navigation-ui:$nav_version"</span> <span class="hljs-comment">// For Kotlin use navigation-ui-ktx</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>最新版本清关注官方版本 <a href="https://developer.android.google.cn/jetpack/androidx/releases/navigation#declaring_dependencies" target="_blank" rel="external">https://developer.android.google.cn/jetpack/androidx/releases/navigation#declaring_dependencies</a></p>
+<h2><span id="创建一个导航图">创建一个导航图</span></h2><p>Navigation 发生在 app 内目的地之间的跳转.这些目的地通过action 进行连接.</p>
+<p>一个导航图是一个包含了你所有目的地和 action 的资源文件.这个图表代表了你所有的导航路径.</p>
+<p>下图是一个导航图的示例,</p>
+<p><img src="https://developer.android.google.cn/images/topic/libraries/architecture/navigation-graph_2x-callouts.png" alt=""></p>
+<p>图中的 1 是 app 中的不同的内容</p>
+<p>2 是导航的路径</p>
+<p>通过以下步骤添加导航图</p>
+<ol>
+<li>在项目窗口中右键 <code>res</code> 文件夹选择 <code>New &gt; Android Resource File</code> </li>
+<li>输入文件名</li>
+<li>在 <strong>Resource type</strong> 中选择 <strong>Navigation</strong> ,确认.</li>
+</ol>
+<p>生成的文件会保存在 <code>navigation</code> 文件夹下面.</p>
+<h2><span id="navigation-editor">Navigation Editor</span></h2><p>当你添加了导航图的时候,可以使用 <em>Navigation Editor</em> 来进行可视化操作,或者对 xml 文件直接进行修改</p>
+<p><img src="https://developer.android.google.cn/images/topic/libraries/architecture/navigation-editor_2x.png" alt=""></p>
+<p>图中序号代表的东西 :</p>
+<p>1: <strong>目的地面板</strong>, 列出你的导航所有者和当前导航图中所有的目的地.</p>
+<p>2: <strong>图编辑器</strong> , 可以通过下方的 tab 切换成可视化编辑和文本编辑模式.</p>
+<p>3: <strong>属性</strong> , 展示当前选择项的属性.</p>
+<p>当你使用文本编辑的时候,应该会看到类似以下的结构:</p>
+<figure class="highlight xml hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</div><div class="line"><span class="hljs-tag">&lt;<span class="hljs-name">navigation</span> <span class="hljs-attr">xmlns:android</span>=<span class="hljs-string">"http://schemas.android.com/apk/res/android"</span></span></div><div class="line"><span class="hljs-tag">            <span class="hljs-attr">xmlns:app</span>=<span class="hljs-string">"http://schemas.android.com/apk/res-auto"</span></span></div><div class="line"><span class="hljs-tag">            <span class="hljs-attr">android:id</span>=<span class="hljs-string">"@+id/nav_graph"</span>&gt;</span></div><div class="line"></div><div class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">navigation</span>&gt;</span></div></pre></td></tr></table></figure>
+<p><navigation> 节点是根节点,当你添加了目的地和 action 的时候它们对应的<destination>和<action>都会以 <navigation> 的子元素的形式展现出来. 如果你使用了嵌套图的时候,它会以子<navigation>的形式展现.</navigation></navigation></action></destination></navigation></p>
+<h2><span id="添加一个-navhost-到-activity">添加一个 NavHost 到 activity</span></h2><p>Navigation 模块中的一个核心部分就是  <em>navigation host</em> . navigation host 是一个空的容器,当用户在你的 app 内导航的时候目的地将会在这个容器中进出.</p>
+<p>一个 navigation host 必须从 NavHost 中衍生而来.模块中有一个默认的实现,<a href="https://developer.android.google.cn/reference/androidx/navigation/fragment/NavHostFragment.html" target="_blank" rel="external"><code>NavHostFragment</code></a> , 处理了 fragment 目的地的转场.</p>
+<blockquote>
+<p>注意: Navigation 模块的设计是为了处理一个 Activity 和多个目的地Fragment 的情况,每一个 Activity 都会关联一个导航图并拥有自己的<strong>NavHostFragment</strong> 来响应内容的切换转场.</p>
+</blockquote>
+<h3><span id="通过-xml-添加一个navhostfragment">通过 xml 添加一个NavHostFragment</span></h3><p>下面的 xml 展示了一个 NavHostFragment 作为主 activity 的一部分的情况:</p>
+<figure class="highlight xml hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</div><div class="line"><span class="hljs-tag">&lt;<span class="hljs-name">android.support.constraint.ConstraintLayout</span></span></div><div class="line"><span class="hljs-tag">    <span class="hljs-attr">xmlns:android</span>=<span class="hljs-string">"http://schemas.android.com/apk/res/android"</span></span></div><div class="line"><span class="hljs-tag">    <span class="hljs-attr">xmlns:app</span>=<span class="hljs-string">"http://schemas.android.com/apk/res-auto"</span></span></div><div class="line"><span class="hljs-tag">    <span class="hljs-attr">xmlns:tools</span>=<span class="hljs-string">"http://schemas.android.com/tools"</span></span></div><div class="line"><span class="hljs-tag">    <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">"match_parent"</span></span></div><div class="line"><span class="hljs-tag">    <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">"match_parent"</span></span></div><div class="line"><span class="hljs-tag">    <span class="hljs-attr">tools:context</span>=<span class="hljs-string">".MainActivity"</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">androidx.appcompat.widget.Toolbar</span></span></div><div class="line"><span class="hljs-tag">        <span class="hljs-attr">...</span>/&gt;</span></div><div class="line"></div><div class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">fragment</span></span></div><div class="line"><span class="hljs-tag">        <span class="hljs-attr">android:id</span>=<span class="hljs-string">"@+id/nav_host_fragment"</span></span></div><div class="line"><span class="hljs-tag">        <span class="hljs-attr">android:name</span>=<span class="hljs-string">"androidx.navigation.fragment.NavHostFragment"</span></span></div><div class="line"><span class="hljs-tag">        <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">"0dp"</span></span></div><div class="line"><span class="hljs-tag">        <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">"0dp"</span></span></div><div class="line"><span class="hljs-tag">        <span class="hljs-attr">app:layout_constraintLeft_toLeftOf</span>=<span class="hljs-string">"parent"</span></span></div><div class="line"><span class="hljs-tag">        <span class="hljs-attr">app:layout_constraintRight_toRightOf</span>=<span class="hljs-string">"parent"</span></span></div><div class="line"><span class="hljs-tag">        <span class="hljs-attr">app:layout_constraintTop_toTopOf</span>=<span class="hljs-string">"parent"</span></span></div><div class="line"><span class="hljs-tag">        <span class="hljs-attr">app:layout_constraintBottom_toBottomOf</span>=<span class="hljs-string">"parent"</span></span></div><div class="line"><span class="hljs-tag"></span></div><div class="line"><span class="hljs-tag">        <span class="hljs-attr">app:defaultNavHost</span>=<span class="hljs-string">"true"</span></span></div><div class="line"><span class="hljs-tag">        <span class="hljs-attr">app:navGraph</span>=<span class="hljs-string">"@navigation/nav_graph"</span> /&gt;</span></div><div class="line"></div><div class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">com.google.android.material.bottomnavigation.BottomNavigationView</span></span></div><div class="line"><span class="hljs-tag">        <span class="hljs-attr">...</span>/&gt;</span></div><div class="line"></div><div class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">android.support.constraint.ConstraintLayout</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>注意以下内容:</p>
+<ul>
+<li><code>android:name</code> 属性包含了你的 <code>NavHost</code> 实现的类名</li>
+<li><code>app:navGraph</code> 属性将 NavHostFragment 和一个 导航图进行关联,导航图会显示在这个 NavHostFragment 中用户能到达的所有目的地.</li>
+<li><code>app:defaultNavHost=&quot;true&quot;</code> 属性确保你的 NavHostFragment 可以拦截系统的返回事件,要注意只有一个 NavHost 可以作为默认拦截.</li>
+</ul>
+<p>你也可以通过以下方法来通过布局编辑器来添加一个 NavHostFragment 到 activity 中.</p>
+<ul>
+<li>打开你的 activity 的 xml 文件,并使用布局编辑器.</li>
+<li>在 <strong>Palette</strong> 面板中选择<strong>Containers</strong>目录,或者搜索 “NavHostFragment”</li>
+<li>拖动 NavHostFragment 到你的布局中.</li>
+<li>在 <strong>Navigation Graphs</strong> 的弹窗中,选择对应的导航图和 NavHostFragment 关联,并点 ok.</li>
+</ul>
+<h2><span id="添加目的地到导航图">添加目的地到导航图</span></h2><p>你可以在 Fragment 或者 activity 中添加目的地,也可以通过导航编辑器来添加目的地或者占位符以便在后面用 activity 或 Fragment 来替换.</p>
+<h3><span id="从现有的-activity-或-fragment-中添加目的地">从现有的 activity 或 Fragment 中添加目的地</span></h3><p>如果你想添加现有的目的地到你的导航图中,点击  <strong>New Destination</strong> <img src="https://developer.android.google.cn/studio/images/buttons/navigation-add.png" alt="img">, 再出现的下拉框中选择你想要添加的目的地.然后你就可以在 <strong>Design</strong> 视图中看到该目的地的预览图.以及对应的xml 数据出现在你的 <strong>Text</strong> 视图中.</p>
+<h3><span id="创建一个新的fragment目的地">创建一个新的Fragment目的地</span></h3><p>使用以下步骤创建一个新的 Fragment 目的地:</p>
+<ol>
+<li>在导航编辑器中点击 <strong>New Destination</strong>图标 <img src="https://developer.android.google.cn/images/topic/libraries/architecture/navigation-new-destination-icon.png" alt="img">, 然后点击 <strong>Create new destination</strong> .</li>
+<li>在 <strong>New Android Component</strong> 弹窗中创建你的 Fragment , </li>
+</ol>
+<h3><span id="从-dialogfragment-中创建一个目的地">从 DialogFragment 中创建一个目的地</span></h3><p>如果你已经有了 DialogFragment 的话,你可以使用 <code>&lt;dialog&gt;</code> 元素将它添加到导航图中.代码如下:</p>
+<figure class="highlight xml hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</div><div class="line"><span class="hljs-tag">&lt;<span class="hljs-name">navigation</span> <span class="hljs-attr">xmlns:android</span>=<span class="hljs-string">"http://schemas.android.com/apk/res/android"</span></span></div><div class="line"><span class="hljs-tag">            <span class="hljs-attr">xmlns:app</span>=<span class="hljs-string">"http://schemas.android.com/apk/res-auto"</span></span></div><div class="line"><span class="hljs-tag">            <span class="hljs-attr">android:id</span>=<span class="hljs-string">"@+id/nav_graph"</span>&gt;</span></div><div class="line"></div><div class="line">...</div><div class="line"></div><div class="line"></div><div class="line"><span class="hljs-tag">&lt;<span class="hljs-name">dialog</span></span></div><div class="line"><span class="hljs-tag">    <span class="hljs-attr">android:id</span>=<span class="hljs-string">"@+id/my_dialog_fragment"</span></span></div><div class="line"><span class="hljs-tag">    <span class="hljs-attr">android:name</span>=<span class="hljs-string">"androidx.navigation.myapp.MyDialogFragment"</span>&gt;</span></div><div class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">argument</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">"myarg"</span> <span class="hljs-attr">android:defaultValue</span>=<span class="hljs-string">"@null"</span> /&gt;</span></div><div class="line">        <span class="hljs-tag">&lt;<span class="hljs-name">action</span></span></div><div class="line"><span class="hljs-tag">            <span class="hljs-attr">android:id</span>=<span class="hljs-string">"@+id/myaction"</span></span></div><div class="line"><span class="hljs-tag">            <span class="hljs-attr">app:destination</span>=<span class="hljs-string">"@+id/another_destination"</span>/&gt;</span></div><div class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">dialog</span>&gt;</span></div><div class="line"></div><div class="line">...</div><div class="line"></div><div class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">navigation</span>&gt;</span></div></pre></td></tr></table></figure>
+<h3><span id="占位目的地">占位目的地</span></h3><p>你可以使用占位符来代表没有实现的目的地,占位符也是目的地的视觉表示.在导航编辑器中可以像使用目的地一样使用占位符.</p>
+<blockquote>
+<p>注意:在你运行你的 app 之前你必须要将 <em>class</em> 设置成已经存在的目的地.否则会导致运行时异常.</p>
+</blockquote>
+<h2><span id="解析目的地">解析目的地</span></h2><p>点击任意的目的地,并注意以下属性:</p>
+<ul>
+<li><strong>Type</strong> : 表明这个目的地是使用  fragment, activity,  还是其他源码中的自定义类实现.</li>
+<li><strong>Label</strong> : 目的地的 xml 资源文件名</li>
+<li><strong>ID</strong>: 目的地的 ID ,可以用于在代码中引用该目的地</li>
+<li><strong>Class</strong> : 下拉窗中展示了所有与该目的地相关联的类.可以选择不同的选项将类与其他目的地类型关联.</li>
+</ul>
+<p>在 xml 文件中的展示如下:</p>
+<figure class="highlight xml hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</div><div class="line"><span class="hljs-tag">&lt;<span class="hljs-name">navigation</span> <span class="hljs-attr">xmlns:app</span>=<span class="hljs-string">"http://schemas.android.com/apk/res-auto"</span></span></div><div class="line"><span class="hljs-tag">    <span class="hljs-attr">xmlns:tools</span>=<span class="hljs-string">"http://schemas.android.com/tools"</span></span></div><div class="line"><span class="hljs-tag">    <span class="hljs-attr">xmlns:android</span>=<span class="hljs-string">"http://schemas.android.com/apk/res/android"</span></span></div><div class="line"><span class="hljs-tag">    <span class="hljs-attr">app:startDestination</span>=<span class="hljs-string">"@id/blankFragment"</span>&gt;</span></div><div class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">fragment</span></span></div><div class="line"><span class="hljs-tag">        <span class="hljs-attr">android:id</span>=<span class="hljs-string">"@+id/blankFragment"</span></span></div><div class="line"><span class="hljs-tag">        <span class="hljs-attr">android:name</span>=<span class="hljs-string">"com.example.cashdog.cashdog.BlankFragment"</span></span></div><div class="line"><span class="hljs-tag">        <span class="hljs-attr">android:label</span>=<span class="hljs-string">"Blank"</span></span></div><div class="line"><span class="hljs-tag">        <span class="hljs-attr">tools:layout</span>=<span class="hljs-string">"@layout/fragment_blank"</span> /&gt;</span></div><div class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">navigation</span>&gt;</span></div></pre></td></tr></table></figure>
+<h2><span id="设置一个屏幕作为起始目的地">设置一个屏幕作为起始目的地</span></h2><p>起始目的地是用户打开你的app看到的第一个屏幕,并且也是用户退出你的app看到的最后一个页面.导航编辑器使用一个房子图标 <img src="https://developer.android.google.cn/studio/images/buttons/navigation-house.png" alt="img"> 来代表这个起始目的地.</p>
+<p>一旦你拥有所有的目的地,你可以通过以下步骤选择一个作为起始目的地:</p>
+<ol>
+<li>在 <strong>Design</strong> 标签页面下,点击一个目的地使它高亮.</li>
+<li>点击  <strong>Assign start destination</strong> 按钮   <img src="https://developer.android.google.cn/images/topic/libraries/architecture/navigation-start-destination-icon.png" alt="img"> .或者,右键目的地并点击 <strong>Set as Start Destination</strong>.</li>
+</ol>
+<h2><span id="连接目的地">连接目的地</span></h2><p>action 是目的地之间的一个逻辑连接.action 在导航图里用箭头表示.action 通常将一个目的地连接到另一个,尽管你也可以创建一个  <a href="https://developer.android.google.cn/guide/navigation/navigation-global-action" target="_blank" rel="external">global actions</a> 来把你引导到你的app中的任意一个目的地.</p>
+<p>通过action ,你可以用不同的路径来代表用户可以如何在你的app中导航.要注意,要实际导航到某个目的地的时候,你仍然需要编写代码来实现这个导航.这在 <a href="https://developer.android.google.cn/guide/navigation/navigation-getting-started#navigate" target="_blank" rel="external">Navigate to a destination</a> 中会有介绍.</p>
+<p>你可以通过以下步骤使用导航编辑器来连接两个目的地:</p>
+<ol>
+<li><p>在 <strong>Design</strong> 标签下,高亮你要作为起点的目的地.它的右侧会出现一个圆圈 <br> <img src="https://developer.android.google.cn/images/topic/libraries/architecture/navigation-actioncircle_2x.png" alt="img"></p>
+</li>
+<li><p>点击这个圆圈并拖动鼠标指针到你想要作为终点的目的地,然后释放鼠标.两个目的地之间会出现一条线来代表这个action <br> <img src="https://developer.android.google.cn/images/topic/libraries/architecture/navigation-connected_2x.png" alt="img"></p>
+</li>
+<li><p>点击箭头来高亮这个 action . <strong>Attributes</strong> 面板中显示了下面的属性:</p>
+<ul>
+<li><strong>Type</strong> : Action 的类型 </li>
+<li><strong>ID</strong> : action的ID</li>
+<li><strong>Destination</strong> : 包含了目的地fragment 或者 activity 的 ID</li>
+</ul>
+</li>
+<li><p>点击  <strong>Text</strong> 标签来切换到 XML 视图. 一个 action 元素会被添加到源目的地中.这个action拥有一个 ID 和一个目的地属性包含了下一个目的地的ID 如下所示: <br> </p>
+<figure class="highlight xml hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</div><div class="line"><span class="hljs-tag">&lt;<span class="hljs-name">navigation</span> <span class="hljs-attr">xmlns:app</span>=<span class="hljs-string">"http://schemas.android.com/apk/res-auto"</span></span></div><div class="line"><span class="hljs-tag">    <span class="hljs-attr">xmlns:tools</span>=<span class="hljs-string">"http://schemas.android.com/tools"</span></span></div><div class="line"><span class="hljs-tag">    <span class="hljs-attr">xmlns:android</span>=<span class="hljs-string">"http://schemas.android.com/apk/res/android"</span></span></div><div class="line"><span class="hljs-tag">    <span class="hljs-attr">app:startDestination</span>=<span class="hljs-string">"@id/blankFragment"</span>&gt;</span></div><div class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">fragment</span></span></div><div class="line"><span class="hljs-tag">        <span class="hljs-attr">android:id</span>=<span class="hljs-string">"@+id/blankFragment"</span></span></div><div class="line"><span class="hljs-tag">        <span class="hljs-attr">android:name</span>=<span class="hljs-string">"com.example.cashdog.cashdog.BlankFragment"</span></span></div><div class="line"><span class="hljs-tag">        <span class="hljs-attr">android:label</span>=<span class="hljs-string">"fragment_blank"</span></span></div><div class="line"><span class="hljs-tag">        <span class="hljs-attr">tools:layout</span>=<span class="hljs-string">"@layout/fragment_blank"</span> &gt;</span></div><div class="line">        <span class="hljs-tag">&lt;<span class="hljs-name">action</span></span></div><div class="line"><span class="hljs-tag">            <span class="hljs-attr">android:id</span>=<span class="hljs-string">"@+id/action_blankFragment_to_blankFragment2"</span></span></div><div class="line"><span class="hljs-tag">            <span class="hljs-attr">app:destination</span>=<span class="hljs-string">"@id/blankFragment2"</span> /&gt;</span></div><div class="line">    <span class="hljs-tag">&lt;/<span class="hljs-name">fragment</span>&gt;</span></div><div class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">fragment</span></span></div><div class="line"><span class="hljs-tag">        <span class="hljs-attr">android:id</span>=<span class="hljs-string">"@+id/blankFragment2"</span></span></div><div class="line"><span class="hljs-tag">        <span class="hljs-attr">android:name</span>=<span class="hljs-string">"com.example.cashdog.cashdog.BlankFragment2"</span></span></div><div class="line"><span class="hljs-tag">        <span class="hljs-attr">android:label</span>=<span class="hljs-string">"fragment_blank_fragment2"</span></span></div><div class="line"><span class="hljs-tag">        <span class="hljs-attr">tools:layout</span>=<span class="hljs-string">"@layout/fragment_blank_fragment2"</span> /&gt;</span></div><div class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">navigation</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>在你的导航图里,action是使用 <code>&lt;action&gt;</code> 元素代表的. 一个 action 里至少要包含它自己的ID 和用户要导航到的目的地的ID .</p>
+<h2><span id="导航到目的地">导航到目的地</span></h2><p>可以使用 <a href="https://developer.android.google.cn/reference/androidx/navigation/NavController" target="_blank" rel="external"><code>NavController</code></a> 导航到一个目的地,它是一个通过 NavHost 来管理app导航的对象.每一个 NavHost 都有一个它对应的 NavController . NavController 提供一些不同的方式来导航到一个目的地,在下面的章节中将会详细介绍.</p>
+<p>使用以下方法之一来从 fragment ,activity,或者view 中获取一个 NavController :</p>
+<p><strong>Kotlin:</strong></p>
+<ul>
+<li><a href="https://developer.android.google.cn/reference/kotlin/androidx/navigation/fragment/package-summary#findnavcontroller" target="_blank" rel="external"><code>Fragment.findNavController()</code></a></li>
+<li><a href="https://developer.android.google.cn/reference/kotlin/androidx/navigation/package-summary#(android.view.View" target="_blank" rel="external"><code>View.findNavController()</code></a>.findNavController())</li>
+<li><a href="https://developer.android.google.cn/reference/kotlin/androidx/navigation/package-summary#findnavcontroller" target="_blank" rel="external"><code>Activity.findNavController(viewId: Int)</code></a></li>
+</ul>
+<p><strong>Java:</strong></p>
+<ul>
+<li><a href="https://developer.android.google.cn/reference/androidx/navigation/fragment/NavHostFragment.html#findNavController(android.support.v4.app.Fragment" target="_blank" rel="external"><code>NavHostFragment.findNavController(Fragment)</code></a>)</li>
+<li><a href="https://developer.android.google.cn/reference/androidx/navigation/Navigation.html#findNavController(android.app.Activity, int" target="_blank" rel="external"><code>Navigation.findNavController(Activity, @IdRes int viewId)</code></a>)</li>
+<li><a href="https://developer.android.google.cn/reference/androidx/navigation/Navigation.html#findNavController(android.view.View" target="_blank" rel="external"><code>Navigation.findNavController(View)</code></a>)</li>
+</ul>
+<h3><span id="使用-id-导航">使用 ID 导航</span></h3><p><a href="https://developer.android.google.cn/reference/androidx/navigation/NavController.html#navigate(int" target="_blank" rel="external"><code>navigate(int)</code></a>) 使用 action 或者目的地的资源 ID来导航. 下面的例子展示了如何导航到 ViewTransactionsFragment .</p>
+<figure class="highlight kotlin hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">viewTransactionsButton.setOnClickListener &#123; view -&gt;</div><div class="line">   view.findNavController().navigate(R.id.viewTransactionsAction)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">viewTransactionsButton.setOnClickListener(<span class="hljs-keyword">new</span> View.OnClickListener() &#123;</div><div class="line">    <span class="hljs-meta">@Override</span></div><div class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onClick</span><span class="hljs-params">(View view)</span> </span>&#123;</div><div class="line">        Navigation.findNavController(view).navigate(R.id.viewTransactionsAction);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<blockquote>
+<p>注意: 当你使用 ID 来导航的时候,我们强烈推荐你尽可能使用 action. action 在你的导航图里提供了额外的可视信息,它展示了你的目的地是如何和其它目的地连接起来的.通过创建 action ,你可以使用  <a href="https://developer.android.google.cn/guide/navigation/navigation-pass-data#Safe-args" target="_blank" rel="external">Safe Args-generated operations</a> 来替换资源ID ,提供额外的编译时安全性.通过使用 action 你也可以在目的地之间使用转场动画.详细可以查看  <a href="https://developer.android.google.cn/guide/navigation/navigation-animate-transitions" target="_blank" rel="external">Animate transitions between destinations</a>.</p>
+</blockquote>
+<p>对于按钮,你也可以使用 <a href="https://developer.android.google.cn/reference/androidx/navigation/Navigation.html" target="_blank" rel="external"><code>Navigation</code></a> 类的 <a href="https://developer.android.google.cn/reference/androidx/navigation/Navigation.html#createNavigateOnClickListener(int" target="_blank" rel="external"><code>createNavigateOnClickListener()</code></a>) 方法来便捷的导航到一个目的地,如下面的例子所示:</p>
+<figure class="highlight kotlin hljs"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">button.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.next_fragment, <span class="hljs-literal">null</span>))</div></pre></td></tr></table></figure>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">button.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.next_fragment, <span class="hljs-keyword">null</span>));</div></pre></td></tr></table></figure>
+<p>为了处理其它的共用 UI 模块,比如顶部的 top app bar 和 bottom navigation , 详见  <a href="https://developer.android.google.cn/guide/navigation/navigation-ui" target="_blank" rel="external">Update UI components with NavigationUI</a>.</p>
+<h3><span id="通过-uri-进行导航">通过 URI 进行导航</span></h3><p>你可以通过使用 <a href="https://developer.android.google.cn/reference/androidx/navigation/NavController#navigate(android.net.Uri" target="_blank" rel="external"><code>navigate(Uri)</code></a>) 来直接导航到一个  <a href="https://developer.android.google.cn/guide/navigation/navigation-deep-link#implicit" target="_blank" rel="external">implicit deep link destination</a>, 如下:</p>
+<figure class="highlight kotlin hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-keyword">val</span> navController = findNavController()</div><div class="line"><span class="hljs-keyword">val</span> deeplink = Uri.parse(<span class="hljs-string">"android-app://androidx.navigation.app/profile"</span>)</div><div class="line">findNavController().navigate(deeplink)</div></pre></td></tr></table></figure>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Uri deeplink = Uri.parse(<span class="hljs-string">"android-app://androidx.navigation.app/profile"</span>);</div><div class="line">view.findNavController().navigate(deeplink);</div></pre></td></tr></table></figure>
+<p>和使用 action 或者 目的地ID 不同,你可以导航到你的导航图中的任意一个 URI ,无论目的地是否在当前导航图中可见.你可以导航到当前导航图或者一个不同的导航图中的目的地.</p>
+<p>当使用 URI 进行导航的时候,回退栈不会被重置.与其他的 <a href="https://developer.android.google.cn/guide/navigation/navigation-deep-link" target="_blank" rel="external">deep link navigation</a> 不同,</p>
+<p>When navigating using URI, the back stack is <em>not</em> reset. This is unlike other <a href="https://developer.android.google.cn/guide/navigation/navigation-deep-link" target="_blank" rel="external">deep link navigation</a>, where the back stack is replaced when navigating. <code>popUpTo</code> and <code>popUpToInclusive</code>, however, still remove destinations from the back stack just as though you had navigated using an ID.</p>
+<h3><span id="导航还有回退栈">导航还有回退栈</span></h3><p>Android 维护了一个 <a href="https://developer.android.google.cn/guide/components/activities/tasks-and-back-stack" target="_blank" rel="external">back stack</a>  包含了你访问的目的地.你app 的第一个 目的地在用户打开 app 的时候就会放进栈中. 每一次调用 <a href="https://developer.android.google.cn/reference/androidx/navigation/NavController.html#navigate(int" target="_blank" rel="external"><code>navigate()</code></a>) 方法会把另一个目的地放到栈顶. 当调用  <a href="https://developer.android.google.cn/reference/androidx/navigation/NavController.html#navigateUp(" target="_blank" rel="external"><code>NavController.navigateUp()</code></a>) 和 <a href="https://developer.android.google.cn/reference/androidx/navigation/NavController.html#popBackStack(" target="_blank" rel="external"><code>NavController.popBackStack()</code></a>) 来进行向上或向后的操作的时候,会移除栈顶的目的地.</p>
+<h3><span id="popupto-和-popuptoinclusive">popUpTo 和 popUpToInclusive</span></h3><p>当你使用 action 来进行导航的时候,你可以选择从后退栈中弹出额外的目的地.举个例子,如果你的应用有一个登录流程,一旦用户登录了,你应该从回退栈中弹出所有登录相关的目的地,这样可以保证用户回退的时候不会又回到登录流程中.</p>
+<p>为了在一个目的地导航到另一个目的地的时候弹出目的地,可以添加一个 <code>app:popUpTo</code> 属性到关联的 <code>&lt;action&gt;</code> 元素中. <code>app:popUpTo</code> 这个属性告诉 Navigation 在调用 <code>navigate()</code> 的时候从回退栈中弹出一些目的地.这个属性的值是 要在回退中保留的顶层目的地的ID .</p>
+<p>你也可以使用 <code>app:popUpToInclusive=&quot;true&quot;</code> 来声明这个 <code>app:popUpTo</code> 弹出操作包含了这个属性声明的ID 对象.</p>
+<p><strong>popUpTo 示例:循环逻辑</strong></p>
+<p>我们假设你的app拥有3个目的地—A,B,C.还有从 A 到 B ,B 到 C ,以及 C 回到A 的action.对应的导航图如下:</p>
+<p><img src="https://developer.android.google.cn/images/topic/libraries/architecture/navigation-getting-started-pop.png" alt="img"></p>
+<p>当你每一次调用导航action的时候,都会往回退栈中添加一个目的地.如果你按照这个流程重复导航的花,你的回退栈中将会包含很多这个重复的集合目的地(A,B,C,A,B,C,A….) . 要避免这种重复的话,可以在从C 到A 的action中指定 <code>app:popUpTo</code> 还有 <code>app:popUpToInclusive</code> 属性,如下:</p>
+<figure class="highlight xml hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-tag">&lt;<span class="hljs-name">fragment</span></span></div><div class="line"><span class="hljs-tag">    <span class="hljs-attr">android:id</span>=<span class="hljs-string">"@+id/c"</span></span></div><div class="line"><span class="hljs-tag">    <span class="hljs-attr">android:name</span>=<span class="hljs-string">"com.example.myapplication.C"</span></span></div><div class="line"><span class="hljs-tag">    <span class="hljs-attr">android:label</span>=<span class="hljs-string">"fragment_c"</span></span></div><div class="line"><span class="hljs-tag">    <span class="hljs-attr">tools:layout</span>=<span class="hljs-string">"@layout/fragment_c"</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">action</span></span></div><div class="line"><span class="hljs-tag">        <span class="hljs-attr">android:id</span>=<span class="hljs-string">"@+id/action_c_to_a"</span></span></div><div class="line"><span class="hljs-tag">        <span class="hljs-attr">app:destination</span>=<span class="hljs-string">"@id/a"</span></span></div><div class="line"><span class="hljs-tag">        <span class="hljs-attr">app:popUpTo</span>=<span class="hljs-string">"@+id/a"</span></span></div><div class="line"><span class="hljs-tag">        <span class="hljs-attr">app:popUpToInclusive</span>=<span class="hljs-string">"true"</span>/&gt;</span></div><div class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">fragment</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>在到达了目的地 C 之后,回退栈中包含了目的地 A,B,C 的实例.当导航回目的地 A 的时候,我们同时 <code>popUpTo</code> A ,这意味着我们在导航的时候从回退栈中删除了 B,C. 伴随着 <code>app:popUpToInclusive=&quot;true&quot;</code> 我们同时弹出了回退栈中的第一个 A.要注意如果你没有使用 <code>app:popUpToInclusive=&quot;true&quot;</code> 这个属性的话,你的回退栈中将会包含两个A 的实例.</p>
+<p>More information</p>
+<ul>
+<li><a href="https://developer.android.google.cn/guide/navigation" target="_blank" rel="external">Navigation overview</a></li>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-ui" target="_blank" rel="external">Update UI components with NavigationUI</a></li>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-pass-data" target="_blank" rel="external">Pass data between destinations</a></li>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-global-action" target="_blank" rel="external">Global actions</a></li>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-conditional" target="_blank" rel="external">Conditional destinations</a></li>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-add-new" target="_blank" rel="external">Custom destination types</a></li>
+<li><a href="https://www.youtube.com/watch?v=8GCXtCjtg40" target="_blank" rel="external">Android Jetpack: manage UI navigation with Navigation Controller (Google I/O 2018)</a></li>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-migrate" target="_blank" rel="external">Migrate an existing project to the Navigation Architecture Component</a></li>
+<li><a href="https://codelabs.developers.google.com/codelabs/android-navigation/index.html?index=..%2F..%2Findex#0" target="_blank" rel="external">Navigation Codelab</a></li>
+</ul>
+<p>If you encounter any issues with Navigation, please submit feedback via one of the following channels:</p>
+<ul>
+<li><a href="https://issuetracker.google.com/issues/new?component=404706" target="_blank" rel="external">File a Navigation editor bug</a></li>
+<li><a href="https://issuetracker.google.com/issues/new?component=409828" target="_blank" rel="external">File a Navigation library bug</a></li>
+<li><a href="https://stackoverflow.com/tags/android-navigation-component" target="_blank" rel="external">Tag an issue on StackOverflow</a></li>
+</ul>
+<p>For information on how to provide the most helpful information in bug reports, see the following links:</p>
+<ul>
+<li><a href="https://source.android.google.cn/setup/contribute/report-bugs" target="_blank" rel="external">Reporting Bugs (Android platform)</a></li>
+<li><a href="https://developer.android.google.cn/studio/report-bugs" target="_blank" rel="external">Report a bug (Android Studio)</a></li>
+</ul>
+<p># </p>
+<h1><span id="refernce">Refernce</span></h1><p><a href="https://developer.android.google.cn/guide/navigation/navigation-getting-started" target="_blank" rel="external">https://developer.android.google.cn/guide/navigation/navigation-getting-started</a></p>
+<h2><span id="about-me">About Me</span></h2><p>我的博客 <a href="http://leonchen1024.com/" target="_blank" rel="external">leonchen1024.com</a></p>
+<p>我的 GitHub <a href="https://github.com/LeonChen1024" target="_blank" rel="external">https://github.com/LeonChen1024</a></p>
+<p>微信公众号 </p>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/Images/CooderQRcodem.jpg?raw=false" alt="wechat"></p>
+ -->
+            <div class="article-entry">
+                    
+                    
+                        
+                            
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                            
+                                
+                                <p><h1><span id="开始使用-navigation">开始使用 Navigation</span></h1><p>[TOC]</p>
+<p>由于官网暂时没有中文版本,所以在这里根据内容抽空做了一些中文的版本.</p>
+<h1><span id="开始使用">开始使用</span></h1><h2><span id="依赖引入">依赖引入</span></h2><figure class="highlight groovy hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">dependencies &#123;</div><div class="line">    <span class="hljs-keyword">def</span> nav_version = <span class="hljs-string">"2.1.0-alpha05"</span></div><div class="line"></div><div class="line">    implementation <span class="hljs-string">"androidx.navigation:navigation-fragment:$nav_version"</span> <span class="hljs-comment">// For Kotlin use navigation-fragment-ktx</span></div><div class="line">    implementation <span class="hljs-string">"androidx.navigation:navigation-ui:$nav_version"</span> <span class="hljs-comment">// For Kotlin use navigation-ui-ktx</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>最新版本清关注官方版本 <a href="https://developer.android.google.cn/jetpack/androidx/releases/navigation#declaring_dependencies" target="_blank" rel="external">https://developer.android.google.cn/jetpack/androidx/releases/navigation#declaring_dependencies</a></p>
+<h2><span id="创建一个导航图">创建一个导航图</span></h2><p>Navigation 发生在 app 内目的地之间的跳转.这些目的地通过action 进行连接.</p>
+<p>
+                            
+                        
+                    
+                    
+                        </div>   
+                        <div class="article-more-link">
+                            <a href="/2019/07/04/Navigation-Getting-Started/#more">Read More</a>
+                        </div>
+                    
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-image">
+        <a href="/2019/07/04/Navigation/" class="image is-7by1">
+            <img class="banner" src="/2019/07/04/Navigation/title.jpg" alt="Navigation 指南">
+        </a>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-07-03T16:00:00.000Z">2019-07-04</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    6 minutes read (About 861 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/07/04/Navigation/">Navigation 指南</a>
+            
+        </h1>
+        <div class="content">
+            <!-- <h1><span id="navigation-指南">Navigation 指南</span></h1><p>[TOC]</p>
+<p>由于官网暂时没有中文版本,所以在这里根据内容抽空做了一些中文的版本.</p>
+<p><code>Navigation</code> 是用来管理你的app中内容的跳转,返回等操作.它主要包含了以下三个部分:</p>
+<ul>
+<li><code>Navigation graph</code> : 一个 xml 资源包含了所有的导航相关的信息. 这些信息包含了你app里所有独立的内容区域,也就是 <code>destinations</code>  .</li>
+<li><code>NavHost</code> : 一个空白的容器用来展示你的  <code>Navigation graph</code> 中的 <code>destinations</code> . <code>Navigation</code> 模块中包含了一个默认的实现 <a href="https://developer.android.com/reference/androidx/navigation/fragment/NavHostFragment.html" target="_blank" rel="external"><code>NavHostFragment</code></a> 用来展示 Fragment 的 <code>destinations</code> .</li>
+<li><code>NavController</code> :  一个管理 NavHost 中的导航的对象. 会在用户使用app的时候管理 NavHost 中的内容.</li>
+</ul>
+<p>当在页面内导航的时候,你可以告诉 NavController 你想要通过Navigation graph 中的某个路径或者直接导航到一个destination .这时候 NavController 就会在 NavHost 中展示合适的 destination.</p>
+<p>Navigation 模块还提供了其他的好处,比如:</p>
+<ul>
+<li>处理了 fragment transactions</li>
+<li>默认情况下正确的处理了向上和返回动作</li>
+<li>为动画和过渡提供了标准化的资源</li>
+<li>实现和处理了深链接</li>
+<li>内置了 Navigation UI 组件,比如 navigation drawers 和 bottom navigation,可以减少附加的工作</li>
+<li><a href="https://developer.android.com/guide/navigation/navigation-pass-data#Safe-args" target="_blank" rel="external">Safe Args</a> - 一个 Gradle 插件当导航并在两个目的地中传递数据的时候提供了类型安全机制</li>
+<li>ViewModel 支持 - 你可以将 ViewModel 的作用域设置为 navigation graph 来在不同的 目的地之间共享 UI 相关连的数据</li>
+</ul>
+<p>并且你还可以使用 Android Studio’s <a href="https://developer.android.com/guide/navigation/navigation-getting-started" target="_blank" rel="external">Navigation Editor</a>  来查看和编辑 navigation graphs.</p>
+<p>Next steps</p>
+<p>For more documentation and resources related to the Navigation component, see the following.</p>
+<p>Getting started</p>
+<ul>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-getting-started" target="_blank" rel="external">Get started with the Navigation component</a></li>
+</ul>
+<p>Further topics</p>
+<ul>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-principles" target="_blank" rel="external">Principles of Navigation</a></li>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-form-factors" target="_blank" rel="external">Design for different form factors</a></li>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-design-graph" target="_blank" rel="external">Design navigation graphs</a></li>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-nested-graphs" target="_blank" rel="external">Nested graphs</a></li>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-global-action" target="_blank" rel="external">Global actions</a></li>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-conditional" target="_blank" rel="external">Conditional navigation</a></li>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-pass-data" target="_blank" rel="external">Pass data between destinations</a></li>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-deep-link" target="_blank" rel="external">Create a deep link for a destination</a></li>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-animate-transitions" target="_blank" rel="external">Animate transitions between destinations</a></li>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-ui" target="_blank" rel="external">Update UI components with NavigationUI</a></li>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-swipe-view" target="_blank" rel="external">Create swipe views with tabs</a></li>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-programmatic" target="_blank" rel="external">Interact programmatically with the Navigation component</a></li>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-testing" target="_blank" rel="external">Test navigation</a></li>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-add-new" target="_blank" rel="external">Add new destination types</a></li>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-custom-back" target="_blank" rel="external">Provide custom back navigation</a></li>
+<li><a href="https://developer.android.google.cn/guide/navigation/navigation-migrate" target="_blank" rel="external">Migrate to the Navigation component</a></li>
+</ul>
+<p>Additional resources</p>
+<p>To learn more about navigation, see the following additional resources.</p>
+<p>Samples</p>
+<ul>
+<li><a href="https://github.com/googlesamples/android-architecture-components/tree/master/BasicSample" target="_blank" rel="external">Android Architecture Components basic sample</a></li>
+</ul>
+<p>Codelabs</p>
+<ul>
+<li><a href="https://codelabs.developers.google.com/codelabs/android-navigation/index.html?index=..%2F..%2Findex#0" target="_blank" rel="external">Navigation codelab</a></li>
+</ul>
+<p>Blog posts</p>
+<ul>
+<li><a href="https://medium.com/androiddevelopers/livedata-with-snackbar-navigation-and-other-events-the-singleliveevent-case-ac2622673150" target="_blank" rel="external">LiveData with SnackBar, Navigation and other events (the SingleLiveEvent case</a></li>
+</ul>
+<p>Videos</p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=9O1D_Ytk0xg" target="_blank" rel="external">10 Best Practices for Moving to a Single Activity</a></li>
+<li><a href="https://www.youtube.com/watch?v=2k8x8V77CrU" target="_blank" rel="external">Single Activity: Why, When, and How (Android Dev Summit ‘18)</a></li>
+<li><a href="https://www.youtube.com/watch?v=8GCXtCjtg40" target="_blank" rel="external">Android Jetpack: manage UI navigation with Navigation Controller (Google I/O ‘18)</a></li>
+</ul>
+<h1><span id="reference">Reference</span></h1><p><a href="https://developer.android.google.cn/guide/navigation" target="_blank" rel="external">https://developer.android.google.cn/guide/navigation</a></p>
+<h2><span id="about-me">About Me</span></h2><p>我的博客 <a href="http://leonchen1024.com/" target="_blank" rel="external">leonchen1024.com</a></p>
+<p>我的 GitHub <a href="https://github.com/LeonChen1024" target="_blank" rel="external">https://github.com/LeonChen1024</a></p>
+<p>微信公众号 </p>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/Images/CooderQRcodem.jpg?raw=false" alt="wechat"></p>
+ -->
+            <div class="article-entry">
+                    
+                    
+                        
+                            
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                            
+                                
+                                <p><h1><span id="navigation-指南">Navigation 指南</span></h1><p>[TOC]</p>
+<p>由于官网暂时没有中文版本,所以在这里根据内容抽空做了一些中文的版本.</p>
+<p><code>Navigation</code> 是用来管理你的app中内容的跳转,返回等操作.它主要包含了以下三个部分:</p>
+<ul>
+<li><code>Navigation graph</code> : 一个 xml 资源包含了所有的导航相关的信息. 这些信息包含了你app里所有独立的内容区域,也就是 <code>destinations</code>  .</li>
+<p>
+                            
+                        
+                    
+                    
+                        </div>   
+                        <div class="article-more-link">
+                            <a href="/2019/07/04/Navigation/#more">Read More</a>
+                        </div>
+                    
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-image">
+        <a href="/2019/06/17/S1ep2-Using-Lint-for-Performance-Tips/" class="image is-7by1">
+            <img class="banner" src="/2019/06/17/S1ep2-Using-Lint-for-Performance-Tips/title.jpg" alt="使用 Lint 来获取性能贴士">
+        </a>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-06-16T16:00:00.000Z">2019-06-17</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Android/Android-Performance-pattern/">Android Performance pattern</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    a minute read (About 203 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/06/17/S1ep2-Using-Lint-for-Performance-Tips/">使用 Lint 来获取性能贴士</a>
+            
+        </h1>
+        <div class="content">
+            <!-- <h1><span id="使用-lint-来获取性能贴士">使用 Lint 来获取性能贴士</span></h1><p>[TOC]</p>
+<h1><span id="背景">背景</span></h1><p>当我们在编写 Android 代码的时候如何能够快速优化我们的代码呢?</p>
+<p>Android 为我们提供了一个 Lint 的工具,它可以静态检验出我们代码里的很多问题.风格,内存泄露,过度绘制等等…</p>
+<h1><span id="使用方法">使用方法</span></h1><p>在 Android studio 的菜单中选择 <code>Analyse</code> -&gt; <code>Inspect Code</code> 就可以进入检查页面了.</p>
+<p>他还可以在设置里的 <code>Editor</code> -&gt; <code>Inspections</code> 中设置提示的等级,以及自定义检查项,可以说是非常好用的功能了.</p>
+<h1><span id="resource">Resource</span></h1><p><a href="https://www.youtube.com/watch?v=Z_huaXCsYyw&amp;list=PLWz5rJ2EKKc9CBxr3BVjPTPoDPLdPIFCE&amp;index=45" target="_blank" rel="external">https://www.youtube.com/watch?v=Z_huaXCsYyw&amp;list=PLWz5rJ2EKKc9CBxr3BVjPTPoDPLdPIFCE&amp;index=45</a></p>
+<h2><span id="about-me">About Me</span></h2><p>我的博客 <a href="http://leonchen1024.com/" target="_blank" rel="external">leonchen1024.com</a></p>
+<p>我的 GitHub <a href="https://github.com/LeonChen1024" target="_blank" rel="external">https://github.com/LeonChen1024</a></p>
+<p>微信公众号 </p>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/Images/CooderQRcodem.jpg?raw=false" alt="wechat"></p>
+ -->
+            <div class="article-entry">
+                    
+                    
+                        
+                            
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                            
+                                
+                                <p><h1><span id="使用-lint-来获取性能贴士">使用 Lint 来获取性能贴士</span></h1><p>[TOC]</p>
+<h1><span id="背景">背景</span></h1><p>当我们在编写 Android 代码的时候如何能够快速优化我们的代码呢?</p>
+<p>Android 为我们提供了一个 Lint 的工具,它可以静态检验出我们代码里的很多问题.风格,内存泄露,过度绘制等等…</p>
+<h1><span id="使用方法">使用方法</span></h1><p>在 Android studio 的菜单中选择 <code>Analyse</code> -&gt; <code>Inspect Code</code> 就可以进入检查页面了.</p>
+<p>他还可以在设置里的 <code>Editor</code> -&gt; <code>Inspections</code> 中设置提示的等级,以及自定义检查项,可以说是非常好用的功能了.</p>
+<p>
+                            
+                        
+                    
+                    
+                        </div>   
+                        <div class="article-more-link">
+                            <a href="/2019/06/17/S1ep2-Using-Lint-for-Performance-Tips/#more">Read More</a>
+                        </div>
+                    
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-image">
         <a href="/2019/05/28/Automatic-Version-Code-Release/" class="image is-7by1">
             <img class="banner" src="/2019/05/28/Automatic-Version-Code-Release/title.jpg" alt="自动版本号发布">
         </a>
@@ -551,155 +1283,6 @@
     <div class="card">
     
     <div class="card-image">
-        <a href="/2019/04/09/Key-Value-pair-in-hashtable/" class="image is-7by1">
-            <img class="banner" src="/2019/04/09/Key-Value-pair-in-hashtable/title.jpg" alt="实现键值对存储 第五部分 Hash table 实现">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-04-08T16:00:00.000Z">2019-04-09</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/DataStructure/">DataStructure</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/DataStructure/Common/">Common</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    34 minutes read (About 5083 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/04/09/Key-Value-pair-in-hashtable/">实现键值对存储 第五部分 Hash table 实现</a>
-            
-        </h1>
-        <div class="content">
-            <!-- <h1><span id="实现键值对存储-第五部分-hash-table-实现">实现键值对存储-第五部分: Hash table 实现</span></h1><p><a href="http://codecapsule.com/2013/05/13/implementing-a-key-value-store-part-5-hash-table-implementations/" target="_blank" rel="external">原文链接</a></p>
-<p>这篇文章是 IKVS 系列的第五部分,”实现一个键值对存储”.你也可以查看 <a href="http://codecapsule.com/2012/11/07/ikvs-implementing-a-key-value-store-table-of-contents/" target="_blank" rel="external">Table of Contents</a>  来查看其他部分.</p>
-<p>在这篇文章中,我将会学习C++中实际的 hash table 来理解它的瓶颈在哪里.Hash 函数是 CPU-密集型的操作应该要进行优化.然而,大多数的 hash table 的机制都只是关注于高效的内存和I/O读取,这也是这篇文章主要的焦点.我将会学习三种不同的 C++中的hash table 的实现,同时包含内存中的和硬盘中的,并且会观察这些数据都是怎么组织和访问的.这篇文章将会包含以下内容.</p>
-<p>[TOC]</p>
-<p><img src="/2019/04/09/Key-Value-pair-in-hashtable/kvstore-part5-intro.jpg" alt="kvstore-part5-intro"></p>
-<h2><span id="1-hash-tables">1. Hash tables</span></h2><h3><span id="11-对-hash-tables-的一个快速介绍">1.1 对 hash tables 的一个快速介绍</span></h3><blockquote>
-<p>Hashtable 按理说是一个对人类来说最重要的数据结构.</p>
-<p>— Steve Yegge</p>
-</blockquote>
-<p>一个hash table 允许高效的访问关联数据.每一个条目都是一个键值对,只需要知道它的key就可以快速的检索或者分配.为了实现这个效果,key是使用hash函数来计算的,达到将这个key从它原始的表达转换为一个整数.然后使用这个整数作为索引来识别在存储条目值的数组中哪个位置是被访问的.很多key可以被hash到一个相同的值里,这意味着这些key会在这个数组位置碰撞.为了解决冲突问题,有很多中技术可以使用,比如在这个桶里使用 链表 或者 自平衡树等,或者使用 线性探查或者二次探查的开放式寻址.</p>
-<p>从现在开始,我会假设你知道hash table 是什么.如果你觉得你需要复习一下相关知识,有一些好的资源是 Wikipidia[1] 上的 “Hash table” 这篇文章(还有页面底部的那些链接部分),还有就是 Cormen et. al [2] 的”Introduction to Algorithms” 这本书中的 Hash table 这个章节.</p>
-<h3><span id="12-hash-函数">1.2 Hash 函数</span></h3><p>hash 函数的选择是特别重要的.一个好的 hash 函数最基础的要求就是输出的hash 值应该要分布均匀.这样,发生碰撞的概率就最小化了,同时也缩小了bucket 中碰撞的条目的数量.</p>
-<p>这里有很多可以用的hash函数,并且除非你准确的知道这些存储的数据会是什么,否则最安全的做法是使用一个平均情况下分配随机数据最均匀的那个,如果可以的话要适用于”雪崩效应”<a href="http://codecapsule.com/2013/05/13/implementing-a-key-value-store-part-5-hash-table-implementations/#ref_3" target="_blank" rel="external">[3]</a>的情况.有一部分人已经在对比hash函数的效率了 <a href="http://codecapsule.com/2013/05/13/implementing-a-key-value-store-part-5-hash-table-implementations/#ref_4" target="_blank" rel="external">[4]</a> <a href="http://codecapsule.com/2013/05/13/implementing-a-key-value-store-part-5-hash-table-implementations/#ref_5" target="_blank" rel="external">[5]</a> <a href="http://codecapsule.com/2013/05/13/implementing-a-key-value-store-part-5-hash-table-implementations/#ref_6" target="_blank" rel="external">[6]</a> <a href="http://codecapsule.com/2013/05/13/implementing-a-key-value-store-part-5-hash-table-implementations/#ref_7" target="_blank" rel="external">[7]</a>,从他们的结论得知,MurmurHash3 <a href="http://codecapsule.com/2013/05/13/implementing-a-key-value-store-part-5-hash-table-implementations/#ref_8" target="_blank" rel="external">[8]</a> 和 CityHash <a href="http://codecapsule.com/2013/05/13/implementing-a-key-value-store-part-5-hash-table-implementations/#ref_9" target="_blank" rel="external">[9]</a> 在这篇文章写完的时候是最好的hash函数.</p>
-<h2><span id="2-实现">2. 实现</span></h2><p>如同对比 hash 函数一样,现在也已经有一些博客和文章已经对比了 使用内存的 C++ hash table 库.我看过最值得注意的是 Nick Welch的 “<em>Hash Table Benchmarks</em>”  <a href="http://codecapsule.com/2013/05/13/implementing-a-key-value-store-part-5-hash-table-implementations/#ref_10" target="_blank" rel="external">[10]</a> 和 Jeff Preshing 的 “<em>Hash Table Performance Tests</em>”  <a href="http://codecapsule.com/2013/05/13/implementing-a-key-value-store-part-5-hash-table-implementations/#ref_11" target="_blank" rel="external">[11]</a>, 但是还是有一些其他的文章也值得一看 <a href="http://codecapsule.com/2013/05/13/implementing-a-key-value-store-part-5-hash-table-implementations/#ref_12" target="_blank" rel="external">[12]</a> <a href="http://codecapsule.com/2013/05/13/implementing-a-key-value-store-part-5-hash-table-implementations/#ref_13" target="_blank" rel="external">[13]</a> <a href="http://codecapsule.com/2013/05/13/implementing-a-key-value-store-part-5-hash-table-implementations/#ref_14" target="_blank" rel="external">[14]</a>. 通过这些对比,我从 GCC 中的 TR1 派生出了 unordered_map 同时从 SparseHash 库中派生了 dense_hash_map — 之前被叫做 Google SparseHash —这是两个很值得学习的模块,并且下面我也会介绍到.此外,我还会介绍 Kyoto Cabinet 中的 HashDB 里的数据结构.当然  unordered_map 和 dense_hash_map 不会像 HashDB 那样和我的 key-value 存储项目关联性那么大,因为它们是内存内的 hash table . 虽然这样,对它们的内部数据结构的组织和它们的内存模式做一个简单的了解也是很有趣的.</p>
-<p>对于这三个 hash table 库的介绍,我将会使用一个通用的例子,将一组城市的名字作为key,将它们的 GPS 坐标作为 value . unordered_map 的源码可以在 GCC 的源码中找到,它是在 libstdc++-v3 中. 我介绍的是基于 GCC v4.8.0中的 libstdc++-v3 release 6.0.18  <a href="http://codecapsule.com/2013/05/13/implementing-a-key-value-store-part-5-hash-table-implementations/#ref_15" target="_blank" rel="external">[15]</a>,以及 SparseHash v2.0.2 <a href="http://codecapsule.com/2013/05/13/implementing-a-key-value-store-part-5-hash-table-implementations/#ref_16" target="_blank" rel="external">[16]</a> 中的 dense_hash_map , 还有 Kyoto Cabinet v1.2.76 <a href="http://codecapsule.com/2013/05/13/implementing-a-key-value-store-part-5-hash-table-implementations/#ref_17" target="_blank" rel="external">[17]</a> 中的 HashDB.</p>
-<p>在 Matthew Austern 写的 “<em>A Proposal to Add Hash Tables to the Standard Library (revision 4)</em>”  <a href="http://codecapsule.com/2013/05/13/implementing-a-key-value-store-part-5-hash-table-implementations/#ref_18" target="_blank" rel="external">[18]</a> 还有 SparseHash 中的  “<em>Implementation notes</em>” 页面 <a href="http://codecapsule.com/2013/05/13/implementing-a-key-value-store-part-5-hash-table-implementations/#ref_19" target="_blank" rel="external">[19]</a> 中也可以找到关于实现的有意思的讨论.</p>
-<h3><span id="21-tr1-的-unordered_map">2.1  TR1 的 unordered_map</span></h3><p>TR1 中的 unordered_map 提供了一个使用链表(单独链路)方式处理碰撞的问题的 hash table . 数组的位置分配是在堆上的,并且根据负载因子来进行扩大或者缩小.一个叫做 <code>_Hash_node</code> 的节点结构是用来创建桶的链表.</p>
-<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-comment">/* from gcc-4.8.0/libstdc++-v3/include/tr1/hashtable_policy.h */</span> </div><div class="line"><span class="hljs-keyword">template</span></div><div class="line">  <span class="hljs-class"><span class="hljs-keyword">struct</span> _<span class="hljs-title">Hash_node</span>&lt;_Value, false&gt;</span></div><div class="line"><span class="hljs-class">  &#123;</span></div><div class="line">    _Value       _M_v;</div><div class="line">    _Hash_node*  _M_next;</div><div class="line">  &#125;;</div></pre></td></tr></table></figure>
-<p>如果 key 和 value 都是整数类型的,它们可以被直接存储到这个结构的 <code>_M_v</code> 里.否则指针将会被使用并且需要一些额外的内存.桶数组在堆上就会被分配,但这并不影响 节点,它们使用的是 C++ 内存分配器中独立的调用:</p>
-<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-comment">/* from gcc-4.8.0/libstdc++-v3/include/tr1/hashtable.h */</span> </div><div class="line">Node* _M_allocate_node(<span class="hljs-keyword">const</span> value_type&amp; __v)</div><div class="line">    &#123;</div><div class="line">      _Node* __n = _M_node_allocator.allocate(<span class="hljs-number">1</span>);</div><div class="line">      __try</div><div class="line">	&#123;</div><div class="line">	  _M_get_Value_allocator().construct(&amp;__n-&gt;_M_v, __v);</div><div class="line">	  __n-&gt;_M_next = <span class="hljs-number">0</span>;</div><div class="line">	  <span class="hljs-keyword">return</span> __n;</div><div class="line">	&#125;</div><div class="line">      __catch(...)</div><div class="line">	&#123;</div><div class="line">	  _M_node_allocator.deallocate(__n, <span class="hljs-number">1</span>);</div><div class="line">	  __throw_exception_again;</div><div class="line">	&#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
-<p>因为节点是独立分配的,每个节点的分配可能会造成大量的内存浪费.这当然也取决于编译器和使用的操作系统的内存分配器.而且我甚至不讨论每种分配器的所有的系统调用.最原始的 SGI hash table 的实现会对节点进行资源预分配,但是这种策略在  TR1 的 unordered_map 实现中没有被保留.</p>
-<p>下面的 图 5.1  提供了一个对于 TR1 的  unordered_map 的内存和访问模式.让我们来看看当我们根据key “johannesburg” 来查找关联的 GPS 坐标的时候会发生什么事.这个key 将会被 hash 然后映射到 bucket #0 .从那里我们跳转到这个bucket 对应的链表的第一个节点(bucket #0 左边橙色的箭头),并且我们可以访问堆里持有key “johannesburg” 数据的内存区域(Node 右边黑色的箭头).如果key 在第一个节点是无效的,我们可以指向到其他的节点.</p>
-<p>至于CPU 的性能,人们不能指望将所有的数据都放在处理器同一个缓存行里.的确,给定了 bucket 数组的大小,初始化的 bucket 和初始化的节点将不会在同一个缓存行里,并且节点关联的额外的数据也不会在同一个缓存行中.子序列节点和关联的数据也不会在相同的缓存行里并且必须从 RAM 中检索.如果你并不熟悉CPU 优化和缓存行, 这篇 Wikipedia 上的  “<em>CPU Cache</em>”  文章将会是一个很好的介绍 <a href="http://codecapsule.com/2013/05/13/implementing-a-key-value-store-part-5-hash-table-implementations/#ref_20" target="_blank" rel="external">[20]</a>.</p>
-<p><img src="/2019/04/09/Key-Value-pair-in-hashtable/kvstore_unordered_map_web.jpg" alt="Figure 5.1"></p>
-<h3><span id="22-sparsehash-的-dense_hash_map">2.2  SparseHash 的 dense_hash_map</span></h3><p>SparseHash 库提供了两种 hash table 的实现, sparse_hash_map 和 dense_hash_map. sparse_hash_map 通过降低了速度提供了惊人的内存占用,并且使用制定的数据结构来获取结果,这就是 sparsetable. 想要了解更多的关于 sparsetables 和 sparse_hash_map 的信息可以去SparseHash  的 “<em>Implementation notes</em>” 页 <a href="http://codecapsule.com/2013/05/13/implementing-a-key-value-store-part-5-hash-table-implementations/#ref_19" target="_blank" rel="external">[19]</a>.在这里我只会介绍 dense_hash_map.</p>
-<p>dense_hash_map 使用二次内部探查处理碰撞问题.如同 unordered_map ,bucket 数组在一开始就在堆里分配了,并且会根据 hash table 的负载因子进行放大或者缩小. bucket 数组的元素是 <code>std::pair</code>  的实例,其中 <code>Key</code> 和 <code>T</code> 分别是 键和值的模板参数.在一个 64-位体系架构中保存字符串, 每一对的实例将会占用 16字节.</p>
-<p>下图 5.2  提供了一个对于 dense_hash_map 的内存和访问模式的示意图.如果我们查找 “johannesburg” 的 GPS 坐标,我们一开始会在 bucket #0 中查找失败,因为它的数据是 “Paris” 的(bucket #0 右边的黑色箭头).所以我们会继续探查并跳转到 bucket  (i + 1) = (0 + 1) = 1 (bucket #0 左边橙色的箭头),然后我们会在 bucket #1 中查找 “johannesburg” 对应的数据(bucket #1 右边黑色的箭头).这看起来和 unordered_map 很相似,但实际上是非常不同的.当然,就像 unordered_map 一样键和值将会被存储在堆内存中,这意味着键和值的查找将无法使用缓存行.但是bucket 中的碰撞条目的导航将会变得非常快.的确,在大多数的处理器中缓存行是 64byte , 而我们指定每一对占用16byte的容量,这将会显著的提高我们的速度,和 unordered_map 中的链表相反,它需要在RAM中跳转来得到接下去的节点.</p>
-<p>通过二次内部探查提供的缓存行优化使得 dense_hash_map 在 使用内存的 hash table 中的性能测试成为胜利者(至少是我了解的那些).你应该花点时间看一看 Nick Welch  写的 “Hash Table Benchmarks”  <a href="http://codecapsule.com/2013/05/13/implementing-a-key-value-store-part-5-hash-table-implementations/#ref_10" target="_blank" rel="external">[10]</a>.</p>
-<p><img src="../../../Code/Way%20To%20Google/Foundations/Resource/kvstore_hash_dense_hash_map_web.jpg" alt=""></p>
-<h3><span id="23-kyoto-cabinet-的-hashdb">2.3  Kyoto Cabinet 的 HashDB</span></h3><p>Kyoto Cabinet 实现了许多的数据结构,其中也包括 hash table . 比如这个 hash table , HashDB ,是用来在硬盘上持久化的,尽管这里有一个可选方案可以将他作为  <code>std::map</code> 的替代品. hash table 的元数据还有用户数据都是通过文件系统按顺序保存在唯一的一个硬盘文件中.</p>
-<p>Kyoto Cabinet 通过在每一个 bucket 上使用独立的二分查找树来处理碰撞问题.bucket 数组有一个固定的大小并且永远不会调整大小,不管负载因子的状态是什么.这是它主要的缺陷.确实,如果在数据库的创建的时候定义的 bucket 数组的大小比实际的需求要小的花,那么当条目开始碰撞的时候性能将会变得很差.</p>
-<p>对于一个使用 硬盘的 hash table 实现来说,要让 bucket 数组的大小可以调整是非常困难的.首先,这会要求 bucket 数组还有条目要存储在两个独立的文件里.这样子它们就可以分别增长了.第二,因为需要重新调整 bucket 数组的大小所以需要重新对 key 进行hash操作来对应到它们在新的bucket 数组中位置,这会需要从硬盘中读取所有的条目对应的key,这会非常的消耗性能或者可以说在数量大的数据库情况下来说是不可能的.一个可以避免重新hash的方法是存储 hash 后的key,但是这意味着每一个条目都需要额外 4 或 8 byte 的数据(根据 hash 是 32 还是 64 bit 长的).因为这些种种的复杂性,使用一个定长的 bucket 数组是更简单的,并且这也是 Kyoto Cabinet 中的 HashDB 采用的方法.</p>
-<p>图 5.3 展示了存储在文件中的 HashDB 的结构.我从 <code>clac_meta()</code> 方法还有 kchashdb.h 文件底部中的 HashDB 类的代码属性的注释中中派生了这个内部结构.这个文件由以下的部分构成:</p>
-<ul>
-<li>数据库所有元数据的头部.</li>
-<li>FreeBlock pool 用来持有数据区域中的可用空间</li>
-<li>bucket 数组</li>
-<li>记录(数据区域)</li>
-</ul>
-<p>一条记录会持有一个条目(键/值对),使用了一个单独连接的二叉搜索树的节点.下面是 Record 的结构:</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">/* from kyotocabinet-1.2.76/kchashdb.h */ </div><div class="line">  /**</div><div class="line">   * Record data.</div><div class="line">   */</div><div class="line">  struct Record &#123;</div><div class="line">    int64_t off;                         ///&lt; offset</div><div class="line">    size_t rsiz;                         ///&lt; whole size</div><div class="line">    size_t psiz;                         ///&lt; size of the padding</div><div class="line">    size_t ksiz;                         ///&lt; size of the key</div><div class="line">    size_t vsiz;                         ///&lt; size of the value</div><div class="line">    int64_t left;                        ///&lt; address of the left child record</div><div class="line">    int64_t right;                       ///&lt; address of the right child record</div><div class="line">    const char* kbuf;                    ///&lt; pointer to the key</div><div class="line">    const char* vbuf;                    ///&lt; pointer to the value</div><div class="line">    int64_t boff;                        ///&lt; offset of the body</div><div class="line">    char* bbuf;                          ///&lt; buffer of the body</div><div class="line">  &#125;;</div></pre></td></tr></table></figure>
-<p>观察图 5.4 可以知道硬盘上的记录的组织.我从 kchashdb.h 中的 <code>write_record()</code> 方法中派生了这个结构. 注意它和 Record 的结构是不一样的: 使用硬盘的方式的目标是要最小化占用的空间,同时这个结构的目的还要让它在程序上能够便于使用.所有在 图 5.4 中的字段都是固定长度的,除了 <code>key</code> ,<code>value</code> ,还有 <code>padding</code> ,这些数据当然是根据条目里的数据大小来决定的. <code>left</code> 还有 <code>right</code> 字段是这个二叉搜索树节点的一部分,并在文件中保存了其他记录的偏移量.</p>
-<p><img src="../../../Code/Way%20To%20Google/Foundations/Resource/kvstore_hash_kyoto_cabinet_web.jpg" alt="Figure 5.3"></p>
-<p>​                        <strong>Figure 5.3</strong></p>
-<p><img src="../../../Code/Way%20To%20Google/Foundations/Resource/kvstore_hash_kyoto_cabinet_record_web.jpg" alt=""></p>
-<p>​                        <strong>Figure 5.4</strong></p>
-<p>如果我们想要访问key “Paris” 的值,我们将会从获取关联 bucket 初始记录的偏移开始,也就是 bucket #0.接下来我们会跳转到这个bucket 的二叉搜索树的头节点(bucket #0 左边的橙色的箭头),它持有了key “Johannesburg” 的数据. key “Paris” 的数据可以通过这个节点的右子节点来访问(“Johannesburg” 记录右边的黑色箭头).二分查找树需要一个 “可对比” 类型以此来对节点进行分类.这里使用的可以对比的类型是将hash 后的key 通过 <code>fold_hash()</code> 方法简化成一个更小的表示.</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">/* from kyotocabinet-1.2.76/kchashdb.h */ </div><div class="line">uint32_t fold_hash(uint64_t hash) &#123;</div><div class="line">  _assert_(true);</div><div class="line">  return (((hash &amp; 0xffff000000000000ULL) &gt;&gt; 48) | ((hash &amp; 0x0000ffff00000000ULL) &gt;&gt; 16)) ^</div><div class="line">      (((hash &amp; 0x000000000000ffffULL) &lt;&lt; 16) | ((hash &amp; 0x00000000ffff0000ULL) &gt;&gt; 16));</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>将条目和节点存储在一个记录中在一开始可能会看起来像一个设计错误,但是实际上是非常聪明的.为了存储一个条目的数据,通常需要管理3个不同的数据:bucket , 碰撞 ,还有条目.在给定的 bucket 数组中的bucket 必须按照定义顺序存储,它们只能这么存储并且没有什么可以提升的地方.然后假设我们不存储整数类型而是存储字符串或者可变长 byte 的数组之类的无法被存储在 bucket 自身的东西,另一个内存访问将会需要存储到 bucket 数组之外的区域.因此,在添加新的条目的时候,需要存储碰撞的数据结构和条目的键值.</p>
-<p>如果碰撞数据和条目数据是独立存储的,除了需要访问bucket 之外,还需要访问两次硬盘,如果是设置值的情况,这会导致在硬盘上写入3次,可能还是在相隔很远的地方.这意味着磁盘上的随机写入模式,这对于I/O而言是最糟糕的事.现在因为 Kyoto Cabinet 的 HashDB 节点数据和条目数据被存储在了一起,它们可以仅通过一次写入磁盘而不用两次.的确,bucket 还是需要被访问的,但是如果 bucket 数组足够小,它将会被操作系统从磁盘中缓存到 RAM 中,这是 Kyoto Cabinet 最主要的假设,正如 specs 中 “Effective Implementation of Hash Database” 这一章节描述的那样<a href="http://codecapsule.com/2013/05/13/implementing-a-key-value-store-part-5-hash-table-implementations/#ref_" target="_blank" rel="external">[17]</a>.</p>
-<p>然而这里还有一个需要关心的是将二分查找树节点和条目一起保存到磁盘上,这会降低读取的速度,至少是在碰撞开始发生的时候.的确,因为节点和条目存储在了一起,要解决 bucket 中的碰撞就意味着要找到记录中持有有效条目的二分查找树,这会需要在磁盘上进行许多随机的读取.这样就可以更好的理解为什么 Kyoto Cabinet 在条目的数量超过 bucket 的时候会出现这样的性能下降的原因.</p>
-<p>最后,因为所有的东西都被存储在一个文件中,内存管理都是由 Kyoto Cabinet 自己来处理的,并不是像 unordered_map 还有 dense_hash_map 那样交给操作系统来管理.FreeBlock 结构持有了关于文件中空闲空间的信息,基本上是有关与偏移和大小,可以看下面的介绍:</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">/* from kyotocabinet-1.2.76/kchashdb.h */ </div><div class="line">  /**</div><div class="line">   * Free block data.</div><div class="line">   */</div><div class="line">  struct FreeBlock &#123;</div><div class="line">    int64_t off;                         ///&lt; offset</div><div class="line">    size_t rsiz;                         ///&lt; record size</div><div class="line">    /** comparing operator */</div><div class="line">    bool operator &lt;(const FreeBlock&amp; obj) const &#123;</div><div class="line">      _assert_(true);</div><div class="line">      if (rsiz &lt; obj.rsiz) return true;</div><div class="line">      if (rsiz == obj.rsiz &amp;&amp; off &gt; obj.off) return true;</div><div class="line">      return false;</div><div class="line">    &#125;</div><div class="line">  &#125;;</div></pre></td></tr></table></figure>
-<p>所有的 FreeBlock 实例都是在 std::set 中加载的,允许使用 std::set 中的 upper_bound() 方法来检索空闲内存块,就像 <code>fetch_free_block()</code> 方法中那样,调整一个”最适合” 的内存分配策略.当空闲内存块的分布太过碎片化或者在 FreeBlock 池中没有剩余的空间的时候,文件会进行碎片整理.这个碎片整理的过程会移动记录来减小 数据库文件的大小.</p>
-<h2><span id="3-结论">3. 结论</span></h2><p>在这篇文章中,我介绍了三种不同的 hash table 库的数据组织和内存访问模式.  TR1 中的 unordered_map   和 SparseHash 中的 dense_hash_map 是在内存中的,   Kyoto Cabinet  中的 HashDB 是在磁盘上的.这三个实现使用了不同的方式来处理碰撞问题,在性能上也有不同的表现.分离 bucket 数据,碰撞数据还有条目数据将会影响性能,这就是  unordered_map 使用的方法.通过将碰撞数据和bucket 存储到一起可以有效的提高速度,就像dense_hash_map 使用的方式 二次内部探查, 或者像 HashDB 使用的方式一样.这些方案都可以提高写入的速度,但是将碰撞数据和bucket 存储到一起还会提高读取速度.</p>
-<p>还有一件事是我从学习这些哈希表的库的时候明白的,当设计一个哈希表的数据结构的时候,应该优先考虑将碰撞数据和bucket 数据保存在一起,而不是和条目保存在一起.这是因为就算哈希表是在磁盘上的,bucket 数组和碰撞数据也会小到可以存储在RAM中,这样子随机读取会比在磁盘上的消耗少很多.</p>
-<h2><span id="4-references">4. References</span></h2><p>[1] <a href="http://en.wikipedia.org/wiki/Hash_table" target="_blank" rel="external">http://en.wikipedia.org/wiki/Hash_table</a><br>[2] <a href="http://www.amazon.com/Introduction-Algorithms-Thomas-H-Cormen/dp/0262033844/" target="_blank" rel="external">http://www.amazon.com/Introduction-Algorithms-Thomas-H-Cormen/dp/0262033844/</a><br>[3] <a href="http://en.wikipedia.org/wiki/Avalanche_effect" target="_blank" rel="external">http://en.wikipedia.org/wiki/Avalanche_effect</a><br>[4] <a href="http://blog.reverberate.org/2012/01/state-of-hash-functions-2012.html" target="_blank" rel="external">http://blog.reverberate.org/2012/01/state-of-hash-functions-2012.html</a><br>[5] <a href="http://www.strchr.com/hash_functions" target="_blank" rel="external">http://www.strchr.com/hash_functions</a><br>[6] <a href="http://programmers.stackexchange.com/questions/49550/which-hashing-algorithm-is-best-for-uniqueness-and-speed/145633#145633" target="_blank" rel="external">http://programmers.stackexchange.com/questions/49550/which-hashing-algorithm-is-best-for-uniqueness-and-speed/145633#145633</a><br>[7] <a href="http://blog.aggregateknowledge.com/2012/02/02/choosing-a-good-hash-function-part-3/" target="_blank" rel="external">http://blog.aggregateknowledge.com/2012/02/02/choosing-a-good-hash-function-part-3/</a><br>[8] <a href="https://sites.google.com/site/murmurhash/" target="_blank" rel="external">https://sites.google.com/site/murmurhash/</a><br>[9] <a href="http://google-opensource.blogspot.fr/2011/04/introducing-cityhash.html" target="_blank" rel="external">http://google-opensource.blogspot.fr/2011/04/introducing-cityhash.html</a><br>[10] <a href="http://incise.org/hash-table-benchmarks.html" target="_blank" rel="external">http://incise.org/hash-table-benchmarks.html</a><br>[11] <a href="http://preshing.com/20110603/hash-table-performance-tests" target="_blank" rel="external">http://preshing.com/20110603/hash-table-performance-tests</a><br>[12] <a href="http://attractivechaos.wordpress.com/2008/08/28/comparison-of-hash-table-libraries/" target="_blank" rel="external">http://attractivechaos.wordpress.com/2008/08/28/comparison-of-hash-table-libraries/</a><br>[13] <a href="http://attractivechaos.wordpress.com/2008/10/07/another-look-at-my-old-benchmark/" target="_blank" rel="external">http://attractivechaos.wordpress.com/2008/10/07/another-look-at-my-old-benchmark/</a><br>[14] <a href="http://blog.aggregateknowledge.com/2011/11/27/big-memory-part-3-5-google-sparsehash/" target="_blank" rel="external">http://blog.aggregateknowledge.com/2011/11/27/big-memory-part-3-5-google-sparsehash/</a><br>[15] <a href="http://gcc.gnu.org/" target="_blank" rel="external">http://gcc.gnu.org/</a><br>[16] <a href="https://code.google.com/p/sparsehash/" target="_blank" rel="external">https://code.google.com/p/sparsehash/</a><br>[17] <a href="http://fallabs.com/kyotocabinet/spex.html" target="_blank" rel="external">http://fallabs.com/kyotocabinet/spex.html</a><br>[18] <a href="http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2003/n1456.html" target="_blank" rel="external">http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2003/n1456.html</a><br>[19] <a href="http://sparsehash.googlecode.com/svn/trunk/doc/implementation.html" target="_blank" rel="external">http://sparsehash.googlecode.com/svn/trunk/doc/implementation.html</a><br>[20] <a href="http://en.wikipedia.org/wiki/CPU_cache" target="_blank" rel="external">http://en.wikipedia.org/wiki/CPU_cache</a></p>
-<h2><span id="about-me">About Me</span></h2><p>我的博客 <a href="http://leonchen1024.com/" target="_blank" rel="external">leonchen1024.com</a></p>
-<p>我的 GitHub <a href="https://github.com/LeonChen1024" target="_blank" rel="external">https://github.com/LeonChen1024</a></p>
-<p>微信公众号 </p>
-<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/Images/CooderQRcodem.jpg?raw=false" alt="wechat"></p>
- -->
-            <div class="article-entry">
-                    
-                    
-                        
-                            
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                            
-                                
-                                <p><h1><span id="实现键值对存储-第五部分-hash-table-实现">实现键值对存储-第五部分: Hash table 实现</span></h1><p><a href="http://codecapsule.com/2013/05/13/implementing-a-key-value-store-part-5-hash-table-implementations/" target="_blank" rel="external">原文链接</a></p>
-<p>这篇文章是 IKVS 系列的第五部分,”实现一个键值对存储”.你也可以查看 <a href="http://codecapsule.com/2012/11/07/ikvs-implementing-a-key-value-store-table-of-contents/" target="_blank" rel="external">Table of Contents</a>  来查看其他部分.</p>
-<p>在这篇文章中,我将会学习C++中实际的 hash table 来理解它的瓶颈在哪里.Hash 函数是 CPU-密集型的操作应该要进行优化.然而,大多数的 hash table 的机制都只是关注于高效的内存和I/O读取,这也是这篇文章主要的焦点.我将会学习三种不同的 C++中的hash table 的实现,同时包含内存中的和硬盘中的,并且会观察这些数据都是怎么组织和访问的.这篇文章将会包含以下内容.</p>
-<p>[TOC]</p>
-<p><img src="/2019/04/09/Key-Value-pair-in-hashtable/kvstore-part5-intro.jpg" alt="kvstore-part5-intro"></p>
-<p>
-                            
-                        
-                    
-                    
-                        </div>   
-                        <div class="article-more-link">
-                            <a href="/2019/04/09/Key-Value-pair-in-hashtable/#more">Read More</a>
-                        </div>
-                    
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-image">
         <a href="/2019/01/20/LeetCode-8-String-to-Integer/Record-en/" class="image is-7by1">
             <img class="banner" src="/2019/01/20/LeetCode-8-String-to-Integer/Record-cn/title.jpg" alt="LeetCode 8. String to Integer (atoi)">
         </a>
@@ -917,491 +1500,15 @@
 
 
 
-    <div class="card">
-    
-    <div class="card-image">
-        <a href="/2019/01/02/Serializable/" class="image is-7by1">
-            <img class="banner" src="/2019/01/02/Serializable/title.jpg" alt="Serializable">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-01-01T16:00:00.000Z">2019-01-02</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Java/">Java</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Java/SourceCode/">SourceCode</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    11 minutes read (About 1603 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/01/02/Serializable/">Serializable</a>
-            
-        </h1>
-        <div class="content">
-            <!-- <h1><span id="serializable">Serializable</span></h1><p>通过实现 java.io.Serializable 可以让 class 实现序列化的功能，否则无法使用序列化的功能。一个实现序列化的类的子类都是可以进行序列化的。Serializable 接口没有方法，字段等只是一个标记它是可以序列化的作用。</p>
-<p>序列化是指将数据结构或对象状态转换成可取用格式（例如存成文件，存于缓冲，或在网络中传送），并在需要的时候恢复原先状态的过程。</p>
-<p>当子类实现了 Serializable 接口而父类没有实现的时候，父类要有一个可以访问的无参构造函数。</p>
-<p>在反序列化的时候，没有实现序列化的类字段将会使用 public 或者 protect 的无参构造函数进行初始化。无参构造函数必须是实现序列化的子类可访问的，</p>
-<p>如果需要在序列化和反序列化的时候进行一些特殊操作的话，需要自己实现以下某些方法：</p>
-<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">writeObject</span><span class="hljs-params">(java.io.ObjectOutputStream out)</span></span></div><div class="line"><span class="hljs-function">    <span class="hljs-keyword">throws</span> IOException</span></div><div class="line"><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">readObject</span><span class="hljs-params">(java.io.ObjectInputStream in)</span></span></div><div class="line"><span class="hljs-function">    <span class="hljs-keyword">throws</span> IOException, ClassNotFoundException</span>;</div><div class="line"><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">readObjectNoData</span><span class="hljs-params">()</span></span></div><div class="line"><span class="hljs-function">    <span class="hljs-keyword">throws</span> ObjectStreamException</span>;</div></pre></td></tr></table></figure>
-<p>writeObject 方法负责写入指定的类的对象状态来让 readObject 方法可以读取这些状态。可以通过调用 out.defaultWriteObject 方法来使用默认的保存对象字段的机制。</p>
-<p>readObject 方法负责从流中读取并回复类字段。它可能会调用 in.defaultReadObject 方法来默认恢复非静态和非临时(transient)的字段机制。defaultReadObject 方法使用流中的信息来分配流中保存的对象字段到目前的对象相应名字的字段中。这解决了当类已经添加了新的字段时的问题。</p>
-<p>这两个方法不需要考虑它自己的父类或者子类。状态是通过 writeObject 方法将各自的字段写入到 ObjectOutputStream 中，或者通过 DataOutput 提供的方法将私有的数据类型进行保存。</p>
-<p>readObjectNoData 方法负责在当序列化流没有列出指定的类作为反序列化的对象的父类的时候初始化对象的状态。这可能会发生在接收部分使用了一个和发送部分不同版本的反序列化实例的类的时候，还有接收的版本继承的类不是发送版本继承的类的时候。还可能发生在序列化流发生错误的时候。因此，readObjectNoData 方法在”恶意”的或者不完整的流情况下初始化反序列化对象属性是非常有用的。</p>
-<p>Serializable 类需要在写入一个对象到流的时候指定一个替换的对象的话需要用指定的修饰符实现这个方法</p>
-<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ANY-ACCESS-<span class="hljs-function">MODIFIER Object <span class="hljs-title">writeReplace</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> ObjectStreamException</span>;</div></pre></td></tr></table></figure>
-<p>这个 writeReplace 方法如果存在并且它可以被被序列化的对象中定义的方法调用的话，writeReplace 会在序列化的时候被调用。因此，这个方法可以使用 private , protected 或者 package-private修饰。子类的访问权限遵循 Java 的访问规则。</p>
-<p>如果类的实例从流中读取出来的时候需要指定一个替换的类的话应该使用明确的修饰符实现这个方法。</p>
-<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ANY-ACCESS-<span class="hljs-function">MODIFIER Object <span class="hljs-title">readResolve</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> ObjectStreamException</span>;</div></pre></td></tr></table></figure>
-<p>readResolve 方法的调用规则和访问规则和 writeReplace 相同。</p>
-<p>序列化在运行时会关联每一个可以序列化的类的版本数字，名为 serialVersionUID ， 这个 serialVersionUID 会在反序列化的时候使用，主要作用是验证一个序列化对象的发送方和接收方加载的类是兼容的。如果接收方给对象加载的类的 serialVersionUID 和对应的 发送方的类的 serialVersionUID 不同的话，反序列化的时候会导致一个 <a href="">InvalidClassException</a> . 可序列化的类可以通过定义一个静态 final long 字段名为 “serialVersionUID” 声明它自己的 serialVersionUID :</p>
-<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ANY-ACCESS-MODIFIER <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">long</span> serialVersionUID = <span class="hljs-number">42L</span>;</div></pre></td></tr></table></figure>
-<p>如果可序列化的类没有明确的定义一个 serialVersionUID ，那么运行时序列化将会如Java(TM)对象序列化规范所描述的那样依据类的多个方面计算出一个默认的 serialVersionUID 值。尽管如此，官方还是强烈推荐所有的可序列化类明确的定义 serialVersionUID 值，因为默认的 serialVersionUID 计算对类的细节是高度敏感的，会依据编译器的实现而变动，可能会在反序列化时导致预期之外的 InvalidClassException 异常。因此，为了确保在不同的 Java 编译器实现中保持 serialVersionUID 不变，可序列化的类必须明确定义一个 serialVersionUID 值。官方还强烈推荐尽可能使用 private 来修饰 serialVersionUID  定义，因为这样的声明只适用于当前的类，而不会影响那些继承他的类。Array 类不能显式的声明 serialVersionUID ，所以它们总是使用默认计算的值，但是 Array 类不需要比对 serialVersionUID 。</p>
-<p>Android 实现的 serialVersionUID 计算方式在 Android N 上会有一些轻微的不同。为了保持兼容性，这个改变只有在应用的目标  SDK 版本设置为 24 或者更高的时候才会可用。强烈推荐使用显式的 serialVersionUID 字段来避免兼容性问题。</p>
-<p>谨慎的实现 Serializable<br>参考 《Effective Java》中对于序列化 API 覆盖的章节。书中介绍了如何在不影响应用程序的可维护性的前提下使用这个接口。</p>
-<p>推荐另一个可行的方法<br>JSON 是一种简明，可读性高并且高效的方式。Android 包含了 android.util.JsonReader 流 API 和 org.json.JSONObject 树 API 来对 JSON 进行读写。也可以使用绑定库比如 <a href="http://code.google.com/p/google-gson/" target="_blank" rel="external">GSON</a> 来更直接的读写 Java 对象。</p>
-<h2><span id="reference">Reference</span></h2><p><a href="https://docs.oracle.com/javase/7/docs/api/java/io/Serializable.html" target="_blank" rel="external">https://docs.oracle.com/javase/7/docs/api/java/io/Serializable.html</a></p>
-<h2><span id="about-me">About Me</span></h2><p>我的博客 <a href="http://leonchen1024.com/" target="_blank" rel="external">leonchen1024.com</a></p>
-<p>我的 GitHub <a href="https://github.com/LeonChen1024" target="_blank" rel="external">https://github.com/LeonChen1024</a></p>
-<p>微信公众号 </p>
-<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/Images/CooderQRcodem.jpg?raw=false" alt="wechat"></p>
- -->
-            <div class="article-entry">
-                    
-                    
-                        
-                            
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                            
-                                
-                                <p><h1><span id="serializable">Serializable</span></h1><p>通过实现 java.io.Serializable 可以让 class 实现序列化的功能，否则无法使用序列化的功能。一个实现序列化的类的子类都是可以进行序列化的。Serializable 接口没有方法，字段等只是一个标记它是可以序列化的作用。</p>
-<p>序列化是指将数据结构或对象状态转换成可取用格式（例如存成文件，存于缓冲，或在网络中传送），并在需要的时候恢复原先状态的过程。</p>
-<p>当子类实现了 Serializable 接口而父类没有实现的时候，父类要有一个可以访问的无参构造函数。</p>
-<p>在反序列化的时候，没有实现序列化的类字段将会使用 public 或者 protect 的无参构造函数进行初始化。无参构造函数必须是实现序列化的子类可访问的，</p>
-<p>如果需要在序列化和反序列化的时候进行一些特殊操作的话，需要自己实现以下某些方法：</p>
-<p>
-                            
-                        
-                    
-                    
-                        </div>   
-                        <div class="article-more-link">
-                            <a href="/2019/01/02/Serializable/#more">Read More</a>
-                        </div>
-                    
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-image">
-        <a href="/2018/12/23/S1ep1-The-macgic-of-LRU-Cache/" class="image is-7by1">
-            <img class="banner" src="/2018/12/23/S1ep1-The-macgic-of-LRU-Cache/title.jpg" alt="LRU 缓存的魔力">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2018-12-22T16:00:00.000Z">2018-12-23</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Android/Android-Performance-pattern/">Android Performance pattern</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    6 minutes read (About 930 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2018/12/23/S1ep1-The-macgic-of-LRU-Cache/">LRU 缓存的魔力</a>
-            
-        </h1>
-        <div class="content">
-            <!-- <h1><span id="lru-缓存的魔力">LRU 缓存的魔力</span></h1><h2><span id="场景">场景</span></h2><p>假设这么一个情况,当你需要多次展示同一个图片的时候,如果你重复从硬盘中加载图片的话,那么会造成资源的浪费,甚至可能会OOM.</p>
-<p>这个时候我们可以使用 cache 来避免这种情况,我们只从硬盘中加载一次到内存中,然后在需要的时候反复使用这个照片.</p>
-<p>但是,当这个 cache 里的资源已经装满的时候,那么我们就必须移除cache里面的某些数据,来给要加入的数据腾出空间.</p>
-<h2><span id="解决方案">解决方案</span></h2><p>在这种情况下,我们应该选择移除哪些资源才是最有优的呢?显而易见的,我们应该移除之后不会用到的资源,还有就是间隔最久才会用到的资源.这里有一个详细的最优算法如下:<br>$$<br>T = m * T_m + T_h + E<br>$$<br>其中:</p>
-<p>T = 平均内存引用时间</p>
-<p>m = 没选中的概率 = 1 - (选中的概率)</p>
-<p> T_m  = 当没选中的时候主内存访问的时间(或者,如果是多级缓存的时候,还要算上更低级的缓存内存引用时间的平均值)</p>
-<p> T_h  = 延迟 : 当选中该资源的时候缓存引用的时间</p>
-<p>E = 各种副作用,比如多处理器系统中的 排队效应</p>
-<h3><span id="lru">LRU</span></h3><p>要得到一个完美的方法是很复杂的,这里我们介绍一个常用的算法,叫做 LRU cache (least recently used),它的原理很简单,就是把使用的元素提到队列的开始,这样最近使用的资源将会在开始的地方,而那些长期未被使用的资源将会在后面,然后当空间不够的时候将会从后面开始释放资源.LRU 的思路是最近使用的资源他们就推测他在未来也有更大的可能性会被使用.</p>
-<p>LRU 并不是一个普通的容器.他需要一些策略来实现他的要求.</p>
-<ul>
-<li>LruCache 由键值对组成 , 形如 LruCache<key,value></key,value></li>
-<li><p>它需要有一个最大值,要注意它的取值,太小的话那么缓存不了多少东西,会导致频繁的重新读取,导致失去缓存的意义,太大的话可能会导致 oom.所以最好是根据你的应用当前可用的内存来决定这个大小.</p>
-</li>
-<li><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-comment">//set the max memory used by lru</span></div><div class="line"></div><div class="line">ActivityManager am = (ActivityManager)getSystemService(Context.ACTIVITY_SERVICE);</div><div class="line"><span class="hljs-keyword">int</span> availMemInBytes = am.getMemoryClass() * <span class="hljs-number">1024</span> * <span class="hljs-number">1024</span>;</div><div class="line"><span class="hljs-comment">//8 is a common value , we can twist it by how much memory can we app used,</span></div><div class="line"><span class="hljs-comment">//and what kind of the phone we run on.</span></div><div class="line">LruCache bitmapCache = <span class="hljs-keyword">new</span> LruCache&lt;String,Bitmap&gt;(availMemInBytes / <span class="hljs-number">8</span>);</div></pre></td></tr></table></figure>
-<p>其中 8 是一个比较通用的值,当然你可以根据你的应用所占用的内存来进行调整,还有运行的机型的限制等.</p>
-</li>
-</ul>
-<ul>
-<li><p>我们还需要知道里面存储的每一个对象的值的大小.比如我们可以</p>
-<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Public <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ThumbnailCache</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">LruCache</span>&lt;<span class="hljs-title">String</span>,<span class="hljs-title">Bitmap</span>&gt;</span>&#123;</div><div class="line">    <span class="hljs-meta">@Override</span></div><div class="line">    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">int</span> <span class="hljs-title">sizeOf</span><span class="hljs-params">(String key,Bitmap value)</span></span>&#123;</div><div class="line">        <span class="hljs-comment">//return the size of the in-memory bitmap,</span></div><div class="line">        <span class="hljs-comment">//counted against maxSizeBytes</span></div><div class="line">        <span class="hljs-keyword">return</span> value.getByteCount();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>当我们从 LruCache 中获取数据的时候,需要对数据已经被回收或者没有进入过缓存的情况做处理.</p>
-<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-comment">// get data from Lru and put data to Lru</span></div><div class="line"></div><div class="line">Bitmap bmpToDraw = mCache.get(filename);</div><div class="line"><span class="hljs-keyword">if</span>(bmpToDraw == <span class="hljs-keyword">null</span>)&#123;</div><div class="line">    bmpToDraw = BitmapFactory.decodeFile(filename);</div><div class="line">    mCache.put(filename,bmpToDraw);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>还要注意的一点是,当你存进一个较大的对象的时候,有时候 LruCache 会同时清理多个资源来给这个对象腾出位置.</p>
-<h2><span id="resource">Resource</span></h2><p><a href="https://www.youtube.com/playlist?list=PLWz5rJ2EKKc9CBxr3BVjPTPoDPLdPIFCE" target="_blank" rel="external">https://www.youtube.com/playlist?list=PLWz5rJ2EKKc9CBxr3BVjPTPoDPLdPIFCE</a></p>
-<h2><span id="about-me">About Me</span></h2><p>我的博客 <a href="http://leonchen1024.com/" target="_blank" rel="external">leonchen1024.com</a></p>
-<p>我的 GitHub <a href="https://github.com/LeonChen1024" target="_blank" rel="external">https://github.com/LeonChen1024</a></p>
-<p>微信公众号 </p>
-<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/Images/CooderQRcodem.jpg?raw=false" alt="wechat"></p>
- -->
-            <div class="article-entry">
-                    
-                    
-                        
-                            
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                            
-                                
-                                <p><h1><span id="lru-缓存的魔力">LRU 缓存的魔力</span></h1><h2><span id="场景">场景</span></h2><p>假设这么一个情况,当你需要多次展示同一个图片的时候,如果你重复从硬盘中加载图片的话,那么会造成资源的浪费,甚至可能会OOM.</p>
-<p>这个时候我们可以使用 cache 来避免这种情况,我们只从硬盘中加载一次到内存中,然后在需要的时候反复使用这个照片.</p>
-<p>但是,当这个 cache 里的资源已经装满的时候,那么我们就必须移除cache里面的某些数据,来给要加入的数据腾出空间.</p>
-<h2><span id="解决方案">解决方案</span></h2><p>在这种情况下,我们应该选择移除哪些资源才是最有优的呢?显而易见的,我们应该移除之后不会用到的资源,还有就是间隔最久才会用到的资源.这里有一个详细的最优算法如下:<br>$$<br>T = m * T_m + T_h + E<br>$$<br>其中:</p>
-<p>T = 平均内存引用时间</p>
-<p>
-                            
-                        
-                    
-                    
-                        </div>   
-                        <div class="article-more-link">
-                            <a href="/2018/12/23/S1ep1-The-macgic-of-LRU-Cache/#more">Read More</a>
-                        </div>
-                    
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-image">
-        <a href="/2018/12/03/Greedy-Algorithm/" class="image is-7by1">
-            <img class="banner" src="/2018/12/03/Greedy-Algorithm/title.jpg" alt="贪婪算法">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2018-12-02T16:00:00.000Z">2018-12-03</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Algorithm/">Algorithm</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Algorithm/Common/">Common</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    12 minutes read (About 1789 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2018/12/03/Greedy-Algorithm/">贪婪算法</a>
-            
-        </h1>
-        <div class="content">
-            <!-- <h1><span id="贪婪算法">贪婪算法</span></h1><p>[TOC]</p>
-<p>贪婪算法(Greedy Algorithm)也叫算贪心法,贪婪法.它是一个遵循启发式解决问题的算法范式.它的核心思想就是通过在每一步的选择中都选用当前步骤下最优的选择,期望结果是最优的算法.如 <a href="https://zh.wikipedia.org/wiki/%E6%97%85%E8%A1%8C%E6%8E%A8%E9%94%80%E5%91%98%E9%97%AE%E9%A2%98" target="_blank" rel="external">旅行推销员问题</a>.</p>
-<p>贪婪算法尤其适用于有最优子结构的问题中,最优子结构的意思是局部的最优解可以导出全局的最优解.贪婪算法与<a href="https://zh.wikipedia.org/wiki/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92" target="_blank" rel="external">动态规划</a> 的不同在于贪婪算法对每一个子问题都作出选择,不能回退;动态规划则会保存以前的运算结果,根据以前的结果对当前进行选择,可以回退.</p>
-<p>贪婪算法可以解决一些<a href="https://zh.wikipedia.org/wiki/%E6%9C%80%E4%BC%98%E5%8C%96" target="_blank" rel="external">最优化</a>(如最大值最小值等)问题,比如求图中的<a href="https://zh.wikipedia.org/wiki/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91" target="_blank" rel="external">最小生成树</a>、求<a href="https://zh.wikipedia.org/wiki/%E5%93%88%E5%A4%AB%E6%9B%BC%E7%BC%96%E7%A0%81" target="_blank" rel="external">哈夫曼编码</a>…其他大多数的情况都不适用贪婪算法,一旦一个问题可以使用贪婪算法来解决,那么贪婪算法一般是解决这个问题的最好办法.由于贪婪算法的高效性以及其答案比较接近最有结果,也可以作为辅助算法或直接解决一些结果要求不那么精确的问题.</p>
-<h2><span id="原理">原理</span></h2><h3><span id="步骤">步骤</span></h3><ol>
-<li><p>建立数学模型来描述问题,并建立一个备选答案区</p>
-</li>
-<li><p>把求解的问题分成若干个子问题,</p>
-</li>
-<li><p>使用一个选择函数对每个子问题求解最优解,并判断是否可用于整体问题</p>
-</li>
-<li><p>把所有子问题的最优解合成一个整的解</p>
-</li>
-</ol>
-<h3><span id="适用情况">适用情况</span></h3><p>贪婪算法适用于一些数学问题等,大部分适用的问题都有两个特点:</p>
-<h4><span id="greedy-choice-property-贪婪选择的属性">Greedy choice property (贪婪选择的属性)</span></h4><p>我们可以在每个子问题找出最好的选择然后进行总结.贪婪算法可能会根据迄今为止已经做的选择进行计算,但是却不会考虑之后子问题的选择.它将一个大的问题分解成小的问题并一个一个进行迭代计算.换句话说,贪婪算法不会重新考虑它已经得出的选择.这是它和  <a href="https://en.wikipedia.org/wiki/Dynamic_programming" target="_blank" rel="external">dynamic programming</a> 的主要区别,动态规划会详尽的计算并确保得到最优解,在一步之后,动态规划会根据之前所有得到的选择进行下一个选择,并可能会重新对之前步骤的算法路径进行修改.</p>
-<h4><span id="optimal-substructure-最优子结构">Optimal substructure (最优子结构)</span></h4><p>这个问题要包含<a href="https://en.wikipedia.org/wiki/Optimal_substructure" target="_blank" rel="external">optimal substructure</a>(即这个问题的最优解包含了它的子问题的最优解)</p>
-<p>如以下几种类型的问题</p>
-<h4><span id="matroids-拟阵">Matroids (拟阵)</span></h4><p><a href="https://en.wikipedia.org/wiki/Matroid" target="_blank" rel="external">matroid</a>(拟阵) 是一个数学上的结构,它将<a href="https://en.wikipedia.org/wiki/Linear_independence" target="_blank" rel="external">linear independence</a> (线性无关)的概念从 <a href="https://en.wikipedia.org/wiki/Vector_spaces" target="_blank" rel="external">vector spaces</a> (向量空间)推广到了任意的集合.如果一个最优解问题有一个拟阵结构,那么贪婪算法是最佳的解决办法.</p>
-<h4><span id="submodular-functions子模块函数">(子模块函数)</span></h4><p>一个函数 $f$ 定义了当集合 $\Omega$ 的所有子集合 $S,T \subseteq \Omega$ 都满足 $f(S)+f(T)\geq f(S\cup T)+f(S\cap T)$ 的情况即为子模块. </p>
-<p>假设有人想要找到一个集合 $S$ 使得函数 $f$ 最大.贪婪算法将会通过逐个添加在每一步中使得 $f$ 增加最多的元素,产生一个结果至少是  $(1-1/e)\max _{X\subseteq \Omega }f(X)$ ??todo. 所以,贪婪算法至少得出最优解的 $(1-1/e) \approx 0.63$倍的解. </p>
-<h4><span id="其他一些相对可以使用的问题">其他一些相对可以使用的问题</span></h4><ul>
-<li><a href="https://en.wikipedia.org/wiki/Set_cover_problem#Greedy_algorithm" target="_blank" rel="external">集合覆盖问题 Set cover</a></li>
-<li>The <a href="https://en.wikipedia.org/wiki/Steiner_tree_problem" target="_blank" rel="external">Steiner tree problem</a></li>
-<li><a href="https://en.wikipedia.org/wiki/Load_balancing_(computing" target="_blank" rel="external">负载均衡 Load balancing</a>)<a href="https://en.wikipedia.org/wiki/Greedy_algorithm#cite_note-9" target="_blank" rel="external">[9]</a></li>
-<li><a href="https://en.wikipedia.org/wiki/Independent_set_(graph_theory" target="_blank" rel="external">独立集 Independent set</a>#Approximation_algorithms)</li>
-</ul>
-<p>这些问题也可以使用贪婪算法,但不是最好的解法,他们在最差的情况下,可能会得到很差的结果. </p>
-<h3><span id="失败的情况">失败的情况</span></h3><p>在很多其他问题上,贪婪算法无法产生最优解,甚至可能产生一个最坏的解决方案.比如之前提到的  <a href="https://en.wikipedia.org/wiki/Traveling_salesman_problem" target="_blank" rel="external">traveling salesman problem</a> :对每一个城市都要计算一个最近的邻居,这种方式可能会产生一个最坏的路程.</p>
-<p>比如下图,贪婪算法只考虑到下一步的最优解,但是却没有考虑到之后的解决方案,导致实际上得出的不是一个最优解.</p>
-<p><img src="/2018/12/03/Greedy-Algorithm/Greedy-search-path-example.gif" alt="Greedy-search-path-example"></p>
-<h2><span id="application">Application</span></h2><p>贪婪法基本上（但并不是一定）不适用于求全局最优解，因为他通常没有遍历所有的数据。他们太早给出了肯定的选择使得他们无法从所有的解法中找到最优解。比如，使用 <a href="https://en.wikipedia.org/wiki/Greedy_coloring" target="_blank" rel="external">greedy coloring</a> 算法来解决  <a href="https://en.wikipedia.org/wiki/Graph_coloring_problem" target="_blank" rel="external">graph coloring problem</a> 以及所有的  <a href="https://en.wikipedia.org/wiki/NP-complete" target="_blank" rel="external">NP-complete</a> 问题。尽管如此，贪婪法还是很有用的，因为他们容易被考虑到并且通常情况下会给出一个比较好的解法。</p>
-<p>如果一个贪婪算法可以被证明是某个问题的全局最优解法，他通常情况下就会成为优先选择的方法，因为它比其他的最优解方法如 <a href="https://en.wikipedia.org/wiki/Dynamic_programming" target="_blank" rel="external">dynamic programming</a> 要快。这种例子有使用  <a href="https://en.wikipedia.org/wiki/Kruskal%27s_algorithm" target="_blank" rel="external">Kruskal’s algorithm</a> 和 <a href="https://en.wikipedia.org/wiki/Prim%27s_algorithm" target="_blank" rel="external">Prim’s algorithm</a> 找到<a href="https://en.wikipedia.org/wiki/Minimum_spanning_tree" target="_blank" rel="external">minimum spanning trees</a>,还有找到最优  <a href="https://en.wikipedia.org/wiki/Huffman_tree" target="_blank" rel="external">Huffman trees</a>.</p>
-<p>贪心法也使用于 网络 <a href="https://en.wikipedia.org/wiki/Routing" target="_blank" rel="external">路由</a> 中。使用贪心路由，消息会被发送到距离目标节点“最近”的相邻节点。一个节点位置的定义（还有“最近”的含义）也许会取决于它的物理位置，如同在 <a href="https://en.wikipedia.org/wiki/Ad_hoc_network" target="_blank" rel="external">ad hoc networks</a> 中使用  <a href="https://en.wikipedia.org/wiki/Geographic_routing" target="_blank" rel="external">geographic routing</a> . 位置也可能会使一个人造的结构如同在  <a href="https://en.wikipedia.org/wiki/Small_world_routing" target="_blank" rel="external">small world routing</a> 和 <a href="https://en.wikipedia.org/wiki/Distributed_hash_table" target="_blank" rel="external">distributed hash table</a> 中.</p>
-<h2><span id="reference">Reference</span></h2><p><a href="https://en.wikipedia.org/wiki/Greedy_algorithm" target="_blank" rel="external">https://en.wikipedia.org/wiki/Greedy_algorithm</a></p>
-<h2><span id="about-me">About Me</span></h2><p>我的博客 <a href="http://leonchen1024.com/" target="_blank" rel="external">leonchen1024.com</a></p>
-<p>我的 GitHub <a href="https://github.com/LeonChen1024" target="_blank" rel="external">https://github.com/LeonChen1024</a></p>
-<p>微信公众号 </p>
-<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/Images/CooderQRcodem.jpg?raw=false" alt="wechat"></p>
- -->
-            <div class="article-entry">
-                    
-                    
-                        
-                            
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                            
-                                
-                                <p><h1><span id="贪婪算法">贪婪算法</span></h1><p>[TOC]</p>
-<p>贪婪算法(Greedy Algorithm)也叫算贪心法,贪婪法.它是一个遵循启发式解决问题的算法范式.它的核心思想就是通过在每一步的选择中都选用当前步骤下最优的选择,期望结果是最优的算法.如 <a href="https://zh.wikipedia.org/wiki/%E6%97%85%E8%A1%8C%E6%8E%A8%E9%94%80%E5%91%98%E9%97%AE%E9%A2%98" target="_blank" rel="external">旅行推销员问题</a>.</p>
-<p>贪婪算法尤其适用于有最优子结构的问题中,最优子结构的意思是局部的最优解可以导出全局的最优解.贪婪算法与<a href="https://zh.wikipedia.org/wiki/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92" target="_blank" rel="external">动态规划</a> 的不同在于贪婪算法对每一个子问题都作出选择,不能回退;动态规划则会保存以前的运算结果,根据以前的结果对当前进行选择,可以回退.</p>
-<p>贪婪算法可以解决一些<a href="https://zh.wikipedia.org/wiki/%E6%9C%80%E4%BC%98%E5%8C%96" target="_blank" rel="external">最优化</a>(如最大值最小值等)问题,比如求图中的<a href="https://zh.wikipedia.org/wiki/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91" target="_blank" rel="external">最小生成树</a>、求<a href="https://zh.wikipedia.org/wiki/%E5%93%88%E5%A4%AB%E6%9B%BC%E7%BC%96%E7%A0%81" target="_blank" rel="external">哈夫曼编码</a>…其他大多数的情况都不适用贪婪算法,一旦一个问题可以使用贪婪算法来解决,那么贪婪算法一般是解决这个问题的最好办法.由于贪婪算法的高效性以及其答案比较接近最有结果,也可以作为辅助算法或直接解决一些结果要求不那么精确的问题.</p>
-<h2><span id="原理">原理</span></h2><h3><span id="步骤">步骤</span></h3><ol>
-<p>
-                            
-                        
-                    
-                    
-                        </div>   
-                        <div class="article-more-link">
-                            <a href="/2018/12/03/Greedy-Algorithm/#more">Read More</a>
-                        </div>
-                    
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-image">
-        <a href="/2018/12/02/7-Reverse-Integer/Record-cn/" class="image is-7by1">
-            <img class="banner" src="/2018/12/02/7-Reverse-Integer/Record-cn/title.jpg" alt="LeetCode 7. 数字反转">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2018-12-01T16:00:00.000Z">2018-12-02</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Algorithm/">Algorithm</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Algorithm/LeetCode/">LeetCode</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    6 minutes read (About 827 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2018/12/02/7-Reverse-Integer/Record-cn/">LeetCode 7. 数字反转</a>
-            
-        </h1>
-        <div class="content">
-            <!-- <p>[Chinese ver]</p>
-<h1><span id="7-reverse-integer">7. Reverse Integer</span></h1><p>颠倒一个 integer 的前后位数。</p>
-<p>例子: x = 123, return 321<br>例子: x = -123, return -321</p>
-<p>注意：<br>输入是一个32位的有符号 integer . 当颠倒的 interger 溢出的时候你的函数应该返回0。</p>
-<hr>
-<p>提示</p>
-<p>你是否注意到了这些？<br>在你编程之前你应该先想想这些问题。如果你已经考虑到了这些那是很加分的！</p>
-<p>如果 integer 的最后一位是0，应该输出什么？比如，10，100.</p>
-<p>你是否注意到了颠倒的 integer 可能会溢出？假设输入是一个 32位的 integer ，那么1000000003的颠倒溢出了。你该怎么处理这种情况？</p>
-<p>为了解决这个问题，假设你的函数当颠倒的 integer 溢出的话返回0.</p>
-<hr>
-<h3><span id="方法一-使用stringbuilder">方法一 使用StringBuilder：</span></h3><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</div><div class="line"></div><div class="line">	    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">reverse</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123;</div><div class="line">          <span class="hljs-comment">//judge x is negative or not</span></div><div class="line">	        <span class="hljs-keyword">boolean</span> isNegative = <span class="hljs-keyword">false</span>;</div><div class="line">	        <span class="hljs-keyword">int</span> result =<span class="hljs-number">0</span>;</div><div class="line">	        <span class="hljs-keyword">if</span> (x&lt;<span class="hljs-number">0</span>)&#123;</div><div class="line">	            isNegative = <span class="hljs-keyword">true</span>;</div><div class="line">	            x = Math.abs(x);</div><div class="line">	        &#125;</div><div class="line"></div><div class="line">	        StringBuilder oldSB = <span class="hljs-keyword">new</span> StringBuilder(String.valueOf(x));</div><div class="line">	        StringBuilder newSB = <span class="hljs-keyword">new</span> StringBuilder();</div><div class="line">          <span class="hljs-comment">//reverse the x use StringBuilder</span></div><div class="line">	        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;i &lt; oldSB.length() ; i++)&#123;</div><div class="line">	            newSB.append(oldSB.charAt(oldSB.length()-i-<span class="hljs-number">1</span>));</div><div class="line">	        &#125;</div><div class="line"></div><div class="line">	        <span class="hljs-keyword">try</span>&#123;</div><div class="line">	            result = Integer.valueOf(newSB.toString());</div><div class="line">	        &#125;</div><div class="line">	        <span class="hljs-keyword">catch</span>(Exception e)&#123;</div><div class="line">              <span class="hljs-comment">//if overflows return the result 0</span></div><div class="line">	            <span class="hljs-keyword">return</span> result;</div><div class="line">	        &#125;</div><div class="line">	        <span class="hljs-keyword">if</span> (isNegative)&#123;</div><div class="line">	            result = -result;</div><div class="line">	        &#125;</div><div class="line"></div><div class="line">	        <span class="hljs-keyword">return</span> result;</div><div class="line">	    &#125;</div><div class="line">	&#125;</div></pre></td></tr></table></figure>
-<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/7.%20Reverse%20Integer/Images/StringBuilderResult.png?raw=true" alt="效率"></p>
-<p><strong>分析</strong><br>这个方法使用StringBuilder 将 Integer 转换成正数进行颠倒的操作，使用 try catch 来处理溢出的情况。如果输入是负数，最后的结果在转为负数。<br>时间复杂度 ： O(n) 。n是输入的位数<br>空间复杂度 ： O(1) .</p>
-<h3><span id="方法二-使用int">方法二 使用int：</span></h3><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution1</span> </span>&#123;</div><div class="line">   <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">reverse</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span></span></div><div class="line"><span class="hljs-function">	</span>&#123;</div><div class="line">	    <span class="hljs-keyword">int</span> result = <span class="hljs-number">0</span>;</div><div class="line"></div><div class="line">	    <span class="hljs-keyword">while</span> (x != <span class="hljs-number">0</span>)</div><div class="line">	    &#123;</div><div class="line">          <span class="hljs-comment">//get the last digit of the x.</span></div><div class="line">	        <span class="hljs-keyword">int</span> tail = x % <span class="hljs-number">10</span>;</div><div class="line">          <span class="hljs-comment">//add a digit in the end of the newResult ,and update the newResult's last digit</span></div><div class="line">	        <span class="hljs-keyword">int</span> newResult = result * <span class="hljs-number">10</span> + tail;</div><div class="line">          <span class="hljs-comment">//judge if newResult is overflows</span></div><div class="line">	        <span class="hljs-keyword">if</span> ((newResult - tail) / <span class="hljs-number">10</span> != result)</div><div class="line">	        &#123; <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>; &#125;</div><div class="line">	        result = newResult;</div><div class="line">          <span class="hljs-comment">//remove the last digit of x</span></div><div class="line">	        x = x / <span class="hljs-number">10</span>;</div><div class="line">	    &#125;</div><div class="line"></div><div class="line">	    <span class="hljs-keyword">return</span> result;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>或者</p>
-<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution2</span> </span>&#123;</div><div class="line">  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">reverse</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123;</div><div class="line">        <span class="hljs-keyword">long</span> rev= <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-keyword">while</span>( x != <span class="hljs-number">0</span>)&#123;</div><div class="line">            <span class="hljs-comment">//add a digit in the end of the newResult ,and update the newResult's last digit</span></div><div class="line">            rev= rev*<span class="hljs-number">10</span> + x % <span class="hljs-number">10</span>;</div><div class="line">            <span class="hljs-comment">//remove the last digit of x</span></div><div class="line">            x= x/<span class="hljs-number">10</span>;</div><div class="line">            <span class="hljs-comment">//judge if newResult is overflows</span></div><div class="line">            <span class="hljs-keyword">if</span>( rev &gt; Integer.MAX_VALUE || rev &lt; Integer.MIN_VALUE)</div><div class="line">                <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="hljs-keyword">return</span> (<span class="hljs-keyword">int</span>) rev;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/7.%20Reverse%20Integer/Images/IntResult.png?raw=true" alt="效率"></p>
-<p><strong>分析</strong><br>这两个方法的原理都是一样的，通过将输入的x%10取余数得到最后一位数的值，然后使用 result*10 将result 增加一位并将最后一位更新为余数值，然后更新x为x/10。<br>这两个方法不同的地方是判断溢出的方法，Solution1 在更新 result 之后将新的 result 去掉最后一位和旧的 result 进行比较，看是否一致来判断是否溢出。Solution2 则是将新的 result 和 Integer 的临界值进行比较来判断是否溢出，要注意的是 Solution2 里的 long rev= 0; 一定不能使用 Integer ，因为一旦 Integer 溢出了 rev 就会被自动处理溢出，所以  rev &gt; Integer.MAX_VALUE || rev &lt; Integer.MIN_VALUE 永远不会为true。</p>
-<p>时间复杂度 ： O(n) 。n是输入的位数<br>空间复杂度 ： O(1) .</p>
-<p>如果你有更好的办法或者对我这里的描述有其他看法，请联系我。谢谢</p>
-<h2><span id="about-me">About Me</span></h2><p>我的博客 <a href="http://leonchen1024.com/" target="_blank" rel="external">leonchen1024.com</a></p>
-<p>我的 GitHub <a href="https://github.com/LeonChen1024" target="_blank" rel="external">https://github.com/LeonChen1024</a></p>
-<p>微信公众号 </p>
-<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/Images/CooderQRcodem.jpg?raw=false" alt="wechat"></p>
- -->
-            <div class="article-entry">
-                    
-                    
-                        
-                            
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                            
-                                
-                                <p><p>[Chinese ver]</p>
-<h1><span id="7-reverse-integer">7. Reverse Integer</span></h1><p>颠倒一个 integer 的前后位数。</p>
-<p>例子: x = 123, return 321<br>例子: x = -123, return -321</p>
-<p>注意：<br>输入是一个32位的有符号 integer . 当颠倒的 interger 溢出的时候你的函数应该返回0。</p>
-<hr>
-<p>
-                            
-                        
-                    
-                    
-                        </div>   
-                        <div class="article-more-link">
-                            <a href="/2018/12/02/7-Reverse-Integer/Record-cn/#more">Read More</a>
-                        </div>
-                    
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
     <nav class="pagination is-centered" role="navigation" aria-label="pagination">
         <div class="pagination-previous">
-            <a class="is-flex-grow has-text-black-ter" href="/">Anterior</a>
+            <a class="is-flex-grow has-text-black-ter" href="/">Previous</a>
         </div>
         <div class="pagination-next">
-            <a class="is-flex-grow has-text-black-ter" href="/page/3/">Siguiente</a>
+            <a class="is-flex-grow has-text-black-ter" href="/page/3/">Next</a>
         </div>
         <ul class="pagination-list is-hidden-mobile">
             
@@ -1412,6 +1519,8 @@
             <li><a class="pagination-link has-text-black-ter" href="/page/3/">3</a></li>
             
             <li><a class="pagination-link has-text-black-ter" href="/page/4/">4</a></li>
+            
+            <li><a class="pagination-link has-text-black-ter" href="/page/5/">5</a></li>
             
         </ul>
     </nav>
@@ -1456,37 +1565,37 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Entradas
+                        Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        40
+                        42
                     </p>
                 </div>
             </div>
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categorias
+                        Categories
                     </p>
                     <p class="title has-text-weight-normal">
-                        20
+                        22
                     </p>
                 </div>
             </div>
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Etiquetas
+                        Tags
                     </p>
                     <p class="title has-text-weight-normal">
-                        17
+                        18
                     </p>
                 </div>
             </div>
         </nav>
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://github.com/LeonChen1024">
-                SEGUIR</a>
+                Follow</a>
         </div>
         
         
@@ -1515,7 +1624,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categorias
+                Categories
             </h3>
             <ul class="menu-list">
             <li>
@@ -1524,7 +1633,7 @@
                 <span class="level-item">Chinese</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">31</span>
+                <span class="level-item tag">33</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="undefined">
@@ -1549,6 +1658,14 @@
             </span>
             <span class="level-end">
                 <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="undefined">
+            <span class="level-start">
+                <span class="level-item">DesignPattern</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="undefined">
@@ -1592,9 +1709,9 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Nube de etiquetas
+            Tag Cloud
         </h3>
-        <a href="/tags/Algorithm/" style="font-size: 18.75px;">Algorithm</a> <a href="/tags/Android/" style="font-size: 16.25px;">Android</a> <a href="/tags/Chinese/" style="font-size: 20px;">Chinese</a> <a href="/tags/Custom-View/" style="font-size: 10px;">Custom View</a> <a href="/tags/Data-Structure/" style="font-size: 10px;">Data Structure</a> <a href="/tags/DataStructure/" style="font-size: 10px;">DataStructure</a> <a href="/tags/English/" style="font-size: 15px;">English</a> <a href="/tags/Error/" style="font-size: 10px;">Error</a> <a href="/tags/Gradle/" style="font-size: 11.25px;">Gradle</a> <a href="/tags/Java/" style="font-size: 12.5px;">Java</a> <a href="/tags/Jetpack/" style="font-size: 11.25px;">Jetpack</a> <a href="/tags/LeetCode/" style="font-size: 17.5px;">LeetCode</a> <a href="/tags/Optimize/" style="font-size: 13.75px;">Optimize</a> <a href="/tags/SourceCode/" style="font-size: 10px;">SourceCode</a> <a href="/tags/UI/" style="font-size: 10px;">UI</a> <a href="/tags/版本差异/" style="font-size: 11.25px;">版本差异</a> <a href="/tags/版本管理/" style="font-size: 12.5px;">版本管理</a>
+        <a href="/tags/Algorithm/" style="font-size: 18.75px;">Algorithm</a> <a href="/tags/Android/" style="font-size: 16.25px;">Android</a> <a href="/tags/Chinese/" style="font-size: 20px;">Chinese</a> <a href="/tags/Custom-View/" style="font-size: 10px;">Custom View</a> <a href="/tags/Data-Structure/" style="font-size: 10px;">Data Structure</a> <a href="/tags/DataStructure/" style="font-size: 10px;">DataStructure</a> <a href="/tags/DesignPattern/" style="font-size: 11.25px;">DesignPattern</a> <a href="/tags/English/" style="font-size: 15px;">English</a> <a href="/tags/Error/" style="font-size: 10px;">Error</a> <a href="/tags/Gradle/" style="font-size: 11.25px;">Gradle</a> <a href="/tags/Java/" style="font-size: 13.75px;">Java</a> <a href="/tags/Jetpack/" style="font-size: 11.25px;">Jetpack</a> <a href="/tags/LeetCode/" style="font-size: 17.5px;">LeetCode</a> <a href="/tags/Optimize/" style="font-size: 13.75px;">Optimize</a> <a href="/tags/SourceCode/" style="font-size: 10px;">SourceCode</a> <a href="/tags/UI/" style="font-size: 10px;">UI</a> <a href="/tags/版本差异/" style="font-size: 11.25px;">版本差异</a> <a href="/tags/版本管理/" style="font-size: 12.5px;">版本管理</a>
     </div>
 </div>
 
@@ -1606,23 +1723,23 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recientes
+            Recent
         </h3>
         
         <article class="media">
             
-            <a href="/2020/04/16/S5ep1-Threading-Performance-101/" class="media-left">
+            <a href="/2020/06/03/dependency-injection/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/2020/04/16/S5ep1-Threading-Performance-101/titleThumb.jpg" alt="自定义视图及其性能">
+                    <img class="thumbnail" src="/2020/06/03/dependency-injection/titleThumb.jpg" alt="依赖注入">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-15T16:00:00.000Z">2020-04-16</time></div>
-                    <a href="/2020/04/16/S5ep1-Threading-Performance-101/" class="has-link-black-ter is-size-6">自定义视图及其性能</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-06-02T16:00:00.000Z">2020-06-03</time></div>
+                    <a href="/2020/06/03/dependency-injection/" class="has-link-black-ter is-size-6">依赖注入</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/DesignPattern/">DesignPattern</a>
                     </p>
                 </div>
             </div>
@@ -1630,18 +1747,18 @@
         
         <article class="media">
             
-            <a href="/2020/03/31/Module-dependency-manage/" class="media-left">
+            <a href="/2020/06/03/ioc/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/2020/03/31/Module-dependency-manage/titleThumb.jpg" alt="Android 模块依赖版本管理">
+                    <img class="thumbnail" src="/2020/06/03/ioc/titleThumb.jpg" alt="IoC 控制反转">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-30T16:00:00.000Z">2020-03-31</time></div>
-                    <a href="/2020/03/31/Module-dependency-manage/" class="has-link-black-ter is-size-6">Android 模块依赖版本管理</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-06-02T16:00:00.000Z">2020-06-03</time></div>
+                    <a href="/2020/06/03/ioc/" class="has-link-black-ter is-size-6">IoC 控制反转</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/DesignPattern/">DesignPattern</a>
                     </p>
                 </div>
             </div>
@@ -1649,18 +1766,18 @@
         
         <article class="media">
             
-            <a href="/2020/03/01/Gradle-Kotlin/" class="media-left">
+            <a href="/2020/05/02/Serializable/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/2020/03/01/Gradle-Kotlin/titleThumb.jpg" alt="Gradle Kotlin DSL">
+                    <img class="thumbnail" src="/2020/05/02/Serializable/titleThumb.jpg" alt="Serializable">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-29T16:00:00.000Z">2020-03-01</time></div>
-                    <a href="/2020/03/01/Gradle-Kotlin/" class="has-link-black-ter is-size-6">Gradle Kotlin DSL</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-01T16:00:00.000Z">2020-05-02</time></div>
+                    <a href="/2020/05/02/Serializable/" class="has-link-black-ter is-size-6">Serializable</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Gradle/">Gradle</a>
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Java/">Java</a>
                     </p>
                 </div>
             </div>
@@ -1668,18 +1785,18 @@
         
         <article class="media">
             
-            <a href="/2020/02/26/S1ep5-Tool-Strict-Mode/" class="media-left">
+            <a href="/2020/04/30/Key-Value-pair-in-hashtable/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/2020/02/26/S1ep5-Tool-Strict-Mode/titleThumb.jpg" alt="工具 严格模式">
+                    <img class="thumbnail" src="/2020/04/30/Key-Value-pair-in-hashtable/titleThumb.jpg" alt="实现键值对存储 第五部分 Hash table 实现">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-25T16:00:00.000Z">2020-02-26</time></div>
-                    <a href="/2020/02/26/S1ep5-Tool-Strict-Mode/" class="has-link-black-ter is-size-6">工具 严格模式</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-29T16:00:00.000Z">2020-04-30</time></div>
+                    <a href="/2020/04/30/Key-Value-pair-in-hashtable/" class="has-link-black-ter is-size-6">实现键值对存储 第五部分 Hash table 实现</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/DataStructure/">DataStructure</a>
                     </p>
                 </div>
             </div>
@@ -1687,18 +1804,18 @@
         
         <article class="media">
             
-            <a href="/2020/02/26/S1ep6-Custom-Views-and-Performance/" class="media-left">
+            <a href="/2020/04/20/Binary-Search/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/2020/02/26/S1ep6-Custom-Views-and-Performance/titleThumb.jpg" alt="自定义视图及其性能">
+                    <img class="thumbnail" src="/2020/04/20/Binary-Search/titleThumb.jpg" alt="Binary Search(二分搜索)">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-25T16:00:00.000Z">2020-02-26</time></div>
-                    <a href="/2020/02/26/S1ep6-Custom-Views-and-Performance/" class="has-link-black-ter is-size-6">自定义视图及其性能</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-19T16:00:00.000Z">2020-04-20</time></div>
+                    <a href="/2020/04/20/Binary-Search/" class="has-link-black-ter is-size-6">Binary Search(二分搜索)</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Algorithm/">Algorithm</a>
                     </p>
                 </div>
             </div>
@@ -1712,9 +1829,31 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archivos
+            Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/06/">
+                <span class="level-start">
+                    <span class="level-item">June 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/05/">
+                <span class="level-start">
+                    <span class="level-item">May 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2020/04/">
@@ -1722,7 +1861,7 @@
                     <span class="level-item">April 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">3</span>
                 </span>
             </a>
         </li>
@@ -1799,7 +1938,7 @@
                     <span class="level-item">April 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">2</span>
+                    <span class="level-item tag">1</span>
                 </span>
             </a>
         </li>
@@ -1810,7 +1949,7 @@
                     <span class="level-item">January 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">3</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -1843,7 +1982,7 @@
                     <span class="level-item">August 2018</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">5</span>
+                    <span class="level-item tag">4</span>
                 </span>
             </a>
         </li>
@@ -1923,7 +2062,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Etiquetas
+                Tags
             </h3>
             <div class="field is-grouped is-grouped-multiline">
                 
@@ -1944,7 +2083,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Chinese/">
                         <span class="tag">Chinese</span>
-                        <span class="tag is-grey">31</span>
+                        <span class="tag is-grey">33</span>
                     </a>
                 </div>
                 
@@ -1966,6 +2105,13 @@
                     <a class="tags has-addons" href="/tags/DataStructure/">
                         <span class="tag">DataStructure</span>
                         <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/DesignPattern/">
+                        <span class="tag">DesignPattern</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -1993,7 +2139,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Java/">
                         <span class="tag">Java</span>
-                        <span class="tag is-grey">3</span>
+                        <span class="tag is-grey">5</span>
                     </a>
                 </div>
                 
@@ -2066,23 +2212,23 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recientes
+            Recent
         </h3>
         
         <article class="media">
             
-            <a href="/2020/04/16/S5ep1-Threading-Performance-101/" class="media-left">
+            <a href="/2020/06/03/dependency-injection/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/2020/04/16/S5ep1-Threading-Performance-101/titleThumb.jpg" alt="自定义视图及其性能">
+                    <img class="thumbnail" src="/2020/06/03/dependency-injection/titleThumb.jpg" alt="依赖注入">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-15T16:00:00.000Z">2020-04-16</time></div>
-                    <a href="/2020/04/16/S5ep1-Threading-Performance-101/" class="has-link-black-ter is-size-6">自定义视图及其性能</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-06-02T16:00:00.000Z">2020-06-03</time></div>
+                    <a href="/2020/06/03/dependency-injection/" class="has-link-black-ter is-size-6">依赖注入</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/DesignPattern/">DesignPattern</a>
                     </p>
                 </div>
             </div>
@@ -2090,18 +2236,18 @@
         
         <article class="media">
             
-            <a href="/2020/03/31/Module-dependency-manage/" class="media-left">
+            <a href="/2020/06/03/ioc/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/2020/03/31/Module-dependency-manage/titleThumb.jpg" alt="Android 模块依赖版本管理">
+                    <img class="thumbnail" src="/2020/06/03/ioc/titleThumb.jpg" alt="IoC 控制反转">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-30T16:00:00.000Z">2020-03-31</time></div>
-                    <a href="/2020/03/31/Module-dependency-manage/" class="has-link-black-ter is-size-6">Android 模块依赖版本管理</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-06-02T16:00:00.000Z">2020-06-03</time></div>
+                    <a href="/2020/06/03/ioc/" class="has-link-black-ter is-size-6">IoC 控制反转</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/DesignPattern/">DesignPattern</a>
                     </p>
                 </div>
             </div>
@@ -2109,18 +2255,18 @@
         
         <article class="media">
             
-            <a href="/2020/03/01/Gradle-Kotlin/" class="media-left">
+            <a href="/2020/05/02/Serializable/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/2020/03/01/Gradle-Kotlin/titleThumb.jpg" alt="Gradle Kotlin DSL">
+                    <img class="thumbnail" src="/2020/05/02/Serializable/titleThumb.jpg" alt="Serializable">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-29T16:00:00.000Z">2020-03-01</time></div>
-                    <a href="/2020/03/01/Gradle-Kotlin/" class="has-link-black-ter is-size-6">Gradle Kotlin DSL</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-01T16:00:00.000Z">2020-05-02</time></div>
+                    <a href="/2020/05/02/Serializable/" class="has-link-black-ter is-size-6">Serializable</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Gradle/">Gradle</a>
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Java/">Java</a>
                     </p>
                 </div>
             </div>
@@ -2128,18 +2274,18 @@
         
         <article class="media">
             
-            <a href="/2020/02/26/S1ep5-Tool-Strict-Mode/" class="media-left">
+            <a href="/2020/04/30/Key-Value-pair-in-hashtable/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/2020/02/26/S1ep5-Tool-Strict-Mode/titleThumb.jpg" alt="工具 严格模式">
+                    <img class="thumbnail" src="/2020/04/30/Key-Value-pair-in-hashtable/titleThumb.jpg" alt="实现键值对存储 第五部分 Hash table 实现">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-25T16:00:00.000Z">2020-02-26</time></div>
-                    <a href="/2020/02/26/S1ep5-Tool-Strict-Mode/" class="has-link-black-ter is-size-6">工具 严格模式</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-29T16:00:00.000Z">2020-04-30</time></div>
+                    <a href="/2020/04/30/Key-Value-pair-in-hashtable/" class="has-link-black-ter is-size-6">实现键值对存储 第五部分 Hash table 实现</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/DataStructure/">DataStructure</a>
                     </p>
                 </div>
             </div>
@@ -2147,18 +2293,18 @@
         
         <article class="media">
             
-            <a href="/2020/02/26/S1ep6-Custom-Views-and-Performance/" class="media-left">
+            <a href="/2020/04/20/Binary-Search/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/2020/02/26/S1ep6-Custom-Views-and-Performance/titleThumb.jpg" alt="自定义视图及其性能">
+                    <img class="thumbnail" src="/2020/04/20/Binary-Search/titleThumb.jpg" alt="Binary Search(二分搜索)">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-25T16:00:00.000Z">2020-02-26</time></div>
-                    <a href="/2020/02/26/S1ep6-Custom-Views-and-Performance/" class="has-link-black-ter is-size-6">自定义视图及其性能</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-19T16:00:00.000Z">2020-04-20</time></div>
+                    <a href="/2020/04/20/Binary-Search/" class="has-link-black-ter is-size-6">Binary Search(二分搜索)</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Algorithm/">Algorithm</a>
                     </p>
                 </div>
             </div>
@@ -2172,9 +2318,31 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archivos
+            Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/06/">
+                <span class="level-start">
+                    <span class="level-item">June 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/05/">
+                <span class="level-start">
+                    <span class="level-item">May 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2020/04/">
@@ -2182,7 +2350,7 @@
                     <span class="level-item">April 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">3</span>
                 </span>
             </a>
         </li>
@@ -2259,7 +2427,7 @@
                     <span class="level-item">April 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">2</span>
+                    <span class="level-item tag">1</span>
                 </span>
             </a>
         </li>
@@ -2270,7 +2438,7 @@
                     <span class="level-item">January 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">3</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -2303,7 +2471,7 @@
                     <span class="level-item">August 2018</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">5</span>
+                    <span class="level-item tag">4</span>
                 </span>
             </a>
         </li>
@@ -2383,7 +2551,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Etiquetas
+                Tags
             </h3>
             <div class="field is-grouped is-grouped-multiline">
                 
@@ -2404,7 +2572,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Chinese/">
                         <span class="tag">Chinese</span>
-                        <span class="tag is-grey">31</span>
+                        <span class="tag is-grey">33</span>
                     </a>
                 </div>
                 
@@ -2426,6 +2594,13 @@
                     <a class="tags has-addons" href="/tags/DataStructure/">
                         <span class="tag">DataStructure</span>
                         <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/DesignPattern/">
+                        <span class="tag">DesignPattern</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -2453,7 +2628,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Java/">
                         <span class="tag">Java</span>
-                        <span class="tag is-grey">3</span>
+                        <span class="tag is-grey">5</span>
                     </a>
                 </div>
                 
@@ -2666,10 +2841,10 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Entradas',
+                POSTS: 'Posts',
                 PAGES: 'Pages',
-                CATEGORIES: 'Categorias',
-                TAGS: 'Etiquetas',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
                 UNTITLED: '(Untitled)',
             },
             CONTENT_URL: '/content.json',

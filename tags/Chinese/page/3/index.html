@@ -2,7 +2,7 @@
 <html >
 <head>
     <meta charset="utf-8">
-<title>Etiqueta: Chinese - LeonChen&#39;s Blog</title>
+<title>Tag: Chinese - LeonChen&#39;s Blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
 
@@ -147,12 +147,355 @@
     <div class="card-content">
         <nav class="breadcrumb" aria-label="breadcrumbs">
         <ul>
-            <li><a href="/tags">Etiquetas</a></li>
+            <li><a href="/tags">Tags</a></li>
             <li class="is-active"><a href="#" aria-current="page">Chinese</a></li>
         </ul>
         </nav>
     </div>
 </div>
+
+    <div class="card">
+    
+    <div class="card-image">
+        <a href="/2018/12/02/7-Reverse-Integer/Record-cn/" class="image is-7by1">
+            <img class="banner" src="/2018/12/02/7-Reverse-Integer/Record-cn/title.jpg" alt="LeetCode 7. 数字反转">
+        </a>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2018-12-01T16:00:00.000Z">2018-12-02</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Algorithm/">Algorithm</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Algorithm/LeetCode/">LeetCode</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    6 minutes read (About 827 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2018/12/02/7-Reverse-Integer/Record-cn/">LeetCode 7. 数字反转</a>
+            
+        </h1>
+        <div class="content">
+            <!-- <p>[Chinese ver]</p>
+<h1><span id="7-reverse-integer">7. Reverse Integer</span></h1><p>颠倒一个 integer 的前后位数。</p>
+<p>例子: x = 123, return 321<br>例子: x = -123, return -321</p>
+<p>注意：<br>输入是一个32位的有符号 integer . 当颠倒的 interger 溢出的时候你的函数应该返回0。</p>
+<hr>
+<p>提示</p>
+<p>你是否注意到了这些？<br>在你编程之前你应该先想想这些问题。如果你已经考虑到了这些那是很加分的！</p>
+<p>如果 integer 的最后一位是0，应该输出什么？比如，10，100.</p>
+<p>你是否注意到了颠倒的 integer 可能会溢出？假设输入是一个 32位的 integer ，那么1000000003的颠倒溢出了。你该怎么处理这种情况？</p>
+<p>为了解决这个问题，假设你的函数当颠倒的 integer 溢出的话返回0.</p>
+<hr>
+<h3><span id="方法一-使用stringbuilder">方法一 使用StringBuilder：</span></h3><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</div><div class="line"></div><div class="line">	    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">reverse</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123;</div><div class="line">          <span class="hljs-comment">//judge x is negative or not</span></div><div class="line">	        <span class="hljs-keyword">boolean</span> isNegative = <span class="hljs-keyword">false</span>;</div><div class="line">	        <span class="hljs-keyword">int</span> result =<span class="hljs-number">0</span>;</div><div class="line">	        <span class="hljs-keyword">if</span> (x&lt;<span class="hljs-number">0</span>)&#123;</div><div class="line">	            isNegative = <span class="hljs-keyword">true</span>;</div><div class="line">	            x = Math.abs(x);</div><div class="line">	        &#125;</div><div class="line"></div><div class="line">	        StringBuilder oldSB = <span class="hljs-keyword">new</span> StringBuilder(String.valueOf(x));</div><div class="line">	        StringBuilder newSB = <span class="hljs-keyword">new</span> StringBuilder();</div><div class="line">          <span class="hljs-comment">//reverse the x use StringBuilder</span></div><div class="line">	        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;i &lt; oldSB.length() ; i++)&#123;</div><div class="line">	            newSB.append(oldSB.charAt(oldSB.length()-i-<span class="hljs-number">1</span>));</div><div class="line">	        &#125;</div><div class="line"></div><div class="line">	        <span class="hljs-keyword">try</span>&#123;</div><div class="line">	            result = Integer.valueOf(newSB.toString());</div><div class="line">	        &#125;</div><div class="line">	        <span class="hljs-keyword">catch</span>(Exception e)&#123;</div><div class="line">              <span class="hljs-comment">//if overflows return the result 0</span></div><div class="line">	            <span class="hljs-keyword">return</span> result;</div><div class="line">	        &#125;</div><div class="line">	        <span class="hljs-keyword">if</span> (isNegative)&#123;</div><div class="line">	            result = -result;</div><div class="line">	        &#125;</div><div class="line"></div><div class="line">	        <span class="hljs-keyword">return</span> result;</div><div class="line">	    &#125;</div><div class="line">	&#125;</div></pre></td></tr></table></figure>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/7.%20Reverse%20Integer/Images/StringBuilderResult.png?raw=true" alt="效率"></p>
+<p><strong>分析</strong><br>这个方法使用StringBuilder 将 Integer 转换成正数进行颠倒的操作，使用 try catch 来处理溢出的情况。如果输入是负数，最后的结果在转为负数。<br>时间复杂度 ： O(n) 。n是输入的位数<br>空间复杂度 ： O(1) .</p>
+<h3><span id="方法二-使用int">方法二 使用int：</span></h3><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution1</span> </span>&#123;</div><div class="line">   <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">reverse</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span></span></div><div class="line"><span class="hljs-function">	</span>&#123;</div><div class="line">	    <span class="hljs-keyword">int</span> result = <span class="hljs-number">0</span>;</div><div class="line"></div><div class="line">	    <span class="hljs-keyword">while</span> (x != <span class="hljs-number">0</span>)</div><div class="line">	    &#123;</div><div class="line">          <span class="hljs-comment">//get the last digit of the x.</span></div><div class="line">	        <span class="hljs-keyword">int</span> tail = x % <span class="hljs-number">10</span>;</div><div class="line">          <span class="hljs-comment">//add a digit in the end of the newResult ,and update the newResult's last digit</span></div><div class="line">	        <span class="hljs-keyword">int</span> newResult = result * <span class="hljs-number">10</span> + tail;</div><div class="line">          <span class="hljs-comment">//judge if newResult is overflows</span></div><div class="line">	        <span class="hljs-keyword">if</span> ((newResult - tail) / <span class="hljs-number">10</span> != result)</div><div class="line">	        &#123; <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>; &#125;</div><div class="line">	        result = newResult;</div><div class="line">          <span class="hljs-comment">//remove the last digit of x</span></div><div class="line">	        x = x / <span class="hljs-number">10</span>;</div><div class="line">	    &#125;</div><div class="line"></div><div class="line">	    <span class="hljs-keyword">return</span> result;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>或者</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution2</span> </span>&#123;</div><div class="line">  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">reverse</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123;</div><div class="line">        <span class="hljs-keyword">long</span> rev= <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-keyword">while</span>( x != <span class="hljs-number">0</span>)&#123;</div><div class="line">            <span class="hljs-comment">//add a digit in the end of the newResult ,and update the newResult's last digit</span></div><div class="line">            rev= rev*<span class="hljs-number">10</span> + x % <span class="hljs-number">10</span>;</div><div class="line">            <span class="hljs-comment">//remove the last digit of x</span></div><div class="line">            x= x/<span class="hljs-number">10</span>;</div><div class="line">            <span class="hljs-comment">//judge if newResult is overflows</span></div><div class="line">            <span class="hljs-keyword">if</span>( rev &gt; Integer.MAX_VALUE || rev &lt; Integer.MIN_VALUE)</div><div class="line">                <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="hljs-keyword">return</span> (<span class="hljs-keyword">int</span>) rev;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/7.%20Reverse%20Integer/Images/IntResult.png?raw=true" alt="效率"></p>
+<p><strong>分析</strong><br>这两个方法的原理都是一样的，通过将输入的x%10取余数得到最后一位数的值，然后使用 result*10 将result 增加一位并将最后一位更新为余数值，然后更新x为x/10。<br>这两个方法不同的地方是判断溢出的方法，Solution1 在更新 result 之后将新的 result 去掉最后一位和旧的 result 进行比较，看是否一致来判断是否溢出。Solution2 则是将新的 result 和 Integer 的临界值进行比较来判断是否溢出，要注意的是 Solution2 里的 long rev= 0; 一定不能使用 Integer ，因为一旦 Integer 溢出了 rev 就会被自动处理溢出，所以  rev &gt; Integer.MAX_VALUE || rev &lt; Integer.MIN_VALUE 永远不会为true。</p>
+<p>时间复杂度 ： O(n) 。n是输入的位数<br>空间复杂度 ： O(1) .</p>
+<p>如果你有更好的办法或者对我这里的描述有其他看法，请联系我。谢谢</p>
+<h2><span id="about-me">About Me</span></h2><p>我的博客 <a href="http://leonchen1024.com/" target="_blank" rel="external">leonchen1024.com</a></p>
+<p>我的 GitHub <a href="https://github.com/LeonChen1024" target="_blank" rel="external">https://github.com/LeonChen1024</a></p>
+<p>微信公众号 </p>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/Images/CooderQRcodem.jpg?raw=false" alt="wechat"></p>
+ -->
+            <div class="article-entry">
+                    
+                    
+                        
+                            
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                            
+                                
+                                <p><p>[Chinese ver]</p>
+<h1><span id="7-reverse-integer">7. Reverse Integer</span></h1><p>颠倒一个 integer 的前后位数。</p>
+<p>例子: x = 123, return 321<br>例子: x = -123, return -321</p>
+<p>注意：<br>输入是一个32位的有符号 integer . 当颠倒的 interger 溢出的时候你的函数应该返回0。</p>
+<hr>
+<p>
+                            
+                        
+                    
+                    
+                        </div>   
+                        <div class="article-more-link">
+                            <a href="/2018/12/02/7-Reverse-Integer/Record-cn/#more">Read More</a>
+                        </div>
+                    
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-image">
+        <a href="/2018/09/12/6-ZigZag-Conversion/Record-cn/" class="image is-7by1">
+            <img class="banner" src="/2018/09/12/6-ZigZag-Conversion/Record-cn/title.jpg" alt="LeetCode 6. 锯齿形转换">
+        </a>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2018-09-11T16:00:00.000Z">2018-09-12</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Algorithm/">Algorithm</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Algorithm/LeetCode/">LeetCode</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    3 minutes read (About 449 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2018/09/12/6-ZigZag-Conversion/Record-cn/">LeetCode 6. 锯齿形转换</a>
+            
+        </h1>
+        <div class="content">
+            <!-- <p>[Chinese ver]</p>
+<h1><span id="6-zigzag-conversion">6. ZigZag Conversion</span></h1><p>字符串”PAYPALISHIRING”是通过一个如下给定行数的锯齿模式书写的:(你可能想要使用一个固定的字体来更好的显示它)</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">P   A   H   N</div><div class="line">A P L S I I G</div><div class="line">Y   I   R</div></pre></td></tr></table></figure>
+<p>然后一行一行的读取这个字符串:”PAHNAPLSIIGYIR”<br>编写代码实现获取一个字符串然后根据给出的行数来实现这个锯齿转换:<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">string convert(string text, int nRows);</div></pre></td></tr></table></figure></p>
+<p>convert(“PAYPALISHIRING”, 3) 应该返回 “PAHNAPLSIIGYIR”.</p>
+<hr>
+<p>首先我们来分析下什么是zigzag pattern,zigzag是锯齿或之字形的意思。是以一定的角度相交的两条线依次以其平行线进行重复相交的线路。一开始我以为是中间都是一行然后旁边是锯齿，当为4行的情况如下(以数字作为字符的index):</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">1   7    13</div><div class="line">2   8    14</div><div class="line">3 6 9 12 15</div><div class="line">4   10   16</div><div class="line">5   11   17</div></pre></td></tr></table></figure>
+<p>但是事实并不是这样的，zigzag pattern 4行的情况应该是如下：<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">1     7        13</div><div class="line">2   6 8     12 14</div><div class="line">3 5   9  11    15</div><div class="line">4     10       16</div></pre></td></tr></table></figure></p>
+<p>字符以这种锯齿形分布。</p>
+<h4><span id="方法一-使用string">方法一 使用String[]：</span></h4><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</div><div class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">convert</span><span class="hljs-params">(String s, <span class="hljs-keyword">int</span> numRows)</span> </span>&#123;</div><div class="line">        String result = <span class="hljs-string">""</span>;</div><div class="line">        String[] strings = <span class="hljs-keyword">new</span> String[numRows];</div><div class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i =<span class="hljs-number">0</span>;i&lt;numRows;i++)&#123;</div><div class="line">            strings[i] = <span class="hljs-string">""</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="hljs-keyword">int</span> position = <span class="hljs-number">0</span> ;</div><div class="line">        <span class="hljs-keyword">int</span> numRowsIndex = numRows-<span class="hljs-number">1</span>;</div><div class="line">        <span class="hljs-keyword">int</span> step = <span class="hljs-number">1</span>;</div><div class="line">        <span class="hljs-comment">//if the numRows is one ,or the s's length is less than numRows ,return s .</span></div><div class="line">        <span class="hljs-keyword">if</span> (numRows ==<span class="hljs-number">1</span> || s.length()&lt;numRows)&#123;</div><div class="line">            <span class="hljs-keyword">return</span> s;</div><div class="line">        &#125;</div><div class="line">        <span class="hljs-comment">//loop the every char in the String, when the position is 0,the step is one ,is the position is numRowsIndex,the step is negative one</span></div><div class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i =<span class="hljs-number">0</span>;i&lt;s.length();i++)&#123;</div><div class="line">            strings[position] += s.charAt(i);</div><div class="line">            <span class="hljs-keyword">if</span> (position ==<span class="hljs-number">0</span>)&#123;</div><div class="line">               step = <span class="hljs-number">1</span>;</div><div class="line">            &#125;</div><div class="line">            <span class="hljs-keyword">if</span> (position == numRowsIndex )&#123;</div><div class="line">                step = -<span class="hljs-number">1</span>;</div><div class="line">            &#125;</div><div class="line">            position = position+step;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i =<span class="hljs-number">0</span>;i&lt;numRows;i++)&#123;</div><div class="line">            result += strings[i];</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="hljs-keyword">return</span> result;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/6.%20ZigZag%20Conversion/Images/StringsResult.png?raw=true" alt="效率"></p>
+<p><strong>分析</strong><br>这个方法将每一行的字符串存入对应的String[i]中，最后在将String[]按顺序拼接起来就得到了我们要的结果。当目前的位置在第一行的时候，下一个位置应该向下移动，所以step =1 . 当位置在最后一行的时候，下一个位置应该向上移动，所以step =-1.<br>时间复杂度 ： O(n) 。n是字符串的长度<br>空间复杂度 ： O(n) .</p>
+<h4><span id="方法二-stringbuilder">方法二 StringBuilder[]：</span></h4><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</div><div class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">convert</span><span class="hljs-params">(String s, <span class="hljs-keyword">int</span> numRows)</span> </span>&#123;</div><div class="line">        StringBuilder result = <span class="hljs-keyword">new</span> StringBuilder(<span class="hljs-string">""</span>);</div><div class="line">        StringBuilder[] strings = <span class="hljs-keyword">new</span> StringBuilder[numRows];</div><div class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i =<span class="hljs-number">0</span>;i&lt;numRows;i++)&#123;</div><div class="line">            strings[i] = <span class="hljs-keyword">new</span> StringBuilder(<span class="hljs-string">""</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="hljs-keyword">int</span> position = <span class="hljs-number">0</span> ;</div><div class="line">        <span class="hljs-keyword">int</span> numRowsIndex = numRows-<span class="hljs-number">1</span>;</div><div class="line">        <span class="hljs-keyword">int</span> step = <span class="hljs-number">1</span>;</div><div class="line">          <span class="hljs-comment">//if the numRows is one ,or the s's length is less than numRows ,return s .</span></div><div class="line">        <span class="hljs-keyword">if</span> (numRows ==<span class="hljs-number">1</span> || s.length()&lt;numRows)&#123;</div><div class="line">            <span class="hljs-keyword">return</span> s;</div><div class="line">        &#125;</div><div class="line">          <span class="hljs-comment">//loop the every char in the String, when the position is 0,the step is one ,is the position is numRowsIndex,the step is negative one</span></div><div class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i =<span class="hljs-number">0</span>;i&lt;s.length();i++)&#123;</div><div class="line">            strings[position].append(s.charAt(i));</div><div class="line">            <span class="hljs-keyword">if</span> (position ==<span class="hljs-number">0</span>)&#123;</div><div class="line">               step = <span class="hljs-number">1</span>;</div><div class="line">            &#125;</div><div class="line">            <span class="hljs-keyword">if</span> (position == numRowsIndex )&#123;</div><div class="line">                step = -<span class="hljs-number">1</span>;</div><div class="line">            &#125;</div><div class="line">            position = position+step;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i =<span class="hljs-number">0</span>;i&lt;numRows;i++)&#123;</div><div class="line">            result.append(strings[i]);</div><div class="line">        &#125;</div><div class="line">        <span class="hljs-keyword">return</span> result.toString();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/6.%20ZigZag%20Conversion/Images/StringBuilderResult.png?raw=true" alt="效率"></p>
+<p><strong>分析</strong><br>这个方法原理和方法一一样，只是把String 换成 StringBuilder来处理，效率有了很大的提高</p>
+<p>时间复杂度 ： O(n) 。n是字符串的长度<br>空间复杂度 ： O(n) .</p>
+<h4><span id="方法三-间隔算法">方法三 间隔算法</span></h4><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</div><div class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">convert</span><span class="hljs-params">(String s, <span class="hljs-keyword">int</span> numRows)</span> </span>&#123;</div><div class="line"></div><div class="line">        String result=<span class="hljs-string">""</span>;</div><div class="line">        <span class="hljs-keyword">if</span>(numRows==<span class="hljs-number">1</span>)</div><div class="line">            <span class="hljs-keyword">return</span> s;</div><div class="line">        <span class="hljs-keyword">int</span> step1,step2;</div><div class="line">        <span class="hljs-keyword">int</span> len=s.length();</div><div class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;numRows;++i)&#123;</div><div class="line">            step1=(numRows-i-<span class="hljs-number">1</span>)*<span class="hljs-number">2</span>;</div><div class="line">            step2=(i)*<span class="hljs-number">2</span>;</div><div class="line">            <span class="hljs-keyword">int</span> pos=i;</div><div class="line">            <span class="hljs-keyword">if</span>(pos&lt;len)</div><div class="line">                result+=s.charAt(pos);</div><div class="line">            <span class="hljs-keyword">while</span>(<span class="hljs-keyword">true</span>)&#123;</div><div class="line">                pos+=step1;</div><div class="line">                <span class="hljs-keyword">if</span>(pos&gt;=len)</div><div class="line">                    <span class="hljs-keyword">break</span>;</div><div class="line">                <span class="hljs-keyword">if</span>(step1&gt;<span class="hljs-number">0</span>)</div><div class="line">                    result+=s.charAt(pos);</div><div class="line">                pos+=step2;</div><div class="line">                <span class="hljs-keyword">if</span>(pos&gt;=len)</div><div class="line">                    <span class="hljs-keyword">break</span>;</div><div class="line">                <span class="hljs-keyword">if</span>(step2&gt;<span class="hljs-number">0</span>)</div><div class="line">                    result+=s.charAt(pos);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="hljs-keyword">return</span> result;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>分析</strong><br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">/*n=numRows</div><div class="line">Δ=2n-2    1                           2n-1                         4n-3</div><div class="line">Δ=        2                     2n-2  2n                    4n-4   4n-2</div><div class="line">Δ=        3               2n-3        2n+1              4n-5       .</div><div class="line">Δ=        .           .               .               .            .</div><div class="line">Δ=        .       n+2                 .           3n               .</div><div class="line">Δ=        n-1 n+1                     3n-3    3n-1                 5n-5</div><div class="line">Δ=2n-2    n                           3n-2                         5n-4</div><div class="line">*/</div></pre></td></tr></table></figure></p>
+<p>这个方法主要是通过间隔的规律来进行计算和排位。</p>
+<p>时间复杂度 ： O(n) 。n是字符串长度<br>空间复杂度 ： O(n) .</p>
+<p>如果你有更好的办法或者对我这里的描述有其他看法，请联系我。谢谢</p>
+<h2><span id="about-me">About Me</span></h2><p>我的博客 <a href="http://leonchen1024.com/" target="_blank" rel="external">leonchen1024.com</a></p>
+<p>我的 GitHub <a href="https://github.com/LeonChen1024" target="_blank" rel="external">https://github.com/LeonChen1024</a></p>
+<p>微信公众号 </p>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/Images/CooderQRcodem.jpg?raw=false" alt="wechat"></p>
+ -->
+            <div class="article-entry">
+                    
+                    
+                        
+                            
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                            
+                                
+                                <p><p>[Chinese ver]</p>
+<h1><span id="6-zigzag-conversion">6. ZigZag Conversion</span></h1><p>字符串”PAYPALISHIRING”是通过一个如下给定行数的锯齿模式书写的:(你可能想要使用一个固定的字体来更好的显示它)</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">P   A   H   N</div><div class="line">A P L S I I G</div><div class="line">Y   I   R</div></pre></td></tr></table></figure>
+<p>然后一行一行的读取这个字符串:”PAHNAPLSIIGYIR”<br>编写代码实现获取一个字符串然后根据给出的行数来实现这个锯齿转换:<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">string convert(string text, int nRows);</div></pre></td></tr></table></figure></p>
+<p>convert(“PAYPALISHIRING”, 3) 应该返回 “PAHNAPLSIIGYIR”.</p>
+<p>
+                            
+                        
+                    
+                    
+                        </div>   
+                        <div class="article-more-link">
+                            <a href="/2018/09/12/6-ZigZag-Conversion/Record-cn/#more">Read More</a>
+                        </div>
+                    
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-image">
+        <a href="/2018/08/31/5-Longest-Palindromic-Substring/Record-cn/" class="image is-7by1">
+            <img class="banner" src="/2018/08/31/5-Longest-Palindromic-Substring/Record-cn/title.jpg" alt="LeetCode 5.最长的回文字符串">
+        </a>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2018-08-30T16:00:00.000Z">2018-08-31</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Algorithm/">Algorithm</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Algorithm/LeetCode/">LeetCode</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    9 minutes read (About 1418 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2018/08/31/5-Longest-Palindromic-Substring/Record-cn/">LeetCode 5.最长的回文字符串</a>
+            
+        </h1>
+        <div class="content">
+            <!-- <h1><span id="5-longest-palindromic-substring">5. Longest Palindromic Substring</span></h1><p>给定一个字符串s,找出其中最长的回文格式的子字符串。你可以假设长度的最大值为1000.</p>
+<p>Example:<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Input: &quot;babad&quot;</div><div class="line"></div><div class="line">Output: &quot;bab&quot;</div></pre></td></tr></table></figure></p>
+<p>Note: “aba” is also a valid answer.</p>
+<p>Example:<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Input: &quot;cbbd&quot;</div><div class="line"></div><div class="line">Output: &quot;bb&quot;</div></pre></td></tr></table></figure></p>
+<p>一开始以为palindrome是重复的意思，走了很大的弯路，后来才知道指的是回文格式，就是一个顺着读和反过来读都一样的字符串。<br>由此可知他有两种情况，一种是奇数的情况，中间的一个字符独立，其余的字符以中间为轴两两对应。另一种是偶数的情况，所有的字符都以中间为轴两两对应。</p>
+<h4><span id="方法一">方法一：</span></h4><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</div><div class="line">       <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> lo, maxLen;</div><div class="line"></div><div class="line">       <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">longestPalindrome</span><span class="hljs-params">(String s)</span> </span>&#123;</div><div class="line">           <span class="hljs-keyword">int</span> len = s.length();</div><div class="line">           <span class="hljs-keyword">if</span> (len &lt; <span class="hljs-number">2</span>)</div><div class="line">               <span class="hljs-keyword">return</span> s;</div><div class="line"></div><div class="line">           <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; len - <span class="hljs-number">1</span>; i++) &#123;</div><div class="line">               extendPalindrome(s, i, i);  <span class="hljs-comment">//assume odd length, try to extend Palindrome as possible</span></div><div class="line">               extendPalindrome(s, i, i + <span class="hljs-number">1</span>); <span class="hljs-comment">//assume even length.</span></div><div class="line">           &#125;</div><div class="line">           <span class="hljs-keyword">return</span> s.substring(lo, lo + maxLen);</div><div class="line">       &#125;</div><div class="line"></div><div class="line">       <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">extendPalindrome</span><span class="hljs-params">(String s, <span class="hljs-keyword">int</span> j, <span class="hljs-keyword">int</span> k)</span> </span>&#123;</div><div class="line">           <span class="hljs-keyword">while</span> (j &gt;= <span class="hljs-number">0</span> &amp;&amp; k &lt; s.length() &amp;&amp; s.charAt(j) == s.charAt(k)) &#123;</div><div class="line">               j--;</div><div class="line">               k++;</div><div class="line">           &#125;</div><div class="line">           <span class="hljs-keyword">if</span> (maxLen &lt; k - j - <span class="hljs-number">1</span>) &#123;</div><div class="line">               lo = j + <span class="hljs-number">1</span>;</div><div class="line">               maxLen = k - j - <span class="hljs-number">1</span>;</div><div class="line">           &#125;</div><div class="line">       &#125;</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/5.%20Longest%20Palindromic%20Substring/Images/SuccessResult1.png?raw=true" alt="效率"></p>
+<p><strong>分析</strong><br>这个方法分为奇偶两种情况进行计算。首先对每一个字符串里的字符进行两种情况的计算，extendPalindrome方法的原理就是当对应的位置的字符相同时，就将左侧字符向左一位，右侧字符向右一位，然后再重复进行这个比较过程。<br>时间复杂度 ： O(n^2) 。n是字符串的长度<br>空间复杂度 ： O(n) .</p>
+<h4><span id="方法二">方法二：</span></h4><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</div><div class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">longestPalindrome</span><span class="hljs-params">(String s)</span> </span>&#123;</div><div class="line">        String res = <span class="hljs-string">""</span>;</div><div class="line">        <span class="hljs-keyword">int</span> currLength = <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;s.length();i++)&#123;</div><div class="line">            <span class="hljs-keyword">if</span>(isPalindrome(s,i-currLength-<span class="hljs-number">1</span>,i))&#123;</div><div class="line">                res = s.substring(i-currLength-<span class="hljs-number">1</span>,i+<span class="hljs-number">1</span>);</div><div class="line">                currLength = currLength+<span class="hljs-number">2</span>;</div><div class="line">            &#125;</div><div class="line">            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(isPalindrome(s,i-currLength,i))&#123;</div><div class="line">                res = s.substring(i-currLength,i+<span class="hljs-number">1</span>);</div><div class="line">                currLength = currLength+<span class="hljs-number">1</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="hljs-keyword">return</span> res;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isPalindrome</span><span class="hljs-params">(String s, <span class="hljs-keyword">int</span> begin, <span class="hljs-keyword">int</span> end)</span></span>&#123;</div><div class="line">        <span class="hljs-keyword">if</span>(begin&lt;<span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;</div><div class="line">        <span class="hljs-keyword">while</span>(begin&lt;end)&#123;</div><div class="line">        	<span class="hljs-keyword">if</span>(s.charAt(begin++)!=s.charAt(end--)) <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/5.%20Longest%20Palindromic%20Substring/Images/SuccessResult2.png?raw=true" alt="效率"></p>
+<p><strong>分析</strong><br>这个方法主要是每当指针向右移时，我们都以这个位置的字符为结尾看是否能有新的长度为length(current length +1 或者 current length +2)的回文字符串。</p>
+<p>时间复杂度 ： O(n^2) 。n是字符串长度。<br>空间复杂度 ： O(n) .</p>
+<h4><span id="方法三-manacher算法">方法三 Manacher算法</span></h4><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</div><div class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">longestPalindrome</span><span class="hljs-params">(String s)</span> </span>&#123;</div><div class="line">      <span class="hljs-keyword">char</span>[] str = changeString(s);</div><div class="line">		  String result = manacher(str,s);</div><div class="line"></div><div class="line">		  <span class="hljs-keyword">return</span> result;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="hljs-comment">/**</span></div><div class="line"><span class="hljs-comment">	 * 返回例如 #a#c#b#c#a#a#c#b#c#d#形式的字符串数组</span></div><div class="line"><span class="hljs-comment">	 *</span></div><div class="line"><span class="hljs-comment">	 * <span class="hljs-doctag">@param</span> s</span></div><div class="line"><span class="hljs-comment">	 * <span class="hljs-doctag">@return</span></span></div><div class="line"><span class="hljs-comment">	 */</span></div><div class="line">	<span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">char</span>[] changeString(String s)</div><div class="line">	&#123;</div><div class="line">	    <span class="hljs-keyword">char</span>[] str = <span class="hljs-keyword">new</span> <span class="hljs-keyword">char</span>[s.length() * <span class="hljs-number">2</span> + <span class="hljs-number">1</span>];</div><div class="line"></div><div class="line">	    <span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;</div><div class="line">	    <span class="hljs-keyword">for</span> (; i &lt; s.length(); i++)</div><div class="line">	    &#123;</div><div class="line">	        str[<span class="hljs-number">2</span> * i] = <span class="hljs-string">'#'</span>;</div><div class="line">	        str[<span class="hljs-number">2</span> * i + <span class="hljs-number">1</span>] = s.charAt(i);</div><div class="line">	    &#125;</div><div class="line">	    str[<span class="hljs-number">2</span> * i] = <span class="hljs-string">'#'</span>;</div><div class="line"></div><div class="line">	    <span class="hljs-keyword">return</span> str;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="hljs-comment">/**</span></div><div class="line"><span class="hljs-comment">	 * manacher 算法实现找到回文字符串最长的一个</span></div><div class="line"><span class="hljs-comment">	 */</span></div><div class="line">	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> String <span class="hljs-title">manacher</span><span class="hljs-params">(<span class="hljs-keyword">char</span>[] s,String olds)</span></span></div><div class="line"><span class="hljs-function">	</span>&#123;</div><div class="line">		  String result = <span class="hljs-string">""</span>;</div><div class="line">	    <span class="hljs-keyword">int</span> rad[] = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[s.length];</div><div class="line">	    <span class="hljs-keyword">int</span> start = <span class="hljs-number">0</span>;</div><div class="line">	    <span class="hljs-keyword">int</span> end = <span class="hljs-number">0</span>;</div><div class="line">	    <span class="hljs-comment">//i index,j 回文半径，k</span></div><div class="line">	    <span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>, j = <span class="hljs-number">0</span>, k;</div><div class="line"></div><div class="line">	    <span class="hljs-comment">// 记录最长的回文串的长度</span></div><div class="line">	    <span class="hljs-keyword">int</span> maxLen = <span class="hljs-number">0</span>;</div><div class="line">	    <span class="hljs-keyword">while</span> (i &lt; s.length)</div><div class="line">	    &#123;</div><div class="line">	        <span class="hljs-comment">// 扫描得出rad值</span></div><div class="line">	        <span class="hljs-keyword">while</span> (i - j - <span class="hljs-number">1</span> &gt; -<span class="hljs-number">1</span> &amp;&amp; i + j + <span class="hljs-number">1</span> &lt; s.length</div><div class="line">	                &amp;&amp; s[i - j - <span class="hljs-number">1</span>] == s[i + j + <span class="hljs-number">1</span>]) &#123;</div><div class="line">	        	  j++;</div><div class="line">	        &#125;</div><div class="line"></div><div class="line">	        <span class="hljs-keyword">if</span> (maxLen &lt; j ) &#123;</div><div class="line">				        maxLen =j;</div><div class="line">				        start = i - j  ;</div><div class="line">				        end =i + j ;</div><div class="line"></div><div class="line">			       &#125;</div><div class="line">	        rad[i] = j;</div><div class="line">	        maxLen = maxLen &gt; j ? maxLen : j;</div><div class="line"></div><div class="line">	        k = <span class="hljs-number">1</span>;</div><div class="line">          <span class="hljs-comment">//当回文中包含子回文，看子回文是否超出父回文边界。 分三种情况。</span></div><div class="line">	        <span class="hljs-keyword">while</span> (k &lt;= rad[i] &amp;&amp; rad[i - k] != rad[i] - k)</div><div class="line">	        &#123;</div><div class="line">	            rad[i + k] = Math.min(rad[i - k], rad[i] - k);</div><div class="line">	            k++;</div><div class="line">	        &#125;</div><div class="line">	        i = i + k;</div><div class="line">	        j = Math.max(j - k, <span class="hljs-number">0</span>);</div><div class="line">	    &#125;</div><div class="line"></div><div class="line">	    result = olds.substring(start/<span class="hljs-number">2</span>,end/<span class="hljs-number">2</span>);</div><div class="line">	    <span class="hljs-keyword">return</span> result;</div><div class="line"></div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>分析</strong><br>在这个问题中，回文的情况一共有两种，一种是奇数回文，一种是偶数回文，为了将他们合并成一种情况，我们可以在首尾和每两个字符中间加上一个特殊字符，如‘#’，形如”#a#b#b#c#a#”.这样我们就将所有的回文情况合并成奇数回文的情况。</p>
+<p>在字符串s中，我们用rad[i]表示第i个字符的回文半径，可以得到s[i-rad[i],i-1] = s[i+1,i+rad[i]]，只要求出了所有的rad，就求出了所有奇数长度的回文子串。</p>
+<p>当我们得到了rad[1..i-1]的值，并通过比较对称字符得到当前字符i的rad值至少为j，求出了rad[i]。现在我们设一个指针k，从1循环到rad[i]，以此来求出[i+1,i+rad[i]]的rad值。</p>
+<p>根据定义，黑色的部分是一个回文子串，两段红色的区间全等。<br>因为之前已经求出了rad[i-k]，所以直接用它.有3种情况：<br>（1）rad[i]-k &lt; rad[i-k]<br><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/5.%20Longest%20Palindromic%20Substring/Images/Situation1.jpg?raw=true" alt="Situation1.jpg"></p>
+<p>如图,rad[i-k]的范围为墨绿色。因为黑色的部分是回文的，且墨绿色的部分超过了黑色的部分，所以rad[i+k]至少为rad[i]-k，即橙色的部分。有没有可能rad[i+k]的值大于rad[i]-k呢？这是不可能发生的，根据回文的特性我们知道，如果橙色部分以外也是回文，那么黑色的回文部分就可以向外拓展。与假设冲突。因此rad[i+k] = rad[i]-k。</p>
+<p>（2）rad[i]-k &gt; rad[i-k]<br><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/5.%20Longest%20Palindromic%20Substring/Images/Situation2.jpg?raw=true" alt="Situation2.jpg"></p>
+<p>如图,rad[i-k]的范围为墨绿色。因为黑色的部分是回文的，且墨绿色的部分在黑色的部分里面，根据回文特性，很容易得出：rad[i+k] = rad[i-k]。</p>
+<p>根据上面两种情况，可以得出结论：当rad[i]-k != rad[i-k]的时候，rad[i+k] = min(rad[i]-k,rad[i-k])。</p>
+<p>（3）rad[i]-k = rad[i-k]<br><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/5.%20Longest%20Palindromic%20Substring/Images/Situation3.jpg?raw=true" alt="Situation3.jpg"><br>如图，通过和第一种情况对比之后会发现，因为墨绿色的部分没有超出黑色的部分，所以即使橙色的部分全等，也无法像第一种情况一样引出矛盾，因此橙色的部分是有可能全等的。但是，根据已知的信息，我们不知道橙色的部分是多长，因此就把i指针移到i+k的位置，j=rad[i-k](因为它的rad值至少为rad[i-k])，是否可以向外拓展等下个循环再做。</p>
+<p>时间复杂度 ： O(n) 。看起来程序里用到了循环嵌套，但是实际上他只对没有计量过的i进行计量。<br>空间复杂度 ： O(n) .</p>
+<p>如果你有更好的办法或者对我这里的描述有其他看法，请联系我。谢谢</p>
+<h2><span id="about-me">About Me</span></h2><p>我的博客 <a href="http://leonchen1024.com/" target="_blank" rel="external">leonchen1024.com</a></p>
+<p>我的 GitHub <a href="https://github.com/LeonChen1024" target="_blank" rel="external">https://github.com/LeonChen1024</a></p>
+<p>微信公众号 </p>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/Images/CooderQRcodem.jpg?raw=false" alt="wechat"></p>
+ -->
+            <div class="article-entry">
+                    
+                    
+                        
+                            
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                            
+                                
+                                <p><h1><span id="5-longest-palindromic-substring">5. Longest Palindromic Substring</span></h1><p>给定一个字符串s,找出其中最长的回文格式的子字符串。你可以假设长度的最大值为1000.</p>
+<p>Example:<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Input: &quot;babad&quot;</div><div class="line"></div><div class="line">Output: &quot;bab&quot;</div></pre></td></tr></table></figure></p>
+<p>Note: “aba” is also a valid answer.</p>
+<p>Example:<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Input: &quot;cbbd&quot;</div><div class="line"></div><div class="line">Output: &quot;bb&quot;</div></pre></td></tr></table></figure></p>
+<p>一开始以为palindrome是重复的意思，走了很大的弯路，后来才知道指的是回文格式，就是一个顺着读和反过来读都一样的字符串。<br>由此可知他有两种情况，一种是奇数的情况，中间的一个字符独立，其余的字符以中间为轴两两对应。另一种是偶数的情况，所有的字符都以中间为轴两两对应。</p>
+<p>
+                            
+                        
+                    
+                    
+                        </div>   
+                        <div class="article-more-link">
+                            <a href="/2018/08/31/5-Longest-Palindromic-Substring/Record-cn/#more">Read More</a>
+                        </div>
+                    
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
 
     <div class="card">
     
@@ -274,163 +617,6 @@
                         </div>   
                         <div class="article-more-link">
                             <a href="/2018/08/15/4-Median-of-Two-Sorted-Arrays/Record-cn/#more">Read More</a>
-                        </div>
-                    
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-image">
-        <a href="/2018/08/14/Binary-Search/" class="image is-7by1">
-            <img class="banner" src="/2018/08/14/Binary-Search/title.jpg" alt="Binary Search(二分搜索)">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2018-08-13T16:00:00.000Z">2018-08-14</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Algorithm/">Algorithm</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Algorithm/Common/">Common</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    25 minutes read (About 3751 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2018/08/14/Binary-Search/">Binary Search(二分搜索)</a>
-            
-        </h1>
-        <div class="content">
-            <!-- <h1><span id="binary-search二分搜索">Binary Search(二分搜索)</span></h1><p>二分搜索(binary search),也叫做 折半搜索(half-interval search),对数搜索(logarithmic search),对半搜索(binary chop),是一种在有序数组中查找某一特定元素的搜索算法.</p>
-<p>二分搜索有几个变体.特别是,分散层叠(<a href="https://en.wikipedia.org/wiki/Fractional_cascading" target="_blank" rel="external">fractional cascading</a>)(将每个数组里的值集合成一个数组,元素为11[0,3,2,0] 的形式,括号内的数字是该值在对应数组中应该返回的数字)提高了在多个数组中查找相同值的效率,高效的解决了一系列计算几何和其他领域的查找问题).指数查找(<a href="https://en.wikipedia.org/wiki/Exponential_search" target="_blank" rel="external">Exponential search</a>)延伸了二分查找到一个没有边界的 list.<a href="https://en.wikipedia.org/wiki/Binary_search_tree" target="_blank" rel="external">binary search tree</a>和<a href="https://en.wikipedia.org/wiki/B-tree" target="_blank" rel="external">B-tree</a>是基于 binary search 延伸的.</p>
-<h2><span id="原理">原理</span></h2><p>搜索时从数组中间元素开始,如果中间元素正好是要查找的元素,则搜索过程结束;如果中间元素大于或者小于要查找的元素,则在数组中大于或者小于查找元素的一半中继续查找,重复这个过程直到找到这个元素,或者这一半的大小为空时则代表找不到.这样子每一次比较都使得搜索范围缩小一半.</p>
-<h3><span id="步骤">步骤</span></h3><p>给定一个有序数组 A 是 A0,…,An-1并保证 A0&lt;=…&lt;=An-1,以及目标值 T.</p>
-<ol>
-<li>令 L 为0,R 为 n-1.</li>
-<li>如果 L&gt;R 则搜索失败</li>
-<li>令m(中间值元素索引)为最大的小于(L+R)/2的整数</li>
-<li>如果 Am&lt;T ,令 L=m+1并回到第2步;</li>
-<li>如果 Am&gt;T ,令 R=m-1并回到第2步;</li>
-<li>当 Am=T,搜索结束;T 所在的索引位置为m.</li>
-</ol>
-<p><code>变体</code></p>
-<ol>
-<li>令 L 为0,R 为 n-1.</li>
-<li>令 m(中间元素索引) 为上限,也就是最小的大于(L+R)/2的值.</li>
-<li>如果 Am&gt;T ,设置 R 为 m-1并且返回第2步</li>
-<li>如果 Am&lt;=T ,设置 L 为m 并且返回第2步.</li>
-<li>直到 L=R ,搜索完成.这时候如果T=Am,返回 m,否则,搜索失败.</li>
-</ol>
-<p>在 Am&lt;=T 的时候,这个变体将 L 设置为 m 而不是 m+1.这个方式的比较是更快速的,因为它在每个循环里省略了一次比较.但是平均就会多出来一次循环.在数组包含重复的元素的时候这个变体总是会返回最右侧的元素索引.比如 A 是[1,2,3,4,4,5,6,7]查找的对象是4,那么这个方法会返回 index 4,而不是 index 3.</p>
-<h3><span id="大致匹配">大致匹配</span></h3><p>由于有序数组的顺序性,可以将二分搜索扩展到大致匹配.可以用来计算赋值的排名(或称秩,比它更小的元素的数量),前趋(下一个最小元素),后继(下一个最大元素)以及最近邻.还可以使用两个排名查询来执行范围查询.</p>
-<ul>
-<li>排名查询可以使用调整后的二分搜索来进行.成功时返回m,失败时返回 L, 这样就等于返回了比目标值小的元素数目.</li>
-<li>前趋和后继可以使用排名查询来进行.当知道目标值的排名,成功时前趋是排名位置的上一个元素,失败时则是排名位置的元素.它的后继是排名位置的后一个元素,或是前趋的下一个元素.目标值的最近领可能是前趋或后继,取决于哪个更接近目标值.</li>
-<li>范围查询,一旦知道范围两边的值的排名,那么大于边界最小值且小于边界最大值的元素排名就是他们的范围,是否包含边界值根据需要处理.</li>
-</ul>
-<h2><span id="性能分析">性能分析</span></h2><p><strong>时间复杂度</strong><br>二分查找每次把搜索区域减少一半,时间复杂度为<br>$$<br>O(log_2 n)<br>$$<br>(n 是集合中元素的个数)<br>最差的情况是 遍历到最后一层,或者是没有找到该元素的时候,复杂度为 $O(\lfloor log_2 n + 1 \rfloor)$ .</p>
-<p>综合复杂度为 $O(log_2 n)$</p>
-<p>分散层叠(fractional cascading) 可以提高在多数组中查询相同值的效率. k 是数组的数量,在每个数组中查询目标值消耗 $O(k log n)$ 的时间.分散层叠可以将它降低到 $O(k+log n)$.</p>
-<p><code>变体效率分析</code><br>相对于正常的二分搜索,它减少了每次循环的比对次数,但是它必须做完完整的循环,而不会在中间就得到答案.但是在 n 很大的情况下减少了对比次数的提升不能够抵消多余的循环的消耗.</p>
-<p><strong>空间复杂度</strong><br>O(1).尾递归,可以改写为循环.</p>
-<h2><span id="应用">应用</span></h2><p>查找数组中的元素,或用于插入排序.</p>
-<h2><span id="二分搜索和其他的方案对比">二分搜索和其他的方案对比</span></h2><p>使用二分搜索的有序数组在插入和删除操作效率很低,每个操作消耗 O(n) 的时间.其他的数据结构提供了更高效的插入和删除,并且提供了同样高效的完全匹配.然而,二分搜索适用于很多的搜索问题,只消耗 $O(log n)$ 的时间.</p>
-<h3><span id="hashing">Hashing</span></h3><p>对于<a href="https://en.wikipedia.org/wiki/Associative_arrays" target="_blank" rel="external">关联数组 (associative arrays)</a>,<a href="https://en.wikipedia.org/wiki/Hash_table" target="_blank" rel="external">哈希表 (hash tables)</a>,他们是通过hash 函数将键映射到记录上的数据结构,通常情况下比在有序数组的情况下使用二分查找要更快.大部分的实现平均开销都是常量级的.然而, hashing 并不适用于模糊匹配,比如计算前趋,后继,以及最近的键,它在失败的查询情况下能给我们的唯一信息就是目标在记录中不存在.二分查找是这种匹配的理想模式,消耗对数级别的时间.</p>
-<h3><span id="trees">Trees</span></h3><p><a href="todo">二叉搜索树(binary search tree)</a> 是一个基于二叉搜索原理的<a href="todo">二叉树(binary tree)</a>数据结构.树的记录按照顺序排列,并且每个树里的每个记录都可以使用类似二叉搜索的方法来搜索,平均耗费对数级的时间.插入和删除的平均时间也是对数级的.这会比有序数组消耗的线性时间要快,并且二叉树拥有所有有序数组可以执行的操作,包含范围和模糊查找.</p>
-<p>然而二叉搜索通常情况下比二叉搜索树的搜索更有效率,因为二叉搜索树很可能会完全不平衡,导致性能稍差.这同样适用于 <a href="todo">平衡二叉搜索树( balanced binary search trees)</a> , 它平衡了它自己的节点稍微向完全平衡树靠拢.虽然不太可能,但是树有可能只有少数节点有两个子节点导致严重不平衡,这种情况下平均时间损耗和最差的情况差不多都是 O(n) .二叉搜索树比有序数组占用更多的空间.</p>
-<p>二叉搜索树因为可以高效的在文件系统中结构化,所以他们可以在硬盘中进行快速搜索.B-tree 泛化了这种树结构的方法.B-tree 常用于组织长时间的存储比如<a href="todo">数据库(databases)</a>和<a href="todo">文件系统(filesystems)</a>.</p>
-<h3><span id="linear-search">Linear search</span></h3><p><a href="todo">线性搜索( Linear Search)</a>是一种简单的搜索算法,它查找每一个记录直到找到目标值.线性搜索可以在 链表(linked list) 上使用,它的插入和删除会比在数组上要快.二分搜索比线性搜索要快除非数组很短.如果数组必须先被排序,这个消耗必须在搜索中平摊.对数组进行排序还可以进行有效的近似匹配和其他操作.</p>
-<h3><span id="set-membership-algorithms">Set membership algorithms</span></h3><p>一个和搜索相关的问题是<a href="todo">集合成员(set membership)</a>.所有有关查找的算法,比如二分搜索,都可以用于集合成员.还有一些更适用于集合成员的算法,<a href="todo">位数组(bit array)</a>是最简单的一个,在键的范围是有限的时候非常有用.它非常快,是需要O(1)的时间.<a href="todo">朱迪矩阵(Judy array)</a>可以高效的处理64位键.</p>
-<p>对于近似结果,<a href="todo">布隆过滤器(Bloom filters)</a>是另外一个基于哈希的概率性数据结构,通过存储使用bit array 和多重 hash 函数编码的键集合. Bloom filters 在大多数情况下空间效率比bit arrays 要高而不会慢太多:使用了 k 重hash 函数,成员查找只需要 O(k) 的时间.然而, Bloom filters 有一定的误判性.</p>
-<h3><span id="其他的数据结构">其他的数据结构</span></h3><p>这里存在一些数据结构在某些情况下比在有序数组上使用二分搜索进行查找或其他的操作更加高效.比如,在<a href="todo">van Emde Boas trees</a>, <a href="todo">fusion trees</a>, <a href="todo">前缀树(tries)</a>, 和<a href="todo">位数组</a> 上进行查找,近似匹配,以及其他可用的操作可以比在有序数组上进行二分搜索更加的高效.然而,尽管这些操作可以比在无视键的情况下比有序数组上使用更高效,这样的数据结构通常是因为利用了某些键的属性(键通常是一些小整数),因此如果键缺乏那些属性将会消耗更多的空间或时间.一些结构如朱迪矩阵,使用了多种方式的组合来保证效率和执行近似匹配的能力.</p>
-<h2><span id="变体">变体</span></h2><h3><span id="uniform-binary-search">Uniform binary search</span></h3><p>Uniform binary search 不是存储下限和上限的边界值,而是中间元素的索引,和从这次循环的中间元素到下次循环的中间元素的变化.每一步的变化减少一半.比如,要搜索的数组是[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],中间元素是6.Uniform binary search 同时对左边和右边的子数组进行操作.在这个情况下,左边的子数组([1, 2, 3, 4, 5]) 的中间元素 3 而右边的子数组 ([7, 8, 9, 10, 11]) 的中间元素是 9.然后存储3 作为两个中间元素和 6 的差别.为了减少搜索的空间使用,算法同时加上或减去这个和中间元素的改变.这个算法的好处是可以将每次循环的索引的差别存储到一个表里,在某些系统里可以提高算法的性能.</p>
-<p><img src="/2018/08/14/Binary-Search/Uniform_binary_search.svg.png" alt=""></p>
-<h3><span id="exponential-search">Exponential search</span></h3><p>指数查找(Exponential Search)将二分搜索拓展到无边界数组.它最开始寻找第一个索引是2的幂次方并且要比目标值大的元素的索引.然后,它将这个元素索引设置为上边界,然后开始二分搜索.指数查找消耗 $\lfloor log_2 x =1 \rfloor$ 次循环 ,然后二分搜索消耗 $\lfloor log_2 x \rfloor$ 次循环, x 是目标值的位置.指数查找适用于有界列表,在目标值接近数组开始的位置的时候比二分查找性能有所提高.</p>
-<p><img src="/2018/08/14/Binary-Search/Exponential_search.svg.png" alt=""></p>
-<h3><span id="interpolation-search">Interpolation search</span></h3><p>内插搜索(Interpolation search)忽略了目标值的位置,计算数组的最低和最高元素的距离即数组的长度.这只有在数组元素是数字的时候才能使用.它适用于中间值不是最好的猜测选择的情况.比如,如果目标值接近数组的最高元素,最好是定位在数组的末端.如果数组的分布是均匀的或者接近均匀的,它消耗 $O(log log n)$ 次比较.</p>
-<p>实际上,内插搜索在数组元素较少的情况下是比二分搜索更慢的,因为内插搜索需要额外的计算.尽管它的时间复杂度增长是小于二分搜索的,只有在在大数组的情况下这个计算的损耗可以被弥补.</p>
-<p><img src="/2018/08/14/Binary-Search/Interpolation_search.svg.png" alt=""></p>
-<h3><span id="fractional-cascading">Fractional cascading</span></h3><p>分散层叠(Fractional cascading) 可以提高在多个有序数组里查找相同的元素或近似匹配的效率,分别在每个数组里查找总共需要 $O(klogn)$的时间, k 是数组的数量.分散层叠通过将每个数组的信息按指定的方式存储起来将这个时间降低到 $O(k+logn)$ .</p>
-<p>它将每个数组里的值集合成一个数组,元素为 11[0,3,2,0] 的形式,括号内的数字是该值在对应数组中应该返回的数字)提高了在多个数组中查找相同值的效率,高效的解决了一系列计算几何和其他领域的查找问题</p>
-<p>分散层叠被发明的时候是为了高效的解决各种<a href="todo">计算几何学(computational geometry)</a> 问题,但是它同样适用于其他地方,例如 <a href="todo">数据挖掘(data mining)</a> 和 <a href="todo">互联网协议(Internet Protocal)</a> 等.</p>
-<h2><span id="实现时的问题">实现时的问题</span></h2><p>要注意中间值的取值方法,如果使用 (L+R)/2 当数组的元素数量很大的时候回造成计算溢出.所以要使用L+(R-L)/2.</p>
-<h2><span id="示例">示例</span></h2><p>C 版本- 递归<br><figure class="highlight c hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">binary_search</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> arr[], <span class="hljs-keyword">int</span> start , <span class="hljs-keyword">int</span> end , <span class="hljs-keyword">int</span> khey)</span></span>&#123;</div><div class="line">    <span class="hljs-keyword">if</span> (start &gt; end)</div><div class="line">      <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;</div><div class="line"></div><div class="line">    <span class="hljs-keyword">int</span> mid = start +(end - start)/<span class="hljs-number">2</span>;   <span class="hljs-comment">//直接平均可能会溢位,所以用此算法</span></div><div class="line">    <span class="hljs-keyword">if</span> (arr[mid] &gt; khey)</div><div class="line">        <span class="hljs-keyword">return</span> binary_search(arr , start , mid - <span class="hljs-number">1</span> , khey);</div><div class="line">    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (arr[mid] &lt; khey)</div><div class="line">        <span class="hljs-keyword">return</span> binary_search(arr , mid + <span class="hljs-number">1</span> , end , khey);</div><div class="line">    <span class="hljs-keyword">else</span></div><div class="line">        <span class="hljs-keyword">return</span> mid;    <span class="hljs-comment">//最后才检测相等的情况是因为大多数搜寻情况不是大于就是小于</span></div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>C 版本- while 循环</p>
-<figure class="highlight c hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">binary_search</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> arr[], <span class="hljs-keyword">int</span> start, <span class="hljs-keyword">int</span> end, <span class="hljs-keyword">int</span> khey)</span></span>&#123;</div><div class="line">    <span class="hljs-keyword">int</span> result = <span class="hljs-number">-1</span>;    <span class="hljs-comment">//如果没有搜索到数据返回 -1</span></div><div class="line"></div><div class="line">    <span class="hljs-keyword">int</span> mid;</div><div class="line">    <span class="hljs-keyword">while</span> (start &lt;= end)&#123;</div><div class="line">      mid = start + (end - start)/<span class="hljs-number">2</span> ;    <span class="hljs-comment">//直接平均可能会溢位,所以用此算法</span></div><div class="line">      <span class="hljs-keyword">if</span> (arr[mid] &gt; khey)</div><div class="line">          end = mid<span class="hljs-number">-1</span>;</div><div class="line">      <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (arr[mid] &lt; khey)</div><div class="line">          start = mid + <span class="hljs-number">1</span>;</div><div class="line">      <span class="hljs-keyword">else</span>&#123;    <span class="hljs-comment">//最后才检测相等的情况是因为大多数搜寻情况不是大于就是小于</span></div><div class="line">          result = mid;</div><div class="line">          <span class="hljs-keyword">break</span>;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="hljs-keyword">return</span> result;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>Python3 递归</p>
-<figure class="highlight python hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">binary_search</span><span class="hljs-params">(arr, start, end, hkey)</span>:</span></div><div class="line">    <span class="hljs-keyword">if</span> start &gt; end:</div><div class="line">        <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span></div><div class="line"></div><div class="line">    mid = start + (end - start) / <span class="hljs-number">2</span></div><div class="line">    <span class="hljs-keyword">if</span> arr[mid] &gt; hkey:</div><div class="line">        <span class="hljs-keyword">return</span> binary_search(arr, start , mid - <span class="hljs-number">1</span>,hkey)</div><div class="line">    <span class="hljs-keyword">if</span> arr[mid] &lt; hkey:</div><div class="line">        <span class="hljs-keyword">return</span> binary_search(arr, mid + <span class="hljs-number">1</span>, end, hkey)</div><div class="line">    <span class="hljs-keyword">return</span> mid</div></pre></td></tr></table></figure>
-<p>Python3 while 循环</p>
-<figure class="highlight python hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">binary_search</span><span class="hljs-params">(arr, start, end, hkey)</span>:</span></div><div class="line">    result = <span class="hljs-number">-1</span></div><div class="line"></div><div class="line">    <span class="hljs-keyword">while</span> start &lt;= end:</div><div class="line">        mid = start + (end - start) / <span class="hljs-number">2</span></div><div class="line">        <span class="hljs-keyword">if</span> arr[mid] &gt; hkey :</div><div class="line">            end = mid - <span class="hljs-number">1</span></div><div class="line">        <span class="hljs-keyword">elif</span> arr[mid] &lt; hkey :</div><div class="line">            start = mid + <span class="hljs-number">1</span></div><div class="line">        <span class="hljs-keyword">else</span> :</div><div class="line">            result = mid</div><div class="line">            <span class="hljs-keyword">break</span></div><div class="line"></div><div class="line">    <span class="hljs-keyword">return</span> result</div></pre></td></tr></table></figure>
-<p>Java 递归</p>
-<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> <span class="hljs-title">binarySearch</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] arr, <span class="hljs-keyword">int</span> start, <span class="hljs-keyword">int</span> end, <span class="hljs-keyword">int</span> hkey)</span></span>&#123;</div><div class="line">    <span class="hljs-keyword">if</span> (start &gt; end)</div><div class="line">        <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>;</div><div class="line"></div><div class="line">    <span class="hljs-keyword">int</span> mid = start + (end - start)/<span class="hljs-number">2</span>;    <span class="hljs-comment">//防止溢位</span></div><div class="line">    <span class="hljs-keyword">if</span> (arr[mid] &gt; hkey)</div><div class="line">        <span class="hljs-keyword">return</span> binarySearch(arr, start, mid - <span class="hljs-number">1</span>, hkey);</div><div class="line">    <span class="hljs-keyword">if</span> (arr[mid] &lt; hkey)</div><div class="line">        <span class="hljs-keyword">return</span> binarySearch(arr, mid + <span class="hljs-number">1</span>, end, hkey);</div><div class="line">    <span class="hljs-keyword">return</span> mid;  </div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>Java while 循环</p>
-<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> <span class="hljs-title">binarySearch</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] arr, <span class="hljs-keyword">int</span> start, <span class="hljs-keyword">int</span> end, <span class="hljs-keyword">int</span> hkey)</span></span>&#123;</div><div class="line">    <span class="hljs-keyword">int</span> result = -<span class="hljs-number">1</span>;</div><div class="line"></div><div class="line">    <span class="hljs-keyword">while</span> (start &lt;= end)&#123;</div><div class="line">        <span class="hljs-keyword">int</span> mid = start + (end - start)/<span class="hljs-number">2</span>;    <span class="hljs-comment">//防止溢位</span></div><div class="line">        <span class="hljs-keyword">if</span> (arr[mid] &gt; hkey)</div><div class="line">            end = mid - <span class="hljs-number">1</span>;</div><div class="line">        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (arr[mid] &lt; hkey)</div><div class="line">            start = mid + <span class="hljs-number">1</span>;</div><div class="line">        <span class="hljs-keyword">else</span> &#123;</div><div class="line">            result = mid ;  </div><div class="line">            <span class="hljs-keyword">break</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="hljs-keyword">return</span> result;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2><span id="about-me">About Me</span></h2><p>我的博客 <a href="http://leonchen1024.com/" target="_blank" rel="external">leonchen1024.com</a></p>
-<p>我的 GitHub <a href="https://github.com/LeonChen1024" target="_blank" rel="external">https://github.com/LeonChen1024</a></p>
-<p>微信公众号 </p>
-<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/Images/CooderQRcodem.jpg?raw=false" alt="wechat"></p>
-<h2><span id="references">References</span></h2><p><a href="https://en.wikipedia.org/wiki/Binary_search_algorithm" target="_blank" rel="external">https://en.wikipedia.org/wiki/Binary_search_algorithm</a></p>
- -->
-            <div class="article-entry">
-                    
-                    
-                        
-                            
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                            
-                                
-                                <p><h1><span id="binary-search二分搜索">Binary Search(二分搜索)</span></h1><p>二分搜索(binary search),也叫做 折半搜索(half-interval search),对数搜索(logarithmic search),对半搜索(binary chop),是一种在有序数组中查找某一特定元素的搜索算法.</p>
-<p>二分搜索有几个变体.特别是,分散层叠(<a href="https://en.wikipedia.org/wiki/Fractional_cascading" target="_blank" rel="external">fractional cascading</a>)(将每个数组里的值集合成一个数组,元素为11[0,3,2,0] 的形式,括号内的数字是该值在对应数组中应该返回的数字)提高了在多个数组中查找相同值的效率,高效的解决了一系列计算几何和其他领域的查找问题).指数查找(<a href="https://en.wikipedia.org/wiki/Exponential_search" target="_blank" rel="external">Exponential search</a>)延伸了二分查找到一个没有边界的 list.<a href="https://en.wikipedia.org/wiki/Binary_search_tree" target="_blank" rel="external">binary search tree</a>和<a href="https://en.wikipedia.org/wiki/B-tree" target="_blank" rel="external">B-tree</a>是基于 binary search 延伸的.</p>
-<h2><span id="原理">原理</span></h2><p>搜索时从数组中间元素开始,如果中间元素正好是要查找的元素,则搜索过程结束;如果中间元素大于或者小于要查找的元素,则在数组中大于或者小于查找元素的一半中继续查找,重复这个过程直到找到这个元素,或者这一半的大小为空时则代表找不到.这样子每一次比较都使得搜索范围缩小一半.</p>
-<h3><span id="步骤">步骤</span></h3><p>给定一个有序数组 A 是 A0,…,An-1并保证 A0&lt;=…&lt;=An-1,以及目标值 T.</p>
-<ol>
-<p>
-                            
-                        
-                    
-                    
-                        </div>   
-                        <div class="article-more-link">
-                            <a href="/2018/08/14/Binary-Search/#more">Read More</a>
                         </div>
                     
         </div>
@@ -1093,240 +1279,15 @@
 
 
 
-    <div class="card">
-    
-    <div class="card-image">
-        <a href="/2016/08/20/Android-6.0-Change-1/" class="image is-7by1">
-            <img class="banner" src="/2016/08/20/Android-6.0-Change-1/pic.jpg" alt="Android 6.0的变化 （上）">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2016-08-20T12:21:44.000Z">2016-08-20</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Android/版本差异/">版本差异</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    12 minutes read (About 1824 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2016/08/20/Android-6.0-Change-1/">Android 6.0的变化 （上）</a>
-            
-        </h1>
-        <div class="content">
-            <!-- <p>随着一系列新的特性以及功能， Android 6.0 (API level 23)包含了很多的系统变化以及API行为的变化。本文着重介绍了一些你应该理解的和占用APP中重要部分的变化。</p>
-<p>如果你之前已经在Android平台发布过APP，要知道这些平台上的变化将会影响你的APP。</p>
-<h2><span id="目录">目录</span></h2><ul>
-<li><a href="#目录">目录</a></li>
-<li><a href="#运行时权限">运行时权限</a></li>
-<li><a href="#休眠和应用待机模式">休眠和应用待机模式</a></li>
-<li><a href="#移除apache的-http-client">移除Apache的 HTTP Client</a></li>
-<li><a href="#boringssl">BoringSSL</a></li>
-<li><a href="#获取硬件标识符">获取硬件标识符</a></li>
-<li><a href="#通知">通知</a></li>
-<li><a href="#audiomanager-改变">AudioManager 改变</a></li>
-<li><a href="#文本选择">文本选择</a></li>
-</ul>
-<h2><span id="运行时权限">运行时权限</span></h2><p>这个版本引入了一个新的权限模型，使得用户现在可以在运行时直接管理APP权限。这个模型改善了用户对权限管理的可见度和管理程度，并简化了APP开发者对安装和自动升级的流程。用户可以对已安装的APP的权限分别进行授权和取消。</p>
-<p>当你的APP的目标版本在Android 6.0 (API level 23)或者更高的时候， 请确保在运行时检查并申请权限。要确定你的APP是否被授予了某权限，可以通过调用新的checkSelfPermission()方法。为了去申请一个权限，可以通过调用 requestPermissions() 新方法。即使你的APP目标版本不是 Android 6.0 (API level 23)，你也应该在新的权限模型下进行测试。</p>
-<p>想要了解更多的在你的APP里支持新的权限模型的细节，可见 Working with System Permissions。获得更多的评估对你的APP的影响的提示，可见Permissions Best Practices。</p>
-<p>危险权限和普通权限见下链接<br><a href="http://blog.csdn.net/chenlinfeng772885775/article/details/53508204" target="_blank" rel="external">点击打开链接</a></p>
-<h2><span id="休眠和应用待机模式">休眠和应用待机模式</span></h2><p>这个版本将为空闲的设备和APP引入新的节能方式。这些新功能将会影响所有的APP，所以请确保你的APP在新的模式下进行测试。</p>
-<p>休眠：如果用户拔出一个设备并将其屏幕关闭闲置一段时间，设备将会进入休眠模式，尝试使系统进入睡眠状态。在这个模式下，设备周期性的恢复短暂时间的正常操作使得APP可以进行同步，使得系统可以进行一些待执行的操作。</p>
-<p>APP待机：APP待机允许系统判定一个APP是处于待机状态当这个APP没有被用户显式的使用。系统在用户一段时间内并没有触摸这个APP时做出这个决定。如果设备没有连接充电器，系统将会禁止访问网络并暂停APP的同步以及相应的工作当他被认为是闲置的时候。</p>
-<p>学习更多的有关节能方面的改变，详见Optimizing for Doze and App Standby。</p>
-<h2><span id="移除apache的-http-client">移除Apache的 HTTP Client</span></h2><p>Android 6.0 的版本移除了对 Apache HTTP client的支持.如果你的APP正在使用这个client并且目标版本在Android 2.3 (API level 9)或者更高，请使用HttpURLConnection类来替代。这个API是更加高效的，因为他采用了透明压缩和响应缓存来减少网络使用，减少电能消耗。如果仍然想继续使用Apache HTTP APIs，你必须一开始就在你的build.gradle文件里定义以下编译时依赖。</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">android &#123;</div><div class="line">    useLibrary &apos;org.apache.http.legacy&apos;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2><span id="boringssl">BoringSSL</span></h2><p>Android正在将OpenSSL替换为BoringSSL库。如果你的APP使用的是 Android NDK，请不要使用那些不属于NDK API里的库，比如：libcrypto.so 和 libssl.so.这些库不是公开的API,他们的修改和禁用也不会通过文件和设备通知开发者。另外，这样可能还会暴露你APP的安全漏洞。取而代之的是你需要修改你的native代码，通过JNI来调用Java cryptography APIs或者静态连接到你选择的加密库。</p>
-<h2><span id="获取硬件标识符">获取硬件标识符</span></h2><p>从这个版本开始，为了给用户提供更好点数据保护，Android删除了通过编程方式从Wi-Fi 和 Bluetooth APIs来获得硬件本地标识符的方法。现在 WifiInfo.getMacAddress() 和 BluetoothAdapter.getAddress()方法将始终返回一个常量值02:00:00:00:00:00。</p>
-<p>为了通过蓝牙或WiFi扫描获取附近的设备的硬件标识符，你的APP必须拥有ACCESS_FINE_LOCATION 或 ACCESS_COARSE_LOCATION权限。</p>
-<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">WifiManager.getScanResults()</div><div class="line">BluetoothDevice.ACTION_FOUND</div><div class="line">BluetoothLeScanner.startScan()</div></pre></td></tr></table></figure>
-<p>注意：当一个运行Android 6.0 (API level 23)的设备启动WiFi或者蓝牙扫描时，这个操作对外部设备是可见的，并会被初始化一个随机的mac地址。</p>
-<h2><span id="通知">通知</span></h2><p>这个版本删除了 Notification.setLatestEventInfo()方法。使用Notification.Builder来取代它进行构造通知。为了反复更新一个通知，可以重用 Notification.Builder 实例，调用 build() 方法来更新通知实例。</p>
-<p>adb shell dumpsys notification命令不在打印你的通知文本。使用adb shell dumpsys notification –noredact命令来取代它打印你的通知对象文本。</p>
-<h2><span id="audiomanager-改变">AudioManager 改变</span></h2><p>不再支持通过 AudioManager类来对某个音频流进行精确的调音或者静音设置。 setStreamSolo()方法已经被弃用了，你应该使用  requestAudioFocus() 方法来替代它。同样的setStreamMute()方法也被弃用了，调用 adjustStreamVolume() 方法来替代它，传入的参数变为ADJUST_MUTE 或 ADJUST_UNMUTE 。</p>
-<h2><span id="文本选择">文本选择</span></h2><p>当用户在你的APP上选择文本时，你现在可以在浮动工具栏里显示一些文本选择动作比如剪切，复制，和粘贴。和用户的交互界面类似于上下文动作菜单，就像为单独的视图配置的上下文菜单。</p>
-<p>为了实现文本选择的浮动工具栏，需要在你已有的APP里做出以下改变：</p>
-<p>1.在你的view里或者activity里，改变你的 ActionMode 的获取方法，由startActionMode(Callback)变为 startActionMode(Callback, ActionMode.TYPE_FLOATING).</p>
-<p>2.将你已经实现了ActionMode.Callback变为继承自ActionMode.Callback2。</p>
-<p>3.重写 onGetContentRect()方法来提供视图中内容选中框（比如文本选中框）的坐标。</p>
-<p>4.在矩形框作为一个唯一的元素不再有效时，调用 invalidateContentRect() 方法。</p>
-<p>如果你在使用 Android Support Library revision 22.2, 你要知道浮动工具栏并不向后支持并且APP兼容会默认控制 ActionMode。这会阻止悬浮工具栏的显示。为了实现在 AppCompatActivity 里对 ActionMode的支持，调用 getDelegate()方法，并用其得到的 AppCompatDelegate 对象调用setHandleNativeActionModesEnabled()并将传入参数设为false。这个调用返回 ActionMode的控制给框架。在设备运行Android 6.0 (API level 23),这允许框架去支持 ActionBar 或者浮动工具栏模式，而当设备运行早Android 5.1 (API level 22)或更低的版本上时，只有 ActionBar 模式被支持。</p>
- -->
-            <div class="article-entry">
-                    
-                    
-                        
-                            
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                            
-                                
-                                <p><p>随着一系列新的特性以及功能， Android 6.0 (API level 23)包含了很多的系统变化以及API行为的变化。本文着重介绍了一些你应该理解的和占用APP中重要部分的变化。</p>
-<p>如果你之前已经在Android平台发布过APP，要知道这些平台上的变化将会影响你的APP。</p>
-<h2><span id="目录">目录</span></h2><ul>
-<li><a href="#目录">目录</a></li>
-<li><a href="#运行时权限">运行时权限</a></li>
-<p>
-                            
-                        
-                    
-                    
-                        </div>   
-                        <div class="article-more-link">
-                            <a href="/2016/08/20/Android-6.0-Change-1/#more">Read More</a>
-                        </div>
-                    
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-image">
-        <a href="/2016/03/17/Android-declare-styleable-Attribute/" class="image is-7by1">
-            <img class="banner" src="/2016/03/17/Android-declare-styleable-Attribute/pic.jpg" alt="Android declare-styleable自定义属性">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2016-03-17T07:24:26.000Z">2016-03-17</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Android/UI/">UI</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Android/UI/Custom-View/">Custom View</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    3 minutes read (About 479 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2016/03/17/Android-declare-styleable-Attribute/">Android declare-styleable自定义属性</a>
-            
-        </h1>
-        <div class="content">
-            <!-- <p>我们自己定义view，通常继承View，重写构造方法和onDraw等函数，然后具体实现自己定义的复杂view。但是继承这个自定义view的有的属性又各有不同，有的属性在原生属性中没有，这时候就可以使用自定义的属性来便捷的设置相应的属性。</p>
-<p>1、在res/values/下新建一个attrs.xml文件。写入<resources><declare-styleable><attr>这三级标签。并填入相应属性。</attr></declare-styleable></resources></p>
-<figure class="highlight xml hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</div><div class="line"><span class="hljs-tag">&lt;<span class="hljs-name">resources</span>&gt;</span></div><div class="line"></div><div class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">declare-styleable</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"myStyle"</span>&gt;</span></div><div class="line">      <span class="hljs-tag">&lt;<span class="hljs-name">attr</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"textSize"</span> <span class="hljs-attr">format</span>=<span class="hljs-string">"dimension"</span> /&gt;</span></div><div class="line">      <span class="hljs-tag">&lt;<span class="hljs-name">attr</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"backgroud"</span> <span class="hljs-attr">format</span>=<span class="hljs-string">"reference"</span> /&gt;</span></div><div class="line">      <span class="hljs-tag">&lt;<span class="hljs-name">attr</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">format</span>=<span class="hljs-string">"string|reference"</span> /&gt;</span></div><div class="line">      <span class="hljs-tag">&lt;<span class="hljs-name">attr</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"textColor"</span> <span class="hljs-attr">format</span>=<span class="hljs-string">"color"</span> /&gt;</span></div><div class="line">      <span class="hljs-tag">&lt;<span class="hljs-name">attr</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"yesOrNot"</span> <span class="hljs-attr">format</span>=<span class="hljs-string">"boolean"</span> /&gt;</span></div><div class="line">      <span class="hljs-tag">&lt;<span class="hljs-name">attr</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"number"</span>&gt;</span></div><div class="line">          <span class="hljs-tag">&lt;<span class="hljs-name">enum</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"one"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"0"</span> /&gt;</span></div><div class="line">          <span class="hljs-tag">&lt;<span class="hljs-name">enum</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"two"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"1"</span> /&gt;</span></div><div class="line">          <span class="hljs-tag">&lt;<span class="hljs-name">enum</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"leftToRight"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"2"</span> /&gt;</span></div><div class="line">          <span class="hljs-tag">&lt;<span class="hljs-name">enum</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"topToBottom"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"3"</span> /&gt;</span></div><div class="line">      <span class="hljs-tag">&lt;/<span class="hljs-name">attr</span>&gt;</span></div><div class="line">  <span class="hljs-tag">&lt;/<span class="hljs-name">declare-styleable</span>&gt;</span></div><div class="line"></div><div class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">resources</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>2、建立一个自定义视图类，本次偷懒直接继承自textview。然后使用typedarray类来获取控件相应的属性并使用。</p>
-<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-keyword">import</span> android.content.Context;</div><div class="line"><span class="hljs-keyword">import</span> android.content.res.TypedArray;</div><div class="line"><span class="hljs-keyword">import</span> android.graphics.Color;</div><div class="line"><span class="hljs-keyword">import</span> android.graphics.drawable.Drawable;</div><div class="line"><span class="hljs-keyword">import</span> android.util.AttributeSet;</div><div class="line"><span class="hljs-keyword">import</span> android.widget.TextView;</div><div class="line"></div><div class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyView</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">TextView</span></span></div><div class="line"><span class="hljs-class"></span>&#123;</div><div class="line"></div><div class="line"></div><div class="line">  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">MyView</span><span class="hljs-params">(Context context, AttributeSet attrs)</span></span></div><div class="line"><span class="hljs-function">  </span>&#123;</div><div class="line">      <span class="hljs-keyword">super</span>(context, attrs);</div><div class="line">      TypedArray typedArray = context.obtainStyledAttributes(attrs,R.styleable.myStyle);</div><div class="line"></div><div class="line">      <span class="hljs-keyword">float</span> textSize = typedArray.getDimension(R.styleable.myStyle_textSize, <span class="hljs-number">15</span>);</div><div class="line">      Drawable back = typedArray.getDrawable(R.styleable.myStyle_backgroud);</div><div class="line">      String textString = typedArray.getString(R.styleable.myStyle_text);</div><div class="line">      <span class="hljs-keyword">int</span> textColor = typedArray.getInt(R.styleable.myStyle_textColor, Color.BLACK);</div><div class="line">      <span class="hljs-keyword">boolean</span> yesOrNot = typedArray.getBoolean(R.styleable.myStyle_yesOrNot, <span class="hljs-keyword">true</span>);</div><div class="line">      <span class="hljs-keyword">int</span> number = typedArray.getInt(R.styleable.myStyle_number, <span class="hljs-number">0</span>);</div><div class="line"></div><div class="line">      setTextSize(textSize);</div><div class="line">      setText(textString);</div><div class="line">      setBackgroundDrawable(back);</div><div class="line">      setTextColor(textColor);</div><div class="line"></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>3、在布局文件里引用该类，并设定相应的属性。记得要定义xmlns:myapp（后面的名称随意取，但要上下一致。）= “<a href="http://schemas.android.com/apk/res/com.example.declarestyleabletest&quot;（最后是该自定义视图类所在的包名）" target="_blank" rel="external">http://schemas.android.com/apk/res/com.example.declarestyleabletest&quot;（最后是该自定义视图类所在的包名）</a></p>
-<figure class="highlight xml hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-tag">&lt;<span class="hljs-name">LinearLayout</span> <span class="hljs-attr">xmlns:android</span>=<span class="hljs-string">"http://schemas.android.com/apk/res/android"</span></span></div><div class="line"><span class="hljs-tag">  <span class="hljs-attr">xmlns:tools</span>=<span class="hljs-string">"http://schemas.android.com/tools"</span></span></div><div class="line"><span class="hljs-tag">  <span class="hljs-attr">xmlns:myapp</span>=<span class="hljs-string">"http://schemas.android.com/apk/res/com.example.declarestyleabletest"</span></span></div><div class="line"><span class="hljs-tag">  <span class="hljs-attr">android:id</span>=<span class="hljs-string">"@+id/container"</span></span></div><div class="line"><span class="hljs-tag">  <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">"match_parent"</span></span></div><div class="line"><span class="hljs-tag">  <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">"match_parent"</span></span></div><div class="line"><span class="hljs-tag">  <span class="hljs-attr">android:orientation</span>=<span class="hljs-string">"vertical"</span></span></div><div class="line"><span class="hljs-tag">  <span class="hljs-attr">tools:context</span>=<span class="hljs-string">"com.example.declarestyleabletest.MainActivity"</span></span></div><div class="line"><span class="hljs-tag">  <span class="hljs-attr">tools:ignore</span>=<span class="hljs-string">"MergeRootFrame"</span> &gt;</span></div><div class="line"></div><div class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">com.example.declarestyleabletest.MyView</span></span></div><div class="line"><span class="hljs-tag">      <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">"wrap_content"</span></span></div><div class="line"><span class="hljs-tag">      <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">"wrap_content"</span></span></div><div class="line"><span class="hljs-tag">      <span class="hljs-attr">myapp:backgroud</span>=<span class="hljs-string">"@drawable/ic_launcher"</span></span></div><div class="line"><span class="hljs-tag">      <span class="hljs-attr">myapp:number</span>=<span class="hljs-string">"one"</span></span></div><div class="line"><span class="hljs-tag">      <span class="hljs-attr">myapp:text</span>=<span class="hljs-string">"sdfkks"</span></span></div><div class="line"><span class="hljs-tag">      <span class="hljs-attr">myapp:textColor</span>=<span class="hljs-string">"@color/black"</span></span></div><div class="line"><span class="hljs-tag">      <span class="hljs-attr">myapp:textSize</span>=<span class="hljs-string">"15sp"</span> /&gt;</span></div><div class="line"></div><div class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">LinearLayout</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>补充一些常用的format</p>
-<p>reference  指定某资源ID<br>string   字符串<br>dimension   尺寸<br>color   颜色<br>boolean   布尔<br>integer   整型<br>float   浮点型<br>fraction   百分数<br>enum   枚举<br>flag  位运算</p>
-<p>xml 中定义好自己的属性值，在在代码中得到值，或使用默认值</p>
-<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">CText</span><span class="hljs-params">(Context context, AttributeSet set)</span> </span>&#123;</div><div class="line">      <span class="hljs-keyword">super</span>(context, set);</div><div class="line">      <span class="hljs-keyword">this</span>.context  = context;</div><div class="line">      initView();</div><div class="line">      TypedArray array = context.obtainStyledAttributes(set,R.styleable.CEditText);</div><div class="line">      initAttrs(array);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">initAttrs</span><span class="hljs-params">(TypedArray a)</span> </span>&#123;</div><div class="line">      hint = a.getString(R.styleable.CEditText_cHint);</div><div class="line">      text = a.getString(R.styleable.CEditText_cText);</div><div class="line">      setAttrs();</div><div class="line">      a.recycle();</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
- -->
-            <div class="article-entry">
-                    
-                    
-                        
-                            
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                            
-                                
-                                <p><p>我们自己定义view，通常继承View，重写构造方法和onDraw等函数，然后具体实现自己定义的复杂view。但是继承这个自定义view的有的属性又各有不同，有的属性在原生属性中没有，这时候就可以使用自定义的属性来便捷的设置相应的属性。</p>
-<p>1、在res/values/下新建一个attrs.xml文件。写入<resources><declare-styleable><attr>这三级标签。并填入相应属性。</attr></declare-styleable></resources></p>
-<figure class="highlight xml hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</div><div class="line"><span class="hljs-tag">&lt;<span class="hljs-name">resources</span>&gt;</span></div><div class="line"></div><div class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">declare-styleable</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"myStyle"</span>&gt;</span></div><div class="line">      <span class="hljs-tag">&lt;<span class="hljs-name">attr</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"textSize"</span> <span class="hljs-attr">format</span>=<span class="hljs-string">"dimension"</span> /&gt;</span></div><div class="line">      <span class="hljs-tag">&lt;<span class="hljs-name">attr</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"backgroud"</span> <span class="hljs-attr">format</span>=<span class="hljs-string">"reference"</span> /&gt;</span></div><div class="line">      <span class="hljs-tag">&lt;<span class="hljs-name">attr</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">format</span>=<span class="hljs-string">"string|reference"</span> /&gt;</span></div><div class="line">      <span class="hljs-tag">&lt;<span class="hljs-name">attr</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"textColor"</span> <span class="hljs-attr">format</span>=<span class="hljs-string">"color"</span> /&gt;</span></div><div class="line">      <span class="hljs-tag">&lt;<span class="hljs-name">attr</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"yesOrNot"</span> <span class="hljs-attr">format</span>=<span class="hljs-string">"boolean"</span> /&gt;</span></div><div class="line">      <span class="hljs-tag">&lt;<span class="hljs-name">attr</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"number"</span>&gt;</span></div><div class="line">          <span class="hljs-tag">&lt;<span class="hljs-name">enum</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"one"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"0"</span> /&gt;</span></div><div class="line">          <span class="hljs-tag">&lt;<span class="hljs-name">enum</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"two"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"1"</span> /&gt;</span></div><div class="line">          <span class="hljs-tag">&lt;<span class="hljs-name">enum</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"leftToRight"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"2"</span> /&gt;</span></div><div class="line">          <span class="hljs-tag">&lt;<span class="hljs-name">enum</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"topToBottom"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"3"</span> /&gt;</span></div><div class="line">      <span class="hljs-tag">&lt;/<span class="hljs-name">attr</span>&gt;</span></div><div class="line">  <span class="hljs-tag">&lt;/<span class="hljs-name">declare-styleable</span>&gt;</span></div><div class="line"></div><div class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">resources</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>2、建立一个自定义视图类，本次偷懒直接继承自textview。然后使用typedarray类来获取控件相应的属性并使用。</p>
-<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-keyword">import</span> android.content.Context;</div><div class="line"><span class="hljs-keyword">import</span> android.content.res.TypedArray;</div><div class="line"><span class="hljs-keyword">import</span> android.graphics.Color;</div><div class="line"><span class="hljs-keyword">import</span> android.graphics.drawable.Drawable;</div><div class="line"><span class="hljs-keyword">import</span> android.util.AttributeSet;</div><div class="line"><span class="hljs-keyword">import</span> android.widget.TextView;</div><div class="line"></div><div class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyView</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">TextView</span></span></div><div class="line"><span class="hljs-class"></span>&#123;</div><div class="line"></div><div class="line"></div><div class="line">  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">MyView</span><span class="hljs-params">(Context context, AttributeSet attrs)</span></span></div><div class="line"><span class="hljs-function">  </span>&#123;</div><div class="line">      <span class="hljs-keyword">super</span>(context, attrs);</div><div class="line">      TypedArray typedArray = context.obtainStyledAttributes(attrs,R.styleable.myStyle);</div><div class="line"></div><div class="line">      <span class="hljs-keyword">float</span> textSize = typedArray.getDimension(R.styleable.myStyle_textSize, <span class="hljs-number">15</span>);</div><div class="line">      Drawable back = typedArray.getDrawable(R.styleable.myStyle_backgroud);</div><div class="line">      String textString = typedArray.getString(R.styleable.myStyle_text);</div><div class="line">      <span class="hljs-keyword">int</span> textColor = typedArray.getInt(R.styleable.myStyle_textColor, Color.BLACK);</div><div class="line">      <span class="hljs-keyword">boolean</span> yesOrNot = typedArray.getBoolean(R.styleable.myStyle_yesOrNot, <span class="hljs-keyword">true</span>);</div><div class="line">      <span class="hljs-keyword">int</span> number = typedArray.getInt(R.styleable.myStyle_number, <span class="hljs-number">0</span>);</div><div class="line"></div><div class="line">      setTextSize(textSize);</div><div class="line">      setText(textString);</div><div class="line">      setBackgroundDrawable(back);</div><div class="line">      setTextColor(textColor);</div><div class="line"></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>
-                            
-                        
-                    
-                    
-                        </div>   
-                        <div class="article-more-link">
-                            <a href="/2016/03/17/Android-declare-styleable-Attribute/#more">Read More</a>
-                        </div>
-                    
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
     <nav class="pagination is-centered" role="navigation" aria-label="pagination">
         <div class="pagination-previous">
-            <a class="is-flex-grow has-text-black-ter" href="/tags/Chinese/page/2/">Anterior</a>
+            <a class="is-flex-grow has-text-black-ter" href="/tags/Chinese/page/2/">Previous</a>
         </div>
         <div class="pagination-next">
-            <a class="is-flex-grow has-text-black-ter" href="/tags/Chinese/page/4/">Siguiente</a>
+            <a class="is-flex-grow has-text-black-ter" href="/tags/Chinese/page/4/">Next</a>
         </div>
         <ul class="pagination-list is-hidden-mobile">
             
@@ -1381,37 +1342,37 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Entradas
+                        Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        40
+                        42
                     </p>
                 </div>
             </div>
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categorias
+                        Categories
                     </p>
                     <p class="title has-text-weight-normal">
-                        20
+                        22
                     </p>
                 </div>
             </div>
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Etiquetas
+                        Tags
                     </p>
                     <p class="title has-text-weight-normal">
-                        17
+                        18
                     </p>
                 </div>
             </div>
         </nav>
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://github.com/LeonChen1024">
-                SEGUIR</a>
+                Follow</a>
         </div>
         
         
@@ -1440,7 +1401,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categorias
+                Categories
             </h3>
             <ul class="menu-list">
             <li>
@@ -1449,7 +1410,7 @@
                 <span class="level-item">Chinese</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">31</span>
+                <span class="level-item tag">33</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="undefined">
@@ -1474,6 +1435,14 @@
             </span>
             <span class="level-end">
                 <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="undefined">
+            <span class="level-start">
+                <span class="level-item">DesignPattern</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="undefined">
@@ -1517,9 +1486,9 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Nube de etiquetas
+            Tag Cloud
         </h3>
-        <a href="/tags/Algorithm/" style="font-size: 18.75px;">Algorithm</a> <a href="/tags/Android/" style="font-size: 16.25px;">Android</a> <a href="/tags/Chinese/" style="font-size: 20px;">Chinese</a> <a href="/tags/Custom-View/" style="font-size: 10px;">Custom View</a> <a href="/tags/Data-Structure/" style="font-size: 10px;">Data Structure</a> <a href="/tags/DataStructure/" style="font-size: 10px;">DataStructure</a> <a href="/tags/English/" style="font-size: 15px;">English</a> <a href="/tags/Error/" style="font-size: 10px;">Error</a> <a href="/tags/Gradle/" style="font-size: 11.25px;">Gradle</a> <a href="/tags/Java/" style="font-size: 12.5px;">Java</a> <a href="/tags/Jetpack/" style="font-size: 11.25px;">Jetpack</a> <a href="/tags/LeetCode/" style="font-size: 17.5px;">LeetCode</a> <a href="/tags/Optimize/" style="font-size: 13.75px;">Optimize</a> <a href="/tags/SourceCode/" style="font-size: 10px;">SourceCode</a> <a href="/tags/UI/" style="font-size: 10px;">UI</a> <a href="/tags/版本差异/" style="font-size: 11.25px;">版本差异</a> <a href="/tags/版本管理/" style="font-size: 12.5px;">版本管理</a>
+        <a href="/tags/Algorithm/" style="font-size: 18.75px;">Algorithm</a> <a href="/tags/Android/" style="font-size: 16.25px;">Android</a> <a href="/tags/Chinese/" style="font-size: 20px;">Chinese</a> <a href="/tags/Custom-View/" style="font-size: 10px;">Custom View</a> <a href="/tags/Data-Structure/" style="font-size: 10px;">Data Structure</a> <a href="/tags/DataStructure/" style="font-size: 10px;">DataStructure</a> <a href="/tags/DesignPattern/" style="font-size: 11.25px;">DesignPattern</a> <a href="/tags/English/" style="font-size: 15px;">English</a> <a href="/tags/Error/" style="font-size: 10px;">Error</a> <a href="/tags/Gradle/" style="font-size: 11.25px;">Gradle</a> <a href="/tags/Java/" style="font-size: 13.75px;">Java</a> <a href="/tags/Jetpack/" style="font-size: 11.25px;">Jetpack</a> <a href="/tags/LeetCode/" style="font-size: 17.5px;">LeetCode</a> <a href="/tags/Optimize/" style="font-size: 13.75px;">Optimize</a> <a href="/tags/SourceCode/" style="font-size: 10px;">SourceCode</a> <a href="/tags/UI/" style="font-size: 10px;">UI</a> <a href="/tags/版本差异/" style="font-size: 11.25px;">版本差异</a> <a href="/tags/版本管理/" style="font-size: 12.5px;">版本管理</a>
     </div>
 </div>
 
@@ -1531,23 +1500,23 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recientes
+            Recent
         </h3>
         
         <article class="media">
             
-            <a href="/2020/04/16/S5ep1-Threading-Performance-101/" class="media-left">
+            <a href="/2020/06/03/dependency-injection/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/2020/04/16/S5ep1-Threading-Performance-101/titleThumb.jpg" alt="自定义视图及其性能">
+                    <img class="thumbnail" src="/2020/06/03/dependency-injection/titleThumb.jpg" alt="依赖注入">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-15T16:00:00.000Z">2020-04-16</time></div>
-                    <a href="/2020/04/16/S5ep1-Threading-Performance-101/" class="has-link-black-ter is-size-6">自定义视图及其性能</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-06-02T16:00:00.000Z">2020-06-03</time></div>
+                    <a href="/2020/06/03/dependency-injection/" class="has-link-black-ter is-size-6">依赖注入</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/DesignPattern/">DesignPattern</a>
                     </p>
                 </div>
             </div>
@@ -1555,18 +1524,18 @@
         
         <article class="media">
             
-            <a href="/2020/03/31/Module-dependency-manage/" class="media-left">
+            <a href="/2020/06/03/ioc/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/2020/03/31/Module-dependency-manage/titleThumb.jpg" alt="Android 模块依赖版本管理">
+                    <img class="thumbnail" src="/2020/06/03/ioc/titleThumb.jpg" alt="IoC 控制反转">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-30T16:00:00.000Z">2020-03-31</time></div>
-                    <a href="/2020/03/31/Module-dependency-manage/" class="has-link-black-ter is-size-6">Android 模块依赖版本管理</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-06-02T16:00:00.000Z">2020-06-03</time></div>
+                    <a href="/2020/06/03/ioc/" class="has-link-black-ter is-size-6">IoC 控制反转</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/DesignPattern/">DesignPattern</a>
                     </p>
                 </div>
             </div>
@@ -1574,18 +1543,18 @@
         
         <article class="media">
             
-            <a href="/2020/03/01/Gradle-Kotlin/" class="media-left">
+            <a href="/2020/05/02/Serializable/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/2020/03/01/Gradle-Kotlin/titleThumb.jpg" alt="Gradle Kotlin DSL">
+                    <img class="thumbnail" src="/2020/05/02/Serializable/titleThumb.jpg" alt="Serializable">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-29T16:00:00.000Z">2020-03-01</time></div>
-                    <a href="/2020/03/01/Gradle-Kotlin/" class="has-link-black-ter is-size-6">Gradle Kotlin DSL</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-01T16:00:00.000Z">2020-05-02</time></div>
+                    <a href="/2020/05/02/Serializable/" class="has-link-black-ter is-size-6">Serializable</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Gradle/">Gradle</a>
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Java/">Java</a>
                     </p>
                 </div>
             </div>
@@ -1593,18 +1562,18 @@
         
         <article class="media">
             
-            <a href="/2020/02/26/S1ep5-Tool-Strict-Mode/" class="media-left">
+            <a href="/2020/04/30/Key-Value-pair-in-hashtable/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/2020/02/26/S1ep5-Tool-Strict-Mode/titleThumb.jpg" alt="工具 严格模式">
+                    <img class="thumbnail" src="/2020/04/30/Key-Value-pair-in-hashtable/titleThumb.jpg" alt="实现键值对存储 第五部分 Hash table 实现">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-25T16:00:00.000Z">2020-02-26</time></div>
-                    <a href="/2020/02/26/S1ep5-Tool-Strict-Mode/" class="has-link-black-ter is-size-6">工具 严格模式</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-29T16:00:00.000Z">2020-04-30</time></div>
+                    <a href="/2020/04/30/Key-Value-pair-in-hashtable/" class="has-link-black-ter is-size-6">实现键值对存储 第五部分 Hash table 实现</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/DataStructure/">DataStructure</a>
                     </p>
                 </div>
             </div>
@@ -1612,18 +1581,18 @@
         
         <article class="media">
             
-            <a href="/2020/02/26/S1ep6-Custom-Views-and-Performance/" class="media-left">
+            <a href="/2020/04/20/Binary-Search/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/2020/02/26/S1ep6-Custom-Views-and-Performance/titleThumb.jpg" alt="自定义视图及其性能">
+                    <img class="thumbnail" src="/2020/04/20/Binary-Search/titleThumb.jpg" alt="Binary Search(二分搜索)">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-25T16:00:00.000Z">2020-02-26</time></div>
-                    <a href="/2020/02/26/S1ep6-Custom-Views-and-Performance/" class="has-link-black-ter is-size-6">自定义视图及其性能</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-19T16:00:00.000Z">2020-04-20</time></div>
+                    <a href="/2020/04/20/Binary-Search/" class="has-link-black-ter is-size-6">Binary Search(二分搜索)</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Algorithm/">Algorithm</a>
                     </p>
                 </div>
             </div>
@@ -1637,9 +1606,31 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archivos
+            Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/06/">
+                <span class="level-start">
+                    <span class="level-item">June 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/05/">
+                <span class="level-start">
+                    <span class="level-item">May 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2020/04/">
@@ -1647,7 +1638,7 @@
                     <span class="level-item">April 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">3</span>
                 </span>
             </a>
         </li>
@@ -1724,7 +1715,7 @@
                     <span class="level-item">April 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">2</span>
+                    <span class="level-item tag">1</span>
                 </span>
             </a>
         </li>
@@ -1735,7 +1726,7 @@
                     <span class="level-item">January 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">3</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -1768,7 +1759,7 @@
                     <span class="level-item">August 2018</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">5</span>
+                    <span class="level-item tag">4</span>
                 </span>
             </a>
         </li>
@@ -1848,7 +1839,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Etiquetas
+                Tags
             </h3>
             <div class="field is-grouped is-grouped-multiline">
                 
@@ -1869,7 +1860,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Chinese/">
                         <span class="tag">Chinese</span>
-                        <span class="tag is-grey">31</span>
+                        <span class="tag is-grey">33</span>
                     </a>
                 </div>
                 
@@ -1891,6 +1882,13 @@
                     <a class="tags has-addons" href="/tags/DataStructure/">
                         <span class="tag">DataStructure</span>
                         <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/DesignPattern/">
+                        <span class="tag">DesignPattern</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -1918,7 +1916,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Java/">
                         <span class="tag">Java</span>
-                        <span class="tag is-grey">3</span>
+                        <span class="tag is-grey">5</span>
                     </a>
                 </div>
                 
@@ -1991,23 +1989,23 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recientes
+            Recent
         </h3>
         
         <article class="media">
             
-            <a href="/2020/04/16/S5ep1-Threading-Performance-101/" class="media-left">
+            <a href="/2020/06/03/dependency-injection/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/2020/04/16/S5ep1-Threading-Performance-101/titleThumb.jpg" alt="自定义视图及其性能">
+                    <img class="thumbnail" src="/2020/06/03/dependency-injection/titleThumb.jpg" alt="依赖注入">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-15T16:00:00.000Z">2020-04-16</time></div>
-                    <a href="/2020/04/16/S5ep1-Threading-Performance-101/" class="has-link-black-ter is-size-6">自定义视图及其性能</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-06-02T16:00:00.000Z">2020-06-03</time></div>
+                    <a href="/2020/06/03/dependency-injection/" class="has-link-black-ter is-size-6">依赖注入</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/DesignPattern/">DesignPattern</a>
                     </p>
                 </div>
             </div>
@@ -2015,18 +2013,18 @@
         
         <article class="media">
             
-            <a href="/2020/03/31/Module-dependency-manage/" class="media-left">
+            <a href="/2020/06/03/ioc/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/2020/03/31/Module-dependency-manage/titleThumb.jpg" alt="Android 模块依赖版本管理">
+                    <img class="thumbnail" src="/2020/06/03/ioc/titleThumb.jpg" alt="IoC 控制反转">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-30T16:00:00.000Z">2020-03-31</time></div>
-                    <a href="/2020/03/31/Module-dependency-manage/" class="has-link-black-ter is-size-6">Android 模块依赖版本管理</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-06-02T16:00:00.000Z">2020-06-03</time></div>
+                    <a href="/2020/06/03/ioc/" class="has-link-black-ter is-size-6">IoC 控制反转</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/DesignPattern/">DesignPattern</a>
                     </p>
                 </div>
             </div>
@@ -2034,18 +2032,18 @@
         
         <article class="media">
             
-            <a href="/2020/03/01/Gradle-Kotlin/" class="media-left">
+            <a href="/2020/05/02/Serializable/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/2020/03/01/Gradle-Kotlin/titleThumb.jpg" alt="Gradle Kotlin DSL">
+                    <img class="thumbnail" src="/2020/05/02/Serializable/titleThumb.jpg" alt="Serializable">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-29T16:00:00.000Z">2020-03-01</time></div>
-                    <a href="/2020/03/01/Gradle-Kotlin/" class="has-link-black-ter is-size-6">Gradle Kotlin DSL</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-01T16:00:00.000Z">2020-05-02</time></div>
+                    <a href="/2020/05/02/Serializable/" class="has-link-black-ter is-size-6">Serializable</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Gradle/">Gradle</a>
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Java/">Java</a>
                     </p>
                 </div>
             </div>
@@ -2053,18 +2051,18 @@
         
         <article class="media">
             
-            <a href="/2020/02/26/S1ep5-Tool-Strict-Mode/" class="media-left">
+            <a href="/2020/04/30/Key-Value-pair-in-hashtable/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/2020/02/26/S1ep5-Tool-Strict-Mode/titleThumb.jpg" alt="工具 严格模式">
+                    <img class="thumbnail" src="/2020/04/30/Key-Value-pair-in-hashtable/titleThumb.jpg" alt="实现键值对存储 第五部分 Hash table 实现">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-25T16:00:00.000Z">2020-02-26</time></div>
-                    <a href="/2020/02/26/S1ep5-Tool-Strict-Mode/" class="has-link-black-ter is-size-6">工具 严格模式</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-29T16:00:00.000Z">2020-04-30</time></div>
+                    <a href="/2020/04/30/Key-Value-pair-in-hashtable/" class="has-link-black-ter is-size-6">实现键值对存储 第五部分 Hash table 实现</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/DataStructure/">DataStructure</a>
                     </p>
                 </div>
             </div>
@@ -2072,18 +2070,18 @@
         
         <article class="media">
             
-            <a href="/2020/02/26/S1ep6-Custom-Views-and-Performance/" class="media-left">
+            <a href="/2020/04/20/Binary-Search/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/2020/02/26/S1ep6-Custom-Views-and-Performance/titleThumb.jpg" alt="自定义视图及其性能">
+                    <img class="thumbnail" src="/2020/04/20/Binary-Search/titleThumb.jpg" alt="Binary Search(二分搜索)">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-25T16:00:00.000Z">2020-02-26</time></div>
-                    <a href="/2020/02/26/S1ep6-Custom-Views-and-Performance/" class="has-link-black-ter is-size-6">自定义视图及其性能</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-19T16:00:00.000Z">2020-04-20</time></div>
+                    <a href="/2020/04/20/Binary-Search/" class="has-link-black-ter is-size-6">Binary Search(二分搜索)</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Algorithm/">Algorithm</a>
                     </p>
                 </div>
             </div>
@@ -2097,9 +2095,31 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archivos
+            Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/06/">
+                <span class="level-start">
+                    <span class="level-item">June 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/05/">
+                <span class="level-start">
+                    <span class="level-item">May 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2020/04/">
@@ -2107,7 +2127,7 @@
                     <span class="level-item">April 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">3</span>
                 </span>
             </a>
         </li>
@@ -2184,7 +2204,7 @@
                     <span class="level-item">April 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">2</span>
+                    <span class="level-item tag">1</span>
                 </span>
             </a>
         </li>
@@ -2195,7 +2215,7 @@
                     <span class="level-item">January 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">3</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -2228,7 +2248,7 @@
                     <span class="level-item">August 2018</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">5</span>
+                    <span class="level-item tag">4</span>
                 </span>
             </a>
         </li>
@@ -2308,7 +2328,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Etiquetas
+                Tags
             </h3>
             <div class="field is-grouped is-grouped-multiline">
                 
@@ -2329,7 +2349,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Chinese/">
                         <span class="tag">Chinese</span>
-                        <span class="tag is-grey">31</span>
+                        <span class="tag is-grey">33</span>
                     </a>
                 </div>
                 
@@ -2351,6 +2371,13 @@
                     <a class="tags has-addons" href="/tags/DataStructure/">
                         <span class="tag">DataStructure</span>
                         <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/DesignPattern/">
+                        <span class="tag">DesignPattern</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -2378,7 +2405,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Java/">
                         <span class="tag">Java</span>
-                        <span class="tag is-grey">3</span>
+                        <span class="tag is-grey">5</span>
                     </a>
                 </div>
                 
@@ -2591,10 +2618,10 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Entradas',
+                POSTS: 'Posts',
                 PAGES: 'Pages',
-                CATEGORIES: 'Categorias',
-                TAGS: 'Etiquetas',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
                 UNTITLED: '(Untitled)',
             },
             CONTENT_URL: '/content.json',
