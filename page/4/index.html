@@ -147,6 +147,149 @@
     <div class="card">
     
     <div class="card-image">
+        <a href="/2018/08/15/4-Median-of-Two-Sorted-Arrays/Record-en/" class="image is-7by1">
+            <img class="banner" src="/2018/08/15/4-Median-of-Two-Sorted-Arrays/Record-cn/title.jpg" alt="LeetCode 4. Median of Two Sorted Arrays [English ver]">
+        </a>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2018-08-14T16:00:00.000Z">2018-08-15</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/English/">English</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/English/Algorithm/">Algorithm</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/English/Algorithm/LeetCode/">LeetCode</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    12 minutes read (About 1855 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2018/08/15/4-Median-of-Two-Sorted-Arrays/Record-en/">LeetCode 4. Median of Two Sorted Arrays [English ver]</a>
+            
+        </h1>
+        <div class="content">
+            <!-- <p>[English ver]</p>
+<h1><span id="4-median-of-two-sorted-arrays">4. Median of Two Sorted Arrays</span></h1><p>There are two sorted arrays nums1 and nums2 of size m and n respectively.</p>
+<p>Find the median of the two sorted arrays. The overall run time complexity should be O(log (m+n)).</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Example 1:</div><div class="line">nums1 = [1, 3]</div><div class="line">nums2 = [2]</div><div class="line"></div><div class="line">The median is 2.0</div></pre></td></tr></table></figure>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Example 2:</div><div class="line">nums1 = [1, 2]</div><div class="line">nums2 = [3, 4]</div><div class="line"></div><div class="line">The median is (2 + 3)/2 = 2.5</div></pre></td></tr></table></figure>
+<h2><span id="approach-1">Approach 1:</span></h2><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</div><div class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">double</span> <span class="hljs-title">findMedianSortedArrays</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums1, <span class="hljs-keyword">int</span>[] nums2)</span> </span>&#123;</div><div class="line">        <span class="hljs-comment">//how many number we need</span></div><div class="line">        <span class="hljs-keyword">int</span> needNum = <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-comment">//the index of the number we need</span></div><div class="line">        <span class="hljs-keyword">int</span> needIndex = <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-comment">//the median value</span></div><div class="line">        <span class="hljs-keyword">double</span> median = <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-keyword">int</span> big = <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-keyword">int</span> stand = <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-comment">//the total array</span></div><div class="line">        <span class="hljs-keyword">int</span>[] insertnum ;</div><div class="line"></div><div class="line">        <span class="hljs-keyword">int</span> m = nums1.length;</div><div class="line">        <span class="hljs-keyword">int</span> n = nums2.length;</div><div class="line"></div><div class="line">        <span class="hljs-keyword">if</span>((m+n)%<span class="hljs-number">2</span>==<span class="hljs-number">0</span>)&#123;</div><div class="line">            needNum = <span class="hljs-number">2</span>;</div><div class="line">            needIndex = (m+n)/<span class="hljs-number">2</span>-<span class="hljs-number">1</span>;</div><div class="line">        &#125;<span class="hljs-keyword">else</span>&#123;</div><div class="line">            needNum=<span class="hljs-number">1</span>;</div><div class="line">            needIndex = (m+n)/<span class="hljs-number">2</span>;</div><div class="line">        &#125;</div><div class="line">        insertnum = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[m+n];</div><div class="line">        <span class="hljs-comment">//nums1 index</span></div><div class="line">        <span class="hljs-keyword">int</span> j =<span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-comment">//nums2 index</span></div><div class="line">        <span class="hljs-keyword">int</span> k = <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i =<span class="hljs-number">0</span>;i&lt;m+n;i++)&#123;</div><div class="line">            <span class="hljs-keyword">if</span>(k==n)&#123;</div><div class="line">                insertnum[i] = nums1[j];</div><div class="line">                j++;</div><div class="line">            &#125;</div><div class="line">            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(j==m)&#123;</div><div class="line">                insertnum[i] = nums2[k];</div><div class="line">                k++;</div><div class="line">            &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(nums1[j]&gt;nums2[k])&#123;</div><div class="line">                insertnum[i] = nums2[k];</div><div class="line">                k++;</div><div class="line">            &#125;<span class="hljs-keyword">else</span>&#123;</div><div class="line">                insertnum[i] = nums1[j];</div><div class="line">                j++;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="hljs-keyword">if</span>(needNum == <span class="hljs-number">1</span>)&#123;</div><div class="line">            median = Double.valueOf(insertnum[needIndex]);</div><div class="line">        &#125;<span class="hljs-keyword">else</span>&#123;</div><div class="line">            median = Double.valueOf(insertnum[needIndex]+insertnum[needIndex+<span class="hljs-number">1</span>]) /<span class="hljs-number">2.0</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="hljs-keyword">return</span> median;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>by the way ,this method often failed , maybe is the complexity is too big.</p>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/4.%20Median%20of%20Two%20Sorted%20Arrays/Images/1SuccessResult.png?raw=true" alt="efficiency"></p>
+<p><strong>Analysis</strong><br>This method is easy,first we figure out how to get the median value and how many number we need for calculate median value when the sum of the two arrays size is odd-lengthed or even-lengthed. And then we put the two arrays together sorted from small to large , and then use the method we got to calculate the median value.</p>
+<p>Time complexity: O(m+n)<br>Space complexity:O(m+n)</p>
+<p>we can have a optmization of this approach,like that</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</div><div class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">double</span> <span class="hljs-title">findMedianSortedArrays</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums1, <span class="hljs-keyword">int</span>[] nums2)</span> </span>&#123;</div><div class="line">        <span class="hljs-keyword">int</span> needNum = <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-keyword">int</span> needIndex = <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-keyword">double</span> median = <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-keyword">int</span> big = <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-keyword">int</span> stand = <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-keyword">int</span>[] insertnum ;</div><div class="line"></div><div class="line">        <span class="hljs-keyword">int</span> m = nums1.length;</div><div class="line">        <span class="hljs-keyword">int</span> n = nums2.length;</div><div class="line"></div><div class="line">        <span class="hljs-keyword">if</span>((m+n)%<span class="hljs-number">2</span>==<span class="hljs-number">0</span>)&#123;</div><div class="line">            needNum = <span class="hljs-number">2</span>;</div><div class="line">            needIndex = (m+n)/<span class="hljs-number">2</span>-<span class="hljs-number">1</span>;</div><div class="line">        &#125;<span class="hljs-keyword">else</span>&#123;</div><div class="line">            needNum=<span class="hljs-number">1</span>;</div><div class="line">            needIndex = (m+n)/<span class="hljs-number">2</span>;</div><div class="line">        &#125;</div><div class="line">        insertnum = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[(m+n)/<span class="hljs-number">2</span>+<span class="hljs-number">1</span>];</div><div class="line">        <span class="hljs-keyword">int</span> j =<span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-keyword">int</span> k = <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i =<span class="hljs-number">0</span>;i&lt;m+n;i++)&#123;</div><div class="line"></div><div class="line">            <span class="hljs-keyword">if</span>(k==n)&#123;</div><div class="line">                insertnum[i] = nums1[j];</div><div class="line">                j++;</div><div class="line">            &#125;</div><div class="line">            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(j==m)&#123;</div><div class="line">                insertnum[i] = nums2[k];</div><div class="line">                k++;</div><div class="line">            &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(nums1[j]&gt;nums2[k])&#123;</div><div class="line">                insertnum[i] = nums2[k];</div><div class="line">                k++;</div><div class="line">            &#125;<span class="hljs-keyword">else</span>&#123;</div><div class="line">                insertnum[i] = nums1[j];</div><div class="line">                j++;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">             <span class="hljs-keyword">if</span> (i &gt;= needIndex )&#123;</div><div class="line">                <span class="hljs-keyword">if</span> (needNum == <span class="hljs-number">1</span>)&#123;</div><div class="line">                    median = Double.valueOf(insertnum[needIndex]);</div><div class="line">                    <span class="hljs-keyword">return</span> median;</div><div class="line">                &#125;<span class="hljs-keyword">else</span>&#123;</div><div class="line">                     <span class="hljs-keyword">if</span> (i == needIndex+<span class="hljs-number">1</span>)&#123;</div><div class="line">                         median = Double.valueOf(insertnum[needIndex]+insertnum[needIndex+<span class="hljs-number">1</span>]) /<span class="hljs-number">2.0</span>;</div><div class="line">                         <span class="hljs-keyword">return</span> median;</div><div class="line">                     &#125;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">        &#125;</div><div class="line">    <span class="hljs-keyword">return</span> median;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>Analysis</strong></p>
+<p>The optmization is we get the index of the median value ,  when we sorted the array to the index , we can calculate the median value and we don’t need to sorted all the number.</p>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/4.%20Median%20of%20Two%20Sorted%20Arrays/Images/1OptimizeSuccessResult.png?raw=true" alt="efficiency"></p>
+<h2><span id="approach-2">Approach 2</span></h2><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</div><div class="line">       <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">double</span> <span class="hljs-title">findMedianSortedArrays</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums1, <span class="hljs-keyword">int</span>[] nums2)</span> </span>&#123;</div><div class="line">           <span class="hljs-keyword">int</span> N1 = nums1.length;</div><div class="line">           <span class="hljs-keyword">int</span> N2 = nums2.length;</div><div class="line">           <span class="hljs-keyword">if</span> (N1 &lt; N2)</div><div class="line">               <span class="hljs-keyword">return</span> findMedianSortedArrays(nums2, nums1);    <span class="hljs-comment">// Make sure A2 is the shorter one.</span></div><div class="line"></div><div class="line">           <span class="hljs-keyword">if</span> (N2 == <span class="hljs-number">0</span>)</div><div class="line">               <span class="hljs-keyword">return</span> ((<span class="hljs-keyword">double</span>) nums1[(N1 - <span class="hljs-number">1</span>) / <span class="hljs-number">2</span>] + (<span class="hljs-keyword">double</span>) nums1[N1 / <span class="hljs-number">2</span>]) / <span class="hljs-number">2</span>;  <span class="hljs-comment">// If A2 is empty</span></div><div class="line"></div><div class="line">           <span class="hljs-keyword">int</span> lo = <span class="hljs-number">0</span>, hi = N2 * <span class="hljs-number">2</span>;</div><div class="line">           <span class="hljs-keyword">while</span> (lo &lt;= hi) &#123;</div><div class="line">               <span class="hljs-keyword">int</span> mid2 = (lo + hi) / <span class="hljs-number">2</span>;   <span class="hljs-comment">// Try Cut 2</span></div><div class="line">               <span class="hljs-keyword">int</span> mid1 = N1 + N2 - mid2;  <span class="hljs-comment">// Calculate Cut 1 accordingly</span></div><div class="line"></div><div class="line">               <span class="hljs-keyword">double</span> L1 = (mid1 == <span class="hljs-number">0</span>) ? Integer.MIN_VALUE : nums1[(mid1 - <span class="hljs-number">1</span>) / <span class="hljs-number">2</span>];    <span class="hljs-comment">// Get L1, R1, L2, R2 respectively</span></div><div class="line">               <span class="hljs-keyword">double</span> L2 = (mid2 == <span class="hljs-number">0</span>) ? Integer.MIN_VALUE : nums2[(mid2 - <span class="hljs-number">1</span>) / <span class="hljs-number">2</span>];</div><div class="line">               <span class="hljs-keyword">double</span> R1 = (mid1 == N1 * <span class="hljs-number">2</span>) ? Integer.MAX_VALUE : nums1[(mid1) / <span class="hljs-number">2</span>];</div><div class="line">               <span class="hljs-keyword">double</span> R2 = (mid2 == N2 * <span class="hljs-number">2</span>) ? Integer.MAX_VALUE : nums2[(mid2) / <span class="hljs-number">2</span>];</div><div class="line"></div><div class="line">               <span class="hljs-keyword">if</span> (L1 &gt; R2)</div><div class="line">                   lo = mid2 + <span class="hljs-number">1</span>;        <span class="hljs-comment">// A1's lower half is too big; need to move C1 left (C2 right)</span></div><div class="line">               <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (L2 &gt; R1)</div><div class="line">                   hi = mid2 - <span class="hljs-number">1</span>;    <span class="hljs-comment">// A2's lower half too big; need to move C2 left.</span></div><div class="line">               <span class="hljs-keyword">else</span></div><div class="line">                   <span class="hljs-keyword">return</span> ((L1 &gt; L2 ? L1 : L2) + (R1 &gt; R2 ? R2 : R1)) / <span class="hljs-number">2</span>;    <span class="hljs-comment">// Otherwise, that's the right cut.</span></div><div class="line">           &#125;</div><div class="line">           <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>;</div><div class="line">       &#125;</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/4.%20Median%20of%20Two%20Sorted%20Arrays/Images/2SeccessResult.png?raw=true" alt="efficiency"></p>
+<p><strong>Analysis</strong></p>
+<p>this method is a little hard to understand,many implementations consider odd-lengthed and even-lengthed arrays as two different cases and treat them separately. In fact , this is a little twist.<br>First, we can define ‘MEDIAN’ i:</p>
+<p>“if we cut the sorted array to two halves of equal length, then median is the average of the max number of the small half and min of larger half , is the number near to the cut .</p>
+<p>For example, for [ 1 2 ], we make the cut between 1 and 2:<br>[1 | 2]<br>the median = (1+2)/2.0 = 1.5 .<br>The same to the two arrays , we only need to make sure numbers in the right side of the cut of the two arrays bigger than the left side of the cut ,and the size of the left is equal to the size of the right .<br>I’ll use ‘|’ to represent a cut, and (number | number) to represent a cut made through a number in this article.</p>
+<p>for example , [1 2 3],the cut is like [1 (2|2) 3].the median = (2+2)/2.0 = 2.</p>
+<p>now we use ‘L’ to represent the number in the left of the cut ,’R’ to represent the number in the right.</p>
+<p>we can found that</p>
+<p>N        Index of L / R<br>1               0 / 0<br>2               0 / 1<br>3               1 / 1<br>4               1 / 2<br>5               2 / 2<br>6               2 / 3<br>7               3 / 3<br>8               3 / 4</p>
+<p>It is not hard to conclude that index of L = (N-1)/2, and R = N/2. the median = (L + R)/2 = (A[(N-1)/2] + A[N/2])/2</p>
+<p>To get ready for the two array situation,we add a few empty number (represented as ‘#’) in between numbers. and use ‘positions’ to represented the position of that .</p>
+<p>[1 2] -&gt; [# 1 # 2 #] (N=2)<br>position  0 1 2 3 4  (N_Position = 5)</p>
+<p>[3 4] -&gt; [# 3 # 4 #] (N=2)<br>position  0 1 2 3 4  (N_Position = 5)</p>
+<p>there are always 2*N+1 ‘positions’ of which array length is N. Therefore, the middle cut should be made on the Nth position (0-based). index(L) = (CutPosition-1)/2, index(R) = (CutPosition)/2.</p>
+<p>notice that, when we cut the two arrays there are 2N1+2N2+2 positions,so,each side of the cut should be N1+N2 positions, the two position lefted is the cut . so when A2’s cut is at C2 = K , than A1’s cut should be C1 = N1 + N2 -K,for example ,C2 = 2, 那么 C1 = 2 + 2 - C2 = 2.</p>
+<p>[# 1 | 2 #]<br>[# 3 | 4 #]</p>
+<p>now we have two L and two R.</p>
+<p>L1 = A1[(C1-1)/2]; R1 = A1[C1/2];<br>L2 = A2[(C2-1)/2]; R2 = A2[C2/2];</p>
+<p>L1 = A1[(2-1)/2] = A1[0] = 1; R1 = A1[2/2] = A1[1] = 2;<br>L2 = A2[(2-1)/2] = A2[0] = 3; R2 = A1[2/2] = A1[1] = 4;</p>
+<p>How can we figure out this cut is the cut we want ?<br>the numbers in left side must be smaller than the numbers in right side .<br>Because A1 and A2 is sorted , L1 &lt;= R1  &amp;&amp; L2 &lt;= R2.so we only need to confirm that L1 &lt;= R2 and L2 &lt;= R1.</p>
+<p>Now we can use binary search to find out the result.</p>
+<p>If L1 &gt; R1, it means there are too many large numbers on the left half of A1, then we must move C1 to the left at the same time move C2 to the right;<br>If L2 &gt; R1, then there are too many large numbers on the left half of A2, and we must move C2 to the left , and move C1 to the right .<br>Otherwise, make it opposite.</p>
+<p>After we find the cut, the medium can be computed as (max(L1, L2) + min(R1, R2)) / 2;</p>
+<ol>
+<li>since C1 and C2 can be mutually determined from each other, we might as well select the shorter array (say A2) and only move C2 around, and calculate C1 accordingly. That way we can achieve a run-time complexity of O(log(min(N1, N2)))</li>
+<li>The only edge case is when a cut falls on the 0th(first) or the 2Nth(last) position. For instance, if C2 = 2N2, then R2 = A2[2*N2/2] = A2[N2], which exceeds the boundary of the array. To solve this problem, we can imagine that both A1 and A2 actually have two extra elements, INT_MAX at A[-1] and INT_MAX at A[N].</li>
+</ol>
+<p>Time complexity ： O(log(min(m,n))) 。m,n is the length of the two arrays.<br>space complexity ： O(1) .</p>
+<h2><span id="approach-3">Approach 3：</span></h2><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</div><div class="line">  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">double</span> <span class="hljs-title">findMedianSortedArrays</span><span class="hljs-params">(<span class="hljs-keyword">int</span> A[], <span class="hljs-keyword">int</span> B[])</span> </span>&#123;</div><div class="line">       <span class="hljs-keyword">int</span> n = A.length;</div><div class="line">       <span class="hljs-keyword">int</span> m = B.length;</div><div class="line">       <span class="hljs-comment">// the following call is to make sure len(A) &lt;= len(B).</span></div><div class="line">       <span class="hljs-comment">// yes, it calls itself, but at most once, shouldn't be</span></div><div class="line">       <span class="hljs-comment">// consider a recursive solution</span></div><div class="line">       <span class="hljs-keyword">if</span> (n &gt; m)</div><div class="line">           <span class="hljs-keyword">return</span> findMedianSortedArrays(B, A);</div><div class="line"></div><div class="line">       <span class="hljs-comment">// now, do binary search</span></div><div class="line">       <span class="hljs-keyword">int</span> k = (n + m - <span class="hljs-number">1</span>) / <span class="hljs-number">2</span>;</div><div class="line">       <span class="hljs-keyword">int</span> l = <span class="hljs-number">0</span>, r = Math.min(k, n); <span class="hljs-comment">// r is n, NOT n-1, this is important!!</span></div><div class="line">       <span class="hljs-keyword">while</span> (l &lt; r) &#123;</div><div class="line">           <span class="hljs-keyword">int</span> midA = (l + r) / <span class="hljs-number">2</span>;</div><div class="line">           <span class="hljs-keyword">int</span> midB = k - midA;</div><div class="line">           <span class="hljs-keyword">if</span> (A[midA] &lt; B[midB])</div><div class="line">               l = midA + <span class="hljs-number">1</span>;</div><div class="line">           <span class="hljs-keyword">else</span></div><div class="line">               r = midA;</div><div class="line">       &#125;</div><div class="line"></div><div class="line">       <span class="hljs-comment">// after binary search, we almost get the median because it must be between</span></div><div class="line">       <span class="hljs-comment">// these 4 numbers: A[l-1], A[l], B[k-l], and B[k-l+1]</span></div><div class="line"></div><div class="line">       <span class="hljs-comment">// if (n+m) is odd, the median is the larger one between A[l-1] and B[k-l].</span></div><div class="line">       <span class="hljs-comment">// and there are some corner cases we need to take care of.</span></div><div class="line">       <span class="hljs-keyword">int</span> a = Math.max(l &gt; <span class="hljs-number">0</span> ? A[l - <span class="hljs-number">1</span>] : Integer.MIN_VALUE, k - l &gt;= <span class="hljs-number">0</span> ? B[k - l] : Integer.MIN_VALUE);</div><div class="line">       <span class="hljs-keyword">if</span> (((n + m) &amp; <span class="hljs-number">1</span>) == <span class="hljs-number">1</span>)</div><div class="line">           <span class="hljs-keyword">return</span> (<span class="hljs-keyword">double</span>) a;</div><div class="line"></div><div class="line">       <span class="hljs-comment">// if (n+m) is even, the median can be calculated by</span></div><div class="line">       <span class="hljs-comment">//      median = (max(A[l-1], B[k-l]) + min(A[l], B[k-l+1]) / 2.0</span></div><div class="line">       <span class="hljs-comment">// also, there are some corner cases to take care of.</span></div><div class="line">       <span class="hljs-keyword">int</span> b = Math.min(l &lt; n ? A[l] : Integer.MAX_VALUE, k - l + <span class="hljs-number">1</span> &lt; m ? B[k - l + <span class="hljs-number">1</span>] : Integer.MAX_VALUE);</div><div class="line">       <span class="hljs-keyword">return</span> (a + b) / <span class="hljs-number">2.0</span>;</div><div class="line">   &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/4.%20Median%20of%20Two%20Sorted%20Arrays/Images/3SuccessResult.png?raw=true" alt="efficiency"></p>
+<p><strong>Analysis</strong><br>this method’s principle is same as the Approach 2.</p>
+<p>Time complexity ： O(log(min(m,n))) 。m,n is the length of the two arrays.<br>space complexity ： O(1) .</p>
+<h2><span id="approach-4">Approach 4:</span></h2><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</div><div class="line">  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">double</span> <span class="hljs-title">findMedianSortedArrays</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] A, <span class="hljs-keyword">int</span>[] B)</span> </span>&#123;</div><div class="line">              <span class="hljs-keyword">int</span> m = A.length, n = B.length;</div><div class="line">              <span class="hljs-keyword">int</span> l = (m + n + <span class="hljs-number">1</span>) / <span class="hljs-number">2</span>;<span class="hljs-comment">//position of l element (not the index)</span></div><div class="line">              <span class="hljs-keyword">int</span> r = (m + n + <span class="hljs-number">2</span>) / <span class="hljs-number">2</span>;<span class="hljs-comment">//position of r element (not the index)</span></div><div class="line">              <span class="hljs-keyword">return</span> (getkth(A, <span class="hljs-number">0</span>, B, <span class="hljs-number">0</span>, l) + getkth(A, <span class="hljs-number">0</span>, B, <span class="hljs-number">0</span>, r)) / <span class="hljs-number">2.0</span>;</div><div class="line">          &#125;</div><div class="line"></div><div class="line">  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">double</span> <span class="hljs-title">getkth</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] A, <span class="hljs-keyword">int</span> aStart, <span class="hljs-keyword">int</span>[] B, <span class="hljs-keyword">int</span> bStart, <span class="hljs-keyword">int</span> k)</span> </span>&#123;</div><div class="line">          <span class="hljs-comment">//when the start position is bigger than A.length -1 ,means the median doesn't in the A.</span></div><div class="line">          <span class="hljs-keyword">if</span> (aStart &gt; A.length - <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> B[bStart + k - <span class="hljs-number">1</span>];</div><div class="line">          <span class="hljs-keyword">if</span> (bStart &gt; B.length - <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> A[aStart + k - <span class="hljs-number">1</span>];</div><div class="line">          <span class="hljs-keyword">if</span> (k == <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> Math.min(A[aStart], B[bStart]);</div><div class="line"></div><div class="line">          <span class="hljs-keyword">int</span> aMid = Integer.MAX_VALUE, bMid = Integer.MAX_VALUE;</div><div class="line">          <span class="hljs-keyword">if</span> (aStart + k/<span class="hljs-number">2</span> - <span class="hljs-number">1</span> &lt; A.length) aMid = A[aStart + k/<span class="hljs-number">2</span> - <span class="hljs-number">1</span>];</div><div class="line">          <span class="hljs-keyword">if</span> (bStart + k/<span class="hljs-number">2</span> - <span class="hljs-number">1</span> &lt; B.length) bMid = B[bStart + k/<span class="hljs-number">2</span> - <span class="hljs-number">1</span>];</div><div class="line"></div><div class="line">          <span class="hljs-keyword">if</span> (aMid &lt; bMid)</div><div class="line">              <span class="hljs-keyword">return</span> getkth(A, aStart + k/<span class="hljs-number">2</span>, B, bStart, k - k/<span class="hljs-number">2</span>);<span class="hljs-comment">// Check: aRight + bLeft</span></div><div class="line">          <span class="hljs-keyword">else</span></div><div class="line">              <span class="hljs-keyword">return</span> getkth(A, aStart, B, bStart + k/<span class="hljs-number">2</span>, k - k/<span class="hljs-number">2</span>);<span class="hljs-comment">// Check: bRight + aLeft</span></div><div class="line">  &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/4.%20Median%20of%20Two%20Sorted%20Arrays/Images/4SuccessResult.png?raw=true" alt="efficiency"></p>
+<p><strong>Analysis</strong><br>this method is like that, compare the two arrays’s median recursively, and every time ignore a half of the two arrays. if A’s median is smaller than B’s median , then we keep A’s right and B’s left.Otherwise opposite. last ,we will get L and R , use (L+R)/2.0 to get the median.notice that L and R is not index, isn’t start from 0 . when the numbers of the sum of two array’s size is odd-lengthed L is the same as R,Otherwise is different.</p>
+<p>Time complexity ： O(log(m + n))<br>Space complexity ： O(1)</p>
+<p>If you have any suggestions to make the logic and implementation more better , or you have some advice on my description. Please let me know!</p>
+<h2><span id="about-me">About Me</span></h2><p>My blog <a href="http://leonchen1024.com/" target="_blank" rel="external">leonchen1024.com</a></p>
+<p>My Github <a href="https://github.com/LeonChen1024" target="_blank" rel="external">https://github.com/LeonChen1024</a></p>
+ -->
+            <div class="article-entry">
+                    
+                    
+                        
+                            
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                            
+                                
+                                <p><p>[English ver]</p>
+<h1><span id="4-median-of-two-sorted-arrays">4. Median of Two Sorted Arrays</span></h1><p>There are two sorted arrays nums1 and nums2 of size m and n respectively.</p>
+<p>Find the median of the two sorted arrays. The overall run time complexity should be O(log (m+n)).</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Example 1:</div><div class="line">nums1 = [1, 3]</div><div class="line">nums2 = [2]</div><div class="line"></div><div class="line">The median is 2.0</div></pre></td></tr></table></figure>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Example 2:</div><div class="line">nums1 = [1, 2]</div><div class="line">nums2 = [3, 4]</div><div class="line"></div><div class="line">The median is (2 + 3)/2 = 2.5</div></pre></td></tr></table></figure>
+<p>
+                            
+                        
+                    
+                    
+                        </div>   
+                        <div class="article-more-link">
+                            <a href="/2018/08/15/4-Median-of-Two-Sorted-Arrays/Record-en/#more">Read More</a>
+                        </div>
+                    
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-image">
         <a href="/2018/07/21/3-Longest-Substring-Without-Repeating-Characters/Record[Chinese-ver]/" class="image is-7by1">
             <img class="banner" src="/2018/07/21/3-Longest-Substring-Without-Repeating-Characters/Record[Chinese-ver]/title.jpg" alt="LeetCode 3.最长的没有重复字符的子字符串 [Chinese ver]">
         </a>
@@ -1091,141 +1234,15 @@
 
 
 
-    <div class="card">
-    
-    <div class="card-image">
-        <a href="/2016/08/20/Android-6.0-Change-1/" class="image is-7by1">
-            <img class="banner" src="/2016/08/20/Android-6.0-Change-1/pic.jpg" alt="Android 6.0的变化 （上）">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2016-08-20T12:21:44.000Z">2016-08-20</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Android/">Android</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Android/版本差异/">版本差异</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    12 minutes read (About 1824 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2016/08/20/Android-6.0-Change-1/">Android 6.0的变化 （上）</a>
-            
-        </h1>
-        <div class="content">
-            <!-- <p>随着一系列新的特性以及功能， Android 6.0 (API level 23)包含了很多的系统变化以及API行为的变化。本文着重介绍了一些你应该理解的和占用APP中重要部分的变化。</p>
-<p>如果你之前已经在Android平台发布过APP，要知道这些平台上的变化将会影响你的APP。</p>
-<h2><span id="目录">目录</span></h2><ul>
-<li><a href="#目录">目录</a></li>
-<li><a href="#运行时权限">运行时权限</a></li>
-<li><a href="#休眠和应用待机模式">休眠和应用待机模式</a></li>
-<li><a href="#移除apache的-http-client">移除Apache的 HTTP Client</a></li>
-<li><a href="#boringssl">BoringSSL</a></li>
-<li><a href="#获取硬件标识符">获取硬件标识符</a></li>
-<li><a href="#通知">通知</a></li>
-<li><a href="#audiomanager-改变">AudioManager 改变</a></li>
-<li><a href="#文本选择">文本选择</a></li>
-</ul>
-<h2><span id="运行时权限">运行时权限</span></h2><p>这个版本引入了一个新的权限模型，使得用户现在可以在运行时直接管理APP权限。这个模型改善了用户对权限管理的可见度和管理程度，并简化了APP开发者对安装和自动升级的流程。用户可以对已安装的APP的权限分别进行授权和取消。</p>
-<p>当你的APP的目标版本在Android 6.0 (API level 23)或者更高的时候， 请确保在运行时检查并申请权限。要确定你的APP是否被授予了某权限，可以通过调用新的checkSelfPermission()方法。为了去申请一个权限，可以通过调用 requestPermissions() 新方法。即使你的APP目标版本不是 Android 6.0 (API level 23)，你也应该在新的权限模型下进行测试。</p>
-<p>想要了解更多的在你的APP里支持新的权限模型的细节，可见 Working with System Permissions。获得更多的评估对你的APP的影响的提示，可见Permissions Best Practices。</p>
-<p>危险权限和普通权限见下链接<br><a href="http://blog.csdn.net/chenlinfeng772885775/article/details/53508204" target="_blank" rel="external">点击打开链接</a></p>
-<h2><span id="休眠和应用待机模式">休眠和应用待机模式</span></h2><p>这个版本将为空闲的设备和APP引入新的节能方式。这些新功能将会影响所有的APP，所以请确保你的APP在新的模式下进行测试。</p>
-<p>休眠：如果用户拔出一个设备并将其屏幕关闭闲置一段时间，设备将会进入休眠模式，尝试使系统进入睡眠状态。在这个模式下，设备周期性的恢复短暂时间的正常操作使得APP可以进行同步，使得系统可以进行一些待执行的操作。</p>
-<p>APP待机：APP待机允许系统判定一个APP是处于待机状态当这个APP没有被用户显式的使用。系统在用户一段时间内并没有触摸这个APP时做出这个决定。如果设备没有连接充电器，系统将会禁止访问网络并暂停APP的同步以及相应的工作当他被认为是闲置的时候。</p>
-<p>学习更多的有关节能方面的改变，详见Optimizing for Doze and App Standby。</p>
-<h2><span id="移除apache的-http-client">移除Apache的 HTTP Client</span></h2><p>Android 6.0 的版本移除了对 Apache HTTP client的支持.如果你的APP正在使用这个client并且目标版本在Android 2.3 (API level 9)或者更高，请使用HttpURLConnection类来替代。这个API是更加高效的，因为他采用了透明压缩和响应缓存来减少网络使用，减少电能消耗。如果仍然想继续使用Apache HTTP APIs，你必须一开始就在你的build.gradle文件里定义以下编译时依赖。</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">android &#123;</div><div class="line">    useLibrary &apos;org.apache.http.legacy&apos;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2><span id="boringssl">BoringSSL</span></h2><p>Android正在将OpenSSL替换为BoringSSL库。如果你的APP使用的是 Android NDK，请不要使用那些不属于NDK API里的库，比如：libcrypto.so 和 libssl.so.这些库不是公开的API,他们的修改和禁用也不会通过文件和设备通知开发者。另外，这样可能还会暴露你APP的安全漏洞。取而代之的是你需要修改你的native代码，通过JNI来调用Java cryptography APIs或者静态连接到你选择的加密库。</p>
-<h2><span id="获取硬件标识符">获取硬件标识符</span></h2><p>从这个版本开始，为了给用户提供更好点数据保护，Android删除了通过编程方式从Wi-Fi 和 Bluetooth APIs来获得硬件本地标识符的方法。现在 WifiInfo.getMacAddress() 和 BluetoothAdapter.getAddress()方法将始终返回一个常量值02:00:00:00:00:00。</p>
-<p>为了通过蓝牙或WiFi扫描获取附近的设备的硬件标识符，你的APP必须拥有ACCESS_FINE_LOCATION 或 ACCESS_COARSE_LOCATION权限。</p>
-<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">WifiManager.getScanResults()</div><div class="line">BluetoothDevice.ACTION_FOUND</div><div class="line">BluetoothLeScanner.startScan()</div></pre></td></tr></table></figure>
-<p>注意：当一个运行Android 6.0 (API level 23)的设备启动WiFi或者蓝牙扫描时，这个操作对外部设备是可见的，并会被初始化一个随机的mac地址。</p>
-<h2><span id="通知">通知</span></h2><p>这个版本删除了 Notification.setLatestEventInfo()方法。使用Notification.Builder来取代它进行构造通知。为了反复更新一个通知，可以重用 Notification.Builder 实例，调用 build() 方法来更新通知实例。</p>
-<p>adb shell dumpsys notification命令不在打印你的通知文本。使用adb shell dumpsys notification –noredact命令来取代它打印你的通知对象文本。</p>
-<h2><span id="audiomanager-改变">AudioManager 改变</span></h2><p>不再支持通过 AudioManager类来对某个音频流进行精确的调音或者静音设置。 setStreamSolo()方法已经被弃用了，你应该使用  requestAudioFocus() 方法来替代它。同样的setStreamMute()方法也被弃用了，调用 adjustStreamVolume() 方法来替代它，传入的参数变为ADJUST_MUTE 或 ADJUST_UNMUTE 。</p>
-<h2><span id="文本选择">文本选择</span></h2><p>当用户在你的APP上选择文本时，你现在可以在浮动工具栏里显示一些文本选择动作比如剪切，复制，和粘贴。和用户的交互界面类似于上下文动作菜单，就像为单独的视图配置的上下文菜单。</p>
-<p>为了实现文本选择的浮动工具栏，需要在你已有的APP里做出以下改变：</p>
-<p>1.在你的view里或者activity里，改变你的 ActionMode 的获取方法，由startActionMode(Callback)变为 startActionMode(Callback, ActionMode.TYPE_FLOATING).</p>
-<p>2.将你已经实现了ActionMode.Callback变为继承自ActionMode.Callback2。</p>
-<p>3.重写 onGetContentRect()方法来提供视图中内容选中框（比如文本选中框）的坐标。</p>
-<p>4.在矩形框作为一个唯一的元素不再有效时，调用 invalidateContentRect() 方法。</p>
-<p>如果你在使用 Android Support Library revision 22.2, 你要知道浮动工具栏并不向后支持并且APP兼容会默认控制 ActionMode。这会阻止悬浮工具栏的显示。为了实现在 AppCompatActivity 里对 ActionMode的支持，调用 getDelegate()方法，并用其得到的 AppCompatDelegate 对象调用setHandleNativeActionModesEnabled()并将传入参数设为false。这个调用返回 ActionMode的控制给框架。在设备运行Android 6.0 (API level 23),这允许框架去支持 ActionBar 或者浮动工具栏模式，而当设备运行早Android 5.1 (API level 22)或更低的版本上时，只有 ActionBar 模式被支持。</p>
- -->
-            <div class="article-entry">
-                    
-                    
-                        
-                            
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                            
-                                
-                                <p><p>随着一系列新的特性以及功能， Android 6.0 (API level 23)包含了很多的系统变化以及API行为的变化。本文着重介绍了一些你应该理解的和占用APP中重要部分的变化。</p>
-<p>如果你之前已经在Android平台发布过APP，要知道这些平台上的变化将会影响你的APP。</p>
-<h2><span id="目录">目录</span></h2><ul>
-<li><a href="#目录">目录</a></li>
-<li><a href="#运行时权限">运行时权限</a></li>
-<p>
-                            
-                        
-                    
-                    
-                        </div>   
-                        <div class="article-more-link">
-                            <a href="/2016/08/20/Android-6.0-Change-1/#more">Read More</a>
-                        </div>
-                    
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
     <nav class="pagination is-centered" role="navigation" aria-label="pagination">
         <div class="pagination-previous">
-            <a class="is-flex-grow has-text-black-ter" href="/page/3/">Previous</a>
+            <a class="is-flex-grow has-text-black-ter" href="/page/3/">Anterior</a>
         </div>
         <div class="pagination-next">
-            <a class="is-flex-grow has-text-black-ter" href="/page/5/">Next</a>
+            <a class="is-flex-grow has-text-black-ter" href="/page/5/">Siguiente</a>
         </div>
         <ul class="pagination-list is-hidden-mobile">
             
@@ -1282,17 +1299,17 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Posts
+                        Entradas
                     </p>
                     <p class="title has-text-weight-normal">
-                        42
+                        43
                     </p>
                 </div>
             </div>
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categories
+                        Categorias
                     </p>
                     <p class="title has-text-weight-normal">
                         22
@@ -1302,7 +1319,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Tags
+                        Etiquetas
                     </p>
                     <p class="title has-text-weight-normal">
                         18
@@ -1312,7 +1329,7 @@
         </nav>
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://github.com/LeonChen1024">
-                Follow</a>
+                SEGUIR</a>
         </div>
         
         
@@ -1341,7 +1358,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categories
+                Categorias
             </h3>
             <ul class="menu-list">
             <li>
@@ -1350,7 +1367,7 @@
                 <span class="level-item">Chinese</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">33</span>
+                <span class="level-item tag">34</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="undefined">
@@ -1358,7 +1375,7 @@
                 <span class="level-item">Algorithm</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">11</span>
+                <span class="level-item tag">12</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="undefined">
@@ -1426,7 +1443,7 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Tag Cloud
+            Nube de etiquetas
         </h3>
         <a href="/tags/Algorithm/" style="font-size: 18.75px;">Algorithm</a> <a href="/tags/Android/" style="font-size: 16.25px;">Android</a> <a href="/tags/Chinese/" style="font-size: 20px;">Chinese</a> <a href="/tags/Custom-View/" style="font-size: 10px;">Custom View</a> <a href="/tags/Data-Structure/" style="font-size: 10px;">Data Structure</a> <a href="/tags/DataStructure/" style="font-size: 10px;">DataStructure</a> <a href="/tags/DesignPattern/" style="font-size: 11.25px;">DesignPattern</a> <a href="/tags/English/" style="font-size: 15px;">English</a> <a href="/tags/Error/" style="font-size: 10px;">Error</a> <a href="/tags/Gradle/" style="font-size: 11.25px;">Gradle</a> <a href="/tags/Java/" style="font-size: 13.75px;">Java</a> <a href="/tags/Jetpack/" style="font-size: 11.25px;">Jetpack</a> <a href="/tags/LeetCode/" style="font-size: 17.5px;">LeetCode</a> <a href="/tags/Optimize/" style="font-size: 13.75px;">Optimize</a> <a href="/tags/SourceCode/" style="font-size: 10px;">SourceCode</a> <a href="/tags/UI/" style="font-size: 10px;">UI</a> <a href="/tags/版本差异/" style="font-size: 11.25px;">版本差异</a> <a href="/tags/版本管理/" style="font-size: 12.5px;">版本管理</a>
     </div>
@@ -1440,8 +1457,27 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Recientes
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/07/28/Trie/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/2020/07/28/Trie/titleThumb.jpg" alt="Trie(前缀树)">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-07-27T16:00:00.000Z">2020-07-28</time></div>
+                    <a href="/2020/07/28/Trie/" class="has-link-black-ter is-size-6">Trie(前缀树)</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -1519,25 +1555,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/04/20/Binary-Search/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/2020/04/20/Binary-Search/titleThumb.jpg" alt="Binary Search(二分搜索)">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-19T16:00:00.000Z">2020-04-20</time></div>
-                    <a href="/2020/04/20/Binary-Search/" class="has-link-black-ter is-size-6">Binary Search(二分搜索)</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1546,9 +1563,20 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            Archivos
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2020/06/">
@@ -1779,14 +1807,14 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Tags
+                Etiquetas
             </h3>
             <div class="field is-grouped is-grouped-multiline">
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Algorithm/">
                         <span class="tag">Algorithm</span>
-                        <span class="tag is-grey">21</span>
+                        <span class="tag is-grey">22</span>
                     </a>
                 </div>
                 
@@ -1800,7 +1828,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Chinese/">
                         <span class="tag">Chinese</span>
-                        <span class="tag is-grey">33</span>
+                        <span class="tag is-grey">34</span>
                     </a>
                 </div>
                 
@@ -1929,8 +1957,27 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Recientes
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/07/28/Trie/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/2020/07/28/Trie/titleThumb.jpg" alt="Trie(前缀树)">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-07-27T16:00:00.000Z">2020-07-28</time></div>
+                    <a href="/2020/07/28/Trie/" class="has-link-black-ter is-size-6">Trie(前缀树)</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -2008,25 +2055,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/04/20/Binary-Search/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/2020/04/20/Binary-Search/titleThumb.jpg" alt="Binary Search(二分搜索)">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-19T16:00:00.000Z">2020-04-20</time></div>
-                    <a href="/2020/04/20/Binary-Search/" class="has-link-black-ter is-size-6">Binary Search(二分搜索)</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -2035,9 +2063,20 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            Archivos
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2020/06/">
@@ -2268,14 +2307,14 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Tags
+                Etiquetas
             </h3>
             <div class="field is-grouped is-grouped-multiline">
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Algorithm/">
                         <span class="tag">Algorithm</span>
-                        <span class="tag is-grey">21</span>
+                        <span class="tag is-grey">22</span>
                     </a>
                 </div>
                 
@@ -2289,7 +2328,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Chinese/">
                         <span class="tag">Chinese</span>
-                        <span class="tag is-grey">33</span>
+                        <span class="tag is-grey">34</span>
                     </a>
                 </div>
                 
@@ -2558,10 +2597,10 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Posts',
+                POSTS: 'Entradas',
                 PAGES: 'Pages',
-                CATEGORIES: 'Categories',
-                TAGS: 'Tags',
+                CATEGORIES: 'Categorias',
+                TAGS: 'Etiquetas',
                 UNTITLED: '(Untitled)',
             },
             CONTENT_URL: '/content.json',

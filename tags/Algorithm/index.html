@@ -2,7 +2,7 @@
 <html >
 <head>
     <meta charset="utf-8">
-<title>Tag: Algorithm - LeonChen&#39;s Blog</title>
+<title>Etiqueta: Algorithm - LeonChen&#39;s Blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
 
@@ -147,12 +147,156 @@
     <div class="card-content">
         <nav class="breadcrumb" aria-label="breadcrumbs">
         <ul>
-            <li><a href="/tags">Tags</a></li>
+            <li><a href="/tags">Etiquetas</a></li>
             <li class="is-active"><a href="#" aria-current="page">Algorithm</a></li>
         </ul>
         </nav>
     </div>
 </div>
+
+    <div class="card">
+    
+    <div class="card-image">
+        <a href="/2020/07/28/Trie/" class="image is-7by1">
+            <img class="banner" src="/2020/07/28/Trie/title.jpg" alt="Trie(前缀树)">
+        </a>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-07-27T16:00:00.000Z">2020-07-28</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Algorithm/">Algorithm</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Chinese/Algorithm/Common/">Common</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    22 minutes read (About 3302 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2020/07/28/Trie/">Trie(前缀树)</a>
+            
+        </h1>
+        <div class="content">
+            <!-- <h1><span id="trie">Trie</span></h1><p>Trie ,也叫做 digital tree(数字树) 有时候也是 <a href="todo">radix tree(基数树)</a> 或者 prefix tree(前缀树) (因为他们可以通过前缀进行搜索) 是一种 <a href="todo">search tree</a> - 一种用来存储通常键为 <a href="todo">strings</a> 的<a href="todo">dynamic set</a> 或者 <a href="todo">associative array</a>  有序的 <a href="todo">tree</a> 数据结构. 不像 <a href="todo">binary search tree(二叉搜索树)</a> , Trie 树里的节点不存储与该节点关联的键,而是使用他在树里的位置来表明它所关联的键.一个节点的所有子节点都有该节点关联的字符串前缀,并且根节点关联的是一个空字符串.键倾向于与叶子关联,也有一些内部节点也有关联了键.因此,并不是每一个节点都会有关联的键.有关于前缀树的空间优化,可以参考 <a href="todo">compact prefix tree</a> .</p>
+<p><img src="/2020/07/28/Trie/Trie-example.png" alt=""></p>
+<p>如同示例所示,键展示在节点中,而值在节点的下面.每一个英文单词都有一个值.一个 trie 可以视为一个 树形的 <a href="todo">deterministic finite automaton</a> . 每一个 <a href="https://en.wikipedia.org/wiki/Finite_language" target="_blank" rel="external">有限语言(finite language)</a> 都是由一个 trie 自动机(automaton)生成的,并且每个 trie 可以被压缩成一个 <a href="https://en.wikipedia.org/wiki/Deterministic_acyclic_finite_state_automaton" target="_blank" rel="external">deterministic acyclic finite state automaton</a> . </p>
+<p>它的键不仅仅可以使用字符串的字符,它同样可以使用相同的算法来适配一些相同功能的任何构造组成的有序列表,比如数字或者形状(shapes)的列表排序.特别是,一个 bitwise trie 是使用二进制数据的固定长度的 bit 来当做建,比如使用一个整数或者存储器地址.</p>
+<h2><span id="应用">应用</span></h2><h3><span id="替换其他数据结构">替换其他数据结构</span></h3><p>trie 和 binary search tree 相比有很多的优点. Trie 同样可以用来替换 <a href="../../../../OneDrive/Code/CodeRecord/Data-Structure/Hash-Table.md">hash table</a> ,它拥有以下的优点:</p>
+<ul>
+<li>Trie 对比一个不完美的 hash table 在最差的情况下查找数据更快,使用了 $O(m)$ 的时间( m 是查找的字符串的长度),而一个不完美的 hash table 会产生键碰撞.即不同的键被映射到相同的位置.它在最差的情况下的查找速度是 $O(N)$ ,但是通常情况下是 $O(1)$ 加上 $O(m)$  的计算 hash 的时间.</li>
+<li>在 trie 里不存在不同的键的碰撞.</li>
+<li>当一个键对应了多个值的情况下,trie 结构里的 bucket 和 hash table 的 bucket 类似,都会产生键碰撞.</li>
+<li>当更多的键加入到 trie 里的时候不需要提供 hash 函数或者是改变 hash 函数.</li>
+<li>trie 可以对条目的键进行字符排序. </li>
+</ul>
+<p>trie 也有一些缺点:</p>
+<ul>
+<li>trie 在某些情况下会比使用 hash table 来查找数据更加费时,特别是在当数据直接在硬盘驱动上访问或者在一些其他的存储设备也就是在那些 随机存取( random-access) 时间会高于使用 内存(main memory).</li>
+<li>某些键,比如 floating point numbers, 会导致要检索一个很长的链条,使得前缀很长但是没有什么特别的意义.虽然如此,使用 bitwise trie 可以处理标准 IEEE single 和 double format floating point number.</li>
+<li>有些 trie 会比 hash table 需要更多的空间,因为内存可能会给每一个查找的字符串里的字符分配空间,而不是如何大部分的 hash table 一样分配一大块的内存给全部条目.</li>
+</ul>
+<h3><span id="字典表达">字典表达</span></h3><p>trie 常用于存储  <a href="https://en.wikipedia.org/wiki/Predictive_text" target="_blank" rel="external">预测性文本(predictive text)</a>  或者 <a href="https://en.wikipedia.org/wiki/Autocomplete" target="_blank" rel="external">自动补全(autocomplete)</a> 的字典,比如<a href="https://en.wikipedia.org/wiki/Mobile_telephone" target="_blank" rel="external">mobile telephone</a> 上的查找功能.这样的应用程序利用了 trie 便于搜索,插入,和删除条目的优点;然而,如果只需要存储字典单词(不需要存储每个单词的附加信息),使用最小的 <a href="https://en.wikipedia.org/wiki/Deterministic_acyclic_finite_state_automaton" target="_blank" rel="external">deterministic acyclic finite state automaton</a> (DAFSA)(将同级的不同路径到达的代表相同字符的两个节点合并.) 将会占用更少的空间.这是因为它会在不同的单词开始存储的时候压缩 trie 中相同的分支(即拥有相同后缀或者部分后缀).</p>
+<p>Trie 同样适用于实现近似匹配算法,包括那些 <a href="https://en.wikipedia.org/wiki/Spell_checking" target="_blank" rel="external">spell checking</a> and <a href="https://en.wikipedia.org/wiki/Hyphenation_algorithm" target="_blank" rel="external">hyphenation</a> 软件</p>
+<h3><span id="术语索引">术语索引</span></h3><p><a href="https://en.wikipedia.org/w/index.php?title=Discrimination_tree&amp;action=edit&amp;redlink=1" target="_blank" rel="external">discrimination tree</a> <a href="https://en.wikipedia.org/wiki/Term_indexing" target="_blank" rel="external">term index</a> 将他的信息存储在 Trie 中.</p>
+<h2><span id="算法">算法</span></h2><p>Trie 是一个支持查找和插入操作的节点树.</p>
+<p>查找返回 键对应的值,插入则插入一个字符串(键) 和它对应的值到 Trie 里.这两个操作的耗时都是 $O(n)$ ,n 是键的长度.</p>
+<p>下面这个简单 Node 类可以用来代表 Trie 中的节点:</p>
+<figure class="highlight python hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-comment"># a class representation for trie node</span></div><div class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Node</span><span class="hljs-params">()</span>:</span></div><div class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self)</span>:</span></div><div class="line">        <span class="hljs-comment"># NOde that using dictionary for children (as in this implementation) would not allow</span></div><div class="line">        <span class="hljs-comment"># lexicographic sorting mentioned in the next section (Sorting),</span></div><div class="line">        <span class="hljs-comment"># because ordinary dictionary would not preserve the order of the keys</span></div><div class="line">        </div><div class="line">        <span class="hljs-comment"># mapping from character ==&gt; Node</span></div><div class="line">        self.children = &#123;&#125; </div><div class="line">        self.value = <span class="hljs-keyword">None</span></div></pre></td></tr></table></figure>
+<p>注意 <code>children</code> 是这个节点的后代的字符键字典;并且”终端”节点是一个代表完整字符串的节点.</p>
+<p>查找 Trie 的值的方法如下:</p>
+<figure class="highlight python hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-comment"># find a node value with key</span></div><div class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">find</span><span class="hljs-params">(node,key)</span>:</span></div><div class="line">    <span class="hljs-keyword">for</span> char <span class="hljs-keyword">in</span> key:</div><div class="line">        <span class="hljs-comment"># if char in the node's children ,then go on to find next char</span></div><div class="line">        <span class="hljs-keyword">if</span> char <span class="hljs-keyword">in</span> node.children:</div><div class="line">            node = node.children[char]</div><div class="line">        <span class="hljs-keyword">else</span>:</div><div class="line">            <span class="hljs-keyword">return</span> <span class="hljs-keyword">None</span></div><div class="line">    <span class="hljs-keyword">return</span> node.value</div></pre></td></tr></table></figure>
+<p>插入操作通过要插入的键字符串来执行 Trie ,当出现 Trie中没有出现的字符层级的时候就添加新的节点给这个后缀.</p>
+<figure class="highlight python hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-comment"># insert a node with key and value</span></div><div class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">insert</span><span class="hljs-params">(root,string,value)</span>:</span></div><div class="line">    node = root</div><div class="line">    index_last_char = <span class="hljs-keyword">None</span></div><div class="line">    <span class="hljs-keyword">for</span> index_char ,char <span class="hljs-keyword">in</span> enumerate(string):</div><div class="line">        <span class="hljs-keyword">if</span> char <span class="hljs-keyword">in</span> node.children:</div><div class="line">            node = node.children[char]</div><div class="line">        <span class="hljs-keyword">else</span>:</div><div class="line">            index_last_char = index_char</div><div class="line">            <span class="hljs-keyword">break</span></div><div class="line">    </div><div class="line">    <span class="hljs-comment"># append new nodes for the remaining characters , if any</span></div><div class="line">    <span class="hljs-keyword">if</span> index_last_char <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> <span class="hljs-keyword">None</span>:</div><div class="line">        <span class="hljs-keyword">for</span> char <span class="hljs-keyword">in</span> string[index_last_char:]:</div><div class="line">            node.children[char] = Node()</div><div class="line">            node = node.children[char]</div><div class="line"></div><div class="line">    <span class="hljs-comment"># store value in the terminal node</span></div><div class="line">    node.value = value</div></pre></td></tr></table></figure>
+<p>这里有一个 main 方法可以用来测试</p>
+<figure class="highlight python hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-comment"># a main method check for the trie</span></div><div class="line"><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">'__main__'</span>:</div><div class="line">    root = Node()</div><div class="line">    insert(root,<span class="hljs-string">"apple"</span>,<span class="hljs-number">43</span>)</div><div class="line">    insert(root,<span class="hljs-string">"else"</span>,<span class="hljs-number">41</span>)</div><div class="line">    insert(root,<span class="hljs-string">"banana"</span>,<span class="hljs-number">435</span>)</div><div class="line">    insert(root,<span class="hljs-string">"leon"</span>,<span class="hljs-number">2</span>)</div><div class="line">    insert(root,<span class="hljs-string">"application"</span>,<span class="hljs-number">55</span>)</div><div class="line">    insert(root,<span class="hljs-string">"app"</span>,<span class="hljs-number">11</span>)</div><div class="line"></div><div class="line">    print(find(root,<span class="hljs-string">"app"</span>))</div></pre></td></tr></table></figure>
+<h3><span id="排序">排序</span></h3><p>词典(Lexicographic) 可以通过构建一个 Trie 来对它键的集合进行排序,使用<a href="https://en.wikipedia.org/wiki/Tree_traversal#Pre-order" target="_blank" rel="external">pre-order</a>(左子树优先于右子树处理)进行遍历,只打印出叶子值.这个算法是  <a href="https://en.wikipedia.org/wiki/Radix_sort" target="_blank" rel="external">radix sort</a> 的一种形式.trie 是组成<a href="https://en.wikipedia.org/wiki/Burstsort" target="_blank" rel="external">Burstsort</a> 数据结构的基础,<a href="https://en.wikipedia.org/wiki/Burstsort" target="_blank" rel="external">Burstsort</a> 是2007年已知的最快的字符串排序算法.然而现在已经有了更快的字符串排序算法.</p>
+<h3><span id="全文检索">全文检索</span></h3><p>我们可以使用一种特殊的 trie — <a href="https://en.wikipedia.org/wiki/Suffix_tree" target="_blank" rel="external">suffix tree</a> 来索引所有该文本的后缀来进行更快的全文检索.</p>
+<h2><span id="实现">实现</span></h2><p>这里有几种方式来表示 Trie,根据内存使用和操作的效率做一个权衡.一个基础的形式是在一个 linked set 的节点,每个节点包含了一个 array 的子指针,一种方式是使用 <a href="https://en.wikipedia.org/wiki/Alphabet_(computer_science" target="_blank" rel="external">alphabet</a>) 中的每个符号(所以对于英语字母表来说,每个会存储26个子指针,如果使用字节的字符表的话要256个指针).这样处理是很简单的,但是会很浪费内存:使用字节字符表(总数256个)和四字节指针,每一个节点需要千字节的存储,并且当字符串的前缀没多少重复的时候,需要的节点数量大致是存储的字符串的总长度.换句话说,很多树底部附近的节点只有很少的子节点,这个结构浪费了大量的空间来存储空指针.</p>
+<p>存储的问题可以通过 <em>alphabet reduction</em> 这个实现技术来优化,它通过将原始的字符串使用一个更小的字符集来重新解释为一个更长的字符串.比如,一个 n bytes 的字符串可以当做一个 2n 个 <a href="https://en.wikipedia.org/wiki/Nibble" target="_blank" rel="external">four-bit units</a> 的字符串,这样存储在 Trie 中的时候每个节点只需要16个指针.在最差的情况下查找需要访问两倍数量的节点,但是存储空间变为原来的八分之一.</p>
+<p>另一种实现方法是使用一个三元元素(symbol,child,next)来代表节点并且使用<a href="https://en.wikipedia.org/wiki/Singly_linked_list" target="_blank" rel="external">singly linked list</a> 来链接子节点:child 指向节点的第一个子节点,next 指向父节点的下一个 child .子节点的集合还可以使用 <a href="https://en.wikipedia.org/wiki/Binary_search_tree" target="_blank" rel="external">binary search tree</a> 来表示.比如 <a href="https://en.wikipedia.org/wiki/Jon_Bentley_(computer_scientist" target="_blank" rel="external">Bentley</a>) and <a href="https://en.wikipedia.org/wiki/Robert_Sedgewick_(computer_scientist" target="_blank" rel="external">Sedgewick</a>) 开发的 <a href="https://en.wikipedia.org/wiki/Ternary_search_tree" target="_blank" rel="external">ternary search tree</a> 就是这个思想的实例.</p>
+<p>为了避免使用256个指针(ASCII)数组,就像前面建议的那样,我们可以通过使用256 bit 的 bitmap来表示 ASCII 字符集,来显著的减少节点的数量.</p>
+<p><img src="Resources/Pointer_implementation_of_a_trie.png" alt=""></p>
+<p>一个 trie 实现的如同一个  <a href="https://en.wikipedia.org/wiki/Doubly_chained_tree" target="_blank" rel="external">doubly chained tree</a> 一样:垂直的箭头是 <code>child</code> 指针,水平虚线箭头是 <code>next</code> 指针.这个 trie 中的存储的字符串集合是 {baby, bad, bank, box, dad, dance} .这个列表按照允许字典顺序遍历还排序的.</p>
+<h3><span id="bitwise-tries">Bitwise tries</span></h3><p>Bitwise trie 和常用的基于字符的 trie 是相同的除了它将遍历每一 bit 的方式变成了二叉树来提高了效率. 通常情况下,它的实现会使用一个特殊的 CPU 指令来快速的查找定长的键的第一个位的集合(比如,GCC 内置的<code>__builtin_clz()</code> ). 这个值用于索引一个 32- 或者 64- 位表指向 bitwise trie 的第一个项目包含这个数字所带有的前导零. 然后通过处理键后面的位来选择合适的 <code>child[0]</code> 或者 <code>child[1]</code>   知道找到对应的项目.</p>
+<p>尽管这个处理听起来很慢,但是它由于对不依赖寄存器支持本地缓存并且具有高并发特性,所以他在现代的 <a href="https://en.wikipedia.org/wiki/Out-of-order_execution" target="_blank" rel="external">out-of-order execution</a> CPU 中可以有优秀的性能. <a href="https://en.wikipedia.org/wiki/Red-black_tree" target="_blank" rel="external">red-black tree</a> 在理论上拥有更好的性能表现,但是它对缓存很不友好并且会导致多通道并且 <a href="https://en.wikipedia.org/wiki/Translation_lookaside_buffer" target="_blank" rel="external">TLB</a> 在现代 CPU 情况下算法的性能受限于内存的延迟而不是 CPU 的速度.相比之下, bitwise trie 很少访问内存,当它需要使用的时候,它只需要读取,从而避免了 SMP 缓存一致性开销.因此,它快速成为许多快速插入和删除的代码算法的选择,就像内存分配器一样(最近流行的版本是  <a href="https://en.wikipedia.org/wiki/Malloc#dlmalloc" target="_blank" rel="external">Doug Lea’s allocator (dlmalloc) and its descendents</a> ).</p>
+<h3><span id="compressing-tries">Compressing tries</span></h3><p>压缩 trie 并且合并相同分支这在有时候会提高很多性能.这个方法在以下情况中表现最佳:</p>
+<ul>
+<li>这个 trie 大部分是静态的(禁止在预先填充的 trie 中进行键的插入和删除)</li>
+<li>只需要进行查找操作</li>
+<li>trie 节点不是根据节点特定数据进行组键,或者节点的数据是通用的.</li>
+<li>存储的键的集合在它的表现空间里非常的稀疏.</li>
+</ul>
+<p>比如,它可能被用来表示稀疏的  <a href="https://en.wikipedia.org/wiki/Bitset" target="_blank" rel="external">bitsets</a> ,也就是一个更大固定可以枚举的子集.在这种情况下,trie 是通过全部的集合内的位元素位置进行排键,这个键是根据字符串里的每一个元素需要被编码的完整的 bit 生成的.这种 trie 有一种非常退化的形式它的大量分支都消失了.在检测了通用模式的重复情况或者填充了不适用的缺口,独特的叶子节点( bit 字符串)可以存储并且轻松的压缩,减少了 trie 整体的大小.</p>
+<p>这样的压缩方式同样适用于多个 <a href="https://en.wikipedia.org/wiki/Unicode" target="_blank" rel="external">Unicode</a> 字符的表的快速查找.这些包括了条件映射表(比如 希腊字母 pi,从Π 到 π),还包含了组合字符如德语等.</p>
+<h3><span id="external-memory-trie">External memory trie</span></h3><p>几种变体适用于在外部存储器中维护字符串集和，包括后缀树。还建议将trie和B-tree组合称为B-trie用于此任务;与后缀树相比，它们在受支持的操作中受到限制，但也更紧凑，同时更快地执行更新操作。</p>
+<h1><span id="about-me">About Me</span></h1><p>我的博客 <a href="http://leonchen1024.com/" target="_blank" rel="external">leonchen1024.com</a></p>
+<p>我的 GitHub <a href="https://github.com/LeonChen1024" target="_blank" rel="external">https://github.com/LeonChen1024</a></p>
+<p>微信公众号 </p>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/Images/CooderQRcodem.jpg?raw=true" alt="wechat"></p>
+ -->
+            <div class="article-entry">
+                    
+                    
+                        
+                            
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                            
+                                
+                                <p><h1><span id="trie">Trie</span></h1><p>Trie ,也叫做 digital tree(数字树) 有时候也是 <a href="todo">radix tree(基数树)</a> 或者 prefix tree(前缀树) (因为他们可以通过前缀进行搜索) 是一种 <a href="todo">search tree</a> - 一种用来存储通常键为 <a href="todo">strings</a> 的<a href="todo">dynamic set</a> 或者 <a href="todo">associative array</a>  有序的 <a href="todo">tree</a> 数据结构. 不像 <a href="todo">binary search tree(二叉搜索树)</a> , Trie 树里的节点不存储与该节点关联的键,而是使用他在树里的位置来表明它所关联的键.一个节点的所有子节点都有该节点关联的字符串前缀,并且根节点关联的是一个空字符串.键倾向于与叶子关联,也有一些内部节点也有关联了键.因此,并不是每一个节点都会有关联的键.有关于前缀树的空间优化,可以参考 <a href="todo">compact prefix tree</a> .</p>
+<p><img src="/2020/07/28/Trie/Trie-example.png" alt=""></p>
+<p>如同示例所示,键展示在节点中,而值在节点的下面.每一个英文单词都有一个值.一个 trie 可以视为一个 树形的 <a href="todo">deterministic finite automaton</a> . 每一个 <a href="https://en.wikipedia.org/wiki/Finite_language" target="_blank" rel="external">有限语言(finite language)</a> 都是由一个 trie 自动机(automaton)生成的,并且每个 trie 可以被压缩成一个 <a href="https://en.wikipedia.org/wiki/Deterministic_acyclic_finite_state_automaton" target="_blank" rel="external">deterministic acyclic finite state automaton</a> . </p>
+<p>它的键不仅仅可以使用字符串的字符,它同样可以使用相同的算法来适配一些相同功能的任何构造组成的有序列表,比如数字或者形状(shapes)的列表排序.特别是,一个 bitwise trie 是使用二进制数据的固定长度的 bit 来当做建,比如使用一个整数或者存储器地址.</p>
+<h2><span id="应用">应用</span></h2><h3><span id="替换其他数据结构">替换其他数据结构</span></h3><p>trie 和 binary search tree 相比有很多的优点. Trie 同样可以用来替换 <a href="../../../../OneDrive/Code/CodeRecord/Data-Structure/Hash-Table.md">hash table</a> ,它拥有以下的优点:</p>
+<p>
+                            
+                        
+                    
+                    
+                        </div>   
+                        <div class="article-more-link">
+                            <a href="/2020/07/28/Trie/#more">Read More</a>
+                        </div>
+                    
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
 
     <div class="card">
     
@@ -314,6 +458,118 @@
     <div class="card">
     
     <div class="card-image">
+        <a href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-en/" class="image is-7by1">
+            <img class="banner" src="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/title.jpg" alt="LeetCode 9. Palindrome Number">
+        </a>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-01-27T16:00:00.000Z">2020-01-28</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/English/">English</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/English/Algorithm/">Algorithm</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/English/Algorithm/LeetCode/">LeetCode</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    4 minutes read (About 666 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-en/">LeetCode 9. Palindrome Number</a>
+            
+        </h1>
+        <div class="content">
+            <!-- <p>[English ver]</p>
+<h1><span id="9-palindrome-number">9. Palindrome Number</span></h1><p>Determine whether an integer is a palindrome. Do this without extra space.</p>
+<hr>
+<p>click to show spoilers.</p>
+<p>Some hints:<br>Could negative integers be palindromes? (ie, -1)</p>
+<p>If you are thinking of converting the integer to string, note the restriction of using extra space.</p>
+<p>You could also try reversing an integer. However, if you have solved the problem “Reverse Integer”, you know that the reversed integer might overflow. How would you handle such case?</p>
+<p>There is a more generic way of solving this problem.</p>
+<hr>
+<h3><span id="approach-1-revert-the-number">Approach 1 Revert the number:</span></h3><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isPalindrome</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="hljs-keyword">if</span> (x &lt; <span class="hljs-number">0</span>||(x % <span class="hljs-number">10</span> == <span class="hljs-number">0</span> &amp;&amp; x != <span class="hljs-number">0</span>)) <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;</div><div class="line"></div><div class="line">    <span class="hljs-comment">//use to calculate the number we used to revert the number ,and the biggest digit</span></div><div class="line">    <span class="hljs-keyword">int</span> temp = x;</div><div class="line">    <span class="hljs-comment">//the number reverted</span></div><div class="line">    <span class="hljs-keyword">int</span> revertedNumber = <span class="hljs-number">0</span>;</div><div class="line"></div><div class="line">    <span class="hljs-keyword">while</span> (temp &gt;= <span class="hljs-number">10</span>)&#123;</div><div class="line">        revertedNumber *=<span class="hljs-number">10</span>;</div><div class="line">        revertedNumber += temp%<span class="hljs-number">10</span>;</div><div class="line">        temp /=<span class="hljs-number">10</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="hljs-comment">//compare the revertedNumber and x/10,and the temp and x%10.because the case of overflows</span></div><div class="line">    <span class="hljs-keyword">return</span> revertedNumber == x / <span class="hljs-number">10</span> &amp;&amp; temp == x % <span class="hljs-number">10</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/9.%20Palindrome%20Number/Images/RevertNumber1Result.png?raw=true" alt="Efficiency"></p>
+<p><strong>Analysis</strong><br>Because of the case overflows ,so revert the whole x except the largest digit , and then compare reverted Number with x which except the smallest digit , at last campare the biggest digit and the smallest digit.</p>
+<p>Time complexity ： O($log{_10}n$)<br>Space complexity ： O(1) .</p>
+<h3><span id="approach-2-revert-half-of-the-number">Approach 2 Revert half of the number:</span></h3><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</div><div class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isPalindrome</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123;</div><div class="line">        <span class="hljs-comment">// Special cases:</span></div><div class="line">        <span class="hljs-comment">// As discussed above, when x &lt; 0, x is not a palindrome.</span></div><div class="line">        <span class="hljs-comment">// Also if the last digit of the number is 0, in order to be a palindrome,</span></div><div class="line">        <span class="hljs-comment">// the first digit of the number also needs to be 0.</span></div><div class="line">        <span class="hljs-comment">// Only 0 satisfy this property.</span></div><div class="line">        <span class="hljs-keyword">if</span>(x &lt; <span class="hljs-number">0</span> || (x % <span class="hljs-number">10</span> == <span class="hljs-number">0</span> &amp;&amp; x != <span class="hljs-number">0</span>)) &#123;</div><div class="line">            <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="hljs-keyword">int</span> revertedNumber = <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-keyword">while</span>(x &gt; revertedNumber) &#123;</div><div class="line">            revertedNumber = revertedNumber * <span class="hljs-number">10</span> + x % <span class="hljs-number">10</span>;</div><div class="line">            x /= <span class="hljs-number">10</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="hljs-comment">// When the length is an odd number, we can get rid of the middle digit by revertedNumber/10</span></div><div class="line">        <span class="hljs-comment">// For example when the input is 12321, at the end of the while loop we get x = 12, revertedNumber = 123,</span></div><div class="line">        <span class="hljs-comment">// since the middle digit doesn't matter in palidrome(it will always equal to itself), we can simply get rid of it.</span></div><div class="line">        <span class="hljs-keyword">return</span> x == revertedNumber || x == revertedNumber/<span class="hljs-number">10</span>;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/9.%20Palindrome%20Number/Images/RevertNumberResult.png?raw=true" alt="Efficiency"></p>
+<p><strong>Analysis</strong></p>
+<p>First of all we should take care of some edge cases. All negative numbers are not palindrome, and number x which x % 10 == 0 &amp;&amp; x != 0 can not be palindrome ,because the number can’t be both 0 in the first digit and last digit. Then we start to convert number , we can use x%10 to get the last digit of x , update x to x/10 ,it remove the last digit ,and then use x%10 to get the last number of x , use the number we have get before to times 10 plus this number. Continuing this process would give us the reverted number with more digits. when the original number is less than the reversed number, it means we’ve processed half of the number digits.</p>
+<p>Because palindrome has odd and even ,so we need to deal with both of them.When the palindrome is odd the reverted number will have one more digit ,but this digit we don’t need to consider about ,we only need to remove this digit and compare the rest of it ,when palindrome is even ,if we convert the half of number x ,if they don’t equal to each other it is not a palindrome , even x is bigger than reverted number , which make it revert one more time , the reverted number will hava more two digit to x ,remove one digit will nerver make it palindrome.</p>
+<p>Time complexity ：O($log{_10}n$)<br>Space complexity ： O(1) .</p>
+<p>If you have any suggestions to make the logic and implementation more better , or you have some advice on my description. Please let me know!Thanks!</p>
+<h1><span id="about-me">About Me</span></h1><p>我的博客 <a href="http://leonchen1024.com/" target="_blank" rel="external">leonchen1024.com</a></p>
+<p>我的 GitHub <a href="https://github.com/LeonChen1024" target="_blank" rel="external">https://github.com/LeonChen1024</a></p>
+<p>微信公众号 </p>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/Images/CooderQRcodem.jpg?raw=true" alt="wechat"></p>
+ -->
+            <div class="article-entry">
+                    
+                    
+                        
+                            
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                                
+                                
+                            
+                            
+                                
+                                <p><p>[English ver]</p>
+<h1><span id="9-palindrome-number">9. Palindrome Number</span></h1><p>Determine whether an integer is a palindrome. Do this without extra space.</p>
+<hr>
+<p>click to show spoilers.</p>
+<p>Some hints:<br>Could negative integers be palindromes? (ie, -1)</p>
+<p>
+                            
+                        
+                    
+                    
+                        </div>   
+                        <div class="article-more-link">
+                            <a href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-en/#more">Read More</a>
+                        </div>
+                    
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-image">
         <a href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/" class="image is-7by1">
             <img class="banner" src="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/title.jpg" alt="LeetCode 9. Palindrome Number">
         </a>
@@ -408,118 +664,6 @@
                         </div>   
                         <div class="article-more-link">
                             <a href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/#more">Read More</a>
-                        </div>
-                    
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-image">
-        <a href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-en/" class="image is-7by1">
-            <img class="banner" src="/2020/01/28/LeetCode-9-Palindrome-Number/Record-cn/title.jpg" alt="LeetCode 9. Palindrome Number">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-01-27T16:00:00.000Z">2020-01-28</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/English/">English</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/English/Algorithm/">Algorithm</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/English/Algorithm/LeetCode/">LeetCode</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    4 minutes read (About 666 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-en/">LeetCode 9. Palindrome Number</a>
-            
-        </h1>
-        <div class="content">
-            <!-- <p>[English ver]</p>
-<h1><span id="9-palindrome-number">9. Palindrome Number</span></h1><p>Determine whether an integer is a palindrome. Do this without extra space.</p>
-<hr>
-<p>click to show spoilers.</p>
-<p>Some hints:<br>Could negative integers be palindromes? (ie, -1)</p>
-<p>If you are thinking of converting the integer to string, note the restriction of using extra space.</p>
-<p>You could also try reversing an integer. However, if you have solved the problem “Reverse Integer”, you know that the reversed integer might overflow. How would you handle such case?</p>
-<p>There is a more generic way of solving this problem.</p>
-<hr>
-<h3><span id="approach-1-revert-the-number">Approach 1 Revert the number:</span></h3><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isPalindrome</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="hljs-keyword">if</span> (x &lt; <span class="hljs-number">0</span>||(x % <span class="hljs-number">10</span> == <span class="hljs-number">0</span> &amp;&amp; x != <span class="hljs-number">0</span>)) <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;</div><div class="line"></div><div class="line">    <span class="hljs-comment">//use to calculate the number we used to revert the number ,and the biggest digit</span></div><div class="line">    <span class="hljs-keyword">int</span> temp = x;</div><div class="line">    <span class="hljs-comment">//the number reverted</span></div><div class="line">    <span class="hljs-keyword">int</span> revertedNumber = <span class="hljs-number">0</span>;</div><div class="line"></div><div class="line">    <span class="hljs-keyword">while</span> (temp &gt;= <span class="hljs-number">10</span>)&#123;</div><div class="line">        revertedNumber *=<span class="hljs-number">10</span>;</div><div class="line">        revertedNumber += temp%<span class="hljs-number">10</span>;</div><div class="line">        temp /=<span class="hljs-number">10</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="hljs-comment">//compare the revertedNumber and x/10,and the temp and x%10.because the case of overflows</span></div><div class="line">    <span class="hljs-keyword">return</span> revertedNumber == x / <span class="hljs-number">10</span> &amp;&amp; temp == x % <span class="hljs-number">10</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/9.%20Palindrome%20Number/Images/RevertNumber1Result.png?raw=true" alt="Efficiency"></p>
-<p><strong>Analysis</strong><br>Because of the case overflows ,so revert the whole x except the largest digit , and then compare reverted Number with x which except the smallest digit , at last campare the biggest digit and the smallest digit.</p>
-<p>Time complexity ： O($log{_10}n$)<br>Space complexity ： O(1) .</p>
-<h3><span id="approach-2-revert-half-of-the-number">Approach 2 Revert half of the number:</span></h3><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</div><div class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isPalindrome</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123;</div><div class="line">        <span class="hljs-comment">// Special cases:</span></div><div class="line">        <span class="hljs-comment">// As discussed above, when x &lt; 0, x is not a palindrome.</span></div><div class="line">        <span class="hljs-comment">// Also if the last digit of the number is 0, in order to be a palindrome,</span></div><div class="line">        <span class="hljs-comment">// the first digit of the number also needs to be 0.</span></div><div class="line">        <span class="hljs-comment">// Only 0 satisfy this property.</span></div><div class="line">        <span class="hljs-keyword">if</span>(x &lt; <span class="hljs-number">0</span> || (x % <span class="hljs-number">10</span> == <span class="hljs-number">0</span> &amp;&amp; x != <span class="hljs-number">0</span>)) &#123;</div><div class="line">            <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="hljs-keyword">int</span> revertedNumber = <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-keyword">while</span>(x &gt; revertedNumber) &#123;</div><div class="line">            revertedNumber = revertedNumber * <span class="hljs-number">10</span> + x % <span class="hljs-number">10</span>;</div><div class="line">            x /= <span class="hljs-number">10</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="hljs-comment">// When the length is an odd number, we can get rid of the middle digit by revertedNumber/10</span></div><div class="line">        <span class="hljs-comment">// For example when the input is 12321, at the end of the while loop we get x = 12, revertedNumber = 123,</span></div><div class="line">        <span class="hljs-comment">// since the middle digit doesn't matter in palidrome(it will always equal to itself), we can simply get rid of it.</span></div><div class="line">        <span class="hljs-keyword">return</span> x == revertedNumber || x == revertedNumber/<span class="hljs-number">10</span>;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/9.%20Palindrome%20Number/Images/RevertNumberResult.png?raw=true" alt="Efficiency"></p>
-<p><strong>Analysis</strong></p>
-<p>First of all we should take care of some edge cases. All negative numbers are not palindrome, and number x which x % 10 == 0 &amp;&amp; x != 0 can not be palindrome ,because the number can’t be both 0 in the first digit and last digit. Then we start to convert number , we can use x%10 to get the last digit of x , update x to x/10 ,it remove the last digit ,and then use x%10 to get the last number of x , use the number we have get before to times 10 plus this number. Continuing this process would give us the reverted number with more digits. when the original number is less than the reversed number, it means we’ve processed half of the number digits.</p>
-<p>Because palindrome has odd and even ,so we need to deal with both of them.When the palindrome is odd the reverted number will have one more digit ,but this digit we don’t need to consider about ,we only need to remove this digit and compare the rest of it ,when palindrome is even ,if we convert the half of number x ,if they don’t equal to each other it is not a palindrome , even x is bigger than reverted number , which make it revert one more time , the reverted number will hava more two digit to x ,remove one digit will nerver make it palindrome.</p>
-<p>Time complexity ：O($log{_10}n$)<br>Space complexity ： O(1) .</p>
-<p>If you have any suggestions to make the logic and implementation more better , or you have some advice on my description. Please let me know!Thanks!</p>
-<h1><span id="about-me">About Me</span></h1><p>我的博客 <a href="http://leonchen1024.com/" target="_blank" rel="external">leonchen1024.com</a></p>
-<p>我的 GitHub <a href="https://github.com/LeonChen1024" target="_blank" rel="external">https://github.com/LeonChen1024</a></p>
-<p>微信公众号 </p>
-<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/Images/CooderQRcodem.jpg?raw=true" alt="wechat"></p>
- -->
-            <div class="article-entry">
-                    
-                    
-                        
-                            
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                            
-                                
-                                <p><p>[English ver]</p>
-<h1><span id="9-palindrome-number">9. Palindrome Number</span></h1><p>Determine whether an integer is a palindrome. Do this without extra space.</p>
-<hr>
-<p>click to show spoilers.</p>
-<p>Some hints:<br>Could negative integers be palindromes? (ie, -1)</p>
-<p>
-                            
-                        
-                    
-                    
-                        </div>   
-                        <div class="article-more-link">
-                            <a href="/2020/01/28/LeetCode-9-Palindrome-Number/Record-en/#more">Read More</a>
                         </div>
                     
         </div>
@@ -1007,119 +1151,6 @@
     <div class="card">
     
     <div class="card-image">
-        <a href="/2018/12/02/7-Reverse-Integer/Record-en/" class="image is-7by1">
-            <img class="banner" src="/2018/12/02/7-Reverse-Integer/Record-cn/title.jpg" alt="LeetCode 7. Reverse Integer">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2018-12-01T16:00:00.000Z">2018-12-02</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/English/">English</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/English/Algorithm/">Algorithm</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/English/Algorithm/LeetCode/">LeetCode</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    4 minutes read (About 666 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2018/12/02/7-Reverse-Integer/Record-en/">LeetCode 7. Reverse Integer</a>
-            
-        </h1>
-        <div class="content">
-            <!-- <p>[English ver]Easy</p>
-<h1><span id="7-reverse-integer">7. Reverse Integer</span></h1><p>Reverse digits of an integer.</p>
-<p>Example1: x = 123, return 321<br>Example2: x = -123, return -321</p>
-<p>Note:<br>The input is assumed to be a 32-bit signed integer. Your function should return 0 when the reversed integer overflows.</p>
-<hr>
-<p>spoilers</p>
-<p>Have you thought about this?<br>Here are some good questions to ask before coding. Bonus points for you if you have already thought through this!</p>
-<p>If the integer’s last digit is 0, what should the output be? ie, cases such as 10, 100.</p>
-<p>Did you notice that the reversed integer might overflow? Assume the input is a 32-bit integer, then the reverse of 1000000003 overflows. How should you handle such cases?</p>
-<p>For the purpose of this problem, assume that your function returns 0 when the reversed integer overflows.</p>
-<hr>
-<h3><span id="approach-1-use-stringbuilder">Approach 1 use StringBuilder:</span></h3><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</div><div class="line"></div><div class="line">	    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">reverse</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123;</div><div class="line">          <span class="hljs-comment">//judge x is negative or not</span></div><div class="line">	        <span class="hljs-keyword">boolean</span> isNegative = <span class="hljs-keyword">false</span>;</div><div class="line">	        <span class="hljs-keyword">int</span> result =<span class="hljs-number">0</span>;</div><div class="line">	        <span class="hljs-keyword">if</span> (x&lt;<span class="hljs-number">0</span>)&#123;</div><div class="line">	            isNegative = <span class="hljs-keyword">true</span>;</div><div class="line">	            x = Math.abs(x);</div><div class="line">	        &#125;</div><div class="line"></div><div class="line">	        StringBuilder oldSB = <span class="hljs-keyword">new</span> StringBuilder(String.valueOf(x));</div><div class="line">	        StringBuilder newSB = <span class="hljs-keyword">new</span> StringBuilder();</div><div class="line">          <span class="hljs-comment">//reverse the x use StringBuilder</span></div><div class="line">	        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;i &lt; oldSB.length() ; i++)&#123;</div><div class="line">	            newSB.append(oldSB.charAt(oldSB.length()-i-<span class="hljs-number">1</span>));</div><div class="line">	        &#125;</div><div class="line"></div><div class="line">	        <span class="hljs-keyword">try</span>&#123;</div><div class="line">	            result = Integer.valueOf(newSB.toString());</div><div class="line">	        &#125;</div><div class="line">	        <span class="hljs-keyword">catch</span>(Exception e)&#123;</div><div class="line">              <span class="hljs-comment">//if overflows return the result 0</span></div><div class="line">	            <span class="hljs-keyword">return</span> result;</div><div class="line">	        &#125;</div><div class="line">	        <span class="hljs-keyword">if</span> (isNegative)&#123;</div><div class="line">	            result = -result;</div><div class="line">	        &#125;</div><div class="line"></div><div class="line">	        <span class="hljs-keyword">return</span> result;</div><div class="line">	    &#125;</div><div class="line">	&#125;</div></pre></td></tr></table></figure>
-<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/7.%20Reverse%20Integer/Images/StringBuilderResult.png?raw=true" alt="Efficiency"></p>
-<p><strong>Analysis</strong><br>This approach turn Integer to a positive Integer and reverse it with StringBuilder. use try catch to deal with the overflows . if the input is negative , we can change the result to negative in last.</p>
-<p>Time complexity ： O(n) 。n is the digit of the    x<br>Space complexity ： O(1) .</p>
-<h3><span id="approach-2-use-int">Approach 2 use int:</span></h3><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution1</span> </span>&#123;</div><div class="line">   <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">reverse</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span></span></div><div class="line"><span class="hljs-function">	</span>&#123;</div><div class="line">	    <span class="hljs-keyword">int</span> result = <span class="hljs-number">0</span>;</div><div class="line"></div><div class="line">	    <span class="hljs-keyword">while</span> (x != <span class="hljs-number">0</span>)</div><div class="line">	    &#123;</div><div class="line">          <span class="hljs-comment">//get the last digit of the x.</span></div><div class="line">	        <span class="hljs-keyword">int</span> tail = x % <span class="hljs-number">10</span>;</div><div class="line">          <span class="hljs-comment">//add a digit in the end of the newResult ,and update the newResult's last digit</span></div><div class="line">	        <span class="hljs-keyword">int</span> newResult = result * <span class="hljs-number">10</span> + tail;</div><div class="line">          <span class="hljs-comment">//judge if newResult is overflows</span></div><div class="line">	        <span class="hljs-keyword">if</span> ((newResult - tail) / <span class="hljs-number">10</span> != result)</div><div class="line">	        &#123; <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>; &#125;</div><div class="line">	        result = newResult;</div><div class="line">          <span class="hljs-comment">//remove the last digit of x</span></div><div class="line">	        x = x / <span class="hljs-number">10</span>;</div><div class="line">	    &#125;</div><div class="line"></div><div class="line">	    <span class="hljs-keyword">return</span> result;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>or</p>
-<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution2</span> </span>&#123;</div><div class="line">  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">reverse</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123;</div><div class="line">        <span class="hljs-keyword">long</span> rev= <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-keyword">while</span>( x != <span class="hljs-number">0</span>)&#123;</div><div class="line">            <span class="hljs-comment">//add a digit in the end of the newResult ,and update the newResult's last digit</span></div><div class="line">            rev= rev*<span class="hljs-number">10</span> + x % <span class="hljs-number">10</span>;</div><div class="line">            <span class="hljs-comment">//remove the last digit of x</span></div><div class="line">            x= x/<span class="hljs-number">10</span>;</div><div class="line">            <span class="hljs-comment">//judge if newResult is overflows</span></div><div class="line">            <span class="hljs-keyword">if</span>( rev &gt; Integer.MAX_VALUE || rev &lt; Integer.MIN_VALUE)</div><div class="line">                <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="hljs-keyword">return</span> (<span class="hljs-keyword">int</span>) rev;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/7.%20Reverse%20Integer/Images/IntResult.png?raw=true" alt="Efficiency"></p>
-<p><strong>Analysis</strong><br>These two Solution has the same principle . They use the input x%10 to get the remainder which is the last digit of the x, and then use result*10 to add a digit to result and update the last digit to the x%10 , after that update x to x/10.<br>The only difference of the two solution is the way to judge the result is overflows or not. Solution1 is use the new result remove last digit campare to the old result,if they are equals to each other there is not overflows,else there is overflows. In other side , Solution2 is use the new result compare to the Integer’s limit threshold ,if it didn’t out of the threshold ,there is not overflows,else there is a overflows, notice that , long  rev = 0; in the code,your can;t use Integer to replace it , because once Integer overflows,java will change the value to make it between the limit threshold of the Integer. So  rev &gt; Integer.MAX_VALUE || rev &lt; Integer.MIN_VALUE will never be true.</p>
-<p>Time complexity ： O(n) 。n is the digit of the    x.<br>Space complexity ： O(1) .</p>
-<p>If you have any suggestions to make the logic and implementation more better , or you have some advice on my description. Please let me know!Thanks!</p>
-<h2><span id="about-me">About Me</span></h2><p>My blog <a href="http://leonchen1024.com/" target="_blank" rel="external">leonchen1024.com</a></p>
-<p>My Github  <a href="https://github.com/LeonChen1024" target="_blank" rel="external">https://github.com/LeonChen1024</a></p>
-<p>My twitter <a href="https://twitter.com/LChen1024?lang=en" target="_blank" rel="external">https://twitter.com/LChen1024?lang=en</a></p>
- -->
-            <div class="article-entry">
-                    
-                    
-                        
-                            
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                                
-                                
-                            
-                            
-                                
-                                <p><p>[English ver]Easy</p>
-<h1><span id="7-reverse-integer">7. Reverse Integer</span></h1><p>Reverse digits of an integer.</p>
-<p>Example1: x = 123, return 321<br>Example2: x = -123, return -321</p>
-<p>Note:<br>The input is assumed to be a 32-bit signed integer. Your function should return 0 when the reversed integer overflows.</p>
-<hr>
-<p>
-                            
-                        
-                    
-                    
-                        </div>   
-                        <div class="article-more-link">
-                            <a href="/2018/12/02/7-Reverse-Integer/Record-en/#more">Read More</a>
-                        </div>
-                    
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-image">
         <a href="/2018/12/02/7-Reverse-Integer/Record-cn/" class="image is-7by1">
             <img class="banner" src="/2018/12/02/7-Reverse-Integer/Record-cn/title.jpg" alt="LeetCode 7. 数字反转">
         </a>
@@ -1233,8 +1264,8 @@
     <div class="card">
     
     <div class="card-image">
-        <a href="/2018/09/12/6-ZigZag-Conversion/Record-en/" class="image is-7by1">
-            <img class="banner" src="/2018/09/12/6-ZigZag-Conversion/Record-cn/title.jpg" alt="LeetCode 6. ZigZag Conversion">
+        <a href="/2018/12/02/7-Reverse-Integer/Record-en/" class="image is-7by1">
+            <img class="banner" src="/2018/12/02/7-Reverse-Integer/Record-cn/title.jpg" alt="LeetCode 7. Reverse Integer">
         </a>
     </div>
     
@@ -1242,7 +1273,7 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2018-09-11T16:00:00.000Z">2018-09-12</time>
+                <time class="level-item has-text-grey" datetime="2018-12-01T16:00:00.000Z">2018-12-02</time>
                 
                 <div class="level-item">
                 <a class="has-link-grey -link" href="/categories/English/">English</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/English/Algorithm/">Algorithm</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/English/Algorithm/LeetCode/">LeetCode</a>
@@ -1252,7 +1283,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    2 minutes read (About 346 words)
+                    4 minutes read (About 666 words)
                 </span>
                 
                 
@@ -1261,31 +1292,31 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2018/09/12/6-ZigZag-Conversion/Record-en/">LeetCode 6. ZigZag Conversion</a>
+                <a class="has-link-black-ter" href="/2018/12/02/7-Reverse-Integer/Record-en/">LeetCode 7. Reverse Integer</a>
             
         </h1>
         <div class="content">
-            <!-- <p>[English ver]</p>
-<h1><span id="6-zigzag-conversion">6. ZigZag Conversion</span></h1><p>The string “PAYPALISHIRING” is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">P   A   H   N</div><div class="line">A P L S I I G</div><div class="line">Y   I   R</div></pre></td></tr></table></figure></p>
-<p>And then read line by line: “PAHNAPLSIIGYIR”<br>Write the code that will take a string and make this conversion given a number of rows:<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">string convert(string text, int nRows);</div></pre></td></tr></table></figure></p>
-<p>convert(“PAYPALISHIRING”, 3) should return “PAHNAPLSIIGYIR”.</p>
+            <!-- <p>[English ver]Easy</p>
+<h1><span id="7-reverse-integer">7. Reverse Integer</span></h1><p>Reverse digits of an integer.</p>
+<p>Example1: x = 123, return 321<br>Example2: x = -123, return -321</p>
+<p>Note:<br>The input is assumed to be a 32-bit signed integer. Your function should return 0 when the reversed integer overflows.</p>
 <hr>
-<p>First we need to know the meaning about the zigzag pattern, it means a pattern made up of small corners at variable angles, though constant within the zigzag, tracing a path between two parallel lines; it can be described as both jagged and fairly regular. In the begining i think it’s one line in the middle and then some symmetry verticle line between the middle horizontal line,when the number of rows is 4(use number to represent the index of the String)it would look like that:</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">1   7    13</div><div class="line">2   8    14</div><div class="line">3 6 9 12 15</div><div class="line">4   10   16</div><div class="line">5   11   17</div></pre></td></tr></table></figure>
-<p>but the trueth is not , it should be looked like that:<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">1     7        13</div><div class="line">2   6 8     12 14</div><div class="line">3 5   9  11    15</div><div class="line">4     10       16</div></pre></td></tr></table></figure></p>
-<h3><span id="approach-1-use-string">Approach 1 use String[]:</span></h3><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</div><div class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">convert</span><span class="hljs-params">(String s, <span class="hljs-keyword">int</span> numRows)</span> </span>&#123;</div><div class="line">        String result = <span class="hljs-string">""</span>;</div><div class="line">        String[] strings = <span class="hljs-keyword">new</span> String[numRows];</div><div class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i =<span class="hljs-number">0</span>;i&lt;numRows;i++)&#123;</div><div class="line">            strings[i] = <span class="hljs-string">""</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="hljs-keyword">int</span> position = <span class="hljs-number">0</span> ;</div><div class="line">        <span class="hljs-keyword">int</span> numRowsIndex = numRows-<span class="hljs-number">1</span>;</div><div class="line">        <span class="hljs-keyword">int</span> step = <span class="hljs-number">1</span>;</div><div class="line">        <span class="hljs-comment">//if the numRows is one ,or the s's length is less than numRows ,return s .</span></div><div class="line">        <span class="hljs-keyword">if</span> (numRows ==<span class="hljs-number">1</span> || s.length()&lt;numRows)&#123;</div><div class="line">            <span class="hljs-keyword">return</span> s;</div><div class="line">        &#125;</div><div class="line">        <span class="hljs-comment">//loop the every char in the String, when the position is 0,the step is one ,is the position is numRowsIndex,the step is negative one</span></div><div class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i =<span class="hljs-number">0</span>;i&lt;s.length();i++)&#123;</div><div class="line">            strings[position] += s.charAt(i);</div><div class="line">            <span class="hljs-keyword">if</span> (position ==<span class="hljs-number">0</span>)&#123;</div><div class="line">               step = <span class="hljs-number">1</span>;</div><div class="line">            &#125;</div><div class="line">            <span class="hljs-keyword">if</span> (position == numRowsIndex )&#123;</div><div class="line">                step = -<span class="hljs-number">1</span>;</div><div class="line">            &#125;</div><div class="line">            position = position+step;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i =<span class="hljs-number">0</span>;i&lt;numRows;i++)&#123;</div><div class="line">            result += strings[i];</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="hljs-keyword">return</span> result;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/6.%20ZigZag%20Conversion/Images/StringsResult.png?raw=true" alt="Efficiency"></p>
-<p><strong>Analysis</strong><br>This method put every line’s String into the String[i] accordingly,in the last concate it together and then we get the result we want . When the position is in the first row , next time the position should move down,so step = 1.When the position is in the last Row , next time the position should move up , so the step = -1.</p>
-<p>Time complexity ： O(n) 。n is the length of the string.<br>Space complexity ： O(n) .</p>
-<h3><span id="approach-2-stringbuilder">Approach 2 StringBuilder[]:</span></h3><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</div><div class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">convert</span><span class="hljs-params">(String s, <span class="hljs-keyword">int</span> numRows)</span> </span>&#123;</div><div class="line">        StringBuilder result = <span class="hljs-keyword">new</span> StringBuilder(<span class="hljs-string">""</span>);</div><div class="line">        StringBuilder[] strings = <span class="hljs-keyword">new</span> StringBuilder[numRows];</div><div class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i =<span class="hljs-number">0</span>;i&lt;numRows;i++)&#123;</div><div class="line">            strings[i] = <span class="hljs-keyword">new</span> StringBuilder(<span class="hljs-string">""</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="hljs-keyword">int</span> position = <span class="hljs-number">0</span> ;</div><div class="line">        <span class="hljs-keyword">int</span> numRowsIndex = numRows-<span class="hljs-number">1</span>;</div><div class="line">        <span class="hljs-keyword">int</span> step = <span class="hljs-number">1</span>;</div><div class="line">          <span class="hljs-comment">//if the numRows is one ,or the s's length is less than numRows ,return s .</span></div><div class="line">        <span class="hljs-keyword">if</span> (numRows ==<span class="hljs-number">1</span> || s.length()&lt;numRows)&#123;</div><div class="line">            <span class="hljs-keyword">return</span> s;</div><div class="line">        &#125;</div><div class="line">          <span class="hljs-comment">//loop the every char in the String, when the position is 0,the step is one ,is the position is numRowsIndex,the step is negative one</span></div><div class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i =<span class="hljs-number">0</span>;i&lt;s.length();i++)&#123;</div><div class="line">            strings[position].append(s.charAt(i));</div><div class="line">            <span class="hljs-keyword">if</span> (position ==<span class="hljs-number">0</span>)&#123;</div><div class="line">               step = <span class="hljs-number">1</span>;</div><div class="line">            &#125;</div><div class="line">            <span class="hljs-keyword">if</span> (position == numRowsIndex )&#123;</div><div class="line">                step = -<span class="hljs-number">1</span>;</div><div class="line">            &#125;</div><div class="line">            position = position+step;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i =<span class="hljs-number">0</span>;i&lt;numRows;i++)&#123;</div><div class="line">            result.append(strings[i]);</div><div class="line">        &#125;</div><div class="line">        <span class="hljs-keyword">return</span> result.toString();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/6.%20ZigZag%20Conversion/Images/StringBuilderResult.png?raw=true" alt="Efficiency"></p>
-<p><strong>Analysis</strong><br>This method’s principle is the same as the Approach 1 , it just replace the String into StringBuilder,it has a big optimization.</p>
-<p>Time complexity ： O(n) 。n is the length of the string.<br>Space complexity ： O(n) .</p>
-<h3><span id="approach-3-use-interval">Approach 3 use interval</span></h3><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</div><div class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">convert</span><span class="hljs-params">(String s, <span class="hljs-keyword">int</span> numRows)</span> </span>&#123;</div><div class="line"></div><div class="line">        String result=<span class="hljs-string">""</span>;</div><div class="line">        <span class="hljs-keyword">if</span>(numRows==<span class="hljs-number">1</span>)</div><div class="line">            <span class="hljs-keyword">return</span> s;</div><div class="line">        <span class="hljs-keyword">int</span> step1,step2;</div><div class="line">        <span class="hljs-keyword">int</span> len=s.length();</div><div class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;numRows;++i)&#123;</div><div class="line">            step1=(numRows-i-<span class="hljs-number">1</span>)*<span class="hljs-number">2</span>;</div><div class="line">            step2=(i)*<span class="hljs-number">2</span>;</div><div class="line">            <span class="hljs-keyword">int</span> pos=i;</div><div class="line">            <span class="hljs-keyword">if</span>(pos&lt;len)</div><div class="line">                result+=s.charAt(pos);</div><div class="line">            <span class="hljs-keyword">while</span>(<span class="hljs-keyword">true</span>)&#123;</div><div class="line">                pos+=step1;</div><div class="line">                <span class="hljs-keyword">if</span>(pos&gt;=len)</div><div class="line">                    <span class="hljs-keyword">break</span>;</div><div class="line">                <span class="hljs-keyword">if</span>(step1&gt;<span class="hljs-number">0</span>)</div><div class="line">                    result+=s.charAt(pos);</div><div class="line">                pos+=step2;</div><div class="line">                <span class="hljs-keyword">if</span>(pos&gt;=len)</div><div class="line">                    <span class="hljs-keyword">break</span>;</div><div class="line">                <span class="hljs-keyword">if</span>(step2&gt;<span class="hljs-number">0</span>)</div><div class="line">                    result+=s.charAt(pos);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="hljs-keyword">return</span> result;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><strong>Analysis</strong></p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">/*n=numRows</div><div class="line">Δ=2n-2    1                           2n-1                         4n-3</div><div class="line">Δ=        2                     2n-2  2n                    4n-4   4n-2</div><div class="line">Δ=        3               2n-3        2n+1              4n-5       .</div><div class="line">Δ=        .           .               .               .            .</div><div class="line">Δ=        .       n+2                 .           3n               .</div><div class="line">Δ=        n-1 n+1                     3n-3    3n-1                 5n-5</div><div class="line">Δ=2n-2    n                           3n-2                         5n-4</div><div class="line">*/</div></pre></td></tr></table></figure>
-<p>This method used regular interval to calculate position .</p>
-<p>Time complexity ： O(n) 。n is the length of the string.<br>Space complexity ： O(n) .</p>
+<p>spoilers</p>
+<p>Have you thought about this?<br>Here are some good questions to ask before coding. Bonus points for you if you have already thought through this!</p>
+<p>If the integer’s last digit is 0, what should the output be? ie, cases such as 10, 100.</p>
+<p>Did you notice that the reversed integer might overflow? Assume the input is a 32-bit integer, then the reverse of 1000000003 overflows. How should you handle such cases?</p>
+<p>For the purpose of this problem, assume that your function returns 0 when the reversed integer overflows.</p>
+<hr>
+<h3><span id="approach-1-use-stringbuilder">Approach 1 use StringBuilder:</span></h3><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</div><div class="line"></div><div class="line">	    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">reverse</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123;</div><div class="line">          <span class="hljs-comment">//judge x is negative or not</span></div><div class="line">	        <span class="hljs-keyword">boolean</span> isNegative = <span class="hljs-keyword">false</span>;</div><div class="line">	        <span class="hljs-keyword">int</span> result =<span class="hljs-number">0</span>;</div><div class="line">	        <span class="hljs-keyword">if</span> (x&lt;<span class="hljs-number">0</span>)&#123;</div><div class="line">	            isNegative = <span class="hljs-keyword">true</span>;</div><div class="line">	            x = Math.abs(x);</div><div class="line">	        &#125;</div><div class="line"></div><div class="line">	        StringBuilder oldSB = <span class="hljs-keyword">new</span> StringBuilder(String.valueOf(x));</div><div class="line">	        StringBuilder newSB = <span class="hljs-keyword">new</span> StringBuilder();</div><div class="line">          <span class="hljs-comment">//reverse the x use StringBuilder</span></div><div class="line">	        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;i &lt; oldSB.length() ; i++)&#123;</div><div class="line">	            newSB.append(oldSB.charAt(oldSB.length()-i-<span class="hljs-number">1</span>));</div><div class="line">	        &#125;</div><div class="line"></div><div class="line">	        <span class="hljs-keyword">try</span>&#123;</div><div class="line">	            result = Integer.valueOf(newSB.toString());</div><div class="line">	        &#125;</div><div class="line">	        <span class="hljs-keyword">catch</span>(Exception e)&#123;</div><div class="line">              <span class="hljs-comment">//if overflows return the result 0</span></div><div class="line">	            <span class="hljs-keyword">return</span> result;</div><div class="line">	        &#125;</div><div class="line">	        <span class="hljs-keyword">if</span> (isNegative)&#123;</div><div class="line">	            result = -result;</div><div class="line">	        &#125;</div><div class="line"></div><div class="line">	        <span class="hljs-keyword">return</span> result;</div><div class="line">	    &#125;</div><div class="line">	&#125;</div></pre></td></tr></table></figure>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/7.%20Reverse%20Integer/Images/StringBuilderResult.png?raw=true" alt="Efficiency"></p>
+<p><strong>Analysis</strong><br>This approach turn Integer to a positive Integer and reverse it with StringBuilder. use try catch to deal with the overflows . if the input is negative , we can change the result to negative in last.</p>
+<p>Time complexity ： O(n) 。n is the digit of the    x<br>Space complexity ： O(1) .</p>
+<h3><span id="approach-2-use-int">Approach 2 use int:</span></h3><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution1</span> </span>&#123;</div><div class="line">   <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">reverse</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span></span></div><div class="line"><span class="hljs-function">	</span>&#123;</div><div class="line">	    <span class="hljs-keyword">int</span> result = <span class="hljs-number">0</span>;</div><div class="line"></div><div class="line">	    <span class="hljs-keyword">while</span> (x != <span class="hljs-number">0</span>)</div><div class="line">	    &#123;</div><div class="line">          <span class="hljs-comment">//get the last digit of the x.</span></div><div class="line">	        <span class="hljs-keyword">int</span> tail = x % <span class="hljs-number">10</span>;</div><div class="line">          <span class="hljs-comment">//add a digit in the end of the newResult ,and update the newResult's last digit</span></div><div class="line">	        <span class="hljs-keyword">int</span> newResult = result * <span class="hljs-number">10</span> + tail;</div><div class="line">          <span class="hljs-comment">//judge if newResult is overflows</span></div><div class="line">	        <span class="hljs-keyword">if</span> ((newResult - tail) / <span class="hljs-number">10</span> != result)</div><div class="line">	        &#123; <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>; &#125;</div><div class="line">	        result = newResult;</div><div class="line">          <span class="hljs-comment">//remove the last digit of x</span></div><div class="line">	        x = x / <span class="hljs-number">10</span>;</div><div class="line">	    &#125;</div><div class="line"></div><div class="line">	    <span class="hljs-keyword">return</span> result;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>or</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution2</span> </span>&#123;</div><div class="line">  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">reverse</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123;</div><div class="line">        <span class="hljs-keyword">long</span> rev= <span class="hljs-number">0</span>;</div><div class="line">        <span class="hljs-keyword">while</span>( x != <span class="hljs-number">0</span>)&#123;</div><div class="line">            <span class="hljs-comment">//add a digit in the end of the newResult ,and update the newResult's last digit</span></div><div class="line">            rev= rev*<span class="hljs-number">10</span> + x % <span class="hljs-number">10</span>;</div><div class="line">            <span class="hljs-comment">//remove the last digit of x</span></div><div class="line">            x= x/<span class="hljs-number">10</span>;</div><div class="line">            <span class="hljs-comment">//judge if newResult is overflows</span></div><div class="line">            <span class="hljs-keyword">if</span>( rev &gt; Integer.MAX_VALUE || rev &lt; Integer.MIN_VALUE)</div><div class="line">                <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="hljs-keyword">return</span> (<span class="hljs-keyword">int</span>) rev;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="https://github.com/LeonChen1024/LeetCodeRecord/blob/master/7.%20Reverse%20Integer/Images/IntResult.png?raw=true" alt="Efficiency"></p>
+<p><strong>Analysis</strong><br>These two Solution has the same principle . They use the input x%10 to get the remainder which is the last digit of the x, and then use result*10 to add a digit to result and update the last digit to the x%10 , after that update x to x/10.<br>The only difference of the two solution is the way to judge the result is overflows or not. Solution1 is use the new result remove last digit campare to the old result,if they are equals to each other there is not overflows,else there is overflows. In other side , Solution2 is use the new result compare to the Integer’s limit threshold ,if it didn’t out of the threshold ,there is not overflows,else there is a overflows, notice that , long  rev = 0; in the code,your can;t use Integer to replace it , because once Integer overflows,java will change the value to make it between the limit threshold of the Integer. So  rev &gt; Integer.MAX_VALUE || rev &lt; Integer.MIN_VALUE will never be true.</p>
+<p>Time complexity ： O(n) 。n is the digit of the    x.<br>Space complexity ： O(1) .</p>
 <p>If you have any suggestions to make the logic and implementation more better , or you have some advice on my description. Please let me know!Thanks!</p>
 <h2><span id="about-me">About Me</span></h2><p>My blog <a href="http://leonchen1024.com/" target="_blank" rel="external">leonchen1024.com</a></p>
 <p>My Github  <a href="https://github.com/LeonChen1024" target="_blank" rel="external">https://github.com/LeonChen1024</a></p>
@@ -1314,10 +1345,10 @@
                             
                             
                                 
-                                <p><p>[English ver]</p>
-<h1><span id="6-zigzag-conversion">6. ZigZag Conversion</span></h1><p>The string “PAYPALISHIRING” is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">P   A   H   N</div><div class="line">A P L S I I G</div><div class="line">Y   I   R</div></pre></td></tr></table></figure></p>
-<p>And then read line by line: “PAHNAPLSIIGYIR”<br>Write the code that will take a string and make this conversion given a number of rows:<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">string convert(string text, int nRows);</div></pre></td></tr></table></figure></p>
-<p>convert(“PAYPALISHIRING”, 3) should return “PAHNAPLSIIGYIR”.</p>
+                                <p><p>[English ver]Easy</p>
+<h1><span id="7-reverse-integer">7. Reverse Integer</span></h1><p>Reverse digits of an integer.</p>
+<p>Example1: x = 123, return 321<br>Example2: x = -123, return -321</p>
+<p>Note:<br>The input is assumed to be a 32-bit signed integer. Your function should return 0 when the reversed integer overflows.</p>
 <hr>
 <p>
                             
@@ -1326,7 +1357,7 @@
                     
                         </div>   
                         <div class="article-more-link">
-                            <a href="/2018/09/12/6-ZigZag-Conversion/Record-en/#more">Read More</a>
+                            <a href="/2018/12/02/7-Reverse-Integer/Record-en/#more">Read More</a>
                         </div>
                     
         </div>
@@ -1348,10 +1379,10 @@
 <div class="card card-transparent">
     <nav class="pagination is-centered" role="navigation" aria-label="pagination">
         <div class="pagination-previous is-invisible is-hidden-mobile">
-            <a class="is-flex-grow has-text-black-ter" href="/tags/Algorithm/page/0/">Previous</a>
+            <a class="is-flex-grow has-text-black-ter" href="/tags/Algorithm/page/0/">Anterior</a>
         </div>
         <div class="pagination-next">
-            <a class="is-flex-grow has-text-black-ter" href="/tags/Algorithm/page/2/">Next</a>
+            <a class="is-flex-grow has-text-black-ter" href="/tags/Algorithm/page/2/">Siguiente</a>
         </div>
         <ul class="pagination-list is-hidden-mobile">
             
@@ -1404,17 +1435,17 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Posts
+                        Entradas
                     </p>
                     <p class="title has-text-weight-normal">
-                        42
+                        43
                     </p>
                 </div>
             </div>
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categories
+                        Categorias
                     </p>
                     <p class="title has-text-weight-normal">
                         22
@@ -1424,7 +1455,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Tags
+                        Etiquetas
                     </p>
                     <p class="title has-text-weight-normal">
                         18
@@ -1434,7 +1465,7 @@
         </nav>
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://github.com/LeonChen1024">
-                Follow</a>
+                SEGUIR</a>
         </div>
         
         
@@ -1463,7 +1494,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categories
+                Categorias
             </h3>
             <ul class="menu-list">
             <li>
@@ -1472,7 +1503,7 @@
                 <span class="level-item">Chinese</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">33</span>
+                <span class="level-item tag">34</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="undefined">
@@ -1480,7 +1511,7 @@
                 <span class="level-item">Algorithm</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">11</span>
+                <span class="level-item tag">12</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="undefined">
@@ -1548,7 +1579,7 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Tag Cloud
+            Nube de etiquetas
         </h3>
         <a href="/tags/Algorithm/" style="font-size: 18.75px;">Algorithm</a> <a href="/tags/Android/" style="font-size: 16.25px;">Android</a> <a href="/tags/Chinese/" style="font-size: 20px;">Chinese</a> <a href="/tags/Custom-View/" style="font-size: 10px;">Custom View</a> <a href="/tags/Data-Structure/" style="font-size: 10px;">Data Structure</a> <a href="/tags/DataStructure/" style="font-size: 10px;">DataStructure</a> <a href="/tags/DesignPattern/" style="font-size: 11.25px;">DesignPattern</a> <a href="/tags/English/" style="font-size: 15px;">English</a> <a href="/tags/Error/" style="font-size: 10px;">Error</a> <a href="/tags/Gradle/" style="font-size: 11.25px;">Gradle</a> <a href="/tags/Java/" style="font-size: 13.75px;">Java</a> <a href="/tags/Jetpack/" style="font-size: 11.25px;">Jetpack</a> <a href="/tags/LeetCode/" style="font-size: 17.5px;">LeetCode</a> <a href="/tags/Optimize/" style="font-size: 13.75px;">Optimize</a> <a href="/tags/SourceCode/" style="font-size: 10px;">SourceCode</a> <a href="/tags/UI/" style="font-size: 10px;">UI</a> <a href="/tags/版本差异/" style="font-size: 11.25px;">版本差异</a> <a href="/tags/版本管理/" style="font-size: 12.5px;">版本管理</a>
     </div>
@@ -1562,8 +1593,27 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Recientes
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/07/28/Trie/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/2020/07/28/Trie/titleThumb.jpg" alt="Trie(前缀树)">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-07-27T16:00:00.000Z">2020-07-28</time></div>
+                    <a href="/2020/07/28/Trie/" class="has-link-black-ter is-size-6">Trie(前缀树)</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -1641,25 +1691,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/04/20/Binary-Search/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/2020/04/20/Binary-Search/titleThumb.jpg" alt="Binary Search(二分搜索)">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-19T16:00:00.000Z">2020-04-20</time></div>
-                    <a href="/2020/04/20/Binary-Search/" class="has-link-black-ter is-size-6">Binary Search(二分搜索)</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1668,9 +1699,20 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            Archivos
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2020/06/">
@@ -1901,14 +1943,14 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Tags
+                Etiquetas
             </h3>
             <div class="field is-grouped is-grouped-multiline">
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Algorithm/">
                         <span class="tag">Algorithm</span>
-                        <span class="tag is-grey">21</span>
+                        <span class="tag is-grey">22</span>
                     </a>
                 </div>
                 
@@ -1922,7 +1964,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Chinese/">
                         <span class="tag">Chinese</span>
-                        <span class="tag is-grey">33</span>
+                        <span class="tag is-grey">34</span>
                     </a>
                 </div>
                 
@@ -2051,8 +2093,27 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Recientes
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/07/28/Trie/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/2020/07/28/Trie/titleThumb.jpg" alt="Trie(前缀树)">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-07-27T16:00:00.000Z">2020-07-28</time></div>
+                    <a href="/2020/07/28/Trie/" class="has-link-black-ter is-size-6">Trie(前缀树)</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -2130,25 +2191,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/04/20/Binary-Search/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/2020/04/20/Binary-Search/titleThumb.jpg" alt="Binary Search(二分搜索)">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-19T16:00:00.000Z">2020-04-20</time></div>
-                    <a href="/2020/04/20/Binary-Search/" class="has-link-black-ter is-size-6">Binary Search(二分搜索)</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Chinese/">Chinese</a> / <a class="has-link-grey -link" href="/categories/Chinese/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -2157,9 +2199,20 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            Archivos
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2020/06/">
@@ -2390,14 +2443,14 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Tags
+                Etiquetas
             </h3>
             <div class="field is-grouped is-grouped-multiline">
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Algorithm/">
                         <span class="tag">Algorithm</span>
-                        <span class="tag is-grey">21</span>
+                        <span class="tag is-grey">22</span>
                     </a>
                 </div>
                 
@@ -2411,7 +2464,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Chinese/">
                         <span class="tag">Chinese</span>
-                        <span class="tag is-grey">33</span>
+                        <span class="tag is-grey">34</span>
                     </a>
                 </div>
                 
@@ -2680,10 +2733,10 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Posts',
+                POSTS: 'Entradas',
                 PAGES: 'Pages',
-                CATEGORIES: 'Categories',
-                TAGS: 'Tags',
+                CATEGORIES: 'Categorias',
+                TAGS: 'Etiquetas',
                 UNTITLED: '(Untitled)',
             },
             CONTENT_URL: '/content.json',
